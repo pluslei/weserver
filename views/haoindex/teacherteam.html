@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/css/team.css">
+    <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $(".teacher1").click(function() {
+            $(".bottom1").css("display","");
+            $(".bottom2").css("display","none");
+        });
+        $(".teacher2").click(function() {
+            $(".bottom2").css("display","");
+            $(".bottom1").css("display","none");
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="team">
+        <div class="team_border">
+            <div class="top">
+               <!--  <div class="teacher1">
+                    <span>魏老师</span>
+                </div> -->
+<!--                 <div class="teacher2">
+                    <span>魏老师</span>
+                </div>
+                <div class="teacher3">
+                    <span>魏老师</span>
+                </div>
+                <div class="teacher4">
+                    <span>魏老师</span>
+                </div>
+                <div class="teacher5">
+                    <span>魏老师</span>
+                </div>
+                <div class="teacher6">
+                    <span>张老师</span>
+                </div> -->
+            </div>
+            <div class="bottom1">
+<!--             	<div class="bottom_top">
+            		 <div class="portrait">
+            			<span>张老师</span>
+            		</div> 
+            		<p>毕业于中科大，硕士学位，是国内黄金、白银、外汇行业资深分析师领军人物之一，从事金融及经济分析多年，交易遵从随大市而走，切实钻研出一套成功的交易系统，曾在北京、香港和新加坡从事过大资金的运作。想成为张老师一对一的带单客户联系屏幕下方在线客服！</p>
+            	</div> -->
+            	<div class="bottom_bottom">
+            		<!-- <div class="introduce">
+            			喜欢魏老师的分析，给TA点歌赞吧!
+            		</div> -->
+            		<div class="schedule">
+            			57%
+            		</div>
+            		<div class="progress">
+            			<div class="prog">
+            			</div>
+            		</div>
+            		<img class="zan_point" src="/static/images/newimg/zan_point.png">
+                    <div class="Achievements">
+                        <span>今日获赞：999</span>
+                        <span>累计获赞：5646</span>
+                    </div>
+            	</div>
+            </div>
+<!--             <div class="bottom2" style="display:none">
+                <div class="bottom_top">
+                    <div class="portrait">
+                        <span>张老师</span>
+                    </div>
+                    <p>的交易系统，曾在北京、香港和新加坡从事过大资金的运作。想成为张老师一对一的带单客户联系屏幕下方在线客服！</p>
+                </div>
+                <div class="bottom_bottom">
+                    <div class="introduce">
+                        喜欢魏老师的分析，给TA点歌赞吧!
+                    </div>
+                    <div class="schedule">
+                        56%
+                    </div>
+                    <div class="progress">
+                        <div class="prog">
+                        </div>
+                    </div>
+                    <img class="zan_point" src="/static/images/newimg/zan_point.png">
+                    <div class="Achievements">
+                        <span>今日获赞：999</span>
+                        <span>累计获赞：5646</span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function(){
+         $.ajax({
+            type: 'POST',
+            url: 'indexteacher',
+            success: function(data){
+                if(data.length > 0){
+                    for(var i=0;i<data.length;i++){
+                        var head = "<div class='teacher1'><span>"+data[i].Name+"</span></div>";
+                        var bottom = "<div class='bottom_top'><div class='portrait'><span>"+data[i].Name+"</span></div><p>"+data[i].Detail+"</p></div>"
+                        var bottom_bottom = "<div class='introduce'>喜欢"+data[i].Name+"的分析，给TA点歌赞吧!</div>"
+                        $('.top').append(head)
+                        $('.bottom1')
+
+                    }
+                    
+                }            
+             }
+        });
+    })
+</script>

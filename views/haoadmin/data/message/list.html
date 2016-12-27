@@ -1,0 +1,737 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<style type="text/css">
+    .am-alert{border-radius: 5px; padding:3px;}
+    .add-modal label { font-weight: normal; }
+    .result-content label,.dataTables_paginate,.dataTables_paginate .current{
+        font-size: 12px;
+    }
+    .result-content .dataTables_info {
+        font-size: 12px;
+        line-height: 27px;
+    }
+    .dataTables_length select {
+        height: 24px;
+        vertical-align: baseline;
+    }
+    .add-box { width: 100%; height: 100px; box-shadow: 0 0 1px #000; text-align: left; }
+    .faceBtn { cursor: pointer;margin-top:5px;}
+    .faceBtn-edit { cursor: pointer;margin-top:5px;}
+    .faceBox { width: 100%; }
+    .faceImg-add .active { display: block; }
+    .faceImg-edit .active { display: block; }
+    .faceTab { background: #eee; }
+    .faceTab > span { color:#000; padding: 5px; display: inline-block; cursor: pointer; }
+    .faceTab > span.active { background: #888; color:#fff; }
+    .faceTab-edit { background: #eee; }
+    .faceTab-edit > span { color:#000; padding: 5px; display: inline-block; cursor: pointer; }
+    .faceTab-edit > span.active { background: #888; color:#fff; }
+    .face-content { border:1px solid #ccc; display: none;}
+    .face-content-edit { border:1px solid #ccc; display: none;}
+    .faceImg-add { padding-left: 7px; }
+    .faceImg-add img { margin: 3px; }
+    .faceImg-edit { padding-left: 7px; }
+    .faceImg-edit img { margin: 3px; }
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/message_index">消息库管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">消息库列表</span></div>
+</div>
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+        <div class="result-title">
+            <div class="result-list">
+                <a title='新增' onclick="addFun();" style="cursor:pointer"><i class="icon-font"></i>新增消息</a>
+                <a title='新增' onclick="addtypeFun();" style="cursor:pointer"><i class="icon-font"></i>新增消息分类</a>
+                <a title='列表' onclick="typeListFun();" style="cursor:pointer"><i class="icon-font"></i>消息分类列表</a>
+                <!--
+                <a title='列表' href="/weserver/data/netname_add" style="cursor:pointer"><i class="icon-font"></i>新增网名</a>
+                -->
+            </div>
+        </div>
+        <div class="result-content">
+            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-qs-list">
+                <thead>
+                    <tr>
+                        <th>消息内容</th>
+                        <th>消息分类</th>
+                        <th>创建时间</th>
+                        <th>创建人</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="data_body">
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+<!-- 删除消息分类模态框 -->
+<div class="am-modal am-modal-confirm add-modal" tabindex="-1" id="del-confirm">
+    <div class="am-modal-dialog" style="border-radius: 5px;">
+        <div class="am-modal-hd"><h4>消息删除</h4></div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
+            <input value="" type="hidden" class="data-modal-del">
+            你确定要删除这条记录吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="deleteModal()">确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 添加消息模态框 -->
+<div class="am-modal am-modal add-modal" tabindex="-1" id="add-modal">
+    <div class="am-modal-dialog" style="border-radius: 5px;">
+        <div class="am-modal-hd" style="margin-bottom: 20px;"><h4>消息添加</h4>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px; text-align: left;">
+            <form class="am-form am-form-horizontal">
+                <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">消息内容：</label>
+                    <div class="am-u-sm-9">
+                        <!-- <textarea style="resize: none;" class="am-margin-bottom am-radius" id="addContent" rows="2" cols="33" placeholder="请输入内容..."></textarea> -->
+                        <div class="add-box" rows="10" placeholder="请输入内容..." id="addContent" contenteditable=""></div>  
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label"></label>
+                    <div class="am-u-sm-9">
+                        <span class="faceBtn am-icon-smile-o am-icon-sm"></span>
+                        <div class="face-content">
+                            <div class="faceTab">
+                                {{range $k,$v := .group}}
+                                    <span><input type="hidden" name="group" value="{{$v.Group}}"><img src="{{$v.GroupFace}}" class="groupurl"></span>
+                                {{end}}
+                            </div>
+                            <div class="faceBox">
+                                <div class="faceImg-add active am-margin-vertical-xs"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">消息分类：</label>
+                    <div class="am-u-sm-9">
+                        <select class="am-radius" id="addType" style="height:40px;">
+                            {{range $k,$v := .messagetype}}
+                                <option value="{{$v.Id}}">{{$v.Name}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="addModal()">确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 修改消息模态框 -->
+<div class="am-modal am-modal add-modal" tabindex="-1" id="edit-modal">
+    <div class="am-modal-dialog" style="border-radius: 5px;">
+        <div class="am-modal-hd" style="margin-bottom: 20px;"><h4>消息修改</h4>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px; text-align: left;">
+            <form class="am-form am-form-horizontal">
+                <input value="" type="hidden" id="Id">
+                <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">消息内容：</label>
+                    <div class="am-u-sm-9">
+                        <!-- <textarea style="resize: none;" class="am-margin-bottom am-radius" id="editContent" rows="2" cols="33" placeholder="请输入内容..."></textarea> -->
+                        <div class="add-box" rows="10" placeholder="请输入内容..." id="editContent" contenteditable=""></div>
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label"></label>
+                    <div class="am-u-sm-9">
+                        <span class="faceBtn-edit am-icon-smile-o am-icon-sm"></span>
+                        <div class="face-content-edit">
+                            <div class="faceTab-edit">
+                                {{range $k,$v := .group}}
+                                    <span><input type="hidden" name="group" value="{{$v.Group}}"><img src="{{$v.GroupFace}}" class="groupurl"></span>
+                                {{end}}
+                            </div>
+                            <div class="faceBox">
+                                <div class="faceImg-edit active am-margin-vertical-xs"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">消息分类：</label>
+                    <div class="am-u-sm-9">
+                        <select class="am-radius" id="editType" style="height:40px;">
+                            {{range $k,$v := .messagetype}}
+                                <option value="{{$v.Id}}">{{$v.Name}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="editModal()">确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 消息分类列表模态框 -->
+<div class="am-modal am-modal-confirm add-modal" tabindex="-1" id="datatype_list" style="width:700px;">
+    <div class="am-modal-dialog" style="border-radius: 5px; margin-left: -100px;">
+        <div class="am-modal-hd"><h4>消息分类列表</h4>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
+            <div class="result-wrap">
+                <div class="result-content">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="datatype_body">
+                        <thead>
+                            <tr>
+                                <th>分类名称</th>
+                                <th>分类等级</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="datatype_body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 添加消息分类模态框 -->
+<div class="am-modal am-modal add-modal" tabindex="-1" id="addtype-modal">
+    <div class="am-modal-dialog" style="border-radius: 5px;">
+        <div class="am-modal-hd" style="margin-bottom: 20px;"><h4>消息分类添加</h4>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
+            <form class="am-form am-form-horizontal">
+                <div class="am-form-group am-form-group-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">分类名称：</label>
+                    <div class="am-u-sm-9">
+                        <input type="text" class="am-radius" id="addName">
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">分类级别：</label>
+                    <div class="am-u-sm-9">
+                        <input type="text" class="am-radius" id="addLevel">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="addtypeModal()">确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 修改消息分类模态框 -->
+<div class="am-modal am-modal add-modal" tabindex="-1" id="edittype-modal">
+    <div class="am-modal-dialog" style="border-radius: 5px; border: 1px solid #ccc;">
+        <div class="am-modal-hd" style="margin-bottom: 20px;"><h4>消息分类修改</h4>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
+            <form class="am-form am-form-horizontal">
+                <input value="" type="hidden" id="typeId">
+                <div class="am-form-group am-form-group-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">分类名称：</label>
+                    <div class="am-u-sm-9">
+                        <input type="text" class="am-radius" id="editName">
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm">
+                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">分类级别：</label>
+                    <div class="am-u-sm-9">
+                        <input type="text" class="am-radius" id="editLevel">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="edittypeModal()">确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 删除消息分类模态框 -->
+<div class="am-modal am-modal-confirm add-modal" tabindex="-1" id="deltype-confirm">
+    <div class="am-modal-dialog" style="border-radius: 5px; border: 1px solid #ccc;">
+        <div class="am-modal-hd"><h4>消息分类删除</h4>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
+            <input value="" type="hidden" id="delId">
+            你确定要删除这条记录吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm cancel" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="deletetypeModal()">确定</span>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    var oTable;
+    var typeTable;
+    $(function() {
+        oTable = initTable();
+        typeTable = initTypeTable();
+        // 添加   点击笑脸是否隐藏，隐藏则显示，不隐藏则显示
+        $(".faceBtn").click(function(){
+            if ($(".face-content").is(":hidden")) {
+                $(".face-content").show();
+            } else {
+                $(".face-content").hide();
+            }
+        });
+
+        // 初始化查询
+        $(".faceTab > span").eq(0).addClass("active");
+        // var str = $(".faceTab > span").eq(0).text();
+        // var group = str.substr(str.length-1,1);
+        var group = $("input[name='group']").get(0).value;
+        $.ajax({
+            url : '/weserver/data/face_getfaces',
+            type : 'post',
+            data : {group : group},
+            success : function(data){
+                var html = "";
+                $.each(data,function(i){
+                    html += "<a href='#' onclick='addFace(" + '"' + data[i].Url + '"' + ")'>" +
+                                "<img src='"+data[i].Url+"' alt=''>" +
+                            "</a>";
+                });
+                $(".faceImg-add").html(html);
+            }
+        });
+        // 点击 Tab 查询表情
+        $(".faceTab > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+            var group = $("input[name='group']").get(_index).value;
+            $.ajax({
+                url : '/weserver/data/face_getfaces',
+                type : 'post',
+                data : {group : group},
+                success : function(data){
+                    var html = "";
+                    $.each(data,function(i){
+                        html += "<a href='#' onclick='addFace(" + '"' + data[i].Url + '"' + ")'>" +
+                                    "<img src='"+data[i].Url+"' alt=''>" +
+                                "</a>";
+                    });
+                    $(".faceImg-add").html(html);
+                }
+            });
+        });
+
+        // 修改   点击笑脸是否隐藏，隐藏则显示，不隐藏则显示
+        $(".faceBtn-edit").click(function(){
+            if ($(".face-content-edit").is(":hidden")) {
+                $(".face-content-edit").show();
+            } else {
+                $(".face-content-edit").hide();
+            }
+        });
+        
+        // 初始化查询
+        $(".faceTab-edit > span").eq(0).addClass("active");
+        // var str = $(".faceTab-edit > span").eq(0).text();
+        // var group = str.substr(str.length-1,1);
+        var group = $("input[name='group']").get(0).value;
+        $.ajax({
+            url : '/weserver/data/face_getfaces',
+            type : 'post',
+            data : {group : group},
+            success : function(data){
+                var html = "";
+                $.each(data,function(i){
+                    html += "<a href='#' onclick='editFace(" + '"' + data[i].Url + '"' + ")'>" +
+                                "<img src='"+data[i].Url+"' alt=''>" +
+                            "</a>";
+                });
+                $(".faceImg-edit").html(html);
+            }
+        });
+        // 点击 Tab 查询表情
+        $(".faceTab-edit > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+            var group = $("input[name='group']").get(_index).value;
+            $.ajax({
+                url : '/weserver/data/face_getfaces',
+                type : 'post',
+                data : {group : group},
+                success : function(data){
+                    var html = "";
+                    $.each(data,function(i){
+                        html += "<a href='#' onclick='editFace(" + '"' + data[i].Url + '"' + ")'>" +
+                                    "<img src='"+data[i].Url+"' alt='' >" +
+                                "</a>";
+                    });
+                    $(".faceImg-edit").html(html);
+                }
+            });
+        });
+    });
+
+    // 往添加框填充值
+    function addFace(src) {
+        var contentval = $('#addContent').html();
+        contentval += "<img src=" + src + " height='22' width='22'>";
+        $('#addContent').html(contentval);
+    }
+
+    // 往修改框填充值
+    function editFace(src) {
+        var contentval = $('#editContent').html();
+        contentval += "<img src=" + src + " height='22' width='22'>";
+        $('#editContent').html(contentval);
+    }
+
+    function initTable() {
+        var actionUrl = '/weserver/data/message_index';
+        var table = $('#data-qs-list').dataTable({
+            "bFilter": false,
+            "bAutoWidth": false,
+            "sPaginationType": 'full_numbers',
+            "bPaginate": true,
+            "bDestroy": true,
+            "bProcessing": true,
+            "sAjaxSource": actionUrl,
+            "iDisplayLength": 10,
+            "aLengthMenu": [
+                [10, 15, 20, 50, -1],
+                [10, 15, 20, 50, "All"]
+            ],
+            "bServerSide": true,
+            "bSort": false,
+            "aoColumns": [
+                {"mDataProp": "Content",},
+                {"mDataProp": "TypeName",},
+                {"mDataProp": "CreateTimeFormat",},
+                {"mDataProp": "CreateMan",},
+                {"mDataProp": "Id",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' onclick='editFun(" + oData.Id + ")'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                    }
+                },
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中...",
+                "sLengthMenu": "每页显示 _MENU_ 条记录，",
+                "sZeroRecords": "没有数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "_START_ - _END_ / 共 _TOTAL_ 条",
+                "sInfoEmpty": "0 - 0 / 共 0 条",
+                "sInfoFiltered": "",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            },
+            "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
+        });
+        return table;
+    }
+
+    // 消息分类列表
+    function initTypeTable(){
+        var actionUrl = '/weserver/data/messagetype_index';
+        $("#datatype_body").dataTable({
+            "bFilter": false,
+            "bAutoWidth": false,
+            "sPaginationType": 'full_numbers',
+            "bPaginate": true,
+            "bDestroy": true,
+            "bProcessing": true,
+            "sAjaxSource": actionUrl,
+            "iDisplayLength": 10,
+            "aLengthMenu": [
+                [10, 15, 20, 50, -1],
+                [10, 15, 20, 50, "All"]
+            ],
+            "bServerSide": true,
+            "bSort": false,
+            "aoColumns": [
+                {"mDataProp": "Name",},
+                {"mDataProp": "Level",},
+                {"mDataProp": "Id",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' onclick='edittypeFun(" + oData.Id + ")'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                    }
+                },
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中...",
+                "sLengthMenu": "每页显示 _MENU_ 条记录，",
+                "sZeroRecords": "没有数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "_START_ - _END_ / 共 _TOTAL_ 条",
+                "sInfoEmpty": "0 - 0 / 共 0 条",
+                "sInfoFiltered": "",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            },
+            "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>"
+        });
+    }
+
+    // table刷新表格
+    $.fn.dataTableExt.oApi.fnReloadAjax = function(oSettings) {
+        this.fnClearTable(this);
+        this.oApi._fnProcessingDisplay(oSettings, true);
+        var that = this;
+        $.getJSON(oSettings.sAjaxSource, null, function(json) {
+            for (var i = 0; i < json.aaData.length; i++) {
+                that.oApi._fnAddData(oSettings, json.aaData[i]);
+            }
+            oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+            that.fnDraw(that);
+            that.oApi._fnProcessingDisplay(oSettings, false);
+        });
+    }
+
+    // 打开消息分类列表模态框
+    function typeListFun() {
+        $('#datatype_list').modal();
+    }
+
+    // 添加消息分类
+    function addFun() {
+        $('#add-modal').modal();
+    }
+
+    // 添加方法
+    function addModal() {
+        // 获取值
+        var addContent = $("#addContent").html();
+        var addType = $("#addType option:selected").val();
+        // 校验消息内容是否为空
+        if (addContent == "" || addContent == null) {
+            alert("消息内容不能为空，请填写！");
+            return false;
+        }
+        $.ajax({
+            url: '/weserver/data/message_add',
+            type: 'POST',
+            data: {
+                Content : addContent,
+                MessageType : addType
+            },
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    $('#add-modal').modal("close");
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        });
+    }
+
+    // 修改消息分类
+    function editFun(id) {
+        $('#edit-modal').modal();
+        $('#Id').val(id);
+        $.ajax({
+            url: '/weserver/data/message_byid',
+            type : 'POST',
+            data : {Id : id},
+            success: function(data){
+                $("#editContent").html(data.Content);
+                $("#editType option[value='"+data.MessageType.Id+"']").prop('selected','true');
+            }
+        });
+    }
+
+    // 修改方法
+    function editModal(){
+        var editId = $("#Id").val();
+        var editContent = $("#editContent").html();
+        var editType = $("#editType option:selected").val();
+        if (editContent == "" || editContent == null) {
+            alert("消息内容不能为空，请填写！");
+            return false;
+        }
+        $.ajax({
+            url: '/weserver/data/message_edit',
+            type: 'POST',
+            data: {
+                Id : editId,
+                Content : editContent,
+                MessageType : editType
+            },
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    $('#edit-modal').modal("close");
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                    $("#editContent").html("");
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        });
+    }
+
+    // 删除模态层
+    function deleteFun(delid){
+        $('#del-confirm').modal()
+        $(".data-modal-del").val(delid);
+    }
+
+    // 删除方法
+    function deleteModal(){
+        var Id = $(".data-modal-del").val();
+        $.ajax({
+            url: '/weserver/data/message_delete',
+            type: 'POST',
+            data: {Id: Id},
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        })
+    }
+
+    // 添加消息分类
+    function addtypeFun() {
+        $('#addtype-modal').modal();
+    }
+
+    // 添加方法
+    function addtypeModal() {
+        var addName = $("#addName").val();
+        var addLevel = $("#addLevel").val();
+        if (addName == "" || addName == null) {
+            alert("消息分类名称不能为空，请填写！");
+            return false;
+        }
+        if (addLevel == "" || addLevel == null) {
+            alert("消息分类级别不能为空，请填写！");
+            return false;
+        }
+        $.ajax({
+            url: '/weserver/data/messagetype_add',
+            type: 'POST',
+            data: {
+                Name : addName,
+                Level : addLevel
+            },
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    $('#addtype-modal').modal("close");
+                    location.reload();
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        });
+    }
+
+    // 修改消息分类
+    function edittypeFun(id) {
+        $('#edittype-modal').modal();
+        $('#typeId').val(id);
+        $.ajax({
+            url: '/weserver/data/messagetype_byid',
+            type : 'POST',
+            data : {Id : id},
+            success: function(data){
+                $("#editName").val(data.Name);
+                $("#editLevel").val(data.Level);
+            }
+        });
+    }
+
+    // 修改消息分类方法
+    function edittypeModal() {
+        var editId = $("#typeId").val();
+        var editName = $("#editName").val();
+        var editLevel = $("#editLevel").val();
+        if (editName == "" || editName == null) {
+            alert("消息分类名称不能为空，请填写！");
+            return false;
+        }
+        if (editLevel == "" || editLevel == null) {
+            alert("消息分类级别不能为空，请填写！");
+            return false;
+        }
+        $.ajax({
+            url: '/weserver/data/messagetype_edit',
+            type: 'POST',
+            data: {
+                Id : editId,
+                Name : editName,
+                Level : editLevel
+            },
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    $('#edittype-modal').modal("close");
+                    // typeTable.fnReloadAjax(typeTable.fnSettings());
+                    location.reload();
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        });
+    }
+
+    // 删除模态层
+    function deleteFun(delid){
+        $('#deltype-confirm').modal()
+        $("#delId").val(delid);
+    }
+
+    // 删除方法
+    function deletetypeModal(){
+        var Id = $("#delId").val();
+        $.ajax({
+            url: '/weserver/data/messagetype_delete',
+            type: 'POST',
+            data: {Id: Id},
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    $('#deltype-confirm').modal("close");
+                    // typeTable.fnReloadAjax(typeTable.fnSettings());
+                    location.reload();
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        })
+    }
+</script>

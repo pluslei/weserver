@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtm1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎登录皓月后台管理系统</title>
+<link href="/static/css/admin_login.css" rel="stylesheet" type="text/css" />
+<script src="/static/js/jquery-1.9.0.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="main-login">
+	<div class="login-content">
+		<h3>用户登录</h3>
+		    <div class="login-info">
+				<span class="user">&nbsp;</span>
+                <input id="isajax" type="hidden"  value="1" class="login-input"/>
+				<input name="username" id="username" type="text"  value="" class="login-input"/>
+			</div>
+			<div class="login-info">
+				<span class="pwd">&nbsp;</span>
+				<input name="password" id="password" type="password"  value="" class="login-input"/>
+			</div>
+			<div class="login-err"><p></p></div>
+			<div class="login-oper">
+				<input name="" type="submit" value="登 录" class="login-btn" id="login-btn"/>
+				<input name="" type="reset" value="重 置" class="login-reset" id="login-reset"/>
+			</div>
+    </div>
+    <div class="jianyi">Copyright © 2016 武汉皓月浮光科技有限公司 <a target="_block" href="http://www.ihaoyue.com">ihaoyue.com</a></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function() {
+        document.onkeydown=function(event){ 
+        e = event ? event :(window.event ? window.event : null); 
+            if(e.keyCode==13){ 
+            //执行的方法 
+                fromsubmit(); 
+            } 
+        } 
+
+        $("#login-btn").click(function() {
+            fromsubmit();
+        });
+
+        $("#login-reset").click(function() {
+            $("#username").val("");
+            $("#password").val("");
+        });
+
+        function fromsubmit(){
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var isajax = $("#isajax").val();
+            if (username.length <= 0 || password.length <= 0) {
+                $(".login-err").show().children('p').html("账号或者密码不准为空");
+                return false;
+            };
+            $.ajax({
+                url: '/public/login',
+                type: 'post',
+                data: {username: username, password : password, isajax : isajax},
+                success:function(json){
+                    if (json.status) {
+                        location.href = json.url;
+                    }else{
+                        $(".login-err").show().children('p').html("账号或者密码错误");
+                    };
+                }
+            })
+        }
+    });
+</script>

@@ -1,0 +1,154 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><a href="/weserver/title/index">全局设置</a><span class="crumb-step">&gt;</span><span class="crumb-name">全局设置</span></div>
+</div>
+<div class="am-g">
+  <form action="" id="sysconfig" class="am-form" method="post" data-am-validator>
+    <div class="am-u-lg-3">
+        <fieldset>
+          <legend></legend>
+          <input type="hidden" value="edit" name="action"  >
+          <input type="hidden" value="{{.configinfo.Id}}" name="Id"  >
+          <div class="am-form-group">
+            <label for="doc-vld-name-2">系统名称：</label>
+            <input type="text" name="systemname" id="doc-vld-name-2" placeholder="输入系统名称" value="{{.configinfo.Systemname}}" data-validation-message="输入系统名称" required />
+          </div>
+
+          <div class="am-form-group">
+            <label for="doc-select-1">是否允许登陆后台：</label>
+            <select id="doc-select-2" name="loginsys" required>
+              <option value="0" {{if eq .configinfo.LoginSys 0}}selected{{end}}>允许</option>
+              <option value="1" {{if eq .configinfo.LoginSys 1}}selected{{end}}>禁止</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+
+          <div class="am-form-group">
+            <label for="doc-vld-name-2">聊天上传图片大小(KB)：</label>
+            <input type="text" name="imagesize" id="doc-vld-name-2" placeholder="聊天上传文件大小" data-validation-message="请输入聊天上传文件大小"  required value="{{.configinfo.Imagesize}}" />
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">是否允许游客聊天：</label>
+            <select id="doc-select-2" name="guestchat" required>
+              <option value="1" {{if eq .configinfo.Guestchat 1}}selected{{end}}>允许</option>
+              <option value="0" {{if eq .configinfo.Guestchat 0}}selected{{end}}>禁止</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+
+           <div class="am-form-group">
+            <label for="doc-select-1">是否显示历史消息：</label>
+            <select id="doc-select-2" name="historymsg" required>
+              <option value="0" {{if eq .configinfo.HistoryMsg 0}}selected{{end}}>显示</option>
+              <option value="1" {{if eq .configinfo.HistoryMsg 1}}selected{{end}}>不显示</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-vld-name-2">显示历史消息条数(最小值0,最大值100)：</label>
+            <input type="number" name="historycount"  id="doc-vld-name-2" placeholder="显示历史消息条数" data-validation-message="请输入显示历史消息条数（最小值为0）" min="0" max="100" value="{{.configinfo.HistoryCount}}" required/>
+          </div>
+          
+          <div class="am-form-group">
+            <label for="doc-select-1">用户初始头衔：</label>
+            <select id="doc-select-2" name="registertitle" required>
+              {{range $index,$elem := .title}}
+              <option value="{{$elem.Id}}" id="title{{$elem.Id}}">{{$elem.Name}}</option>
+              {{end}}
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+          
+
+          <button class="am-btn am-btn-secondary" type="submit">提交</button>
+        </fieldset>
+    </div>
+    <div class="am-u-lg-3 am-u-end">
+        <fieldset>
+          <legend></legend>
+          <div class="am-form-group">
+            <label for="doc-vld-name-2">首页跳转(留空表示不跳)：</label>
+            <input type="text" name="redirect" value="{{.configinfo.Redirect}}"  id="doc-vld-name-2"/>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-vld-name-2">允许上传聊天图片类型(*.bmp;*.jpg;*.gif)：</label>
+            <input type="text" name="imagetype"  id="doc-vld-name-2" placeholder="允许上传文件类型" data-validation-message="请输入允许上传文件类型" value="{{.configinfo.Imagetype}}" required/>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">用户初始角色：</label>
+            <select id="doc-select-2" name="registerrole" required>
+            {{range $index,$elem := .role}}
+              <option value="{{$elem.Id}}" id="role{{$elem.Id}}">{{$elem.Title}}</option>
+            {{end}}
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+
+          <div class="am-form-group">
+            <label for="doc-select-1">游客聊天间隔时间：</label>
+            <select id="doc-select-2" name="chatinterval" required>
+              <option value="0">-=无间隔=-</option>
+              <option value="5" {{if eq .configinfo.ChatInterval 5}}selected{{end}}>5秒</option>
+              <option value="10" {{if eq .configinfo.ChatInterval 10}}selected{{end}}>10秒</option>
+              <option value="15" {{if eq .configinfo.ChatInterval 15}}selected{{end}}>15秒</option>
+              <option value="30" {{if eq .configinfo.ChatInterval 30}}selected{{end}}>30秒</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+           <div class="am-form-group">
+            <label for="doc-vld-name-2">聊天窗口欢迎语：</label>
+            <input type="text" name="welcomemsg" value="{{.configinfo.WelcomeMsg}}" id="doc-vld-name-2" placeholder="聊天窗口欢迎语"  required/>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">是否开启注册验证：</label>
+            <select id="doc-select-20" name="verify" required>
+              <option value="0" {{if eq .configinfo.Verify 0}}selected{{end}}>开启</option>
+              <option value="1" {{if eq .configinfo.Verify 1}}selected{{end}}>关闭</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">公司外部人员消息是否审核：</label>
+            <select id="doc-select-21" name="auditStatus" required>
+              <option value="1" {{if eq .configinfo.AuditStatus 1}}selected{{end}}>不审核</option>
+              <option value="2" {{if eq .configinfo.AuditStatus 2}}selected{{end}}>审核</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+        </fieldset>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+$(function(){
+  var Delay = $("#DelaySel").val()
+  $("#doc-select-2 option[value='"+Delay+"']").attr("selected", "true");
+  $("#role{{.configinfo.Registerrole}}").attr('selected', true);
+  $("#title{{.configinfo.Registertitle}}").attr('selected', true);
+  $("#doc-select-20 option[value='"+{{.configinfo.Verify}}+"']").attr("selected", "true"); 
+
+  $('#sysconfig').validator({
+    onValid: function(validity) {
+      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+    },
+
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.am-form-group');
+      var $alert = $group.find('.am-alert');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+      if (!$alert.length) {
+        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+          appendTo($group);
+      }
+
+      $alert.html(msg).show();
+    }
+  });
+})
+</script>

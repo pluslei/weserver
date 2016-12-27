@@ -1,0 +1,41 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">RBAC</a><span class="crumb-step">&gt;</span><a href="/weserver/group/index">组别管理</a><span class="crumb-step">&gt;</span><span class="crumb-name">添加用户</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="addgroup?action=add" class="am-form" method="post" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <div class="am-form-group">
+          <label for="doc-vld-name-2">Name：</label>
+          <input type="text" name="Name" id="doc-vld-name-2" minlength="3" placeholder="输入组名称" required/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-email-2">显示名：</label>
+          <input type="text" name="Title" id="doc-vld-email-2" placeholder="输入显示名称" required/>
+        </div>
+
+        <div class="am-form-group">
+          <label>状态： </label>
+          <label class="am-radio-inline">
+            <input type="radio"  value="1" name="Status" required checked> 开启
+          </label>
+          <label class="am-radio-inline">
+            <input type="radio" value="2" name="Status"> 关闭
+          </label>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-url-2">排序：</label>
+          <input type="text" name="Sort" id="doc-vld-url-2" value="50" required/>
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>

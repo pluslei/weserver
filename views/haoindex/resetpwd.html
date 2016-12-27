@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>用户密码找回</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/resetpwd.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/lib/layer/skin/layer.css"/>
+	<script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
+	<script type="text/javascript" src="/static/js/resetpwd.js"></script>
+	
+</head>
+<body>
+<div class="main">
+	<div class="contenttop">
+		<div class="top_info">
+			<div class="top_left"><img src="/static/img/step/b_b.png"><label>安全中心</label></div>
+			<div class="top_right">
+				<ul>
+					<li name="return">
+						<img src="/static/img/step/b_1.png"><span>返回首页</span>
+					</li>
+					<li name="login">
+						<img src="/static/img/step/c_1.png"><span>登录</span>
+					</li>
+					<li>
+						<span style="margin-top:-2px;">|</span>
+					</li>
+					<li>
+						<span name="register">注册</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="contentfillin">
+		<ul>
+			<li>
+				<div class="fillinactive">1.填写账号</div>
+			</li>
+			<li>
+				<div class="verifiactive">2.验证账号</div>
+			</li>
+			<li>
+				<div class="resetactive">3.重置密码</div>
+			</li>
+			<li>
+				<div class="completeactive">4.完成</div>
+			</li>
+		</ul>
+		<div class="controlmain">
+			<div class="prompt">如果您忘记了账号，且账号未绑定手机号码，则无法找回</div>
+			<div class="account-content">
+		        <label>账号:</label>
+		        <input type="text" name="account" placeholder="请输入您要找回的账号">
+		        <span class="input-error-text"></span>
+		    </div>
+			<div class="next"><a href="javascript:vold(0);" class="next-btn">下一步</a></div>
+		</div>
+	</div>
+	<div class="contentverifi">
+		<ul>
+			<li>
+				<div class="fillinactive">1.填写账号</div>
+			</li>
+			<li>
+				<div class="verifiactive">2.验证账号</div>
+			</li>
+			<li>
+				<div class="resetactive">3.重置密码</div>
+			</li>
+			<li>
+				<div class="completeactive">4.完成</div>
+			</li>
+		</ul>
+		<div class="message-account">
+		  <div class="message-title">您正通过绑定手机找回密码</div>
+		  <div class="message-tel">
+		    <div class="tel-font">手机号码</div>
+		    <div class="tel-num"></div>
+		    <div class="send-prove-code">
+		      发送验证码
+		    </div>
+		  </div>
+		  <div class="prove-code-content">
+		    <label>验证码</label>
+		    <input type="text" name="prove-code">
+		    <span class="prove-code-info"></span>
+		  </div>
+		  <div class="resetpwd"><a href="javascript:;">立即验证</a></div>
+		</div>
+	</div>
+	<div class="contentreset">
+		<ul>
+			<li>
+				<div class="fillinactive">1.填写账号</div>
+			</li>
+			<li>
+				<div class="verifiactive">2.验证账号</div>
+			</li>
+			<li>
+				<div class="resetactive">3.重置密码</div>
+			</li>
+			<li>
+				<div class="completeactive">4.完成</div>
+			</li>
+		</ul>
+		<div class="reset-password">
+		  <div class="new-pwd">
+		        <label>新密码:</label>
+		        <input type="password" name="newpwd">
+		        <span class="input-error-text"></span>
+		  </div>
+		  <div class="confirm-pwd">
+	        <label>确定密码:</label>
+	        <input type="password" name="confirmpwd">
+	        <span class="input-error-text"></span>
+		  </div>
+		  <div class="confirm-reset"><a href="javascript:;">确认修改</a></div>
+		</div>
+	</div>
+	<div class="contentcomplete">
+		<ul>
+			<li>
+				<div class="fillinactive">1.填写账号</div>
+			</li>
+			<li>
+				<div class="verifiactive">2.验证账号</div>
+			</li>
+			<li>
+				<div class="resetactive">3.重置密码</div>
+			</li>
+			<li>
+				<div class="completeactive">4.完成</div>
+			</li>
+		</ul>
+		<div class="resetpwd-success">
+		  <div class="icon-success"></div>
+		  <div class="success-info">恭喜您，密码修改成功！</div>
+		  <div class="success-font">请牢记您的密码，如果丢失可通过短信的方式找回</div>
+		</div>
+	</div>
+	<div class="contentfooter">
+	</div>
+</div>
+</body>
+</html>

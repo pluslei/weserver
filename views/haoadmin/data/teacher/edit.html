@@ -1,0 +1,146 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+
+<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var delvalue = $("#DisplaySel").val();
+    $("#preview").attr("src", "/upload/teacher/" + {{.teacherList.Image}});
+    $("#doc-select-1 option[value='"+delvalue+"']").attr("selected", "true"); 
+    $('#Image').uploadify({
+      'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+      'uploader' : '/weserver/data/teacher_upload',//后台处理程序的相对路径
+      'floder': '/upload/teacher',          
+      'fileSizeLimit': '2MB',
+      'queueID': 'fileQueue',
+      'queueSizeLimit': 999999999,
+      'uploadLimit': 999999999,
+      //'progressData': 'speed',
+      'auto': true,
+      'multi': false,
+      'buttonClass' : 'some-class',//自定义的样式类名
+      //'queueID'  : 'some_file_queue',
+      //'buttonCursor' : 'arrow',
+      //'buttonText': '上传图片',
+      'buttonTitle': '提示文字',
+      'buttonImage':'/static/images/i/img/upload_file.png',
+      'requeueErrors' : true,
+      'debug': false,
+      'height'   : 28, // The height of the flash button
+      'width'    : 155, // The width of the flash button
+      'itemTemplate':false,
+      'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+      'fileTypeExts': '*.bmp;*.jpg;.jpeg;*.png;*.gif',//设置允许上传的文件扩展名（也就是文件类型）。但手动键入文件名可以绕过这种级别的安全检查，所以你应该始终在服务端中检查文件类型。输入多个扩展名时用分号隔开('*.*;*.jpg;*.png;*.gif')
+      'fileTypeDesc': '文件格式',//可选文件的描述。这个值出现在文件浏览窗口中的文件类型下拉选项中。（但我设置了好像没效果？原文：The description of the selectable files.  This string appears in the browse files dialog box in the file type drop down.）
+      'fileObjName':'Filedata', //设置后台的文件名
+      'method'   : 'post',
+      'onUploadSuccess': function(file,data,response){
+        if(data!=null){
+          data = jQuery.parseJSON(data);
+          if(data.status){
+            $("input[name=fname]").val(data.url);
+            $("#preview").attr("src",data.url);
+          }
+        }
+      },
+      'onSelectError':function(file,data,response){
+        if(data!=null){
+          data = jQuery.parseJSON(data);
+          if(data.status){
+            var str = data.url;
+            switch(errorCode) {
+              case -110:
+                  alert("文件 ["+str+"] 大小超出系统限制的" + jQuery('#Img').uploadify('settings', 'fileSizeLimit') + "大小！");
+                  break;
+              case -120:
+                  alert("文件 ["+str+"] 大小异常！");
+                  break;
+              case -130:
+                  alert("文件 ["+str+"] 类型不正确！");
+                  break;
+              default:
+                  break;
+            }
+          }
+        }
+      },
+    });
+    
+    $('#editteacherform').validator({
+      onValid: function(validity) {
+        $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+      },
+
+      onInValid: function(validity) {
+        var $field = $(validity.field);
+        var $group = $field.closest('.am-form-group');
+        var $alert = $group.find('.am-alert');
+        // 使用自定义的提示信息 或 插件内置的提示信息
+        var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+        if (!$alert.length) {
+          $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+            appendTo($group);
+        }
+
+        $alert.html(msg).show();
+      }
+    });
+  });
+</script>
+
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">讲师管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">讲师修改</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="teacher_updateteacher" id="editteacherform" class="am-form" method="post"  data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" value="{{.teacherList.Id}}" name="Id"  >
+        <input type="hidden" value="{{.teacherList.Name}}" name="NameSel"  >
+        <input type="hidden" value="{{.teacherList.Title}}" name="NameTitle"  >
+        <input type="hidden" value="{{.teacherList.Detail}}" name="DetailSel"  >
+        <input type="hidden" value="{{.teacherList.Display}}" name="DisplaySel" id="DisplaySel"  >
+        <input type="hidden" value="{{.teacherList.Image}}" name="ImageSel" id="ImageSel"  >
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师名称：</label>
+          <input type="text" name="Name" id="doc-vld-Title-2" value="{{.teacherList.Name}}" placeholder="输入讲师名称" data-validation-message="请输入讲师名称" required/>
+          <input type="hidden" name="fname">
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师昵称：</label>
+          <input type="text" name="Uname" id="doc-vld-Title-2" value="{{.teacherList.Title}}" placeholder="输入讲师名称" data-validation-message="请输入讲师昵称" required/>
+          <input type="hidden" name="fname">
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师图片：</label>
+            <input type="file" name="Image" id="Image"  /> 
+        </div>
+
+        <div class="am-form-group" >
+            <img id="preview" style="width:90px;height: 90px;" src="" />
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-ta-2">讲师简介：</label>
+          <textarea id="doc-vld-ta-2" name="Detail" placeholder="输入讲师简介" data-validation-message="请输入讲师简介" required>{{.teacherList.Detail}}</textarea>
+        </div>
+        <div class="am-form-group">
+          <label for="doc-select-1">是否首页显示</label>
+          <select id="doc-select-1" name="Display" data-validation-message="请选择是否首页显示" required>
+            <option value="">-=请选择一项=-</option>
+            <option value="1">显示</option>
+            <option value="0">不显示</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+

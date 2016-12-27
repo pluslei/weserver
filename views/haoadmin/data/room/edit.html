@@ -1,0 +1,47 @@
+{{template "/haoadmin/layout/header.html"}}
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <div class="am-form" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" value="{{.roominfo.Id}}" name="Id"  >
+        <input type="hidden" value="1" name="action">
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">房间别名：</label>
+          <input type="text" name="Nickname" id="doc-vld-Title-2" value="{{.roominfo.Nickname}}" required/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-ta-2">房间备注：</label>
+          <textarea id="doc-vld-ta-2" name="RoomDescription">{{.roominfo.RoomDescription}}</textarea>
+        </div>
+        <button class="am-btn am-btn-secondary" id="submit" type="submit">提交</button>
+      </fieldset>
+    </div>
+  </div>
+</div>
+<script src="/static/lib/layer/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $("#submit").click(function() {
+    var action = $('input[name="action"]').val();
+    var Id = $('input[name="Id"]').val();
+    var Nickname = $('input[name="Nickname"]').val();
+    var RoomDescription = $("#doc-vld-ta-2").val();
+    $.ajax({
+        url: '/weserver/data/room_updateroom',
+        type: 'POST',
+        data: {action:action,Id:Id,Nickname:Nickname,RoomDescription:RoomDescription},
+        success: function(rsp){
+            if (rsp.status){
+              parent.layer.msg(rsp.info, function(){
+                parent.location.reload();
+              });                
+            }else{
+                layer.msg(rsp.info);
+            }
+        }
+    })
+  });
+});  
+</script>

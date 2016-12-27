@@ -1,0 +1,289 @@
+<script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js" type="text/javascript" charset="utf-8"></script>
+<div class="admin-content">
+  <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
+    </div>
+    <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+      <li><a href="javascript:void(0);" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>会员总数<br/>{{.companyinfo.Totalmembers}}</a></li>
+      <li><a href="javascript:void(0);" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>在线人数<br/>{{.companyinfo.Totalonline}}</a></li>
+      <li><a href="javascript:void(0);" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>房间总数<br/>{{.companyinfo.Totalroom}}</a></li>
+      <li><a href="javascript:void(0);" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线总时长<br/>{{.companyinfo.Totallinetime}}</a></li>
+    </ul>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-cf" name="onlineuser">在线用户<span class="am-icon-chevron-down am-fr"></span></div>
+            <div id="collapse-panel-1" class="am-in">
+            <table class="am-table-bordered am-table-radius am-table am-table-bd am-table-striped admin-content-table" style="margin-bottom: 0rem;">
+            <thead>
+            <tr>
+              <th>房间号</th><th>用户名</th><th>省份城市</th><th>登陆时间</th><th>在线时长</th><th>IP地址</th>
+            </tr>
+            </thead>
+              </table>
+            </div>
+            <div id="collapse-panel-2" class="am-in">
+             <table class="am-table-bordered am-table-radius am-table am-table-bd am-table-striped admin-content-table" style="margin-bottom: 0rem;">
+              <tbody name="allonline">
+              </tbody>
+             </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">在线会员<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div id="collapse-panel-3" class="am-in">
+            <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+              <tbody id="onlineuser">
+              <tr>
+                <th class="am-text-center"></th>
+                <th>姓名</th>
+                <th>在线总时长</th>
+              </tr>
+             <!--  <tr>
+                <td class="am-text-center"><i class="am-icon-user"></i></td>
+                <td>demo</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><i class="am-icon-user"></td>
+                <td>demo123</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><i class="am-icon-user"></td>
+                <td>demo456</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><i class="am-icon-user"></td>
+                <td>demo123</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><i class="am-icon-user"></td>
+                <td>demo544</td>
+                <td>6</td>
+              </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">一周注册用户量<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
+            <div class="am-list" id="dayonline">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/jquery.nicescroll.js"></script>
+  <script type="text/javascript">
+
+    $(function () {
+      $('#dayonline').highcharts({
+          chart: {
+              height: 240,
+              type: 'line',
+              backgroundColor: '#f2f6ff',
+          },
+          title: {
+              text: '一周注册用户量',
+              x: -20 //center
+          },
+          subtitle: {
+              text: '',
+              x: -20
+          },
+          xAxis: {
+                title: {
+                    text: '日期'
+                },
+              categories: {{.datearr}}
+          },
+          yAxis: {
+              title: {
+                    text: '人数'
+                },
+              plotLines: [{
+                  width: 1,
+                  color: '#808089'
+              }],
+              tickLength:3,
+              lineWidth: 2
+          },
+          credits: {
+              text: '皓月科技',
+              href: 'http://www.ihaoyue.com'
+          },
+          tooltip: {
+              valueSuffix: '人'
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle',
+              borderWidth: 0
+          },
+          series: [{
+              name: '注册用户量',
+              data: {{.countarr}}
+          }]
+      });
+
+      //初始化审核用户table
+      var userinfo = {{.verifyuser}};
+      if(userinfo.length > 0){
+        for(var i=0;i<userinfo.length;i++){
+          var phone = userinfo[i].Phone.toString();
+          var first = phone.substring(0,3);
+          var second = phone.substring(7,phone.length);
+          var subphone = first + "****" + second;
+          var initDiv = "<td><div class='am-dropdown' data-am-dropdown><button class='am-btn am-btn-default am-btn-xs am-dropdown-toggle' data-am-dropdown-toggle><span class='am-icon-cog'></span><span class='am-icon-caret-down'></span></button><ul class='am-dropdown-content'><li><a href='#' onclick='verify("+userinfo[i].Id+")'>1. 审核</a></li><li><a href='#' onclick='deluser("+userinfo[i].Id+")'>2. 删除</a></li></ul></div>"
+          var initTable = "<tr><td>"+(i+1)+"</td><td>"+userinfo[i].Username+"</td><td><span class='am-badge am-badge-success'>"+subphone+"</span></td>"
+          initTable = initTable + initDiv
+          initTable = initTable + "</td></tr>"
+          $('#verifyuser').append(initTable)
+      }
+    }
+
+
+      //初始化在线时长排序（DESC）table
+      var onlineuser = {{.onlineuser}}
+      if(onlineuser.length > 0){
+        for (var t=0;t<onlineuser.length;t++){
+            var hour = onlineuser[t].OnlineTime;
+            var minute=parseInt((hour%3600)/60);
+            var second=parseInt((hour%3600)%60);
+            hour = parseInt(hour/3600);
+            var timeresult=ShownumbertoFixed(hour)+"时"+ShownumbertoFixed(minute)+"分"+ShownumbertoFixed(second)+"秒";
+            var initTable  = "<tr><td class='am-text-center'><i class='am-icon-user'></i></td><td>"+onlineuser[t].Username+"</td><td>"+timeresult+"</td></tr>"
+            $('#onlineuser').append(initTable)
+        }
+      }
+
+      //在线用户列表
+      ShowOnlineList();
+      //点击隐藏控制滚动条
+      $("div[name=onlineuser]").click(function(){
+          if($('#collapse-panel-1').css('display').length==5){
+            $('#collapse-panel-1').css('display','none');
+            $('#collapse-panel-2').css('display','none');
+          }else{
+            $('#collapse-panel-1').css('display','');
+            $('#collapse-panel-2').css('display','');
+          }
+      }); 
+  });
+
+    function verify(id){   //通过用户的审核
+      $.ajax({
+            url: '/weserver/user/regstatus',
+            type: 'POST',
+            data: {Id: id},
+            success: function(rsp){
+                if (rsp.status){
+                    console.info(rsp)
+                    alert(rsp.info);
+                    window.location.href="/public/index"
+                }else{
+                    alert(rsp.info);
+                    window.location.href="/public/index"
+                }
+           
+             }
+        });
+    }
+
+    function deluser(id){  //删除用户
+      $.ajax({
+            url: '/weserver/user/deluser',
+            type: 'POST',
+            data: {Id: id},
+            success: function(rsp){
+                if (rsp.status){
+                    console.info(rsp)
+                    alert(rsp.info);
+                    window.location.href="/public/index"
+                }else{
+                    alert(rsp.info);
+                    window.location.href="/public/index"
+                }
+           
+             }
+        });
+    }
+
+    //在线用户列表
+    function ShowOnlineList(){
+       $.ajax({
+            url: '/online/public/index',
+            type: 'POST',
+            success: function(json){
+                var  data=JSON.stringify(json);
+                data=jQuery.parseJSON(data);
+                if (data.onlinelist!=null){
+                    data=data.onlinelist;
+                    var countnum=data.length;
+                    var onlinecontent = $('table tbody[name=allonline]');//在线用户列表
+                    var onlinelistval="";
+                    for (var i=0; i<countnum;i++){
+                       onlinelistval+="<tr><td>";
+                       onlinelistval+=data[i].Roomid+"</td><td>";
+                       onlinelistval+=data[i].Uname+"</td><td>";
+                       onlinelistval+=data[i].Procities+"</td><td>";
+                       onlinelistval+=data[i].Logintime+"</td><td>";
+                       onlinelistval+=data[i].Onlinetime+"</td><td>";
+                       onlinelistval+=data[i].Ipaddress;
+                       onlinelistval+="</td></tr>";
+                    }
+                    onlinecontent.append(onlinelistval);
+
+                    //设置对齐
+                    var onlinetdw=$('#collapse-panel-1').width()/6;
+                    $('#collapse-panel-1 tr th').css('width',onlinetdw);
+                    $('#collapse-panel-2 tr td').css('width',onlinetdw);
+
+                    $('#collapse-panel-1').css('display','');
+                    $('#collapse-panel-2').css('display','');
+                    $("div[name=onlineuser]").css('cursor','pointer');
+
+                    if(countnum>8){
+                      $('#collapse-panel-2').css('height','300px');
+                      $("#collapse-panel-2").niceScroll({
+                            touchbehavior:false,  
+                            cursorcolor:"#3FA7CB",  
+                            cursoropacitymax:1.6,  
+                            cursorwidth:"8px", 
+                            //horizrailenabled:false,  
+                            cursorborder:"0",
+                            cursorborderradius:"5px",
+                            autohidemode:false  
+                      });
+                    }
+                }
+             }
+        });
+    }
+
+    //显示两位数
+    function  ShownumbertoFixed(number){
+        var count=number.toString();
+        if(number<10){
+           count="0"+count;
+        }
+        return count;
+    }
+  </script>

@@ -1,0 +1,111 @@
+<script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
+<style type="text/css">
+  .layui-layer-title {
+    color: #FBFFFF !important;
+    background-color: #2795DC !important;
+}
+</style>
+{{template "/haoadmin/layout/header.html"}}
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">Amaze UI</div>
+    <div class="am-modal-bd">
+      来来来，吐槽点啥吧
+      <input type="text" class="am-modal-prompt-input">
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+    </div>
+  </div>
+</div>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+            <!-- <ul class="navbar-list clearfix">
+                <li><a href="index.html">皓月直播后台管理系统</a></li>
+                <li><a class="on" href="#" target="_blank">首页管理</a></li>
+                <li><a href="index.html">数据管理</a></li>
+            </ul> -->
+        </div>
+        <div class="top-info-wrap">
+            <div class="am-dropdown" data-am-dropdown>
+              <span class="am-dropdown-toggle" style="cursor: pointer; color: #FFF" data-am-dropdown-toggle >用户设置 <span class="am-icon-caret-down"></span></span>
+              <ul class="am-dropdown-content">
+                <li><a href="javascript:void(0);" onclick="liveroom();">进入直播室</a></li>
+                <!-- <li class="am-divider"></li>
+                <li class="am-dropdown-header">管理面板</li> -->
+                <li class="am-divider"></li>
+                <li><a href="javascript:void(0);" onclick="updatepwd();">修改密码</a></li>
+                <li class="am-divider"></li>
+                <li><a href="/public/logout">退出</a></li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div id="main-nav-bg"></div>
+    <div class="sidebar-wrap">
+        <div class="sidebar-content">
+            {{range .tree}}
+            <ul class="sidebar-list">
+                <li class="admin-parent am-accordion-item am-active">
+                    <a href="#" class="am-cf am-collapsed am-accordion-title" data-am-collapse="{target: '#{{.Name}}'}"><i class="{{.Ico}}"></i> {{.Text}} <i class="am-icon-chevron-down"></i></a>
+                    <ul class="sub-menu am-list admin-sidebar-sub am-collapse" id="{{.Name}}">
+                        {{range .Children}}
+                        <li><a href="/{{.Url}}"> {{.Text}}</a></li>
+                        {{end}}
+                    </ul>
+                </li>
+            </ul>
+            {{end}}
+        </div>
+    </div>
+    <!--/sidebar-->
+    <div class="main-wrap">
+        {{.LayoutContent}}
+    </div>
+    <!--/main-->
+</div>
+<style type="text/css">
+  .am-list>.action>a{background: #e5e5ea;}
+</style>
+<script type="text/javascript">
+layer.use('extend/layer.ext.js')
+    $(function() {
+      $(".admin-parent").click(function(event) {
+        var clickObj = $(this).children('a');
+        if (clickObj.hasClass('am-collapsed')) {
+          clickObj.children('i').eq(1).removeClass('am-icon-chevron-down').addClass('am-icon-chevron-up');
+        }else{
+          clickObj.children('i').eq(1).removeClass('am-icon-chevron-up').addClass('am-icon-chevron-down');
+        };
+      });
+      $(".am-list").each(function(index) {
+        if ($(this).attr('id')=="{{.treeurl}}") {
+          $(this).addClass('am-in');
+        };
+      });
+    });
+
+   function liveroom(){
+      window.open("/");
+    }
+
+    function updatepwd(){
+      layer.open({
+      type: 1,
+      skin: 'layui-layer-demo', //样式类名
+     // closeBtn: 0, //不显示关闭按钮
+      shift: 2,
+      area: ['500px', '310px'],
+      title: '修改密码', 
+      shadeClose: true, //开启遮罩关闭
+      content: "<iframe src='/public/updateadmin' frameborder='0' scrolling='0' height='250px' width='400px' ></iframe>"
+    });
+    }
+</script>
+{{template "/haoadmin/layout/footer.html"}}

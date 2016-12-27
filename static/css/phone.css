@@ -1,0 +1,134 @@
+body {
+	margin: 0 auto;
+	min-width: 320px;
+	max-width: 400px;
+}
+
+.header{
+	width: 100%;
+	height: 50px;
+}
+.UserName{
+	float: right;
+	margin-top: 5%;
+	text-align: center;
+	font-size: 13px;
+	padding-right: 10px;
+}
+.Exit{
+	float: right;
+	text-decoration: none;
+	color: #8D8D8D;
+	margin-right: 10px;
+	margin-top: 4%;
+	font-size: 15px;
+}
+.fugai{
+	position: absolute;
+	top: 9.7%;
+	width: 100%;
+	height: 210px;
+}
+.submit{
+	float: right;
+	margin-top: 4%;
+}
+	
+.submit span{
+	padding-right: 20px;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.play{
+	width: 100%;
+	height: 210px;
+}
+
+.Menu{
+	width: 100%;
+	height: 40px;
+	background-color: #F5EDEB
+}
+
+.Menu span{
+	margin-left: 11%;
+	line-height: 40px;
+	overflow:hidden; 
+	cursor:pointer
+}
+
+.chitchat{
+	width: 100%;
+}
+
+.chitchat ul{
+	width: 95%;
+	height: 200px;
+	overflow-y:scroll;
+	margin-top:0px;
+	float: left;
+	padding: 0;
+	padding-left: 10px;
+}
+
+.chitchat ul li{
+	width: 100%;
+	margin-top: 10px;
+	list-style-type: none;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	float: left;
+}
+.time{
+	padding-right: 10px;
+}
+.Dui{
+	padding-left: 3px;
+	padding-right: 3px;
+}
+.chitchat ul li img{
+	float: left;
+	padding-right: 3px;
+}
+
+.chitchat ul li span{
+	float: left;
+}
+
+.chitchat ul li .name{
+	color: rgba(0, 0, 0, 0.39);
+}
+
+.chitchat ul li .name1{
+	color: red;
+}
+
+.input-box{
+	width: 73%;
+	border-radius: 4px;
+	height: 35px;
+	padding: 0px 16px;
+	border: 1px solid #DCDCDC;
+	display: block;
+	margin-left: 2%;
+	font-size: 14px;
+	line-height: 35px;
+	outline: none;
+}
+
+.send{
+	width: 14%;
+	float: right;
+	margin-top: -37.5px;
+	margin-right: 7px;
+}
+.welcome{
+	color: #2F00FF;
+}
+
+.show{
+	float: right;
+	margin-top: 3%;
+}

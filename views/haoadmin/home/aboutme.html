@@ -1,0 +1,28 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页管理</a><span class="crumb-step">&gt;</span><span class="crumb-name">关于我们</span></div>
+</div>
+<div class="am-g">
+  <form action="aboutme?action=edit" class="am-form" method="post" data-am-validator>
+    <div class="am-u-lg-6">
+        <fieldset>
+          <legend></legend>
+          <input type="hidden" value="edit" name="action"  >
+          <div class="am-form-group">
+            <label for="doc-vld-name-2">关于我们：</label>
+            <textarea class="" name="content" rows="5" id="doc-ta-1">{{.info.Content}}</textarea>
+          </div>
+          <button class="am-btn am-btn-secondary" type="submit">提交</button>
+        </fieldset>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+$(function(){
+  var Delay = $("#DelaySel").val()
+  $("#doc-select-2 option[value='"+Delay+"']").attr("selected", "true"); 
+})
+</script>

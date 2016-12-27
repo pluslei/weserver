@@ -1,0 +1,142 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+
+<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#Img').uploadify({
+        'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+        'uploader' : '/weserver/home/teachbanner_upload',//后台处理程序的相对路径
+        'floder': '/upload/teachbanner',          
+        'fileSizeLimit': '2MB',
+        'queueID': 'fileQueue',
+        'queueSizeLimit': 999999999,
+        'uploadLimit': 999999999,
+        //'progressData': 'speed',
+        'auto': true,
+        'multi': false,
+        'buttonClass' : 'some-class',//自定义的样式类名
+        //'queueID'  : 'some_file_queue',
+        //'buttonCursor' : 'arrow',
+        //'buttonText': '上传图片',
+        'buttonTitle': '提示文字',
+        'buttonImage':'/static/images/i/img/upload_file.png',
+        'requeueErrors' : true,
+        'debug': false,
+        'height'   : 28, // The height of the flash button
+        'width'    : 155, // The width of the flash button
+        'itemTemplate':false,
+        'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+        'fileTypeExts': '*.bmp;*.jpg;.jpeg;*.png;*.gif',//设置允许上传的文件扩展名（也就是文件类型）。但手动键入文件名可以绕过这种级别的安全检查，所以你应该始终在服务端中检查文件类型。输入多个扩展名时用分号隔开('*.*;*.jpg;*.png;*.gif')
+        'fileTypeDesc': '文件格式',//可选文件的描述。这个值出现在文件浏览窗口中的文件类型下拉选项中。（但我设置了好像没效果？原文：The description of the selectable files.  This string appears in the browse files dialog box in the file type drop down.）
+        'fileObjName':'Filedata', //设置后台的文件名
+        'method'   : 'post',
+        'onUploadSuccess': function(file,data,response){
+          if(data!=null){
+            data = jQuery.parseJSON(data);
+            if(data.status){
+              $("input[name=fname]").val(data.url);
+              $("#preview").attr("src",data.url);
+            }
+          }
+        },
+        'onSelectError':function(file,data,response){
+          if(data!=null){
+            data = jQuery.parseJSON(data);
+            if(data.status){
+              var str = data.url;
+              switch(errorCode) {
+                case -110:
+                    alert("文件 ["+str+"] 大小超出系统限制的" + jQuery('#Img').uploadify('settings', 'fileSizeLimit') + "大小！");
+                    break;
+                case -120:
+                    alert("文件 ["+str+"] 大小异常！");
+                    break;
+                case -130:
+                    alert("文件 ["+str+"] 类型不正确！");
+                    break;
+              }
+            }
+          }
+        },
+    });
+  });
+</script>
+
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/home/teachbanner_index">首页幻灯片管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">幻灯片新增</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="teachbanner_addbanner" id="teachbannerform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师名称：</label>
+          <input type="text" name="Name" id="doc-vld-Title-2" placeholder="请输入讲师名称" data-validation-message="请输入讲师名称" required/>
+          <input type="hidden" name="fname" />
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师介绍图片：</label>
+            <input type="file" name="Img" id="Img" multiple="true" /> 
+        </div>
+
+        <div class="am-form-group" >
+            <img id="preview" src="" style="width:500px;height: 91px;border: 0px;soild:#FFFFFF; " />
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">图片链接  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '点击图片时跳转的Url地址', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Url"  multiple="true" placeholder="请输入图片链接地址,空白请输入#" data-validation-message="请输入图片链接地址,空白请输入#" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">图片显示顺序  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '数字越大,显示越靠前', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Order"  multiple="true" type="number" placeholder="请输入图片显示顺序,最小为1" data-validation-message="请输入图片显示顺序,最小为1" min="1" /> 
+        </div>
+
+
+
+        <div class="am-form-group">
+          <label for="doc-select-1">显示状态  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '在页面中显示/不显示图片', trigger: 'hover focus'}"></a></label>
+          <select id="doc-select-2" name="Display" data-validation-message="请选择显示状态"  required>
+            <option value="">-=请选择显示状态=-</option>
+            <option value="1">显示</option>
+            <option value="2">不显示</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('#teachbannerform').validator({
+    onValid: function(validity) {
+      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+    },
+
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.am-form-group');
+      var $alert = $group.find('.am-alert');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+      if (!$alert.length) {
+        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+          appendTo($group);
+      }
+
+      $alert.html(msg).show();
+    }
+  });
+});
+</script>

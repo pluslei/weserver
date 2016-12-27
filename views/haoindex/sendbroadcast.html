@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title> 
+        <meta charset="utf-8">
+        <meta name="_xsrf" content="{{.xsrf_token}}" />
+        <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript">
+            var codeid = window.parent.codeid;     //加密公司代码和房间号
+        </script>
+        <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+        <script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+        <script type="text/javascript" src="/static/lib/socket/broadcast.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+    </head>
+<body>
+
+<div style="width: 100%;width: 100%">
+    <textarea id="broadcast" style="resize: none;width: 420px;height: 100px;"></textarea>
+    <div>
+        <input value="发 送" style=" width: 80px; background-color: #2d96da;border: 0px;float: right;height: 25px;margin-right: 4px;color: white;cursor: pointer;"  class="" id="userlogin" type="submit">
+    </div>
+</div>
+
+</body>
+</html>
+
+
+

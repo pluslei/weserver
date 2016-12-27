@@ -1,0 +1,349 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+    <script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+    <style type="text/css">
+        .user-content ul { list-style-type: none; }
+        .result-wraper {  padding: 10px 0; margin: 0px 0 0 30px;}
+        .user-content { height: 537px; }
+        .speak-tit { height:40px;line-height:40px;font-weight: bold;padding-left:5px;border-bottom:2px solid #ccc;background: #eee;}
+        .speak-content { height:495px; overflow-y: scroll;}
+        .falseUser,.trueUser { width: 300px; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 0 3px #000;}
+        .deletionList { height: 55px; line-height: 55px; border-bottom: 1px solid #ccc; cursor: pointer; padding:0 5px; }
+        .deletionList:hover { background: #ddd; }
+        .user-img { display: inline-block;width: 40px;height: 40px; border-radius: 50%;}
+        .user-level { display: inline-block;width: 50px;height: 25px; margin-top: 15px; margin-right: 8px;}
+        .deletionList input[type="checkbox"]{display: inline-block;width: 18px;height: 18px;vertical-align: middle;}
+        .deletionList .hyname{ font-size: 16px; display: inline-block;width: 135px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: middle;}
+        .speak-content { position: relative; }
+        .speak-content .trueUser-tosay { display: none;position: absolute;left: 50%;background: #19A7F0;color: #fff;border: 1px solid #ccc;width: 100px;height: 40px;line-height: 40px;text-align: center;border-radius: 4px; cursor: pointer;}
+        .speak-content .trueUser-tosay span{ font-size: 16px; }
+        .speak-content .trueUser-tosay:hover { opacity: 0.8; }
+        .sendMessage { height: 202px; overflow: hidden; position: relative;}
+        .sendMessage-input { font-size: 20px;width: 365px; height: 200px;border:1px solid #ccc; display: inline-block; box-shadow: 0 0 3px #ccc;overflow-y: auto;}
+        .sendMessage-input img{ margin:3 3px 3px 0 ;}
+        .sendMessage .sayTo{ display: none;font-size: 16px;position: absolute;left: 3px;top: 3px;border: 1px solid #000;background: #ffdd0a; }
+        .hideSayTo:hover {cursor: pointer;opacity: 0.8;}
+        .send-wrap { margin: 0px 0 0 20px; }
+        .face-content { display: none;border: 1px solid #ccc;border-radius: 3px;width: 290px;;bottom: 45px;background: #fff;}
+       .faceBtn { cursor: pointer; }
+       .faceBox .faceImg { display: none; }
+        .faceImg.active { display: block; }
+       .faceTab{ background: #eee;}
+       .faceTab > span { color:#000;padding:6px;display: inline-block;cursor: pointer;}
+       .faceTab > span.active {background: #888;color:#fff;}
+       .explain { height: 40px; line-height: 40px;text-indent: 10px; font-size: 20px; font-weight: bold;color: red; }
+       .faceBtn { border:0; background:url(/static/img/face-bg.png) no-repeat; width: 40px;height: 40px; outline: none;}
+       .faceImg img { margin: 3px; }
+       .Message-Indent { text-indent: 3px; }
+    </style>
+</head>
+<body>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/qs_index">水军管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">水军操作</span></div>
+    </div>
+    <div class="result-wraper" style="">
+        <div class="explain">注意：点击在线用户，水军可以@在线用户发言到公屏上。不点击在线用户，水军发言到公屏上。</div>
+        <form name="falseUser" method="post">
+            <div class="user-content am-fl">
+                <div class="falseUser am-fl am-margin-right">
+                    <div class="speak-tit">水军用户</div>
+                    <div class="speak-content">
+                        <ul class="am-padding-0 am-margin-0">
+                        </ul>
+                    </div>
+                </div>
+                <div class="trueUser am-fr">
+                    <div class="speak-tit">在线用户</div>
+                    <div class="speak-content">
+                        <ul class="am-padding-0 am-margin-0">
+                        </ul>
+                        <div class="trueUser-tosay">
+                            <span class="am-icon-commenting-o"> 对他说</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="send-wrap am-fl">
+                <div class="sendMessage am-margin-bottom-xs">
+                    <div class="sayTo">
+                        <span class="neckName"></span>
+                        <span class="hideSayTo am-icon-close"></span>
+                    </div>
+                    <div class="sendMessage-input Message-Indent" contenteditable="true"></div>
+                </div>
+                <div class="am-fl" style="position: relative;width: 60%;">
+                    <button class="faceBtn" type="button"></button>
+                    <div class="face-content">
+                        <div class="faceTab">
+                            {{range $k,$v := .group}}
+                                <span>
+                                    <input type="hidden" name="group" value="{{$v.Group}}">
+                                    <img src="{{$v.GroupFace}}" class="groupurl">
+                                </span>
+                            {{end}}
+                        </div>
+                        <div class="faceBox">
+                            <div class="faceImg active am-margin-vertical-xs"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-fr am-text-right" style="width: 40%;">
+                    <input type="button" class="am-btn am-btn-primary am-radius am-btn-lg" id="btnClick" value="发送">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var robotData=[];
+    var uroleData=[];
+    var roomcode=[];
+    var uname={{.uname}};
+    var chatmode="allchat";
+    var objindex=0;
+    var checkarr=[];
+
+    function sendface(src) {
+        $('.sendMessage-input').focus();
+        var contentval="<img src="+src+">";
+        insertHtmlAtCaret(contentval);
+    }
+
+    function socketdata() {
+        socket.on('all analogsuccess', function(msg) {
+            //消息提示
+            $(".face-content").hide();
+            $('.sendMessage-input').html("");
+            layer.msg("消息发送成功", {
+                icon: 1
+            });
+        });
+    }
+
+    $(document).ready(function() {
+        $.ajax({
+            url : '/weserver/data/robot_speak',
+            type : 'post',
+            success : function(data){
+                if(data!=null){
+                    robotData=data.shuijun;
+                    uroleData=data.urole;
+                    roomcode=data.roomcode;
+                    if(robotData!=null){
+                        var robotlenght=robotData.length;
+                        var speakcontent="";
+                        for (var i = 0; i < robotlenght; i++) {
+                            speakcontent+="<li class='deletionList' title='"+robotData[i].Uname+" "+robotData[i].Titlerole+"'>";
+                            speakcontent+="<input type='checkbox' value='"+robotData[i].Id+"'>";
+                            speakcontent+="<img src='"+robotData[i].UserIcon+"' alt='"+robotData[i].Uname+"' class='user-img'>";
+                            speakcontent+="<span class='hyname'>"+robotData[i].Uname+"</span>";
+                            speakcontent+="<img src='"+robotData[i].Authorcss+"' alt='"+robotData[i].Titlerole+"' class='user-level am-fr'>";
+                            speakcontent+="</li>";
+                        }
+                        $('.falseUser .speak-content ul').append(speakcontent);
+                        
+                        var checkctrol=$(".falseUser ul li :checkbox");
+                        var checklength=checkctrol.length;
+                        for (var i = 0; i < checklength; i++) {
+                            checkctrol.eq(i).click(function(){
+                                var checkval=$(this).val();
+                                if ($(this).prop("checked") == true) {
+                                    checkarr.push(checkval);
+                                }else{
+                                    var arrlength=checkarr.length;
+                                    for (var j = 0; j < arrlength; j++) {
+                                        if(checkarr[j]==checkval){
+                                            checkarr.splice(j, 1);
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    if(uroleData!=null){
+                        var speakcontent="";
+                        var urolelength=uroleData.length;
+                        speakcontent="";
+                        for (var i = 0; i < urolelength; i++) {
+                            speakcontent+="<li class='deletionList' title='"+uroleData[i].Uname+" "+uroleData[i].Titlerole+"'>";
+                            speakcontent+="<img src='"+uroleData[i].UserIcon+"' alt='"+uroleData[i].Uname+"' class='user-img'>";
+                            speakcontent+="<span class='hyname'>"+uroleData[i].Uname+"</span>";
+                            speakcontent+="<img src='"+uroleData[i].Authorcss+"' alt='"+uroleData[i].Titlerole+"' class='user-level am-fr'>";
+                            speakcontent+="</li>";
+                        }
+                        $('.trueUser .speak-content ul').append(speakcontent);
+                        var userctrol=$(".trueUser ul li");
+                        for (var i = 0; i < urolelength; i++) {
+                            userctrol.eq(i).click(function(e){
+                                if (e.stopPropagation) {
+                                    e.stopPropagation();
+                                } else {
+                                    e.cancelBubble = true;
+                                }
+                                $(".speak-content .trueUser-tosay").show().css({
+                                    "top": $(this).position().top+$('.trueUser .speak-content').scrollTop()+6,
+                                    "left": $(this).position().left+120
+                                });
+                                objindex=$(this).index('.trueUser ul li');
+                            });
+                        }
+                    }
+                }
+            }
+        });
+
+        $(".send-wrap .faceBtn").click(function(){
+            if ($(".face-content").is(":hidden")) {
+                $(".face-content").show();
+            } else {
+                $(".face-content").hide();
+            }
+        })
+
+        // 初始化查询
+        $(".faceTab > span").eq(0).addClass("active");
+        // var str = $(".faceTab > span").eq(0).text();
+        // var group = str.substr(str.length-1,1);
+        var group = $("input[name='group']").get(0).value;
+        $.ajax({
+            url : '/weserver/data/face_getfaces',
+            type : 'post',
+            data : {group : group},
+            success : function(data){
+                var html = "";
+                $.each(data,function(i){
+                    html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + ")'>" +
+                                "<img src='"+data[i].Url+"' alt=''  >" +
+                            "</a>";
+                });
+                $(".faceImg").html(html);
+            }
+        });
+
+        // 点击 Tab 查询表情
+        $(".faceTab > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+            var group = $("input[name='group']").get(_index).value;
+            $.ajax({
+                url : '/weserver/data/face_getfaces',
+                type : 'post',
+                data : {group : group},
+                success : function(data){
+                    var html = "";
+                    $.each(data,function(i){
+                        html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + ")'>" +
+                                    "<img src='"+data[i].Url+"' alt='' >" +
+                                "</a>";
+                    });
+                    $(".faceImg").html(html);
+                }
+            });
+        });
+
+       $(".sayTo .am-icon-close").click(function(){       
+            $('.sayTo').css("display","none");
+            $(".Message-Indent").css("text-indent","3px");
+            chatmode="allchat";
+       });
+
+       $("#btnClick").click(function(){
+            var length=checkarr.length;
+            if(length>0){
+                var contentval=$('.sendMessage-input').html();
+                if(contentval.length>0){
+                    if(length>1){
+                        layer.confirm("你选择了"+length.toString()+"个水军同时发言！", {
+                            btn: ['确定','取消'] //按钮
+                        }, function(){
+                            var roomlength=roomcode.length;
+                            for (var i = 0; i < roomlength; i++) {
+                                for (var j = 0; j < length; j++) {
+                                    var pos=Number(checkarr[j]);
+                                    var sendmsg = {}; //发送的内容
+                                    sendmsg["Codeid"]  = roomcode[i]; //公司房间标识符
+                                    sendmsg["Objauthor"]  = uname; 
+                                    sendmsg["Author"]= robotData[pos].Uname; 
+                                    sendmsg["AuthorRole"]= robotData[pos].RoleName; 
+                                    sendmsg["AuthorTitle"]= robotData[pos].Titlerole; 
+                                    sendmsg["AuthorCss"]= robotData[pos].Authorcss; 
+                                    sendmsg["Chat"]    = chatmode;
+                                    sendmsg["Content"] = contentval;
+                                    switch(chatmode){
+                                        case "sayhim":
+                                            sendmsg["Username"]  = uroleData[objindex].Uname;
+                                            sendmsg["UserRole"]  = uroleData[objindex].RoleName;
+                                            sendmsg["Usertype"]  = uroleData[objindex].Titlerole;
+                                            sendmsg["Usercss"]   = uroleData[objindex].Authorcss;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    console.log(sendmsg);
+                                    var sendtostr = base64encode(sendmsg);
+                                    socket.emit('all analogmessage', sendtostr);
+                                }
+                            }
+                        }, function(){
+
+                        });
+                    }else{
+                        var roomlength=roomcode.length;
+                        for (var i = 0; i < roomlength; i++) {
+                            for (var j = 0; j < length; j++) {
+                                var pos=Number(checkarr[j]);
+                                var sendmsg = {}; //发送的内容
+                                sendmsg["Codeid"]  = roomcode[i]; //公司房间标识符
+                                sendmsg["Objauthor"]  = uname; 
+                                sendmsg["Author"]= robotData[pos].Uname; 
+                                sendmsg["AuthorRole"]= robotData[pos].RoleName; 
+                                sendmsg["AuthorTitle"]= robotData[pos].Titlerole; 
+                                sendmsg["AuthorCss"]= robotData[pos].Authorcss; 
+                                sendmsg["Chat"]    = chatmode;
+                                sendmsg["Content"] = contentval;
+                                switch(chatmode){
+                                    case "sayhim":
+                                        sendmsg["Username"]  = uroleData[objindex].Uname;
+                                        sendmsg["UserRole"]  = uroleData[objindex].RoleName;
+                                        sendmsg["Usertype"]  = uroleData[objindex].Titlerole;
+                                        sendmsg["Usercss"]   = uroleData[objindex].Authorcss;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                var sendtostr = base64encode(sendmsg);
+                                socket.emit('all analogmessage', sendtostr);
+                            }
+                        }
+                    }
+                }else{
+                    layer.msg("内容不能为空!", {
+                        icon: 2
+                    });
+                }
+            }else{
+                layer.msg("请选择发言用户!", {
+                    icon: 2
+                });
+            }
+        });
+
+        $(".trueUser-tosay .am-icon-commenting-o").click(function(){
+            $('.sendMessage-input').focus();
+            $('.sayto .neckName').text(uroleData[objindex].Uname);
+            $('.sayto').css("display","block");
+            chatmode="sayhim";
+            var indexwidth=$('.sayto').width();
+            indexwidth+=5;
+            indexwidth+="px";
+            $(".Message-Indent").css("text-indent",indexwidth);
+        });
+
+        socketdata();
+    });
+</script>

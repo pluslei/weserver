@@ -1,0 +1,98 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+  .am-panel-default{margin: 20px;}
+  #doc-select-1{padding: .5em; width: 200px;}
+  .checkmod {border-color: #ebebeb;}
+  .checkmod {margin-bottom: 20px;border: 1px solid #ebebeb;}
+  .checkmod dt {padding-left: 10px;height: 30px;line-height: 30px;font-weight: bold;border-bottom: 1px solid #ebebeb;background-color: #ECECEC;}
+  .checkmod dt {border-bottom-color: #ebebeb;background-color: #ECECEC;}
+  .checkmod dd {padding-left: 20px;line-height: 30px;}
+  .child_row{padding-left: 20px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/role/index">角色管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">用户赋予角色</span></div>
+</div>
+
+<div class="am-panel am-panel-default">
+  <div class="am-panel-bd">
+    <form class="am-form" action="addaccess?action=add" method="post" data-am-validator>
+      <div class="user-info">
+        <div class="am-form-group">
+          <div class="am-u-sm-11">
+            <div class="am-form-group">
+              <label for="doc-select-1">分组信息：</label>
+              <select id="doc-select-1" name="group_id" onchange="changeGroup()">
+                {{range .groupList}}
+                <option value="{{.Id}}">{{.Title}}</option>
+                {{end}}
+              </select>
+              <span class="am-form-caret"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="am-g">
+        <div class="am-u-lg-9">
+          <input type="hidden" name="roleid" id="roleid" value="{{.roleId}}">
+          <div id="nodeText"></div>
+          <button type="submit" class="am-btn am-btn-primary">提交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  // 初始化节点
+  var Id = $("#doc-select-1").val();
+  var Roleid = $("#roleid").val();
+  getNode(Id,Roleid);
+});
+
+function changeGroup(){
+  groupid = $("#doc-select-1").val();
+  Roleid = $("#roleid").val();
+  getNode(groupid,Roleid);
+}
+
+function getNode(Id,Roleid){
+  $.ajax({
+    url: 'accesstonode',
+    type: 'POST',
+    data: {group_id: Id,roleid: Roleid},
+    success:function(rsp){
+      var nodeText = ""
+      console.info(rsp)
+      if(rsp.total>0){
+        for (var i = 0; i < rsp.total; i++) {
+          if (rsp.rows[i]["_parentId"] == 0 && rsp.rows[i]["Level"] == 1) {
+            nodeText = nodeText + "<dl class='checkmod'><dt class='hd'><label class='am-checkbox-inline'><input class='one-input' type='checkbox' "+ rsp.rows[i]["Checked"] +" value="+rsp.rows[i]["Id"]+" name='ids'> "+rsp.rows[i]["Title"]+"</label> </dt>";
+            for (var j = 0; j < rsp.total; j++) {
+              if (rsp.rows[j]["_parentId"] == rsp.rows[i]["Id"] && rsp.rows[j]["Level"] == 2) {
+                nodeText = nodeText + "<dd class='bd'><div class='rule_check'><div class='bd-two'><label class='am-checkbox-inline'><input class='two-input' type='checkbox' "+ rsp.rows[j]["Checked"] +" value="+rsp.rows[j]["Id"]+" name='ids'> "+ rsp.rows[j]["Title"] +"</label></div>";
+                for (var k = 0; k < rsp.total; k++) {
+                  if (rsp.rows[k]["_parentId"] == rsp.rows[j]["Id"] && rsp.rows[k]["Level"] == 3) {
+                    if (rsp.rows[k]["Title"].length > 0) {
+                      nodeText = nodeText + "<span class='child_row'> <label class='am-checkbox-inline'><input class='there-input' type='checkbox' "+ rsp.rows[k]["Checked"] +" value="+rsp.rows[k]["Id"]+" name='ids'> "+rsp.rows[k]["Title"]+"</label> </span>";
+                    };
+                  };
+                };
+              };
+              nodeText = nodeText + "</div></dd>";
+            };
+            nodeText = nodeText + "</dd>";
+          };
+          // alert(rsp.rows[i]["Title"]);
+          nodeText = nodeText + "</dl>";
+        };
+      }
+      $("#nodeText").html(nodeText);
+    },
+    error :function(){
+      alert("分配超时");
+    }
+  })
+}
+</script>
+
+

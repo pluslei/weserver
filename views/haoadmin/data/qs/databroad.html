@@ -1,0 +1,253 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<style type="text/css">
+    .am-alert{border-radius: 5px;padding:3px;}
+    .am-form-group { clear:both; }
+    @media only screen and (min-width: 641px){
+        #my-popup {
+            width: 460px;
+            margin-left: -300px;
+            padding-bottom: 20px;
+        }        
+    }
+    .faceBtn { cursor: pointer; }
+    .faceImg .active { display: block; }
+    .faceTab { background: #eee; }
+    .faceTab > span { color:#000; padding: 5px; display: inline-block; cursor: pointer;}
+    .faceTab > span.active { background: #888; color:#fff; }
+    .face-content { border:1px solid #ccc; }
+    .faceImg { padding-left: 7px; }
+    .faceImg img { margin: 3px; }
+    .face-content { border:1px solid #ccc; display: none;}
+    .delete-box { width: 100%; height: 100px; box-shadow: 0 0 1px #000; margin-left: 0px;}
+</style>
+<input type="hidden" name="webUsername" value={{.uname}}></input>
+<input type="hidden" name="webIp" value={{.ippro.Ip}}></input>
+<input type="hidden" name="webPro" value={{.ippro.Pro}}></input>
+
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">用户管理</span></div>
+</div>
+
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+        <button type="button" class="am-btn am-btn-danger" data-am-modal="{target: '#my-popup'}"> 发送广播 </button>
+        <!-- 消息分类列表模态框 -->
+        <div class="am-modal am-modal-confirm add-modal" tabindex="-1" id="my-popup">
+            <div class="am-modal-dialog" style="border-radius: 5px;">
+                <div class="am-modal-hd"><h4>广播管理</h4>
+                    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                </div>
+                <div class="am-modal-bd am-text-left" style="border-bottom: none; font-size: 16px;">
+                    <form class="am-form am-form-horizontal">
+                        <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                            <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">房间选择：</label>
+                            <div class="am-u-sm-9">
+                                <select id="doc-select-1" name="role" style="height:40px;width:100%;">
+                                    <option value="">----请选择房间号----</option>
+                                    <option value="">所有房间</option>
+                                    {{range .roomnum}}
+                                        <option value="">{{.RommNumber}}</option>
+                                    {{end}}
+                                </select>
+                            </div>
+                            <span class="am-form-caret"></span>
+                        </div>
+                        <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                            <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">发送内容：</label>
+                            <div class="am-u-sm-9">
+                                <div class="am-margin delete-box" rows="10" placeholder="请输入内容..." contenteditable="true" id="remarkcontent"></div>
+                                <!-- <textarea id="doc-vld-ta-2" name="Remark" style="resize:none;width:210px;height:120px;" ></textarea> -->
+                            </div>
+                        </div>
+                        <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                            <label for="doc-ipt-3" class="am-u-sm-3 am-form-label"></label>
+                            <div class="am-u-sm-9">
+                                <span class="faceBtn am-icon-smile-o am-icon-sm"></span>
+                                <div class="face-content">
+                                    <div class="faceTab">
+                                        {{range $k,$v := .group}}
+                                            <span><input type="hidden" name="group" value="{{$v.Group}}"><img src="{{$v.GroupFace}}" class="groupurl"></span>
+                                        {{end}}
+                                    </div>
+                                    <div class="faceBox">
+                                        <div class="faceImg active am-margin-vertical-xs"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-form-group am-form-group-sm am-margin-top-sm">
+                            <label for="doc-ipt-3" class="am-u-sm-3 am-form-label"></label>
+                            <div class="am-u-sm-9">
+                                <button class="am-btn am-btn-secondary am-radius" type="button" style="margin-left:60px;" name="btnbroad">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <div class="result-content">
+            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-broad-list">
+                <thead>
+                    <tr>
+                        <th>房间号</th>
+                        <th>用户名</th>
+                        <th>省份城市</th>
+                        <th>历史内容</th>
+                        <th>发送时间</th>
+                        <th>ip地址</th>
+                    </tr>
+                </thead>
+                <tbody id="">
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"> -->
+<script type="text/javascript">
+    var companycode = {{.code}};     //公司代码
+</script>
+<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+<script type="text/javascript" src="/static/lib/socket/broadcast.js"></script>
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.jeditable.js"></script>
+
+<!-- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+
+    var oTable;
+    $(function() {
+        oTable = initTable();
+
+        // 点击笑脸是否隐藏，隐藏则显示，不隐藏则显示
+        $(".faceBtn").click(function(){
+            if ($(".face-content").is(":hidden")) {
+                $(".face-content").show();
+            } else {
+                $(".face-content").hide();
+            }
+        });
+        // 初始化查询
+        $(".faceTab > span").eq(0).addClass("active");
+        var groupurl = $(".groupurl").eq(0).attr("src");
+        $("#groupdata").html(groupurl);
+        $("#groupview").attr("src",groupurl);
+        var group = $("input[name='group']").get(0).value;
+        $.ajax({
+            url : '/weserver/data/face_getfaces',
+            type : 'post',
+            data : {group : group},
+            success : function(data){
+                var html = "";
+                $.each(data,function(i){
+                    html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + "" + "," + data[i].Id + ")'>" +
+                                "<img src='"+data[i].Url+"' alt=''>" +
+                            "</a>";
+                });
+                $(".faceImg").html(html);
+            }
+        });
+        // 点击 Tab 查询表情
+        $(".faceTab > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+            var groupurl = $(".groupurl").eq(_index).attr("src");
+            $("#groupdata").html(groupurl);
+            $("#groupview").attr("src",groupurl);
+            var group = $("input[name='group']").get(_index).value;
+            $.ajax({
+                url : '/weserver/data/face_getfaces',
+                type : 'post',
+                data : {group : group},
+                success : function(data){
+                    var html = "";
+                    $.each(data,function(i){
+                        html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + "" + "," + data[i].Id + ")'>" +
+                                    "<img src='"+data[i].Url+"' alt=''>" +
+                                "</a>";
+                    });
+                    $(".faceImg").html(html);
+                }
+            });
+        });
+    });    
+
+    function sendface(src, id) {
+        $("#preview").attr("src", src);
+        var contentval = $('.delete-box').html();
+        contentval += "<img src=" + src + ">";
+        $('.delete-box').html(contentval);
+    };
+    function initTable() {
+        var actionUrl = '/weserver/data/qs_broad';
+        var table = $('#rbac-broad-list').dataTable({
+            "bRetrieve": true,
+            "bFilter": false,
+            "bAutoWidth": false,
+            "sPaginationType": 'full_numbers',
+            "bPaginate": true,
+            "bDestroy": true,
+            "bProcessing": true,
+            "sAjaxSource": actionUrl,
+            "iDisplayLength": 10,
+            "aLengthMenu": [
+                [10, 15, 20, 50, -1],
+                [10, 15, 20, 50, "All"]
+            ],
+            "bServerSide": true,
+            "bSort": false,
+            "aoColumns": [
+                {"mDataProp": "Coderoom",},
+                {"mDataProp": "Uname",},
+                {"mDataProp": "Procities",},
+                {"mDataProp": "Data",},
+                {"mDataProp": "Datatime",},
+                {"mDataProp": "Ipaddress",},
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中......",
+                "sLengthMenu": "每页显示 _MENU_ 条记录，",
+                "sZeroRecords": "没有数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "_START_ - _END_ / 共 _TOTAL_ 条",
+                "sInfoEmpty": "0 - 0 / 共 0 条",
+                "sInfoFiltered": "",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            },
+            "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
+        });
+        return table;
+    }
+
+
+
+    /**
+    table刷新表格
+    */
+    $.fn.dataTableExt.oApi.fnReloadAjax = function(oSettings) {
+        this.fnClearTable(this);
+        this.oApi._fnProcessingDisplay(oSettings, true);
+        var that = this;
+
+        $.getJSON(oSettings.sAjaxSource, null, function(json) {
+            for (var i = 0; i < json.aaData.length; i++) {
+                that.oApi._fnAddData(oSettings, json.aaData[i]);
+            }
+            oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+            that.fnDraw(that);
+            that.oApi._fnProcessingDisplay(oSettings, false);
+        });
+    }
+</script>

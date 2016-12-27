@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<link rel="stylesheet" href="/static/css/index.css"/>
+<style type="text/css">
+    .am-alert{border-radius: 5px;padding:3px;}
+    .result-content div{
+                    float:left;
+                    margin-right:30px;
+                }
+.result-content div lable input,lable,label{
+                    float:left;
+                }
+.result-content div lable{
+                    margin-right:15px;
+                }
+.result-content div lable input{
+                    margin-right:5px;
+                }       
+
+.zc:hover{
+    float: left;
+    width: 260px;
+    height: 150px;
+    margin-right: 30px;
+    background-color: #A7A7A7;
+    margin-top: 35px;
+}     
+.zc{
+    float: left;
+    width: 260px;
+    height: 150px;
+    margin-right: 30px;
+     background-color: #E6DCDC;
+      margin-top: 35px;
+}  
+.zc span{
+    margin-top: 20px;
+}  
+.queren{
+    position: absolute;
+    margin-left: 240px;
+    margin-top: -8px;
+}
+.queren1{
+    position: absolute;
+    display: none;
+    margin-left: 240px;
+    margin-top: -8px;
+}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/sysconfig/theme_index">主题管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">主题列表</span></div>
+</div>
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+        <div class="result-title">
+            <div class="result-list">
+                <a href="theme_addtheme"><i class="icon-font"></i>新增主题</a>
+            </div>
+        </div>
+
+        <div class="result-content" id = "data-theme-list">
+       
+        
+        </div>
+    </form>
+</div>
+
+ <script type="text/javascript">
+     $(function(){
+         $.ajax({
+             type: "GET",
+             url: "/weserver/sysconfig/theme_index",
+             dataType:"json",
+             success:function(data){
+                var oldindex  = 0;
+                var themeData = JSON.stringify(data);
+                themeData  = jQuery.parseJSON(themeData);
+                themeData  = themeData.aaData;
+                
+                for(var i=0;i<themeData.length;i++){
+                    if(themeData[i].Status == 1){
+                        $('#data-theme-list').append('<div class="zc" ><img name ="used" class="queren1" src="/static/images/select-theme.png"><img width=250px height =150px  src="/upload/theme/'+themeData[i].Img+' " style=" padding-bottom: 10px; margin-top: 5px; margin-left: 5px;"></img><span>主题名称：'+themeData[i].Name+'</span><br></div>');
+                    }else{
+                        $('#data-theme-list').append('<div class="zc" ><img name = "used" class="queren" src="/static/images/select-theme.png"><img width=250px height =150px  src="/upload/theme/'+themeData[i].Img+' " style=" padding-bottom: 10px; margin-top: 5px; margin-left: 5px;"></img><span>主题名称：'+themeData[i].Name+'</span><br></div>');
+                        oldindex  = themeData[i].Id;
+                    }
+
+
+                    $("div[class=zc]:last").click(function() {
+                        var length=$('#data-theme-list div').length;
+                        var index  = $('#data-theme-list div').index($(this));
+                        for (var i = 0; i <length; i++) {
+                            if(i==index){
+                                $('#data-theme-list div').eq(i).find('img[name = used]').removeClass("queren1")
+                                $('#data-theme-list div').eq(i).find('img[name = used]').addClass("queren")
+                            }else{
+                                $('#data-theme-list div').eq(i).find('img[name = used]').removeClass("queren")
+                                $('#data-theme-list div').eq(i).find('img[name = used]').addClass("queren1")
+                                
+
+                            }
+                        };
+                        $.post('/weserver/sysconfig/theme_updatetheme', {Id:themeData[index].Id,oldId:oldindex}, function(jsondata) {
+                            if (jsondata.status) {
+                                    alert(jsondata.info);
+                            }else{
+                                 alert(jsondata.info);
+                            }
+                        });
+
+
+                    });
+
+                }
+                
+             }
+         })
+     })
+
+     function editTheme(id,value){
+        $.post('/weserver/sysconfig/theme_updatetheme', {Id:id, Status:value}, function(jsondata) {
+            if (jsondata.status) {
+                    alert(jsondata.info);
+                    parent.location.reload();
+            }else{
+                 alert(jsondata.info);
+                 parent.location.reload();
+            }
+        });
+     }
+
+    
+
+
+ </script>
+

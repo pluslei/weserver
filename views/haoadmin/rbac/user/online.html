@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<style type="text/css">
+    .am-alert{border-radius: 5px;padding:3px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">用户管理</span></div>
+</div>
+
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+        <div class="am-form-group">
+          <label for="doc-select-1">房间号:</label>
+          <select id="doc-select-1" name="role">
+          <option value="">所有房间</option>
+            {{range .roomnum}}
+                <option value="">{{.RommNumber}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <div class="result-content">
+            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-online-list">
+                <thead>
+                    <tr>
+                        <th>房间号</th>
+                        <th>用户名</th>
+                        <th>省份城市</th>
+                        <th>登入时间</th>
+                        <th>在线时长</th>
+                        <th>IP地址</th>
+                    </tr>
+                </thead>
+                <tbody id="">
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"> -->
+<script src="/static/js/jquery.dataTables.min.js"></script>
+<script src="/static/js/jquery.jeditable.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+    var oTable;
+    $(function() {
+        oTable = initTable();
+    });     
+    function initTable() {
+        var actionUrl = '/weserver/user/onlineuser';
+        var table = $('#rbac-online-list').dataTable({
+            "bFilter": true,
+            "bAutoWidth": false,
+            "sPaginationType": 'full_numbers',
+            "bPaginate": true, //翻页功能
+            "bDestroy": true,
+            "bProcessing": true,
+            "sAjaxSource": actionUrl,
+            "iDisplayLength": 10,
+            "aLengthMenu": [
+                [10, 15, 20, 50, -1],
+                [10, 15, 20, 50, "All"]
+            ],
+            "bServerSide": true,
+            "bSort": false,
+            "aoColumns": [
+                {"mDataProp": "Roomid",},
+                {"mDataProp": "Uname",},
+                {"mDataProp": "Procities",},
+                {"mDataProp": "Logintime",},
+                {"mDataProp": "Onlinetime",},
+                {"mDataProp": "Ipaddress",},
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中......",
+                "sLengthMenu": "每页显示 _MENU_ 条记录，",
+                "sZeroRecords": "没有数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "_START_ - _END_ / 共 _TOTAL_ 条",
+                "sInfoEmpty": "0 - 0 / 共 0 条",
+                "sInfoFiltered": "",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            },
+            "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
+        });
+        return table;
+    }
+
+
+
+    /**
+    table刷新表格
+    */
+    $.fn.dataTableExt.oApi.fnReloadAjax = function(oSettings) {
+        this.fnClearTable(this);
+        this.oApi._fnProcessingDisplay(oSettings, true);
+        var that = this;
+
+        $.getJSON(oSettings.sAjaxSource, null, function(json) {
+            for (var i = 0; i < json.aaData.length; i++) {
+                that.oApi._fnAddData(oSettings, json.aaData[i]);
+            }
+            oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+            that.fnDraw(that);
+            that.oApi._fnProcessingDisplay(oSettings, false);
+        });
+    }
+
+
+    $("select[name=role]").change(function(){
+        var seltext=$("select[name=role]").find("option:selected").text();
+        $('#rbac-online-list').DataTable().column(0).search(seltext).draw();
+    }); 
+</script>

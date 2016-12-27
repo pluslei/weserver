@@ -1,0 +1,48 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/sysconfig/theme_index">主题管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加主题</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="theme_addtheme" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">主题名称名称：</label>
+            <input type="text" name="Name" id="doc-vld-Img-2"  placeholder="输入主题名称" required/> 
+        </div>
+         <div class="am-form-group">
+          <label for="doc-vld-Title-2">预览图片：</label>
+            <input type="file" name="Img" id="doc-vld-Img-2"  onchange ="selectImage(this)" required/> 
+        </div>
+        <div class="am-form-group" id="preview">
+            <img  id="imghead" src=""/>
+        </div>
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+})
+
+        function selectImage(file){
+              var MAXWIDTH  = 260;   
+              var MAXHEIGHT = 180;   
+              if (file.files && file.files[0])   
+              {   
+                  var img = document.getElementById('imghead');   
+                  var reader = new FileReader();   
+                  reader.onload = function(evt){
+                    img.src = evt.target.result; 
+
+                 }   
+                  reader.readAsDataURL(file.files[0]);  
+              }   
+        }
+</script>
+

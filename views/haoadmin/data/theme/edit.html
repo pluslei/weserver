@@ -1,0 +1,39 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/sysconfig/theme_index">主题管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">修改主题</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="theme_updatetheme" class="am-form" method="post"  enctype="multipart/form-data" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" value="{{.themeList.Id}}" name="Id">
+        <input type="hidden" value="{{.themeList.Status}}" name="StatusSel">
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">主题名称：</label>
+          <input type="text" name="Name" id="doc-vld-Title-2" value="{{.themeList.Name}}" required  disabled="true"/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-select-1">状态:（1:不使用,2:使用）</label>
+          <select id="doc-select-2" name="Status"  required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+  var Status = $("#Status").val()
+})
+
+</script>

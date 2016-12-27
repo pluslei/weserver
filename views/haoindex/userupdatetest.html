@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title> 
+        <script type="text/javascript">
+            var codeid = {{.codeid}};   //加密公司代码和房间号
+        </script>
+        <meta charset="utf-8">
+        <meta name="_xsrf" content="{{.xsrf_token}}" />
+        <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+        <script type="text/javascript" src="/static/lib/socket/chat.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/static/js/updateusertest.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+    </head>
+<body>
+<div class="tab_box">
+  <div class="lyz_tab_left">
+    <div class="pro_con111" id="menu">
+      <ul>
+        <li id="one1" class="hover" onclick="setTab(&#39;one&#39;,1,5)">修改头像</li>
+        <li id="one2" onclick="setTab(&#39;one&#39;,2,5)">修改密码</li>
+        <li id="one3" onclick="setTab(&#39;one&#39;,3,5)">修改资料</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="lyz_tab_right">
+    <div class="hover" id="con_one_1" >
+        <div class="web_login" id="web_login">
+            <form name="form2" id="set_user_icon" accept-charset="utf-8" action="" method="post" enctype="multipart/form-data">
+            <ul class="reg_form" id="reg-ul">
+             <!-- <div id="userCue" class="cue"><font color="red"></font></div>  -->
+                <li>
+                    <label for="UserName" class="input-tips2">上传头像：</label>
+                    <div class="inputOuter2" style="margin-top: 12px;" >
+                        <input id="icon_upload" name="icon_upload"  type="file" multiple="true">
+                    </div> 
+                </li> 
+                <li>
+                    <div class="inputOuter2" >
+                         <img id="preview"  src={{.UserIconurl}} style="width: 66px; height: 66px;margin-top:20px;margin-left: 86px;">
+                    </div> 
+                </li>
+               <!--  <li>
+                        <div style="padding-left:50px;margin-top:20px;">
+                            <input value="确 定" style="width:150px;" class="button_blue" id="setusericon" type="submit">
+                        </div>
+                 </li>  -->
+            </ul>
+            </form>
+        </div>
+    </div>
+    <div class="hover" id="con_one_2" style="display: none;">
+            <ul class="material">
+                <li>
+                    <label for="PassWord" class="">原始密码：</label>
+                    <input type="password" class="text" id="OldPwd" name="OldPwd" maxlength="16">
+                </li>
+
+                <li>
+                    <label for="PassWord" class="">新密码：</label>
+                    <input type="password" class="text" id="NewPwd" name="NewPwd" maxlength="16">
+                </li>
+
+                <li>
+                    <label for="PassWord" class="">确认密码：</label>
+                    <input type="password" class="text" id="ChkNewPwd" name="ChkNewPwd" maxlength="16">
+                </li>
+                <li>
+                    <div>
+                        <input value="确 定"  type="submit" class="affirm" id="setuserpwd">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <input value="取 消"  type="submit" class="cancel" onclick="closewin()">
+                    </div>
+                </li>
+            </ul>
+    </div>
+
+    <div class="hover" id="con_one_3"  style="display: none;">
+            <ul class="material">
+                <li>
+                    <label for="PassWord" class="">QQ：</label>
+                    {{if eq 0 .info.Qq}}
+                    <input type="text" class="text" maxlength="12" id="qq"  value="">
+                    {{else}}
+                     <input type="text" class="text" maxlength="12" id="qq"  value={{.info.Qq}}>
+                    {{end}}
+
+
+                </li>
+
+                <li>
+                    <label for="PassWord" class="">邮箱：</label>
+                    <input type="text" class="text" maxlength="16" id="email" value={{.info.Email}}>
+                </li>
+
+                <li>
+                    <label for="PassWord" class="">昵称：</label>
+                    <input type="text" class="text" maxlength="16" id="nick" value={{.info.Nickname}}>
+                </li>
+                <li>
+                    <div>
+                        <input value="确 定"  type="submit" class="affirm" id="updateinfo">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <input value="取 消"  type="submit" class="cancel"  onclick="closewin()">
+                    </div>
+                </li>
+            </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+</body></html>
+
+
+<script type="text/javascript">
+
+<!--
+//切换到相关页
+function setTab(name,cursel,n){
+for(i=1;i<=n;i++){
+var menu=document.getElementById(name+i);
+var con=document.getElementById("con_"+name+"_"+i);
+menu.className=i==cursel?"hover":"";
+con.style.display=i==cursel?"block":"none";
+}
+}
+//-->
+</script>
+

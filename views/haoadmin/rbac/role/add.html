@@ -1,0 +1,176 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#Img').uploadify({
+      'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+      'uploader' : '/weserver/role/upload',//后台处理程序的相对路径
+      'floder': '/upload/usertitle',          
+      'fileSizeLimit': '2MB',
+      'queueID': 'fileQueue',
+      'queueSizeLimit': 999999999,
+      'uploadLimit': 999999999,
+      //'progressData': 'speed',
+      'auto': true,
+      'multi': false,
+      'buttonClass' : 'some-class',//自定义的样式类名
+      //'queueID'  : 'some_file_queue',
+      //'buttonCursor' : 'arrow',
+      //'buttonText': '上传图片',
+      'buttonTitle': '提示文字',
+      'buttonImage':'/static/images/i/img/upload_file.png',
+      'requeueErrors' : true,
+      'debug': false,
+       'height'   : 28, // The height of the flash button
+      'width'    : 155, // The width of the flash button
+      'itemTemplate':false,
+      'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+      'fileTypeExts': '*.bmp;*.jpg;.jpeg;*.png;*.gif',//设置允许上传的文件扩展名（也就是文件类型）。但手动键入文件名可以绕过这种级别的安全检查，所以你应该始终在服务端中检查文件类型。输入多个扩展名时用分号隔开('*.*;*.jpg;*.png;*.gif')
+      'fileTypeDesc': '文件格式',//可选文件的描述。这个值出现在文件浏览窗口中的文件类型下拉选项中。（但我设置了好像没效果？原文：The description of the selectable files.  This string appears in the browse files dialog box in the file type drop down.）
+      'fileObjName':'Filedata', //设置后台的文件名
+      'method'   : 'post',
+      'onUploadSuccess': function(file,data,response){
+        if(data!=null){
+          data = jQuery.parseJSON(data);
+          if(data.status){
+            $("input[name=fname]").val(data.url);
+            $("#preview").attr("src",data.url);
+          }
+        }
+      },
+    });
+  });
+</script>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/role/index">角色管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加角色</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="addrole?action=add" id="roleform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+      <fieldset>
+        <legend></legend>
+<!--         <div class="am-form-group">
+          <label for="doc-vld-Name-2">Name：</label>
+          <input type="text" name="Name" id="doc-vld-Name-2" minlength="3" placeholder="请输入角色Name" data-validation-message="请输入角色Name" required/>
+        </div> -->
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">角色名称：</label>
+          <input type="text" name="Title" id="doc-vld-Title-2" data-validation-message="输入角色名称" placeholder="输入角色名称" required/>
+        </div>
+
+        <div class="am-form-group">
+          <label>状态  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '状态为开启时可以赋予用户,关闭时不可赋予用户', trigger: 'hover focus'}"></a>： </label>
+          <label class="am-radio-inline">
+            <input type="radio"  value="1" name="Status" required checked> 开启
+          </label>
+          <label class="am-radio-inline">
+            <input type="radio" value="2" name="Status"> 关闭
+          </label>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-select-1">角色是否隶属公司  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '角色是否归属公司内部员工(如管理员选项为是,会员选项为否)', trigger: 'hover focus'}"></a></label>
+          <select id="doc-select-1" name="IsInsider" required data-validation-message="请选择角色是否隶属公司">
+            <option value="">-=请选择角色否隶属公司=-</option>
+            <option value="1">是</option>
+            <option value="0">否</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-select-1">角色权限等级  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '角色权限等级越高,可操作功能越多', trigger: 'hover focus'}"></a></label>
+          <select id="doc-select-1" name="Weight" required data-validation-message="请选择角色权限等级">
+            <option value="">-=请选择角色权限等级=-</option>
+            <option value="9">9</option>
+            <option value="8">8</option>
+            <option value="7">7</option>
+            <option value="6">6</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-select-1">发言间隔</label>
+          <select id="doc-select-2" name="Delay" required data-validation-message="请选择发言间隔">
+            <option value="">-=请选择发言间隔=-</option>
+            <option value="0">无间隔</option>
+            <option value="5">5秒</option>
+            <option value="10">10秒</option>
+            <option value="15">15秒</option>
+            <option value="30">30秒</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+  
+        <div class="am-form-group">
+          <label for="doc-vld-Randnum-2">直播随机数量：  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '设置直播室前台页面展示的虚拟角色数量', trigger: 'hover focus'}"></a></label>
+          <input type="text" name="Randnum" id="doc-vld-Randnum-2" data-validation-message="输入随机数量" placeholder="输入随机数量" required/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-select-1">关联头衔</label>
+          <select id="doc-select-2" name="RandTitle" required data-validation-message="请选择发言间隔">
+            <option value="">-=请选择头衔=-</option>
+            {{range .TitleList}}
+            <option value="{{.Id}}">{{.Name}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Img-2">角色默认头像：</label>
+          <input type="file" name="Img" id="Img" required/>
+          <input type="hidden" name="fname"></input>
+        </div>
+
+        <div class="am-form-group">
+            <img id="preview" src="" width="48" height="20"/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-ta-2">备注：</label>
+          <textarea id="doc-vld-ta-2" name="Remark"></textarea>
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('#roleform').validator({
+    onValid: function(validity) {
+      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+    },
+
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.am-form-group');
+      var $alert = $group.find('.am-alert');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+      if (!$alert.length) {
+        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+          appendTo($group);
+      }
+
+      $alert.html(msg).show();
+    }
+  });
+});
+</script>

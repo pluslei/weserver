@@ -1,0 +1,454 @@
+<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+<style type="text/css">
+    .delete-box { width: 95%; height: 100px; box-shadow: 0 0 1px #000; }
+	.faceBtn { cursor: pointer; }
+    .faceImg .active { display: block; }
+	.faceTab { background: #eee; }
+	.faceTab > span { color:#000; padding: 5px; display: inline-block; cursor: pointer;}
+	.faceTab > span.active { background: #888; color:#fff; }
+	.face-content { border:1px solid #ccc; }
+	.faceImg { padding-left: 7px; }
+	.faceImg img { margin: 3px; }
+	#fileName { width: 200px; height: 25px; padding:0 5px; line-height:25px; background: #eee; margin-bottom:17px; color:#000; }
+	#groupdata { width: 200px; height: 25px; padding:0 5px; line-height:25px; background: #eee; margin-bottom:17px; color:#000; }
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/face_index">表情管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">表情列表</span></div>
+</div>
+<div>
+        <div class="result-title" style="padding: 19px 40px;border-bottom: 1px solid #eee;">
+            <div class="result-list">
+                <a title='删除' onclick="delFun();" style="cursor:pointer"><i class="am-icon-trash-o"></i>删除表情</a>
+            </div>
+        </div>
+        <div class="result-content am-margin-top">
+	        <div class="am-u-sm-3">
+	        	<div>
+	        		<!-- <span class="faceBtn am-icon-smile-o am-icon-lg"></span> -->
+	        		<div class="face-content am-margin-left">
+                        <div class="faceTab">
+                        	{{range $k,$v := .group}}
+                        		<span><input type="hidden" name="group" value="{{$v.Group}}"><img src="{{$v.GroupFace}}" class="groupurl"></span>
+                        	{{end}}
+                        </div>
+                        <div class="faceBox">
+                            <div class="faceImg active am-margin-vertical-xs"></div>
+                        </div>
+                    </div>
+	        	</div>
+	            <div id="deleteDiv" style="display:none;">
+	            	<input type="hidden" name="faceIds" id="faceIds">
+	            	<div class="am-margin delete-box" rows="10" placeholder="请输入内容..." contenteditable=""></div>
+	            	<div class="am-text-right">
+	            		<input type="button" class="am-btn am-btn-info am-radius am-btn-sm" id="resetClick" value="清除">
+	            		<input type="button" class="am-btn am-btn-primary am-radius am-btn-sm" id="delClick" value="删除">
+	            	</div>
+	            </div>
+	        </div>
+	        <div class="am-u-sm-4 am-u-end">
+	        	<form class="am-form am-form-horizontal" enctype="multipart/form-data">
+	                <input value="" type="hidden" id="editId">
+	                <div class="am-form-group am-form-group-sm">
+	                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">表情名称：</label>
+	                    <div class="am-u-sm-9">
+	                        <input type="text" name="faceTitle" class="am-radius" id="faceTitle">
+	                    </div>
+	                </div>
+	                <div class="am-form-group am-form-group-sm" style="display:none;">
+	                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">表情分组：</label>
+	                    <div class="am-u-sm-9">
+	                        <input type="hidden" class="am-radius" id="group">
+	                    </div>
+	                </div>
+	                <div class="am-center">
+	                	<div class="am-form-group am-form-group-sm am-margin-bottom-0">
+		                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">上传表情：</label>
+		                    <div class="am-u-sm-9">
+								<div class="am-form-group am-form-file">
+								  <input id="doc-form-file" name="Filedata" type="file" multiple>
+								</div>
+								<div id="fileName" style="display:none;">请选择要上传的文件！</div>
+		                    </div>
+	                	</div>
+	                	<div class="am-form-group am-form-group-sm am-center">
+		                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label am-padding-top-0">显示图标：</label>
+		                    <div class="am-u-sm-9">
+		                        <img id="preview" src="" width="22" height="22"/>
+		                    </div>
+	                	</div>
+	                	<div class="am-form-group am-form-group-sm am-margin-bottom-0">
+		                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label">分组表情：</label>
+		                    <div class="am-u-sm-9">
+								<div class="am-form-group am-form-file">
+								  <input id="groupImg" name="Filedata" type="file" multiple>
+								</div>
+								<div id="groupdata">请选择要上传的文件！</div>
+		                    </div>
+	                	</div>
+	                	<div class="am-form-group am-form-group-sm am-center">
+		                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label am-padding-top-0">显示图标：</label>
+		                    <div class="am-u-sm-9">
+		                        <img id="groupview" src="" width="22" height="22"/>
+		                    </div>
+	                	</div>
+	                	<div class="am-form-group am-form-group-sm">
+		                    <label for="doc-ipt-3" class="am-u-sm-3 am-form-label"></label>
+		                    <div class="am-u-sm-9 am-text-center">
+							<input type="button" id="submitBtn" class="am-btn am-btn-primary am-radius am-btn-sm" value="提交">
+							<input type="button" id="resetBtn" class="am-btn am-btn-info am-radius am-btn-sm" value="重置">
+		                    </div>
+	                	</div>
+					</div>
+	        	</form>
+	        </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+	// 显示/隐藏删除表情框
+	function delFun(){
+		var divD = document.getElementById("deleteDiv");
+		if(divD.style.display == "none"){
+			divD.style.display = "block";
+		} else {
+			divD.style.display = "none";
+		}
+	}
+
+	$(function(){
+
+		// 自定义中文 选择文件错误
+		var uploadify_onSelectError = function(file, errorCode, errorMsg) {  
+			var msgText = "上传失败\n";  
+				switch (errorCode) {  
+				case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
+					msgText += "每次最多上传 " + this.settings.queueSizeLimit + "个文件";  
+	                break;  
+	            case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:  
+	                msgText += "文件大小超过限制( " + this.settings.fileSizeLimit + " )";  
+	                break;  
+	            case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:  
+	                msgText += "文件大小为0";  
+	                break;  
+	            case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:  
+	                msgText += "文件格式不正确，仅限 " + this.settings.fileTypeExts;  
+	                break;  
+	            default:  
+	                msgText += "错误代码：" + errorCode + "\n" + errorMsg;  
+        	}  
+			layer.alert(msgText);  
+		};
+
+		// 自定义中文  上传文件错误
+		var uploadify_onUploadError = function(file, errorCode, errorMsg, errorString) {  
+        	// 手工取消不弹出提示  
+		    if (errorCode == SWFUpload.UPLOAD_ERROR.FILE_CANCELLED 
+		    	|| errorCode == SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED) {  
+				return;  
+		    }  
+		    var msgText = "上传失败!\n";  
+		    switch (errorCode) {  
+				case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:  
+					msgText += "HTTP 错误\n" + errorMsg;  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.MISSING_UPLOAD_URL:  
+					msgText += "上传文件丢失，请重新上传";  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.IO_ERROR:  
+					msgText += "IO错误";  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.SECURITY_ERROR:  
+					msgText += "安全性错误\n" + errorMsg;  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:  
+					msgText += "每次最多上传 " + this.settings.uploadLimit + "个";  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.UPLOAD_FAILED:  
+					msgText += errorMsg;  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.SPECIFIED_FILE_ID_NOT_FOUND:  
+					msgText += "找不到指定文件，请重新操作";  
+					break;  
+				case SWFUpload.UPLOAD_ERROR.FILE_VALIDATION_FAILED:  
+					msgText += "参数错误";  
+					break;  
+				default:  
+					msgText += "文件:" + file.name + "\n错误码:" + errorCode + "\n"  
+						+ errorMsg + "\n" + errorString;  
+			}  
+			layer.alert(msgText);  
+		} 
+		
+		// 上传文件[图片]
+		$('#doc-form-file').uploadify({
+			'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+			'uploader' : '/weserver/data/face_upload',//后台处理程序的相对路径        
+			'fileSizeLimit': '40KB',
+			'queueID': 'fileQueue',
+			'queueSizeLimit': 1000,
+			'uploadLimit': 999999999,
+			'auto': true,
+			'multi': false,
+			'buttonClass' : 'some-class',//自定义的样式类名
+			'buttonTitle': '提示文字',
+			'buttonImage':'/static/images/i/img/upload_file.png',
+			'requeueErrors' : true,
+			'debug': false,
+			'height'   : 28, // The height of the flash button
+			'width'    : 155, // The width of the flash button
+			'itemTemplate':false,
+			'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+			'fileTypeExts': '*.bmp;*.jpg;*.jpeg;*.png;*.gif',
+			'fileTypeDesc': '文件格式',
+			'fileObjName':'Filedata', //设置后台的文件名
+			'method'   : 'post',
+			'overrideEvents' : [ 'onDialogClose', 'onUploadError', 'onSelectError'],
+			'onSelectError' : uploadify_onSelectError,
+			'onUploadError' : uploadify_onUploadError, 
+			'onUploadSuccess': function(file,data,response){
+				if(data!=null){
+					data = jQuery.parseJSON(data);
+					if(data.status){
+						$("#fileName").html(data.url);
+						$("#preview").attr("src",data.url);
+					}
+				}
+			},
+    	});
+
+    	$("#groupImg").uploadify({
+			'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+			'uploader' : '/weserver/data/face_upload',//后台处理程序的相对路径        
+			'fileSizeLimit': '40KB',
+			'queueID': 'fileQueue',
+			'queueSizeLimit': 1000,
+			'uploadLimit': 999999999,
+			'auto': true,
+			'multi': false,
+			'buttonClass' : 'some-class',//自定义的样式类名
+			'buttonTitle': '提示文字',
+			'buttonImage':'/static/images/i/img/upload_file.png',
+			'requeueErrors' : true,
+			'debug': false,
+			'height'   : 28, // The height of the flash button
+			'width'    : 155, // The width of the flash button
+			'itemTemplate':false,
+			'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+			'fileTypeExts': '*.bmp;*.jpg;*.jpeg;*.png;*.gif',
+			'fileTypeDesc': '文件格式',
+			'fileObjName':'Filedata', //设置后台的文件名
+			'method'   : 'post',
+			'overrideEvents' : [ 'onDialogClose', 'onUploadError', 'onSelectError'],
+			'onSelectError' : uploadify_onSelectError,
+			'onUploadError' : uploadify_onUploadError, 
+			'formData': {
+				'content': ''
+			},
+			'onUploadStart': function(file) {
+				var group = 0;
+				var grouparr = $("input[name='group']");
+				for (var i = 0; i < grouparr.length; i++) {
+					if ($(".faceTab > span").eq(i).hasClass("active")) {
+						group = grouparr[i].value;
+					}
+				}
+				$("#groupImg").uploadify("settings", "formData", {
+					'content': group
+				});
+			},
+			'onUploadSuccess': function(file,data,response){
+				if(data!=null){
+					data = jQuery.parseJSON(data);
+					if(data.status){
+						$("#groupdata").html(data.url);
+						$("#groupview").attr("src",data.url);
+						$.ajax({
+							url : '/weserver/data/face_getMaxValue',
+							type : 'post',
+							dataType : 'json',
+							success : function(data){
+								var groupvalue = data + 1;
+								$("#group").val(groupvalue);
+							}
+						});
+					}
+				}
+			},
+    	});
+    	
+		// 点击笑脸是否隐藏，隐藏则显示，不隐藏则显示
+		$(".faceBtn").click(function(){
+			if ($(".face-content").is(":hidden")) {
+				$(".face-content").show();
+			} else {
+				$(".face-content").hide();
+			}
+        });
+
+        // 更改表情图
+        $('#doc-form-file').on('change', function() {
+        	var filename = this.name;
+			$('#fileName').html(filename);
+		});
+
+        // 更改分组表情图
+		$("#groupImg").on("change",function(){
+			var groupData = this.name;
+			$('#groupdata').html(groupData);
+		});
+
+		// 初始化查询
+		$(".faceTab > span").eq(0).addClass("active");
+		var groupurl = $(".groupurl").eq(0).attr("src");
+		$("#groupdata").html(groupurl);
+		$("#groupview").attr("src",groupurl);
+
+		var group = $("input[name='group']").get(0).value;
+		$("#group").val(group);
+		$.ajax({
+			url : '/weserver/data/face_getfaces',
+			type : 'post',
+			data : {group : group},
+			success : function(data){
+				var html = "";
+				$.each(data,function(i){
+					html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + "" + "," + data[i].Id + ")'>" +
+								"<img src='"+data[i].Url+"' alt=''>" +
+							"</a>";
+				});
+				$(".faceImg").html(html);
+			}
+		});
+
+		// 点击 Tab 查询表情
+        $(".faceTab > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+            var groupurl = $(".groupurl").eq(_index).attr("src");
+            var group = $("input[name='group']").get(_index).value;
+            $("#groupdata").html(groupurl);
+			$("#groupview").attr("src",groupurl);
+			var group = $("input[name='group']").get(_index).value;
+			$("#group").val(group);
+	        $.ajax({
+				url : '/weserver/data/face_getfaces',
+				type : 'post',
+				data : {group : group},
+				success : function(data){
+					var html = "";
+					$.each(data,function(i){
+						html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + "" + "," + data[i].Id + ")'>" +
+									"<img src='"+data[i].Url+"' alt=''>" +
+								"</a>";
+					});
+					$(".faceImg").html(html);
+				}
+			});
+        });
+
+        // 清除
+		$("#resetClick").click(function(){
+			$("#faceIds").val("");
+			$('.delete-box').html("");
+			$("#editId").val("");
+			$("#faceTitle").val("");
+			$("#group").val("");
+			$("#fileName").html("");
+			$("#groupdata").html("");
+			$("#preview").attr("src", "");
+			$("#groupview").attr("src","");
+		});
+
+		// 重置
+		$("#resetBtn").click(function(){
+			$("#editId").val("");
+			$("#faceTitle").val("");
+			$("#group").val("");
+			$("#fileName").html("");
+			$("#groupdata").html("");
+			$("#preview").attr("src", "");
+			$("#groupview").attr("src","");
+		});
+
+		// 删除
+		$("#delClick").click(function(){
+			$.ajax({
+				url : '/weserver/data/face_delete',
+				data : {ids : $("#faceIds").val()},
+				type : 'post',
+				success : function(data) {
+					if (data.status) {
+						alert(data.info);
+						location.reload();
+					} else {
+						alert(data.info);
+						location.reload();
+					}
+				}
+			});
+		});
+
+		// 提交数据 [添加/修改]
+		$("#submitBtn").click(function(){
+			var Id = $("#editId").val();
+			var faceTitle = $("#faceTitle").val();
+			var group = $("#group").val();
+			var fileName = $("#fileName").html();
+			var groupData = $("#groupdata").html();
+			$.ajax({
+				url : '/weserver/data/face_submit',
+				type : 'post',
+				data : {Id : Id, faceTitle : faceTitle, group : group, fileName : fileName, groupData:groupData},
+				success : function(data) {
+					if (data.status) {
+						alert(data.info);
+						location.reload();
+					} else {
+						alert(data.info);
+						location.reload();
+					}
+				}
+			});
+		});
+
+
+	});
+
+	// 定义要删除的所有id
+	var array = [];
+	// 定义过滤重复的所有id
+	var new_arr = [];
+
+	function sendface(src, id) {
+		$("#preview").attr("src", src);
+		var contentval = $('.delete-box').html();
+		contentval += "<img src=" + src + ">";
+		$('.delete-box').html(contentval);
+		array.push(id);
+		// 数组去重复去重复
+		for(var i = 0; i < array.length; i++) {
+		　　var items = array[i];
+		　　//判断元素是否存在于new_arr中，如果不存在则插入到new_arr的最后
+		　　if($.inArray(items,new_arr) == -1) {
+		　　　　new_arr.push(items);
+		　　}
+		}
+		$("#faceIds").val(new_arr);
+
+		$.ajax({
+			url : '/weserver/data/face_getface',
+			data : {Id : id},
+			type : 'post',
+			success : function(data) {
+				$("#editId").val(data.Id);
+				$("#faceTitle").val(data.Title);
+				$("#group").val(data.Group);
+				$("#fileName").html(src);
+				$("#groupdata").html(data.GroupFace)
+				$("#groupview").attr("src", data.GroupFace);
+			}
+		});
+	}
+
+</script>

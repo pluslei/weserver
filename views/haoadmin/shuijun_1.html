@@ -1,0 +1,246 @@
+<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+<style type="text/css">
+    .am-alert{border-radius: 5px;padding:3px;}
+    .add-modal label { font-weight: normal; }
+    #myform select{
+        box-shadow: 0 0 3px #ccc;
+        background: #f9f9f9;
+    }
+    #myform option {
+        height: 30px;
+        line-height: 30px;
+        text-indent: 10px;
+        
+        padding-top: 5px;
+    }
+
+    .edit-box {
+        width: 80%;
+        height: 100px;
+        box-shadow: 0 0 3px #000;
+   }
+   .face-content {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 290px;
+        margin-top: 20px;
+        display: none;
+   }
+
+    .faceBox .faceImg { display: none; }
+    .faceImg.active {  display: block; }
+    .faceTab{ background: #eee; line-height: 30px; }
+    .faceTab > span { color:#000; padding: 0 5px; display: inline-block; cursor: pointer; }
+    .faceTab > span.active { background: #888 color:#fff; }
+    .faceBtn { cursor: pointer; }
+    .faceImg .active { display: block; }
+    .faceTab { background: #eee; line-height: 30px; }
+    .faceTab > span { color:#000; padding: 0 5px; display: inline-block; cursor: pointer; }
+    .faceTab > span.active { background: #888; color:#fff; }
+    .face-content { border:1px solid #ccc; }
+    .faceImg { padding-left: 7px; }
+    .faceImg img { margin: 3px; }
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/qs_index">水军管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">水军操作</span></div>
+</div>
+<div class="result-wrap" style="border-bottom: none">
+    <form name="myform" id="myform" method="post">
+        <div class="result-content am-margin-top">
+            <div class="am-u-sm-12">
+                <div class="am-u-sm-3">
+                    <select id="select1" name="left" size="15" multiple style="width:192px;height:500px;">
+                        {{range $k,$v := .shuijun}}
+                            <option value="{{$v.Id}}">{{$v.Uname}} {{$v.Titlerole}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="am-u-sm-2" style="text-align: center; margin-top: 145px;">
+                    <input type="button" value="移至右边" id="add"><br><br>
+                    <input type="button" value="移至左边" id="remove"><br><br>
+                    <input type="button" value="全部移动" id="add_all"><br><br>
+                    <input type="button" value="全部移除" id="remove_all">
+                </div>
+                <div class="am-u-sm-3">
+                    <select id="select2" name="right" size="15" multiple style="width:192px;height:500px;">&nbsp;</select>
+                </div>
+                <div class="am-u-sm-3">
+                    <select id="select1" name="bottom" size="15" multiple style="width:192px;height:500px;">
+                        {{range $k,$v := .urole}}
+                            <option value="{{$v.Id}}">{{$v.Uname}} {{$v.Titlerole}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="am-u-sm-4 am-u-end">
+                    <div class="am-margin edit-box" rows="10" placeholder="请输入内容..." contenteditable=""></div>
+                    <div class="am-u-sm-6">
+                        <span class="faceBtn am-icon-smile-o am-icon-lg"></span>
+                        <div class="face-content">
+                            <div class="faceTab">
+                                <span class="active"><img src="../../i/right/facebtn_a.gif" alt="" /></span>
+                                <span><img src="../../i/right/facebtn_b.gif" alt="" /></span>
+                            </div>
+                            <div class="faceBox">
+                                <div class="faceImg active am-margin-vertical-xs">
+                                    {{range $k,$v := .qqfacea}}
+                                       <a href="#" onclick="sendface({{$v.Faceurl}})"><img src="{{$v.Faceurl}}" alt=""></a>
+                                    {{end}}
+                                </div>
+                                <div class="faceImg am-margin-vertical-xs">
+                                    {{range $k,$v := .qqfaceb}}
+                                       <a href="#" onclick="sendface({{$v.Faceurl}})"><img src="{{$v.Faceurl}}" alt=""></a>
+                                    {{end}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-text-center"><input type="button" class="am-btn am-btn-primary am-radius am-btn-lg" id="btnClick" value="发送"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var robotData={{.shuijun}};
+    var uname={{.uname}};
+    var roomcode={{.roomcode}};
+    //全部移到左边
+    $('#remove_all').click(function() {
+        $('#select2 option').appendTo('#select1');
+    });
+
+    //全部移到右边
+    $('#add_all').click(function() {
+        //获取全部的选项,删除并追加给对方
+        $('#select1 option').appendTo('#select2');
+    });
+
+    //移到右边
+    $('#add').click(function() {
+        //获取选中的选项，删除并追加给对方
+        $('#select1 option:selected').appendTo('#select2');
+    });
+    //移到左边
+    $('#remove').click(function() {
+        $('#select2 option:selected').appendTo('#select1');
+    });
+
+    //双击选项
+    $('#select1').dblclick(function(){ //绑定双击事件
+        //获取全部的选项,删除并追加给对方
+        $("option:selected",this).appendTo('#select2'); //追加给对方
+    });
+
+    //双击选项
+    $('#select2').dblclick(function(){
+       $("option:selected",this).appendTo('#select1');
+    });
+
+    $(document).ready(function() {
+        $(".faceBtn").click(function(){
+            if ($(".face-content").is(":hidden")) {
+                $(".face-content").show();
+            } else {
+                $(".face-content").hide();
+            }
+        })
+
+        /*
+        // 初始化查询
+        $(".faceTab > span").eq(0).addClass("active");
+        var str = $(".faceTab > span").eq(0).text();
+        var group = str.substr(str.length-1,1);
+        $.ajax({
+            url : '/weserver/data/face_getfaces',
+            type : 'post',
+            data : {group : group},
+            success : function(data){
+                var html = "";
+                $.each(data,function(i){
+                    html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + ")'>" +
+                                "<img src='"+data[i].Url+"' alt=''  >" +
+                            "</a>";
+                });
+                $(".faceImg").html(html);
+            }
+        });
+
+        // 点击 Tab 查询表情
+        $(".faceTab > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+            $.ajax({
+                url : '/weserver/data/face_getfaces',
+                type : 'post',
+                data : {group : _index+1},
+                success : function(data){
+                    var html = "";
+                    $.each(data,function(i){
+                        html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + ")'>" +
+                                    "<img src='"+data[i].Url+"' alt='' >" +
+                                "</a>";
+                    });
+                    $(".faceImg").html(html);
+                }
+            });
+        });
+        */
+
+        $(".faceTab > span").click(function(){
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            //console.log(_index);
+            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
+        });
+
+        $("#btnClick").click(function() {
+            var selectValue = document.getElementById("select2").options;
+            var length=selectValue.length;
+            var contentval=$('.am-u-end .edit-box').html();
+            if(length>0){
+                if(contentval.length>0){
+                    var roomlength=roomcode.length;
+                    for (var i = 0; i < roomlength; i++) {
+                        for (var j = 0; j < length; j++) {
+                            //console.log(selectValue[i].value);
+                            var pos=Number(selectValue[j].value);
+                            var sendmsg = {}; //发送的内容
+                            sendmsg["Codeid"]  = roomcode[i]; //公司房间标识符
+                            sendmsg["Author"]  = uname; 
+                            sendmsg["Username"]= robotData[pos].Uname; 
+                            sendmsg["AuthorRole"]= robotData[pos].RoleName; 
+                            sendmsg["AuthorTitle"]= robotData[pos].Titlerole; 
+                            sendmsg["AuthorCss"]= robotData[pos].Authorcss; 
+                            sendmsg["Chat"]    = "allchat";
+                            sendmsg["Content"] = contentval;
+                            var sendtostr = base64encode(sendmsg);
+                            socket.emit('all analogmessage', sendtostr);
+                        }
+                    }
+                }else{
+                   alert("内容不能为空!"); 
+                }
+
+            }else{
+                alert("请选择发言用户!");
+            }
+        });
+
+        socket.on('all analogsuccess', function(msg) {
+            //消息提示
+            $(".face-content").hide();
+            $('.am-u-end .edit-box').html("");
+            layer.msg("消息发送成功", {
+                icon: 1
+            });
+        });
+    });
+
+    function sendface(src) {
+        var contentval=$('.am-u-end .edit-box').html();
+        contentval+="<img src="+src+">";
+        $('.am-u-end .edit-box').html(contentval);
+    }
+</script>

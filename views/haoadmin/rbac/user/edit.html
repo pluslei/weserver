@@ -1,0 +1,103 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/user/index">用户管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">修改用户</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="updateuser?action=edit" id="userform" class="am-form" method="post" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" name="id" value="{{.userList.Id}}">
+        <div class="am-form-group">
+          <label for="doc-vld-name-2">用户名：</label>
+          <input type="text" name="username" id="doc-vld-name-2" minlength="2" value="{{.userList.Username}}" data-validation-message="输入用户名（至少 2 个字符）" placeholder="输入用户名（至少 2 个字符）"/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-email-2">邮箱：</label>
+          <input type="email" name="email" id="doc-vld-email-2" value="{{.userList.Email}}" data-validation-message="输入邮箱" placeholder="输入邮箱"/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-phone-2">手机：</label>
+          <input type="text" name="phone" id="doc-vld-phone-2" value="{{.userList.Phone}}" data-validation-message="输入手机" placeholder="输入手机"/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-url-2">昵称：</label>
+          <input type="text" name="nickname" id="doc-vld-url-2" value="{{.userList.Nickname}}"  data-validation-message="输入昵称" placeholder="输入昵称"/>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-age-2">密码：</label>
+          <input type="password" name="password" id="doc-vld-age-2" value=""  placeholder="输入密码(至少6个字符),留空不修改密码" />
+        </div>
+
+        <div class="am-form-group">
+          <label>用户状态： </label>
+          <label class="am-radio-inline">
+            <input type="radio"  value="1" name="status" {{if eq .userList.Status 1}}checked{{end}} required> 开启
+          </label>
+          <label class="am-radio-inline">
+            <input type="radio" value="2" name="status" {{if eq .userList.Status 2}}checked{{end}}> 关闭
+          </label>
+        </div>
+        <div class="am-form-group">
+          <label>审核状态： </label>
+          <label class="am-radio-inline">
+            <input type="radio"  value="2" name="regstatus" {{if eq .userList.RegStatus 2}}checked{{end}} required> 开启
+          </label>
+          <label class="am-radio-inline">
+            <input type="radio" value="1" name="regstatus" {{if eq .userList.RegStatus 1}}checked{{end}}> 关闭
+          </label>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-select-1">角色</label>
+          <select id="doc-select-1" name="role" required  data-validation-message="请选择角色">
+            <option value="">-=请选择角色=-</option>
+            {{range .RoleList}}
+            <option value="{{.Id}}" id="role{{.Id}}">{{.Title}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-ta-2">备注：</label>
+          <textarea id="doc-vld-ta-2" name="remark">{{.userList.Remark}}</textarea>
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $("#role{{.userList.Role.Id}}").attr('selected', true);
+    $('#userform').validator({
+    onValid: function(validity) {
+      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+    },
+
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.am-form-group');
+      var $alert = $group.find('.am-alert');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+      if (!$alert.length) {
+        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+          appendTo($group);
+      }
+
+      $alert.html(msg).show();
+    }
+  });
+  })
+</script>
+

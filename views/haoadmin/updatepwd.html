@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="_xsrf" content="{{.xsrf_token}}" />
+        <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+    </head>
+<body>
+  <div>
+            <ul class="material1">
+                <!-- <div id="userCue" class="cue"><font color="red"></font></div>  -->
+                <li>
+                    <label for="PassWord" class="">原始密码：</label>
+                    <input type="password" class="text" id="oldpassword" name="oldpassword" maxlength="16">
+                </li>
+
+                <li>
+                    <label for="PassWord" class="">新密码：</label>
+                    <input type="password" class="text" id="newpassword" name="newpassword" maxlength="16">
+                </li>
+
+                <li>
+                    <label for="PassWord" class="">确认密码：</label>
+                    <input type="password" class="text" id="repeatpassword" name="repeatpassword" maxlength="16">
+                </li>
+                <li>
+                    <div>
+                        <input value="确 定"  type="submit" class="affirm" id="setuserpwd">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <input value="取 消"  type="submit" class="cancel" >
+                    </div>
+                </li>
+            </ul>
+    </div>
+
+
+</body></html>
+
+
+<script type="text/javascript">
+$(function(){
+
+})
+
+$('#setuserpwd').click(function(){
+        if ($('#oldpassword').val() == "") {
+            $('#oldpassword').focus();
+         //   $('#userCue').show().html("<font color='red'><b>×旧密码不能为空</b></font>");
+            return false;
+        }
+        if ($('#newpassword').val() == "") {
+            $('#newpassword').focus();
+          //  $('#userCue').show().html("<font color='red'><b>×新密码不能为空</b></font>");
+            return false;
+        }
+        if ($('#repeatpassword').val() == "") {
+            $('#repeatpassword').focus();
+        //    $('#userCue').show().html("<font color='red'><b>×确认密码不能为空</b></font>");
+            return false;
+        }
+        if ($('#newpassword').val()  != $('#repeatpassword').val() ) {
+            $('#repeatpassword').focus();
+            // $('#userCue').show().html("<font color='red'><b>×新密码不一致</b></font>");
+            return false;
+        }
+
+        $.post('/public/updatepwd', {oldpassword: $("#oldpassword").val(),newpassword:$("#newpassword").val(),repeatpassword:$("#repeatpassword").val()}, function(jsondata) {
+            if (jsondata.status) {
+                parent.layer.msg("密码修改成功", {shade:[0]}, function(){
+                    parent.location.reload();
+                })
+            }else{
+                parent.layer.msg("密码不正确", {shade:[0]}, function(){
+                })
+                $("#showLoginErr").show().html(jsondata.info);
+            };
+        });
+})
+</script>
+

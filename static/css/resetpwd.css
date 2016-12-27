@@ -1,0 +1,331 @@
+body{
+	margin:0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+    font-family:"微软雅黑";
+}
+
+.main{
+	width: 100%;
+	height:100%;
+	margin:0 auto;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+    margin-left:-10px;
+}
+
+ul li{
+	float: left;
+	padding-left:20px;
+	list-style-type: none;
+}
+
+.contenttop {
+	margin:0 auto;
+	width:100%;
+	height:100px;
+    border-bottom:2px solid #dcdcdc;
+    margin-bottom:50px;
+    font-family:"微软雅黑",sans-serif;
+    background:url('/static/img/step/a_a.png');
+}
+
+.top_info{
+    margin:0 auto;
+    width:1000px;
+}
+
+.top_left{
+    margin-top:15px;
+    width:210px;
+    float: left;
+}
+
+.top_left img{
+    float: left;
+}
+
+.top_left label{
+    float: right;
+    display:inline-block;
+    line-height:50px;
+    height:50px;
+    font-size:35px;
+    color:#17a3dd;
+}
+
+.top_right{
+    margin-top:20px;
+    width:245px;
+    float:right;
+}
+
+.top_right ul{
+    margin:0px;
+}
+
+.top_right ul li{
+    padding:0 0 0 8px;
+}
+
+.top_right ul li span{
+    display:inline-block;
+    font-size:18px;
+    font-weight:bold;
+    color:#616169;
+}
+
+.top_right img{
+    margin-right:5px;
+    vertical-align:text-top;
+}
+
+
+.contentfillin,.contentverifi,.contentreset,.contentcomplete,.contentfooter{
+    clear:both;
+	margin:0 auto;
+	width:1000px;
+	margin-top: 5px;
+}
+
+.fillinactive{
+	width: 230px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    text-align: center;
+    font-size: 24px;
+
+    background-image: url('/static/img/step/1-1.png');
+    color: #fff;
+}
+
+.verifiactive{
+	width: 230px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    text-align: center;
+    font-size: 24px;
+    background-image: url('/static/img/step/2-2.png');
+    color: #fff;
+}
+
+.resetactive{
+	width: 230px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    text-align: center;
+    font-size: 24px;
+    background-image: url('/static/img/step/2-2.png');
+    color: #fff;
+}
+
+.completeactive{
+	width: 230px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    text-align: center;
+    font-size: 24px;
+    background-image: url('/static/img/step/3-2.png');
+    color: #fff;
+}
+
+.controlmain .prompt {
+    padding-top: 108px;
+    margin-left: 54px;
+    font-size: 14px;
+    color: #000;
+}
+
+.controlmain .account-content {
+    padding-top: 20px;
+    width: 600px;
+    height: 140px;
+    margin: 0 auto;
+    margin-top: 56px;
+}
+
+.controlmain .account-content input {
+    width: 294px;
+    height: 34px;
+    line-height: 34px;
+    margin-left: 15px;
+    padding-left: 10px;
+    border: 1px solid #cecece;
+}
+
+.controlmain .next {
+    clear:both;
+    width: 150px;
+    height: 32px;
+    margin-left: 400px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.next a,.resetpwd a,.confirm-reset a{
+    display: block;
+    color: #fff;
+    background-color: #2da9de;
+}
+.next a:visited,.resetpwd a:visited,.confirm-reset a:visited{
+    text-decoration: none;
+}
+.next a:link,.resetpwd a:link,.confirm-reset a:link{
+    text-decoration: none;
+}
+
+.next a:hover,.resetpwd a:hover,.confirm-reset a:hover{
+	background-color: #5abbe3;
+}
+
+.message-account {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 140px;
+}
+
+.message-account .message-title {
+    font-size: 30px;
+    color: #000;
+}
+
+.message-account .message-tel {
+    height: 45px;
+    line-height: 45px;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.message-account .message-tel .tel-font {
+    font-size: 16px;
+    color: #202020;
+    float: left;
+}
+
+.message-account .message-tel .tel-num {
+    font-size: 14px;
+    color: #999;
+    float: left;
+    margin-left: 49px;
+    margin-right: 43px;
+}
+
+
+.message-account .message-tel .send-prove-code {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    float: left;
+    color:#ffffff;
+    background-color: #2795dc;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+
+
+.message-account .prove-code-content {
+    height: 46px;
+    line-height: 46px;
+}
+
+
+.message-account .resetpwd{
+    clear:both;
+    margin-top:50px;
+    width: 372px;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.message-account .prove-code-info,.input-error-text {
+    color:#FF0000;
+}
+
+.message-account .prove-code-content input {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 15px;
+    padding-left: 10px;
+    border: 1px solid #cecece;
+}
+
+
+
+.reset-password {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+
+.reset-password .confirm-pwd{
+    margin-top:20px;
+}
+
+.reset-password .new-pwd label,.reset-password .confirm-pwd label{
+    width: 70px;
+    display:inline-block;
+}
+
+.reset-password .new-pwd input,.reset-password .confirm-pwd input{
+    width: 270px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 15px;
+    padding-left: 10px;
+    border: 1px solid #cecece;
+}
+
+
+.reset-password .confirm-reset{
+    clear:both;
+    margin-top:40px;
+    width: 372px;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.resetpwd-success {
+    clear:both;
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.icon-success {
+    background-image: url('/static/img/step/success.png');
+    width: 50px;
+    height: 50px;
+}
+
+.resetpwd-success .success-info {
+    height: 50px;
+    font-size: 36px;
+    color: #2eafff;
+    margin-bottom: 25px;
+    margin-top:-50px;
+    margin-left:50px;
+}
+
+.resetpwd-success .success-font {
+    font-size: 14px;
+    margin-left: 55px;
+}

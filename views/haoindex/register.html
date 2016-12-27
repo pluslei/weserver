@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title> 
+        <meta charset="utf-8">
+        <meta name="_xsrf" content="{{.xsrf_token}}" />
+        <script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+        <script type="text/javascript" src="/static/lib/socket/chat.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/static/js/register.js"></script>
+        <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+<body>
+<div class="login">
+    <!--注册-->
+    <div class="qlogin web_none" id="qlogin" style="display: block;">
+        <div class="web_login">
+            <div name="form2" id="regUser" accept-charset="utf-8" action="register" method="post">
+    	    <input name="Regtime" id="Regtime" value="{{.logintime}}" type="hidden">
+            <ul class="reg_form" id="reg-ul">
+                <div id="userCue" class="cue"></div>
+                <li>
+                    <label for="UserName" class="input-tips2">用户名：</label>
+                    <div class="inputOuter2">
+                        <input id="UserName" name="UserName" maxlength="16" class="inputstyle2" type="text">
+                    </div> 
+                </li> 
+                <li>
+                    <label for="PassWord" class="input-tips2">密码：</label>
+                    <div class="inputOuter2">
+                        <input id="PassWord" name="PassWord" maxlength="16" class="inputstyle2" type="password">
+                    </div>  
+                </li>
+                <li>
+                    <label for="Password2" class="input-tips2">确认密码：</label>
+                    <div class="inputOuter2">
+                        <input id="Password2" name="Password2" maxlength="16" class="inputstyle2" type="password">
+                    </div>
+                </li>
+                <li>
+                    <div class="reg-div">
+                        <input value="注 册" style="width:150px;" class="button_blue" type="button" id="userreg">
+                    </div> 
+                </li>
+                <div class="cl"></div>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!--注册end-->
+</div>
+
+
+</body></html>
+
+<script type="text/javascript">
+
+</script>
+

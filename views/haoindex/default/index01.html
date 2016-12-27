@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ 	<meta charset="utf-8">
+ 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width"/>
+	<title>皓月直播</title>
+	<script type="text/javascript">
+		var roomid = {{.roomid}}   //roomid
+		var themename = {{.themename}};			 //皮肤
+		var codeid = {{.codeid}};   //加密公司代码和房间号
+		try{
+		    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+		        window.location="/phone?roomid="+roomid;
+		    }
+		}catch(e){}
+	</script>	
+	<link rel="stylesheet" type="text/css" href="/static/lib/layer/skin/layer.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+	<script type="text/javascript" src="/static/lib/socket/json2.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+	<script type="text/javascript" src="/static/lib/socket/banner.js"></script>
+	<script type="text/javascript" src="/static/lib/socket/chat.js"></script>
+	<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="/static/lib/socket/uploadfile.js"></script>
+</head>
+<body>
+
+<div id="top">
+ 	<div id="focus">
+	     <ul> 
+	    
+	    {{range $k,$v :=.bannerlist}}	
+	    {{if eq "#" .Url}}
+	      <li>
+	        <div><a href="javascript:void(0);" target="_Blank"><img src=/upload/teachbanner/{{.Img}}  width="100%" height="100%"/></a></div>
+	      </li>
+	    {{else}}  
+	    <li>
+	        <div><a href={{.Url}} target="_Blank"><img src=/upload/teachbanner/{{.Img}}  width="100%" height="100%"/></a></div>
+	      </li>
+	    {{end}} 
+	    {{end}}
+	    
+	    <!--   <li>
+	        <div><a href="#" target="_parent"><img src="/static/images/teacher/top1.png"  width="100%" height="100%"/></a></div>
+	      </li>
+	      <li>
+	        <div><a href="#" target="_parent"><img src="/static/images/teacher/top2.png"  width="100%" height="100%"/></a></div>
+	      </li>
+	      <li>
+	        <div><a href="#" target="_parent"><img src="/static/images/teacher/top3.png"  width="100%" height="100%"/></a></div>
+	      </li>
+	      <li>
+	        <div><a href="#" target="_parent"><img src="/static/images/teacher/top4.png"  width="100%" height="100%"/></a></div>
+	      </li>
+	      <li>
+	        <div><a href="#" target="_parent"><img src="/static/images/teacher/top5.png"  width="100%" height="100%"/></a></div>
+	      </li>
+	      <li>
+	        <div><a href="#" target="_parent"><img src="/static/images/teacher/top6.png"  width="100%" height="100%"/></a></div>
+	      </li> -->
+	    </ul>
+ 	</div>
+</div>
+
+<!-- 左部 -->
+<div id="left">
+	{{if eq true .IsLogin}}
+	{{if eq true .roleInfoLen}}
+	<span class="popup" style="z-index:999;display:none">
+		<ul>
+			{{range $k,$v :=.userRoleInfo}}
+					<li>
+						<div class={{.Remark}}>
+							<span>{{.Title}}</span>
+						</div>
+					</li>
+			{{end}}
+		</ul>
+	</span>
+	{{end}}  
+	{{end}}
+			
+	<img name="upimg" src="" onerror="javascript:this.src='http://www.jb51.net/logos.gif'" style="z-index:9999999;display:none;margin:50px 50px;">
+	<div id="Border">
+	<input type="hidden" id="webUsername" name="webUsername" value={{.hideuserName}}></input>
+	{{if eq false .IsLogin}}
+		<!-- 未登录时显示 -->
+		<div class="Theme">
+			<img src="/static/images/i/img/logo.png" class="haoyue" style="width: 165px; height:60px;margin-left:40px;margin-top:-20px;">
+			<div class="register">
+				<a href="javascript:vold(0);" onclick="UserLogin(1)"><span class="">登录</span></a>
+				<a href="javascript:vold(0);" onclick="UserLogin(2)"><span class="">注册</span></a>
+			</div>
+		</div>
+	{{else}}
+	<!-- 登陆时注册 -->
+		<div class="Theme2">
+			<img src="/static/images/i/img/logo.png" style="margin-left:3%; width: 90%; height:25%;">
+			<div class="register2">
+				<div class="headPortrait">
+					<img src="" id="usericon" style="border-radius: 10px;width: 85%;height: 85%;margin-top:20%;">
+				</div>
+				<div class="character">
+					<ul>		
+						<li>
+							<span class="TopUsername" name="uname">{{.Msg}}<span class="uename">{{.userName}}</span></span>
+						</li>
+					</ul>
+					<div class="out">
+						<a href="/logout"><img name="tuichu" src="/static/images/i/img/1_17.png"><!-- <span class="Exit">退出</span> --></a>
+					</div>
+					<div class="set">
+						<a href="javascript:UserSet();"><img name="shezhi" src="/static/images/i/img/1_13.png"><!-- <span class="Exit">设置</span> --></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{end}}
+		<div class="MENU">
+			<span class="Lecturerone selectlist">会员</span>
+			<span class="Lecturerthree noselectlist">游客</span>
+		</div>
+		<div class="outer-border">
+				<input id="Border-seek" type="text"  style="font-size:16px;padding-left:10px;"/>
+				<img id="eliminate" style="display:none" src="/static/images/i/img/diancha.png">
+		</div>
+		<!-- <div class="baike369"></div> -->
+		<div id="Border-list">
+			<ul class="Userbox">
+			</ul>
+		</div>
+	</div>
+</div>
+		<!-- 中间 -->
+		<div id="center">
+			<div id="center-i">
+				<div class="play" id="weserver"></div>
+			</div>
+		</div>
+		<!-- 广播弹层 -->
+
+		<!-- 底部 -->
+		<div id="bottom">
+			<!-- <div id="bottom-left">
+				<img src="/static/images/i/img/title_exp.png" style="width: 100%; height=: 100%">
+			</div> -->
+				<div class="Expert">
+				</div>
+				<ul class="Expert_issue">
+					{{range $k,$v :=.qslist}}
+					<li style="width: 98%;">
+						<p  class="issue">问：{{.Question}}   </p>
+						<p >答：{{.Answer}}   </p>	
+					</li>
+					 {{end}}
+				<!-- 	<li>
+						<p class="issue">问：你们是什么平台？</p>
+						<p>答：您好！这边是【皓月】，属于第三方金融研究机构！主要主要的合作交易所是保利商品交易中心，其中与保利103号会员有战略合作关系。更多详情请咨询右上角老师助理。</p>	
+					</li>
+					<li>
+						<p class="issue">问：怎么开户？?</p>
+						<p>答：您好， 直接点击左边的“立即开户”即可，或者直接点击右上角老师助理QQ进行咨询！</p>		
+					</li>
+					<li>
+						<p class="issue">问：怎么进去VIP直播室？</p>
+						<p>答：您好，成为我们实盘客户，登陆你的用户名，点击右边的VIP通道，就能享受我们的VIP服务。</p>		
+					</li>
+					<li>
+						<p class="issue">问：注册要钱吗？</p>
+						<p>答：您好，注册是完全免费的。</p>		
+					</li>
+					<li>
+						<p class="issue">问：怎么注册？</p>
+						<p>答：您好，直接点击右上角的“注册”即可。不会操作的家人请直接点击右上角老师助理进行咨询。</p>		
+					</li>
+					<li>
+						<p class="issue">问：开户要多少资金？</p>
+						<p>答：您好，开户是完全免费的。</p>		
+					</li>
+					<li>
+						<p class="issue">问：我看不到视频</p>
+						<p>答：您好，由于网址版的不稳定，建议您刷新页面，清理一下浏览器的缓存，或者更换火狐浏览器进行查看。如果还不行请直接联系右上角老师助理进行咨询，助理会帮您调试的。</p>		
+					</li>
+					<li>
+						<p class="issue">问：现在讲课的是哪位老师？</p>
+						<p>答：您好，您可以直接联系右上方的课程表进行查看。</p>		
+					</li>
+					<li>
+						<p class="issue">问：怎么设为桌面或者加入收藏夹？</p>
+						<p>答：您好，直接点击左上角的“设为桌面”或者“加入收藏”按钮，选择保存方式为桌面即可！不会操作的家人请点击右上角老师助理进行咨询。</p>		
+					</li>
+					<li>
+						<p class="issue">问：机构内参是什么？</p>
+						<p>答：您好，机构内参是我们老师对于热门各品种行情的一个提前预判以及操作建议。</p>		
+					</li> -->
+				</ul>
+
+
+			<!-- <div id="bottom-center">
+				<div class="loading"></div>
+			    <ul>
+			    {{range $k,$v :=.qslist}}
+			      <li>
+			      	<a href="#" target="_blank">
+			      		<span>问：{{.Question}}</span><br>
+			      		<span>答：{{.Answer}}</span>
+			      	</a>
+			      </li>
+			    {{end}}
+			    </ul>
+			</div>
+			<div id="bottom-right">
+				<img src="/static/images/i/img/more.png" style="width: 100%; height=: 100%">
+			</div> -->
+		</div>
+		<!-- 右部 -->
+	<div id="right">
+		<div id="right-top1">
+		
+			<!-- <img src="/static/images/i/img/ser.jpg" style=" height:100%; width: 100%;"> -->
+			<img src="/upload/telbanner/{{.telbanner.Url}}" style=" height:100%; width: 100%;">
+		</div>
+		<iframe  id="linktoqq" target="_blank" style="display: none;"></iframe>
+		<div id="right-top2">
+			{{range $k,$v :=.custlist}}
+			<div class="top2-qq">
+				<a target="_blank" onclick="talktoqq({{.CustNumber}});"><img border="0" name="qqjiaotan" src="/static/images/i/img/qq1.png" alt="点击这里给我发消息" title="点击这里给我发消息" style=" height:100%; width: 100%;"></a>
+			</div>
+			{{end}}
+			<!-- <div class="top2-qq">
+				<a target="_blank" onclick="talktoqq();"><img border="0" name="qqjiaotan" src="/static/images/i/img/qq1.png" alt="点击这里给我发消息" title="点击这里给我发消息"/ style=" height:100%; width: 100%;"></a>
+			</div>
+			<div class="top2-qq">
+				<a target="_blank" onclick="talktoqq();"><img border="0" name="qqjiaotan" src="/static/images/i/img/qq1.png" alt="点击这里给我发消息" title="点击这里给我发消息"/ style=" height:100%; width: 100%;"></a>
+			</div>
+			<div class="top2-qq">		
+				<a target="_blank" onclick="talktoqq();"><img border="0" name="qqjiaotan" src="/static/images/i/img/qq1.png" alt="点击这里给我发消息" title="点击这里给我发消息"/ style=" height:100%; width: 100%;"></a>
+			</div>
+			<div class="top2-qq">
+				<a target="_blank" onclick="talktoqq();"><img border="0" name="qqjiaotan" src="/static/images/i/img/qq1.png" alt="点击这里给我发消息" title="点击这里给我发消息"/ style=" height:100%; width: 100%;"></a>
+			</div>	
+			<div class="top2-qq">
+				<a target="_blank" onclick="talktoqq();"><img border="0" name="qqjiaotan" src="/static/images/i/img/qq1.png" alt="点击这里给我发消息" title="点击这里给我发消息"/ style=" height:100%; width: 100%;"></a>
+			</div> -->
+		</div>
+									
+		<div id="right-center">
+			<div class="bigone" style="position:relative;overflow:hidden">
+				<div style="position:relative;overflow:hidden;height: 100%;">
+					<div class="titleone">
+						<a href="javascript:vold(0);" class="selecttab">公聊</a>
+						<a href="javascript:vold(0);" style="display: none;" class="noselecttab">私聊</a>
+						{{if eq true .IsLogin}}
+						{{if eq true .isManager}}
+						<span onclick="BroadCast();" style="float: right;font-size:14px;cursor: pointer;margin-right: 9px;">
+							<img src="/static/images/i/img/broadcast.png" style="width: 100%;height: 100%;">
+						</span>
+						{{end}}
+						{{end}}
+					</div>
+					<div class="Broadcast">
+						<img src="/static/images/i/img/005.png" class="Broadcast-Icon">
+						<marquee width=90%  scrollamount=3 behavior="scroll"  style="font-size:11pt; FONT-FAMILY: 微软雅黑;letter-spacing: 1.5px;height:100%; margin-left: 10%; color:red;margin-top: 0.5%;">欢迎来到皓月直播聊天室
+						</marquee>
+					</div>
+						<div class="listone list1">
+							<div id="right-chat">
+								<ul id="Dialog">
+								</ul>
+							</div>
+						</div>
+						<!-- 第二个内容 -->
+						<div class="listone list2">
+							<div id="right-chat">
+								<ul id="Dialog">
+
+								</ul>
+							</div>
+						</div>
+						<!-- 第三个内容 -->
+				</div>
+			</div>
+		</div>
+		<div id="right-bottom">
+			<div class="right-image">
+				<img src="/static/images/i/img/biaoqing_01.png" name="face">
+				<div class="expression">
+					 <table height="180" width="270">
+		               	<tbody>
+		           		</tbody>
+		        	</table>
+		        	<!--
+		        	<div>
+						<a href="#" class="Default">默认</a>
+						<a href="#" class="">叮当猫</a>
+						<a href="#" class="">暴走漫画</a>
+						<a href="#" class="">小恐龙</a>
+					</div>
+					 -->
+            	</div>
+				<input id="img_upload" name="img_upload" type="file" multiple="true">
+				<img name="clearBody" src="/static/images/i/img/04.png">
+				<img name="tumbleBody" src="/static/images/i/img/05_dark.png">
+				<!-- <input id="input-box"  type="text" value="" style="font-size:19px;"/> -->
+				<span class="Object">所有人</span>
+			</div>
+		</div>	
+		<!-- <span >发送</span> -->
+		<img class="send" src="/static/images/i/img/23.jpg">
+		<div contentEditable=true  class="inputsend">
+		</div>
+</div>
+<script type="text/javascript" src="/static/lib/ckplayer/ckplayer.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nicescroll.js"></script>
+<script type="text/javascript">
+	setScrollstyle(".Userbox");
+	setScrollstyle(".list1 #Dialog");
+	setScrollstyle(".list2 #Dialog");
+	setScrollstyle(".Expert_issue");
+	setScrollstyle(".information");
+	//setScrollstyle(".information");
+
+	var playindex=0;
+	function ckplayerflv(){
+		var url='';
+		switch(playindex){
+			case 0:
+				url='/static/lib/ckplayer/sp/1.flv';
+				break;
+			case 1:
+				url='/static/lib/ckplayer/sp/2.flv';
+				break;
+			default:
+				break;
+		}
+		var flashvars={
+			f:url,
+			i:'',
+			l:'',
+			r:'',
+			a:'',
+			t:0,
+			s:0,
+			e:0,
+			c:0,
+			p:1,
+			b:1
+			};
+		var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+		CKobject.embedSWF('/static/lib/ckplayer/ckplayer.swf','center','ckplayer_weserver',$("#center").width(),$("#center").height(),flashvars,params);	
+		function closelights(){//关灯
+		}
+		function openlights(){//开灯
+		}
+		return 0;
+	}
+
+	function playerstop(){
+		switch(playindex){
+			case 0:
+				playindex=1;
+				break;
+			case 1:
+				playindex=0;
+				break;
+			default:
+				break;
+		}
+		ckplayerflv();
+	}
+	ckplayerflv();
+</script>
+</body>
+</html>
+<script type="text/javascript">
+	layer.use('extend/layer.ext.js')
+	$(function(){
+		$("#usericon").attr('src',"/upload/usericon/" +  {{.userIconInfo.UserIcon}});
+		$.ajax({
+		        type: "post",
+		        url: "/finance_index",
+		        success: function(rsp){
+                if (rsp.status){
+                }else{
+                }
+            }
+		});
+	});
+
+	var resizeTimer = null;
+	$(window).resize(function () {//当浏览器大小变化时
+		if (resizeTimer) clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(windowset,200);
+	});
+
+	function UserLogin(type){
+        layer.open({
+        	type : 2,
+            title: '用户登录',
+            shadeClose: true,
+            shade: [0.01],
+            area: ['500px', '450px'],
+            content : 'reglogin?type='+type
+        });
+	}
+
+	function UserSet(){
+		 layer.open({
+        	type : 2,
+            title: '修改信息',
+            shadeClose: true,
+            shade: [0.01],
+            maxmin: true, 
+            area: ['700px', '600px'],
+            content : '/userupdate?codeid='+codeid
+        }); 
+	}
+
+	function BroadCast(){
+		layer.tab({
+		  	area: ['500px', '230px'],
+		  	tab: [{
+		    title: '发送广播', 
+		    content: "<iframe src='/sendbroadcast' frameborder='0' scrolling='0' height='150px' width='430px' ></iframe>"
+		  }]
+		});
+	}
+
+	function talktoqq(data){
+		var temp1 = "http://wpa.qq.com/msgrd?v=3&uin=";
+		var temp2 = "&site=qq&menu=yes";
+		var qqnum = temp1 + data + temp2;
+
+		$("#linktoqq").attr('src',qqnum);
+	}
+
+</script>
+
