@@ -24,15 +24,16 @@ var (
 )
 
 type Userinfor struct {
-	Codeid    string //房间号公司代码加密
-	Uname     string //用户名
-	Nickname  string //用户昵称
-	UserIcon  string //logo
-	RoleName  string //用户角色
-	Titlerole string //用户类型
-	Authorcss string //头衔
-	Insider   int64  //1内部人员或0外部人员
-	IsLogin   bool   //是否登入
+	Codeid     string //房间号公司代码加密
+	Uname      string //用户名
+	Nickname   string //用户昵称
+	UserIcon   string //logo
+	RoleName   string //用户角色
+	Titlerole  string //用户类型
+	Authortype string //用户头衔
+	Authorcss  string //头衔
+	Insider    int64  //1内部人员或0外部人员
+	IsLogin    bool   //是否登入
 }
 
 func init() {
@@ -90,7 +91,8 @@ func (this *IndexController) Get() {
 
 		beego.Info("user info:", userInfo)
 		this.Data["userInfo"] = userInfo
-		this.TplName = "dist/index.html"
+		//this.TplName = "dist/index.html"
+		this.TplName = "index.html"
 		this.Redirect("/index", 302)
 	}
 }
@@ -101,6 +103,7 @@ func (this *IndexController) Index() {
 		// userInfo := new(m.User)
 		userInfo := Info.(*m.User)
 		beego.Debug("userInfo--==", userInfo.Username)
+		sysconfig, _ := m.GetAllSysConfig() //系统设置
 		userLoad, err := m.LoadRelatedUser(userInfo, "Username")
 		if err != nil {
 			beego.Error("load retalteduser error", err)
@@ -122,7 +125,8 @@ func (this *IndexController) Index() {
 		}
 		user.Authorcss = "/upload/usertitle/visitor.png"
 		user.UserIcon = userInfo.Headimgurl
-		user.Insider = 0 //1内部人员或0外部人员
+		user.Insider = 0                          //1内部人员或0外部人员
+		this.Data["title"] = sysconfig.WelcomeMsg //公告
 		this.Data["user"] = user
 
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
@@ -136,8 +140,8 @@ func (this *IndexController) Index() {
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
-
-		this.TplName = "dist/index.html"
+		this.TplName = "index.html"
+		//this.TplName = "dist/index.html"
 	} else {
 		this.Redirect("/", 302)
 	}

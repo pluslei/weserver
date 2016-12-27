@@ -179,6 +179,7 @@ func Chatprogram() {
 				coderoom := Transformname(codeid, "", 2)        //房间号
 				roomid, _ := strconv.ParseInt(coderoom, 10, 64) //房间号
 				sojson.Coderoom = int(roomid)                   //公司代码房间号
+				sojson.Codeid = codeid                          //解码公司代码和房间号
 				//禁言控制
 				chatstate := true
 				var gag m.GagControl
@@ -323,7 +324,7 @@ func Chatprogram() {
 				coderoom := Transformname(codeid, "", 2)        //房间号
 				roomid, _ := strconv.ParseInt(coderoom, 10, 64) //房间号
 				sojson.Coderoom = int(roomid)                   //公司代码房间号
-
+				sojson.Codeid = codeid                          //解码公司代码和房间号
 				author := new(m.User)
 				author.Username = objauthor
 				_, err = m.LoadRelatedUser(author, "Username")
@@ -418,10 +419,12 @@ func Chatprogram() {
 				sojson.Procities = js.Get("WebPro").MustString() //省市
 
 				codeid := js.Get("Codeid").MustString()
+				codeid = Transformname(codeid, "", -1)          //解码公司代码和房间号
 				coderoom := Transformname(codeid, "", 2)        //房间号
 				roomid, _ := strconv.ParseInt(coderoom, 10, 64) //房间号
 				if roomid > 0 {
 					sojson.Coderoom = int(roomid) //房间号
+					sojson.Codeid = codeid        //解码公司代码和房间号
 				}
 				author := new(m.User)
 				author.Username = sojson.Author
@@ -468,7 +471,7 @@ func Chatprogram() {
 									length := int(num)
 									for i := 0; i < length; i++ {
 										sojson.Coderoom = int(roominfo[i].RommNumber)
-										codeid = p.Code + "_" + fmt.Sprintf("%d", roominfo[i].RommNumber)
+										codeid = roominfo[i].CompanyCode + "_" + fmt.Sprintf("%d", roominfo[i].RommNumber)
 										//数据传给后台
 										data := make(map[string]interface{})
 										/*
@@ -527,7 +530,6 @@ func Chatprogram() {
 									Savechatdata(sojson, 2)
 								}
 							}
-
 							sendshowmsg := "广播发送成功!"
 							so.Emit("all success", sendshowmsg)
 						} else {
@@ -767,6 +769,7 @@ func (this *SocketController) ChatUserList() {
 							if len(jobolddata) > 0 {
 								socketchat[1], _ = Jsontosocket(jobolddata)
 							}
+							//p.Client.Del(jobmark)
 							chatlen[1] = len(socketchat[1])
 							length := chatlen[0] + chatlen[1]
 							if length > 0 {
@@ -840,8 +843,10 @@ func (this *SocketController) ChatUserList() {
 						}
 					default:
 					}
-					data["historydata"] = historychat      //聊天的历史信息
-					data["content"] = sysconfig.WelcomeMsg //公告
+					data["historydata"] = historychat //聊天的历史信息
+					//从数据库中获取公告中的最后一条内容
+					broaddata, _ := m.GetBroadcastData(int(roomid))
+					data["notice"] = broaddata //公告
 				}
 			case "read":
 			case "gagcontrol": //禁言操作
@@ -1130,7 +1135,7 @@ func Savechatdata(sojson Socketjson, sel int64) {
 					socketchat []Socketjson
 					jsonstr    string
 				)
-				jobmark := "chat_new_" + p.Code + "_" + fmt.Sprintf("%d", sojson.Coderoom)
+				jobmark := "chat_new_" + sojson.Codeid
 				jobdata, _ := p.Client.Get(jobmark)
 				if len(jobdata) > 0 {
 					socketchat, _ = Jsontosocket(jobdata)
@@ -1142,7 +1147,7 @@ func Savechatdata(sojson Socketjson, sel int64) {
 				length := len(socketchat)
 				if length == recordcount {
 					p.Client.Del(jobmark)
-					jobmark = "chat_old_" + p.Code + "_" + fmt.Sprintf("%d", sojson.Coderoom)
+					jobmark = "chat_old_" + sojson.Codeid
 					p.Client.Set(jobmark, jsonstr)
 					//写数据库
 					var chat []m.ChatRecord
