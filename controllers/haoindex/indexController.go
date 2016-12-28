@@ -136,8 +136,8 @@ func (this *IndexController) Index() {
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
-		this.TplName = "dist/index.html"
-		// this.TplName = "index.html"
+		//this.TplName = "dist/index.html"
+		this.TplName = "index.html"
 
 	} else {
 		this.Redirect("/", 302)
