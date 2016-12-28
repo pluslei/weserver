@@ -16,17 +16,16 @@ func init() {
 	orm.Debug = true
 	beego.SetStaticPath("/upload", "../upload")
 
-	beego.SetStaticPath("/css", "./views/dist/css")
-	beego.SetStaticPath("/i", "./views/dist/i")
-	beego.SetStaticPath("/js", "./views/dist/js")
-	beego.SetStaticPath("/fonts", "./views/dist/fonts")
+	// beego.SetStaticPath("/css", "./views/dist/css")
+	// beego.SetStaticPath("/i", "./views/dist/i")
+	// beego.SetStaticPath("/js", "./views/dist/js")
+	// beego.SetStaticPath("/fonts", "./views/dist/fonts")
 
-	// beego.SetViewsPath("../chat/dist")
-	// beego.SetStaticPath("/css", "../chat/dist/css")
-	// beego.SetStaticPath("/i", "../chat/dist/i")
-	// beego.SetStaticPath("/js", "../chat/dist/js")
-	// beego.SetStaticPath("/fonts", "../chat/dist/fonts")
-
+	beego.SetViewsPath("../weclient/dist")
+	beego.SetStaticPath("/css", "../weclient/dist/css")
+	beego.SetStaticPath("/i", "../weclient/dist/i")
+	beego.SetStaticPath("/js", "../weclient/dist/js")
+	beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
 }
 
 // 路由必须三个/以上
@@ -34,7 +33,7 @@ func init() {
 
 func Router() {
 	// public
-	beego.Router("/public/index", &haoadmin.MainController{}, "*:Index")
+	beego.Router("/haoindex", &haoadmin.MainController{}, "*:Index")
 	beego.Router("/public/login", &haoadmin.MainController{}, "*:Login")
 	beego.Router("/public/logout", &haoadmin.MainController{}, "*:Logout")
 	beego.Router("/public/updateadmin", &haoadmin.MainController{}, "*:UpdateAdminIndex")

@@ -224,7 +224,7 @@ func (this *MainController) Login() {
 				this.SetSession("userinfo", user)
 				accesslist, _ := m.GetAccessList(user.Id)
 				this.SetSession("accesslist", accesslist)
-				this.Rsp(true, "登录成功", "/public/index")
+				this.Rsp(true, "登录成功", "/weserver/public/index")
 
 				return
 			} else {
@@ -237,7 +237,7 @@ func (this *MainController) Login() {
 					this.SetSession("userinfo", user)
 					accesslist, _ := m.GetAccessList(user.Id)
 					this.SetSession("accesslist", accesslist)
-					this.Rsp(true, "登录成功", "/public/index")
+					this.Rsp(true, "登录成功", "/weserver/public/index")
 
 					return
 				} else {
@@ -245,7 +245,7 @@ func (this *MainController) Login() {
 					return
 				}
 			} else {
-				this.Ctx.Redirect(302, "/public/index")
+				this.Ctx.Redirect(302, "/weserver/public/index")
 			}
 		}
 

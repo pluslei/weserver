@@ -79,6 +79,7 @@ type Socketjson struct {
 	Chat        string    //公聊，对他说，私聊
 	Content     string    //发送的内容
 	Coderoom    int       //房间号
+	Codeid      string    //解码公司代码和房间号
 	Time        string    //时间
 	Newtime     string    //时间
 	Datatime    time.Time //添加时间
