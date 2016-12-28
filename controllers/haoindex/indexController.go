@@ -24,16 +24,15 @@ var (
 )
 
 type Userinfor struct {
-	Codeid     string //房间号公司代码加密
-	Uname      string //用户名
-	Nickname   string //用户昵称
-	UserIcon   string //logo
-	RoleName   string //用户角色
-	Titlerole  string //用户类型
-	Authortype string //用户头衔
-	Authorcss  string //头衔
-	Insider    int64  //1内部人员或0外部人员
-	IsLogin    bool   //是否登入
+	Codeid    string //房间号公司代码加密
+	Uname     string //用户名
+	Nickname  string //用户昵称
+	UserIcon  string //logo
+	RoleName  string //用户角色[vip,silver,gold,jewel]
+	RoleTitle string //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	RoleIcon  string //用户角色默认头像
+	Insider   int64  //1内部人员或0外部人员
+	IsLogin   bool   //是否登入
 }
 
 func init() {
@@ -93,6 +92,7 @@ func (this *IndexController) Get() {
 	}
 }
 
+//
 func (this *IndexController) Index() {
 	Info := this.GetSession("indexUserInfo")
 	if Info != nil {
@@ -105,26 +105,40 @@ func (this *IndexController) Index() {
 			beego.Error("load retalteduser error", err)
 		}
 		beego.Debug("get the userload:", userLoad)
+		beego.Debug("get the userload:", userLoad.Role)
+		beego.Debug("get the userload:", userLoad.Title)
 		user := new(Userinfor)
-		prevalue := "100" + "_" + "10000"
+		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
 		codeid := tools.MainEncrypt(prevalue)
 		user.Codeid = codeid
 		user.Uname = userInfo.Username
-		user.Nickname = userInfo.Nickname
-		user.IsLogin = true
+		user.UserIcon = userInfo.Headimgurl
 		user.RoleName = userLoad.Role.Name
 
-		if userLoad.Role.Id > 0 {
-			user.Titlerole = userLoad.Role.Title //用户类型
+		// 设置昵称使用设置的
+		if len(userInfo.Remark) <= 0 {
+			user.Nickname = userInfo.Nickname
 		} else {
-			user.Titlerole = "游客" //用户类型
+			user.Nickname = userInfo.Remark
 		}
-		user.Authorcss = "/upload/usertitle/visitor.png"
-		user.UserIcon = userInfo.Headimgurl
+
+		// 用户为禁用和未审核状态不准登录
+		if userLoad.Status == 2 || userLoad.RegStatus == 2 {
+			user.IsLogin = true
+		} else {
+			user.IsLogin = false
+		}
+
+		if userLoad.Title.Id > 0 {
+			user.RoleTitle = userLoad.Title.Name //用户类型
+		} else {
+			user.RoleTitle = "游客" //用户类型
+		}
+		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
+
 		user.Insider = 0                          //1内部人员或0外部人员
 		this.Data["title"] = sysconfig.WelcomeMsg //公告
 		this.Data["user"] = user
-
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 
 		jssdk := wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
@@ -136,7 +150,10 @@ func (this *IndexController) Index() {
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
-		this.TplName = "dist/index.html"
+
+		system, _ := m.GetSysConfig() //获取配置表数据
+		this.Data["system"] = system
+		this.TplName = "index.html"
 		// this.TplName = "index.html"
 
 	} else {
@@ -210,4 +227,26 @@ func (this *IndexController) updateUser(id int64, userInfo oauth.UserInfo) error
 	u.Headimgurl = userInfo.HeadImgURL
 	u.Unionid = userInfo.Unionid
 	return u.UpdateUserFields("UserIcon", "Nickname", "Sex", "Province", "City", "Country", "Headimgurl", "Unionid")
+}
+
+func (this *IndexController) SetNickname() {
+	id, _ := this.GetInt64("id")
+	username := this.GetString("username")
+	remark := this.GetString("nickname")
+
+	usr := new(m.User)
+	usr.Id = id
+	usr.Username = username
+	user, err := m.ReadFieldUser(usr, "Id", "Username")
+	if err != nil {
+		beego.Error("get the user error:", err)
+	} else {
+		user.Remark = remark
+		err := user.UpdateUserFields("Remark")
+		if err != nil {
+			this.Rsp(false, "修改昵称失败", "")
+		} else {
+			this.Rsp(true, "昵称修改成功", "")
+		}
+	}
 }

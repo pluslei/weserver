@@ -9,6 +9,7 @@ import (
 	"time"
 	m "weserver/models"
 	p "weserver/src/parameter"
+	"weserver/src/socket"
 	"weserver/src/tools"
 )
 
@@ -491,6 +492,7 @@ func (this *UserController) Onlineuser() {
 	}
 }
 
+// 用户审核
 func (this *UserController) UpdateRegStatus() {
 	Id, _ := this.GetInt64("Id")
 	u := new(m.User)
@@ -504,4 +506,68 @@ func (this *UserController) UpdateRegStatus() {
 	} else {
 		this.Rsp(true, "审核成功", "")
 	}
+}
+
+// 用户状态
+func (this *UserController) UpdateUserStatus() {
+	userid, _ := this.GetInt64("Id")
+	usr := new(m.User)
+	usr.Id = userid
+	user, err := m.ReadFieldUser(usr, "Id")
+	if err != nil {
+		this.Rsp(false, "状态改变失败", "")
+	} else {
+		if this.changeuserstatus(user) {
+			this.Rsp(true, "修改成功", "")
+		} else {
+			this.Rsp(false, "修改失败", "")
+		}
+	}
+}
+
+// 踢出房间
+// 房间踢出失败原因可能人不再map里面
+func (this *UserController) KictUser() {
+	userid, _ := this.GetInt64("Id")
+	usr := new(m.User)
+	usr.Id = userid
+	user, err := m.ReadFieldUser(usr, "Id")
+	if err != nil {
+		this.Rsp(false, "踢出失败", "")
+		return
+	}
+	if user.Status == 1 {
+		this.Rsp(false, "用户已未禁用状态", "")
+		return
+	}
+	if user.RegStatus == 1 {
+		this.Rsp(false, "用户暂未审核", "")
+		return
+	}
+
+	if this.changeuserstatus(user) {
+		if socket.KictUser(user.Username) {
+			this.Rsp(true, "踢出成功", "")
+		} else {
+			this.Rsp(false, "踢出失败", "")
+		}
+	} else {
+		this.Rsp(false, "踢出失败", "")
+	}
+}
+
+func (this *UserController) changeuserstatus(user *m.User) bool {
+	if user.Status == 1 {
+		user.Status = 2
+	} else {
+		user.Status = 1
+	}
+	err := user.UpdateUserFields("Status")
+	if err != nil {
+		beego.Error(err)
+		return false
+	} else {
+		return true
+	}
+	return false
 }

@@ -15,12 +15,12 @@ func init() {
 	// 开启调试模式
 	orm.Debug = true
 	beego.SetStaticPath("/upload", "../upload")
-	/*
-		beego.SetStaticPath("/css", "./views/dist/css")
-		beego.SetStaticPath("/i", "./views/dist/i")
-		beego.SetStaticPath("/js", "./views/dist/js")
-		beego.SetStaticPath("/fonts", "./views/dist/fonts")
-	*/
+
+	// beego.SetStaticPath("/css", "./views/dist/css")
+	// beego.SetStaticPath("/i", "./views/dist/i")
+	// beego.SetStaticPath("/js", "./views/dist/js")
+	// beego.SetStaticPath("/fonts", "./views/dist/fonts")
+
 	beego.SetViewsPath("../weclient/dist")
 	beego.SetStaticPath("/css", "../weclient/dist/css")
 	beego.SetStaticPath("/i", "../weclient/dist/i")
@@ -50,6 +50,8 @@ func Router() {
 	beego.Router("/weserver/user/usertorole", &haoadmin.UserController{}, "*:UserToRole")
 	beego.Router("/weserver/user/usertotitle", &haoadmin.UserController{}, "*:UserToTitle")
 	beego.Router("/weserver/user/regstatus", &haoadmin.UserController{}, "*:UpdateRegStatus")
+	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateUserStatus")
+	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
 
 	//在线用户
@@ -173,6 +175,7 @@ func Router() {
 	beego.Router("/face", &haoindex.FaceController{}, "*:Add")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
+	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
 
 	//socket
 	beego.Router("/chat/modify/icon", &socket.SocketController{}, "*:ChatModifyIcon")

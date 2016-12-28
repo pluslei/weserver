@@ -81,6 +81,6 @@ func ReadSysConfigById(id int64) (SysConfig, error) {
 
 func GetSysConfig() (sysconfig SysConfig, err error) {
 	model := orm.NewOrm()
-	err = model.QueryTable("sys_config").One(&sysconfig)
+	err = model.QueryTable("sys_config").Limit(1).One(&sysconfig)
 	return sysconfig, err
 }

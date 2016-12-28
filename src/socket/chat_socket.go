@@ -1210,3 +1210,18 @@ func Savechatdata(sojson Socketjson, sel int64) {
 func AnalyticContentdata(content string) string {
 	return content
 }
+
+func KictUser(uname string) bool {
+	prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+	codename := Transformname(prevalue, EncodeB64(uname), 0)
+
+	if len(job.socketiduser) <= 0 {
+		return false
+	}
+	beego.Debug("=codename:", job.socketiduser, codename)
+	if _, ok := job.socketiduser[job.socketidso[codename].Id()]; ok == true {
+		delete(job.socketiduser, job.socketidso[codename].Id())
+		return true
+	}
+	return false
+}

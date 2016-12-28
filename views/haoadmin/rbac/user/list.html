@@ -19,15 +19,14 @@
                 <thead>
                     <tr>
 
-                        <th>全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
-                        <th>用户名</th>
-                        <th>昵称</th>
-                        <th>邮箱</th>
+                        <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
+                        <th>用户昵称</th>
+                        <th>地址</th>
                         <th>用户状态</th>
                         <th>审核状态</th>
                         <th>角色</th>
-                        <th>创建时间</th>
-                        <th>操作</th>
+                        <th>登录时间</th>
+                        <th style="width:100px;">操作</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -53,6 +52,24 @@
     </div>
   </div>
 </div>
+
+<!-- 踢出房间 -->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="kick-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">踢出房间</div>
+    <div class="am-modal-bd">
+      你，确定要踢出吗？
+    </div>
+    <div class="am-modal-footer">
+      <input value="" type="hidden" class="data-modal-kick">
+      <span class="am-modal-btn data-am-modal-cancel">取消</span>
+      <span class="am-modal-btn data-am-modal-confirm" onclick="kickOutModel()">确定</span>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"> -->
@@ -145,15 +162,29 @@
                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+oData.Id+"' onchange='chkuser("+oData.Id+")'  ></input></div>");
                     }
                 },
-                {"mDataProp": "Username",},
-                {"mDataProp": "Nickname",},
-                {"mDataProp": "Email",},
+                {"mDataProp": "Nickname",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (oData.Sex == 1) {
+                            sexImg = "/static/images/man.png";
+                        }else if (oData.Sex == 2 ) {
+                            sexImg = "/static/images/wman.png"
+                        }else{
+                            sexImg = ""
+                        }
+                        $(nTd).html("<img src="+oData.Headimgurl+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData+"<img src='  "+sexImg+"'>");
+                    }
+                },
+                {"mDataProp": "Province",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html(oData.Province+" "+oData.City);
+                    }
+                },
                 {"mDataProp": "Status",
                     "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
-                        if (sData == 1) {
-                            $(nTd).html("<span class='am-alert am-alert-success'>正常</span>");
+                        if (sData == 2) {
+                            $(nTd).html("<span class='am-alert am-alert-success regstatus' onclick='javascript:chnageUserStatus("+oData.Id+");'>正常</span>");
                         } else {
-                            $(nTd).html("<span class='am-alert am-alert-danger'>禁用</span>");
+                            $(nTd).html("<span class='am-alert am-alert-danger regstatus' onclick='javascript:chnageUserStatus("+oData.Id+");'>禁用</span>");
                         }
                     }
                 },
@@ -174,7 +205,7 @@
                 {"mDataProp": "Createtime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a></div>");
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+")'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
                     }
                 },
             ],
@@ -255,6 +286,7 @@
         $(this).removeData('amui.modal');
         $(".data-modal-del").val("");
     });
+    
 
     function chkuser(argument) {
         var inputname="userchk"+argument;
@@ -279,6 +311,49 @@
             }
         })
     }
+
+    function chnageUserStatus(id){
+        $.ajax({
+            url: '/weserver/user/userstatus',
+            type: 'POST',
+            data: {Id: id},
+            success:function(data){
+                alert(data.info);
+                if (data.status) {
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }
+            }
+        })
+    }
+
+
+    // 踢出模态层
+    function kickOutFun(delid){
+        $('#kick-confirm').modal()
+        $(".data-modal-kick").val(delid);
+    }
+
+    // 踢出方法
+    function kickOutModel(){
+        var id = $(".data-modal-kick").val();
+        $.ajax({
+            url: '/weserver/user/kictuser',
+            type: 'POST',
+            data: {Id: id},
+            success:function(data){
+                alert(data.info);
+                if (data.status) {
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }
+            }
+        })
+    }
+    // 模态退出
+    $('#kick-confirm').on('closed.modal.amui', function() {
+        $(this).removeData('amui.modal');
+        $(".data-modal-kick").val("");
+    });
+
 
 
 </script>
