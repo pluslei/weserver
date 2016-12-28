@@ -155,7 +155,6 @@ func (this *IndexController) Index() {
 		this.Data["system"] = system
 		this.TplName = "index.html"
 		// this.TplName = "index.html"
-
 	} else {
 		this.Redirect("/", 302)
 	}
