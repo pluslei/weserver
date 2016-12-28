@@ -5,10 +5,55 @@
       localId: '',
       serverId: ''
   };
+<<<<<<< HEAD
   var images = {
     localId: [],
     serverId: []
   };
+=======
+
+  $(function(){
+    // 录制声音上传
+    $("#startRecord").on('touchstart', function(event) {
+      event.preventDefault();
+      START = new Date().getTime();
+      recordTimer = setTimeout(function(){
+          wx.startRecord({
+              success:function (){
+                localStorage.rainAllowRecord = 'true';
+              },
+              cancel: function () {
+                  alert('用户拒绝授权录音');
+                  $(this).html("按住 说话")
+              }
+          });
+      },200);
+      $(this).html("松开 结束") 
+    });
+
+    $("#startRecord").on('touchend', function(event) {
+      $(this).html("按住 说话")
+      event.preventDefault();
+      END = new Date().getTime();
+      if((END - START) < 200){
+          END = 0;
+          START = 0;
+          //小于200ms，不录音
+          clearTimeout(recordTimer);
+      }else{
+          wx.stopRecord({
+            success: function (res) {
+              voice.localId = res.localId;
+              uploadVoice(res.localId);
+            },
+            fail: function (res) {
+              alert(JSON.stringify(res));
+            }
+          });
+      }
+    });
+  })
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
 
   wx.ready(function () {
       // 监听录音自动停止
@@ -42,6 +87,7 @@
     alert(res);
   });
 
+<<<<<<< HEAD
   $(function() {
     var startY, endY;
     document.getElementById("startRecord").addEventListener("touchstart", touchStart, false);
@@ -138,6 +184,8 @@
     })
   })
   
+=======
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
 
   //上传录音
   function uploadVoice(localid){
@@ -147,6 +195,10 @@
         success: function (res) {
           console.info("voice.localId res",res,res.serverId);
           // TODO进行数据库入库操作
+<<<<<<< HEAD
+=======
+          // var voicedata = '<img src="../i/videomyself.png" alt="videomyself" class="videomyself am-margin-left-sm playVoice" data-status="start" data-voicersrc="'+res.serverId+'" onclick="playVoice(this)" />'
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
           const sendmsg = {
             Chat: 'allchat',
             Codeid: userinfor.Codeid,
@@ -194,9 +246,15 @@
           }
       });
     }else{
+<<<<<<< HEAD
       // 结束播放
       stopPlayVoice(voice.serverId)
       // 改为开始播放样式
+=======
+      wx.stopVoice({
+        localId: voice.serverId
+      });
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
       startPlayStyle(obj,sel)
     }
   }
@@ -210,6 +268,7 @@
   // 监听播放停止
   function autoPlayStop(localid){
     stopLastVoice()    
+<<<<<<< HEAD
   }
 
   // 结束播放接口
@@ -230,6 +289,13 @@
   }
 
 
+=======
+    // // alert(localid);
+    // $('.playVoice').attr('src', '../i/videomyself.gif');
+    // $(".playVoice").attr('data-status','start');
+  }
+
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
   // 开始播放时候样式
   function startPlayStyle(obj,sel){
     switch(sel) {
@@ -280,7 +346,10 @@
 
   // 结束上一段语言
   function stopLastVoice(){
+<<<<<<< HEAD
     stopPlayVoice(voice.serverId)
+=======
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
     switch(voiceindex) {
       case 100:
         {
@@ -301,5 +370,9 @@
         break;
     }
     $(voiceobj).attr("data-status","start");
+<<<<<<< HEAD
   }
 
+=======
+  }
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef

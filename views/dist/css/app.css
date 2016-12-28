@@ -292,7 +292,11 @@ body {
 }
 /*公告*/
 .chat .noticeTip {
+<<<<<<< HEAD
   width: 60px;
+=======
+  width: 20px;
+>>>>>>> 11996a6b23372c992730476cbcf434112e9f88ef
   position: fixed;
   right: 0px;
   top: 0px;

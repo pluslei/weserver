@@ -13,7 +13,7 @@ func main() {
 	// 链接数据库
 	m.Connect()
 	// 创建数据库
-	orm.RunSyncdb("default", false, false)
+	orm.RunSyncdb("default", false, true)
 	beego.ErrorController(&haoindex.ErrorController{}) //注册错误处理的函数
 
 	//socket

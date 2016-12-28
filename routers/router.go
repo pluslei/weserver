@@ -15,12 +15,12 @@ func init() {
 	// 开启调试模式
 	orm.Debug = true
 	beego.SetStaticPath("/upload", "../upload")
-
-	// beego.SetStaticPath("/css", "./views/dist/css")
-	// beego.SetStaticPath("/i", "./views/dist/i")
-	// beego.SetStaticPath("/js", "./views/dist/js")
-	// beego.SetStaticPath("/fonts", "./views/dist/fonts")
-
+	/*
+		beego.SetStaticPath("/css", "./views/dist/css")
+		beego.SetStaticPath("/i", "./views/dist/i")
+		beego.SetStaticPath("/js", "./views/dist/js")
+		beego.SetStaticPath("/fonts", "./views/dist/fonts")
+	*/
 	beego.SetViewsPath("../weclient/dist")
 	beego.SetStaticPath("/css", "../weclient/dist/css")
 	beego.SetStaticPath("/i", "../weclient/dist/i")

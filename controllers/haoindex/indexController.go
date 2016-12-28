@@ -88,7 +88,6 @@ func (this *IndexController) Get() {
 
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
-
 		beego.Debug("user info:", userInfo)
 		this.Redirect("/index", 302)
 	}
@@ -139,6 +138,7 @@ func (this *IndexController) Index() {
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
 		this.TplName = "dist/index.html"
 		// this.TplName = "index.html"
+
 	} else {
 		this.Redirect("/", 302)
 	}
