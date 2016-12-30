@@ -99,7 +99,6 @@ func (this *IndexController) Index() {
 	if Info != nil {
 		// userInfo := new(m.User)
 		userInfo := Info.(*m.User)
-		beego.Debug("userInfo--==", userInfo.Username)
 		sysconfig, _ := m.GetAllSysConfig() //系统设置
 		userLoad, err := m.LoadRelatedUser(userInfo, "Username")
 		if err != nil {
@@ -124,7 +123,7 @@ func (this *IndexController) Index() {
 		}
 
 		// 用户为禁用和未审核状态不准登录
-		if userLoad.Status == 2 || userLoad.RegStatus == 2 {
+		if userLoad.Status == 2 && userLoad.RegStatus == 2 {
 			user.IsLogin = true
 		} else {
 			user.IsLogin = false
@@ -187,11 +186,9 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	configRole := config.Registerrole
 	configTitle := config.Registertitle
 	configVerify := config.Verify
-	beego.Debug("config==========", config)
 	u := new(m.User)
 	u.Username = userInfo.OpenID
-	u.Status = 1
-	if configVerify == 0 {
+	if configVerify == 0 { //是否开启验证  0开启 1不开启
 		u.RegStatus = 1
 	} else {
 		u.RegStatus = 2
@@ -204,6 +201,7 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	u.Sex = userInfo.Sex
 	u.Province = userInfo.Province
 	u.City = userInfo.City
+	u.Status = 2
 	u.Country = userInfo.Country
 	u.Headimgurl = userInfo.HeadImgURL
 	u.Unionid = userInfo.Unionid

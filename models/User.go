@@ -21,7 +21,7 @@ type User struct {
 	Phone         int64  `orm:"unique;size(11)" form:"Phone" valid:"MaxSize(11);MinSize(1)"`
 	Qq            int64
 	Remark        string    `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"`
-	Status        int       `orm:"default(1)" form:"Status" valid:"Range(1,2)"`
+	Status        int       `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //用户注册状态 1为未审核 2为审核通过
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 	UserIcon      string    `orm:"null;size(255)" form:"UserIcon" valid:"MaxSize(255)"`

@@ -62,6 +62,7 @@
     </div>
     <div class="am-modal-footer">
       <input value="" type="hidden" class="data-modal-kick">
+      <input value="" type="hidden" class="data-modal-objuser">
       <span class="am-modal-btn data-am-modal-cancel">取消</span>
       <span class="am-modal-btn data-am-modal-confirm" onclick="kickOutModel()">确定</span>
     </div>
@@ -73,6 +74,8 @@
 
 
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"> -->
+<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
 <script src="/static/js/jquery.dataTables.min.js"></script>
 <script src="/static/js/jquery.jeditable.js"></script>
 <!-- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script> -->
@@ -205,7 +208,7 @@
                 {"mDataProp": "Createtime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+")'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+","+oData.Nickname+")'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
                     }
                 },
             ],
@@ -337,14 +340,16 @@
 
 
     // 踢出模态层
-    function kickOutFun(delid){
+    function kickOutFun(delid,objname){
         $('#kick-confirm').modal()
         $(".data-modal-kick").val(delid);
+        $(".data-modal-objuser").val(objname);
     }
 
     // 踢出方法
     function kickOutModel(){
         var id = $(".data-modal-kick").val();
+        var objname = $(".data-modal-objuser").val();
         $.ajax({
             url: '/weserver/user/kictuser',
             type: 'POST',
@@ -352,10 +357,17 @@
             success:function(data){
                 alert(data.info);
                 if (data.status) {
+                    var sendmsg = {}; //发送的内容
+                    sendmsg["Uname"] = {{.username}};
+                    sendmsg["Objname"] = base64encode(objname);
+                    sendmsg["Codeid"] = {{.code}} + "_" + {{.room}}; //公司房间标识符
+                    var sendstr = base64encode(sendmsg);
+                    socket.emit('all kickout', sendstr);
                     oTable.fnReloadAjax(oTable.fnSettings());
                 }
             }
         })
+
     }
     // 模态退出
     $('#kick-confirm').on('closed.modal.amui', function() {

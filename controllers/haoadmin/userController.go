@@ -56,6 +56,11 @@ func (this *UserController) Index() {
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {
+		user := this.GetSession("userinfo")
+		username := user.(*m.User).Username
+		this.Data["username"] = username
+		this.Data["code"] = beego.AppConfig.String("company")
+		this.Data["room"] = beego.AppConfig.String("room")
 		this.CommonController.CommonMenu()
 		roles, _ := m.GetAllUserRole()
 		this.Data["roles"] = roles

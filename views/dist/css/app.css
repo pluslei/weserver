@@ -4,6 +4,7 @@ body,
   height: 100%;
 }
 body {
+  font-size: 13px;
   font-family: Avenir;
 }
 button,
@@ -91,138 +92,149 @@ body {
   float: left;
 }
 .chat {
+  font-size: 13px;
   background-color: #f4f4f6;
-  position: absolute;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  overflow-y: scroll;
+  padding: 10px 0;
 }
-.chat ul {
-  list-style: none;
-  padding-left: 0px;
-  margin: 0px;
-  height: 100%;
+.defaultLoading {
+  width: 90pt;
+  height: 120pt;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.chat ul li {
+/* 聊天列表样式 */
+.chat-item {
+  padding: 10px;
+  padding-bottom: 0px;
   overflow: hidden;
-  padding: 15px 10px;
+  /* 收到普通消息 */
+  /* 收到管理员消息 */
+  /* 自己发送消息 */
 }
-.chat ul li .chatImg {
+.chat-item .chat-item-head {
   width: 40px;
   height: 40px;
-  display: inline-block;
+  border-radius: 50%;
 }
-.chat ul li .chatImg img {
-  width: 40px;
-  height: 40px;
-}
-.chat ul li .chatName {
-  display: inline-block;
-}
-.chat ul li .chatName span {
-  padding: 0px 8px;
-}
-.chat ul li .inputText {
-  padding: 0px 0px 0px 13px;
+.chat-item .chat-item-msg {
+  max-width: 70%;
   position: relative;
-  min-height: 35px;
-}
-.chat ul li .inputText span {
-  display: inline-block;
-  background: #fff;
   border-radius: 9px;
   border: 1px solid #d4d7da;
   padding: 5px 10px;
-  min-width: 60px;
-  min-height: 35px;
-  max-width: 100%;
+  margin-top: 3px;
 }
-.chat ul li .inputText .img1 {
+.chat-item.otherPerson .chat-item-head {
+  float: left;
+  margin-right: 15px;
+}
+.chat-item.otherPerson .chat-item-name {
+  float: left;
+}
+.chat-item.otherPerson .chat-item-msg {
+  float: left;
+  background: #fff;
+}
+.chat-item.otherPerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  left: 4px;
-  top: 7px;
-  width: 10px;
+  left: -12px;
+  top: 6px;
+  width: 12px;
+  height: 21px;
+  background: url(../i/Arrow.png);
 }
-/*chat管理员样式*/
-.chat ul li .chatNameG span i {
-  color: red;
-  padding-left: 5px;
-  font-style: normal;
+.chat-item.otherPerson .chat-item-msg .chat-msg-voice {
+  padding-right: 20px;
 }
-.chat ul li .inputText .guanBg {
-  background: #ff4b4b;
+.chat-item.otherPerson-img .chat-item-msg,
+.chat-item.adminPerson-img .chat-item-msg,
+.chat-item.minePerson-img .chat-item-msg {
+  max-width: 50%;
+  padding: 0;
+  background: #eee;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word,
+.chat-item.otherPerson-img .chat-item-msg .chat-msg-voice,
+.chat-item.adminPerson-img .chat-item-msg .chat-msg-voice,
+.chat-item.minePerson-img .chat-item-msg .chat-msg-voice {
+  display: none;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-msg-img,
+.chat-item.adminPerson-img .chat-item-msg .chat-msg-img,
+.chat-item.minePerson-img .chat-item-msg .chat-msg-img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+.chat-item.otherPerson-voice .chat-item-word,
+.chat-item.adminPerson-voice .chat-item-word,
+.chat-item.minePerson-voice .chat-item-word,
+.chat-item.otherPerson-voice .chat-msg-img,
+.chat-item.adminPerson-voice .chat-msg-img,
+.chat-item.minePerson-voice .chat-msg-img {
+  display: none;
+}
+.chat-item.adminPerson .chat-item-head {
+  float: left;
+  margin-right: 15px;
+}
+.chat-item.adminPerson .chat-item-name {
+  float: left;
+}
+.chat-item.adminPerson .chat-item-msg {
+  float: left;
+  background: #FF4B4B;
   color: #fff;
-  border: 1px solid #ff3030;
 }
-/*chat自身聊天样式*/
-.floatRight {
-  float: right;
-}
-.chat ul li .chatInputMyself {
-  float: right;
-  padding: 0px 13px 0px 0px;
-  min-height: 40px;
-}
-.chat ul li .chatInputMyself .chatmyselfContent {
-  float: right;
-  min-height: 40px;
-  background-color: #a0e759;
-  border: 1px solid #83ba45;
-  max-width: 100%;
-}
-.chat ul li .chatInputMyself .chatmyselfContent img {
-  max-width: 100%;
-  max-height: 200px;
-}
-.chat ul li .chatInputMyself .img2 {
+.chat-item.adminPerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  right: 4px;
-  top: 8px;
-  width: 10px;
+  left: -12px;
+  top: 6px;
+  width: 12px;
+  height: 21px;
+  background: url(../i/Arrow2.png);
 }
-.chat ul li .sendPic {
-  overflow: hidden;
+.chat-item.adminPerson .chat-item-msg .chat-msg-voice {
+  padding-right: 20px;
+}
+.chat-item.minePerson .chat-item-head {
   float: right;
-  padding: 0px 13px 0px 0px;
-  min-height: 40px;
+  margin-left: 15px;
 }
-.chat ul li .sendPic .chatmyselfContent {
-  overflow: hidden;
-  background-color: #fff;
+.chat-item.minePerson .chat-item-name {
   float: right;
-  min-height: 40px;
-  border: 1px solid #bbb;
-  padding: 0px;
-  max-width: 100%;
+  text-align: right;
 }
-.chat ul li .sendPic .img2 {
+.chat-item.minePerson .chat-item-msg {
+  float: right;
+  background: #A0E759;
+  color: #fff;
+}
+.chat-item.minePerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  right: 4px;
-  top: 8px;
-  width: 10px;
+  right: -12px;
+  top: 6px;
+  width: 12px;
+  height: 21px;
+  background: url(../i/Arrow1.png);
 }
-.chat ul li .publicPerson {
-  padding: 0px !important;
-  overflow: hidden;
-}
-.chat ul li .publicPerson img {
-  max-width: 100%;
-  max-height: 200px;
-}
-.chat ul li .guanPerson {
-  padding: 0px !important;
-  overflow: hidden;
-}
-.chat ul li .guanPerson img {
-  max-width: 100%;
-  max-height: 200px;
+.chat-item.minePerson .chat-item-msg .chat-msg-voice {
+  padding-left: 20px;
 }
 .footer {
-  position: fixed;
-  bottom: 0px;
   border-top: 1px solid #bbb;
   height: 60px;
   width: 100%;
@@ -286,52 +298,18 @@ body {
   border-radius: 2px;
   font-size: 14px;
 }
-/*公告*/
-.chat .noticeTip {
-  width: 60px;
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  z-index: 1000;
-}
-.chat .noticeTip span {
-  height: 30px;
-  display: inline-block;
-  width: 100px;
-  border: 1px solid #ccc;
-  background-color: white;
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
-  margin-top: 8px;
-}
-.chat .noticeTip span:first-child {
-  padding-left: 6px;
-  line-height: 30px;
-  color: #17d109;
-}
-.chat .noticeTip span:first-child i {
-  padding-right: 10px;
-}
-.chat .noticeTip span:last-child {
-  font-size: 12px;
-  line-height: 30px;
-  padding-left: 10px;
-  color: #17d109;
-}
-.chat .noticeTip span:last-child i {
-  padding-right: 7px;
+.footer #msgcontent {
+  white-space: nowrap;
+  overflow: hidden;
 }
 /*公告栏*/
 .notice {
-  position: fixed;
-  top: 0px;
-  height: 50px;
+  height: 45px;
   background-color: #fff;
   width: 100%;
   border-bottom: 1px solid #ccc;
   text-align: center;
   z-index: 999;
-  border-bottom-left-radius: 12px;
 }
 .notice span {
   color: #bd6988;
@@ -345,10 +323,7 @@ body {
 }
 /*表情包*/
 .face {
-  position: fixed;
-  bottom: -132px;
-  left: 0px;
-  z-index: 1010;
+  z-index: 2000;
   background: #fff;
   border: 1px solid #ccc;
   width: 100%;
@@ -360,9 +335,6 @@ body {
 /*公告栏*/
 .upload {
   width: 100%;
-  position: fixed;
-  bottom: -70px;
-  left: 0px;
   height: 70px;
   background-color: #fff;
   border-top: 1px solid #ccc;
@@ -392,162 +364,80 @@ body {
   left: 0;
   opacity: 0;
 }
-.signIn {
-  height: 100%;
-}
-.signIn .signInBox .am-form-group {
-  margin-bottom: 0px;
-}
-.signIn .LoginBox .login-error {
-  display: block;
-  height: 30px;
-}
-.signIn .LoginBox .signIn-ipt {
-  border-radius: 4px;
-}
-.signIn .LoginBox .promptUser,
-.signIn .LoginBox .promptPassword {
-  color: red;
-  display: block;
-  height: 35px;
-}
-.signIn .LoginBox .login-btn {
-  margin: 10px auto 0px;
-  display: block;
-  width: 100%;
-  background-color: #3bb4f2;
-  color: #fff;
-}
-.signIn .LoginBox .login-forget-btn {
-  padding-top: 10px;
-  display: block;
-}
-.register {
-  height: 100%;
-}
-.register .LoginBox .signIn-ipt {
-  border-radius: 4px;
-}
-.register .LoginBox .login-error {
-  height: 40px;
-  display: inline-block;
-  padding-top: 2px;
-}
-.register .LoginBox .login-btn,
-.register .LoginBox .login-btn1 {
-  display: block;
-  width: 100%;
-}
-.register .LoginBox .login-btn1 {
-  background-color: #3bb4f2;
-  color: #fff;
-}
-.register .LoginBox .Verify-mobile {
-  position: relative;
-}
-.register .LoginBox .Verify-mobile .getPVerify {
-  border: 1px solid #18a5ff;
-  outline: none;
-  padding: 4px 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 99;
-  height: 36px;
-  font-size: 12px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-.register .LoginBox .Verify-mobile .yanz {
-  padding-right: 30%;
-}
-/* .register .regBox input {
-  border-color: red;
-}
-.signIn .signInBox input {
-  border-color: red;
-} */
-.modelPic {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  width: 80%;
-  height: 40%;
-  background: #fff;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  z-index: 1000;
-}
-.modelPic .close {
-  height: 23px;
-  width: 23px;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  position: absolute;
-  right: -12px;
-  top: -12px;
-  background: #fff;
-}
-.modelPic .close:active {
-  color: red;
-}
-.modelPic .modelPicContent {
-  padding: 10px;
-  width: 100%;
-  height: 80%;
-  overflow: hidden;
-}
-.modelPic .modelPicContent img {
-  width: 100%;
-  height: 100%;
-}
-.modelPic .sendPicBtn {
-  border-top: 1px solid #ccc;
-}
-.modelPic .sendPicBtn button {
-  background: #3bb4f2;
-  border: 1px solid #0ba5f3;
-  color: #fff;
-  padding: 5px 40px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-.chat ul li .chatInputMyself .circle {
-  height: 10px;
-  width: 10px;
-  background: red;
-  display: inline-block;
-  position: absolute;
-  right: 85px;
-  top: 14px;
-  border-radius: 50%;
-}
-.chat ul li .inputText .circle1,
-.chat ul li .inputText .circle2 {
-  height: 10px;
-  width: 10px;
-  background: red;
-  display: inline-block;
-  position: absolute;
-  left: 85px;
-  top: 14px;
-  border-radius: 50%;
-}
-.chat ul li .chatName span .common {
-  padding-left: 5px;
-  font-style: normal;
-  color: #0604fc;
-}
 .loading {
-  background-color: #fff;
   height: 100%;
+  width: 100%;
+  background: #f0eff5;
 }
-.loading img {
-  width: 40%;
-  margin-left: 30%;
-  margin-top: 60%;
+.loading .loadinglogo {
+  height: 35%;
+}
+.loading .loadinglogo img {
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 40%;
+}
+.loading .welcomeTip {
+  height: 15%;
+  text-align: center;
+}
+.loading .welcomeTip b {
+  display: block;
+  margin-top: 10%;
+  color: #be2426;
+  letter-spacing: 2px;
+}
+.loading .loadon {
+  text-align: center;
+}
+.loading .loadon span:first-child img {
+  width: 7%;
+}
+.loading .loadon span:last-child {
+  padding: 10px;
+  font-size: 12px;
+}
+.scanQRcode {
+  height: 100%;
+  width: 100%;
+  background-color: #eeedf3;
+}
+.scanQRcode .sendPicBtnlogo {
+  height: 30%;
+}
+.scanQRcode .sendPicBtnlogo img {
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 24%;
+}
+.scanQRcode .scanQRcodeTitle {
+  text-align: center;
+}
+.scanQRcode .scanQRcodeList {
+  text-align: center;
+  margin: 12% 0px;
+}
+.scanQRcode .scanQRcodeList p {
+  margin: 0px;
+}
+.scanQRcode .scanQRcodeList p h6 {
+  display: inline-block;
+  margin: 0px;
+}
+.scanQRcode .scanQRcodeList p h5 {
+  display: inline-block;
+  margin-buttom: 10px;
+  font-size: 20px;
+}
+.scanQRcode .scanQRcodeList p b {
+  color: #c4242e;
+}
+.scanQRcode .scanQRcodeList p:last-child span {
+  color: #c4242e;
+}
+.scanQRcode .QRcode {
+  text-align: center;
+}
+.scanQRcode .QRcode img {
+  width: 30%;
 }
