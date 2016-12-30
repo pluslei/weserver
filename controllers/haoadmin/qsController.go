@@ -147,16 +147,9 @@ func (this *QsController) DataBroadQs() {
 			this.Data["uname"] = UserInfo.(*m.User).Username
 		}
 
-		//用户IP和省市
-		var ippro OnlineIpPro
-		ippro.Ip = this.GetClientip()           //获取ip地址
-		ippro.Pro = GetIpProvinceCity(ippro.Ip) //省市
-		this.Data["ippro"] = ippro
-
 		//获取所有的房间号
-		roominfo, _, _ := m.GetAllRoomDate()
-		this.Data["code"] = p.Code
-		this.Data["roomnum"] = roominfo
+		this.Data["code"] = beego.AppConfig.String("company")
+		this.Data["roomnum"] = beego.AppConfig.String("room")
 		// 获取所有的分组
 		groups, _ := m.GetGroupList()
 		length := len(groups)
@@ -166,6 +159,18 @@ func (this *QsController) DataBroadQs() {
 		this.Data["group"] = groups
 		this.TplName = "haoadmin/data/qs/databroad.html"
 	}
+}
+
+// 发送广播
+func (this *QsController) SendBroad() {
+	this.Data["code"] = beego.AppConfig.String("company")
+	this.Data["room"] = beego.AppConfig.String("room")
+	if this.GetSession("userinfo") != nil {
+		UserInfo := this.GetSession("userinfo")
+		this.Data["uname"] = UserInfo.(*m.User).Username
+	}
+	this.Data["ipaddress"] = this.GetClientip()
+	this.TplName = "haoadmin/data/qs/sendbroad.html"
 }
 
 //机器人发言

@@ -48,6 +48,7 @@ func init() {
 		Cache:          rediscache,
 	}
 	wx = wechat.NewWechat(cfg)
+	beego.Debug("wx tokenaccess", wx)
 }
 
 func (this *IndexController) Get() {
@@ -145,6 +146,7 @@ func (this *IndexController) Index() {
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
 			beego.Error("get the jsapi config error", err)
+			this.Ctx.WriteString("请联系客服 代码：404")
 		}
 		this.Data["appId"] = appId
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
@@ -153,8 +155,8 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
+		// this.TplName = "dist/index.html"
 		this.TplName = "index.html"
-		// this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}
@@ -185,6 +187,7 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	configRole := config.Registerrole
 	configTitle := config.Registertitle
 	configVerify := config.Verify
+	beego.Debug("config==========", config)
 	u := new(m.User)
 	u.Username = userInfo.OpenID
 	u.Status = 1

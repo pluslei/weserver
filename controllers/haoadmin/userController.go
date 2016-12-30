@@ -32,17 +32,19 @@ func (this *UserController) Index() {
 		userlist, count := m.Getuserlist(iStart, iLength, "-Id")
 		for _, item := range userlist {
 			item["Createtime"] = item["Createtime"].(time.Time).Format("2006-01-02 15:04:05")
-			if item["Role"] == 0 {
-				item["UserRole"] = "未知角色1"
+
+			if item["Title"] == 0 {
+				item["Titlename"] = "未知头衔"
 			} else {
-				rolelist, _ := m.GetRoleInfoById(item["Role"].(int64))
+				titleinfo, _ := m.ReadTitleById(item["Title"].(int64))
 				if err != nil {
 					beego.Error(err)
-					item["UserRole"] = "未知角色2"
+					item["Titlename"] = "未知头衔"
 				} else {
-					item["UserRole"] = rolelist.Title
+					item["Titlename"] = titleinfo.Name
 				}
 			}
+
 		}
 
 		// json
@@ -250,6 +252,30 @@ func (this *UserController) UserToRole() {
 }
 
 // 用户赋予头衔
+func (this *UserController) SetUserTitle() {
+	id, err := this.GetInt64("id")
+	if err != nil {
+		beego.Error(err)
+	}
+	value, err := this.GetInt64("value")
+	if err != nil {
+		beego.Error(err)
+	}
+
+	userUser := new(m.User)
+	userUser.Id = id
+	userUser.Title = &m.Title{Id: value}
+	err = userUser.UpdateUserFields("Title")
+	if err != nil {
+		beego.Error(err.Error())
+		this.Rsp(false, "更新失败", "")
+	} else {
+		titleInfo, _ := m.ReadTitleById(value)
+		this.Ctx.WriteString(titleInfo.Name)
+	}
+}
+
+// 用户赋予头衔
 func (this *UserController) UserToTitle() {
 	action := this.GetString("action")
 	if action == "add" {
@@ -349,135 +375,87 @@ func (this *UserController) Onlineuser() {
 		if err != nil {
 			beego.Error(err)
 		}
-		sroomnumber := this.GetString("sSearch_0")
-		roomnumber, _ := strconv.ParseInt(sroomnumber, 10, 64) //房间号
 		var (
-			onlinelist []tools.OnlineUserList
-			online     tools.OnlineUserList
-			urolename  []string
-			objstart   int
-			objend     int
-			count      int
+			urolename []string
+			objstart  int
+			objend    int
+			count     int
 		)
-		if roomnumber == 0 {
-			roomlist := make(map[string]tools.Usertitle) //房间对应的用户信息
-			//获取所有的房间号
-			roominfo, num, _ := m.GetAllRoomDate()
-			if num > 0 {
-				length := int(num)
-				for i := 0; i < length; i++ {
-					//用户列表信息
-					userroom := make(map[string]tools.Usertitle) //房间对应的用户信息
-					jobroom := "coderoom_" + p.Code + "_" + fmt.Sprintf("%d", roominfo[i].RommNumber)
-					roomdata, _ := p.Client.Get(jobroom)
-					if len(roomdata) > 0 {
-						userroom, _ = tools.Jsontoroommap(roomdata)
-					}
-					for rolval, userId := range userroom {
-						if len(userId.Uname) > 0 {
-							urolename = append(urolename, rolval)
-							roomlist[rolval] = userId
-						}
-					}
-				}
-				sort.Strings(urolename)
-				ulength := len(urolename)
-				if iLength == -1 {
-					iLength = int64(ulength)
-				}
-				ipagetotal := ulength / int(iLength)
-				if 0 != ulength%int(iLength) {
-					ipagetotal = ipagetotal + 1
-				}
-				if ipagetotal == 1 {
-					objstart = 0
-					objend = ulength
-				} else {
-					objstart = int(iStart)
-					objend = int(iStart + iLength)
-					if objend > ulength {
-						objend = ulength
-					}
-				}
-				for i := objstart; i < objend; i++ {
-					var onlineval string
-					online.Roomid = roomlist[urolename[i]].Roomid                             //房间号
-					onlineval = roomlist[urolename[i]].Uname                                  //用户名
-					online.Uname = onlineval                                                  //用户名
-					online.Procities = roomlist[urolename[i]].Procities                       //省市
-					onlineval = roomlist[urolename[i]].Datatime.Format("2006-01-02 15:04:05") //发言时间
-					online.Logintime = onlineval                                              //登入时间
-					onlinetimevar := time.Now().Unix() - roomlist[urolename[i]].Datatime.Unix()
-					timehours := onlinetimevar / 3600
-					if timehours < 99 {
-						onlineval = fmt.Sprintf("%02d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
-					} else {
-						onlineval = fmt.Sprintf("%d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
-					}
-					online.Onlinetime = onlineval                       //在线时长
-					online.Ipaddress = roomlist[urolename[i]].Ipaddress //ip地址
-					onlinelist = append(onlinelist, online)
-				}
-				count = ulength
-			}
-		} else {
-			//用户列表信息
-			userroom := make(map[string]tools.Usertitle) //房间对应的用户信息
-			jobroom := "coderoom_" + p.Code + "_" + sroomnumber
-			roomdata, _ := p.Client.Get(jobroom)
-			if len(roomdata) > 0 {
-				userroom, _ = tools.Jsontoroommap(roomdata)
-			}
 
-			for rolval, userId := range userroom {
-				if len(userId.Uname) > 0 {
-					urolename = append(urolename, rolval)
-				}
+		//用户列表信息
+		userroom := make(map[string]tools.Usertitle) //房间对应的用户信息
+		jobroom := "coderoom_" + beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+		roomdata, _ := p.Client.Get(jobroom)
+		if len(roomdata) > 0 {
+			userroom, _ = tools.Jsontoroommap(roomdata)
+		}
+
+		for rolval, userId := range userroom {
+			if len(userId.Uname) > 0 {
+				urolename = append(urolename, rolval)
 			}
-			sort.Strings(urolename)
-			ulength := len(urolename)
-			if iLength == -1 {
-				iLength = int64(ulength)
-			}
-			ipagetotal := ulength / int(iLength)
-			if 0 != ulength%int(iLength) {
-				ipagetotal = ipagetotal + 1
-			}
-			if ipagetotal == 1 {
-				objstart = 0
+		}
+		sort.Strings(urolename)
+		ulength := len(urolename)
+		if iLength == -1 {
+			iLength = int64(ulength)
+		}
+		ipagetotal := ulength / int(iLength)
+		if 0 != ulength%int(iLength) {
+			ipagetotal = ipagetotal + 1
+		}
+		if ipagetotal == 1 {
+			objstart = 0
+			objend = ulength
+		} else {
+			objstart = int(iStart)
+			objend = int(iStart + iLength)
+			if objend > ulength {
 				objend = ulength
-			} else {
-				objstart = int(iStart)
-				objend = int(iStart + iLength)
-				if objend > ulength {
-					objend = ulength
-				}
 			}
-			for i := objstart; i < objend; i++ {
-				var onlineval string
-				online.Roomid = userroom[urolename[i]].Roomid                             //房间号
-				onlineval = userroom[urolename[i]].Uname                                  //用户名
-				online.Uname = onlineval                                                  //用户名
-				online.Procities = userroom[urolename[i]].Procities                       //省市
-				onlineval = userroom[urolename[i]].Datatime.Format("2006-01-02 15:04:05") //发言时间
-				online.Logintime = onlineval                                              //登入时间
+		}
+
+		OnlineUser := make([]*m.User, 0)
+		for i := objstart; i < objend; i++ {
+			username := userroom[urolename[i]].Uname //用户名
+			//user := m.GetUserByUsername(username)
+			u := new(m.User)
+			u.Username = username
+
+			if userInfo, err := m.ReadFieldUser(u, "Username"); err == nil {
+				userInfo.LogintimeStr = userroom[urolename[i]].Datatime.Format("2006-01-02 15:04:05")
+
 				onlinetimevar := time.Now().Unix() - userroom[urolename[i]].Datatime.Unix()
 				timehours := onlinetimevar / 3600
 				if timehours < 99 {
-					onlineval = fmt.Sprintf("%02d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
+					userInfo.OnlinetimeStr = fmt.Sprintf("%02d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
 				} else {
-					onlineval = fmt.Sprintf("%d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
+					userInfo.OnlinetimeStr = fmt.Sprintf("%d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
 				}
-				online.Onlinetime = onlineval                       //在线时长
-				online.Ipaddress = userroom[urolename[i]].Ipaddress //ip地址
-				onlinelist = append(onlinelist, online)
+				userInfo.Ipaddress = userroom[urolename[i]].Ipaddress //ip地址
+
+				if userInfo.Title.Id == 0 {
+					userInfo.Titlename = "未知头衔"
+				} else {
+					titleinfo, _ := m.ReadTitleById(userInfo.Title.Id)
+					if err != nil {
+						beego.Error(err)
+						userInfo.Titlename = "未知头衔"
+					} else {
+						userInfo.Titlename = titleinfo.Name
+					}
+				}
+
+				OnlineUser = append(OnlineUser, userInfo)
 			}
-			count = ulength
 		}
+
+		beego.Debug("OnlineUser the ", OnlineUser, "online statuce:", userroom)
+		count = ulength
 
 		// json
 		data := make(map[string]interface{})
-		data["aaData"] = onlinelist
+		data["aaData"] = OnlineUser
 		data["iTotalDisplayRecords"] = count
 		data["iTotalRecords"] = iLength
 		data["sEcho"] = sEcho

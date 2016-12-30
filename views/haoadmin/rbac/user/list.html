@@ -24,7 +24,7 @@
                         <th>地址</th>
                         <th>用户状态</th>
                         <th>审核状态</th>
-                        <th>角色</th>
+                        <th>头衔</th>
                         <th>登录时间</th>
                         <th style="width:100px;">操作</th>
                     </tr>
@@ -197,7 +197,7 @@
                         }
                     }
                 },
-                {"mDataProp": "UserRole",
+                {"mDataProp": "Titlename",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         $(nTd).addClass('selectTd').attr('id', oData.Id);
                     }
@@ -227,8 +227,8 @@
             },
             "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
             "fnDrawCallback": function (data, x) {
-                $('#rbac-user-list tbody td.selectTd').editable('usertorole',{
-                        loadurl: '/weserver/role/getallrole',
+                $('#rbac-user-list tbody td.selectTd').editable('setusertitle',{
+                        loadurl: '/weserver/title/getalltitle',
                         //data:{"10":"10","20":"20","30":"30"},
                         type: 'select'
                         //submit : '确定',
@@ -258,6 +258,15 @@
             that.oApi._fnProcessingDisplay(oSettings, false);
         });
     }
+
+    jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff )
+    {
+        if( typeof(onoff) == 'undefined' )
+        {
+            onoff=true;
+        }
+        this.oApi._fnProcessingDisplay( oSettings, onoff );
+    };
 
     // 删除模态层
     function deleteFun(delid){

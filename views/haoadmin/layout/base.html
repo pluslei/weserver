@@ -34,10 +34,6 @@
             <div class="am-dropdown" data-am-dropdown>
               <span class="am-dropdown-toggle" style="cursor: pointer; color: #FFF" data-am-dropdown-toggle >用户设置 <span class="am-icon-caret-down"></span></span>
               <ul class="am-dropdown-content">
-                <li><a href="javascript:void(0);" onclick="liveroom();">进入直播室</a></li>
-                <!-- <li class="am-divider"></li>
-                <li class="am-dropdown-header">管理面板</li> -->
-                <li class="am-divider"></li>
                 <li><a href="javascript:void(0);" onclick="updatepwd();">修改密码</a></li>
                 <li class="am-divider"></li>
                 <li><a href="/public/logout">退出</a></li>
@@ -97,15 +93,15 @@ layer.use('extend/layer.ext.js')
 
     function updatepwd(){
       layer.open({
-      type: 1,
-      skin: 'layui-layer-demo', //样式类名
-     // closeBtn: 0, //不显示关闭按钮
-      shift: 2,
-      area: ['500px', '310px'],
-      title: '修改密码', 
-      shadeClose: true, //开启遮罩关闭
-      content: "<iframe src='/public/updateadmin' frameborder='0' scrolling='0' height='250px' width='400px' ></iframe>"
-    });
+        type: 1,
+        skin: 'layui-layer-demo', //样式类名
+       // closeBtn: 0, //不显示关闭按钮
+        shift: 2,
+        area: ['500px', '310px'],
+        title: '修改密码', 
+        shadeClose: true, //开启遮罩关闭
+        content: "<iframe src='/public/updateadmin' frameborder='0' scrolling='0' height='250px' width='400px' ></iframe>"
+      });
     }
 </script>
 {{template "/haoadmin/layout/footer.html"}}

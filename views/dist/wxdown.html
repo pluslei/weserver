@@ -1,0 +1,87 @@
+<!DOCTYPE HTML> 
+<html>
+<head>  
+<meta charset="utf-8" />
+<title>回调函数(callback)</title>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+wx.config({
+  debug: false,
+  appId: '{{.appId}}',
+  timestamp: {{.timestamp}},
+  nonceStr: '{{.nonceStr}}',
+  signature: '{{.signature}}',
+  jsApiList: [
+    // 所有要调用的 API 都要加到这个列表中
+    'startRecord',
+    'stopRecord',
+    'onVoiceRecordEnd',
+    'playVoice',
+    'pauseVoice',
+    'stopVoice',
+    'onVoicePlayEnd',
+    'uploadVoice',
+    'downloadVoice',
+    'chooseImage',
+    'previewImage',
+    'uploadImage',
+    'downloadImage',
+    'translateVoice'
+  ]
+});
+
+let imgidx = 0;
+wx.ready(function () {
+  var downthis = null;
+  $(".down").click(function(event) {
+    downthis = $(this);
+    imgid = $(this).attr("data-src")
+    wx.downloadImage({
+        serverId: imgid, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+        isShowProgressTips: 0, // 默认为1，显示进度提示
+        success: function (res) {
+          // document.getElementById('img').src= res.localId;
+          downthis.attr('src', res.localId);// attr("",);
+          console.info("get the images serverid",res,res.localId);
+        }
+    });
+  });
+
+  setTimeout(()=>{imgcallbak(0);}, 100);
+});
+
+function imgcallbak(idx){
+  const imglen = $('img').length;
+  const imgid = $('img').eq(idx).attr("data-src");
+  console.info("imgid and index",imgid,imglen);
+  wx.downloadImage({
+      serverId: imgid, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+      isShowProgressTips: 0, // 默认为1，显示进度提示
+      success: function (res) {
+        // document.getElementById('img').src= res.localId;
+        $("img").eq(idx).attr('src', res.localId);// attr("",);
+        console.info("get the images serverid",res,res.localId,idx);
+        if (idx < (imglen - 1)){
+          console.log('IDX:', imglen, idx);
+          setTimeout(()=>{imgcallbak(imgidx++);}, 100);
+        }
+      }
+  });
+}
+
+</script>
+</head> 
+<body>
+<div class="com">
+    <ul>
+        <li><img data-src="4nHfY9QRCysDbRE7DzFPl7TQ9WmTXoNyMEwNQ6NAiV_X-xswlR_5panQ5uf4Ewk8" src="" alt="" class="down" width="200" height="200"></li>
+        <li><img data-src="LuLH9C4Tzgx2HT2dY_ZHNZGBCuC-CN57FWZAtHHJ3UlExFzHGCG6a2-zrq3XA-Ir" src="" alt="" class="down" width="200" height="200"></li>
+        <li><img data-src="LuLH9C4Tzgx2HT2dY_ZHNZGBCuC-CN57FWZAtHHJ3UlExFzHGCG6a2-zrq3XA-Ir" src="" alt="" class="down" width="200" height="200"></li>
+        <li><img data-src="4XruK9SA_Ftbg2nAkIz3wnCkyY2mOW54PWaJHhrZ0Zl8vkAIJEpF8aHUPXKgxMNs" src="" alt="" class="down" width="200" height="200"></li>
+        <li><img data-src="A8T6n85_PYKQDKZbJXJIeZ3Detyw_RQIk66ESKsjasPNhxGcPetcGhb1eqUhzAP4" src="" alt="" class="down" width="200" height="200"></li>
+        <li><img data-src="7k_p3yM_z6sF_FkSDQiY23DOiH5Bfjqg2EUfV3a8baAL5CXiqDJwUY-GP3w-w_CV" src="" alt="" class="down" width="200" height="200"></li>
+    </ul>
+</div>
+</body>
+</html>

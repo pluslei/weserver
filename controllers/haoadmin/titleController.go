@@ -174,3 +174,15 @@ func (this *TitleController) UploadTitle() {
 		this.Rsp(true, "修改成功", FileName)
 	}
 }
+
+func (this *TitleController) GetAllTitle() {
+	title, _ := m.GetAllUserTitle()
+	var titleJson = "{"
+	for _, item := range title {
+		itemjson := fmt.Sprintf(`%d:"%s"`, item.Id, item.Name)
+		titleJson = titleJson + itemjson + ","
+	}
+	titleJson = strings.TrimRight(titleJson, ",")
+	titleJson = titleJson + "}"
+	this.Ctx.WriteString(titleJson)
+}

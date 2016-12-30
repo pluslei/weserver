@@ -36,6 +36,11 @@ type User struct {
 	Unionid       string    //只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：
 	Role          *Role     `orm:"rel(one)"`
 	Title         *Title    `orm:"rel(one)"`
+
+	LogintimeStr  string `orm:"-"` //登录时间
+	OnlinetimeStr string `orm:"-"` //在线时长
+	Ipaddress     string `orm:"-"` //ip地址
+	Titlename     string `orm:"-"` //头衔名称
 }
 
 func (u *User) TableName() string {

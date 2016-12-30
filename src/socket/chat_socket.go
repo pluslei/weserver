@@ -247,29 +247,30 @@ func Chatprogram() {
 							job.socketidusertime[codename] = int(time.Now().Unix())
 						}
 					}
-					if sojson.AuthorInSider == 0 && sojson.AuditStatus != 100 {
+					if sojson.AuthorInSider == 0 {
 						sysconfig, _ := m.GetAllSysConfig()              //系统设置
 						sojson.AuthorDelay = int(sysconfig.ChatInterval) //用户禁言时间
-						sojson.AuditStatus = sysconfig.AuditStatus       //1，不需要审核，2，需要审核
 					}
 					//var sendmsgtext string
 					if sendmessage {
 						switch DecodeB64(sojson.Chat) {
 						case "allchat":
 							//保存数据
-							if sojson.AuditStatus != 100 {
-								sojson.IsEmitBroad = true
-								/*
-									body, err01 := json.Marshal(sojson)
-									if err01 == nil {
-										sendmsgtext = string(body)
-									}
-									sendmsgtext = EncodeB64(sendmsgtext)
-									data["msg"] = sendmsgtext
-								*/
-								data["msg"] = sojson
-								so.Emit("all message", data)
-							}
+							/*
+								if sojson.AuditStatus != 100 {
+									sojson.IsEmitBroad = true
+										body, err01 := json.Marshal(sojson)
+										if err01 == nil {
+											sendmsgtext = string(body)
+										}
+										sendmsgtext = EncodeB64(sendmsgtext)
+										data["msg"] = sendmsgtext
+									data["msg"] = sojson
+									so.Emit("all message", data)
+								}
+							*/
+							data["msg"] = sojson
+							so.Emit("all message", data)
 							if _, ok := job.socketiotoroom[codeid]; ok == true {
 								roleroom := job.socketiotoroom[codeid].Roomval
 								rolelen := len(roleroom[0])

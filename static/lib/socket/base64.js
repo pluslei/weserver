@@ -1,4 +1,4 @@
-var socket = io.connect('192.168.96.157:8080', {
+var socket = io.connect('live.780.com.cn', {
     'path': '/wechatSocket'
 }, {
     'force new connection': true

@@ -48,6 +48,7 @@ func Router() {
 	beego.Router("/weserver/user/deluser", &haoadmin.UserController{}, "*:DelUser")
 	beego.Router("/weserver/user/index", &haoadmin.UserController{}, "*:Index")
 	beego.Router("/weserver/user/usertorole", &haoadmin.UserController{}, "*:UserToRole")
+	beego.Router("/weserver/user/setusertitle", &haoadmin.UserController{}, "*:SetUserTitle")
 	beego.Router("/weserver/user/usertotitle", &haoadmin.UserController{}, "*:UserToTitle")
 	beego.Router("/weserver/user/regstatus", &haoadmin.UserController{}, "*:UpdateRegStatus")
 	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateUserStatus")
@@ -76,6 +77,7 @@ func Router() {
 	beego.Router("/weserver/title/updatetitle", &haoadmin.TitleController{}, "*:UpdateTitle")
 	beego.Router("/weserver/title/deltitle", &haoadmin.TitleController{}, "*:DelTitle")
 	beego.Router("/weserver/title/index", &haoadmin.TitleController{}, "*:Index")
+	beego.Router("/weserver/title/getalltitle", &haoadmin.TitleController{}, "*:GetAllTitle")
 	beego.Router("/weserver/title/upload", &haoadmin.TitleController{}, "*:UploadTitle")
 
 	beego.Router("/weserver/role/delrole", &haoadmin.RoleController{}, "*:DelRole")
@@ -112,6 +114,7 @@ func Router() {
 	beego.Router("/weserver/data/qs_delqs", &haoadmin.QsController{}, "*:DelQs")
 	// 广播
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:DataBroadQs")
+	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
 	// 消息管理
 	beego.Router("/weserver/data/message_index", &haoadmin.MessageController{}, "*:MessageList")
 	beego.Router("/weserver/data/message_add", &haoadmin.MessageController{}, "*:AddMessage")

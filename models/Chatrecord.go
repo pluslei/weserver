@@ -22,6 +22,7 @@ type ChatRecord struct {
 	Ipaddress   string    //IP地址
 	Procities   string    //省市
 	Datatime    time.Time `orm:"type(datetime)"` //添加时间
+	Timestmp    int64     //时间戳
 }
 
 func init() {

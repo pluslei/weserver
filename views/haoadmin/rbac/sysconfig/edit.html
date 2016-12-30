@@ -26,19 +26,6 @@
             <span class="am-form-caret"></span>
           </div>
 
-          <div class="am-form-group">
-            <label for="doc-vld-name-2">聊天上传图片大小(KB)：</label>
-            <input type="text" name="imagesize" id="doc-vld-name-2" placeholder="聊天上传文件大小" data-validation-message="请输入聊天上传文件大小"  required value="{{.configinfo.Imagesize}}" />
-          </div>
-          <div class="am-form-group">
-            <label for="doc-select-1">是否允许游客聊天：</label>
-            <select id="doc-select-2" name="guestchat" required>
-              <option value="1" {{if eq .configinfo.Guestchat 1}}selected{{end}}>允许</option>
-              <option value="0" {{if eq .configinfo.Guestchat 0}}selected{{end}}>禁止</option>
-            </select>
-            <span class="am-form-caret"></span>
-          </div>
-
            <div class="am-form-group">
             <label for="doc-select-1">是否显示历史消息：</label>
             <select id="doc-select-2" name="historymsg" required>
@@ -69,14 +56,7 @@
     <div class="am-u-lg-3 am-u-end">
         <fieldset>
           <legend></legend>
-          <div class="am-form-group">
-            <label for="doc-vld-name-2">首页跳转(留空表示不跳)：</label>
-            <input type="text" name="redirect" value="{{.configinfo.Redirect}}"  id="doc-vld-name-2"/>
-          </div>
-          <div class="am-form-group">
-            <label for="doc-vld-name-2">允许上传聊天图片类型(*.bmp;*.jpg;*.gif)：</label>
-            <input type="text" name="imagetype"  id="doc-vld-name-2" placeholder="允许上传文件类型" data-validation-message="请输入允许上传文件类型" value="{{.configinfo.Imagetype}}" required/>
-          </div>
+          
           <div class="am-form-group">
             <label for="doc-select-1">用户初始角色：</label>
             <select id="doc-select-2" name="registerrole" required>
@@ -88,7 +68,7 @@
           </div>
 
           <div class="am-form-group">
-            <label for="doc-select-1">游客聊天间隔时间：</label>
+            <label for="doc-select-1">聊天间隔时间：</label>
             <select id="doc-select-2" name="chatinterval" required>
               <option value="0">-=无间隔=-</option>
               <option value="5" {{if eq .configinfo.ChatInterval 5}}selected{{end}}>5秒</option>
@@ -110,14 +90,7 @@
             </select>
             <span class="am-form-caret"></span>
           </div>
-          <div class="am-form-group">
-            <label for="doc-select-1">公司外部人员消息是否审核：</label>
-            <select id="doc-select-21" name="auditStatus" required>
-              <option value="1" {{if eq .configinfo.AuditStatus 1}}selected{{end}}>不审核</option>
-              <option value="2" {{if eq .configinfo.AuditStatus 2}}selected{{end}}>审核</option>
-            </select>
-            <span class="am-form-caret"></span>
-          </div>
+
         </fieldset>
     </div>
   </form>

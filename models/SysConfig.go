@@ -9,10 +9,6 @@ import (
 type SysConfig struct {
 	Id            int64
 	Systemname    string //直播室名称
-	Redirect      string //首页跳转
-	Imagesize     int64  //图片大小 单位Kb
-	Imagetype     string //图片类型
-	Guestchat     int64  //0 禁止聊天 1 允许聊天
 	ChatInterval  int64  //0 无间隔  其它数字为间隔时间（秒）
 	Registerrole  int64  //默认注册用户角色
 	Registertitle int64  //默认注册用户头衔
@@ -21,7 +17,6 @@ type SysConfig struct {
 	WelcomeMsg    string //欢迎语
 	Verify        int64  //是否开启验证  0开启 1不开启
 	LoginSys      int64  //是否允许登陆后台  0允许 1禁止
-	AuditStatus   int    `orm:"default(2)" form:"AuditStatus" valid:"Required;Range(1,2)"` //1：不审核，2：需要审核
 }
 
 func (s *SysConfig) TableName() string {
@@ -52,7 +47,7 @@ func GetSysConfigCount() int64 {
 
 func GetAllSysConfig() (sys SysConfig, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(sys).One(&sys, "Imagesize", "Imagetype", "Guestchat", "ChatInterval", "HistoryMsg", "HistoryCount", "WelcomeMsg", "AuditStatus")
+	err = o.QueryTable(sys).One(&sys, "ChatInterval", "HistoryMsg", "HistoryCount", "WelcomeMsg")
 	return sys, err
 }
 

@@ -8,7 +8,7 @@
 
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
-        <div class="am-form-group">
+        <!-- <div class="am-form-group">
           <label for="doc-select-1">房间号:</label>
           <select id="doc-select-1" name="role">
           <option value="">所有房间</option>
@@ -17,15 +17,15 @@
             {{end}}
           </select>
           <span class="am-form-caret"></span>
-        </div>
+        </div> -->
 
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-online-list">
                 <thead>
                     <tr>
-                        <th>房间号</th>
-                        <th>用户名</th>
-                        <th>省份城市</th>
+                        <th>用户昵称</th>
+                        <th>地址</th>
+                        <th>头衔</th>
                         <th>登入时间</th>
                         <th>在线时长</th>
                         <th>IP地址</th>
@@ -67,11 +67,26 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
-                {"mDataProp": "Roomid",},
-                {"mDataProp": "Uname",},
-                {"mDataProp": "Procities",},
-                {"mDataProp": "Logintime",},
-                {"mDataProp": "Onlinetime",},
+                {"mDataProp": "Nickname",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (oData.Sex == 1) {
+                            sexImg = "/static/images/man.png";
+                        }else if (oData.Sex == 2 ) {
+                            sexImg = "/static/images/wman.png"
+                        }else{
+                            sexImg = ""
+                        }
+                        $(nTd).html("<img src="+oData.Headimgurl+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData+"<img src='  "+sexImg+"'>");
+                    }
+                },
+                {"mDataProp": "Province",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html(oData.Province+" "+oData.City);
+                    }
+                },
+                {"mDataProp": "Titlename",},
+                {"mDataProp": "LogintimeStr",},
+                {"mDataProp": "OnlinetimeStr",},
                 {"mDataProp": "Ipaddress",},
             ],
             "oLanguage": {
