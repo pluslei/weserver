@@ -528,8 +528,8 @@ func (this *UserController) KictUser() {
 		return
 	}
 
-	if this.changeuserstatus(user) {
-		if socket.KictUser(user.Username) {
+	if socket.KictUser(user.Username) {
+		if this.changeuserstatus(user) {
 			this.Rsp(true, "踢出成功", "")
 		} else {
 			this.Rsp(false, "踢出失败", "")
@@ -537,6 +537,7 @@ func (this *UserController) KictUser() {
 	} else {
 		this.Rsp(false, "踢出失败", "")
 	}
+
 }
 
 func (this *UserController) changeuserstatus(user *m.User) bool {

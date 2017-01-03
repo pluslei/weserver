@@ -170,8 +170,8 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		// this.TplName = "dist/index.html"
-		this.TplName = "index.html"
+		this.TplName = "dist/index.html"
+		// this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}

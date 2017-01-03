@@ -7,6 +7,15 @@ body {
   font-size: 13px;
   font-family: Avenir;
 }
+body .scroll {
+  position: absolute;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 button,
 input[type=button],
 input[type=submit] {
@@ -134,6 +143,7 @@ body {
   border: 1px solid #d4d7da;
   padding: 5px 10px;
   margin-top: 3px;
+  font-size: 16px;
 }
 .chat-item.otherPerson .chat-item-head {
   float: left;
@@ -221,7 +231,7 @@ body {
 .chat-item.minePerson .chat-item-msg {
   float: right;
   background: #A0E759;
-  color: #fff;
+  color: #000000;
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-tip {
   position: absolute;
@@ -319,7 +329,7 @@ body {
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
 }
 /*表情包*/
 .face {

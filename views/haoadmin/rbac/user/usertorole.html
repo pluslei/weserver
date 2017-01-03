@@ -2,7 +2,7 @@
   legend{border-bottom: 0px;}
 </style>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/user/index">用户管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">用户赋予角色</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/user/index">用户管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">用户赋予头衔</span></div>
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
@@ -17,7 +17,9 @@
                   {{range .titleList}}
                   <ul style="line-height: 35px;">
                   <label class="am-checkbox-inline">
-                      <input type="radio" value="{{.Id}}" {{.Checked}} class="roleid"  name="titleid" data-am-ucheck><img width="47px" height="17px" src="/upload/usertitle/{{.Css}}" alt="{{.Name}}" style="margin-bottom: 9px;">
+
+                      <input type="radio" value="{{.Id}}" {{.Checked}} class="roleid"  name="titleid" data-am-ucheck />
+                      <span style="background:{{.Css}};width:60px;height:20px;display:block"></span>
                   </label>
                   <label  style="margin-left: 15px;" >
                     <li  >备注:  {{.Remark}}</li>
