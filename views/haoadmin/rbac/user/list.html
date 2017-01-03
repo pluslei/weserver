@@ -208,7 +208,7 @@
                 {"mDataProp": "Createtime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+","+oData.Nickname+")'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+",`"+oData.Nickname+"`)'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
                     }
                 },
             ],
@@ -278,11 +278,11 @@
     }
     // 删除方法
     function deleteModel(){
-        var Id = $(".data-modal-del").val();
+        var id = $(".data-modal-del").val();
         $.ajax({
             url: '/weserver/user/deluser',
             type: 'POST',
-            data: {Id: Id},
+            data: {Id: id},
             success: function(rsp){
                 if (rsp.status){
                     alert(rsp.info);
@@ -355,16 +355,13 @@
             type: 'POST',
             data: {Id: id},
             success:function(data){
-                alert(data.info);
-                if (data.status) {
-                    var sendmsg = {}; //发送的内容
-                    sendmsg["Uname"] = {{.username}};
-                    sendmsg["Objname"] = base64encode(objname);
-                    sendmsg["Codeid"] = {{.code}} + "_" + {{.room}}; //公司房间标识符
-                    var sendstr = base64encode(sendmsg);
-                    socket.emit('all kickout', sendstr);
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }
+                var sendmsg = {}; //发送的内容
+                sendmsg["Uname"] = {{.username}};
+                sendmsg["Objname"] = objname;
+                sendmsg["Codeid"] = {{.codeid}}; //公司房间标识符
+                var sendstr = base64encode(sendmsg);
+                socket.emit('all kickout', sendstr);
+                oTable.fnReloadAjax(oTable.fnSettings());
             }
         })
 

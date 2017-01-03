@@ -57,7 +57,6 @@ func (this *IndexController) Get() {
 	// if this.CheckUserIsAuth() {
 	// 	this.Redirect("/index", 302)
 	// }
-
 	code := this.GetString("code")
 	if code == "" {
 		oauthAccess = wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
@@ -170,12 +169,11 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		// this.TplName = "dist/index.html"
+		//this.TplName = "dist/index.html"
 		this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}
-
 }
 
 func (this *IndexController) Login() {

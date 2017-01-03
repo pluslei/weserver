@@ -59,11 +59,12 @@ func (this *UserController) Index() {
 		user := this.GetSession("userinfo")
 		username := user.(*m.User).Username
 		this.Data["username"] = username
-		this.Data["code"] = beego.AppConfig.String("company")
-		this.Data["room"] = beego.AppConfig.String("room")
+		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+		codeid := tools.MainEncrypt(prevalue)
 		this.CommonController.CommonMenu()
 		roles, _ := m.GetAllUserRole()
 		this.Data["roles"] = roles
+		this.Data["codeid"] = codeid
 		this.TplName = "haoadmin/rbac/user/list.html"
 	}
 }

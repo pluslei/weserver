@@ -142,29 +142,15 @@ func (this *QsController) DataBroadQs() {
 		this.ServeJSON()
 	} else {
 		this.CommonController.CommonMenu()
-		if this.GetSession("userinfo") != nil {
-			UserInfo := this.GetSession("userinfo")
-			this.Data["uname"] = UserInfo.(*m.User).Username
-		}
-
-		//获取所有的房间号
-		this.Data["code"] = beego.AppConfig.String("company")
-		this.Data["roomnum"] = beego.AppConfig.String("room")
-		// 获取所有的分组
-		groups, _ := m.GetGroupList()
-		length := len(groups)
-		for i := 0; i < length; i++ {
-			groups[i].GroupFace = FaceImg + groups[i].GroupFace
-		}
-		this.Data["group"] = groups
 		this.TplName = "haoadmin/data/qs/databroad.html"
 	}
 }
 
 // 发送广播
 func (this *QsController) SendBroad() {
-	this.Data["code"] = beego.AppConfig.String("company")
-	this.Data["room"] = beego.AppConfig.String("room")
+	prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+	codeid := MainEncrypt(prevalue)
+	this.Data["codeid"] = codeid
 	if this.GetSession("userinfo") != nil {
 		UserInfo := this.GetSession("userinfo")
 		this.Data["uname"] = UserInfo.(*m.User).Username
