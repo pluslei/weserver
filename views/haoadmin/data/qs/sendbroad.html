@@ -16,6 +16,7 @@
         <script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
         <script type="text/javascript" src="/static/lib/socket/base64.js"></script>
         <script type="text/javascript" src="/static/lib/socket/broadcast.js"></script>
+        <script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
     </head>
     <body>
         <div class="am-form">
@@ -33,7 +34,8 @@
 <script type="text/javascript">
     //后台广播事件
     function sendbroad() {
-        var msg = $('#remarkcontent').html();
+        var msg = $('#remarkcontent').val();
+        console.info(msg);
         if (msg.length <= 0) {
             layer.msg("请输入广播内容", {
                 icon: 2
@@ -49,10 +51,7 @@
             
             var sendstr = base64encode(sendmsg);
             socket.emit('all roombroadmsg', sendstr);
-
-            parent.layer.msg("广播发送成功", {shade:[0]}, function(){
-                parent.location.reload();
-            })
+            parent.location.reload();
         }
     }
 </script>

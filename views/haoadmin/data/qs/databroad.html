@@ -70,67 +70,8 @@
     var oTable;
     $(function() {
         oTable = initTable();
-
-        // 点击笑脸是否隐藏，隐藏则显示，不隐藏则显示
-        $(".faceBtn").click(function(){
-            if ($(".face-content").is(":hidden")) {
-                $(".face-content").show();
-            } else {
-                $(".face-content").hide();
-            }
-        });
-        // 初始化查询
-        $(".faceTab > span").eq(0).addClass("active");
-        var groupurl = $(".groupurl").eq(0).attr("src");
-        $("#groupdata").html(groupurl);
-        $("#groupview").attr("src",groupurl);
-        var group = $("input[name='group']").get(0).value;
-        $.ajax({
-            url : '/weserver/data/face_getfaces',
-            type : 'post',
-            data : {group : group},
-            success : function(data){
-                var html = "";
-                $.each(data,function(i){
-                    html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + "" + "," + data[i].Id + ")'>" +
-                                "<img src='"+data[i].Url+"' alt=''>" +
-                            "</a>";
-                });
-                $(".faceImg").html(html);
-            }
-        });
-        // 点击 Tab 查询表情
-        $(".faceTab > span").click(function(){
-            var _index = $(this).index();
-            $(this).addClass("active").siblings().removeClass("active");
-            $(".faceBox").children().eq(_index).addClass("active").siblings().removeClass("active");
-            var groupurl = $(".groupurl").eq(_index).attr("src");
-            $("#groupdata").html(groupurl);
-            $("#groupview").attr("src",groupurl);
-            var group = $("input[name='group']").get(_index).value;
-            $.ajax({
-                url : '/weserver/data/face_getfaces',
-                type : 'post',
-                data : {group : group},
-                success : function(data){
-                    var html = "";
-                    $.each(data,function(i){
-                        html += "<a href='#' onclick='sendface(" + '"' + data[i].Url + '"' + "" + "," + data[i].Id + ")'>" +
-                                    "<img src='"+data[i].Url+"' alt=''>" +
-                                "</a>";
-                    });
-                    $(".faceImg").html(html);
-                }
-            });
-        });
     });    
 
-    function sendface(src, id) {
-        $("#preview").attr("src", src);
-        var contentval = $('.delete-box').html();
-        contentval += "<img src=" + src + ">";
-        $('.delete-box').html(contentval);
-    };
     function initTable() {
         var actionUrl = '/weserver/data/qs_broad';
         var table = $('#rbac-broad-list').dataTable({
