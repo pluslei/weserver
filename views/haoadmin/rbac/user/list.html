@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <style type="text/css">
     .am-alert{border-radius: 5px;padding:3px;}
     .regstatus{cursor: pointer;}
@@ -350,21 +351,26 @@
     function kickOutModel(){
         var id = $(".data-modal-kick").val();
         var objname = $(".data-modal-objuser").val();
+        var sendmsg = {}; //发送的内容
+        sendmsg["Uname"] = {{.username}};
+        sendmsg["Objname"] = objname;
+        sendmsg["Codeid"] = {{.codeid}}; //公司房间标识符
+        var sendstr = base64encode(sendmsg);
+        socket.emit('all kickout', sendstr);
         $.ajax({
             url: '/weserver/user/kictuser',
             type: 'POST',
             data: {Id: id},
             success:function(data){
-                var sendmsg = {}; //发送的内容
-                sendmsg["Uname"] = {{.username}};
-                sendmsg["Objname"] = objname;
-                sendmsg["Codeid"] = {{.codeid}}; //公司房间标识符
-                var sendstr = base64encode(sendmsg);
-                socket.emit('all kickout', sendstr);
-                oTable.fnReloadAjax(oTable.fnSettings());
+                if (data.status) {
+                    //消息提示
+                    layer.msg(msg, {
+                        icon: 1
+                    });
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }
             }
         })
-
     }
     // 模态退出
     $('#kick-confirm').on('closed.modal.amui', function() {

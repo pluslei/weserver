@@ -3,7 +3,6 @@ var socket = io.connect('live.780.com.cn', {
 }, {
     'force new connection': true
 });
-alert('10000');
 var socketid = ""; //socketid
 
 //系统设置参数

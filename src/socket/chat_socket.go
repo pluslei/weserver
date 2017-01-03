@@ -530,7 +530,6 @@ func Chatprogram() {
 		})
 
 		so.On("all kickout", func(msg string) {
-			beego.Debug("66666666666666666")
 			if len(msg) > 0 {
 				msg = DecodeB64(msg)
 				key := []byte(msg)
@@ -540,10 +539,8 @@ func Chatprogram() {
 				} else {
 					uname := js.Get("Uname").MustString()
 					objname := EncodeB64(js.Get("Objname").MustString())
-					codeid := js.Get("Codeid").MustString() //公司房间标识符
-					beego.Debug(codeid, "=================")
-					codeid = Transformname(codeid, "", -1) //解码公司代码和房间号
-					beego.Debug(codeid, "11111111111111111111")
+					codeid := js.Get("Codeid").MustString()       //公司房间标识符
+					codeid = Transformname(codeid, "", -1)        //解码公司代码和房间号
 					codeuser := Transformname(codeid, objname, 0) //公司代码用户名互转
 					if _, ok := job.socketidso[codeuser]; ok == true {
 						user := new(m.User)

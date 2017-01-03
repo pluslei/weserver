@@ -21,7 +21,6 @@ function socketdata() {
 //后台广播事件
 function sendbroad() {
     var msg = $('#remarkcontent').val();
-    alert(msg);
     if (msg.length <= 0) {
         layer.msg("请输入广播内容", {
             icon: 2
