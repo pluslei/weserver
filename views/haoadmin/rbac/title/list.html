@@ -17,7 +17,8 @@
                 <thead>
                     <tr>
                         <th>名称</th>
-                        <th>图片</th>
+                        <th>头衔颜色</th>
+                        <th>背景颜色</th>
                         <th>权重</th>
                         <th>备注</th>
                         <th>操作</th>
@@ -71,7 +72,12 @@
                 {"mDataProp": "Name",},
                 {"mDataProp": "Css",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<img  width='47px' height='17px'  src='/upload/usertitle/"+oData.Css+"'>")
+                        $(nTd).html("<span style='background:"+sData+";width:60px;height:20px;display:block'></span>")
+                    }
+                },
+                {"mDataProp": "Background",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<span style='background:"+sData+";width:60px;height:20px;display:block'></span>")
                     }
                 },
                 {"mDataProp": "Weight",},

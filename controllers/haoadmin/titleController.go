@@ -48,14 +48,15 @@ func (this *TitleController) AddTitle() {
 	Name := this.GetString("Name")
 	Remark := this.GetString("Remark")
 	Weight, _ := this.GetInt("Weight")
-	Css := this.GetString("fname")
+	Css := this.GetString("Css")
+	Background := this.GetString("BackGround")
 	if len(Name) > 0 && len(Css) > 0 {
-		prevalue := strings.Split(Css, "/upload/usertitle/")
 		t := new(m.Title)
 		t.Name = Name
 		t.Remark = Remark
-		t.Css = prevalue[1]
+		t.Css = Css
 		t.Weight = Weight
+		t.Background = Background
 		id, err := m.AddTitle(t)
 		if err != nil && id <= 0 {
 			beego.Error(err)
@@ -67,7 +68,6 @@ func (this *TitleController) AddTitle() {
 		this.CommonMenu()
 		this.TplName = "haoadmin/rbac/title/add.html"
 	}
-
 }
 
 // 更新头衔
@@ -76,7 +76,8 @@ func (this *TitleController) UpdateTitle() {
 	Remark := this.GetString("Remark")
 	Weight, _ := this.GetInt("Weight")
 	Id, _ := this.GetInt64("Id")
-	Css := this.GetString("fname")
+	Css := this.GetString("Css")
+	Background := this.GetString("BackGround")
 	if len(Name) > 0 {
 		var err error
 		t := new(m.Title)
@@ -84,13 +85,9 @@ func (this *TitleController) UpdateTitle() {
 		t.Name = Name
 		t.Remark = Remark
 		t.Weight = Weight
-		if len(Css) > 0 {
-			prevalue := strings.Split(Css, "/upload/usertitle/")
-			t.Css = prevalue[1]
-			err = t.UpdateTitle("Name", "Remark", "Css", "Weight")
-		} else {
-			err = t.UpdateTitle("Name", "Remark", "Weight")
-		}
+		t.Css = Css
+		t.Background = Background
+		err = t.UpdateTitle("Name", "Remark", "Css", "Weight", "Background")
 		if err != nil {
 			beego.Error(err)
 			this.AlertBack("头衔修改失败")

@@ -24,15 +24,17 @@ var (
 )
 
 type Userinfor struct {
-	Codeid    string //房间号公司代码加密
-	Uname     string //用户名
-	Nickname  string //用户昵称
-	UserIcon  string //logo
-	RoleName  string //用户角色[vip,silver,gold,jewel]
-	RoleTitle string //用户角色名[会员,白银会员,黄金会员,钻石会员]
-	RoleIcon  string //用户角色默认头像
-	Insider   int64  //1内部人员或0外部人员
-	IsLogin   bool   //是否登入
+	Codeid        string //房间号公司代码加密
+	Uname         string //用户名
+	Nickname      string //用户昵称
+	UserIcon      string //logo
+	RoleName      string //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	RoleTitleCss  string //用户角色样式
+	RoleTitleBack string //角色聊天背景
+	RoleIcon      string //用户角色默认头像
+	Insider       int64  //1内部人员或0外部人员
+	IsLogin       bool   //是否登入
 }
 
 func init() {
@@ -135,6 +137,20 @@ func (this *IndexController) Index() {
 			user.RoleTitle = "游客" //用户类型
 		}
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
+
+		// 设置头衔颜色
+		if len(userLoad.Title.Css) <= 0 {
+			user.RoleTitleCss = "#000000"
+		} else {
+			user.RoleTitleCss = userLoad.Title.Css
+		}
+
+		// RoleTitleBack
+		if len(userLoad.Title.Background) <= 0 {
+			user.RoleTitleBack = "#FFFFFF"
+		} else {
+			user.RoleTitleBack = userLoad.Title.Background
+		}
 
 		user.Insider = 0                          //1内部人员或0外部人员
 		this.Data["title"] = sysconfig.WelcomeMsg //公告

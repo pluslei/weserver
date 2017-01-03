@@ -13,12 +13,13 @@ import (
 
 //分组表
 type Title struct {
-	Id     int64
-	Name   string `orm:"size(128)" form:"Name"  valid:"Required"`
-	Css    string `orm:"size(128)" form:"Css"  valid:"Required"`
-	Weight int    `orm:"default(1)" form:"Weight" valid:"Range(1,2)"`       //权重
-	Remark string `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"` //备注
-	User   *User  `orm:"reverse(one)"`
+	Id         int64
+	Name       string `orm:"size(128)" form:"Name"  valid:"Required"`
+	Css        string `orm:"size(128)" form:"Css"  valid:"Required"`
+	Background string `orm:"size(128)" form:"Css"  valid:"Required"`
+	Weight     int    `orm:"default(1)" form:"Weight" valid:"Range(1,2)"`       //权重
+	Remark     string `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"` //备注
+	User       *User  `orm:"reverse(one)"`
 }
 
 func (g *Title) TableName() string {
@@ -44,6 +45,7 @@ func AddTitle(t *Title) (int64, error) {
 	title := new(Title)
 	title.Name = t.Name
 	title.Css = t.Css
+	title.Background = t.Background
 	title.Weight = t.Weight
 	title.Remark = t.Remark
 	id, err := o.Insert(title)
