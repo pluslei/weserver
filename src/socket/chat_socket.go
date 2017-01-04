@@ -181,31 +181,16 @@ func Chatprogram() {
 				sojson.Codeid = codeid                          //解码公司代码和房间号
 				//禁言控制
 				chatstate := true
-				var gag m.GagControl
-				gag, err = m.SelectGagControl(sojson.Author)
-				if err == nil && gag.Gatstate == 0 {
-					unixtime := -1
-					switch gag.Gagmode {
-					case 5:
-						unixtime = int(time.Now().Unix() - 300)
-					default:
-					}
-					chatstate = false
-					if int64(unixtime) >= gag.Gagtime {
-						chatstate = true
-						gag.Gatstate = 1
-						_, err = m.UpdateGagControl(gag)
-						if err != nil {
-							beego.Debug(err)
-						}
-					}
-				}
 				if chatstate {
 					sojson.AuthorInSider = 0 //1内部人员或0外部人员
 					sojson.AuthorRole = js.Get("AuthorRole").MustString()
 					sojson.Authortype = js.Get("Authortype").MustString()
 					sojson.AuditStatus = js.Get("AuditStatus").MustInt()
-					sojson.Sendtype = js.Get("Sendtype").MustString() //用户发送消息类型，txt, img
+					sojson.Sendtype = js.Get("Sendtype").MustString()           //用户发送消息类型，txt, img
+					sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString()   // 头衔颜色
+					sojson.RoleTitleBack = js.Get("RoleTitleBack").MustString() // 聊天背景颜色
+					sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)        // 头衔颜色
+					sojson.RoleTitleBack = EncodeB64(sojson.RoleTitleBack)      // 聊天背景颜色
 					sojson.Sendtype = EncodeB64(sojson.Sendtype)
 					sojson.AuthorRole = EncodeB64(sojson.AuthorRole)
 					sojson.Authortype = EncodeB64(sojson.Authortype)
