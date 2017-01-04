@@ -5,11 +5,10 @@
         <meta name="_xsrf" content="{{.xsrf_token}}" />
         <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="/static/css/amazeui.css"/>
-        <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
         <script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
         <script type="text/javascript">
-            var companycode = {{.code}};     //公司代码
-            var room = {{.room}};            //房间名
+            var codeid = {{.codeid}};     //公司代码房间号
             var username = {{.uname}};       //用户名
             var ipaddress = {{.ipaddress}};  //Ip
         </script>
@@ -31,28 +30,4 @@
         </div>
     </body>
 </html>
-<script type="text/javascript">
-    //后台广播事件
-    function sendbroad() {
-        var msg = $('#remarkcontent').val();
-        console.info(msg);
-        if (msg.length <= 0) {
-            layer.msg("请输入广播内容", {
-                icon: 2
-            });
-            return;
-        } else {
-            var sendmsg = {}; //发送的内容
-            sendmsg["Author"] = username;
-            sendmsg["Content"] = msg;
-            sendmsg["Codeid"] = companycode + "_" + room; //公司房间标识符
-            sendmsg["WebIp"] = ipaddress; //IP
-            sendmsg["WebPro"] = ""; //省市
-            
-            var sendstr = base64encode(sendmsg);
-            socket.emit('all roombroadmsg', sendstr);
-            parent.location.reload();
-        }
-    }
-</script>
 
