@@ -18,7 +18,6 @@
                     <tr>
                         <th>名称</th>
                         <th>头衔颜色</th>
-                        <th>背景颜色</th>
                         <th>权重</th>
                         <th>备注</th>
                         <th>操作</th>
@@ -69,15 +68,18 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
-                {"mDataProp": "Name",},
-                {"mDataProp": "Css",
+                {"mDataProp": "Name",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<span style='background:"+sData+";width:60px;height:20px;display:block'></span>")
+                        $(nTd).html("<span style='color:"+oData.Css+";width:60px;height:20px;display:block'>"+sData+"</span>")
                     }
                 },
                 {"mDataProp": "Background",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<span style='background:"+sData+";width:60px;height:20px;display:block'></span>")
+                        if (sData == 1) {
+                            $(nTd).html("<span style='color:red'>高亮</span>");
+                        } else {
+                            $(nTd).html("<span>普通</span>");
+                        }
                     }
                 },
                 {"mDataProp": "Weight",},
