@@ -16,7 +16,7 @@ type Title struct {
 	Id         int64
 	Name       string `orm:"size(128)" form:"Name"  valid:"Required"`
 	Css        string `orm:"size(128)" form:"Css"  valid:"Required"`
-	Background string `orm:"size(128)" form:"Css"  valid:"Required"`
+	Background int    `orm:"default(0)" form:"Background"  valid:"Required"`    //背景(0 普通，1 高亮)
 	Weight     int    `orm:"default(1)" form:"Weight" valid:"Range(1,2)"`       //权重
 	Remark     string `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"` //备注
 	User       *User  `orm:"reverse(one)"`

@@ -27,15 +27,16 @@
           <label for="doc-vld-Title-2">头衔样式：</label>
             <input type="text" name="Css" id="Css" /> 
         </div>
-
+        
         <div class="am-form-group">
-          <label for="doc-vld-Title-2">背景样式：</label>
-            <input type="text" name="BackGround" id="BackGround" /> 
+          <label>背景样式：  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '高亮背景聊天变为红色', trigger: 'hover focus'}"></a>： </label>
+          <label class="am-radio-inline">
+            <input type="radio"  value="0" name="BackGround" required checked> 普通
+          </label>
+          <label class="am-radio-inline">
+            <input type="radio" value="1" name="BackGround"> 高亮
+          </label>
         </div>
-
-        <!-- <div class="am-form-group">
-            <img id="preview" src="" width="48" height="20" required   />
-        </div> -->
 
         <div class="am-form-group">
           <label for="doc-select-1">头衔等级    <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '等级越高,可操作的功能越多', trigger: 'hover focus'}"></a></label>
@@ -90,6 +91,5 @@ $(function() {
   });
 });
 $("#Css").bigColorpicker("Css","L",6);
-$("#BackGround").bigColorpicker("BackGround","L",6);
 </script>
 

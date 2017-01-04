@@ -271,7 +271,6 @@ function insertHtmlAtCaret(html) {
         // IE9 and non-IE
         sel = window.getSelection();
         if (sel.getRangeAt && sel.rangeCount) {
-
             range = sel.getRangeAt(0);
             range.deleteContents();
             // Range.createContextualFragment() would be useful here but is

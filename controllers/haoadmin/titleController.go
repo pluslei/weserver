@@ -49,7 +49,7 @@ func (this *TitleController) AddTitle() {
 	Remark := this.GetString("Remark")
 	Weight, _ := this.GetInt("Weight")
 	Css := this.GetString("Css")
-	Background := this.GetString("BackGround")
+	Background, _ := this.GetInt("BackGround")
 	if len(Name) > 0 && len(Css) > 0 {
 		t := new(m.Title)
 		t.Name = Name
@@ -77,7 +77,7 @@ func (this *TitleController) UpdateTitle() {
 	Weight, _ := this.GetInt("Weight")
 	Id, _ := this.GetInt64("Id")
 	Css := this.GetString("Css")
-	Background := this.GetString("BackGround")
+	Background, _ := this.GetInt("BackGround")
 	if len(Name) > 0 {
 		var err error
 		t := new(m.Title)

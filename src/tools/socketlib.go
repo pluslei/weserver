@@ -73,19 +73,21 @@ type Socketjson struct {
 	UserRole string //角色名称
 	Usertype string //用户类别
 	//Usercss   []string //用户头衔
-	Usercss     string    //用户头衔
-	UserInSider int       //人员类别内部人员或外部人员
-	Objname     string    //操作人员用户名
-	Chat        string    //公聊，对他说，私聊
-	Content     string    //发送的内容
-	Coderoom    int       //房间号
-	Codeid      string    //解码公司代码和房间号
-	Time        string    //时间
-	Newtime     string    //时间
-	Datatime    time.Time //添加时间
-	Ipaddress   string    //ip地址
-	Procities   string    //省市
-	IsEmitBroad bool      //消息发送模式
+	Usercss       string    //用户头衔
+	UserInSider   int       //人员类别内部人员或外部人员
+	Objname       string    //操作人员用户名
+	Chat          string    //公聊，对他说，私聊
+	Content       string    //发送的内容
+	Coderoom      int       //房间号
+	Codeid        string    //解码公司代码和房间号
+	Time          string    //时间
+	Newtime       string    //时间
+	Datatime      time.Time //添加时间
+	Ipaddress     string    //ip地址
+	Procities     string    //省市
+	IsEmitBroad   bool      //消息发送模式
+	RoleTitleCss  string    // 头衔颜色
+	RoleTitleBack string    // 聊天背景颜色
 }
 
 var Resultuser []Usertitle  //模拟的用户数据
