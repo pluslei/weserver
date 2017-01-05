@@ -123,6 +123,7 @@ func Chatprogram() {
 					//新用户信息
 					job.socketiduser[so.Id()] = codename
 					job.socketidso[codename] = so
+					beego.Debug(userrole.Uname, job.socketidso[codename], codename, "live========")
 					userroom[codename] = userrole
 					for rolval, userId := range userroom {
 						if _, ok := job.socketidso[rolval]; ok == true {
@@ -186,11 +187,10 @@ func Chatprogram() {
 					sojson.AuthorRole = js.Get("AuthorRole").MustString()
 					sojson.Authortype = js.Get("Authortype").MustString()
 					sojson.AuditStatus = js.Get("AuditStatus").MustInt()
-					sojson.Sendtype = js.Get("Sendtype").MustString()           //用户发送消息类型，txt, img
-					sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString()   // 头衔颜色
-					sojson.RoleTitleBack = js.Get("RoleTitleBack").MustString() // 聊天背景颜色
-					sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)        // 头衔颜色
-					sojson.RoleTitleBack = EncodeB64(sojson.RoleTitleBack)      // 聊天背景颜色
+					sojson.Sendtype = js.Get("Sendtype").MustString()         //用户发送消息类型，txt, img
+					sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString() // 头衔颜色
+					sojson.RoleTitleBack = js.Get("RoleTitleBack").MustBool() // 聊天背景颜色
+					sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)      // 头衔颜色
 					sojson.Sendtype = EncodeB64(sojson.Sendtype)
 					sojson.AuthorRole = EncodeB64(sojson.AuthorRole)
 					sojson.Authortype = EncodeB64(sojson.Authortype)
@@ -524,16 +524,29 @@ func Chatprogram() {
 				} else {
 					uname := js.Get("Uname").MustString()
 					objname := EncodeB64(js.Get("Objname").MustString())
+					beego.Debug("uname", uname, js.Get("Objname").MustString())
 					codeid := js.Get("Codeid").MustString()       //公司房间标识符
 					codeid = Transformname(codeid, "", -1)        //解码公司代码和房间号
 					codeuser := Transformname(codeid, objname, 0) //公司代码用户名互转
+					beego.Debug(job.socketidso[codeuser], "1111====1111", codeuser, js.Get("Objname").MustString())
 					if _, ok := job.socketidso[codeuser]; ok == true {
-						user := new(m.User)
-						user.Username = uname
-						_, err := m.LoadRelatedUser(user, "Username")
-						if err == nil {
-							job.socketidso[codeuser].Emit("all kickout", "")
+						// user := new(m.User)
+						// user.Username = uname
+						// _, err := m.LoadRelatedUser(user, "Username")
+						// if err == nil {
+						// beego.Debug("====", user)
+						job.socketidso[codeuser].Emit("all kickout", "")
+						if _, ok := job.socketiduser[job.socketidso[codeuser].Id()]; ok == true {
+							delete(job.socketiduser, job.socketidso[codeuser].Id())
 						}
+						delete(job.socketidso, codeuser)
+						// } else {
+						// 	sendshowmsg := "操作失败!"
+						// 	so.Emit("all showmsg", sendshowmsg)
+						// }
+					} else {
+						sendshowmsg := "操作失败!"
+						so.Emit("all showmsg", sendshowmsg)
 					}
 				}
 			}

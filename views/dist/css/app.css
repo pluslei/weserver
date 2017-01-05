@@ -271,6 +271,7 @@ body {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
+  -webkit-user-select: none;
 }
 .footer .radio img {
   width: 87%;
@@ -312,6 +313,27 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
+.voice {
+  height: 95pt;
+  width: 100pt;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 35%;
+  z-index: 999;
+  border-radius: 12px;
+}
+.voice img {
+  width: 25pt;
+  display: block;
+  margin: 12pt 0px 0px 37pt;
+}
+.voice span {
+  color: #fff;
+  font-size: 13px;
+  display: block;
+  text-align: center;
+  padding-top: 16pt;
+}
 /*公告栏*/
 .notice {
   height: 45px;
@@ -341,6 +363,11 @@ body {
 }
 .face img {
   padding: 2%;
+  /*
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    */
 }
 /*公告栏*/
 .upload {
@@ -450,4 +477,15 @@ body {
 }
 .scanQRcode .QRcode img {
   width: 30%;
+}
+.footer .theInput .contentText {
+  height: 38px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.footer .theInput .contentText img {
+  max-width: 20px;
+  max-height: 20px;
+  margin: -5px 2px 0px 2px;
 }
