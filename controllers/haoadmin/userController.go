@@ -9,7 +9,6 @@ import (
 	"time"
 	m "weserver/models"
 	p "weserver/src/parameter"
-	"weserver/src/socket"
 	"weserver/src/tools"
 )
 
@@ -528,17 +527,11 @@ func (this *UserController) KictUser() {
 		this.Rsp(false, "用户暂未审核", "")
 		return
 	}
-
-	if socket.KictUser(user.Username) {
-		if this.changeuserstatus(user) {
-			this.Rsp(true, "踢出成功", "")
-		} else {
-			this.Rsp(false, "踢出失败", "")
-		}
+	if this.changeuserstatus(user) {
+		this.Rsp(true, "踢出成功", "")
 	} else {
 		this.Rsp(false, "踢出失败", "")
 	}
-
 }
 
 func (this *UserController) changeuserstatus(user *m.User) bool {

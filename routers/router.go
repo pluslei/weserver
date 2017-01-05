@@ -21,7 +21,6 @@ func init() {
 		beego.SetStaticPath("/js", "./views/dist/js")
 		beego.SetStaticPath("/fonts", "./views/dist/fonts")
 	*/
-
 	beego.SetViewsPath("../weclient/dist")
 	beego.SetStaticPath("/css", "../weclient/dist/css")
 	beego.SetStaticPath("/i", "../weclient/dist/i")

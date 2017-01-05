@@ -209,7 +209,7 @@
                 {"mDataProp": "Createtime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+",`"+oData.Nickname+"`)'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='用户编辑' href='updateuser?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='用户删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='javascript:kickOutFun("+sData+",`"+oData.Username+"`)'><span class='am-icon-paper-plane'></span> 踢出房间</a></div>");
                     }
                 },
             ],
@@ -363,16 +363,6 @@
             data: {Id: id},
             success:function(data){
                 if (data.status) {
-                    var sendmsg = {}; //发送的内容
-                    sendmsg["Uname"] = {{.username}};
-                    sendmsg["Objname"] = base64encode(objname);
-                    sendmsg["Codeid"] = {{.code}} + "_" + {{.room}}; //公司房间标识符
-                    var sendstr = base64encode(sendmsg);
-                    socket.emit('all kickout', sendstr);
-                    //消息提示
-                    layer.msg(msg, {
-                        icon: 1
-                    });
                     oTable.fnReloadAjax(oTable.fnSettings());
                 }
             }

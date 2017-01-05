@@ -16,6 +16,12 @@ function socketdata() {
         });
         parent.location.reload();
     });
+    socket.on('all showmsg', function(msg) {
+        //消息提示
+        layer.msg(msg, {
+            icon: 2
+        });
+    });
 }
 
 //后台广播事件

@@ -75,7 +75,6 @@ func Chatprogram() {
 					beego.Error(err)
 				}
 				var userrole Usertitle
-				islogin := js.Get("IsLogin").MustBool()
 				codeid := js.Get("Codeid").MustString()
 				userrole.Uname = js.Get("Uname").MustString()            //用户名
 				userrole.UserIcon = js.Get("UserIcon").MustString()      //用户Icon
@@ -87,7 +86,6 @@ func Chatprogram() {
 				userrole.Datatime = time.Now()                           //登入的时间
 				codeid = Transformname(codeid, "", -1)                   //解码公司代码和房间号
 				userrole.Roomid = Transformname(codeid, "", 2)           //房间号
-				dataem := make(map[string]interface{})
 				var (
 					userroom map[string]Usertitle //公司房间号对应的用户列表信息
 					urole    []Usertitle
@@ -103,23 +101,6 @@ func Chatprogram() {
 						userroom, _ = Jsontoroommap(roomdata)
 					}
 					codename := Transformname(codeid, EncodeB64(userrole.Uname), 0) //公司代码用户名互转
-					//如果有用户重复登入就私聊退出该用户
-					if _, ok := job.socketidso[codename]; ok == true {
-						if islogin == true {
-							data := make(map[string]interface{})
-							data["user"] = userroom[codename]
-							data["leave"] = "leave"
-							job.socketidso[codename].Emit("all disconnection", data)
-						}
-
-						if _, ok := job.socketiduser[job.socketidso[codename].Id()]; ok == true {
-							delete(job.socketiduser, job.socketidso[codename].Id())
-						}
-						if _, ok := userroom[codename]; ok == true {
-							delete(userroom, codename)
-						}
-						delete(job.socketidso, codename)
-					}
 					//新用户信息
 					job.socketiduser[so.Id()] = codename
 					job.socketidso[codename] = so
@@ -138,26 +119,6 @@ func Chatprogram() {
 					jsonRes, _ := json.Marshal(userroom)
 					jsonstr := string(jsonRes)
 					p.Client.Set(jobroom, jsonstr)
-					dataem["utype"] = "emit"
-					var casttomsg string
-					body, err01 := json.Marshal(urole)
-					if err01 == nil {
-						casttomsg = string(body)
-					}
-					casttomsg = EncodeB64(casttomsg)
-					//dataem["msg"] = urole
-					dataem["msg"] = casttomsg
-					so.Emit("all connection", dataem)
-					dataem["utype"] = "broad"
-					if _, ok := job.socketiotoroom[codeid]; ok == true {
-						roleroom := job.socketiotoroom[codeid].Roomval
-						rolelen := len(roleroom[0])
-						for i := 0; i < 2; i++ {
-							for j := 0; j < rolelen; j++ {
-								so.BroadcastTo(roleroom[i][j], "all connection", dataem)
-							}
-						}
-					}
 				}
 			}
 		})
@@ -183,11 +144,10 @@ func Chatprogram() {
 				sojson.AuthorRole = js.Get("AuthorRole").MustString()
 				sojson.Authortype = js.Get("Authortype").MustString()
 				sojson.AuditStatus = js.Get("AuditStatus").MustInt()
-				sojson.Sendtype = js.Get("Sendtype").MustString()           //用户发送消息类型，txt, img
-				sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString()   // 头衔颜色
-				sojson.RoleTitleBack = js.Get("RoleTitleBack").MustString() // 聊天背景颜色
-				sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)        // 头衔颜色
-				sojson.RoleTitleBack = EncodeB64(sojson.RoleTitleBack)      // 聊天背景颜色
+				sojson.Sendtype = js.Get("Sendtype").MustString()         //用户发送消息类型，txt, img
+				sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString() // 头衔颜色
+				sojson.RoleTitleBack = js.Get("RoleTitleBack").MustBool() // 聊天背景颜色
+				sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)      // 头衔颜色
 				sojson.Sendtype = EncodeB64(sojson.Sendtype)
 				sojson.AuthorRole = EncodeB64(sojson.AuthorRole)
 				sojson.Authortype = EncodeB64(sojson.Authortype)
@@ -451,16 +411,24 @@ func Chatprogram() {
 				} else {
 					uname := js.Get("Uname").MustString()
 					objname := EncodeB64(js.Get("Objname").MustString())
+					beego.Debug("uname", uname, js.Get("Objname").MustString())
 					codeid := js.Get("Codeid").MustString()       //公司房间标识符
 					codeid = Transformname(codeid, "", -1)        //解码公司代码和房间号
 					codeuser := Transformname(codeid, objname, 0) //公司代码用户名互转
 					if _, ok := job.socketidso[codeuser]; ok == true {
-						user := new(m.User)
-						user.Username = uname
-						_, err := m.LoadRelatedUser(user, "Username")
-						if err == nil {
-							job.socketidso[codeuser].Emit("all kickout", "")
+						// user := new(m.User)
+						// user.Username = uname
+						// _, err := m.LoadRelatedUser(user, "Username")
+						// if err == nil {
+						// beego.Debug("====", user)
+						job.socketidso[codeuser].Emit("all kickout", "")
+						if _, ok := job.socketiduser[job.socketidso[codeuser].Id()]; ok == true {
+							delete(job.socketiduser, job.socketidso[codeuser].Id())
 						}
+						delete(job.socketidso, codeuser)
+					} else {
+						sendshowmsg := "操作失败!"
+						so.Emit("all showmsg", sendshowmsg)
 					}
 				}
 			}
@@ -552,7 +520,6 @@ func (this *SocketController) ChatUserList() {
 			switch method {
 			case "chatdata":
 				{
-					//开线程获取省市
 					go func() {
 						//房间号获取
 						roleval, _ := m.GetAllUserRole()

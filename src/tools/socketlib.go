@@ -87,7 +87,7 @@ type Socketjson struct {
 	Procities     string    //省市
 	IsEmitBroad   bool      //消息发送模式
 	RoleTitleCss  string    // 头衔颜色
-	RoleTitleBack string    // 聊天背景颜色
+	RoleTitleBack bool      // 聊天背景颜色
 }
 
 var Resultuser []Usertitle  //模拟的用户数据
