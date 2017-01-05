@@ -31,7 +31,7 @@ type Userinfor struct {
 	RoleName      string //用户角色[vip,silver,gold,jewel]
 	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
 	RoleTitleCss  string //用户角色样式
-	RoleTitleBack bool   //角色聊天背景
+	RoleTitleBack string //角色聊天背景
 	RoleIcon      string //用户角色默认头像
 	Insider       int64  //1内部人员或0外部人员
 	IsLogin       bool   //是否登入
@@ -146,9 +146,9 @@ func (this *IndexController) Index() {
 
 		// RoleTitleBack
 		if userLoad.Title.Background == 1 {
-			user.RoleTitleBack = true
+			user.RoleTitleBack = "#FF0000"
 		} else {
-			user.RoleTitleBack = false
+			user.RoleTitleBack = ""
 		}
 
 		user.Insider = 0                          //1内部人员或0外部人员
@@ -169,7 +169,7 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		// this.TplName = "dist/index.html"
+		//this.TplName = "dist/index.html"
 		this.TplName = "index.html"
 
 	} else {

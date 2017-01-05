@@ -179,116 +179,43 @@ func Chatprogram() {
 				roomid, _ := strconv.ParseInt(coderoom, 10, 64) //房间号
 				sojson.Coderoom = int(roomid)                   //公司代码房间号
 				sojson.Codeid = codeid                          //解码公司代码和房间号
-				//禁言控制
-				chatstate := true
-				if chatstate {
-					sojson.AuthorInSider = 0 //1内部人员或0外部人员
-					sojson.AuthorRole = js.Get("AuthorRole").MustString()
-					sojson.Authortype = js.Get("Authortype").MustString()
-					sojson.AuditStatus = js.Get("AuditStatus").MustInt()
-					sojson.Sendtype = js.Get("Sendtype").MustString()           //用户发送消息类型，txt, img
-					sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString()   // 头衔颜色
-					sojson.RoleTitleBack = js.Get("RoleTitleBack").MustString() // 聊天背景颜色
-					sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)        // 头衔颜色
-					sojson.RoleTitleBack = EncodeB64(sojson.RoleTitleBack)      // 聊天背景颜色
-					sojson.Sendtype = EncodeB64(sojson.Sendtype)
-					sojson.AuthorRole = EncodeB64(sojson.AuthorRole)
-					sojson.Authortype = EncodeB64(sojson.Authortype)
-					sojson.Authorcss = EncodeB64(js.Get("UserIcon").MustString())
-					sojson.Author = EncodeB64(sojson.Author)
-					sojson.Content = js.Get("Content").MustString()
-					sojson.Content = EncodeB64(sojson.Content)
-					sojson.Chat = EncodeB64(js.Get("Chat").MustString())
-					sojson.Time = time.Now().Format("15:04")
-					sojson.Newtime = time.Now().Format("2006-01-02 15:04:05") //发言时间
-					sojson.Datatime = time.Now()
-					//数据传给后台
-					uname := sojson.Author
-					codename := Transformname(codeid, uname, 0) //公司代码用户名互转
-					//从map中获取数据
-					if _, ok := job.socketiduserip[codename]; ok == true {
-						sojson.Ipaddress = job.socketiduserip[codename].Ip  //获取ip地址
-						sojson.Procities = job.socketiduserip[codename].Pro //省市
-					}
-					data := make(map[string]interface{})
-					data["msg"] = sojson
-					sendmessage := true
-					if sojson.AuthorDelay > 0 {
-						if _, ok := job.socketidusertime[codename]; ok == true {
-							authorunixtime := int(time.Now().Unix()) - job.socketidusertime[codename]
-							gagtime := sojson.AuthorDelay
-							if authorunixtime < gagtime {
-								sendmessage = false
-								if _, ok := job.socketidso[codename]; ok == true {
-									//发言间隔时间提示
-									sendshowmsg := fmt.Sprintf("请间隔%d秒在发言!", gagtime)
-									job.socketidso[codename].Emit("all showmsg", sendshowmsg)
-								}
-							} else {
-								job.socketidusertime[codename] = int(time.Now().Unix())
+				sojson.AuthorInSider = 0                        //1内部人员或0外部人员
+				sojson.AuthorRole = js.Get("AuthorRole").MustString()
+				sojson.Authortype = js.Get("Authortype").MustString()
+				sojson.AuditStatus = js.Get("AuditStatus").MustInt()
+				sojson.Sendtype = js.Get("Sendtype").MustString()           //用户发送消息类型，txt, img
+				sojson.RoleTitleCss = js.Get("RoleTitleCss").MustString()   // 头衔颜色
+				sojson.RoleTitleBack = js.Get("RoleTitleBack").MustString() // 聊天背景颜色
+				sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)        // 头衔颜色
+				sojson.RoleTitleBack = EncodeB64(sojson.RoleTitleBack)      // 聊天背景颜色
+				sojson.Sendtype = EncodeB64(sojson.Sendtype)
+				sojson.AuthorRole = EncodeB64(sojson.AuthorRole)
+				sojson.Authortype = EncodeB64(sojson.Authortype)
+				sojson.Authorcss = EncodeB64(js.Get("UserIcon").MustString())
+				sojson.Author = EncodeB64(sojson.Author)
+				sojson.Content = js.Get("Content").MustString()
+				sojson.Content = EncodeB64(sojson.Content)
+				sojson.Chat = EncodeB64(js.Get("Chat").MustString())
+				sojson.Time = time.Now().Format("15:04")
+				sojson.Newtime = time.Now().Format("2006-01-02 15:04:05") //发言时间
+				sojson.Datatime = time.Now()
+				data := make(map[string]interface{})
+				data["msg"] = sojson
+				switch DecodeB64(sojson.Chat) {
+				case "allchat":
+					so.Emit("all message", data)
+					if _, ok := job.socketiotoroom[codeid]; ok == true {
+						roleroom := job.socketiotoroom[codeid].Roomval
+						rolelen := len(roleroom[0])
+						for i := 0; i < 2; i++ {
+							for j := 0; j < rolelen; j++ {
+								so.BroadcastTo(roleroom[i][j], "all message", data)
 							}
-						} else {
-							job.socketidusertime[codename] = int(time.Now().Unix())
 						}
+						//保存数据
+						Savechatdata(sojson, 0)
 					}
-					if sojson.AuthorInSider == 0 {
-						sysconfig, _ := m.GetAllSysConfig()              //系统设置
-						sojson.AuthorDelay = int(sysconfig.ChatInterval) //用户禁言时间
-					}
-					//var sendmsgtext string
-					if sendmessage {
-						switch DecodeB64(sojson.Chat) {
-						case "allchat":
-							//保存数据
-							/*
-								if sojson.AuditStatus != 100 {
-									sojson.IsEmitBroad = true
-										body, err01 := json.Marshal(sojson)
-										if err01 == nil {
-											sendmsgtext = string(body)
-										}
-										sendmsgtext = EncodeB64(sendmsgtext)
-										data["msg"] = sendmsgtext
-									data["msg"] = sojson
-									so.Emit("all message", data)
-								}
-							*/
-							data["msg"] = sojson
-							so.Emit("all message", data)
-							if _, ok := job.socketiotoroom[codeid]; ok == true {
-								roleroom := job.socketiotoroom[codeid].Roomval
-								rolelen := len(roleroom[0])
-								k := 0
-								/*
-									if sojson.AuthorInSider == 0 && sojson.AuditStatus == 2 {
-										k = 1
-									}
-								*/
-								sojson.IsEmitBroad = false
-								/*
-									body, err01 := json.Marshal(sojson)
-									if err01 == nil {
-										sendmsgtext = string(body)
-									}
-									sendmsgtext = EncodeB64(sendmsgtext)
-								*/
-								data["msg"] = sojson
-								for i := k; i < 2; i++ {
-									for j := 0; j < rolelen; j++ {
-										so.BroadcastTo(roleroom[i][j], "all message", data)
-									}
-								}
-								Savechatdata(sojson, 0)
-							}
-						default:
-						}
-					} else {
-						sendshowmsg := "你没有此权限,请联系管理员!"
-						so.Emit("all showmsg", sendshowmsg)
-					}
-				} else {
-					sendshowmsg := "你没有此权限,请联系管理员!"
-					so.Emit("all showmsg", sendshowmsg)
+				default:
 				}
 			}
 		})
