@@ -172,8 +172,8 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		this.TplName = "dist/index.html"
-		// this.TplName = "index.html"
+		// this.TplName = "dist/index.html"
+		this.TplName = "index.html"
 
 	} else {
 		this.Redirect("/", 302)
@@ -200,10 +200,10 @@ func (this *IndexController) Voice() {
 }
 
 func (this *IndexController) GetMediaURL() {
-	type medio struct {
-		Status   bool   `json:"status"`
-		Mediourl string `json:"mediourl"`
-	}
+	// type medio struct {
+	// 	Status   bool   `json:"status"`
+	// 	Mediourl string `json:"mediourl"`
+	// }
 
 	media := this.GetString("media")
 	material := wx.GetMaterial()
@@ -223,11 +223,12 @@ func (this *IndexController) GetMediaURL() {
 		}
 	}
 
-	m := new(medio)
-	m.Status = true
-	m.Mediourl = srcfile
-	this.Data["json"] = m
-	this.ServeJSON()
+	// m := new(medio)
+	// m.Status = true
+	// m.Mediourl = srcfile
+	// this.Data["json"] = m
+	// this.ServeJSON()
+	this.Redirect(srcfile, 301)
 }
 
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {

@@ -15,17 +15,17 @@ func init() {
 	// 开启调试模式
 	orm.Debug = false
 
-	beego.SetStaticPath("/upload", "../upload")
-	beego.SetStaticPath("/css", "./views/dist/css")
-	beego.SetStaticPath("/i", "./views/dist/i")
-	beego.SetStaticPath("/js", "./views/dist/js")
-	beego.SetStaticPath("/fonts", "./views/dist/fonts")
+	// beego.SetStaticPath("/upload", "../upload")
+	// beego.SetStaticPath("/css", "./views/dist/css")
+	// beego.SetStaticPath("/i", "./views/dist/i")
+	// beego.SetStaticPath("/js", "./views/dist/js")
+	// beego.SetStaticPath("/fonts", "./views/dist/fonts")
 
-	// beego.SetViewsPath("../weclient/dist")
-	// beego.SetStaticPath("/css", "../weclient/dist/css")
-	// beego.SetStaticPath("/i", "../weclient/dist/i")
-	// beego.SetStaticPath("/js", "../weclient/dist/js")
-	// beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
+	beego.SetViewsPath("../weclient/dist")
+	beego.SetStaticPath("/css", "../weclient/dist/css")
+	beego.SetStaticPath("/i", "../weclient/dist/i")
+	beego.SetStaticPath("/js", "../weclient/dist/js")
+	beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
 }
 
 // 路由必须三个/以上
