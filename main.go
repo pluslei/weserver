@@ -1,8 +1,12 @@
 package main
 
 import (
+	"os"
+	"path/filepath"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	"github.com/astaxie/beego/toolbox"
 	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
@@ -23,5 +27,27 @@ func main() {
 	// }))
 	//socket
 	socket.Chatprogram()
+
+	ClearDownImage()
 	beego.Run()
+}
+
+// 清空目录
+func ClearDownImage() {
+	tk := toolbox.NewTask("tk", "0 0 23 * * 1", func() error {
+		walkDir := "./static/down/"
+		err := filepath.Walk(walkDir, func(path string, info os.FileInfo, err error) error {
+			if info.IsDir() {
+			} else {
+				os.Remove(path)
+			}
+			return err
+		})
+		if err != nil {
+			beego.Error("error", err)
+		}
+		return err
+	})
+	toolbox.AddTask("tk", tk)
+	toolbox.StartTask()
 }

@@ -220,6 +220,23 @@ body {
 .chat-item.adminPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
 }
+.chat-item.minePerson .sendState {
+  position: absolute;
+  left: -23px;
+  top: 50%;
+  margin-top: -10px;
+  color: #ccc;
+}
+.chat-item.minePerson .sendfault {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  color: #fff;
+}
 .chat-item.minePerson .chat-item-head {
   float: right;
   margin-left: 15px;
@@ -230,8 +247,9 @@ body {
 }
 .chat-item.minePerson .chat-item-msg {
   float: right;
-  background: #A0E759;
-  color: #000000;
+  background: #9BE455;
+  color: #000;
+  border: 1px solid #89ce5a;
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-tip {
   position: absolute;
@@ -249,7 +267,7 @@ body {
   height: 60px;
   width: 100%;
   background-color: #f4f4f6;
-  padding: 10px 0px;
+  padding: 5px 0px;
 }
 .footer .radio,
 .footer .smile,
@@ -309,10 +327,6 @@ body {
   border-radius: 2px;
   font-size: 14px;
 }
-.footer #msgcontent {
-  white-space: nowrap;
-  overflow: hidden;
-}
 .voice {
   height: 95pt;
   width: 100pt;
@@ -336,7 +350,7 @@ body {
 }
 /*公告栏*/
 .notice {
-  height: 45px;
+  height: 55px;
   background-color: #fff;
   width: 100%;
   border-bottom: 1px solid #ccc;
@@ -355,19 +369,24 @@ body {
 }
 /*表情包*/
 .face {
-  z-index: 2000;
-  background: #fff;
-  border: 1px solid #ccc;
   width: 100%;
-  height: 137px;
+  height: 188pt;
+  border-top: 1px solid #ccc;
+  padding: 0px 4%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[5];
+      grid-template-columns: repeat(5, 100px);
+  -ms-grid-rows: auto ;
+      grid-template-rows: auto ;
 }
-.face img {
-  padding: 2%;
-  /*
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    */
+.face .box {
+  padding-top: 4px;
+  height: 44px;
+  width: 14.28%;
+  line-height: 44px;
+  text-align: center;
+  float: left;
 }
 /*公告栏*/
 .upload {
@@ -480,12 +499,13 @@ body {
 }
 .footer .theInput .contentText {
   height: 38px;
-  line-height: 20px;
-  white-space: nowrap;
   overflow: hidden;
+  line-height: 19px;
+  white-space: nowrap;
 }
 .footer .theInput .contentText img {
+  margin: -1px 2px;
+  vertical-align: top;
   max-width: 20px;
   max-height: 20px;
-  margin: -5px 2px 0px 2px;
 }

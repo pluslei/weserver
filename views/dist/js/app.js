@@ -142,10 +142,63 @@ var ChatBar = function (_React$Component) {
       return { __html: data };
     }
   }, {
-    key: 'createchatItem',
-    value: function createchatItem(receivedata, aution) {
+    key: 'loadchatlist',
+    value: function loadchatlist(receivedata) {
       var _this2 = this;
 
+      var data = receivedata;
+      switch (data.sendtype) {
+        case 'VOICE':
+          data.handle.userstyle = 'chat-item minePerson minePerson-voice';
+          data.handle.imgurl = '../i/videomyself.png';
+          break;
+        case 'TXT':
+          data.handle.userstyle = 'chat-item minePerson minePerson-msg';
+          break;
+        case 'IMG':
+          {
+            data.handle.userstyle = 'chat-item minePerson minePerson-img';
+            data.handle.defaultstyle += ' defaultLoading';
+            data.handle.imgurl = '../i/loading.gif';
+            var chatlength = this.state.chatdata.length;
+            var tempdata = {
+              id: chatlength,
+              serverid: data.content
+            };
+            this.pthis.Weixin.chat.imgurllist = [];
+            this.pthis.Weixin.chat.imgurllist.push(tempdata);
+            setTimeout(function () {
+              _this2.pthis.Weixin.syncDownloadImg();
+            }, 0);
+          }
+          break;
+        default:
+          break;
+      }
+      this.state.chatdata.push(data);
+      this.setState({
+        chatdata: this.state.chatdata
+      });
+      setTimeout(function () {
+        _this2.setControlscrollbar('.chat');
+      }, 10);
+      if (_Config2.default.sendeventtime === null) {
+        _Config2.default.sendeventtime = setTimeout(function () {
+          // 消息发送失败
+          var chatlength = _this2.pthis.chatBar.state.chatdata.length;
+          _this2.pthis.chatBar.state.chatdata[chatlength - 1].sendstatus = 'fail';
+          _this2.pthis.chatBar.setState({
+            chatdata: _this2.pthis.chatBar.state.chatdata
+          });
+          _Config2.default.connectionso();
+
+          _Config2.default.sendeventtime = null;
+        }, 2000);
+      }
+    }
+  }, {
+    key: 'createchathistoryItem',
+    value: function createchathistoryItem(receivedata) {
       var data = {
         nickname: receivedata.Author,
         usericon: receivedata.Authorcss,
@@ -154,6 +207,7 @@ var ChatBar = function (_React$Component) {
         sendtype: receivedata.Sendtype,
         roletitlecss: receivedata.RoleTitleCss,
         roletitleback: receivedata.RoleTitleBack,
+        sendstatus: '',
         handle: {
           userstyle: '',
           imgurl: '',
@@ -215,18 +269,96 @@ var ChatBar = function (_React$Component) {
       if (data.sendtype === 'IMG') {
         data.handle.defaultstyle += ' defaultLoading';
         data.handle.imgurl = '../i/loading.gif';
-        if (aution === 'now') {
-          var chatlength = this.state.chatdata.length;
-          var tempdata = {
-            id: chatlength,
-            serverid: data.content
-          };
-          this.pthis.Weixin.chat.imgurllist = [];
-          this.pthis.Weixin.chat.imgurllist.push(tempdata);
-          setTimeout(function () {
-            _this2.pthis.Weixin.syncDownloadImg();
-          }, 0);
+      }
+      this.state.chatdata.push(data);
+      this.setState({
+        chatdata: this.state.chatdata
+      });
+    }
+  }, {
+    key: 'createchatnowItem',
+    value: function createchatnowItem(receivedata) {
+      var _this3 = this;
+
+      var data = {
+        nickname: receivedata.Author,
+        usericon: receivedata.Authorcss,
+        roletitle: receivedata.Authortype,
+        content: receivedata.Content,
+        sendtype: receivedata.Sendtype,
+        roletitlecss: receivedata.RoleTitleCss,
+        roletitleback: receivedata.RoleTitleBack,
+        sendstatus: '',
+        handle: {
+          userstyle: '',
+          imgurl: '',
+          defaultstyle: 'chat-item-msg'
         }
+      };
+      switch (data.sendtype) {
+        case 'VOICE':
+          if (data.nickname === _Config2.default.usermsg.Nickname) {
+            var chatlength = this.state.chatdata.length;
+            this.state.chatdata[chatlength - 1].sendstatus = 'success';
+            this.setState({
+              chatdata: this.state.chatdata
+            });
+            return;
+          } else if (data.roletitleback) {
+            data.handle.userstyle = 'chat-item adminPerson adminPerson-voice';
+            data.handle.imgurl = '../i/videoGuanli.png';
+          } else {
+            data.handle.userstyle = 'chat-item otherPerson otherPerson-voice';
+            data.handle.imgurl = '../i/videoOther.png';
+          }
+          data.roletitleback = false;
+          break;
+        default:
+          if (data.nickname === _Config2.default.usermsg.Nickname) {
+            var _chatlength = this.state.chatdata.length;
+            this.state.chatdata[_chatlength - 1].sendstatus = 'success';
+            this.setState({
+              chatdata: this.state.chatdata
+            });
+            return;
+          } else if (data.roletitleback) {
+            switch (data.sendtype) {
+              case 'TXT':
+                data.handle.userstyle = 'chat-item adminPerson adminPerson-msg';
+                break;
+              case 'IMG':
+                data.handle.userstyle = 'chat-item adminPerson adminPerson-img';
+                break;
+              default:
+                break;
+            }
+          } else {
+            switch (data.sendtype) {
+              case 'TXT':
+                data.handle.userstyle = 'chat-item otherPerson otherPerson-msg';
+                break;
+              case 'IMG':
+                data.handle.userstyle = 'chat-item otherPerson otherPerson-img';
+                break;
+              default:
+                break;
+            }
+          }
+          break;
+      }
+      if (data.sendtype === 'IMG') {
+        data.handle.defaultstyle += ' defaultLoading';
+        data.handle.imgurl = '../i/loading.gif';
+        var _chatlength2 = this.state.chatdata.length;
+        var tempdata = {
+          id: _chatlength2,
+          serverid: data.content
+        };
+        this.pthis.Weixin.chat.imgurllist = [];
+        this.pthis.Weixin.chat.imgurllist.push(tempdata);
+        setTimeout(function () {
+          _this3.pthis.Weixin.syncDownloadImg();
+        }, 0);
       }
       this.state.chatdata.push(data);
       this.setState({
@@ -236,8 +368,9 @@ var ChatBar = function (_React$Component) {
   }, {
     key: 'createchatList',
     value: function createchatList(item, index) {
-      var _this3 = this;
+      var _this4 = this;
 
+      var sendcontent = '';
       var usercontent = '';
       switch (item.sendtype) {
         case 'VOICE':
@@ -246,7 +379,7 @@ var ChatBar = function (_React$Component) {
             src: item.handle.imgurl,
             alt: '',
             onClick: function onClick() {
-              _this3.pthis.Weixin.playVoice(index, item.content, item.handle.imgurl);
+              _this4.pthis.Weixin.playVoice(index, item.content, item.handle.imgurl);
             }
           });
           break;
@@ -257,7 +390,7 @@ var ChatBar = function (_React$Component) {
               src: item.handle.imgurl,
               alt: '',
               onClick: function onClick() {
-                _this3.pthis.Weixin.preViewImage(item.handle.imgurl);
+                _this4.pthis.Weixin.preViewImage(item.handle.imgurl);
               }
             });
             break;
@@ -267,6 +400,25 @@ var ChatBar = function (_React$Component) {
             className: 'chat-item-word',
             dangerouslySetInnerHTML: this.createMarkup(item.content)
           });
+          break;
+        default:
+          break;
+      }
+      // 消息发送状态
+      switch (item.sendstatus) {
+        case 'send':
+          sendcontent = _react2.default.createElement('i', {
+            className: 'sendState am-icon-circle-o-notch am-icon-spin'
+          });
+          break;
+        case 'fail':
+          sendcontent = _react2.default.createElement(
+            'span',
+            {
+              className: 'sendState sendfault'
+            },
+            '!'
+          );
           break;
         default:
           break;
@@ -301,29 +453,30 @@ var ChatBar = function (_React$Component) {
           'div',
           { className: item.handle.defaultstyle },
           _react2.default.createElement('div', { className: 'chat-msg-tip' }),
-          usercontent
+          usercontent,
+          sendcontent
         )
       );
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       return _react2.default.createElement(
         'div',
         {
           className: 'chat',
           style: this.pthis.state.chat.style,
-          onClick: function onClick() {
-            _this4.pthis.setState({
+          onTouchEnd: function onTouchEnd() {
+            _this5.pthis.setState({
               face: {
                 isshow: false
               },
               chat: {
                 style: {
                   height: 'calc(100% - 105px)',
-                  overflow: 'scroll',
+                  overflowY: 'auto',
                   WebkitOverflowScrolling: 'touch'
                 }
               },
@@ -432,6 +585,7 @@ var Face = function (_React$Component) {
   }, {
     key: 'loadfaceurl',
     value: function loadfaceurl(imgurl, e) {
+      console.log(e);
       /*
       if (e && e.stopPropagation) {
         e.stopPropagation();
@@ -439,7 +593,7 @@ var Face = function (_React$Component) {
         window.event.cancelBubble = true;
       }
       */
-      e.preventDefault();
+      // e.preventDefault();
       // 改变样式
       this.pthis.setState({
         footer: {
@@ -472,18 +626,25 @@ var Face = function (_React$Component) {
     value: function createfaceList(text, index) {
       var _this2 = this;
 
-      return _react2.default.createElement('img', {
-        key: index,
-        src: text,
-        alt: '',
-        onTouchEnd: function onTouchEnd(e) {
-          (0, _jquery2.default)('#msgcontent').focus();
-          _Cursor2.default.saveSelection();
-          setTimeout(function () {
-            _this2.loadfaceurl(text, e);
-          }, 10);
-        }
-      });
+      return _react2.default.createElement(
+        'div',
+        {
+          className: 'box',
+          key: index,
+          onTouchEnd: function onTouchEnd(e) {
+            (0, _jquery2.default)('#msgcontent').focus();
+            _Cursor2.default.saveSelection();
+            setTimeout(function () {
+              _this2.loadfaceurl(text, e);
+            }, 10);
+          }
+        },
+        _react2.default.createElement('img', {
+          key: index,
+          src: text,
+          alt: ''
+        })
+      );
     }
   }, {
     key: 'render',
@@ -554,6 +715,7 @@ var FooterBar = function (_React$Component) {
     _this.state = {
       voicecontent: '按住 说话'
     };
+    // 传值
     _this.pthis = _this.props.pthis;
     _this.handleSelect = _this.handleSelect.bind(_this);
     return _this;
@@ -561,7 +723,9 @@ var FooterBar = function (_React$Component) {
 
   _createClass(FooterBar, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      (0, _jquery2.default)('#msgcontent').focus();
+    }
   }, {
     key: 'handleSelect',
     value: function handleSelect(link, e) {
@@ -603,6 +767,50 @@ var FooterBar = function (_React$Component) {
       };
       var sendstr = _Config2.default.base64data(0, sendmsg);
       _Config2.default.socketpc.emit('all message', sendstr);
+      // 发送完消息改变下样式
+      this.pthis.setState({
+        footer: {
+          imgr: {
+            index: 0,
+            url: 'i/add.png'
+          },
+          imgc: {
+            index: 0,
+            url: 'i/smile.png'
+          },
+          imgl: this.pthis.state.footer.imgl,
+          button: this.pthis.state.footer.button
+        },
+        upload: {
+          isshow: false
+        },
+        face: {
+          isshow: false
+        },
+        chat: {
+          style: {
+            height: 'calc(100% - 105px)',
+            overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch'
+          }
+        }
+      });
+      var data = {
+        nickname: _Config2.default.usermsg.Nickname,
+        usericon: _Config2.default.usermsg.UserIcon,
+        roletitle: _Config2.default.usermsg.RoleTitle,
+        content: msg,
+        sendtype: 'TXT',
+        roletitlecss: _Config2.default.usermsg.RoleTitleCss,
+        roletitleback: false,
+        sendstatus: 'send',
+        handle: {
+          userstyle: '',
+          imgurl: '',
+          defaultstyle: 'chat-item-msg'
+        }
+      };
+      this.pthis.chatBar.loadchatlist(data);
     }
 
     // 点击显示按住说话
@@ -613,8 +821,8 @@ var FooterBar = function (_React$Component) {
       this.pthis.setState({
         chat: {
           style: {
-            height: sel === 0 ? 'calc(100% - 105px)' : this.pthis.state.chat.style.height,
-            overflow: 'scroll',
+            height: 'calc(100% - 105px)',
+            overflowY: 'auto',
             WebkitOverflowScrolling: 'touch'
           }
         },
@@ -658,6 +866,20 @@ var FooterBar = function (_React$Component) {
       if ((0, _jquery2.default)('#msgcontent').length > 0) {
         var msg = (0, _jquery2.default)('#msgcontent').html().replace('<br>', '');
         msglen = msg.length;
+        switch (sel) {
+          case 0:
+            setTimeout(function () {
+              (0, _jquery2.default)('.chat').focus();
+            }, 500);
+            break;
+          case 1:
+            setTimeout(function () {
+              (0, _jquery2.default)('#msgcontent').focus();
+            }, 500);
+            break;
+          default:
+            break;
+        }
       }
       this.pthis.setState({
         face: {
@@ -668,8 +890,8 @@ var FooterBar = function (_React$Component) {
         },
         chat: {
           style: {
-            height: sel === 0 ? 'calc(100% - 237px)' : 'calc(100% - 105px)',
-            overflow: 'scroll',
+            height: sel === 0 ? 'calc(100% - (105px + 141pt))' : 'calc(100% - 105px)',
+            overflowY: 'auto',
             WebkitOverflowScrolling: 'touch'
           }
         },
@@ -716,7 +938,7 @@ var FooterBar = function (_React$Component) {
               chat: {
                 style: {
                   height: sel === 0 ? 'calc(100% - 175px)' : 'calc(100% - 105px)',
-                  overflow: 'scroll',
+                  overflowY: 'auto',
                   WebkitOverflowScrolling: 'touch'
                 }
               },
@@ -735,16 +957,35 @@ var FooterBar = function (_React$Component) {
             var msglen = msg.length;
             (0, _jquery2.default)('#msgcontent').focus();
             this.pthis.setState({
+              chat: {
+                style: {
+                  height: 'calc(100% - 105px)',
+                  overflowY: 'auto',
+                  WebkitOverflowScrolling: 'touch'
+                }
+              },
               footer: {
                 imgr: {
                   index: msglen > 0 ? 2 : 0,
                   url: this.pthis.state.footer.imgr.url
                 },
                 imgl: this.pthis.state.footer.imgl,
-                imgc: this.pthis.state.footer.imgc,
+                imgc: {
+                  index: 0,
+                  url: 'i/smile.png'
+                },
                 button: msglen > 0 ? false : this.pthis.state.footer.button
+              },
+              upload: {
+                isshow: sel === 0
+              },
+              face: {
+                isshow: false
               }
             });
+            setTimeout(function () {
+              (0, _jquery2.default)('#msgcontent').focus();
+            }, 500);
             break;
           }
         default:
@@ -759,14 +1000,14 @@ var FooterBar = function (_React$Component) {
       var imgl = _react2.default.createElement('img', {
         src: this.pthis.state.footer.imgl.url,
         alt: 'radio',
-        onClick: function onClick() {
+        onTouchEnd: function onTouchEnd() {
           _this2.imglmsg(_this2.pthis.state.footer.imgl.index);
         }
       });
       var imgc = _react2.default.createElement('img', {
         src: this.pthis.state.footer.imgc.url,
         alt: 'radio',
-        onClick: function onClick() {
+        onTouchEnd: function onTouchEnd() {
           _this2.imgcmsg(_this2.pthis.state.footer.imgc.index);
         }
       });
@@ -779,7 +1020,7 @@ var FooterBar = function (_React$Component) {
             'div',
             {
               className: 'add',
-              onClick: function onClick() {
+              onTouchEnd: function onTouchEnd() {
                 _this2.imgrmsg(_this2.pthis.state.footer.imgr.index);
               }
             },
@@ -833,12 +1074,14 @@ var FooterBar = function (_React$Component) {
           contentEditable: '',
           onTouchEnd: function onTouchEnd() {
             _this2.imgrmsg(2);
+            _Cursor2.default.saveSelection();
           },
           onKeyUp: function onKeyUp() {
             _this2.imgrmsg(2);
+            _Cursor2.default.saveSelection();
           },
           onFocus: function onFocus() {
-            _Cursor2.default.saveSelection();
+            _Cursor2.default.restoreSelection(_Cursor2.default.glastRange);
           },
           onBlur: function onBlur() {
             _Cursor2.default.saveSelection();
@@ -1469,6 +1712,8 @@ var Weixin = function (_React$Component) {
   }, {
     key: 'syncUpload',
     value: function syncUpload(localIds) {
+      var _this6 = this;
+
       var objId = localIds.pop();
       console.info('2:', objId);
       this.chat.weixin.uploadImage({
@@ -1496,6 +1741,22 @@ var Weixin = function (_React$Component) {
             };
             var sendstr = _Config2.default.base64data(0, sendmsg);
             _Config2.default.socketpc.emit('all message', sendstr);
+            var data = {
+              nickname: _Config2.default.usermsg.Nickname,
+              usericon: _Config2.default.usermsg.UserIcon,
+              roletitle: _Config2.default.usermsg.RoleTitle,
+              content: serverId,
+              sendtype: 'IMG',
+              roletitlecss: _Config2.default.usermsg.RoleTitleCss,
+              roletitleback: false,
+              sendstatus: 'send',
+              handle: {
+                userstyle: '',
+                imgurl: '',
+                defaultstyle: 'chat-item-msg'
+              }
+            };
+            _this6.pthis.chatBar.loadchatlist(data);
           }
         }
       });
@@ -1505,25 +1766,31 @@ var Weixin = function (_React$Component) {
   }, {
     key: 'syncDownloadImg',
     value: function syncDownloadImg() {
-      var _this6 = this;
+      var _this7 = this;
 
       var data = this.chat.imgurllist[0];
-      this.chat.weixin.downloadImage({
-        serverId: data.serverid, // 需要下载的图片的服务器端ID，由uploadImage接口获得
-        isShowProgressTips: 0, // 默认为1，显示进度提示
+      this.serverRequest = _jquery2.default.ajax({
+        url: '/mediaurl',
+        type: 'post',
+        dataType: 'json',
+        data: {
+          media: data.serverid
+        },
         success: function success(res) {
-          _this6.chat.images.localImg.push(res.localId);
-          _this6.chat.imgurllist.splice(0, 1);
-          var length = _this6.chat.imgurllist.length;
-          _this6.pthis.chatBar.state.chatdata[data.id].handle.imgurl = res.localId;
-          _this6.pthis.chatBar.state.chatdata[data.id].handle.defaultstyle = 'chat-item-msg';
-          _this6.pthis.chatBar.setState({
-            chatdata: _this6.pthis.chatBar.state.chatdata
-          });
-          if (length > 0) {
-            setTimeout(function () {
-              _this6.syncDownloadImg();
-            }, 100);
+          if (res.status) {
+            _this7.chat.images.localImg.push(res.mediourl);
+            _this7.chat.imgurllist.splice(0, 1);
+            var length = _this7.chat.imgurllist.length;
+            _this7.pthis.chatBar.state.chatdata[data.id].handle.imgurl = res.mediourl;
+            _this7.pthis.chatBar.state.chatdata[data.id].handle.defaultstyle = 'chat-item-msg';
+            _this7.pthis.chatBar.setState({
+              chatdata: _this7.pthis.chatBar.state.chatdata
+            });
+            if (length > 0) {
+              setTimeout(function () {
+                _this7.syncDownloadImg();
+              }, 100);
+            }
           }
         }
       });
@@ -1545,6 +1812,8 @@ var Weixin = function (_React$Component) {
   }, {
     key: 'uploadVoice',
     value: function uploadVoice(objid) {
+      var _this8 = this;
+
       this.chat.weixin.uploadVoice({
         localId: objid,
         isShowProgressTips: 1,
@@ -1567,6 +1836,22 @@ var Weixin = function (_React$Component) {
           };
           var sendstr = _Config2.default.base64data(0, sendmsg);
           _Config2.default.socketpc.emit('all message', sendstr);
+          var data = {
+            nickname: _Config2.default.usermsg.Nickname,
+            usericon: _Config2.default.usermsg.UserIcon,
+            roletitle: _Config2.default.usermsg.RoleTitle,
+            content: res.serverId,
+            sendtype: 'VOICE',
+            roletitlecss: _Config2.default.usermsg.RoleTitleCss,
+            roletitleback: false,
+            sendstatus: 'send',
+            handle: {
+              userstyle: '',
+              imgurl: '',
+              defaultstyle: 'chat-item-msg'
+            }
+          };
+          _this8.pthis.chatBar.loadchatlist(data);
         }
       });
     }
@@ -1575,7 +1860,7 @@ var Weixin = function (_React$Component) {
   }, {
     key: 'playVoice',
     value: function playVoice(index, voicesrc, imgsrc) {
-      var _this7 = this;
+      var _this9 = this;
 
       this.chat.images.pos.id = index;
       this.chat.images.pos.url = imgsrc;
@@ -1587,14 +1872,14 @@ var Weixin = function (_React$Component) {
           serverId: voicesrc,
           isShowProgressTips: 1,
           success: function success(res) {
-            console.info('voicesrc:', _this7.chat.voice.serverId);
+            console.info('voicesrc:', _this9.chat.voice.serverId);
             if (res.localId === '') {
               alert('语音播放失败');
               return;
             }
-            _this7.chat.voice.serverId = res.localId;
-            _this7.overPlayStyle(imgsrc, index);
-            _this7.chat.weixin.playVoice({
+            _this9.chat.voice.serverId = res.localId;
+            _this9.overPlayStyle(imgsrc, index);
+            _this9.chat.weixin.playVoice({
               localId: res.localId
             });
           }
@@ -1796,7 +2081,7 @@ var Index = function (_React$Component) {
       chat: {
         style: {
           height: 'calc(100% - 105px)',
-          overflow: 'scroll',
+          overflowY: 'auto',
           WebkitOverflowScrolling: 'touch'
         }
       },
@@ -1869,7 +2154,8 @@ var Index = function (_React$Component) {
             var length = data.historydata.length;
             var received = _Config2.default.base64data(2, data.historydata);
             for (var i = 0; i < length; i++) {
-              _this2.loadchatlist(received[i], 'historydata');
+              console.info(received[i]);
+              _this2.loadchatlist(received[i], 'history');
             }
             if (data.notice.length > 0) {
               _this2.notice.setState({
@@ -1901,35 +2187,8 @@ var Index = function (_React$Component) {
           setTimeout(function () {
             _this3.chatBar.setControlscrollbar('.chat');
           }, 10);
-
-          // 发送成功控制样式
-          _this3.setState({
-            footer: {
-              imgr: {
-                index: 0,
-                url: 'i/add.png'
-              },
-              imgc: {
-                index: 0,
-                url: 'i/smile.png'
-              },
-              imgl: _this3.state.footer.imgl,
-              button: _this3.state.footer.button
-            },
-            upload: {
-              isshow: false
-            },
-            face: {
-              isshow: false
-            },
-            chat: {
-              style: {
-                height: 'calc(100% - 105px)',
-                overflow: 'scroll',
-                WebkitOverflowScrolling: 'touch'
-              }
-            }
-          });
+          clearTimeout(_Config2.default.sendeventtime);
+          _Config2.default.sendeventtime = null;
         }
       });
       _Config2.default.socketpc.on('all broadmsg', function (data) {
@@ -1980,7 +2239,16 @@ var Index = function (_React$Component) {
       resultdata.Sendtype = _Config2.default.base64data(1, data.Sendtype);
       resultdata.RoleTitleCss = _Config2.default.base64data(1, data.RoleTitleCss);
       // 加载聊天信息
-      this.chatBar.createchatItem(resultdata, aution);
+      switch (aution) {
+        case 'history':
+          this.chatBar.createchathistoryItem(resultdata);
+          break;
+        case 'now':
+          this.chatBar.createchatnowItem(resultdata);
+          break;
+        default:
+          break;
+      }
     }
   }, {
     key: 'RefreshchatBar',
@@ -2035,6 +2303,7 @@ var Config = {
   socketpc: null,
   usermsg: null,
   socketid: '',
+  sendeventtime: null,
   getWechat: function getWechat(path) {
     var ret = Config.url + path;
     return ret;

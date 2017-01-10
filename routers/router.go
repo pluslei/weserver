@@ -13,19 +13,19 @@ func init() {
 	// 注册路由
 	Router()
 	// 开启调试模式
-	orm.Debug = true
-	/*
-		beego.SetStaticPath("/upload", "../upload")
-		beego.SetStaticPath("/css", "./views/dist/css")
-		beego.SetStaticPath("/i", "./views/dist/i")
-		beego.SetStaticPath("/js", "./views/dist/js")
-		beego.SetStaticPath("/fonts", "./views/dist/fonts")
-	*/
-	beego.SetViewsPath("../weclient/dist")
-	beego.SetStaticPath("/css", "../weclient/dist/css")
-	beego.SetStaticPath("/i", "../weclient/dist/i")
-	beego.SetStaticPath("/js", "../weclient/dist/js")
-	beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
+	orm.Debug = false
+
+	beego.SetStaticPath("/upload", "../upload")
+	beego.SetStaticPath("/css", "./views/dist/css")
+	beego.SetStaticPath("/i", "./views/dist/i")
+	beego.SetStaticPath("/js", "./views/dist/js")
+	beego.SetStaticPath("/fonts", "./views/dist/fonts")
+
+	// beego.SetViewsPath("../weclient/dist")
+	// beego.SetStaticPath("/css", "../weclient/dist/css")
+	// beego.SetStaticPath("/i", "../weclient/dist/i")
+	// beego.SetStaticPath("/js", "../weclient/dist/js")
+	// beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
 }
 
 // 路由必须三个/以上
@@ -178,6 +178,7 @@ func Router() {
 	beego.Router("/face", &haoindex.FaceController{}, "*:Add")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
+	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
 
 	//socket

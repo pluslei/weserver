@@ -1,7 +1,10 @@
 package haoindex
 
 import (
+	"os"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/httplib"
 	m "weserver/models"
 	"weserver/src/tools"
 	// "github.com/berkaroad/weixinapi"
@@ -31,7 +34,7 @@ type Userinfor struct {
 	RoleName      string //用户角色[vip,silver,gold,jewel]
 	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
 	RoleTitleCss  string //用户角色样式
-	RoleTitleBack string //角色聊天背景
+	RoleTitleBack bool   //角色聊天背景
 	RoleIcon      string //用户角色默认头像
 	Insider       int64  //1内部人员或0外部人员
 	IsLogin       bool   //是否登入
@@ -146,9 +149,9 @@ func (this *IndexController) Index() {
 
 		// RoleTitleBack
 		if userLoad.Title.Background == 1 {
-			user.RoleTitleBack = "#FF0000"
+			user.RoleTitleBack = true
 		} else {
-			user.RoleTitleBack = ""
+			user.RoleTitleBack = false
 		}
 
 		user.Insider = 0                          //1内部人员或0外部人员
@@ -169,8 +172,8 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		//this.TplName = "dist/index.html"
-		this.TplName = "index.html"
+		this.TplName = "dist/index.html"
+		// this.TplName = "index.html"
 
 	} else {
 		this.Redirect("/", 302)
@@ -194,6 +197,37 @@ func (this *IndexController) Voice() {
 	this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 	this.Data["signature"] = jsapi.Signature //jsapi.Signature
 	this.TplName = "voice.html"
+}
+
+func (this *IndexController) GetMediaURL() {
+	type medio struct {
+		Status   bool   `json:"status"`
+		Mediourl string `json:"mediourl"`
+	}
+
+	media := this.GetString("media")
+	material := wx.GetMaterial()
+	mediaURL, err := material.GetMediaURL(media)
+	srcfile := beego.AppConfig.String("imagesrc") + "/static/images/nono.jpg"
+	if err == nil {
+		filepath := "./static/down/" + media + ".jpg"
+		if _, err := os.Stat(filepath); err != nil {
+			req := httplib.Get(mediaURL)
+			req.ToFile(filepath)
+		}
+
+		if _, err := os.Stat(filepath); err != nil {
+			srcfile = beego.AppConfig.String("imagesrc") + "/static/images/nono.jpg"
+		} else {
+			srcfile = beego.AppConfig.String("imagesrc") + "/static/down/" + media + ".jpg"
+		}
+	}
+
+	m := new(medio)
+	m.Status = true
+	m.Mediourl = srcfile
+	this.Data["json"] = m
+	this.ServeJSON()
 }
 
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {

@@ -28,7 +28,8 @@ func (this *UserController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		userlist, count := m.Getuserlist(iStart, iLength, "-Id")
+		nickname := this.GetString("sSearch_0")
+		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname)
 		for _, item := range userlist {
 			item["Createtime"] = item["Createtime"].(time.Time).Format("2006-01-02 15:04:05")
 

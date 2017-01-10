@@ -58,11 +58,11 @@ func (u *User) Valid(v *validation.Validation) {
 }
 
 //get user list
-func Getuserlist(page int64, page_size int64, sort string) (users []orm.Params, count int64) {
+func Getuserlist(page int64, page_size int64, sort, nickname string) (users []orm.Params, count int64) {
 	o := orm.NewOrm()
 	user := new(User)
 	qs := o.QueryTable(user).Exclude("Username", "admin")
-	qs.Limit(page_size, page).OrderBy(sort).RelatedSel().Values(&users)
+	qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 	count, _ = qs.Count()
 	return users, count
 }
