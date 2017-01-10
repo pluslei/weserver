@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
 <script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <style type="text/css">
     .am-alert{border-radius: 5px;padding:3px;}
@@ -37,10 +38,8 @@
                     <tr>
                         <th>房间号</th>
                         <th>用户名</th>
-                        <th>省份城市</th>
                         <th>历史内容</th>
                         <th>发送时间</th>
-                        <th>ip地址</th>
                     </tr>
                 </thead>
                 <tbody id="">
@@ -83,12 +82,10 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
-                {"mDataProp": "Coderoom",},
+                {"mDataProp": "Room",},
                 {"mDataProp": "Uname",},
-                {"mDataProp": "Procities",},
                 {"mDataProp": "Data",},
                 {"mDataProp": "Datatime",},
-                {"mDataProp": "Ipaddress",},
             ],
             "oLanguage": {
                 "sProcessing": "正在加载中......",

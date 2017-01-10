@@ -73,6 +73,9 @@ func Chatprogram() {
 				if userrole.IsLogin {
 					roomval := fmt.Sprintf("%d", userrole.InSider) + "_" + userrole.RoleName + "_" + codeid
 					so.Join(roomval)
+					codename := Transformname(codeid, EncodeB64(userrole.Uname), 0) //公司代码用户名互转
+					job.socketiduser[so.Id()] = codename
+					job.socketidso[codename] = so
 				}
 			}
 		})
@@ -115,77 +118,71 @@ func Chatprogram() {
 				sojson.RoleTitleCss = EncodeB64(sojson.RoleTitleCss)
 				sojson.Content = EncodeB64(sojson.Content)
 				if sojson.IsLogin && sojson.Insider == 1 {
-					data := make(map[string]interface{})
-					data["msg"] = sojson
-					so.Emit("all message", data)
-					if _, ok := job.socketiotoroom[codeid]; ok == true {
-						roleroom := job.socketiotoroom[codeid].Roomval
-						rolelen := len(roleroom[0])
-						for i := 0; i < 2; i++ {
-							for j := 0; j < rolelen; j++ {
-								so.BroadcastTo(roleroom[i][j], "all message", data)
+					codename := Transformname(codeid, sojson.Uname, 0) //公司代码用户名互转
+					if _, ok := job.socketidso[codename]; ok == true {
+						data := make(map[string]interface{})
+						data["msg"] = sojson
+						job.socketidso[codename].Emit("all message", data)
+						if _, ok := job.socketiotoroom[codeid]; ok == true {
+							roleroom := job.socketiotoroom[codeid].Roomval
+							rolelen := len(roleroom[0])
+							for i := 0; i < 2; i++ {
+								for j := 0; j < rolelen; j++ {
+									job.socketidso[codename].BroadcastTo(roleroom[i][j], "all message", data)
+								}
 							}
+							//保存数据
+							// Savechatdata(sojson, 0)
 						}
-						//保存数据
-						// Savechatdata(sojson, 0)
 					}
 				}
 			}
 		})
 
 		so.On("all roombroadmsg", func(msg string) {
-			/*
-						    sendmsg["Uname"] = username;
-			        		sendmsg["Content"] = msg;
-			        		sendmsg["Codeid"] = codeid; //公司房间标识符
-							if len(msg) > 0 {
-								var sojson Socketjson
-								msg = DecodeB64(msg)
-								key := []byte(msg)
-								js, err := simplejson.NewJson(key)
-								if err != nil {
-									beego.Error(err)
-									sendshowmsg := "消息发送失败,请联系管理员!"
-									so.Emit("all showmsg", sendshowmsg)
-									return
-								}
-								sojson.Author = js.Get("Author").MustString()
-								if len(sojson.Author) <= 0 {
-									sendshowmsg := "消息发送失败,请联系管理员!"
-									so.Emit("all showmsg", sendshowmsg)
-									return
-								}
-								sojson.Content = js.Get("Content").MustString()
-								sojson.Ipaddress = js.Get("WebIp").MustString() //获取ip地址
-
-								codeid := js.Get("Codeid").MustString()
-								codeid = Transformname(codeid, "", -1)          //解码公司代码和房间号
-								coderoom := Transformname(codeid, "", 2)        //房间号
-								roomid, _ := strconv.ParseInt(coderoom, 10, 64) //房间号
-								if roomid > 0 {
-									sojson.Coderoom = int(roomid) //房间号
-									sojson.Codeid = codeid        //解码公司代码和房间号
-								}
-								sojson.Author = EncodeB64(sojson.Author)
-								sojson.Content = EncodeB64(sojson.Content)
-								//房间号获取
-								roleval, _ := m.GetAllUserRole()
-								rolelen := len(roleval)
-								prevalue := codeid
-								data := make(map[string]interface{})
-								data["msg"] = sojson
-								for i := 0; i < rolelen; i++ {
-									for j := 0; j < 2; j++ {
-										roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
-										roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
-										so.BroadcastTo(roomval, "all broadmsg", data)
-									}
-								}
-								// Savechatdata(sojson, 2)
-								sendshowmsg := "广播发送成功!"
-								so.Emit("all success", sendshowmsg)
-							}
-			*/
+			if len(msg) > 0 {
+				var sojson Socketjson
+				msg = DecodeB64(msg)
+				key := []byte(msg)
+				js, err := simplejson.NewJson(key)
+				if err != nil {
+					beego.Error(err)
+					sendshowmsg := "消息发送失败,请联系管理员!"
+					so.Emit("all showmsg", sendshowmsg)
+					return
+				}
+				sojson.Uname = js.Get("Uname").MustString()
+				if len(sojson.Uname) <= 0 {
+					sendshowmsg := "消息发送失败,请联系管理员!"
+					so.Emit("all showmsg", sendshowmsg)
+					return
+				}
+				sojson.Content = js.Get("Content").MustString()
+				codeid := js.Get("Codeid").MustString()
+				codeid = Transformname(codeid, "", -1)                                 //解码公司代码和房间号
+				code, _ := strconv.ParseInt(beego.AppConfig.String("company"), 10, 64) //公司代码
+				sojson.Code = int(code)                                                //公司代码
+				room, _ := strconv.ParseInt(beego.AppConfig.String("room"), 10, 64)    //房间号
+				sojson.Room = int(room)                                                //房间号
+				sojson.Uname = EncodeB64(sojson.Uname)
+				sojson.Content = EncodeB64(sojson.Content)
+				//房间号获取
+				roleval, _ := m.GetAllUserRole()
+				rolelen := len(roleval)
+				prevalue := codeid
+				data := make(map[string]interface{})
+				data["msg"] = sojson
+				for i := 0; i < rolelen; i++ {
+					for j := 0; j < 2; j++ {
+						roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
+						roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
+						so.BroadcastTo(roomval, "all broadmsg", data)
+					}
+				}
+				SaveBroadCastdata(sojson)
+				sendshowmsg := "广播发送成功!"
+				so.Emit("all success", sendshowmsg)
+			}
 		})
 
 		so.On("disconnection", func() {})
@@ -301,5 +298,19 @@ func (this *SocketController) ChatModifyIcon() {
 		this.ServeJSON()
 	} else {
 		this.Ctx.Redirect(302, "/")
+	}
+}
+
+func SaveBroadCastdata(sojson Socketjson) {
+	//写数据库
+	var broad m.Broadcast
+	broad.Code = sojson.Code
+	broad.Room = sojson.Room
+	broad.Uname = DecodeB64(sojson.Uname)
+	broad.Data = DecodeB64(sojson.Content)
+	broad.Datatime = time.Now()
+	_, err = m.AddBroadcast(&broad)
+	if err != nil {
+		beego.Debug(err)
 	}
 }
