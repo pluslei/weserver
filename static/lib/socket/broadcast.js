@@ -34,10 +34,9 @@ function sendbroad() {
         return;
     } else {
         var sendmsg = {}; //发送的内容
-        sendmsg["Author"] = username;
+        sendmsg["Uname"] = username;
         sendmsg["Content"] = msg;
         sendmsg["Codeid"] = codeid; //公司房间标识符
-        sendmsg["WebIp"] = ipaddress; //IP
         var sendstr = base64encode(sendmsg);
         socket.emit('all roombroadmsg', sendstr);
     }

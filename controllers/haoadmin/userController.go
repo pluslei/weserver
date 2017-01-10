@@ -1,14 +1,11 @@
 package haoadmin
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
-	"sort"
 	"strconv"
 	"strings"
 	"time"
 	m "weserver/models"
-	p "weserver/src/parameter"
 	"weserver/src/tools"
 )
 
@@ -373,95 +370,15 @@ func (this *UserController) Rerifyuser() {
 func (this *UserController) Onlineuser() {
 	if this.IsAjax() {
 		sEcho := this.GetString("sEcho")
-		iStart, err := this.GetInt64("iDisplayStart")
-		if err != nil {
-			beego.Error(err)
-		}
 		iLength, err := this.GetInt64("iDisplayLength")
 		if err != nil {
 			beego.Error(err)
 		}
 		var (
-			urolename []string
-			objstart  int
-			objend    int
-			count     int
+			count int
 		)
-
-		//用户列表信息
-		userroom := make(map[string]tools.Usertitle) //房间对应的用户信息
-		jobroom := "coderoom_" + beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
-		roomdata, _ := p.Client.Get(jobroom)
-		if len(roomdata) > 0 {
-			userroom, _ = tools.Jsontoroommap(roomdata)
-		}
-
-		for rolval, userId := range userroom {
-			if len(userId.Uname) > 0 {
-				urolename = append(urolename, rolval)
-			}
-		}
-		sort.Strings(urolename)
-		ulength := len(urolename)
-		if iLength == -1 {
-			iLength = int64(ulength)
-		}
-		ipagetotal := ulength / int(iLength)
-		if 0 != ulength%int(iLength) {
-			ipagetotal = ipagetotal + 1
-		}
-		if ipagetotal == 1 {
-			objstart = 0
-			objend = ulength
-		} else {
-			objstart = int(iStart)
-			objend = int(iStart + iLength)
-			if objend > ulength {
-				objend = ulength
-			}
-		}
-
-		OnlineUser := make([]*m.User, 0)
-		for i := objstart; i < objend; i++ {
-			username := userroom[urolename[i]].Uname //用户名
-			//user := m.GetUserByUsername(username)
-			u := new(m.User)
-			u.Username = username
-
-			if userInfo, err := m.ReadFieldUser(u, "Username"); err == nil {
-				userInfo.LogintimeStr = userroom[urolename[i]].Datatime.Format("2006-01-02 15:04:05")
-
-				onlinetimevar := time.Now().Unix() - userroom[urolename[i]].Datatime.Unix()
-				timehours := onlinetimevar / 3600
-				if timehours < 99 {
-					userInfo.OnlinetimeStr = fmt.Sprintf("%02d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
-				} else {
-					userInfo.OnlinetimeStr = fmt.Sprintf("%d时%02d分%02d秒", timehours, time.Unix(onlinetimevar, 0).Minute(), time.Unix(onlinetimevar, 0).Second()) //在线时长
-				}
-				userInfo.Ipaddress = userroom[urolename[i]].Ipaddress //ip地址
-
-				if userInfo.Title.Id == 0 {
-					userInfo.Titlename = "未知头衔"
-				} else {
-					titleinfo, _ := m.ReadTitleById(userInfo.Title.Id)
-					if err != nil {
-						beego.Error(err)
-						userInfo.Titlename = "未知头衔"
-					} else {
-						userInfo.Titlename = titleinfo.Name
-					}
-				}
-
-				OnlineUser = append(OnlineUser, userInfo)
-			}
-		}
-
-		beego.Debug("OnlineUser the ", OnlineUser, "online statuce:", userroom)
-		count = ulength
-
 		// json
 		data := make(map[string]interface{})
-		data["aaData"] = OnlineUser
 		data["iTotalDisplayRecords"] = count
 		data["iTotalRecords"] = iLength
 		data["sEcho"] = sEcho

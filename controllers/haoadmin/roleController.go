@@ -6,7 +6,6 @@ import (
 	m "weserver/models"
 
 	"fmt"
-	"math/rand"
 	"os"
 	"path"
 	"strconv"
@@ -121,27 +120,6 @@ func (this *RoleController) UpdataRole() {
 		r.Ico = splitname[len(splitname)-1]
 		err := r.UpdateRoleFields("Title", "Status", "Remark", "Weight", "Delay", "IsInsider", "Randnum", "Ico", "RandTitle")
 		if err == nil {
-			go func() {
-				//角色随机次数
-				unamedata, _, _ := m.GetNetNameData() //获取数据库所有模拟的用户名
-				if len(unamedata) > 0 {
-					rolesdata, _ := m.GetAllUserRole()
-					randnano := rand.NewSource(time.Now().UnixNano())
-					roleslength := len(rolesdata)
-					tools.Resultuser = make([]tools.Usertitle, 0)
-					k := 0
-					for i := 0; i < roleslength; i++ {
-						userinfor := m.AddSimulatedSata(rolesdata[i].Name, rolesdata[i].Randnum, rolesdata[i].RandTitle.Id, rolesdata[i].Ico, unamedata, randnano)
-						inforlen := len(userinfor)
-						for j := 0; j < inforlen; j++ {
-							userinfor[j].Id = int64(k)
-							tools.Resultuser = append(tools.Resultuser, userinfor[j])
-							k++
-						}
-					}
-					tools.Copyresuser = tools.Resultuser //拷贝数据
-				}
-			}()
 			this.Alert("更新成功", "index")
 			return
 		} else {
