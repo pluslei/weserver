@@ -105,9 +105,10 @@ func Chatprogram() {
 				sojson.RoleTitleBack = js.Get("RoleTitleBack").MustBool()              //角色聊天背景
 				sojson.Insider = js.Get("Insider").MustInt()                           //1内部人员或0外部人员
 				sojson.IsLogin = js.Get("IsLogin").MustBool()                          //状态 [1、登录 0、未登录]
-				sojson.Content = js.Get("Sendtype").MustString()                       //消息内容
+				sojson.Content = js.Get("Content").MustString()                        //消息内容
 				sojson.Datatime = time.Now()                                           //添加时间
-				beego.Debug(sojson, "==================================")
+				//消息入库
+				SaveChatMsgdata(sojson)
 				//用户信息进行加密
 				sojson.Uname = EncodeB64(sojson.Uname)
 				sojson.Nickname = EncodeB64(sojson.Nickname)
@@ -262,19 +263,19 @@ func (this *SocketController) ChatUserList() {
 			}
 			job.socketiotoroom[prevalue] = roleroom
 		}()
-		sysconfig, _ := m.GetAllSysConfig()       //系统设置
-		recordcount = int(sysconfig.HistoryCount) //显示历史记录条数
-		var (
-			historychat []Socketjson
-		)
+		sysconfig, _ := m.GetAllSysConfig()   //系统设置
+		recordcount := sysconfig.HistoryCount //显示历史记录条数
+		var historychat []m.ChatRecord
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
+			historychat, _, _ = m.GetChatMsgData(recordcount)
 		default:
 		}
 		data := make(map[string]interface{})
 		data["historydata"] = historychat //聊天的历史信息
 		//从数据库中获取公告中的最后一条内容
 		broaddata, _ := m.GetBroadcastData(int(roomid))
+		beego.Debug(broaddata, recordcount, historychat, sysconfig.HistoryMsg, "=======================")
 		data["notice"] = broaddata //公告
 		this.Data["json"] = &data
 		this.ServeJSON()
@@ -301,6 +302,7 @@ func (this *SocketController) ChatModifyIcon() {
 	}
 }
 
+//广播入库
 func SaveBroadCastdata(sojson Socketjson) {
 	//写数据库
 	var broad m.Broadcast
@@ -312,5 +314,31 @@ func SaveBroadCastdata(sojson Socketjson) {
 	_, err = m.AddBroadcast(&broad)
 	if err != nil {
 		beego.Debug(err)
+	}
+}
+
+//时时消息入库
+func SaveChatMsgdata(sojson Socketjson) {
+	if sojson.IsLogin && sojson.Insider == 1 {
+		//写数据库
+		var chatrecord m.ChatRecord
+		chatrecord.Code = sojson.Code                 //公司代码
+		chatrecord.Room = sojson.Room                 //房间号
+		chatrecord.Uname = sojson.Uname               //用户名
+		chatrecord.Nickname = sojson.Nickname         //用户昵称
+		chatrecord.UserIcon = sojson.UserIcon         //用户logo
+		chatrecord.RoleName = sojson.RoleName         //用户角色[vip,silver,gold,jewel]
+		chatrecord.RoleTitle = sojson.RoleTitle       //用户角色名[会员,白银会员,黄金会员,钻石会员]
+		chatrecord.Sendtype = sojson.Sendtype         //用户发送消息类型('TXT','IMG','VOICE')
+		chatrecord.RoleTitleCss = sojson.RoleTitleCss //头衔颜色
+		chatrecord.RoleTitleBack = 1                  //角色聊天背景
+		chatrecord.Insider = sojson.Insider           //1内部人员或0外部人员
+		chatrecord.IsLogin = 1                        //状态 [1、登录 0、未登录]
+		chatrecord.Content = sojson.Content           //消息内容
+		chatrecord.Datatime = sojson.Datatime         //添加时间
+		_, err = m.AddChat(&chatrecord)
+		if err != nil {
+			beego.Debug(err)
+		}
 	}
 }

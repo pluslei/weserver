@@ -1,8 +1,8 @@
 package models
 
 import (
-	//"github.com/astaxie/beego"
 	"errors"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"time"
 )
@@ -85,11 +85,16 @@ func GetChatCount() (int64, error) {
 }
 
 //获取内容
-func GetChatData(uname string, datanum int) ([]ChatRecord, int64, error) {
+func GetChatMsgData(count int64) ([]ChatRecord, int64, error) {
 	o := orm.NewOrm()
 	var chat []ChatRecord
-	var table ChatRecord
-	num, err := o.QueryTable(table).Filter("Uname", uname).OrderBy("-Id").Limit(datanum).All(&chat)
+	chatcount, _ := GetChatCount()
+	startpos := chatcount - count
+	if startpos < 0 {
+		startpos = 0
+	}
+	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Limit(chatcount, startpos).All(&chat)
+	beego.Debug(num, startpos, chatcount, count, "============111111111111111111")
 	return chat, num, err
 }
 
