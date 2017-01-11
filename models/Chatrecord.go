@@ -22,11 +22,11 @@ type ChatRecord struct {
 	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
 	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
 	RoleTitleCss  string    //头衔颜色
-	RoleTitleBack int       `orm:"default(0)" form:"RoleTitleBack" valid:"Range(0,1)"` //角色聊天背景
-	Insider       int       `orm:"default(1)" form:"Insider" valid:"Range(0,1)"`       //1内部人员或0外部人员
-	IsLogin       int       `orm:"default(0)" form:"IsLogin" valid:"Range(0,1)"`       //状态 [1、登录 0、未登录]
-	Content       string    `orm:"type(text)"`                                         //消息内容
-	Datatime      time.Time `orm:"type(datetime)"`                                     //添加时间
+	RoleTitleBack int       `orm:"default(0)"`     //角色聊天背景
+	Insider       int       `orm:"default(1)"`     //1内部人员或0外部人员
+	IsLogin       int       `orm:"default(0)"`     //状态 [1、登录 0、未登录]
+	Content       string    `orm:"type(text)"`     //消息内容
+	Datatime      time.Time `orm:"type(datetime)"` //添加时间
 }
 
 func init() {

@@ -1,10 +1,12 @@
 package haoindex
 
 import (
+	"io"
+	"net/http"
 	"os"
 
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/httplib"
+	// "github.com/astaxie/beego/httplib"
 	m "weserver/models"
 	"weserver/src/tools"
 	// "github.com/berkaroad/weixinapi"
@@ -173,12 +175,11 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		// this.TplName = "dist/index.html"
-		this.TplName = "index.html"
+		this.TplName = "dist/index.html"
+		// this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}
-	this.TplName = "index.html"
 }
 
 func (this *IndexController) Login() {
@@ -201,35 +202,31 @@ func (this *IndexController) Voice() {
 }
 
 func (this *IndexController) GetMediaURL() {
-	// type medio struct {
-	// 	Status   bool   `json:"status"`
-	// 	Mediourl string `json:"mediourl"`
-	// }
-
 	media := this.GetString("media")
 	material := wx.GetMaterial()
 	mediaURL, err := material.GetMediaURL(media)
-	srcfile := beego.AppConfig.String("imagesrc") + "/static/images/nono.jpg"
+	beego.Info("mediaURL is", mediaURL)
+	srcfile := redirect_uri + "/static/images/nono.jpg"
 	if err == nil {
-		filepath := "./static/down/" + media + ".jpg"
-		if _, err := os.Stat(filepath); err != nil {
-			req := httplib.Get(mediaURL)
-			req.ToFile(filepath)
-		}
-
-		if _, err := os.Stat(filepath); err != nil {
-			srcfile = beego.AppConfig.String("imagesrc") + "/static/images/nono.jpg"
+		resp, err := http.Get(mediaURL)
+		beego.Info("resp.Header", resp.Header.Get("Content-Type"))
+		if err != nil {
+			beego.Error("http get media url error", err)
+			file, _ := os.Open(srcfile)
+			defer file.Close()
+			io.Copy(this.Ctx.ResponseWriter, file)
 		} else {
-			srcfile = beego.AppConfig.String("imagesrc") + "/static/down/" + media + ".jpg"
+			if resp.Header.Get("Content-Type") != "text/plain" {
+				defer resp.Body.Close()
+				io.Copy(this.Ctx.ResponseWriter, resp.Body)
+			}
 		}
+	} else {
+		beego.Error("get the media url error", err)
+		file, _ := os.Open(srcfile)
+		defer file.Close()
+		io.Copy(this.Ctx.ResponseWriter, file)
 	}
-
-	// m := new(medio)
-	// m.Status = true
-	// m.Mediourl = srcfile
-	// this.Data["json"] = m
-	// this.ServeJSON()
-	this.Redirect(srcfile, 301)
 }
 
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {

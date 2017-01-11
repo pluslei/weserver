@@ -14,14 +14,12 @@ import (
 	//"sort"
 	"strconv"
 	"strings"
-	"sync"
 	"time"
 )
 
 var w *WriteData
 
 type WriteData struct {
-	lock     *sync.RWMutex
 	jsondata chan *Socketjson
 }
 
@@ -50,8 +48,7 @@ var (
 
 func init() {
 	w = &WriteData{
-		lock:     &sync.RWMutex{},
-		jsondata: make(chan *Socketjson, 2048),
+		jsondata: make(chan *Socketjson, 20480),
 	}
 	w.runWriteDb()
 }
@@ -336,11 +333,8 @@ func SaveBroadCastdata(sojson Socketjson) {
 
 //时时消息入库
 func SaveChatMsgdata(sojson Socketjson) {
-	w.lock.Lock()
 	jsondata := &sojson
 	w.jsondata <- jsondata
-	w.lock.Unlock()
-
 }
 
 func (w *WriteData) runWriteDb() {
@@ -361,7 +355,7 @@ func (w *WriteData) runWriteDb() {
 }
 
 func addData(sojson *Socketjson) {
-	beego.Debug("im run the here:", sojson)
+	beego.Debug("im here", sojson, sojson.RoleTitleBack)
 	if sojson.IsLogin && sojson.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
@@ -374,11 +368,15 @@ func addData(sojson *Socketjson) {
 		chatrecord.RoleTitle = sojson.RoleTitle       //用户角色名[会员,白银会员,黄金会员,钻石会员]
 		chatrecord.Sendtype = sojson.Sendtype         //用户发送消息类型('TXT','IMG','VOICE')
 		chatrecord.RoleTitleCss = sojson.RoleTitleCss //头衔颜色
-		chatrecord.RoleTitleBack = 1                  //角色聊天背景
-		chatrecord.Insider = sojson.Insider           //1内部人员或0外部人员
-		chatrecord.IsLogin = 1                        //状态 [1、登录 0、未登录]
-		chatrecord.Content = sojson.Content           //消息内容
-		chatrecord.Datatime = sojson.Datatime         //添加时间
+		if sojson.RoleTitleBack {
+			chatrecord.RoleTitleBack = 1 //角色聊天背景
+		} else {
+			chatrecord.RoleTitleBack = 0 //角色聊天背景
+		}
+		chatrecord.Insider = sojson.Insider   //1内部人员或0外部人员
+		chatrecord.IsLogin = 1                //状态 [1、登录 0、未登录]
+		chatrecord.Content = sojson.Content   //消息内容
+		chatrecord.Datatime = sojson.Datatime //添加时间
 		_, err = m.AddChat(&chatrecord)
 		if err != nil {
 			beego.Debug(err)
