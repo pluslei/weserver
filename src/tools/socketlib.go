@@ -32,62 +32,35 @@ type OnlineIpPro struct {
 
 //用户角色对应的房间
 type RoleRoom struct {
-	//InSider int    //人员类别内部人员或外部人员
 	Roomval [2][]string //房间
 }
 
 //用户列表信息
 type Usertitle struct {
-	Id        int64
-	Uname     string //用户名
-	RoleName  string //角色名称
-	Titlerole string //用户类型
-	UserIcon  string //用户Icon
-	Roomid    string //房间号
-	//Authorcss []string  //用户头衔
-	Authorcss string    //用户头衔
-	Logintime string    //登入时间
-	Datatime  time.Time //添加时间
-	Ipaddress string    //ip地址
-	Procities string    //省市
-	InSider   int       //人员类别内部人员或外部人员
-	Insort    int       //用户排序
+	Id       int64
+	Uname    string //用户名
+	RoleName string //角色名称
+	InSider  int    //人员类别内部人员或外部人员
+	IsLogin  bool   //状态 [1、登录 0、未登录]
 }
 
 //socket内容发送信息
 type Socketjson struct {
-	Id          int64
-	Author      string //用户名
-	AuthorRole  string //角色名称
-	Authortype  string //用户类别
-	AuditStatus int    //信息是否审核,0：不用审核，1：审核通过，2：未审核(游客，会员需要审核)
-	//Authorcss  []string  //用户头衔
-	Authorcss     string //用户头衔
-	AuthorDelay   int    //用户禁言时间
-	AuthorInSider int    //人员类别内部人员或外部人员
-	IsPrivateChat bool   //是否私聊
-	IsBroadCast   bool   //是否广播
-	Sendtype      string //用户发送消息类型，TXT, IMG
-
-	Username string //私聊的用户名
-	UserRole string //角色名称
-	Usertype string //用户类别
-	//Usercss   []string //用户头衔
-	Usercss       string    //用户头衔
-	UserInSider   int       //人员类别内部人员或外部人员
-	Objname       string    //操作人员用户名
-	Chat          string    //公聊，对他说，私聊
-	Content       string    //发送的内容
-	Coderoom      int       //房间号
-	Codeid        string    //解码公司代码和房间号
-	Time          string    //时间
-	Newtime       string    //时间
+	Id            int64
+	Code          int       //公司代码
+	Room          int       //房间号
+	Uname         string    //用户名
+	Nickname      string    //用户昵称
+	UserIcon      string    //用户logo
+	RoleName      string    //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
+	RoleTitleCss  string    //头衔颜色
+	RoleTitleBack bool      //角色聊天背景
+	Insider       int       //1内部人员或0外部人员
+	IsLogin       bool      //状态 [1、登录 0、未登录]
+	Content       string    //消息内容
 	Datatime      time.Time //添加时间
-	Ipaddress     string    //ip地址
-	Procities     string    //省市
-	IsEmitBroad   bool      //消息发送模式
-	RoleTitleCss  string    // 头衔颜色
-	RoleTitleBack bool      // 聊天背景颜色
 }
 
 var Resultuser []Usertitle  //模拟的用户数据

@@ -154,7 +154,7 @@ func (this *IndexController) Index() {
 			user.RoleTitleBack = false
 		}
 
-		user.Insider = 0                          //1内部人员或0外部人员
+		user.Insider = 1                          //1内部人员或0外部人员
 		this.Data["title"] = sysconfig.WelcomeMsg //公告
 		this.Data["user"] = user
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()

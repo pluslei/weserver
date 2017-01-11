@@ -12,17 +12,21 @@ import (
 * beego 中会把名为Id的字段自动设置文自增加的主键
  */
 type ChatRecord struct {
-	Id          int64     `orm:"pk;auto"`
-	Coderoom    int       //房间号
-	Uname       string    `orm:"size(128)" form:"Uname" valid:"Required"`                   //聊天的用户名
-	Objname     string    `orm:"size(128)" form:"Objname"  valid:"Required"`                //被聊天的用户名
-	Sendtype    int       `orm:"default(0)" form:"Sendtype" valid:"Required;Range(0,1)"`    //聊天状态(0：公聊，1：私聊)
-	AuditStatus int       `orm:"default(0)" form:"AuditStatus" valid:"Required;Range(0,2)"` //信息是否审核,0：不用审核，1：审核通过，2：未审核(游客，会员需要审核)
-	Data        string    `orm:"type(text)"`                                                //消息内容
-	Ipaddress   string    //IP地址
-	Procities   string    //省市
-	Datatime    time.Time `orm:"type(datetime)"` //添加时间
-	Timestmp    int64     //时间戳
+	Id            int64     `orm:"pk;auto"`
+	Code          int       //公司代码
+	Room          int       //房间号
+	Uname         string    //用户名
+	Nickname      string    //用户昵称
+	UserIcon      string    //用户logo
+	RoleName      string    //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
+	RoleTitleCss  string    //头衔颜色
+	RoleTitleBack int       `orm:"default(0)" form:"RoleTitleBack" valid:"Range(0,1)"` //角色聊天背景
+	Insider       int       `orm:"default(1)" form:"Insider" valid:"Range(0,1)"`       //1内部人员或0外部人员
+	IsLogin       int       `orm:"default(0)" form:"IsLogin" valid:"Range(0,1)"`       //状态 [1、登录 0、未登录]
+	Content       string    `orm:"type(text)"`                                         //消息内容
+	Datatime      time.Time `orm:"type(datetime)"`                                     //添加时间
 }
 
 func init() {
@@ -93,6 +97,6 @@ func GetChatData(uname string, datanum int) ([]ChatRecord, int64, error) {
 func UpdateChatData(chat ChatRecord) (int64, error) {
 	o := orm.NewOrm()
 	var table ChatRecord
-	id, err := o.QueryTable(table).Filter("Id", chat.Id).Update(orm.Params{"Data": chat.Data, "Coderoom": chat.Coderoom, "Datatime": chat.Datatime})
+	id, err := o.QueryTable(table).Filter("Id", chat.Id).Update(orm.Params{"Content": chat.Content, "Room": chat.Room, "Datatime": chat.Datatime})
 	return id, err
 }
