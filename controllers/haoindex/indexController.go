@@ -18,10 +18,10 @@ type IndexController struct {
 }
 
 var (
-	appId     = "wx26ed6ed15f2a7b17"
-	appSecret = "1ac297e601224d5ab6bafd6ceacb1228"
+	appId     = "wxcdc0e555f68f26be"
+	appSecret = "8e5407bb356a8e5093b9ef14ce73a0e8"
 
-	redirect_uri = "http://live.780.com.cn"
+	redirect_uri = beego.AppConfig.String("imagesrc")
 	wx           *wechat.Wechat
 	oauthAccess  *oauth.Oauth
 )
@@ -95,6 +95,7 @@ func (this *IndexController) Get() {
 		beego.Debug("user info:", userInfo)
 		this.Redirect("/index", 302)
 	}
+	this.Ctx.WriteString("")
 }
 
 //
@@ -172,12 +173,12 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		//this.TplName = "dist/index.html"
+		// this.TplName = "dist/index.html"
 		this.TplName = "index.html"
-
 	} else {
 		this.Redirect("/", 302)
 	}
+	this.TplName = "index.html"
 }
 
 func (this *IndexController) Login() {

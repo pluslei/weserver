@@ -14,8 +14,16 @@ import (
 	//"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
+
+var w *WriteData
+
+type WriteData struct {
+	lock     *sync.RWMutex
+	jsondata chan *Socketjson
+}
 
 type SocketController struct {
 	controllers.PublicController
@@ -39,6 +47,14 @@ var (
 var (
 	recordcount int = 10 //历史消息显示数量
 )
+
+func init() {
+	w = &WriteData{
+		lock:     &sync.RWMutex{},
+		jsondata: make(chan *Socketjson, 2048),
+	}
+	w.runWriteDb()
+}
 
 func Chatprogram() {
 	if len(job.socketiduser) == 0 {
@@ -108,6 +124,7 @@ func Chatprogram() {
 				sojson.Content = js.Get("Content").MustString()                        //消息内容
 				sojson.Datatime = time.Now()                                           //添加时间
 				//消息入库
+				beego.Debug("so json=:", sojson)
 				SaveChatMsgdata(sojson)
 				//用户信息进行加密
 				sojson.Uname = EncodeB64(sojson.Uname)
@@ -319,6 +336,32 @@ func SaveBroadCastdata(sojson Socketjson) {
 
 //时时消息入库
 func SaveChatMsgdata(sojson Socketjson) {
+	w.lock.Lock()
+	jsondata := &sojson
+	w.jsondata <- jsondata
+	w.lock.Unlock()
+
+}
+
+func (w *WriteData) runWriteDb() {
+	go func() {
+		for {
+			msg, ok := <-w.jsondata
+			if ok {
+				addData(msg)
+			}
+		}
+
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println(err)
+			}
+		}()
+	}()
+}
+
+func addData(sojson *Socketjson) {
+	beego.Debug("im run the here:", sojson)
 	if sojson.IsLogin && sojson.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
