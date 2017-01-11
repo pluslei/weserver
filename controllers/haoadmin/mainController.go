@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"time"
+	//"time"
 )
 
 type MainController struct {
@@ -44,8 +44,8 @@ func (this *MainController) Index() {
 		this.CommonMenu()
 		// verifyuser, _ := m.GetRegStatusUser(1)
 		onlineuser, _ := m.GetUserByOnlineDesc()
-		countonline := m.CountOnline()
-		totaltime, _ := strconv.ParseInt(countonline, 10, 64)
+		//countonline := m.CountOnline()
+		//totaltime, _ := strconv.ParseInt(countonline, 10, 64)
 		weeklist := m.CountWeekRegist()
 		datearr := make([]string, 0)
 		countarr := make([]int64, 0)
@@ -57,13 +57,6 @@ func (this *MainController) Index() {
 			}
 		}
 		var showmsg Membermsg
-		showmsg = GetMembermsg()
-		timehours := totaltime / 3600
-		if timehours < 99 {
-			showmsg.Totallinetime = fmt.Sprintf("%02d时%02d分%02d秒", timehours, time.Unix(totaltime, 0).Minute(), time.Unix(totaltime, 0).Second()) //在线时长
-		} else {
-			showmsg.Totallinetime = fmt.Sprintf("%d时%02d分%02d秒", timehours, time.Unix(totaltime, 0).Minute(), time.Unix(totaltime, 0).Second()) //在线时长
-		}
 		this.Data["datearr"] = datearr
 		this.Data["countarr"] = countarr
 		this.Data["onlineuser"] = onlineuser

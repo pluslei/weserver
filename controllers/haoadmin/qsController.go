@@ -128,7 +128,7 @@ func (this *QsController) DataBroadQs() {
 		if err != nil {
 			beego.Error(err)
 		}
-		Broadlist, count := m.GetBroadcastlist(iStart, iLength, "Coderoom")
+		Broadlist, count := m.GetBroadcastlist(iStart, iLength, "Room")
 		for _, item := range Broadlist {
 			item["Datatime"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 		}

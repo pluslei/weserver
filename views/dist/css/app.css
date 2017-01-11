@@ -350,11 +350,14 @@ body {
 }
 /*公告栏*/
 .notice {
-  height: 55px;
+  min-height: 35px;
   background-color: #fff;
   width: 100%;
   border-bottom: 1px solid #ccc;
   text-align: center;
+  max-height: 77px;
+  padding: 5px 0px;
+  background: url(i/notice.jpg) repeat-x;
   z-index: 999;
 }
 .notice span {
@@ -362,7 +365,7 @@ body {
   padding: 5px 25px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   text-align: center;
   font-size: 14px;
