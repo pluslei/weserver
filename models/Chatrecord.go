@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"time"
 )
@@ -94,7 +93,6 @@ func GetChatMsgData(count int64) ([]ChatRecord, int64, error) {
 		startpos = 0
 	}
 	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Limit(chatcount, startpos).All(&chat)
-	beego.Debug(num, startpos, chatcount, count, "============111111111111111111")
 	return chat, num, err
 }
 

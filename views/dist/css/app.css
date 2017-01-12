@@ -105,6 +105,7 @@ body {
   background-color: #f4f4f6;
   overflow-y: scroll;
   padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
 }
 .defaultLoading {
   width: 90pt;
@@ -267,20 +268,19 @@ body {
   height: 60px;
   width: 100%;
   background-color: #f4f4f6;
-  padding: 5px 0px;
+  padding: 10px 0px;
 }
 .footer .radio,
 .footer .smile,
 .footer .add {
-  height: 100%;
   width: 40px;
   display: inline-block;
   float: left;
+  line-height: 30px;
 }
 .footer .theInput {
   display: inline-block;
   float: left;
-  height: 100%;
 }
 .footer .theInput .presschat {
   width: 100%;
@@ -303,17 +303,8 @@ body {
   width: 87%;
   margin: 2px 0px 0px 2px;
 }
-.footer .add .upload1 {
-  position: absolute;
-  top: 9px;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  opacity: 0;
-}
 .footer .sendMessage {
   float: left;
-  height: 100%;
   width: 44px;
 }
 .footer .sendMessage span {
@@ -361,14 +352,18 @@ body {
   z-index: 999;
 }
 .notice span {
-  color: #bd6988;
-  padding: 5px 25px;
+  color: #F32B2B;
+  padding: 7px 17px 5px 32px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  text-align: center;
-  font-size: 14px;
+  text-align: left;
+  font-size: 13px;
+}
+.notice .iconload {
+  position: absolute;
+  padding: 7px 0px 0px 10px;
 }
 /*表情包*/
 .face {

@@ -20,8 +20,13 @@ type IndexController struct {
 }
 
 var (
+	// 皓月生态 test.780.com.cn
 	appId     = "wxcdc0e555f68f26be"
 	appSecret = "8e5407bb356a8e5093b9ef14ce73a0e8"
+
+	// 海丝会员 live.780.com.cn
+	// appId     = "wx26ed6ed15f2a7b17"
+	// appSecret = "1ac297e601224d5ab6bafd6ceacb1228"
 
 	redirect_uri = beego.AppConfig.String("imagesrc")
 	wx           *wechat.Wechat
@@ -43,16 +48,13 @@ type Userinfor struct {
 }
 
 func init() {
-	rediscache, err := cache.NewRediscache("127.0.0.1", uint(6379))
-	if err != nil {
-		beego.Error("connect rediscache error", err)
-	}
+	macache := cache.NewMemcache()
 	cfg := &wechat.Config{
 		AppID:          appId,
 		AppSecret:      appSecret,
 		Token:          "Token",
 		EncodingAESKey: "EncodingAESKey",
-		Cache:          rediscache,
+		Cache:          macache,
 	}
 	wx = wechat.NewWechat(cfg)
 	beego.Debug("wx tokenaccess", wx)
@@ -67,8 +69,8 @@ func (this *IndexController) Get() {
 		oauthAccess = wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
 		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", "ihaoyue")
 		if err != nil {
+			beego.Error("oauthAccess error", err)
 			this.Redirect("/", 302)
-			beego.Error("error", err)
 			return
 		}
 	} else {
@@ -78,6 +80,12 @@ func (this *IndexController) Get() {
 			this.Redirect("/", 302)
 			return
 		}
+
+		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, appId)
+		if err != nil {
+			beego.Error("CheckAccessToken error", err)
+		}
+
 		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
 		if err != nil {
 			beego.Error("get the userinfo error", err)
@@ -166,7 +174,6 @@ func (this *IndexController) Index() {
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
 			beego.Error("get the jsapi config error", err)
-			this.Ctx.WriteString("请联系客服 代码：404")
 		}
 		this.Data["appId"] = appId
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
@@ -175,8 +182,8 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		//this.TplName = "dist/index.html"
-		this.TplName = "index.html"
+		this.TplName = "dist/index.html"
+		// this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}

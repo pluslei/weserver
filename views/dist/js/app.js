@@ -158,10 +158,10 @@ var ChatBar = function (_React$Component) {
         case 'IMG':
           {
             data.handle.userstyle = 'chat-item minePerson minePerson-img';
-            // data.handle.defaultstyle += ' defaultLoading';
-            // data.handle.imgurl = '../i/loading.gif';
-            data.handle.defaultstyle = 'chat-item-msg';
-            data.handle.imgurl = this.pthis.Weixin.syncDownloadImg(data.content);
+            data.handle.defaultstyle += ' defaultLoading';
+            data.handle.imgurl = '../i/loading.gif';
+            // data.handle.defaultstyle = 'chat-item-msg';
+            // data.handle.imgurl = this.pthis.Weixin.syncDownloadImg(data.content);
           }
           break;
         default:
@@ -204,7 +204,8 @@ var ChatBar = function (_React$Component) {
         handle: {
           userstyle: '',
           imgurl: '',
-          defaultstyle: 'chat-item-msg'
+          defaultstyle: 'chat-item-msg',
+          msgtip: 'chat-msg-tip'
         }
       };
       switch (data.sendtype) {
@@ -284,7 +285,8 @@ var ChatBar = function (_React$Component) {
         handle: {
           userstyle: '',
           imgurl: '',
-          defaultstyle: 'chat-item-msg'
+          defaultstyle: 'chat-item-msg',
+          msgtip: 'chat-msg-tip'
         }
       };
       switch (data.sendtype) {
@@ -311,6 +313,12 @@ var ChatBar = function (_React$Component) {
           if (data.nickname === _Config2.default.usermsg.Nickname) {
             var _chatlength = this.state.chatdata.length;
             if (_chatlength > 0) {
+              if (data.sendtype === 'IMG') {
+                data.handle.defaultstyle = 'chat-item-msg';
+                data.handle.imgurl = this.pthis.Weixin.syncDownloadImg(data.content);
+                this.state.chatdata[_chatlength - 1].handle.defaultstyle = data.handle.defaultstyle;
+                this.state.chatdata[_chatlength - 1].handle.imgurl = data.handle.imgurl;
+              }
               this.state.chatdata[_chatlength - 1].sendstatus = 'success';
               this.setState({
                 chatdata: this.state.chatdata
@@ -360,6 +368,7 @@ var ChatBar = function (_React$Component) {
 
       var sendcontent = '';
       var usercontent = '';
+      var msgtipcontrol = '';
       switch (item.sendtype) {
         case 'VOICE':
           usercontent = _react2.default.createElement('img', {
@@ -411,6 +420,7 @@ var ChatBar = function (_React$Component) {
         default:
           break;
       }
+      msgtipcontrol = _react2.default.createElement('div', { className: item.handle.msgtip });
       return _react2.default.createElement(
         'div',
         {
@@ -440,7 +450,7 @@ var ChatBar = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: item.handle.defaultstyle },
-          _react2.default.createElement('div', { className: 'chat-msg-tip' }),
+          msgtipcontrol,
           usercontent,
           sendcontent
         )
@@ -455,7 +465,10 @@ var ChatBar = function (_React$Component) {
         'div',
         {
           className: 'chat',
-          style: this.pthis.state.chat.style,
+          style: { height: this.pthis.state.chat.style.height,
+            overflowY: this.pthis.state.chat.style.overflowY,
+            WebkitOverflowScrolling: this.pthis.state.chat.style.WebkitOverflowScrolling
+          },
           onTouchEnd: function onTouchEnd() {
             _this4.pthis.setState({
               face: {
@@ -463,7 +476,7 @@ var ChatBar = function (_React$Component) {
               },
               chat: {
                 style: {
-                  height: 'calc(100% - 105px)',
+                  height: _this4.pthis.custom.chat.defaultheight,
                   overflowY: 'auto',
                   WebkitOverflowScrolling: 'touch'
                 }
@@ -549,7 +562,12 @@ var Face = function (_React$Component) {
     _this.custom = {
       // 表情数据
       facedata: [],
-      lastindex: 0
+      slidingevent: {
+        touchmove: false,
+        touchleft: 0,
+        touchstartx: 0,
+        touchendx: 0
+      }
     };
     for (var i = 1; i < 25; i++) {
       var faceurl = '../i/face/';
@@ -720,15 +738,6 @@ var FooterBar = function (_React$Component) {
       e.preventDefault();
     }
   }, {
-    key: 'insertAtCaret',
-    value: function insertAtCaret() {
-      var msg = (0, _jquery2.default)('#msgcontent').html();
-      var sel = window.getSelection();
-      this.pthis.custom.div.index = sel.anchorOffset;
-      this.pthis.custom.div.contentL = msg.substr(0, sel.anchorOffset);
-      this.pthis.custom.div.contentR = msg.substr(sel.anchorOffset, msg.length);
-    }
-  }, {
     key: 'sendmsgtosocket',
     value: function sendmsgtosocket() {
       var msg = (0, _jquery2.default)('#msgcontent').html();
@@ -749,7 +758,8 @@ var FooterBar = function (_React$Component) {
         handle: {
           userstyle: '',
           imgurl: '',
-          defaultstyle: 'chat-item-msg'
+          defaultstyle: 'chat-item-msg',
+          msgtip: 'chat-msg-tip'
         }
       };
       this.pthis.chatBar.loadchatlist(data);
@@ -791,7 +801,7 @@ var FooterBar = function (_React$Component) {
         },
         chat: {
           style: {
-            height: 'calc(100% - 105px)',
+            height: this.pthis.custom.chat.defaultheight,
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch'
           }
@@ -807,7 +817,7 @@ var FooterBar = function (_React$Component) {
       this.pthis.setState({
         chat: {
           style: {
-            height: 'calc(100% - 105px)',
+            height: this.pthis.custom.chat.defaultheight,
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch'
           }
@@ -852,21 +862,12 @@ var FooterBar = function (_React$Component) {
       if ((0, _jquery2.default)('#msgcontent').length > 0) {
         var msg = (0, _jquery2.default)('#msgcontent').html().replace('<br>', '');
         msglen = msg.length;
-        switch (sel) {
-          case 0:
-            setTimeout(function () {
-              (0, _jquery2.default)('.chat').focus();
-            }, 500);
-            break;
-          case 1:
-            setTimeout(function () {
-              (0, _jquery2.default)('#msgcontent').focus();
-            }, 500);
-            break;
-          default:
-            break;
-        }
       }
+      this.pthis.state.chat.style.height = this.pthis.custom.chat.height;
+      this.pthis.state.chat.style.height += this.pthis.custom.notice.height;
+      this.pthis.state.chat.style.height += this.pthis.custom.footer.height;
+      this.pthis.state.chat.style.height += ' - 200px';
+      this.pthis.state.chat.style.height += this.pthis.custom.endmark.sign;
       this.pthis.setState({
         face: {
           isshow: sel === 0
@@ -876,7 +877,7 @@ var FooterBar = function (_React$Component) {
         },
         chat: {
           style: {
-            height: sel === 0 ? 'calc(100% - (105px + 141pt))' : 'calc(100% - 105px)',
+            height: sel === 0 ? this.pthis.state.chat.style.height : this.pthis.custom.chat.defaultheight,
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch'
           }
@@ -897,6 +898,20 @@ var FooterBar = function (_React$Component) {
           button: false
         }
       });
+      switch (sel) {
+        case 0:
+          setTimeout(function () {
+            (0, _jquery2.default)('#msgcontent').focus();
+          }, 200);
+          break;
+        case 1:
+          setTimeout(function () {
+            (0, _jquery2.default)('.chat').focus();
+          }, 200);
+          break;
+        default:
+          break;
+      }
     }
 
     // 右边点击样式
@@ -908,6 +923,11 @@ var FooterBar = function (_React$Component) {
         case 0:
         case 1:
           {
+            this.pthis.state.chat.style.height = this.pthis.custom.chat.height;
+            this.pthis.state.chat.style.height += this.pthis.custom.notice.height;
+            this.pthis.state.chat.style.height += this.pthis.custom.footer.height;
+            this.pthis.state.chat.style.height += ' - 70px';
+            this.pthis.state.chat.style.height += this.pthis.custom.endmark.sign;
             this.pthis.setState({
               footer: {
                 imgr: {
@@ -923,7 +943,7 @@ var FooterBar = function (_React$Component) {
               },
               chat: {
                 style: {
-                  height: sel === 0 ? 'calc(100% - 175px)' : 'calc(100% - 105px)',
+                  height: sel === 0 ? this.pthis.state.chat.style.height : this.pthis.custom.chat.defaultheight,
                   overflowY: 'auto',
                   WebkitOverflowScrolling: 'touch'
                 }
@@ -945,7 +965,7 @@ var FooterBar = function (_React$Component) {
             this.pthis.setState({
               chat: {
                 style: {
-                  height: 'calc(100% - 105px)',
+                  height: this.pthis.custom.chat.defaultheight,
                   overflowY: 'auto',
                   WebkitOverflowScrolling: 'touch'
                 }
@@ -1143,7 +1163,7 @@ var Notice = function (_React$Component) {
 
     _this.state = {
       // 聊天数据
-      noticemsg: '欢迎来到直播室'
+      noticemsg: ''
     };
     _this.pthis = _this.props.pthis;
     _this.handleSelect = _this.handleSelect.bind(_this);
@@ -1163,7 +1183,10 @@ var Notice = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'notice noticeRightZ' },
+        {
+          className: 'notice noticeRightZ'
+        },
+        _react2.default.createElement('span', { className: 'am-icon-volume-up iconload' }),
         _react2.default.createElement(
           'span',
           null,
@@ -1707,7 +1730,8 @@ var Weixin = function (_React$Component) {
               handle: {
                 userstyle: '',
                 imgurl: '',
-                defaultstyle: 'chat-item-msg'
+                defaultstyle: 'chat-item-msg',
+                msgtip: 'chat-msg-tip'
               }
             };
             _this6.pthis.chatBar.loadchatlist(data);
@@ -1779,7 +1803,8 @@ var Weixin = function (_React$Component) {
             handle: {
               userstyle: '',
               imgurl: '',
-              defaultstyle: 'chat-item-msg'
+              defaultstyle: 'chat-item-msg',
+              msgtip: 'chat-msg-tip'
             }
           };
           _this7.pthis.chatBar.loadchatlist(data);
@@ -2022,18 +2047,12 @@ var Index = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
     _this.state = {
-      face: {
-        isshow: false
-      },
       chat: {
         style: {
-          height: 'calc(100% - 105px)',
+          height: '0px',
           overflowY: 'auto',
           WebkitOverflowScrolling: 'touch'
         }
-      },
-      signin: {
-        isshow: false
       },
       footer: {
         imgl: {
@@ -2059,15 +2078,39 @@ var Index = function (_React$Component) {
         isshow: false,
         imgsrc: '../i/pronunciation.png'
       },
+      face: {
+        isshow: false
+      },
       userlogin: _Config2.default.usermsg.IsLogin
     };
     _this.custom = {
-      div: {
-        index: 0,
-        contentL: '',
-        contentR: ''
+      chat: {
+        height: 'calc(100%',
+        defaultheight: ''
+      },
+      notice: {
+        height: ' - 35px'
+      },
+      upload: {
+        height: ' - 0px'
+      },
+      voicetip: {
+        height: ' - 0px'
+      },
+      face: {
+        height: ' - 0px'
+      },
+      footer: {
+        height: ' - 70px'
+      },
+      endmark: {
+        sign: ')'
       }
     };
+    _this.state.chat.style.height = _this.custom.chat.height;
+    _this.state.chat.style.height += _this.custom.notice.height;
+    _this.state.chat.style.height += _this.custom.footer.height;
+    _this.state.chat.style.height += _this.custom.endmark.sign;
     _this.handleSelect = _this.handleSelect.bind(_this);
     return _this;
   }
@@ -2093,24 +2136,26 @@ var Index = function (_React$Component) {
           codeid: _Config2.default.usermsg.Codeid
         },
         success: function success(data) {
+          var noticemsgdata = '欢迎来到海丝会员交流间';
           if (data != null) {
             if (data.historydata != null) {
               var length = data.historydata.length;
               var received = data.historydata;
               for (var i = 0; i < length; i++) {
-                console.info(received[i]);
                 _this2.loadchatlist(received[i], 'history');
               }
+              setTimeout(function () {
+                _this2.chatBar.setControlscrollbar('.chat');
+              }, 10);
             }
             if (data.notice.length > 0) {
-              _this2.notice.setState({
-                noticemsg: data.notice
-              });
+              noticemsgdata = data.notice;
             }
-            setTimeout(function () {
-              _this2.chatBar.setControlscrollbar('.chat');
-            }, 10);
           }
+          _this2.notice.setState({
+            noticemsg: noticemsgdata
+          });
+          _this2.refreshchatbar();
         }
       });
     }
@@ -2145,6 +2190,7 @@ var Index = function (_React$Component) {
           _this3.notice.setState({
             noticemsg: received.Content
           });
+          _this3.refreshchatbar();
         }
       });
       _Config2.default.socketpc.on('all kickout', function (data) {
@@ -2203,8 +2249,30 @@ var Index = function (_React$Component) {
       }
     }
   }, {
-    key: 'RefreshchatBar',
-    value: function RefreshchatBar() {}
+    key: 'refreshchatbar',
+    value: function refreshchatbar() {
+      var _this4 = this;
+
+      setTimeout(function () {
+        _this4.custom.notice.height = ' - ';
+        _this4.custom.notice.height += (0, _jquery2.default)('.notice').height();
+        _this4.custom.notice.height += 'px';
+        _this4.state.chat.style.height = _this4.custom.chat.height;
+        _this4.state.chat.style.height += _this4.custom.notice.height;
+        _this4.state.chat.style.height += _this4.custom.footer.height;
+        _this4.state.chat.style.height += _this4.custom.endmark.sign;
+        _this4.custom.chat.defaultheight = _this4.state.chat.style.height;
+        _this4.setState({
+          chat: {
+            style: {
+              height: _this4.state.chat.style.height,
+              overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch'
+            }
+          }
+        });
+      }, 20);
+    }
   }, {
     key: 'handleSelect',
     value: function handleSelect(link, e) {
@@ -2219,7 +2287,7 @@ var Index = function (_React$Component) {
           {
             className: 'live-mobile'
           },
-          _react2.default.createElement(_Notice2.default, { ref: 'notice' }),
+          _react2.default.createElement(_Notice2.default, { ref: 'notice', pthis: this }),
           _react2.default.createElement(_ChatBar2.default, {
             className: 'chatBar',
             ref: 'chatBar',

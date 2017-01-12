@@ -289,7 +289,6 @@ func (this *SocketController) ChatUserList() {
 		data["historydata"] = historychat //聊天的历史信息
 		//从数据库中获取公告中的最后一条内容
 		broaddata, _ := m.GetBroadcastData(int(roomid))
-		beego.Debug(broaddata, recordcount, historychat, sysconfig.HistoryMsg, "=======================")
 		data["notice"] = broaddata //公告
 		this.Data["json"] = &data
 		this.ServeJSON()
@@ -334,7 +333,13 @@ func SaveBroadCastdata(sojson Socketjson) {
 //时时消息入库
 func SaveChatMsgdata(sojson Socketjson) {
 	jsondata := &sojson
-	w.jsondata <- jsondata
+	select {
+	case w.jsondata <- jsondata:
+		break
+	default:
+		beego.Error("write db error!!!")
+		break
+	}
 }
 
 func (w *WriteData) runWriteDb() {
@@ -345,12 +350,6 @@ func (w *WriteData) runWriteDb() {
 				addData(msg)
 			}
 		}
-
-		defer func() {
-			if err := recover(); err != nil {
-				fmt.Println(err)
-			}
-		}()
 	}()
 }
 
