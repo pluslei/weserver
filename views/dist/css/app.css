@@ -53,8 +53,12 @@ input[type=submit] {
   margin: 0;
 }
 .live-mobile {
+  width: 100%;
   height: 100%;
   overflow: hidden;
+}
+.live-mobile.showsilder {
+  width: 0%;
 }
 .header {
   background: #2a8eee;
@@ -104,7 +108,7 @@ body {
   font-size: 13px;
   background-color: #f4f4f6;
   overflow-y: scroll;
-  padding: 10px 0;
+  padding: 42px 0px 10px 0px;
   -webkit-overflow-scrolling: touch;
 }
 .defaultLoading {
@@ -506,4 +510,105 @@ body {
   vertical-align: top;
   max-width: 20px;
   max-height: 20px;
+}
+.notice {
+  position: relative;
+}
+.notice .numTips {
+  position: absolute;
+  bottom: -42px;
+  right: 0px;
+  height: 24pt;
+  width: 80pt;
+  background-color: #999;
+  color: #fff;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+.notice .numTips .personTip {
+  margin: 6px 0px 0px 12px;
+  float: left;
+  width: 17%;
+}
+.notice .numTips .numrecord {
+  font-family: "微软雅黑";
+  font-size: 15px;
+  display: inline-block;
+  height: 24pt;
+  line-height: 24pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 58px;
+  padding: 0;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.chatInfo {
+  height: 100%;
+  width: 100%;
+  background-color: #efeff4;
+  position: absolute;
+  top: 0;
+  -webkit-animation: myfirst 0.5s;
+          animation: myfirst 0.5s;
+  overflow: hidden;
+}
+.chatInfo .chatback {
+  height: 32px;
+  width: 32px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.chatInfo .chatback .backBtn {
+  margin: 3px 0px 0px 3px;
+}
+.chatInfo .chatback .backBtn:hover {
+  color: green;
+}
+.chatInfo .chatlist {
+  list-style: none;
+  padding-left: 0px;
+  overflow: hidden;
+  padding: 20px 2% 0px;
+  height: 99%;
+  overflow-y: scroll;
+  margin: 0;
+}
+.chatInfo .chatlist .chatlistbox {
+  width: 20%;
+  float: left;
+  margin-bottom: 15px;
+}
+.chatInfo .chatlist .chatlistbox img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #DAD8D8;
+}
+.chatInfo .chatlist .chatlistbox span {
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 10px 6px 0px;
+}
+@-webkit-keyframes myfirst {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+@keyframes myfirst {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0%;
+  }
 }

@@ -1,9 +1,10 @@
 package haoadmin
 
 import (
-	// "github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 	"time"
 	m "weserver/models"
+	. "weserver/src/tools"
 )
 
 type ChatRecordController struct {
@@ -29,6 +30,9 @@ func (this *ChatRecordController) ChatRecordList() {
 		this.ServeJSON()
 	} else {
 		this.CommonMenu()
+		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+		codeid := MainEncrypt(prevalue)
+		this.Data["codeid"] = codeid
 		this.TplName = "haoadmin/data/chat/list.html"
 	}
 }

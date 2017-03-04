@@ -82,7 +82,11 @@
     </div>
 </div>
 <script src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <script type="text/javascript">
+    var codeid = {{.codeid}};     //公司代码房间号
     var oTable;
     $(function() {
         oTable = initTable();
@@ -155,13 +159,13 @@
                         if (sData == 1) {
                             $(nTd).html("<span class='am-alert am-alert-success regstatus'>通过</span>");
                         } else {
-                            $(nTd).html("<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+oData.Id+");'>未审核</span>");
+                            $(nTd).html("<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+oData.Id+", "+oData.Status+");'>未审核</span>");
                         }
                     }
                 },
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+sData+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+oData.Id+", "+oData.Status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                     }
                 },
             ],
@@ -215,10 +219,14 @@
             data: {Id: Id},
             success: function(rsp){
                 if (rsp.status){
-                    alert(rsp.info);
+                    layer.msg(rsp.info, {
+                        icon: 1
+                    });
                     oTable.fnReloadAjax(oTable.fnSettings());
                 }else{
-                    alert(rsp.info);
+                    layer.msg(rsp.info, {
+                        icon: 2
+                    });
                 }
             }
         })
@@ -246,7 +254,18 @@
     } 
 
     // 消息审核
-    function autdiomsg(id){
-        alert(id);
+    function autdiomsg(id, status){
+        if (status == 1) {
+            layer.msg('该消息已审核', {
+                icon: 1
+            });
+        } else {
+            var sendmsg = {}; //发送的内容
+            sendmsg["Id"] = id;
+            sendmsg["Codeid"] = codeid; //公司房间标识符
+            var sendstr = base64encode(sendmsg);
+            socket.emit('all message', sendstr);
+            parent.location.reload();
+        }
     }
 </script>

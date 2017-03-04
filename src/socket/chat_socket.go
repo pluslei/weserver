@@ -125,8 +125,7 @@ func Chatprogram() {
 				sojson.Code = int(code)                                                //公司代码
 				room, _ := strconv.ParseInt(beego.AppConfig.String("room"), 10, 64)    //房间号
 				sojson.Room = int(room)                                                //房间号
-
-				sojson.Id = js.Get("Id").MustInt64() //消息Id
+				sojson.Id = js.Get("Id").MustInt64()                                   //消息Id
 				if sojson.Id > 0 {
 					chat, _ := m.GetChatIdData(sojson.Id)
 					if chat.Status == 1 {

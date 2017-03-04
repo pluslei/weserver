@@ -48,7 +48,7 @@ func GetSysConfigCount() int64 {
 
 func GetAllSysConfig() (sys SysConfig, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(sys).One(&sys, "ChatInterval", "HistoryMsg", "HistoryCount", "WelcomeMsg")
+	err = o.QueryTable(sys).One(&sys, "ChatInterval", "HistoryMsg", "HistoryCount", "WelcomeMsg", "AuditMsg")
 	return sys, err
 }
 
