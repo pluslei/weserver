@@ -57,11 +57,6 @@
         <input type="hidden" value="{{.roleList.Id}}" name="Id" >
         <input type="hidden" value="{{.roleList.Weight}}" name="WeightSel" id="WeightSel" >
         <input type="hidden" value="{{.roleList.Delay}}" name="DelaySel" id="DelaySel" >
-        <input type="hidden" value="{{.roleList.RandTitle.Id}}" name="RandTitleSel" id="RandTitleSel" >
-<!--         <div class="am-form-group">
-          <label for="doc-vld-Name-2">Name：</label>
-          <input type="text" name="Name" id="doc-vld-Name-2" minlength="3" value="{{.roleList.Name}}" placeholder="请输入角色Name" data-validation-message="请输入角色Name" required/>
-        </div> -->
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">角色名称：</label>
@@ -118,31 +113,7 @@
           <span class="am-form-caret"></span>
         </div>
 
-        <div class="am-form-group">
-          <label for="doc-vld-Randnum-2">直播随机数量：  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '设置直播室前台页面展示的虚拟角色数量', trigger: 'hover focus'}"></a></label>
-          <input type="text" name="Randnum" value="{{.roleList.Randnum}}" id="doc-vld-Randnum-2" data-validation-message="输入随机数量" placeholder="输入随机数量" required/>
-        </div>
-
-        <div class="am-form-group">
-          <label for="doc-select-1">关联头衔</label>
-          <select id="doc-select-3" name="RandTitle" required data-validation-message="请选择发言间隔">
-            <option value="">-=请选择头衔=-</option>
-            {{range .TitleList}}
-            <option value="{{.Id}}">{{.Name}}</option>
-            {{end}}
-          </select>
-          <span class="am-form-caret"></span>
-        </div>
-
-        <div class="am-form-group">
-          <label for="doc-vld-Img-2">角色默认头像：</label>
-          <input type="file" name="Img" id="Img" required/>
-          <input type="hidden" name="fname" value="{{.roleList.Ico}}"></input>
-        </div>
-
-        <div class="am-form-group">
-            <img id="preview" src="{{.imgUrl}}" width="48" height="20"/>
-        </div>
+        
 
         <div class="am-form-group">
           <label for="doc-vld-ta-2">备注：</label>

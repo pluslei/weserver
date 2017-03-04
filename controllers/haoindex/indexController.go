@@ -149,6 +149,11 @@ func (this *IndexController) Index() {
 		}
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
+		// 用户是否审核
+		if (userLoad.Role.IsInsider == 1) || (sysconfig.AuditMsg == 1) {
+			user.IsFilter = true
+		}
+
 		// 设置头衔颜色
 		if len(userLoad.Title.Css) <= 0 {
 			user.RoleTitleCss = "#000000"

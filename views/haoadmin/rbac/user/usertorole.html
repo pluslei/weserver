@@ -10,16 +10,15 @@
       <fieldset>
       <legend></legend>
       <!-- 分配角色 -->
-          <strong>用户名：{{.userlist.Username}}</strong>
+          <strong>用户名：{{.userlist.Username}}({{.userlist.Nickname}})</strong><br/>
           <input type="hidden" value="{{.userlist.Id}}" name="userid">
           <div class="am-popup-bd">
               <div>
                   {{range .titleList}}
                   <ul style="line-height: 35px;">
                   <label class="am-checkbox-inline">
-
                       <input type="radio" value="{{.Id}}" {{.Checked}} class="roleid"  name="titleid" data-am-ucheck />
-                      <span style="background:{{.Css}};width:60px;height:20px;display:block"></span>
+                      <span style="border: solid 1px #ccc;width:100px;height:20px;display:block;color: {{.Css}};text-align: center;">{{.Name}}</span>
                   </label>
                   <label  style="margin-left: 15px;" >
                     <li  >备注:  {{.Remark}}</li>

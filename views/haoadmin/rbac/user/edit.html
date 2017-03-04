@@ -10,10 +10,6 @@
       <fieldset>
         <legend></legend>
         <input type="hidden" name="id" value="{{.userList.Id}}">
-        <div class="am-form-group">
-          <label for="doc-vld-name-2">用户名：</label>
-          <input type="text" name="username" id="doc-vld-name-2" minlength="2" value="{{.userList.Username}}" disabled="true" data-validation-message="输入用户名（至少 2 个字符）" placeholder="输入用户名（至少 2 个字符）"/>
-        </div>
 
         <div class="am-form-group">
           <label for="doc-vld-email-2">邮箱：</label>
@@ -38,10 +34,10 @@
         <div class="am-form-group">
           <label>用户状态： </label>
           <label class="am-radio-inline">
-            <input type="radio"  value="1" name="status" {{if eq .userList.Status 1}}checked{{end}} required> 开启
+            <input type="radio"  value="2" name="status" {{if eq .userList.Status 2}}checked{{end}} required> 开启
           </label>
           <label class="am-radio-inline">
-            <input type="radio" value="2" name="status" {{if eq .userList.Status 2}}checked{{end}}> 关闭
+            <input type="radio" value="1" name="status" {{if eq .userList.Status 1}}checked{{end}}> 关闭
           </label>
         </div>
         <div class="am-form-group">

@@ -1,9 +1,8 @@
 package haoadmin
 
 import (
-	"github.com/astaxie/beego"
+	// "github.com/astaxie/beego"
 	"time"
-	"weserver/controllers/haoindex"
 	m "weserver/models"
 )
 
@@ -29,18 +28,6 @@ func (this *ChatRecordController) ChatRecordList() {
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {
-		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
-
-		jssdk := haoindex.Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
-		jsapi, err := jssdk.GetConfig(url)
-		if err != nil {
-			beego.Error("get the jsapi config error", err)
-		}
-		this.Data["appId"] = haoindex.APPID
-		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
-		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
-		this.Data["signature"] = jsapi.Signature //jsapi.Signature
-
 		this.CommonMenu()
 		this.TplName = "haoadmin/data/chat/list.html"
 	}

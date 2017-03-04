@@ -17,7 +17,7 @@ type SysConfig struct {
 	WelcomeMsg    string //欢迎语
 	Verify        int64  //是否开启用户审核  0开启 1不开启
 	LoginSys      int64  //是否允许登陆后台  0允许 1禁止
-	AuditMsg int64 //是否开启消息审核
+	AuditMsg      int64  //是否开启消息审核  0允许 1禁止
 }
 
 func (s *SysConfig) TableName() string {
