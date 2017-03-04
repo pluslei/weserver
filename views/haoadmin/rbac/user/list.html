@@ -176,7 +176,13 @@
                         }else{
                             sexImg = ""
                         }
-                        $(nTd).html("<img src="+oData.Headimgurl+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData+"<img src='  "+sexImg+"'>");
+                        // 用户头衔
+                        if (oData.Headimgurl.length <= 0) {
+                            icoImg = "/static/images/icon-user.gif"
+                        }else{
+                            icoImg = oData.Headimgurl
+                        }
+                        $(nTd).html("<img src="+icoImg+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData+"<img src='  "+sexImg+"'>");
                     }
                 },
                 {"mDataProp": "Province",

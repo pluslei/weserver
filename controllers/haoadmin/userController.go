@@ -129,7 +129,6 @@ func (this *UserController) AddUser() {
 func (this *UserController) UpdateUser() {
 	action := this.GetString("action")
 	if action == "edit" {
-		username := this.GetString("username")
 		email := this.GetString("email")
 		phone, _ := this.GetInt64("phone")
 		nickname := this.GetString("nickname")
@@ -154,7 +153,6 @@ func (this *UserController) UpdateUser() {
 		}
 		u := new(m.User)
 		u.Id = id
-		u.Username = username
 		u.Email = email
 		u.Phone = phone
 		u.Nickname = nickname
@@ -165,9 +163,9 @@ func (this *UserController) UpdateUser() {
 		u.Role = &m.Role{Id: role}
 		if len(u.Password) > 0 {
 			u.Password = tools.EncodeUserPwd(u.Username, u.Password)
-			err = u.UpdateUserFields("Username", "Email", "Phone", "Nickname", "Password", "Remark", "Status", "RegStatus", "Role")
+			err = u.UpdateUserFields("Email", "Phone", "Nickname", "Password", "Remark", "Status", "RegStatus", "Role")
 		} else {
-			err = u.UpdateUserFields("Username", "Email", "Phone", "Nickname", "Remark", "Status", "RegStatus", "Role")
+			err = u.UpdateUserFields("Email", "Phone", "Nickname", "Remark", "Status", "RegStatus", "Role")
 		}
 		if err == nil {
 			this.Alert("用户更新成功", "index")

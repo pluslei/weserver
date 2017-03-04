@@ -53,14 +53,14 @@ func (this *RoleController) AddRole() {
 	if action == "add" {
 
 		// Name := this.GetString("Name")
-		Randnum, _ := this.GetInt("Randnum")
+		// Randnum, _ := this.GetInt("Randnum")
 		Title := this.GetString("Title")
 		Name := tools.Strtomd5(Title)
 		Status, _ := this.GetInt("Status")
 		Remark := this.GetString("Remark")
 		Weight, _ := this.GetInt("Weight")
 		Delay, _ := this.GetInt("Delay")
-		RandTitle, _ := this.GetInt64("RandTitle")
+		// RandTitle, _ := this.GetInt64("RandTitle")
 		IsInsider, _ := this.GetInt("IsInsider")
 		fname := this.GetString("fname")
 		splitname := strings.Split(fname, "/")
@@ -72,10 +72,10 @@ func (this *RoleController) AddRole() {
 		r.Remark = Remark
 		r.Weight = Weight
 		r.Delay = Delay
-		r.Randnum = Randnum
+		// r.Randnum = Randnum
 		r.Ico = splitname[len(splitname)-1]
 		r.IsInsider = IsInsider
-		r.RandTitle = &m.Title{Id: RandTitle}
+		// r.RandTitle = &m.Title{Id: RandTitle}
 		id, err := m.AddRole(r)
 		if err != nil && id <= 0 {
 			beego.Error(err)
@@ -95,14 +95,14 @@ func (this *RoleController) UpdataRole() {
 	action := this.GetString("action")
 	if action == "edit" {
 		// Name := this.GetString("Name")
-		Randnum, _ := this.GetInt("Randnum")
+		// Randnum, _ := this.GetInt("Randnum")
 		Title := this.GetString("Title")
 		Status, _ := this.GetInt("Status")
 		Remark := this.GetString("Remark")
 		Id, _ := this.GetInt64("Id")
 		Weight, _ := this.GetInt("Weight")
 		Delay, _ := this.GetInt("Delay")
-		RandTitle, _ := this.GetInt64("RandTitle")
+		// RandTitle, _ := this.GetInt64("RandTitle")
 		IsInsider, _ := this.GetInt("IsInsider")
 		fname := this.GetString("fname")
 		splitname := strings.Split(fname, "/")
@@ -114,11 +114,11 @@ func (this *RoleController) UpdataRole() {
 		r.Remark = Remark
 		r.Weight = Weight
 		r.Delay = Delay
-		r.RandTitle = &m.Title{Id: RandTitle}
+		// r.RandTitle = &m.Title{Id: RandTitle}
 		r.IsInsider = IsInsider
-		r.Randnum = Randnum
+		// r.Randnum = Randnum
 		r.Ico = splitname[len(splitname)-1]
-		err := r.UpdateRoleFields("Title", "Status", "Remark", "Weight", "Delay", "IsInsider", "Randnum", "Ico", "RandTitle")
+		err := r.UpdateRoleFields("Title", "Status", "Remark", "Weight", "Delay", "IsInsider", "Ico")
 		if err == nil {
 			this.Alert("更新成功", "index")
 			return

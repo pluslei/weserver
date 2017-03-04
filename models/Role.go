@@ -9,18 +9,18 @@ import (
 //角色表
 type Role struct {
 	Id        int64
-	Title     string  `orm:"size(128)" form:"Title"  valid:"Required"`
-	Name      string  `orm:"size(128)" form:"Name"  valid:"Required"`
-	Remark    string  `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"`
-	Status    int     `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //状态 [1、开启 2、关闭]
-	Weight    int     `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //权重 [1、开启 2、关闭]
-	Delay     int     `orm:"default(0)" form:"Status" valid:"Range(1,2)"` //发言间隔 [1、开启 2、关闭]
-	IsInsider int     `orm:"default(0)" form:"Status" valid:"Range(0,1)"` //是否隶属公司内部角色[0、否 1、是]
-	Randnum   int     `orm:"default(0)"`                                  //随机人数
-	Ico       string  //角色的头像
-	RandTitle *Title  `orm:"rel(one)"` //随机头衔
-	User      *User   `orm:"reverse(one)"`
-	Node      []*Node `orm:"reverse(many)"`
+	Title     string `orm:"size(128)" form:"Title"  valid:"Required"`
+	Name      string `orm:"size(128)" form:"Name"  valid:"Required"`
+	Remark    string `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"`
+	Status    int    `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //状态 [1、开启 2、关闭]
+	Weight    int    `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //权重 [1、开启 2、关闭]
+	Delay     int    `orm:"default(0)" form:"Status" valid:"Range(1,2)"` //发言间隔 [1、开启 2、关闭]
+	IsInsider int    `orm:"default(0)" form:"Status" valid:"Range(0,1)"` //是否隶属公司内部角色[0、否 1、是]
+	// Randnum   int     `orm:"default(0)"`                                  //随机人数
+	Ico string //角色的头像
+	// RandTitle *Title  `orm:"rel(one)"` //随机头衔
+	User *User   `orm:"reverse(one)"`
+	Node []*Node `orm:"reverse(many)"`
 }
 
 func (r *Role) TableName() string {

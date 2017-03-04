@@ -26,7 +26,7 @@ type ChatRecord struct {
 	IsLogin       int       `orm:"default(0)"`                                           //状态 [1、登录 0、未登录]
 	Content       string    `orm:"type(text)"`                                           //消息内容
 	Datatime      time.Time `orm:"type(datetime)"`                                       //添加时间
-	Status        int       `orm:"default(1)" form:"Status" valid:"Required;Range(0,1)"` //审核状态(0：未审核，1：审核)
+	Status        int       `orm:"default(1)" form:"Status" valid:"Required;Range(0,1)"` //消息审核[1 通过 0 未通过]
 }
 
 func init() {
@@ -111,4 +111,14 @@ func UpdateChatStatus(id int64) (int64, error) {
 	var table ChatRecord
 	id, err := o.QueryTable(table).Filter("Id", id).Update(orm.Params{"Status": 1})
 	return id, err
+}
+
+// 获取消息列表
+func GetChatRecordList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
+	o := orm.NewOrm()
+	chatrecord := new(ChatRecord)
+	query := o.QueryTable(chatrecord)
+	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	count, _ = query.Count()
+	return ms, count
 }

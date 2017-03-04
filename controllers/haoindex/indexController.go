@@ -20,16 +20,13 @@ type IndexController struct {
 }
 
 var (
-	// 皓月生态 test.780.com.cn
-	appId     = "wxcdc0e555f68f26be"
-	appSecret = "8e5407bb356a8e5093b9ef14ce73a0e8"
 
-	// 海丝会员 live.780.com.cn
-	// appId     = "wx26ed6ed15f2a7b17"
-	// appSecret = "1ac297e601224d5ab6bafd6ceacb1228"
+	//
+	APPID     = "wxcdc0e555f68f26be"
+	APPSECRET = "8e5407bb356a8e5093b9ef14ce73a0e8"
 
 	redirect_uri = beego.AppConfig.String("imagesrc")
-	wx           *wechat.Wechat
+	Wx           *wechat.Wechat
 	oauthAccess  *oauth.Oauth
 )
 
@@ -45,19 +42,20 @@ type Userinfor struct {
 	RoleIcon      string //用户角色默认头像
 	Insider       int64  //1内部人员或0外部人员
 	IsLogin       bool   //是否登入
+	IsFilter      bool   //是否检查
 }
 
 func init() {
 	macache := cache.NewMemcache()
 	cfg := &wechat.Config{
-		AppID:          appId,
-		AppSecret:      appSecret,
+		AppID:          APPID,
+		AppSecret:      APPSECRET,
 		Token:          "Token",
 		EncodingAESKey: "EncodingAESKey",
 		Cache:          macache,
 	}
-	wx = wechat.NewWechat(cfg)
-	beego.Debug("wx tokenaccess", wx)
+	Wx = wechat.NewWechat(cfg)
+	beego.Debug("wx tokenaccess", Wx)
 }
 
 func (this *IndexController) Get() {
@@ -66,7 +64,7 @@ func (this *IndexController) Get() {
 	// }
 	code := this.GetString("code")
 	if code == "" {
-		oauthAccess = wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
+		oauthAccess = Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
 		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", "ihaoyue")
 		if err != nil {
 			beego.Error("oauthAccess error", err)
@@ -81,7 +79,7 @@ func (this *IndexController) Get() {
 			return
 		}
 
-		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, appId)
+		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, APPID)
 		if err != nil {
 			beego.Error("CheckAccessToken error", err)
 		}
@@ -151,6 +149,11 @@ func (this *IndexController) Index() {
 		}
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
+		// 用户是否审核
+		if (userLoad.Role.IsInsider == 1) || (sysconfig.AuditMsg == 1) {
+			user.IsFilter = true
+		}
+
 		// 设置头衔颜色
 		if len(userLoad.Title.Css) <= 0 {
 			user.RoleTitleCss = "#000000"
@@ -170,20 +173,20 @@ func (this *IndexController) Index() {
 		this.Data["user"] = user
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 
-		jssdk := wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
+		jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
 			beego.Error("get the jsapi config error", err)
 		}
-		this.Data["appId"] = appId
+		this.Data["appId"] = APPID
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		this.TplName = "dist/index.html"
-		//this.TplName = "index.html"
+		//this.TplName = "dist/index.html"
+		this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}
@@ -196,12 +199,12 @@ func (this *IndexController) Login() {
 func (this *IndexController) Voice() {
 	url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 
-	jssdk := wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
+	jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 	jsapi, err := jssdk.GetConfig(url)
 	if err != nil {
 		beego.Error("get the jsapi config error", err)
 	}
-	this.Data["appId"] = appId
+	this.Data["appId"] = APPID
 	this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 	this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 	this.Data["signature"] = jsapi.Signature //jsapi.Signature
@@ -210,7 +213,7 @@ func (this *IndexController) Voice() {
 
 func (this *IndexController) GetMediaURL() {
 	media := this.GetString("media")
-	material := wx.GetMaterial()
+	material := Wx.GetMaterial()
 	mediaURL, err := material.GetMediaURL(media)
 	beego.Info("mediaURL is", mediaURL)
 	srcfile := redirect_uri + "/static/images/nono.jpg"
@@ -218,7 +221,6 @@ func (this *IndexController) GetMediaURL() {
 		resp, err := http.Get(mediaURL)
 		beego.Info("resp.Header", resp.Header.Get("Content-Type"))
 		if err != nil {
-			beego.Error("http get media url error", err)
 			file, _ := os.Open(srcfile)
 			defer file.Close()
 			io.Copy(this.Ctx.ResponseWriter, file)
@@ -234,6 +236,7 @@ func (this *IndexController) GetMediaURL() {
 		defer file.Close()
 		io.Copy(this.Ctx.ResponseWriter, file)
 	}
+	this.Ctx.WriteString("")
 }
 
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {

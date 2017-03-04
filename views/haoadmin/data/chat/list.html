@@ -1,0 +1,252 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<style type="text/css">
+    .am-alert{border-radius: 5px; padding:3px;}
+    .add-modal label { font-weight: normal; }
+    .result-content label,.dataTables_paginate,.dataTables_paginate .current{
+        font-size: 12px;
+    }
+    .result-content .dataTables_info {
+        font-size: 12px;
+        line-height: 27px;
+    }
+    .dataTables_length select {
+        height: 24px;
+        vertical-align: baseline;
+    }
+    .add-box { width: 100%; height: 100px; box-shadow: 0 0 1px #000; text-align: left; }
+    .faceBtn { cursor: pointer;margin-top:5px;}
+    .faceBtn-edit { cursor: pointer;margin-top:5px;}
+    .faceBox { width: 100%; }
+    .faceImg-add .active { display: block; }
+    .faceImg-edit .active { display: block; }
+    .faceTab { background: #eee; }
+    .faceTab > span { color:#000; padding: 5px; display: inline-block; cursor: pointer; }
+    .faceTab > span.active { background: #888; color:#fff; }
+    .faceTab-edit { background: #eee; }
+    .faceTab-edit > span { color:#000; padding: 5px; display: inline-block; cursor: pointer; }
+    .faceTab-edit > span.active { background: #888; color:#fff; }
+    .face-content { border:1px solid #ccc; display: none;}
+    .face-content-edit { border:1px solid #ccc; display: none;}
+    .faceImg-add { padding-left: 7px; }
+    .faceImg-add img { margin: 3px; }
+    .faceImg-edit { padding-left: 7px; }
+    .faceImg-edit img { margin: 3px; }
+    .regstatus{cursor: pointer;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/message_index">消息库管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">消息库列表</span></div>
+</div>
+<div class="result-wrap">
+    <div class="result-title">
+        <div class="result-list">
+            <a href="adduser"><i class="icon-font"></i>审核通过</a> 
+            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>全部通过</a>
+            <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
+            <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
+        </div>
+    </div>
+    <form name="myform" id="myform" method="post">
+        <div class="result-content">
+            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-chat-list">
+                <thead>
+                    <tr>
+                        <th style="width:80px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
+                        <th>用户</th>
+                        <th>角色</th>
+                        <th>消息类型</th>
+                        <th width="50%">消息内容</th>
+                        <th>时间</th>
+                        <th>是否通过</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="data_body">
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+<!-- 删除消息分类模态框 -->
+<div class="am-modal am-modal-confirm add-modal" tabindex="-1" id="del-confirm">
+    <div class="am-modal-dialog" style="border-radius: 5px;">
+        <div class="am-modal-hd"><h4>消息删除</h4></div>
+        <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
+            <input value="" type="hidden" class="data-modal-del">
+            你确定要删除这条记录吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="deleteModal()">确定</span>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    var oTable;
+    $(function() {
+        oTable = initTable();
+        var table = $('#data-chat-list').DataTable();
+        $("#delselecteduser").change(function(){
+            var length = table.rows().data().length;
+            if($("#delselecteduser").prop("checked")){
+                for(var i=0;i<length;i++){
+                    $("#data-chat-list tbody tr td div :checkbox").eq(i).prop({"checked":true})
+                    $("#data-chat-list tbody tr").eq(i).addClass('am-active');
+                }
+            }else{
+                for(var i=0;i<length;i++){
+                    $("#data-chat-list tbody tr td div :checkbox").eq(i).prop({"checked":false})
+                    $("#data-chat-list tbody tr").eq(i).removeClass('am-active');
+                }
+            }
+        })
+    });
+    function initTable() {
+        var actionUrl = '/weserver/data/chatrecord';
+        var table = $('#data-chat-list').dataTable({
+            "bFilter": false,
+            "bAutoWidth": false,
+            "sPaginationType": 'full_numbers',
+            "bPaginate": true,
+            "bDestroy": true,
+            "bProcessing": true,
+            "sAjaxSource": actionUrl,
+            "iDisplayLength": 15,
+            "aLengthMenu": [
+                [10, 15, 20, 50, -1],
+                [10, 15, 20, 50, "All"]
+            ],
+            "bServerSide": true,
+            "bSort": false,
+            "aoColumns": [
+                {"mDataProp": "Id",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+oData.Id+"' onchange='chkuser("+oData.Id+")'  ></input></div>");
+                    }
+                },
+                {"mDataProp": "Nickname",
+                    "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
+                        $(nTd).html("<img src="+oData.UserIcon+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData);
+                    }
+                },
+                {"mDataProp": "RoleTitle",},
+                {"mDataProp": "Sendtype",},
+                {"mDataProp": "Content",
+                    "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
+                        var html = "";
+                        switch (oData.Sendtype){
+                            case "TXT":
+                                html =  del_html_tags(sData,"../i","../../i");
+                            break;
+                            case "IMG":
+                                html = "<img src=/mediaurl?media="+sData+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>";
+                            break;
+                            case "VOICE":
+                                html = "<img src='/static/images/videoOther.png' onclick='playVoice(`"+sData+"`)'>";
+                            break;
+                        }
+                        $(nTd).html(html);
+                    }
+                },
+                {"mDataProp": "Datatime",},
+                {"mDataProp": "Status",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData == 1) {
+                            $(nTd).html("<span class='am-alert am-alert-success regstatus'>通过</span>");
+                        } else {
+                            $(nTd).html("<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+oData.Id+");'>未审核</span>");
+                        }
+                    }
+                },
+                {"mDataProp": "Id",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+sData+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                    }
+                },
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中...",
+                "sLengthMenu": "每页显示 _MENU_ 条记录，",
+                "sZeroRecords": "没有数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "_START_ - _END_ / 共 _TOTAL_ 条",
+                "sInfoEmpty": "0 - 0 / 共 0 条",
+                "sInfoFiltered": "",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            },
+            "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
+        });
+        return table;
+    }
+    /**
+    table刷新表格
+    */
+    $.fn.dataTableExt.oApi.fnReloadAjax = function(oSettings) {
+        this.fnClearTable(this);
+        this.oApi._fnProcessingDisplay(oSettings, true);
+        var that = this;
+        $.getJSON(oSettings.sAjaxSource, null, function(json) {
+            for (var i = 0; i < json.aaData.length; i++) {
+                that.oApi._fnAddData(oSettings, json.aaData[i]);
+            }
+            oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+            that.fnDraw(that);
+            that.oApi._fnProcessingDisplay(oSettings, false);
+        });
+    }
+    // 删除模态层
+    function deleteFun(delid){
+        $('#del-confirm').modal()
+        $(".data-modal-del").val(delid);
+    }
+    // 删除方法
+    function deleteModel(){
+        var Id = $(".data-modal-del").val();
+        $.ajax({
+            url: '/weserver/home/custservice_delcust',
+            type: 'POST',
+            data: {Id: Id},
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        })
+    }
+    // 模态退出
+    $('#del-confirm').on('closed.modal.amui', function() {
+        $(this).removeData('amui.modal');
+        $(".data-modal-del").val("");
+    });
+
+    function chkuser(argument) {
+        var inputname="userchk"+argument;
+        var index=$("input[name="+inputname+"]").index("#data-chat-list tbody tr td input");
+        if($("input[name="+inputname+"]").prop("checked")){
+            $("#data-chat-list tbody tr").eq(index).addClass('am-active');
+        }else{
+            $("#data-chat-list tbody tr").eq(index).removeClass('am-active');
+        }
+    }
+
+    function del_html_tags(str,reallyDo,replaceWith) { 
+        var e=new RegExp(reallyDo,"g"); 
+        words = str.replace(e, replaceWith); 
+        return words; 
+    } 
+
+    // 消息审核
+    function autdiomsg(id){
+        alert(id);
+    }
+</script>
