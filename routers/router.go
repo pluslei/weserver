@@ -14,18 +14,18 @@ func init() {
 	Router()
 	// 开启调试模式
 	orm.Debug = false
-
 	beego.SetStaticPath("/upload", "../upload")
 	beego.SetStaticPath("/css", "./views/dist/css")
 	beego.SetStaticPath("/i", "./views/dist/i")
 	beego.SetStaticPath("/js", "./views/dist/js")
 	beego.SetStaticPath("/fonts", "./views/dist/fonts")
-
-	// beego.SetViewsPath("../weclient/dist")
-	// beego.SetStaticPath("/css", "../weclient/dist/css")
-	// beego.SetStaticPath("/i", "../weclient/dist/i")
-	// beego.SetStaticPath("/js", "../weclient/dist/js")
-	// beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
+	/*
+		beego.SetViewsPath("../weclient/dist")
+		beego.SetStaticPath("/css", "../weclient/dist/css")
+		beego.SetStaticPath("/i", "../weclient/dist/i")
+		beego.SetStaticPath("/js", "../weclient/dist/js")
+		beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
+	*/
 }
 
 // 路由必须三个/以上
@@ -182,8 +182,12 @@ func Router() {
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
 
 	//socket
-	beego.Router("/chat/modify/icon", &socket.SocketController{}, "*:ChatModifyIcon")
+	// 获取系统信息
 	beego.Router("/chat/user/list", &socket.SocketController{}, "*:ChatUserList")
+	// 获取在线人数
+	beego.Router("/chat/user/online/msg", &socket.SocketController{}, "*:ChatOnlineUserMsg")
+	// 以下暂时没用
+	beego.Router("/chat/modify/icon", &socket.SocketController{}, "*:ChatModifyIcon")
 	beego.Router("/chat/upload", &socket.SocketController{}, "*:ChatUpload")
 	beego.Router("/chat/kickout", &socket.SocketController{}, "*:ChatKickOut")
 
