@@ -6,12 +6,15 @@ import (
 	"weserver/controllers/haoadmin"
 	"weserver/controllers/haoindex"
 	"weserver/controllers/haophone"
+	s "weserver/src/rpcserver"
 	"weserver/src/socket"
 )
 
 func init() {
 	// 注册路由
 	Router()
+	// 注册RPC
+	Rpc()
 	// 开启调试模式
 	orm.Debug = false
 
@@ -30,6 +33,12 @@ func init() {
 
 // 路由必须三个/以上
 // 路由中无需验证的请见如 app.conf -> not_auth_package 以逗号隔开
+func Rpc() {
+	s.Server.Publish("chat", 0, 0)
+	s.Server.Event = s.Event{}
+
+	beego.Handler("/rpc", s.Server)
+}
 
 func Router() {
 	// public
@@ -172,7 +181,7 @@ func Router() {
 	beego.Router("/online/public/index", &haoadmin.MainController{}, "*:OnlineIndex")
 
 	// 测试
-	beego.Router("/test", &haoadmin.TestController{}, "*:Index")
+	beego.Router("/test", &haoadmin.TestController{}, "*:Test")
 	beego.Router("/test/postapi", &haoadmin.TestController{}, "*:PostApi")
 
 	// index

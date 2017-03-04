@@ -27,6 +27,8 @@ type ChatRecord struct {
 	Content       string    `orm:"type(text)"`     //消息内容
 	Datatime      time.Time `orm:"type(datetime)"` //添加时间
 	Status        int       //消息审核[1 通过 0 未通过]
+
+	DatatimeStr string `orm:"-"`
 }
 
 func init() {

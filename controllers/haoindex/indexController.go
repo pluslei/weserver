@@ -25,7 +25,7 @@ var (
 	APPID     = "wxcdc0e555f68f26be"
 	APPSECRET = "8e5407bb356a8e5093b9ef14ce73a0e8"
 
-	redirect_uri = beego.AppConfig.String("imagesrc")
+	redirect_uri = beego.AppConfig.String("localServerAdress")
 	Wx           *wechat.Wechat
 	oauthAccess  *oauth.Oauth
 )
@@ -197,29 +197,14 @@ func (this *IndexController) Login() {
 }
 
 func (this *IndexController) Voice() {
-	url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
-
-	jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
-	jsapi, err := jssdk.GetConfig(url)
-	if err != nil {
-		beego.Error("get the jsapi config error", err)
-	}
-	this.Data["appId"] = APPID
-	this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
-	this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
-	this.Data["signature"] = jsapi.Signature //jsapi.Signature
-	this.TplName = "voice.html"
-}
-
-func (this *IndexController) GetMediaURL() {
 	media := this.GetString("media")
 	material := Wx.GetMaterial()
 	mediaURL, err := material.GetMediaURL(media)
 	beego.Info("mediaURL is", mediaURL)
 	srcfile := redirect_uri + "/static/images/nono.jpg"
+	this.Ctx.WriteString(mediaURL)
 	if err == nil {
 		resp, err := http.Get(mediaURL)
-		beego.Info("resp.Header", resp.Header.Get("Content-Type"))
 		if err != nil {
 			beego.Error("http get media url error", err)
 			file, _ := os.Open(srcfile)
@@ -237,6 +222,35 @@ func (this *IndexController) GetMediaURL() {
 		defer file.Close()
 		io.Copy(this.Ctx.ResponseWriter, file)
 	}
+	this.Ctx.WriteString("")
+}
+
+func (this *IndexController) GetMediaURL() {
+	media := this.GetString("media")
+	material := Wx.GetMaterial()
+	mediaURL, err := material.GetMediaURL(media)
+	beego.Info("mediaURL is", mediaURL)
+	srcfile := redirect_uri + "/static/images/nono.jpg"
+	if err == nil {
+		resp, err := http.Get(mediaURL)
+		if err != nil {
+			beego.Error("http get media url error", err)
+			file, _ := os.Open(srcfile)
+			defer file.Close()
+			io.Copy(this.Ctx.ResponseWriter, file)
+		} else {
+			if resp.Header.Get("Content-Type") != "text/plain" {
+				defer resp.Body.Close()
+				io.Copy(this.Ctx.ResponseWriter, resp.Body)
+			}
+		}
+	} else {
+		beego.Error("get the media url error", err)
+		file, _ := os.Open(srcfile)
+		defer file.Close()
+		io.Copy(this.Ctx.ResponseWriter, file)
+	}
+	this.Ctx.WriteString("")
 }
 
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {

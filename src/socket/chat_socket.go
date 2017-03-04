@@ -8,11 +8,13 @@ import (
 	m "weserver/models"
 	//"haolive/controllers/haoindex"
 	"weserver/controllers"
+	rpc "weserver/src/rpcserver"
 	. "weserver/src/tools"
 	//"github.com/astaxie/beego/context"
 	//"path"
 	//"sort"
 	"strconv"
+
 	"strings"
 	"time"
 )
@@ -379,6 +381,15 @@ func addData(sojson *Socketjson) {
 		_, err = m.AddChat(&chatrecord)
 		if err != nil {
 			beego.Debug(err)
+		} else {
+			// 插入成功广播
+			broadcastChat(chatrecord)
 		}
 	}
+}
+
+func broadcastChat(chat m.ChatRecord) {
+	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
+	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
+
 }

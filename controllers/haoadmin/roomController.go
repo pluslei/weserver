@@ -16,7 +16,7 @@ type RoomController struct {
 	CommonController
 }
 
-var serveraddress = beego.AppConfig.String("ServerAddress")
+var centerserveraddress = beego.AppConfig.String("CenterServerAddress")
 
 func (this *RoomController) Index() {
 	if this.IsAjax() {
@@ -50,7 +50,7 @@ func (this *RoomController) Index() {
 func (this *RoomController) RefreshRoom() {
 	data := fmt.Sprintf(`{"action":"roomlist","company":"%s"}`, p.Code)
 	parameter := map[string]string{"data": tools.MainEncrypt(data)}
-	res, resperr := this.HttpnRmageRequest(serveraddress, parameter)
+	res, resperr := this.HttpnRmageRequest(centerserveraddress, parameter)
 	if resperr != nil {
 		beego.Error(resperr)
 		this.Rsp(false, "数据请求错误", "")
@@ -136,7 +136,7 @@ func (this *RoomController) UpdateRoom() {
 
 		data := fmt.Sprintf(`{"action":"updateroominfo","company":"%s","id":%d,"nickname":"%s","roomdescription":"%s"}`, p.Code, roominfo.Centerid, Nickname, RoomDescription)
 		parameter := map[string]string{"data": tools.MainEncrypt(data)}
-		res, resperr := this.HttpnRmageRequest(serveraddress, parameter)
+		res, resperr := this.HttpnRmageRequest(centerserveraddress, parameter)
 		if resperr != nil {
 			beego.Error(resperr)
 			this.Rsp(false, "数据请求错误", "")

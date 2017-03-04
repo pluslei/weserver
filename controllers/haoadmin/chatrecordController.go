@@ -1,7 +1,7 @@
 package haoadmin
 
 import (
-	// "github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 	"time"
 	m "weserver/models"
 )
@@ -28,6 +28,7 @@ func (this *ChatRecordController) ChatRecordList() {
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {
+		this.Data["localserveraddress"] = beego.AppConfig.String("wslocalServerAdress") + "/rpc"
 		this.CommonMenu()
 		this.TplName = "haoadmin/data/chat/list.html"
 	}
