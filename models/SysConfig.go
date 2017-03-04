@@ -15,8 +15,9 @@ type SysConfig struct {
 	HistoryMsg    int64  //是否显示历史消息 0显示  1 不显示
 	HistoryCount  int64  //显示历史记录条数
 	WelcomeMsg    string //欢迎语
-	Verify        int64  //是否开启验证  0开启 1不开启
+	Verify        int64  //是否开启用户审核  0开启 1不开启
 	LoginSys      int64  //是否允许登陆后台  0允许 1禁止
+	AuditMsg int64 //是否开启消息审核
 }
 
 func (s *SysConfig) TableName() string {

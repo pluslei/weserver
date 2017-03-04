@@ -90,6 +90,14 @@
             </select>
             <span class="am-form-caret"></span>
           </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">是否消息审核：</label>
+            <select id="doc-select-20" name="verify" required>
+              <option value="0" {{if eq .configinfo.AuditMsg 0}}selected{{end}}>开启</option>
+              <option value="1" {{if eq .configinfo.AuditMsg 1}}selected{{end}}>关闭</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
 
         </fieldset>
     </div>

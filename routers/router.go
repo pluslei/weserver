@@ -101,6 +101,9 @@ func Router() {
 	beego.Router("/weserver/data/room_index", &haoadmin.RoomController{}, "*:Index")
 	beego.Router("/weserver/data/room_updateroom", &haoadmin.RoomController{}, "*:UpdateRoom")
 	beego.Router("/weserver/data/room_refresh", &haoadmin.RoomController{}, "*:RefreshRoom")
+
+	beego.Router("/weserver/data/chatrecord", &haoadmin.ChatRecordController{}, "*:ChatRecordList")
+
 	// 讲师介绍
 	beego.Router("/weserver/data/teacher_index", &haoadmin.TeacherController{}, "*:Index")
 	beego.Router("/weserver/data/teacher_addteacher", &haoadmin.TeacherController{}, "*:AddTeacher")

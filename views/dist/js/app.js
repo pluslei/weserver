@@ -1431,7 +1431,7 @@ var ScanQRcode = function (_React$Component) {
             _react2.default.createElement(
               "h5",
               null,
-              "400-926-1550"
+              "0898-32888562"
             )
           ),
           _react2.default.createElement(

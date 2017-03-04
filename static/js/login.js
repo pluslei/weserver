@@ -37,7 +37,7 @@ $(document).ready(function() {
 		// }
 		if ($('#agreement').prop('checked')){
 		}else{
-			$("#userCue").show().html("<font color='red'><b>请同意皓月直播服务条款</b></font>")
+			$("#userCue").show().html("<font color='red'><b>请同意直播服务条款</b></font>")
 			return false;
 		}
 
