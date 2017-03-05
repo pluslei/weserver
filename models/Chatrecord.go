@@ -27,6 +27,7 @@ type ChatRecord struct {
 	Content       string    `orm:"type(text)"`                                           //消息内容
 	Datatime      time.Time `orm:"type(datetime)"`                                       //添加时间
 	Status        int       `orm:"default(1)" form:"Status" valid:"Required;Range(0,1)"` //消息审核[1 通过 0 未通过]
+	Uuid          string    // uuid
 }
 
 func init() {
@@ -70,9 +71,9 @@ func AddChatdata(chat []ChatRecord, length int) error {
 }
 
 //删除数据库中表中ID对应的行信息
-func DelChatById(Id int64) (int64, error) {
+func DelChatById(uuid string) (int64, error) {
 	o := orm.NewOrm()
-	status, err := o.Delete(&ChatRecord{Id: Id})
+	status, err := o.Delete(&ChatRecord{Uuid: uuid})
 	return status, err
 }
 

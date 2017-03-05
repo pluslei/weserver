@@ -150,10 +150,12 @@ func Chatprogram() {
 					}
 					sojson.Insider = chat.Insider //1内部人员或0外部人员
 					sojson.Content = chat.Content //消息内容
+					sojson.Uuid = chat.Uuid       //uuid
 					sojson.IsFilter = true        //消息是否过滤[true: 过滤, false: 不过滤]
 					sojson.Status = 1
 					sojson.Datatime = chat.Datatime //添加时间
 				} else {
+					sojson.Uuid = js.Get("Uuid").MustString()                 //uuid
 					sojson.Uname = js.Get("Uname").MustString()               //用户名
 					sojson.Nickname = js.Get("Nickname").MustString()         //用户昵称
 					sojson.UserIcon = js.Get("UserIcon").MustString()         //用户logo
@@ -269,6 +271,35 @@ func Chatprogram() {
 						}
 					}
 				}
+			}
+		})
+
+		so.On("all deletemsg", func(msg string) {
+			if len(msg) > 0 {
+				msg = DecodeB64(msg)
+				key := []byte(msg)
+				js, err := simplejson.NewJson(key)
+				if err != nil {
+					return
+				}
+				uuid := js.Get("Uuid").MustString() //uuid
+				codeid := js.Get("Codeid").MustString()
+				codeid = Transformname(codeid, "", -1) //解码公司代码和房间号
+				if len(uuid) > 0 {
+					id, err := m.DelChatById(uuid)
+					if id > 0 && err == nil {
+						if _, ok := job.socketiotoroom[codeid]; ok == true {
+							roleroom := job.socketiotoroom[codeid].Roomval
+							rolelen := len(roleroom[0])
+							for i := 0; i < 2; i++ {
+								for j := 0; j < rolelen; j++ {
+									so.BroadcastTo(roleroom[i][j], "all deletemsg", uuid)
+								}
+							}
+						}
+					}
+				}
+
 			}
 		})
 
@@ -452,6 +483,7 @@ func addData(sojson *Socketjson) {
 	if sojson.IsLogin && sojson.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
+		chatrecord.Uuid = sojson.Uuid                 //uuid
 		chatrecord.Code = sojson.Code                 //公司代码
 		chatrecord.Room = sojson.Room                 //房间号
 		chatrecord.Uname = sojson.Uname               //用户名

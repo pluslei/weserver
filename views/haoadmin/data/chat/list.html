@@ -212,24 +212,12 @@
     }
     // 删除方法
     function deleteModel(){
-        var Id = $(".data-modal-del").val();
-        $.ajax({
-            url: '/weserver/home/custservice_delcust',
-            type: 'POST',
-            data: {Id: Id},
-            success: function(rsp){
-                if (rsp.status){
-                    layer.msg(rsp.info, {
-                        icon: 1
-                    });
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }else{
-                    layer.msg(rsp.info, {
-                        icon: 2
-                    });
-                }
-            }
-        })
+        var uuid = $(".data-modal-del").val();
+        var sendmsg = {}; //发送的内容
+        sendmsg["Uuid"] = uuid;
+        sendmsg["Codeid"] = codeid; //公司房间标识符
+        var sendstr = base64encode(sendmsg);
+        socket.emit('all deletemsg', sendstr);
     }
     // 模态退出
     $('#del-confirm').on('closed.modal.amui', function() {

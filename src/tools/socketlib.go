@@ -66,6 +66,7 @@ type Socketjson struct {
 	MsgType       string    //消息类型
 	Datatime      time.Time //添加时间
 	Status        int       //审核状态(0：未审核，1：审核)
+	Uuid          string    //uuid
 }
 
 //在线人数信息
