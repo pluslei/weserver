@@ -81,25 +81,51 @@
         </div>
     </div>
 </div>
+<audio id="chatAudio"><source src="/static/images/notify.mp3" type="audio/mpeg"></audio>
+<audio id="playVoice"><source src="/static/images/notify.mp3" type="audio/mpeg"></audio>
 <script src="/static/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/static/js/hprose.js"></script>
+<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
+<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
+<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <script type="text/javascript">
     const localserveraddress = "{{.localserveraddress}}";
+    var functions = [];
     var client = hprose.Client.create(localserveraddress, this.functions);
-
+    var codeid = {{.codeid}};     //公司代码房间号
     var oTable;
+    var runtime = 0;
+    var lastruntime = 0;
+    var betweentime = 500;
     $(function() {
         oTable = initTable();
         var table = $('#data-chat-list').DataTable();
         client.subscribe('chat', function(result){
-            console.info(result);
-            var bodyObj = oTable[0].children[1].children;
-            bodyObj[bodyObj.length-1].remove();
+            // 扯淡计算
+            nowtimestamp = new Date().getTime();
+            if (nowtimestamp - lastruntime <  betweentime) {
+                if (runtime == 0) {
+                    runtime = betweentime
+                }else{
+                    runtime = runtime + betweentime - (nowtimestamp - lastruntime) 
+                    lastruntime = nowtimestamp
+                }
+            }else{
+                lastruntime = nowtimestamp
+                runtime = 0
+            }
+            console.info(runtime);
+            setTimeout(function(){
+                $('#chatAudio')[0].play(); //播放声音
+                console.info(result);
+                var bodyObj = oTable[0].children[1].children;
+                bodyObj[bodyObj.length-1].remove();
 
-            newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>IMG</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id)+'</td></tr>'
-            // oTable[0].children[1].children
-            $(oTable[0].children[1].children[0]).before(newhtml);
-            console.info(oTable[0].children[1].children[0]);
+                newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status)+'</td></tr>'
+                // oTable[0].children[1].children
+                $(oTable[0].children[1].children[0]).before(newhtml);
+                console.info(oTable[0].children[1].children[0]);
+            },runtime)
             // oTable.fnAddData([{
             //     "Id": result.id,
             //     "Code": result.code,
@@ -136,6 +162,8 @@
                 }
             }
         })
+
+
     });
     function initTable() {
         var actionUrl = '/weserver/data/chatrecord';
@@ -147,7 +175,7 @@
             "bDestroy": true,
             "bProcessing": true,
             "sAjaxSource": actionUrl,
-            "iDisplayLength": 50,
+            "iDisplayLength": 20,
             "aLengthMenu": [
                 [10, 15, 20, 50, -1],
                 [10, 15, 20, 50, "All"]
@@ -180,7 +208,7 @@
                 },
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html(action(sData));
+                        $(nTd).html(action(sData,oData.Status));
                     }
                 },
             ],
@@ -234,10 +262,14 @@
             data: {Id: Id},
             success: function(rsp){
                 if (rsp.status){
-                    alert(rsp.info);
+                    layer.msg(rsp.info, {
+                        icon: 1
+                    });
                     oTable.fnReloadAjax(oTable.fnSettings());
                 }else{
-                    alert(rsp.info);
+                    layer.msg(rsp.info, {
+                        icon: 2
+                    });
                 }
             }
         })
@@ -298,19 +330,48 @@
         if (status == 1) {
             html = "<span class='am-alert am-alert-success regstatus'>通过</span>";
         } else {
-            html = "<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+id+");'>未审核</span>";
+            html = "<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+id+", "+status+");'>未审核</span>";
         }
         return html
     }
 
     // (操作)
-    function action(id) {
-        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>";
+    function action(id,status) {
+        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+","+status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>";
     }
 
+    // 播放语音
+    function playVoice(content) {
+        $.ajax({
+            url: '/voice?media='+content,
+            type: 'GET',
+            success: function(rsp){
+                if (rsp.Staus){
+                    var obj = $('#playVoice')[0]; //播放声音
+                    obj.src = "../"+rsp.Wavfile;
+                    obj.play();
+                }else{
+                    layer.msg(rsp.Info, {
+                        icon: 2
+                    });
+                }
+            }
+        })
+    }
 
     // 消息审核
-    function autdiomsg(id){
-        alert(id);
+    function autdiomsg(id, status){
+        if (status == 1) {
+            layer.msg('该消息已审核', {
+                icon: 1
+            });
+        } else {
+            var sendmsg = {}; //发送的内容
+            sendmsg["Id"] = id;
+            sendmsg["Codeid"] = codeid; //公司房间标识符
+            var sendstr = base64encode(sendmsg);
+            socket.emit('all message', sendstr);
+            parent.location.reload();
+        }
     }
 </script>

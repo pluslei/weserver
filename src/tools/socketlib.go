@@ -37,11 +37,13 @@ type RoleRoom struct {
 
 //用户列表信息
 type Usertitle struct {
-	Id       int64
-	Uname    string //用户名
-	RoleName string //角色名称
-	InSider  int    //人员类别内部人员或外部人员
-	IsLogin  bool   //状态 [1、登录 0、未登录]
+	Uname     string //微信唯一标识
+	Nickname  string //微信名
+	UserIcon  string //微信头像
+	RoleName  string //头衔名称
+	RoleTitle string //用户头衔名称
+	InSider   int    //人员类别内部人员或外部人员[1: 内部人员，0：]
+	IsLogin   bool   //状态 [true、登录 false、未登录]
 }
 
 //socket内容发送信息
@@ -60,7 +62,16 @@ type Socketjson struct {
 	Insider       int       //1内部人员或0外部人员
 	IsLogin       bool      //状态 [1、登录 0、未登录]
 	Content       string    //消息内容
+	IsFilter      bool      //消息是否过滤[true: 过滤, false: 不过滤]
+	MsgType       string    //消息类型
 	Datatime      time.Time //添加时间
+	Status        int       //审核状态(0：未审核，1：审核)
+}
+
+//在线人数信息
+type OnlineUserMsg struct {
+	Nickname string //用户昵称
+	UserIcon string //用户logo
 }
 
 var Resultuser []Usertitle  //模拟的用户数据

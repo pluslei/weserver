@@ -95,15 +95,23 @@ func GetChatMsgData(count int64) ([]ChatRecord, int64, error) {
 	if startpos < 0 {
 		startpos = 0
 	}
-	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Limit(chatcount, startpos).All(&chat)
+	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Filter("Status", 1).Limit(chatcount, startpos).All(&chat)
 	return chat, num, err
 }
 
-//获取内容
-func UpdateChatData(chat ChatRecord) (int64, error) {
+// 根据id查询聊天内容
+func GetChatIdData(id int64) (ChatRecord, error) {
+	o := orm.NewOrm()
+	var chat ChatRecord
+	err := o.QueryTable(chat).Filter("Id", id).One(&chat)
+	return chat, err
+}
+
+//更新内容
+func UpdateChatStatus(id int64) (int64, error) {
 	o := orm.NewOrm()
 	var table ChatRecord
-	id, err := o.QueryTable(table).Filter("Id", chat.Id).Update(orm.Params{"Content": chat.Content, "Room": chat.Room, "Datatime": chat.Datatime})
+	id, err := o.QueryTable(table).Filter("Id", id).Update(orm.Params{"Status": 1})
 	return id, err
 }
 
