@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego/context"
 	"github.com/astaxie/beego/httplib"
 	"github.com/astaxie/beego/orm"
+	"os"
 	"strconv"
 	"strings"
 	"weserver/controllers"
@@ -166,4 +167,11 @@ func (this *CommonController) CheckUserIsAuth() bool {
 		return true
 	}
 	return false
+}
+
+// 检查文件或目录是否存在
+// 如果由 filename 指定的文件或目录存在则返回 true，否则返回 false
+func Exist(filename string) bool {
+	_, err := os.Stat(filename)
+	return err == nil || os.IsExist(err)
 }

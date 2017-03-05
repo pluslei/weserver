@@ -81,16 +81,73 @@
         </div>
     </div>
 </div>
+<audio id="chatAudio"><source src="/static/images/notify.mp3" type="audio/mpeg"></audio>
+<audio id="playVoice"><source src="/static/images/notify.mp3" type="audio/mpeg"></audio>
 <script src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/hprose.js"></script>
 <script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
 <script type="text/javascript" src="/static/lib/socket/base64.js"></script>
 <script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <script type="text/javascript">
+    const localserveraddress = "{{.localserveraddress}}";
+    var functions = [];
+    var client = hprose.Client.create(localserveraddress, this.functions);
     var codeid = {{.codeid}};     //公司代码房间号
     var oTable;
+    var runtime = 0;
+    var lastruntime = 0;
+    var betweentime = 500;
     $(function() {
         oTable = initTable();
         var table = $('#data-chat-list').DataTable();
+        client.subscribe('chat', function(result){
+            // 扯淡计算
+            nowtimestamp = new Date().getTime();
+            if (nowtimestamp - lastruntime <  betweentime) {
+                if (runtime == 0) {
+                    runtime = betweentime
+                }else{
+                    runtime = runtime + betweentime - (nowtimestamp - lastruntime) 
+                    lastruntime = nowtimestamp
+                }
+            }else{
+                lastruntime = nowtimestamp
+                runtime = 0
+            }
+            console.info(runtime);
+            setTimeout(function(){
+                $('#chatAudio')[0].play(); //播放声音
+                console.info(result);
+                var bodyObj = oTable[0].children[1].children;
+                bodyObj[bodyObj.length-1].remove();
+
+                newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status)+'</td></tr>'
+                // oTable[0].children[1].children
+                $(oTable[0].children[1].children[0]).before(newhtml);
+                console.info(oTable[0].children[1].children[0]);
+            },runtime)
+            // oTable.fnAddData([{
+            //     "Id": result.id,
+            //     "Code": result.code,
+            //     "Room": result.room,
+            //     "Uname": result.uname,
+            //     "Nickname": result.nickname,
+            //     "UserIcon": result.userIcon,
+            //     "RoleName": result.roleName,
+            //     "RoleTitle": result.roleTitle,
+            //     "Sendtype": result.sendtype,
+            //     "RoleTitleCss": result.roleTitleCss,
+            //     "RoleTitleBack": result.roleTitleBack,
+            //     "Insider": result.insider,
+            //     "IsLogin":result.isLogin,
+            //     "Content": result.content,
+            //     "Datatime": result.datatime,
+            //     "Status": result.status,
+            // }]).fnDraw();
+            // table.row.add(resultList).draw();
+            // console.info('111');
+        }, 0, false);
+
         $("#delselecteduser").change(function(){
             var length = table.rows().data().length;
             if($("#delselecteduser").prop("checked")){
@@ -105,6 +162,8 @@
                 }
             }
         })
+
+
     });
     function initTable() {
         var actionUrl = '/weserver/data/chatrecord';
@@ -116,7 +175,7 @@
             "bDestroy": true,
             "bProcessing": true,
             "sAjaxSource": actionUrl,
-            "iDisplayLength": 15,
+            "iDisplayLength": 20,
             "aLengthMenu": [
                 [10, 15, 20, 50, -1],
                 [10, 15, 20, 50, "All"]
@@ -126,46 +185,30 @@
             "aoColumns": [
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+oData.Id+"' onchange='chkuser("+oData.Id+")'  ></input></div>");
+                        $(nTd).html(checkbox(oData.Id));
                     }
                 },
                 {"mDataProp": "Nickname",
                     "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
-                        $(nTd).html("<img src="+oData.UserIcon+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData);
+                        $(nTd).html(username(oData.UserIcon,sData));
                     }
                 },
                 {"mDataProp": "RoleTitle",},
                 {"mDataProp": "Sendtype",},
                 {"mDataProp": "Content",
                     "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
-                        var html = "";
-                        switch (oData.Sendtype){
-                            case "TXT":
-                                html =  del_html_tags(sData,"../i","../../i");
-                            break;
-                            case "IMG":
-                                html = "<img src=/mediaurl?media="+sData+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>";
-                            break;
-                            case "VOICE":
-                                html = "<img src='/static/images/videoOther.png' onclick='playVoice(`"+sData+"`)'>";
-                            break;
-                        }
-                        $(nTd).html(html);
+                        $(nTd).html(content(oData.Sendtype,sData));
                     }
                 },
                 {"mDataProp": "Datatime",},
                 {"mDataProp": "Status",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        if (sData == 1) {
-                            $(nTd).html("<span class='am-alert am-alert-success regstatus'>通过</span>");
-                        } else {
-                            $(nTd).html("<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+oData.Id+", "+oData.Status+");'>未审核</span>");
-                        }
+                        $(nTd).html(status(sData,oData.Id));
                     }
                 },
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+oData.Id+", "+oData.Status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                        $(nTd).html(action(sData,oData.Status));
                     }
                 },
             ],
@@ -235,11 +278,74 @@
         }
     }
 
+    // 表情替换
     function del_html_tags(str,reallyDo,replaceWith) { 
         var e=new RegExp(reallyDo,"g"); 
         words = str.replace(e, replaceWith); 
         return words; 
-    } 
+    }
+
+    // (复选框)
+    function checkbox(Id){
+        return "<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+Id+"' onchange='chkuser("+Id+")'  ></input></div>";
+    }
+
+    // (用户)
+    function username(usericon,nickname) {
+        return "<img src="+usericon+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+nickname;
+    }
+
+    // (消息内容)
+    function content(sendtype,content) {
+        var html = "";
+        switch (sendtype){
+            case "TXT":
+                html =  del_html_tags(content,"../i","../../i");
+            break;
+            case "IMG":
+                html = "<img src=/mediaurl?media="+content+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>";
+            break;
+            case "VOICE":
+                html = "<img src='/static/images/videoOther.png' onclick='playVoice(`"+content+"`)'>";
+            break;
+        }
+        return html
+    }
+
+    // (是否通过)
+    function status(status,id) {
+        var html = "";
+        if (status == 1) {
+            html = "<span class='am-alert am-alert-success regstatus'>通过</span>";
+        } else {
+            html = "<span class='am-alert am-alert-danger regstatus' onclick='javascript:autdiomsg("+id+", "+status+");'>未审核</span>";
+        }
+        return html
+    }
+
+    // (操作)
+    function action(id,status) {
+        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+","+status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>";
+    }
+
+    // 播放语音
+    function playVoice(content) {
+        $.ajax({
+            url: '/voice?media='+content,
+            type: 'GET',
+            success: function(rsp){
+                if (rsp.Staus){
+                    var obj = $('#playVoice')[0]; //播放声音
+                    obj.src = "../"+rsp.Wavfile;
+                    obj.play();
+                }else{
+                    layer.msg(rsp.Info, {
+                        icon: 2
+                    });
+                }
+            }
+        })
+    }
 
     // 消息审核
     function autdiomsg(id, status){

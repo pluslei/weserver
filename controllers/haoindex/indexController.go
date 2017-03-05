@@ -1,9 +1,14 @@
 package haoindex
 
 import (
+	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"os/exec"
+	"strings"
+	"time"
 
 	"github.com/astaxie/beego"
 	// "github.com/astaxie/beego/httplib"
@@ -25,7 +30,7 @@ var (
 	APPID     = "wxcdc0e555f68f26be"
 	APPSECRET = "8e5407bb356a8e5093b9ef14ce73a0e8"
 
-	redirect_uri = beego.AppConfig.String("imagesrc")
+	redirect_uri = beego.AppConfig.String("httplocalServerAdress")
 	Wx           *wechat.Wechat
 	oauthAccess  *oauth.Oauth
 )
@@ -150,6 +155,7 @@ func (this *IndexController) Index() {
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
 		// 用户是否审核
+		beego.Debug("userload", userLoad.Role)
 		if (userLoad.Role.IsInsider == 1) || (sysconfig.AuditMsg == 1) {
 			user.IsFilter = true
 		}
@@ -185,6 +191,7 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
+		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
 		this.TplName = "dist/index.html"
 		//this.TplName = "index.html"
 	} else {
@@ -197,18 +204,60 @@ func (this *IndexController) Login() {
 }
 
 func (this *IndexController) Voice() {
-	url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
-
-	jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
-	jsapi, err := jssdk.GetConfig(url)
-	if err != nil {
-		beego.Error("get the jsapi config error", err)
+	type VoiceStruct struct {
+		Staus   bool
+		Wavfile string
+		Info    string
 	}
-	this.Data["appId"] = APPID
-	this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
-	this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
-	this.Data["signature"] = jsapi.Signature //jsapi.Signature
-	this.TplName = "voice.html"
+
+	voice := new(VoiceStruct)
+
+	var filename string
+	media := this.GetString("media")
+	savepath := fmt.Sprintf("../upload/temp/%s/", time.Now().Format("2006-01-02"))
+
+	wavfilename := savepath + media + ".wav"
+	if Exist(wavfilename) {
+		voice.Staus = true
+		voice.Wavfile = wavfilename
+	} else {
+		material := Wx.GetMaterial()
+		mediaURL, err := material.GetMediaURL(media)
+
+		if !Exist(savepath) {
+			os.MkdirAll(savepath, 0755)
+		}
+		filename = media + ".amr"
+		savefile := savepath + filename
+		resp, err := http.Get(mediaURL)
+		beego.Debug("media info:", mediaURL)
+		if err != nil {
+			beego.Error("http get media url error", err)
+			voice.Info = err.Error()
+		} else {
+			file, err := os.Create(savefile)
+			defer file.Close()
+			if err != nil {
+				beego.Error("create file error", err)
+				voice.Info = err.Error()
+			} else {
+				io.Copy(file, resp.Body)
+				defer resp.Body.Close()
+
+				wavfile, err := this.AmrToWav(savepath, filename)
+				if err == nil || wavfile != "" {
+					voice.Staus = true
+					voice.Wavfile = wavfile
+					os.Remove(savefile)
+				} else {
+					voice.Info = err.Error()
+				}
+			}
+		}
+	}
+	this.Data["json"] = voice
+	this.ServeJSON()
+
 }
 
 func (this *IndexController) GetMediaURL() {
@@ -219,7 +268,6 @@ func (this *IndexController) GetMediaURL() {
 	srcfile := redirect_uri + "/static/images/nono.jpg"
 	if err == nil {
 		resp, err := http.Get(mediaURL)
-		beego.Info("resp.Header", resp.Header.Get("Content-Type"))
 		if err != nil {
 			file, _ := os.Open(srcfile)
 			defer file.Close()
@@ -307,4 +355,33 @@ func (this *IndexController) SetNickname() {
 			this.Rsp(true, "昵称修改成功", "")
 		}
 	}
+}
+
+// 将amr文件转为wav文件
+func (this *IndexController) AmrToWav(filedir, filename string) (string, error) {
+	newfilename := filename[0:strings.LastIndex(filename, ".")]
+
+	oldpathfilename := filedir + filename
+	savepathfilename := filedir + newfilename + ".wav"
+	if Exist(savepathfilename) {
+		return savepathfilename, nil
+	}
+
+	toolName := "static/wmv_tools.static" //转换工具路径
+	if Exist(toolName) == false {
+		beego.Error("don't find the tools")
+		return "", errors.New("don't find the tools")
+	}
+
+	cmdStr := toolName + " " + oldpathfilename + " " + savepathfilename //执行转换格式工具命令
+	cmd := exec.Command("/bin/sh", "-c", cmdStr)
+	err := cmd.Run()
+	if err != nil {
+		chmod := "chmod 755 " + toolName
+		exec.Command("/bin/sh", "-c", chmod)
+		beego.Error("chmod error", err)
+		return "", err
+	}
+	return savepathfilename, nil
+
 }

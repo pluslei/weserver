@@ -16,7 +16,7 @@ func (this *ChatRecordController) ChatRecordList() {
 		sEcho := this.GetString("sEcho")
 		iStart, _ := this.GetInt64("iDisplayStart")
 		iLength, _ := this.GetInt64("iDisplayLength")
-		chatrecord, count := m.GetChatRecordList(iStart, iLength, "Id")
+		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime")
 		for _, v := range chatrecord {
 			v["Datatime"] = v["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 		}
@@ -29,6 +29,7 @@ func (this *ChatRecordController) ChatRecordList() {
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {
+		this.Data["localserveraddress"] = beego.AppConfig.String("wslocalServerAdress") + "/rpc"
 		this.CommonMenu()
 		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
 		codeid := MainEncrypt(prevalue)
