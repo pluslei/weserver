@@ -100,13 +100,15 @@ func Chatprogram() {
 						}
 					}
 					so.Emit("all totalonline", fmt.Sprintf("%d", totalonline))
-					if _, ok := job.socketiotoroom[codeid]; ok == true {
-						roleroom := job.socketiotoroom[codeid].Roomval
-						rolelen := len(roleroom[0])
-						for i := 0; i < 2; i++ {
-							for j := 0; j < rolelen; j++ {
-								so.BroadcastTo(roleroom[i][j], "all totalonline", fmt.Sprintf("%d", totalonline))
-							}
+					//房间号获取
+					roleval, _ := m.GetAllUserRole()
+					rolelen := len(roleval)
+					prevalue := codeid
+					for i := 0; i < rolelen; i++ {
+						for j := 0; j < 2; j++ {
+							roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
+							roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
+							so.BroadcastTo(roomval, "all totalonline", fmt.Sprintf("%d", totalonline))
 						}
 					}
 				}
@@ -264,13 +266,15 @@ func Chatprogram() {
 					}
 				}
 				so.Emit("all totalonline", fmt.Sprintf("%d", totalonline))
-				if _, ok := job.socketiotoroom[codeid]; ok == true {
-					roleroom := job.socketiotoroom[codeid].Roomval
-					rolelen := len(roleroom[0])
-					for i := 0; i < 2; i++ {
-						for j := 0; j < rolelen; j++ {
-							so.BroadcastTo(roleroom[i][j], "all totalonline", fmt.Sprintf("%d", totalonline))
-						}
+				//房间号获取
+				roleval, _ := m.GetAllUserRole()
+				rolelen := len(roleval)
+				prevalue := codeid
+				for i := 0; i < rolelen; i++ {
+					for j := 0; j < 2; j++ {
+						roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
+						roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
+						so.BroadcastTo(roomval, "all totalonline", fmt.Sprintf("%d", totalonline))
 					}
 				}
 			}
@@ -290,18 +294,22 @@ func Chatprogram() {
 				if len(uuid) > 0 {
 					id, err := m.DelChatById(uuid)
 					if id > 0 && err == nil {
-						if _, ok := job.socketiotoroom[codeid]; ok == true {
-							roleroom := job.socketiotoroom[codeid].Roomval
-							rolelen := len(roleroom[0])
-							for i := 0; i < 2; i++ {
-								for j := 0; j < rolelen; j++ {
-									so.BroadcastTo(roleroom[i][j], "all deletemsg", uuid)
-								}
+						so.Emit("all deletesucess", "")
+						//房间号获取
+						roleval, _ := m.GetAllUserRole()
+						rolelen := len(roleval)
+						prevalue := codeid
+						for i := 0; i < rolelen; i++ {
+							for j := 0; j < 2; j++ {
+								roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
+								roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
+								so.BroadcastTo(roomval, "all deletemsg", uuid)
 							}
 						}
+					} else {
+						so.Emit("all deleteerror", "")
 					}
 				}
-
 			}
 		})
 

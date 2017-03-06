@@ -387,6 +387,9 @@ body {
   text-align: center;
   float: left;
 }
+.face .box img {
+  width: 25px;
+}
 /*公告栏*/
 .upload {
   width: 100%;
@@ -517,29 +520,38 @@ body {
   right: 0px;
   height: 24pt;
   width: 80pt;
-  background-color: #999;
-  color: #fff;
+  color: #000;
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
+  border: 1px solid #999999;
+}
+.notice .numTips .onlineperson {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: #000;
+  display: inline-block;
+  line-height: 32px;
+  float: left;
 }
 .notice .numTips .personTip {
-  margin: 6px 0px 0px 12px;
+  margin: 7px 0px 0px 3px;
   float: left;
-  width: 17%;
+  width: 15%;
 }
 .notice .numTips .numrecord {
-  font-family: "微软雅黑";
-  font-size: 15px;
+  font-size: 12px;
   display: inline-block;
   height: 24pt;
   line-height: 24pt;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 58px;
   padding: 0;
-  color: #fff;
-  letter-spacing: 1px;
+  color: #000;
+  width: 31px;
+  text-align: center;
 }
 .chatInfo {
   height: 100%;

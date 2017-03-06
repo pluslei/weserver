@@ -74,7 +74,8 @@ func AddChatdata(chat []ChatRecord, length int) error {
 //删除数据库中表中ID对应的行信息
 func DelChatById(uuid string) (int64, error) {
 	o := orm.NewOrm()
-	status, err := o.Delete(&ChatRecord{Uuid: uuid})
+	var chat ChatRecord
+	status, err := o.QueryTable(chat).Filter("Uuid", uuid).Delete()
 	return status, err
 }
 
