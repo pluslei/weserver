@@ -27,8 +27,8 @@ type IndexController struct {
 var (
 
 	//
-	APPID     = "wxcdc0e555f68f26be"
-	APPSECRET = "8e5407bb356a8e5093b9ef14ce73a0e8"
+	APPID     = beego.AppConfig.String("APPID")
+	APPSECRET = beego.AppConfig.String("APPSECRET")
 
 	redirect_uri = beego.AppConfig.String("httplocalServerAdress")
 	Wx           *wechat.Wechat

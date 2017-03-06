@@ -1,9 +1,11 @@
-var socket = io.connect('test.780.com.cn', {
+var socket = io.connect(serverurl, {
     'path': '/wechatSocket'
 }, {
     'force new connection': true
 });
 var socketid = ""; //socketid
+
+console.info(serverurl);
 
 //系统设置参数
 //Imagesize     int64  //图片大小 单位Kb

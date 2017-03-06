@@ -119,7 +119,9 @@
                 $('#chatAudio')[0].play(); //播放声音
                 console.info(result);
                 var bodyObj = oTable[0].children[1].children;
-                bodyObj[bodyObj.length-1].remove();
+                if (bodyObj.length >= 20) {
+                    bodyObj[bodyObj.length-1].remove();
+                }
 
                 newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status,result.uuid)+'</td></tr>'
                 // oTable[0].children[1].children

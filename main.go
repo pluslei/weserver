@@ -3,11 +3,11 @@ package main
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	"github.com/astaxie/beego/plugins/cors"
 	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
 	"weserver/src/socket"
-	// "github.com/astaxie/beego/plugins/cors"
 )
 
 func main() {
@@ -18,9 +18,9 @@ func main() {
 	beego.ErrorController(&haoindex.ErrorController{}) //注册错误处理的函数
 
 	// 允许跨域访问
-	// beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-	// 	AllowAllOrigins: true,
-	// }))
+	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+		AllowAllOrigins: true,
+	}))
 	//socket
 	socket.Chatprogram()
 	beego.Run()

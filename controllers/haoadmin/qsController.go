@@ -156,6 +156,7 @@ func (this *QsController) SendBroad() {
 		this.Data["uname"] = UserInfo.(*m.User).Username
 	}
 	this.Data["ipaddress"] = this.GetClientip()
+	this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
 	this.TplName = "haoadmin/data/qs/sendbroad.html"
 }
 

@@ -3,6 +3,7 @@ package socket
 import (
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/plugins/cors"
 	"github.com/bitly/go-simplejson" // for json get
 	"github.com/googollee/go-socket.io"
 	m "weserver/models"
@@ -349,6 +350,9 @@ func Chatprogram() {
 	WechatServer.On("error", func(so socketio.Socket, err error) {
 		beego.Error(err)
 	})
+	beego.BeeApp.Handlers.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+		AllowAllOrigins: true,
+	}))
 	beego.BeeApp.Handlers.Handler("/wechatSocket/", WechatServer)
 }
 

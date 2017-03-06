@@ -119,6 +119,7 @@ func (this *CommonController) CommonMenu() {
 		this.Data["treeurl"] = treearr[2]
 		this.Data["tree"] = &tree
 	}
+	this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
 	this.Layout = "haoadmin/layout/base.html"
 }
 
