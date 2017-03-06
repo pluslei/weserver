@@ -450,7 +450,7 @@ func (w *WriteData) runWriteDb() {
 }
 
 func addData(sojson *Socketjson) {
-	beego.Debug("im here", sojson, sojson.RoleTitleBack)
+	beego.Debug("im here", sojson.IsFilter, sojson.RoleTitleBack)
 	if sojson.IsLogin && sojson.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord

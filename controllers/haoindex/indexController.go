@@ -154,9 +154,10 @@ func (this *IndexController) Index() {
 		}
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
-		// 用户是否审核
-		beego.Debug("userload", userLoad.Role)
-		if (userLoad.Role.IsInsider == 1) || (sysconfig.AuditMsg == 1) {
+		// 消息审核(true 开启 false 关闭(默认))
+		// 是否隶属公司内部角色[0、否 1、是]
+		beego.Debug("userload", userLoad.Role, sysconfig)
+		if (userLoad.Role.IsInsider == 0) || (sysconfig.AuditMsg == 0) {
 			user.IsFilter = true
 		}
 
