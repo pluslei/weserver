@@ -98,7 +98,6 @@ func Chatprogram() {
 					for key, item := range job.userroom {
 						if len(key) > 0 {
 							var msg OnlineUserMsg
-							beego.Debug(item.Nickname, item.UserIcon, "==============")
 							msg.Nickname = EncodeB64(item.Nickname)
 							msg.UserIcon = EncodeB64(item.UserIcon)
 							usermsg = append(usermsg, msg)
