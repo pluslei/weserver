@@ -21,14 +21,14 @@ type ChatRecord struct {
 	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
 	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
 	RoleTitleCss  string    //头衔颜色
-	RoleTitleBack int       `orm:"default(0)"`     //角色聊天背景
-	Insider       int       `orm:"default(1)"`     //1内部人员或0外部人员
-	IsLogin       int       `orm:"default(0)"`     //状态 [1、登录 0、未登录]
-	Content       string    `orm:"type(text)"`     //消息内容
-	Datatime      time.Time `orm:"type(datetime)"` //添加时间
-	Status        int       //消息审核[1 通过 0 未通过]
-
-	DatatimeStr string `orm:"-"`
+	RoleTitleBack int       `orm:"default(0)"`                                           //角色聊天背景
+	Insider       int       `orm:"default(1)"`                                           //1内部人员或0外部人员
+	IsLogin       int       `orm:"default(0)"`                                           //状态 [1、登录 0、未登录]
+	Content       string    `orm:"type(text)"`                                           //消息内容
+	Datatime      time.Time `orm:"type(datetime)"`                                       //添加时间
+	Status        int       `orm:"default(0)" form:"Status" valid:"Required;Range(0,1)"` //消息审核[1 通过 0 未通过]
+	Uuid          string    // uuid
+	DatatimeStr   string    `orm:"-"`
 }
 
 func init() {
@@ -72,9 +72,10 @@ func AddChatdata(chat []ChatRecord, length int) error {
 }
 
 //删除数据库中表中ID对应的行信息
-func DelChatById(Id int64) (int64, error) {
+func DelChatById(uuid string) (int64, error) {
 	o := orm.NewOrm()
-	status, err := o.Delete(&ChatRecord{Id: Id})
+	var chat ChatRecord
+	status, err := o.QueryTable(chat).Filter("Uuid", uuid).Delete()
 	return status, err
 }
 

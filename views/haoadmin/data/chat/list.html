@@ -77,7 +77,7 @@
         </div>
         <div class="am-modal-footer">
             <span class="am-btn am-radius am-btn-sm am-btn-default am-margin-right-sm" data-am-modal-close>取消</span>
-            <span class="am-btn am-radius am-btn-sm am-btn-primary" onclick="deleteModal()">确定</span>
+            <span class="am-btn am-radius am-btn-sm am-btn-primary" data-am-modal-close onclick="deleteModel()">确定</span>
         </div>
     </div>
 </div>
@@ -121,7 +121,7 @@
                 var bodyObj = oTable[0].children[1].children;
                 bodyObj[bodyObj.length-1].remove();
 
-                newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status)+'</td></tr>'
+                newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status,result.uuid)+'</td></tr>'
                 // oTable[0].children[1].children
                 $(oTable[0].children[1].children[0]).before(newhtml);
                 console.info(oTable[0].children[1].children[0]);
@@ -208,7 +208,7 @@
                 },
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html(action(sData,oData.Status));
+                        $(nTd).html(action(sData,oData.Status,oData.Uuid));
                     }
                 },
             ],
@@ -255,25 +255,26 @@
     }
     // 删除方法
     function deleteModel(){
-        var Id = $(".data-modal-del").val();
-        $.ajax({
-            url: '/weserver/home/custservice_delcust',
-            type: 'POST',
-            data: {Id: Id},
-            success: function(rsp){
-                if (rsp.status){
-                    layer.msg(rsp.info, {
-                        icon: 1
-                    });
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }else{
-                    layer.msg(rsp.info, {
-                        icon: 2
-                    });
-                }
-            }
-        })
+        var uuid = $(".data-modal-del").val();
+        var sendmsg = {}; //发送的内容
+        sendmsg["Uuid"] = uuid;
+        sendmsg["Codeid"] = codeid; //公司房间标识符
+        var sendstr = base64encode(sendmsg);
+        socket.emit('all deletemsg', sendstr);
+        oTable.fnReloadAjax(oTable.fnSettings());
     }
+    socket.on('all deletesucess', function() {
+        //消息提示
+        layer.msg('删除成功', {
+            icon: 1
+        });
+    });
+    socket.on('all deleteerror', function() {
+        //消息提示
+        layer.msg('删除失败', {
+            icon: 2
+        });
+    });
     // 模态退出
     $('#del-confirm').on('closed.modal.amui', function() {
         $(this).removeData('amui.modal');
@@ -336,8 +337,8 @@
     }
 
     // (操作)
-    function action(id,status) {
-        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+","+status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>";
+    function action(id,status,uuid) {
+        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+","+status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(`" + uuid + "`);'><span class='am-icon-trash-o'></span> 删除</a></div>";
     }
 
     // 播放语音
