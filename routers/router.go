@@ -16,8 +16,7 @@ func init() {
 	// 注册RPC
 	Rpc()
 	// 开启调试模式
-	orm.Debug = false
-
+	orm.Debug = true
 	beego.SetStaticPath("/upload", "../upload")
 	beego.SetStaticPath("/css", "./views/dist/css")
 	beego.SetStaticPath("/i", "./views/dist/i")

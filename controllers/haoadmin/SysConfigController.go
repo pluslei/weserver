@@ -22,6 +22,7 @@ func (this *SysConfigController) Index() {
 		welcomemsg := this.GetString("welcomemsg")         //欢迎语
 		verify, _ := this.GetInt64("verify")               //是否开启注册验证
 		loginsys, _ := this.GetInt64("loginsys")           //是否允许登陆后台
+		auditmsg, _ := this.GetInt64("auditmsg")           //是否消息审核
 		sys := new(m.SysConfig)
 		sys.Systemname = systemname
 		sys.ChatInterval = chartinterval
@@ -32,6 +33,7 @@ func (this *SysConfigController) Index() {
 		sys.WelcomeMsg = welcomemsg
 		sys.Verify = verify
 		sys.LoginSys = loginsys
+		sys.AuditMsg = auditmsg
 		count := m.GetSysConfigCount()
 		if count == 0 {
 			id, err := m.AddSysConfig(sys)
@@ -44,7 +46,7 @@ func (this *SysConfigController) Index() {
 		} else {
 			sysid, _ := this.GetInt64("Id")
 			sys.Id = sysid
-			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys")
+			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg")
 			if err != nil {
 				beego.Error(err)
 				this.AlertBack("配置修改失败")
@@ -66,6 +68,7 @@ func (this *SysConfigController) Index() {
 		this.Data["title"] = title
 		this.Data["role"] = role
 		this.Data["configinfo"] = configinfo
+		beego.Debug("configinfo", configinfo.Verify, configinfo.AuditMsg)
 		this.TplName = "haoadmin/rbac/sysconfig/edit.html"
 	}
 }

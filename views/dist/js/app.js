@@ -1281,10 +1281,8 @@ var NumTips = function (_React$Component) {
         {
           className: 'numTips',
           onClick: function onClick() {
-            var title = '在线人数：';
-            title += _this2.state.num.toString();
             var locationurl = '/index.html#/chatinfo?data=';
-            locationurl += title;
+            locationurl += _this2.state.num.toString();
             window.location.href = locationurl;
           }
         },
@@ -1511,8 +1509,17 @@ var ChatInfo = function (_React$Component) {
       },
       chatInfoConetnt: []
     };
+    _this.args = {
+      onlineCount: 0
+    };
+    _this.vendor = {
+      IntervalTime: null
+    };
     _this.handleSelect = _this.handleSelect.bind(_this);
     _Config2.default.connectionso();
+    _this.vendor.IntervalTime = setInterval(function () {
+      _Config2.default.connectionso();
+    }, 2000);
     return _this;
   }
 
@@ -1522,12 +1529,54 @@ var ChatInfo = function (_React$Component) {
       var _this2 = this;
 
       var location = this.props.location.query.data;
-      window.document.title = location;
-      setTimeout(function () {
-        _this2.getOnlineData('/chat/user/online/msg');
-      }, 200);
+      var title = '在线人数：';
+      title += location;
+      window.document.title = title;
+      this.args.onlineCount = parseInt(location, 10);
+      _Config2.default.socketpc.on('connect', function () {
+        if (_Config2.default.socketpc.connected) {
+          if (_Config2.default.socketid.length > 0) {
+            _Config2.default.connectionso();
+          }
+          _Config2.default.socketid = _Config2.default.socketpc.id;
+        }
+      });
+      _Config2.default.socketpc.on('all totalonline', function (data) {
+        clearInterval(_this2.vendor.IntervalTime);
+        _this2.vendor.IntervalTime = null;
+        if (data !== null && data.onlineuser !== undefined) {
+          var received = data.onlineuser;
+          var resultdata = [];
+          var length = received.length;
+          if (_this2.args.onlineCount < length) {
+            length = _this2.args.onlineCount;
+          }
+          for (var i = 0; i < length; i++) {
+            var argsdata = {
+              Nickname: _Config2.default.base64data(1, received[i].Nickname),
+              UserIcon: _Config2.default.base64data(1, received[i].UserIcon)
+            };
+            resultdata.push(argsdata);
+          }
+          _this2.setState({
+            chatInfoConetnt: resultdata
+          });
+        } else {
+          _Config2.default.connectionso();
+          _this2.vendor.IntervalTime = setInterval(function () {
+            _Config2.default.connectionso();
+          }, 2000);
+        }
+      });
       var scroll = document.querySelector('.chatlist');
       window.setSrcoll(scroll);
+      /*
+      const location = this.props.location.query.data;
+      window.document.title = location;
+      const scroll = document.querySelector('.chatlist');
+      window.setSrcoll(scroll);
+      this.getOnlineData('/chat/user/online/msg');
+      */
     }
   }, {
     key: 'componentDidUpdate',
@@ -2372,6 +2421,9 @@ var Index = function (_React$Component) {
         total: '1'
       }
     };
+    _this.vendor = {
+      IntervalTime: null
+    };
     _this.state.chat.style.height = _this.custom.chat.height;
     _this.state.chat.style.height += _this.custom.notice.height;
     _this.state.chat.style.height += _this.custom.footer.height;
@@ -2461,19 +2513,19 @@ var Index = function (_React$Component) {
           _this3.refreshchatbar();
         }
       });
-      _Config2.default.socketpc.on('all totalonline', function (total) {
-        if (total !== null) {
-          var count = parseInt(total, 10);
-          if (count > 0) {
-            if (count > 99999) {
-              _this3.args.onlien.total = '99999+';
-            } else {
-              _this3.args.onlien.total = total;
-            }
-            _this3.refs.notice.refs.numtip.setState({
-              num: _this3.args.onlien.total
-            });
-          }
+      _Config2.default.socketpc.on('all totalonline', function (data) {
+        clearInterval(_this3.vendor.IntervalTime);
+        _this3.vendor.IntervalTime = null;
+        if (data !== null && data.onlineuser !== undefined) {
+          var received = data.onlineuser;
+          _this3.refs.notice.refs.numtip.setState({
+            num: received.length
+          });
+        } else {
+          _Config2.default.connectionso();
+          _this3.vendor.IntervalTime = setInterval(function () {
+            _Config2.default.connectionso();
+          }, 2000);
         }
       });
       _Config2.default.socketpc.on('all deletemsg', function (uuid) {
@@ -2511,6 +2563,9 @@ var Index = function (_React$Component) {
       // socket消息
       _Config2.default.connectionso();
       this.connectsocket();
+      this.vendor.IntervalTime = setInterval(function () {
+        _Config2.default.connectionso();
+      }, 2000);
     }
   }, {
     key: 'loadchatlist',
@@ -2645,7 +2700,6 @@ var Config = {
     Config.socketpc = window.mysocket;
     Config.usermsg = window.userinfor;
     var sendstr = Config.base64data(0, Config.usermsg);
-    console.log(sendstr, 'testest===============');
     Config.socketpc.emit('all connection', sendstr);
   }
 };

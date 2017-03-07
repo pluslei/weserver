@@ -94,13 +94,18 @@ func Chatprogram() {
 					job.socketiduser[so.Id()] = codename
 					job.socketidso[codename] = so
 					job.userroom[codename] = userrole
-					totalonline := 0
-					for key, _ := range job.userroom {
+					data := make(map[string]interface{})
+					var usermsg []OnlineUserMsg
+					for key, item := range job.userroom {
 						if len(key) > 0 {
-							totalonline++
+							var msg OnlineUserMsg
+							msg.Nickname = EncodeB64(item.Nickname)
+							msg.UserIcon = EncodeB64(item.UserIcon)
+							usermsg = append(usermsg, msg)
 						}
 					}
-					so.Emit("all totalonline", fmt.Sprintf("%d", totalonline))
+					data["onlineuser"] = usermsg
+					so.Emit("all totalonline", data)
 					//房间号获取
 					roleval, _ := m.GetAllUserRole()
 					rolelen := len(roleval)
@@ -109,7 +114,7 @@ func Chatprogram() {
 						for j := 0; j < 2; j++ {
 							roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
 							roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
-							so.BroadcastTo(roomval, "all totalonline", fmt.Sprintf("%d", totalonline))
+							so.BroadcastTo(roomval, "all totalonline", data)
 						}
 					}
 				}
@@ -398,6 +403,7 @@ func (this *SocketController) ChatUserList() {
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
 			historychat, _, _ = m.GetChatMsgData(recordcount)
+			beego.Debug("recordcount",recordcount,historychat);
 		default:
 		}
 		data := make(map[string]interface{})
