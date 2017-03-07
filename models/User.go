@@ -197,3 +197,9 @@ func CountWeekRegist() (week []orm.ParamsList) {
 	}
 	return lists
 }
+
+func GetAllUser() (users []User, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable("user").All(&users)
+	return users, err
+}

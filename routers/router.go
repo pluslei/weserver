@@ -192,6 +192,8 @@ func Router() {
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
+	beego.Router("/usercount", &haoindex.IndexController{}, "*:UserCount")
+	beego.Router("/userlist", &haoindex.IndexController{}, "*:UserList")
 
 	//socket
 	// 获取系统信息

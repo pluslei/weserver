@@ -1274,16 +1274,12 @@ var NumTips = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return _react2.default.createElement(
         'div',
         {
           className: 'numTips',
           onClick: function onClick() {
-            var locationurl = '/index.html#/chatinfo?data=';
-            locationurl += _this2.state.num.toString();
-            window.location.href = locationurl;
+            window.location.href = '/index.html#/chatinfo';
           }
         },
         _react2.default.createElement('img', { className: 'personTip', src: 'i/numtip.png', alt: 'person' }),
@@ -1477,10 +1473,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
 var _Config = require('../../utils/Config');
 
 var _Config2 = _interopRequireDefault(_Config);
@@ -1528,11 +1520,6 @@ var ChatInfo = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var location = this.props.location.query.data;
-      var title = '在线人数：';
-      title += location;
-      window.document.title = title;
-      this.args.onlineCount = parseInt(location, 10);
       _Config2.default.socketpc.on('connect', function () {
         if (_Config2.default.socketpc.connected) {
           if (_Config2.default.socketid.length > 0) {
@@ -1547,11 +1534,12 @@ var ChatInfo = function (_React$Component) {
         if (data !== null && data.onlineuser !== undefined) {
           var received = data.onlineuser;
           var resultdata = [];
-          var length = received.length;
-          if (_this2.args.onlineCount < length) {
-            length = _this2.args.onlineCount;
-          }
-          for (var i = 0; i < length; i++) {
+          _this2.args.onlineCount = received.length;
+          // 修改title
+          var title = '在线人数：';
+          title += _this2.args.onlineCount.toString();
+          _this2.setTitle(title);
+          for (var i = 0; i < _this2.args.onlineCount; i++) {
             var argsdata = {
               Nickname: _Config2.default.base64data(1, received[i].Nickname),
               UserIcon: _Config2.default.base64data(1, received[i].UserIcon)
@@ -1570,37 +1558,23 @@ var ChatInfo = function (_React$Component) {
       });
       var scroll = document.querySelector('.chatlist');
       window.setSrcoll(scroll);
-      /*
-      const location = this.props.location.query.data;
-      window.document.title = location;
-      const scroll = document.querySelector('.chatlist');
-      window.setSrcoll(scroll);
-      this.getOnlineData('/chat/user/online/msg');
-      */
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {}
   }, {
-    key: 'getOnlineData',
-    value: function getOnlineData(route) {
-      var _this3 = this;
-
-      this.serverRequest = _jquery2.default.ajax({
-        url: route,
-        type: 'post',
-        dataType: 'json',
-        success: function success(data) {
-          if (data.onlineuser != null) {
-            _this3.setState({
-              chatInfoConetnt: data.onlineuser
-            });
-            var onlinemsg = '在线人数：';
-            onlinemsg += data.onlineuser.length.toString();
-            window.document.title = onlinemsg;
-          }
-        }
-      });
+    key: 'setTitle',
+    value: function setTitle(title) {
+      window.document.title = title;
+      var iframe = window.document.createElement('iframe');
+      iframe.src = 'i/touch/apple-touch-icon.png';
+      iframe.style.display = 'none';
+      iframe.onload = function () {
+        setTimeout(function () {
+          iframe.remove();
+        }, 5);
+      };
+      window.document.body.appendChild(iframe);
     }
   }, {
     key: 'createList',
@@ -1651,13 +1625,12 @@ var ChatInfo = function (_React$Component) {
 }(_react2.default.Component);
 
 ChatInfo.propTypes = {
-  pthis: _react2.default.PropTypes.object,
-  location: _react2.default.PropTypes.object
+  pthis: _react2.default.PropTypes.object
 };
 
 exports.default = ChatInfo;
 
-},{"../../utils/Config":13,"jquery":255,"react":196}],10:[function(require,module,exports){
+},{"../../utils/Config":13,"react":196}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

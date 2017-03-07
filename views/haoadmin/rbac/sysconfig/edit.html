@@ -48,6 +48,11 @@
             </select>
             <span class="am-form-caret"></span>
           </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">虚拟人数：</label>
+            <input type="text" name="virtualuser" value="{{.configinfo.VirtualUser}}" placeholder="最大不超过999" max="999">
+            <span class="am-form-caret"></span>
+          </div>
           
 
           <button class="am-btn am-btn-secondary" type="submit">提交</button>
@@ -91,7 +96,6 @@
             <span class="am-form-caret"></span>
           </div>
           <div class="am-form-group">
-          {{.configinfo.AuditMsg}}
             <label for="doc-select-1">是否消息审核：</label>
             <select id="doc-select-21" name="auditmsg" required>
               <option value="0" {{if eq .configinfo.AuditMsg 0}}selected{{end}}>开启</option>
@@ -99,6 +103,7 @@
             </select>
             <span class="am-form-caret"></span>
           </div>
+
 
         </fieldset>
     </div>

@@ -23,6 +23,7 @@ func (this *SysConfigController) Index() {
 		verify, _ := this.GetInt64("verify")               //是否开启注册验证
 		loginsys, _ := this.GetInt64("loginsys")           //是否允许登陆后台
 		auditmsg, _ := this.GetInt64("auditmsg")           //是否消息审核
+		virtualuser, _ := this.GetInt64("virtualuser")     //增加虚拟用户
 		sys := new(m.SysConfig)
 		sys.Systemname = systemname
 		sys.ChatInterval = chartinterval
@@ -34,6 +35,7 @@ func (this *SysConfigController) Index() {
 		sys.Verify = verify
 		sys.LoginSys = loginsys
 		sys.AuditMsg = auditmsg
+		sys.VirtualUser = virtualuser
 		count := m.GetSysConfigCount()
 		if count == 0 {
 			id, err := m.AddSysConfig(sys)
@@ -46,7 +48,7 @@ func (this *SysConfigController) Index() {
 		} else {
 			sysid, _ := this.GetInt64("Id")
 			sys.Id = sysid
-			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg")
+			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg", "VirtualUser")
 			if err != nil {
 				beego.Error(err)
 				this.AlertBack("配置修改失败")

@@ -18,6 +18,7 @@ type SysConfig struct {
 	Verify        int64  //是否开启用户审核  0开启 1不开启
 	LoginSys      int64  //是否允许登陆后台  0允许 1禁止
 	AuditMsg      int64  //是否开启消息审核  0开启 1关闭
+	VirtualUser   int64  //虚拟用户人数
 }
 
 func (s *SysConfig) TableName() string {
@@ -48,7 +49,7 @@ func GetSysConfigCount() int64 {
 
 func GetAllSysConfig() (sys SysConfig, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(sys).One(&sys, "ChatInterval", "HistoryMsg", "HistoryCount", "WelcomeMsg", "AuditMsg")
+	err = o.QueryTable(sys).One(&sys)
 	return sys, err
 }
 

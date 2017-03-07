@@ -1,6 +1,7 @@
 package haoindex
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -364,7 +365,6 @@ func (this *IndexController) SetNickname() {
 	}
 }
 
-// 将amr文件转为wav文件
 func (this *IndexController) AmrToWav(filedir, filename string) (string, error) {
 	newfilename := filename[0:strings.LastIndex(filename, ".")]
 
@@ -390,5 +390,59 @@ func (this *IndexController) AmrToWav(filedir, filename string) (string, error) 
 		return "", err
 	}
 	return savepathfilename, nil
+}
 
+func (this *IndexController) UserCount() {
+	type userCountStruct struct {
+		Status bool
+		Info   string
+		Count  int64
+	}
+
+	userCount := new(userCountStruct)
+	onliecount, _ := m.GetUserNumber()
+	sysconfig, _ := m.GetAllSysConfig()
+	userCount.Status = true
+	userCount.Count = sysconfig.VirtualUser + onliecount
+	v, _ := json.Marshal(userCount)
+	this.Ctx.WriteString(string(v))
+}
+
+func (this *IndexController) UserList() {
+	type userListStruct struct {
+		Status   bool
+		Info     string
+		Userlist []m.VirtualUser
+	}
+	usersruct := new(userListStruct)
+
+	userlist := make([]m.VirtualUser, 0)
+	onlineuser, err := m.GetAllUser()
+	if err != nil {
+		beego.Error("get the user error", err)
+	} else {
+		for _, item := range onlineuser {
+			var user m.VirtualUser
+			user.Nickname = item.Nickname
+			user.UserIcon = item.UserIcon
+			userlist = append(userlist, user)
+		}
+	}
+
+	sysconfig, _ := m.GetAllSysConfig()
+	if sysconfig.VirtualUser > 0 {
+		virtualUser, err := m.GetNumberVirtualUser(sysconfig.VirtualUser)
+		if err != nil {
+			beego.Error("user count error", err)
+		} else {
+			for _, item := range virtualUser {
+				userlist = append(userlist, item)
+			}
+		}
+	}
+	usersruct.Status = true
+	usersruct.Userlist = userlist
+
+	v, _ := json.Marshal(usersruct)
+	this.Ctx.WriteString(string(v))
 }

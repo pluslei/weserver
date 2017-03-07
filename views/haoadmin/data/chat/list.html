@@ -318,7 +318,7 @@
                 html =  del_html_tags(content,"../i","../../i");
             break;
             case "IMG":
-                html = "<img src=/mediaurl?media="+content+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>";
+                html = "<img  src=/mediaurl?media="+content+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>";
             break;
             case "VOICE":
                 html = "<img src='/static/images/videoOther.png' onclick='playVoice(`"+content+"`)'>";
@@ -376,5 +376,18 @@
             socket.emit('all message', sendstr);
             parent.location.reload();
         }
+    }
+
+    // 显示图片
+    function showImg() {
+        layer.open({
+          type: 1,
+          title: false,
+          closeBtn: 0,
+          area: '516px',
+          skin: 'layui-layer-nobg', //没有背景色
+          shadeClose: true,
+          content: $('#tong')
+        });
     }
 </script>
