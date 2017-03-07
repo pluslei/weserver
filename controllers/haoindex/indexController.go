@@ -319,6 +319,7 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	u.Country = userInfo.Country
 	u.Headimgurl = userInfo.HeadImgURL
 	u.Unionid = userInfo.Unionid
+	u.Lastlogintime = time.Now()
 	userid, err := m.AddUser(u)
 	if err == nil && userid > 0 {
 		return true
@@ -340,7 +341,8 @@ func (this *IndexController) updateUser(id int64, userInfo oauth.UserInfo) error
 	u.Country = userInfo.Country
 	u.Headimgurl = userInfo.HeadImgURL
 	u.Unionid = userInfo.Unionid
-	return u.UpdateUserFields("UserIcon", "Nickname", "Sex", "Province", "City", "Country", "Headimgurl", "Unionid")
+	u.Lastlogintime = time.Now()
+	return u.UpdateUserFields("UserIcon", "Nickname", "Sex", "Province", "City", "Country", "Headimgurl", "Unionid", "Lastlogintime")
 }
 
 func (this *IndexController) SetNickname() {
