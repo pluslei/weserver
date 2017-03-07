@@ -201,6 +201,6 @@ func CountWeekRegist() (week []orm.ParamsList) {
 func GetAllUser() (users []User, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 3*24*60*60
-	_, err = o.QueryTable("user").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
+	_, err = o.QueryTable("user").Filter("Id__gt", 1).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
 }
