@@ -105,6 +105,7 @@ func Chatprogram() {
 						}
 					}
 					data["onlineuser"] = usermsg
+					beego.Debug("usermsg", len(usermsg), usermsg)
 					so.Emit("all totalonline", data)
 					//房间号获取
 					roleval, _ := m.GetAllUserRole()
@@ -403,7 +404,6 @@ func (this *SocketController) ChatUserList() {
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
 			historychat, _, _ = m.GetChatMsgData(recordcount)
-			beego.Debug("recordcount",recordcount,historychat);
 		default:
 		}
 		data := make(map[string]interface{})

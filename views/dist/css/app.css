@@ -4,8 +4,8 @@ body,
   height: 100%;
 }
 body {
-  font-size: 13px;
-  font-family: Avenir;
+  font-size: 12px;
+  font-family: "微软雅黑";
 }
 body .scroll {
   position: absolute;
@@ -125,6 +125,10 @@ body {
           align-items: center;
 }
 /* 聊天列表样式 */
+.chat-item .chat-item-msg .chat-item-word img {
+  width: 22px;
+  vertical-align: text-bottom;
+}
 .chat-item {
   padding: 10px;
   padding-bottom: 0px;
@@ -134,17 +138,16 @@ body {
   /* 自己发送消息 */
 }
 .chat-item .chat-item-head {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-top: 3px;
 }
 .chat-item .chat-item-msg {
   max-width: 70%;
   position: relative;
-  border-radius: 9px;
+  border-radius: 4px;
   border: 1px solid #d4d7da;
   padding: 5px 10px;
-  margin-top: 3px;
   font-size: 16px;
 }
 .chat-item.otherPerson .chat-item-head {
@@ -160,11 +163,13 @@ body {
 }
 .chat-item.otherPerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  left: -12px;
+  left: -10px;
   top: 6px;
-  width: 12px;
-  height: 21px;
-  background: url(../i/Arrow.png);
+  width: 10px;
+  height: 10px;
+  background: url(../i/Arrow.png) center center no-repeat;
+  -webkit-background-size: 100% 100%;
+          background-size: 100%;
 }
 .chat-item.otherPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
@@ -175,6 +180,26 @@ body {
   max-width: 50%;
   padding: 0;
   background: #eee;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word {
+  font-size: 14px;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word img {
+  width: 22px;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word {
+  font-size: 14px;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word img {
+  width: 22px;
 }
 .chat-item.otherPerson-img .chat-item-msg .chat-item-word,
 .chat-item.adminPerson-img .chat-item-msg .chat-item-word,
@@ -193,6 +218,16 @@ body {
 }
 .chat-item.otherPerson-voice .chat-item-word,
 .chat-item.adminPerson-voice .chat-item-word,
+.chat-item.minePerson-voice .chat-item-word {
+  font-size: 14px;
+}
+.chat-item.otherPerson-voice .chat-item-word img,
+.chat-item.adminPerson-voice .chat-item-word img,
+.chat-item.minePerson-voice .chat-item-word img {
+  width: 22px;
+}
+.chat-item.otherPerson-voice .chat-item-word,
+.chat-item.adminPerson-voice .chat-item-word,
 .chat-item.minePerson-voice .chat-item-word,
 .chat-item.otherPerson-voice .chat-msg-img,
 .chat-item.adminPerson-voice .chat-msg-img,
@@ -206,6 +241,12 @@ body {
 .chat-item.adminPerson .chat-item-name {
   float: left;
 }
+.chat-item.adminPerson .chat-item-name .chat-item-nickname {
+  font-size: 10px;
+}
+.chat-item.adminPerson .chat-item-name .chat-item-title {
+  font-size: 14px;
+}
 .chat-item.adminPerson .chat-item-msg {
   float: left;
   background: #FF4B4B;
@@ -213,11 +254,13 @@ body {
 }
 .chat-item.adminPerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  left: -12px;
+  left: -10px;
   top: 6px;
-  width: 12px;
-  height: 21px;
-  background: url(../i/Arrow2.png);
+  width: 10px;
+  height: 10px;
+  background: url(../i/red.png) center center no-repeat;
+  -webkit-background-size: 100% 100%;
+          background-size: 100%;
 }
 .chat-item.adminPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
@@ -251,21 +294,87 @@ body {
   float: right;
   background: #9BE455;
   color: #000;
-  border: 1px solid #89ce5a;
+  border: 1px solid #76CC3C;
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  right: -12px;
+  right: -10px;
   top: 6px;
-  width: 12px;
-  height: 21px;
-  background: url(../i/Arrow1.png);
+  width: 10px;
+  height: 10px;
+  background: url(../i/green.png) center center no-repeat;
+  -webkit-background-size: 100% 100%;
+          background-size: 100%;
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-voice {
   padding-left: 20px;
 }
+.chatInfo {
+  height: 100%;
+  width: 100%;
+  background-color: #efeff4;
+  position: absolute;
+  top: 0;
+  overflow-y: auto;
+}
+.chatInfo .chatlist {
+  list-style: none;
+  padding-left: 0px;
+  overflow: hidden;
+  padding: 20px 2% 0px;
+  height: 99%;
+  overflow-y: auto;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+.chatInfo .chatlist .chatlistbox {
+  width: 20%;
+  float: left;
+  margin-bottom: 15px;
+}
+.chatInfo .chatlist .chatlistbox img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #dfdfdf;
+  border-radius: 1px;
+}
+.chatInfo .chatlist .chatlistbox span {
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 10px 6px 0px;
+}
+/*表情包*/
+.face {
+  width: 100%;
+  height: 188pt;
+  border-top: 1px solid #ccc;
+  padding: 0px 4%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[5];
+      grid-template-columns: repeat(5, 100px);
+  -ms-grid-rows: auto ;
+      grid-template-rows: auto ;
+  position: relative;
+}
+.face .box {
+  padding-top: 4px;
+  height: 44px;
+  width: 14.28%;
+  line-height: 44px;
+  text-align: center;
+  float: left;
+}
+.face .box img {
+  width: 25px;
+}
 .footer {
-  border-top: 1px solid #bbb;
+  border-top: 1px solid #dfdfdf;
   height: 60px;
   width: 100%;
   background-color: #f4f4f6;
@@ -293,134 +402,46 @@ body {
   -webkit-user-select: none;
 }
 .footer .radio img {
-  width: 87%;
-  margin: 2px 0px 0px 2px;
+  width: 100%;
+  margin: -1px 0px 0px 2px;
 }
 .footer .smile img {
-  width: 87%;
-  margin: 2px 0px 0px 2px;
+  width: 100%;
+  margin: -1px 0px 0px 2px;
 }
 .footer .add img {
-  width: 87%;
-  margin: 2px 0px 0px 2px;
+  width: 100%;
+  margin: -1px 0px 0px 2px;
 }
 .footer .sendMessage {
   float: left;
   width: 44px;
 }
 .footer .sendMessage span {
-  height: 32px;
+  height: 29px;
   display: block;
-  margin: 3px 2px 5px 0px;
+  margin: 4px 2px 5px 0px;
   text-align: center;
-  line-height: 32px;
+  line-height: 29px;
   background: #15b014;
   color: #fff;
   border-radius: 2px;
   font-size: 14px;
 }
-.voice {
-  height: 95pt;
-  width: 100pt;
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 35%;
-  z-index: 999;
-  border-radius: 12px;
-}
-.voice img {
-  width: 25pt;
-  display: block;
-  margin: 12pt 0px 0px 37pt;
-}
-.voice span {
-  color: #fff;
-  font-size: 13px;
-  display: block;
-  text-align: center;
-  padding-top: 16pt;
-}
-/*公告栏*/
-.notice {
-  min-height: 35px;
-  background-color: #fff;
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
-  max-height: 77px;
-  padding: 5px 0px;
-  background: url(i/notice.jpg) repeat-x;
-  z-index: 999;
-}
-.notice span {
-  color: #F32B2B;
-  padding: 7px 17px 5px 32px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+.footer .theInput .contentText {
+  height: 33px;
   overflow: hidden;
-  text-align: left;
-  font-size: 13px;
-}
-.notice .iconload {
-  position: absolute;
-  padding: 7px 0px 0px 10px;
-}
-/*表情包*/
-.face {
-  width: 100%;
-  height: 188pt;
-  border-top: 1px solid #ccc;
-  padding: 0px 4%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (100px)[5];
-      grid-template-columns: repeat(5, 100px);
-  -ms-grid-rows: auto ;
-      grid-template-rows: auto ;
-}
-.face .box {
-  padding-top: 4px;
-  height: 44px;
-  width: 14.28%;
-  line-height: 44px;
-  text-align: center;
-  float: left;
-}
-.face .box img {
-  width: 25px;
-}
-/*公告栏*/
-.upload {
-  width: 100%;
-  height: 70px;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-}
-.upload ul {
-  list-style: none;
-  padding-left: 0px;
-  overflow: hidden;
-  padding-top: 5px;
-}
-.upload ul li {
-  width: 25%;
-  display: inline-block;
-  float: left;
-  text-align: center;
-}
-.upload ul li span {
-  display: block;
+  line-height: 17px;
+  white-space: nowrap;
+  margin-top: 2px;
   font-size: 14px;
+  border: 1px solid #c6c6c6;
 }
-.upload ul li .uploadimg {
-  width: 73px;
-  height: 80px;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+.footer .theInput .contentText img {
+  margin: -1px 2px;
+  vertical-align: top;
+  max-width: 20px;
+  max-height: 20px;
 }
 .loading {
   height: 100%;
@@ -454,6 +475,78 @@ body {
 .loading .loadon span:last-child {
   padding: 10px;
   font-size: 12px;
+}
+/*公告栏*/
+.notice {
+  min-height: 35px;
+  background-color: #fff;
+  width: 100%;
+  border-bottom: 1px solid #dfdfdf;
+  text-align: center;
+  max-height: 77px;
+  padding: 5px 0px;
+  background: url(i/notice.jpg) repeat-x;
+  z-index: 999;
+}
+.notice span {
+  color: #F32B2B;
+  padding: 7px 17px 5px 32px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-align: left;
+  font-size: 13px;
+}
+.notice .iconload {
+  position: absolute;
+  padding: 7px 0px 0px 10px;
+}
+.notice {
+  position: relative;
+}
+.notice .numTips {
+  position: absolute;
+  bottom: -42px;
+  right: 0px;
+  height: 24pt;
+  background-color: #000;
+  color: #fff;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  opacity: 0.5;
+}
+.notice .numTips .onlineperson {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: #fff;
+  display: inline-block;
+  line-height: 32px;
+  float: left;
+  padding: 0px 8px 0px 0px;
+}
+.notice .numTips .personTip {
+  margin: 8px 0px 0px 12px;
+  float: left;
+  width: 16px;
+  height: 16px;
+}
+.notice .numTips .numrecord {
+  font-size: 12px;
+  display: inline-block;
+  height: 24pt;
+  line-height: 24pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  padding: 0px 4px 0px 9px;
+  text-align: center;
+  float: left;
+  letter-spacing: 1px;
+  font-family: "微软雅黑";
 }
 .scanQRcode {
   height: 100%;
@@ -499,117 +592,56 @@ body {
 .scanQRcode .QRcode img {
   width: 30%;
 }
-.footer .theInput .contentText {
-  height: 38px;
-  overflow: hidden;
-  line-height: 19px;
-  white-space: nowrap;
-}
-.footer .theInput .contentText img {
-  margin: -1px 2px;
-  vertical-align: top;
-  max-width: 20px;
-  max-height: 20px;
-}
-.notice {
-  position: relative;
-}
-.notice .numTips {
-  position: absolute;
-  bottom: -42px;
-  right: 0px;
-  height: 24pt;
-  background-color: #666;
-  color: #fff;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
-  opacity: 0.8;
-}
-.notice .numTips .onlineperson {
-  font-size: 12px;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  color: #fff;
-  display: inline-block;
-  line-height: 32px;
-  float: left;
-  padding: 0px 8px 0px 0px;
-}
-.notice .numTips .personTip {
-  margin: 8px 0px 0px 12px;
-  float: left;
-  width: 16px;
-  height: 16px;
-}
-.notice .numTips .numrecord {
-  font-size: 12px;
-  display: inline-block;
-  height: 24pt;
-  line-height: 24pt;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: #fff;
-  padding: 0px 4px 0px 9px;
-  text-align: center;
-  float: left;
-  letter-spacing: 1px;
-  font-family: "微软雅黑";
-}
-.chatInfo {
-  height: 100%;
+/*公告栏*/
+.upload {
   width: 100%;
-  background-color: #efeff4;
-  position: absolute;
-  top: 0;
-  -webkit-animation: myfirst 0.6s;
-          animation: myfirst 0.6s;
-  overflow-y: auto;
+  height: 70px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
 }
-.chatInfo .chatlist {
+.upload ul {
   list-style: none;
   padding-left: 0px;
   overflow: hidden;
-  padding: 20px 2% 0px;
-  height: 99%;
-  overflow-y: auto;
-  margin: 0;
-  -webkit-overflow-scrolling: touch;
+  padding-top: 5px;
 }
-.chatInfo .chatlist .chatlistbox {
-  width: 20%;
+.upload ul li {
+  width: 25%;
+  display: inline-block;
   float: left;
-  margin-bottom: 15px;
-}
-.chatInfo .chatlist .chatlistbox img {
-  width: 40px;
-  height: 40px;
-  display: block;
-  margin: 0 auto;
-  border: 1px solid #8A8787;
-}
-.chatInfo .chatlist .chatlistbox span {
   text-align: center;
+}
+.upload ul li span {
   display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding: 10px 6px 0px;
+  font-size: 14px;
 }
-@-webkit-keyframes myfirst {
-  0% {
-    right: -100%;
-  }
-  100% {
-    right: 0%;
-  }
+.upload ul li .uploadimg {
+  width: 73px;
+  height: 80px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
-@keyframes myfirst {
-  0% {
-    right: -100%;
-  }
-  100% {
-    right: 0%;
-  }
+.voice {
+  height: 95pt;
+  width: 100pt;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 35%;
+  z-index: 999;
+  border-radius: 12px;
+}
+.voice img {
+  width: 25pt;
+  display: block;
+  margin: 12pt 0px 0px 37pt;
+}
+.voice span {
+  color: #fff;
+  font-size: 13px;
+  display: block;
+  text-align: center;
+  padding-top: 16pt;
 }
