@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -28,4 +29,31 @@ func GetNumberVirtualUser(count int64) (virtual []VirtualUser, err error) {
 func NewVirtualUser() orm.QuerySeter {
 	o := orm.NewOrm()
 	return o.QueryTable(new(VirtualUser))
+}
+
+func VirtualUserList() (userlist []VirtualUser) {
+	onlineuser, err := GetAllUser()
+	if err != nil {
+		beego.Error("get the user error", err)
+	} else {
+		for _, item := range onlineuser {
+			var user VirtualUser
+			user.Username = item.Username
+			user.Nickname = item.Nickname
+			user.UserIcon = item.UserIcon
+			userlist = append(userlist, user)
+		}
+	}
+	sysconfig, _ := GetAllSysConfig()
+	if sysconfig.VirtualUser > 0 {
+		virtualUser, err := GetNumberVirtualUser(sysconfig.VirtualUser)
+		if err != nil {
+			beego.Error("user count error", err)
+		} else {
+			for _, item := range virtualUser {
+				userlist = append(userlist, item)
+			}
+		}
+	}
+	return userlist
 }

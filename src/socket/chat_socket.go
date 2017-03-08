@@ -95,17 +95,38 @@ func Chatprogram() {
 					job.socketidso[codename] = so
 					job.userroom[codename] = userrole
 					data := make(map[string]interface{})
-					var usermsg []OnlineUserMsg
+					var userinfor []m.VirtualUser
 					for key, item := range job.userroom {
 						if len(key) > 0 {
-							var msg OnlineUserMsg
+							var msg m.VirtualUser
+							msg.Username = EncodeB64(item.Uname)
 							msg.Nickname = EncodeB64(item.Nickname)
 							msg.UserIcon = EncodeB64(item.UserIcon)
-							usermsg = append(usermsg, msg)
+							userinfor = append(userinfor, msg)
 						}
 					}
-					data["onlineuser"] = usermsg
-					beego.Debug("usermsg", len(usermsg), usermsg)
+					userlist := m.VirtualUserList()
+					userlen := len(userinfor)
+					for _, value := range userlist {
+						if len(value.UserIcon) > 0 {
+							var msg m.VirtualUser
+							msg.Id = value.Id
+							msg.Username = EncodeB64(value.Username)
+							checkuser := false
+							for i := 0; i < userlen; i++ {
+								if userinfor[i].Username == msg.Username {
+									checkuser = true
+									break
+								}
+							}
+							if !checkuser {
+								msg.Nickname = EncodeB64(value.Nickname)
+								msg.UserIcon = EncodeB64(value.UserIcon)
+								userinfor = append(userinfor, msg)
+							}
+						}
+					}
+					data["onlineuser"] = userinfor
 					so.Emit("all totalonline", data)
 					//房间号获取
 					roleval, _ := m.GetAllUserRole()
@@ -261,30 +282,32 @@ func Chatprogram() {
 		})
 
 		so.On("disconnection", func() {
-			if _, ok := job.socketiduser[so.Id()]; ok == true {
-				codename := job.socketiduser[so.Id()]    //用户名
-				codeid := Transformname("", codename, 1) //公司代码用户名互转
-				totalonline := 0
-				for key, _ := range job.userroom {
-					if len(key) > 0 && key == codename {
-						delete(job.userroom, codename)
-					} else {
-						totalonline++
+			/*
+				if _, ok := job.socketiduser[so.Id()]; ok == true {
+					codename := job.socketiduser[so.Id()]    //用户名
+					codeid := Transformname("", codename, 1) //公司代码用户名互转
+					totalonline := 0
+					for key, _ := range job.userroom {
+						if len(key) > 0 && key == codename {
+							delete(job.userroom, codename)
+						} else {
+							totalonline++
+						}
+					}
+					so.Emit("all totalonline", fmt.Sprintf("%d", totalonline))
+					//房间号获取
+					roleval, _ := m.GetAllUserRole()
+					rolelen := len(roleval)
+					prevalue := codeid
+					for i := 0; i < rolelen; i++ {
+						for j := 0; j < 2; j++ {
+							roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
+							roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
+							so.BroadcastTo(roomval, "all totalonline", fmt.Sprintf("%d", totalonline))
+						}
 					}
 				}
-				so.Emit("all totalonline", fmt.Sprintf("%d", totalonline))
-				//房间号获取
-				roleval, _ := m.GetAllUserRole()
-				rolelen := len(roleval)
-				prevalue := codeid
-				for i := 0; i < rolelen; i++ {
-					for j := 0; j < 2; j++ {
-						roleval[i].Name = strings.Replace(roleval[i].Name, " ", "", -1) //去空格
-						roomval := fmt.Sprintf("%d", j) + "_" + roleval[i].Name + "_" + prevalue
-						so.BroadcastTo(roomval, "all totalonline", fmt.Sprintf("%d", totalonline))
-					}
-				}
-			}
+			*/
 		})
 
 		so.On("all deletemsg", func(msg string) {

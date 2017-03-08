@@ -579,7 +579,7 @@ var Face = function (_React$Component) {
         touchendx: 0
       }
     };
-    for (var i = 1; i < 24; i++) {
+    for (var i = 1; i < 25; i++) {
       var faceurl = '../i/face/';
       faceurl += i.toString();
       faceurl += '.png';
@@ -671,11 +671,7 @@ var Face = function (_React$Component) {
           {
             className: 'face'
           },
-          _react2.default.createElement(
-            'div',
-            { className: 'facebox' },
-            this.custom.facedata.map(this.createfaceList, this)
-          )
+          this.custom.facedata.map(this.createfaceList, this)
         );
       }
       return _react2.default.createElement('div', { style: { display: 'none' } });
