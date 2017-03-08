@@ -4,8 +4,8 @@ body,
   height: 100%;
 }
 body {
-  font-size: 13px;
-  font-family: Avenir;
+  font-size: 12px;
+  font-family: "微软雅黑";
 }
 body .scroll {
   position: absolute;
@@ -125,6 +125,9 @@ body {
           align-items: center;
 }
 /* 聊天列表样式 */
+.chat-item .chat-item-msg .chat-item-word img {
+  width: 22px;
+}
 .chat-item {
   padding: 10px;
   padding-bottom: 0px;
@@ -134,17 +137,16 @@ body {
   /* 自己发送消息 */
 }
 .chat-item .chat-item-head {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-top: 3px;
 }
 .chat-item .chat-item-msg {
   max-width: 70%;
   position: relative;
-  border-radius: 9px;
+  border-radius: 4px;
   border: 1px solid #d4d7da;
   padding: 5px 10px;
-  margin-top: 3px;
   font-size: 16px;
 }
 .chat-item.otherPerson .chat-item-head {
@@ -160,11 +162,13 @@ body {
 }
 .chat-item.otherPerson .chat-item-msg .chat-msg-tip {
   position: absolute;
-  left: -12px;
+  left: -10px;
   top: 6px;
-  width: 12px;
-  height: 21px;
-  background: url(../i/Arrow.png);
+  width: 10px;
+  height: 10px;
+  background: url(../i/Arrow.png) center center no-repeat;
+  -webkit-background-size: 100% 100%;
+          background-size: 100%;
 }
 .chat-item.otherPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
@@ -175,6 +179,26 @@ body {
   max-width: 50%;
   padding: 0;
   background: #eee;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word {
+  font-size: 14px;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word img {
+  width: 22px;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word {
+  font-size: 14px;
+}
+.chat-item.otherPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.adminPerson-img .chat-item-msg .chat-item-word img,
+.chat-item.minePerson-img .chat-item-msg .chat-item-word img {
+  width: 22px;
 }
 .chat-item.otherPerson-img .chat-item-msg .chat-item-word,
 .chat-item.adminPerson-img .chat-item-msg .chat-item-word,
@@ -193,6 +217,16 @@ body {
 }
 .chat-item.otherPerson-voice .chat-item-word,
 .chat-item.adminPerson-voice .chat-item-word,
+.chat-item.minePerson-voice .chat-item-word {
+  font-size: 14px;
+}
+.chat-item.otherPerson-voice .chat-item-word img,
+.chat-item.adminPerson-voice .chat-item-word img,
+.chat-item.minePerson-voice .chat-item-word img {
+  width: 22px;
+}
+.chat-item.otherPerson-voice .chat-item-word,
+.chat-item.adminPerson-voice .chat-item-word,
 .chat-item.minePerson-voice .chat-item-word,
 .chat-item.otherPerson-voice .chat-msg-img,
 .chat-item.adminPerson-voice .chat-msg-img,
@@ -206,18 +240,26 @@ body {
 .chat-item.adminPerson .chat-item-name {
   float: left;
 }
+.chat-item.adminPerson .chat-item-name .chat-item-nickname {
+  font-size: 10px;
+}
+.chat-item.adminPerson .chat-item-name .chat-item-title {
+  font-size: 14px;
+}
 .chat-item.adminPerson .chat-item-msg {
   float: left;
   background: #FF4B4B;
   color: #fff;
 }
 .chat-item.adminPerson .chat-item-msg .chat-msg-tip {
+  border-top: 5px solid transparent;
+  border-left: 10px solid #ff0000;
+  border-bottom: 5px solid transparent;
   position: absolute;
-  left: -12px;
+  right: -9px;
   top: 6px;
-  width: 12px;
-  height: 21px;
-  background: url(../i/Arrow2.png);
+  width: 10px;
+  height: 10px;
 }
 .chat-item.adminPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
@@ -251,21 +293,25 @@ body {
   float: right;
   background: #9BE455;
   color: #000;
-  border: 1px solid #89ce5a;
+  border: 1px solid #76CC3C;
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-tip {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-left: 10px solid #9BE455;
+  border-bottom: 5px solid transparent;
   position: absolute;
-  right: -12px;
+  right: -9px;
   top: 6px;
-  width: 12px;
-  height: 21px;
-  background: url(../i/Arrow1.png);
+  width: 10px;
+  height: 10px;
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-voice {
   padding-left: 20px;
 }
 .footer {
-  border-top: 1px solid #bbb;
+  border-top: 1px solid #dfdfdf;
   height: 60px;
   width: 100%;
   background-color: #f4f4f6;
@@ -293,27 +339,27 @@ body {
   -webkit-user-select: none;
 }
 .footer .radio img {
-  width: 87%;
-  margin: 2px 0px 0px 2px;
+  width: 100%;
+  margin: -1px 0px 0px 2px;
 }
 .footer .smile img {
-  width: 87%;
-  margin: 2px 0px 0px 2px;
+  width: 100%;
+  margin: -1px 0px 0px 2px;
 }
 .footer .add img {
-  width: 87%;
-  margin: 2px 0px 0px 2px;
+  width: 100%;
+  margin: -1px 0px 0px 2px;
 }
 .footer .sendMessage {
   float: left;
   width: 44px;
 }
 .footer .sendMessage span {
-  height: 32px;
+  height: 29px;
   display: block;
-  margin: 3px 2px 5px 0px;
+  margin: 4px 2px 5px 0px;
   text-align: center;
-  line-height: 32px;
+  line-height: 29px;
   background: #15b014;
   color: #fff;
   border-radius: 2px;
@@ -345,7 +391,7 @@ body {
   min-height: 35px;
   background-color: #fff;
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #dfdfdf;
   text-align: center;
   max-height: 77px;
   padding: 5px 0px;
@@ -500,10 +546,13 @@ body {
   width: 30%;
 }
 .footer .theInput .contentText {
-  height: 38px;
+  height: 33px;
   overflow: hidden;
-  line-height: 19px;
+  line-height: 17px;
   white-space: nowrap;
+  margin-top: 2px;
+  font-size: 14px;
+  border: 1px solid #c6c6c6;
 }
 .footer .theInput .contentText img {
   margin: -1px 2px;
@@ -519,11 +568,11 @@ body {
   bottom: -42px;
   right: 0px;
   height: 24pt;
-  background-color: #666;
+  background-color: #000;
   color: #fff;
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 .notice .numTips .onlineperson {
   font-size: 12px;
@@ -563,8 +612,6 @@ body {
   background-color: #efeff4;
   position: absolute;
   top: 0;
-  -webkit-animation: myfirst 0.6s;
-          animation: myfirst 0.6s;
   overflow-y: auto;
 }
 .chatInfo .chatlist {
@@ -596,20 +643,4 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   padding: 10px 6px 0px;
-}
-@-webkit-keyframes myfirst {
-  0% {
-    right: -100%;
-  }
-  100% {
-    right: 0%;
-  }
-}
-@keyframes myfirst {
-  0% {
-    right: -100%;
-  }
-  100% {
-    right: 0%;
-  }
 }
