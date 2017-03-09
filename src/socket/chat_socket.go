@@ -459,7 +459,6 @@ func (this *SocketController) ChatUserList() {
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
 			historychat, _, _ = m.GetChatMsgData(recordcount)
-			beego.Debug("recordcount", recordcount, historychat)
 		default:
 		}
 		data := make(map[string]interface{})

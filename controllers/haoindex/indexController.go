@@ -199,7 +199,10 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
+		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
+		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
+		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
+		this.Data["servicephone"] = beego.AppConfig.String("servicephone")   //服务电话
 		this.TplName = "dist/index.html"
 		//this.TplName = "index.html"
 	} else {
