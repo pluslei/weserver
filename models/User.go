@@ -8,6 +8,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
 	//"weserver/src/tools"
+	"fmt"
 )
 
 //用户表
@@ -64,6 +65,14 @@ func Getuserlist(page int64, page_size int64, sort, nickname string) (users []or
 	qs := o.QueryTable(user).Exclude("Username", "admin")
 	qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 	count, _ = qs.Count()
+	return users, count
+}
+
+//获取最近X天的人员列表
+func GetUserList(nday int64) (users []orm.Params, count int64) {
+	o := orm.NewOrm()
+	strSQL := fmt.Sprintf("SELECT * FROM user WHERE DATE_SUB ( CURDATE(), INTERVAL %d  DAY) <= date(lastlogintime) ORDER BY DESC", nday)
+	count, _ = o.Raw(strSQL).Values(&users)
 	return users, count
 }
 
@@ -198,9 +207,10 @@ func CountWeekRegist() (week []orm.ParamsList) {
 	return lists
 }
 
-func GetAllUser() (users []User, err error) {
+//获取user表中最近 nDay 天列表信息
+func GetAllUser(nDay int64) (users []User, err error) {
 	o := orm.NewOrm()
-	nowtime := time.Now().Unix() - 3*24*60*60
+	nowtime := time.Now().Unix() - nDay*24*60*60
 	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
 	return users, err
 }

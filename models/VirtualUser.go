@@ -31,8 +31,9 @@ func NewVirtualUser() orm.QuerySeter {
 	return o.QueryTable(new(VirtualUser))
 }
 
-func VirtualUserList() (userlist []VirtualUser) {
-	onlineuser, err := GetAllUser()
+//最近 X 天 人员总列表信息
+func VirtualUserList(nDay int64) (userlist []VirtualUser, count int) {
+	onlineuser, err := GetAllUser(nDay)
 	if err != nil {
 		beego.Error("get the user error", err)
 	} else {
@@ -46,7 +47,7 @@ func VirtualUserList() (userlist []VirtualUser) {
 	}
 	sysconfig, _ := GetAllSysConfig()
 	if sysconfig.VirtualUser > 0 {
-		virtualUser, err := GetNumberVirtualUser(sysconfig.VirtualUser)
+		virtualUser, err := GetNumberVirtualUser(sysconfig.VirtualUser) // 获取虚拟表中的数据 由sysconfig中vitual 指定
 		if err != nil {
 			beego.Error("user count error", err)
 		} else {
@@ -55,5 +56,6 @@ func VirtualUserList() (userlist []VirtualUser) {
 			}
 		}
 	}
-	return userlist
+	count = len(userlist)
+	return userlist, count
 }

@@ -419,7 +419,7 @@ func (this *IndexController) UserList() {
 	usersruct := new(userListStruct)
 
 	userlist := make([]m.VirtualUser, 0)
-	onlineuser, err := m.GetAllUser()
+	onlineuser, err := m.GetAllUser(30)
 	if err != nil {
 		beego.Error("get the user error", err)
 	} else {
