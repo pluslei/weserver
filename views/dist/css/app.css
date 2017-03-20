@@ -102,11 +102,13 @@ body {
   float: left;
 }
 .chat {
+  position: static;
   font-size: 13px;
   background-color: #f4f4f6;
   overflow-y: scroll;
   padding: 42px 0px 10px 0px;
   -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 .defaultLoading {
   width: 90pt;
@@ -125,6 +127,10 @@ body {
           align-items: center;
 }
 /* 聊天列表样式 */
+.allitems {
+  width: 100%;
+  height: auto;
+}
 .chat-item .chat-item-msg .chat-item-word img {
   width: 22px;
   vertical-align: text-bottom;
@@ -173,6 +179,8 @@ body {
 }
 .chat-item.otherPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
+  height: 20px;
+  width: 40px;
 }
 .chat-item.otherPerson-img .chat-item-msg,
 .chat-item.adminPerson-img .chat-item-msg,
@@ -185,6 +193,7 @@ body {
 .chat-item.adminPerson-img .chat-item-msg .chat-item-word,
 .chat-item.minePerson-img .chat-item-msg .chat-item-word {
   font-size: 14px;
+  padding: 2px 0px;
 }
 .chat-item.otherPerson-img .chat-item-msg .chat-item-word img,
 .chat-item.adminPerson-img .chat-item-msg .chat-item-word img,
@@ -195,6 +204,7 @@ body {
 .chat-item.adminPerson-img .chat-item-msg .chat-item-word,
 .chat-item.minePerson-img .chat-item-msg .chat-item-word {
   font-size: 14px;
+  padding: 2px 0px;
 }
 .chat-item.otherPerson-img .chat-item-msg .chat-item-word img,
 .chat-item.adminPerson-img .chat-item-msg .chat-item-word img,
@@ -220,6 +230,7 @@ body {
 .chat-item.adminPerson-voice .chat-item-word,
 .chat-item.minePerson-voice .chat-item-word {
   font-size: 14px;
+  padding: 2px 0px;
 }
 .chat-item.otherPerson-voice .chat-item-word img,
 .chat-item.adminPerson-voice .chat-item-word img,
@@ -265,6 +276,8 @@ body {
 }
 .chat-item.adminPerson .chat-item-msg .chat-msg-voice {
   padding-right: 20px;
+  height: 20px;
+  width: 40px;
 }
 .chat-item.minePerson .sendState {
   position: absolute;
@@ -309,6 +322,8 @@ body {
 }
 .chat-item.minePerson .chat-item-msg .chat-msg-voice {
   padding-left: 20px;
+  height: 20px;
+  width: 40px;
 }
 .chatInfo {
   height: 100%;
@@ -323,7 +338,7 @@ body {
   padding-left: 0px;
   overflow: hidden;
   padding: 20px 2% 0px;
-  height: 99%;
+  height: 100%;
   overflow-y: auto;
   margin: 0;
   -webkit-overflow-scrolling: touch;
@@ -350,10 +365,50 @@ body {
   padding: 10px 6px 0px;
   height: 29px;
 }
+.load {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 99;
+  background: #EFEFF4;
+}
+.load img {
+  display: inline-block;
+  margin-bottom: 2px;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: rotate 0.4s infinite;
+  animation: rotate 0.8s linear infinite;
+}
+.load span {
+  padding: 0 8px;
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 /*表情包*/
 .face {
   width: 100%;
-  height: 188pt;
+  height: 250.5px;
   border-top: 1px solid #ccc;
   display: -ms-grid;
   display: grid;
@@ -363,18 +418,103 @@ body {
       grid-template-rows: auto ;
   position: relative;
 }
-.face .box {
+.face .facebox {
+  overflow: hidden;
+  width: 300%;
+  position: absolute;
+  left: 0%;
+}
+.face .facebox .facefirstpage,
+.face .facebox .facesecondpage,
+.face .facebox .facethirdpage {
+  width: 33.3%;
+  overflow: hidden;
+  float: left;
+}
+.face .facebox .facefirstpage .box,
+.face .facebox .facesecondpage .box,
+.face .facebox .facethirdpage .box {
+  position: static;
   padding-top: 4px;
   height: 44px;
-  width: 14.28%;
+  width: 12.28%;
   line-height: 44px;
+  -webkit-transition: 0 !important;
+  transition: 0 !important;
   text-align: center;
   float: left;
 }
-.face .box img {
+.face .facebox .facefirstpage .box img,
+.face .facebox .facesecondpage .box img,
+.face .facebox .facethirdpage .box img {
   width: 25px;
 }
+.face .facebox .facefirstpage .facebtnbox,
+.face .facebox .facesecondpage .facebtnbox,
+.face .facebox .facethirdpage .facebtnbox {
+  height: 44px;
+  width: 12.28%;
+  line-height: 44px;
+  text-align: left;
+  float: left;
+  padding: 6px 0px 0px 5px;
+}
+.face .roundbox {
+  height: 20px;
+  width: 14%;
+  line-height: 20px;
+  margin-left: 43%;
+  position: absolute;
+  overflow: hidden;
+  bottom: 90px;
+}
+.face .roundbox .round {
+  height: 8px;
+  width: 8px;
+  background: #bbbbbb;
+  float: left;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.face .facesendmsg {
+  height: 40px;
+  background-color: #fff;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 52px;
+}
+.face .facesendmsg span {
+  height: 40px;
+  width: 46px;
+  background-color: #F6F6F8;
+  display: inline-block;
+}
+.face .facesendmsg span img {
+  width: 25px;
+  margin: 7px 0px 0px 9px;
+}
+.face .facesendmsg button {
+  float: right;
+  height: 28px;
+  width: 50px;
+  margin: 6px 6px 0px 0px;
+  background: #fff;
+  border-radius: 3px;
+  color: #222222;
+  letter-spacing: 1px;
+  border: 1px solid #ccc;
+}
+.roundactive {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  background: #999 !important;
+}
 .footer {
+  display: block;
+  z-index: 999;
   border-top: 1px solid #dfdfdf;
   height: 60px;
   width: 100%;
@@ -486,7 +626,6 @@ body {
   text-align: center;
   max-height: 77px;
   padding: 5px 0px;
-  background: url(i/notice.jpg) repeat-x;
   z-index: 999;
 }
 .notice span {
@@ -606,17 +745,39 @@ body {
   overflow: hidden;
   padding-top: 5px;
 }
-.upload ul li {
+.upload ul .uploadlistcommon {
+  width: 33.3%;
+}
+.upload ul .uploadlistvip {
   width: 25%;
+}
+.upload ul .uploadlistcommon,
+.upload ul .uploadlistvip {
   display: inline-block;
   float: left;
   text-align: center;
 }
-.upload ul li span {
-  display: block;
-  font-size: 14px;
+.upload ul .uploadlistcommon .photopic,
+.upload ul .uploadlistvip .photopic {
+  width: 36%;
+  margin: 0 auto;
+  padding: 10px 0px;
+  border: 1px solid #C6C6C6;
+  border-radius: 10px;
+  color: #7c8185;
 }
-.upload ul li .uploadimg {
+.upload ul .uploadlistcommon .photopic img,
+.upload ul .uploadlistvip .photopic img {
+  width: 28px;
+}
+.upload ul .uploadlistcommon span,
+.upload ul .uploadlistvip span {
+  display: block;
+  font-size: 12px;
+  color: #767676;
+}
+.upload ul .uploadlistcommon .uploadimg,
+.upload ul .uploadlistvip .uploadimg {
   width: 73px;
   height: 80px;
   display: block;
@@ -645,4 +806,62 @@ body {
   display: block;
   text-align: center;
   padding-top: 16pt;
+}
+.allchannel {
+  padding-top: 10px;
+}
+.allchannel .singlechannel {
+  height: 50pt;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 0px 15px 10px;
+}
+.allchannel .singlechannel .iconbox {
+  border: 1px solid #ccc;
+  height: 40pt;
+  width: 40pt;
+  float: left;
+  margin: 5pt;
+  text-align: center;
+  line-height: 40pt;
+  background: #eee;
+  border-radius: 3px;
+}
+.allchannel .singlechannel .iconbox img {
+  width: 100%;
+  height: 100%;
+  margin-top: -2px;
+  border-radius: 5px;
+}
+.allchannel .singlechannel .channelinfo {
+  width: 55%;
+  height: 40pt;
+  float: left;
+  margin-top: 5pt;
+}
+.allchannel .singlechannel .channelinfo .channelname {
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+.allchannel .singlechannel .channelinfo .teacher {
+  display: block;
+  color: #3E08FD;
+}
+.allchannel .singlechannel .followers {
+  float: right;
+  width: 23.5%;
+  height: 40pt;
+  margin-top: 5pt;
+  text-align: center;
+}
+.allchannel .singlechannel .followers .aboutnumname {
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+.allchannel .singlechannel .followers .aboutnum {
+  font-weight: bold;
+  display: block;
+  font-size: 14px;
 }
