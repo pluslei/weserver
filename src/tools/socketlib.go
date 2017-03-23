@@ -47,8 +47,8 @@ type Usertitle struct {
 }
 
 //socket内容发送信息
-type Socketjson struct {
-	Id            int64
+type MessageInfo struct {
+	Id            int64     //数据库中id
 	Code          int       //公司代码
 	Room          int       //房间号
 	Uname         string    //用户名
@@ -78,10 +78,10 @@ type OnlineUserMsg struct {
 var Resultuser []Usertitle  //模拟的用户数据
 var Copyresuser []Usertitle //拷贝数据
 
-func Jsontosocket(req string) (s []Socketjson, err error) {
-	var result []Socketjson
+func Jsontosocket(req string) (s []MessageInfo, err error) {
+	var result []MessageInfo
 	if err := json.Unmarshal([]byte(req), &result); err != nil {
-		result = make([]Socketjson, 0)
+		result = make([]MessageInfo, 0)
 		return result, err
 	}
 	return result, nil

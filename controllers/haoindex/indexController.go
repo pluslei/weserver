@@ -64,6 +64,7 @@ func init() {
 	beego.Debug("wx tokenaccess", Wx)
 }
 
+// 获取userinfo
 func (this *IndexController) Get() {
 	// if this.CheckUserIsAuth() {
 	// 	this.Redirect("/index", 302)
@@ -106,13 +107,13 @@ func (this *IndexController) Get() {
 
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
-		beego.Debug("user info:", userInfo)
+		beego.Debug("user info:8888888888888888888", userInfo)
 		this.Redirect("/index", 302)
 	}
 	this.Ctx.WriteString("")
 }
 
-//
+//从数据库获取信息
 func (this *IndexController) Index() {
 	Info := this.GetSession("indexUserInfo")
 	if Info != nil {
@@ -220,9 +221,7 @@ func (this *IndexController) Voice() {
 		Wavfile string
 		Info    string
 	}
-
 	voice := new(VoiceStruct)
-
 	var filename string
 	media := this.GetString("media")
 	savepath := fmt.Sprintf("../upload/temp/%s/", time.Now().Format("2006-01-02"))

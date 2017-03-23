@@ -1,13 +1,14 @@
 package routers
 
 import (
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"weserver/controllers/haoadmin"
 	"weserver/controllers/haoindex"
 	"weserver/controllers/haophone"
+	"weserver/controllers/mqtt"
 	s "weserver/src/rpcserver"
-	"weserver/src/socket"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
 )
 
 func init() {
@@ -195,15 +196,17 @@ func Router() {
 	beego.Router("/usercount", &haoindex.IndexController{}, "*:UserCount")
 	beego.Router("/userlist", &haoindex.IndexController{}, "*:UserList")
 
-	//socket
-	// 获取系统信息
-	beego.Router("/chat/user/list", &socket.SocketController{}, "*:ChatUserList")
+	beego.Router("chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
+	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
+	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")
+	//获取在线人数信息
+	beego.Router("/chat/user/online/info", &mqtt.MqttController{}, "*:GetOnlineUseInfo")
 	// 获取在线人数
-	beego.Router("/chat/user/online/msg", &socket.SocketController{}, "*:ChatOnlineUserMsg")
+	beego.Router("/chat/user/online/count", &mqtt.MqttController{}, "*:GetOnlineUseCount")
 	// 以下暂时没用
-	beego.Router("/chat/modify/icon", &socket.SocketController{}, "*:ChatModifyIcon")
-	beego.Router("/chat/upload", &socket.SocketController{}, "*:ChatUpload")
-	beego.Router("/chat/kickout", &socket.SocketController{}, "*:ChatKickOut")
+	beego.Router("/chat/modify/icon", &mqtt.MqttController{}, "*:ChatModifyIcon")
+	beego.Router("/chat/upload", &mqtt.MqttController{}, "*:ChatUpload")
+	beego.Router("/chat/kickout", &mqtt.MqttController{}, "*:ChatKickOut")
 
 	// 添加网名
 	beego.Router("/weserver/data/netname_add", &haoadmin.NetNameController{}, "*:AddNetName")

@@ -374,7 +374,17 @@
             sendmsg["Id"] = id;
             sendmsg["Codeid"] = codeid; //公司房间标识符
             var sendstr = base64encode(sendmsg);
-            socket.emit('all message', sendstr);
+                this.serverRequest = $.ajax({
+                 url: '/chat/user/online/passid',
+                 type: 'post',
+                 dataType: 'json',
+                 data: {
+                    str: sendstr,
+                },
+                 success: (data) => {
+                     //只传输数据到服务端
+                },
+            });
             parent.location.reload();
         }
     }
