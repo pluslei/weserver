@@ -47,7 +47,6 @@ func Router() {
 	beego.Router("/public/updateadmin", &haoadmin.MainController{}, "*:UpdateAdminIndex")
 	beego.Router("/public/updatepwd", &haoadmin.MainController{}, "*:UpdateAdminPwd")
 
-	// rbac
 	beego.Router("/weserver/public/index", &haoadmin.MainController{}, "*:Index")
 	beego.Router("/weserver/public/changepwd", &haoadmin.MainController{}, "*:Changepwd")
 
@@ -62,24 +61,22 @@ func Router() {
 	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateUserStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
-
-	//在线用户
 	beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")
 
 	// 节点管理
-	beego.Router("/weserver/node/addnode", &haoadmin.NodeController{}, "*:AddNode")
-	beego.Router("/weserver/node/updatenode", &haoadmin.NodeController{}, "*:UpdateNode")
-	beego.Router("/weserver/node/getnodetree", &haoadmin.NodeController{}, "*:GetNodeTree")
-	beego.Router("/weserver/node/delnode", &haoadmin.NodeController{}, "*:DelNode")
-	beego.Router("/weserver/node/index", &haoadmin.NodeController{}, "*:Index")
-	beego.Router("/weserver/node/getNode", &haoadmin.NodeController{}, "*:GetNode")
+	// beego.Router("/weserver/node/addnode", &haoadmin.NodeController{}, "*:AddNode")
+	// beego.Router("/weserver/node/updatenode", &haoadmin.NodeController{}, "*:UpdateNode")
+	// beego.Router("/weserver/node/getnodetree", &haoadmin.NodeController{}, "*:GetNodeTree")
+	// beego.Router("/weserver/node/delnode", &haoadmin.NodeController{}, "*:DelNode")
+	// beego.Router("/weserver/node/index", &haoadmin.NodeController{}, "*:Index")
+	// beego.Router("/weserver/node/getNode", &haoadmin.NodeController{}, "*:GetNode")
+	// 节点分组分组管理
+	// beego.Router("/weserver/group/addgroup", &haoadmin.GroupController{}, "*:AddGroup")
+	// beego.Router("/weserver/group/updategroup", &haoadmin.GroupController{}, "*:UpdateGroup")
+	// beego.Router("/weserver/group/delgroup", &haoadmin.GroupController{}, "*:DelGroup")
+	// beego.Router("/weserver/group/index", &haoadmin.GroupController{}, "*:Index")
 
-	// 分组管理
-	beego.Router("/weserver/group/addgroup", &haoadmin.GroupController{}, "*:AddGroup")
-	beego.Router("/weserver/group/updategroup", &haoadmin.GroupController{}, "*:UpdateGroup")
-	beego.Router("/weserver/group/delgroup", &haoadmin.GroupController{}, "*:DelGroup")
-	beego.Router("/weserver/group/index", &haoadmin.GroupController{}, "*:Index")
-
+	// 头衔
 	beego.Router("/weserver/title/addtitle", &haoadmin.TitleController{}, "*:AddTitle")
 	beego.Router("/weserver/title/updatetitle", &haoadmin.TitleController{}, "*:UpdateTitle")
 	beego.Router("/weserver/title/deltitle", &haoadmin.TitleController{}, "*:DelTitle")
@@ -87,6 +84,7 @@ func Router() {
 	beego.Router("/weserver/title/getalltitle", &haoadmin.TitleController{}, "*:GetAllTitle")
 	beego.Router("/weserver/title/upload", &haoadmin.TitleController{}, "*:UploadTitle")
 
+	// 角色
 	beego.Router("/weserver/role/delrole", &haoadmin.RoleController{}, "*:DelRole")
 	beego.Router("/weserver/role/index", &haoadmin.RoleController{}, "*:Index")
 	beego.Router("/weserver/role/addrole", &haoadmin.RoleController{}, "*:AddRole")
@@ -99,7 +97,7 @@ func Router() {
 	// 全局设置
 	beego.Router("/weserver/sysconfig/index", &haoadmin.SysConfigController{}, "*:Index")
 
-	// 数据消息
+	// 历史消息
 	beego.Router("/weserver/data/chatrecord", &haoadmin.ChatRecordController{}, "*:ChatRecordList")
 
 	// 广播
