@@ -1,0 +1,260 @@
+2017/03/24 00:01:23 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:01:23 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04228e750 0xc0420ee320    } 
+2017/03/24 00:01:23 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:01:23 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:01:23 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:01:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:01:59 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:01:23 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04286c1b0 0xc042390230    } 
+2017/03/24 00:01:59 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:01:59 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:01:59 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:02:00 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:02:34 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:02:34 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042029560 0xc0425f1270    } 
+2017/03/24 00:02:34 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:02:34 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:02:34 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:02:35 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:03:53 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:03:54 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04286c900 0xc0425f0960    } 
+2017/03/24 00:03:53 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:03:53 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:03:53 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:03:54 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:04:14 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:04:15 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc0428bb680 0xc0426172c0    } 
+2017/03/24 00:04:14 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:04:14 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:04:14 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:04:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:06:00 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:04:15 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04286c750 0xc0425f0cd0    } 
+2017/03/24 00:06:00 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:06:00 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:06:00 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:06:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:06:40 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:04:15 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04207c090 0xc042372230    } 
+2017/03/24 00:06:40 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:06:40 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:06:40 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:06:41 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:07:02 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:04:15 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042dae6c0 0xc042807f40    } 
+2017/03/24 00:07:02 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:07:02 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:07:02 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:07:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:07:04 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=6Ryfx7mB6KGb_KBleYArs-ZMw4tRQcnnY-Y6y7pTJMyoCdxSOJbuJ8FeAcU5PRAIl5PXQ9R2U4QFt0PakX6D_Dy56JOa_L34Z94B9ryc3gN1T3ib7t7CyKfXXnzv4qzEDLGaAJARZU&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:07:04 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=6Ryfx7mB6KGb_KBleYArs-ZMw4tRQcnnY-Y6y7pTJMyoCdxSOJbuJ8FeAcU5PRAIl5PXQ9R2U4QFt0PakX6D_Dy56JOa_L34Z94B9ryc3gN1T3ib7t7CyKfXXnzv4qzEDLGaAJARZU&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:09:02 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:09:03 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042daeb40 0xc0422b3bd0    } 
+2017/03/24 00:09:02 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:09:02 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:09:02 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] the request url is  /i/import_js/jquery.min.map
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:../weclient/dist/haoindex/404.html
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/template.go:73
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:254
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:205
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/controller.go:185
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:444
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/error.go:408
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] D:/go/src/github.com/astaxie/beego/router.go:710
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/24 00:09:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/24 00:09:04 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=6Ryfx7mB6KGb_KBleYArs-ZMw4tRQcnnY-Y6y7pTJMyoCdxSOJbuJ8FeAcU5PRAIl5PXQ9R2U4QFt0PakX6D_Dy56JOa_L34Z94B9ryc3gN1T3ib7t7CyKfXXnzv4qzEDLGaAJARZU&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:09:04 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=6Ryfx7mB6KGb_KBleYArs-ZMw4tRQcnnY-Y6y7pTJMyoCdxSOJbuJ8FeAcU5PRAIl5PXQ9R2U4QFt0PakX6D_Dy56JOa_L34Z94B9ryc3gN1T3ib7t7CyKfXXnzv4qzEDLGaAJARZU&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:17:43 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 00:17:43 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 00:17:44 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 00:17:44 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 00:17:44 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 00:17:53 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 00:17:53 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 00:17:53 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 00:17:53 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 00:17:53 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 00:17:59 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 00:17:59 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 00:17:59 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 00:17:59 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 00:17:59 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 00:18:10 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 00:18:10 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 00:18:10 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 00:18:10 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 00:18:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 00:18:23 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:18:24 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042328990 0xc04214a2d0    } 
+2017/03/24 00:18:23 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:18:23 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:18:23 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:18:24 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=IzM7nobBDRWzqhdTyAehYUbDPD9cZzCb4MX7nJv9vI5PveXhGco2QsgkY153A3W9USaF42EtYUMh5g4rEHUzLtxn11ocuTs22wZoZ51rA5PXmOcvjotXO3-bk0Qqm94oVUNcAEALKD&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:18:24 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=IzM7nobBDRWzqhdTyAehYUbDPD9cZzCb4MX7nJv9vI5PveXhGco2QsgkY153A3W9USaF42EtYUMh5g4rEHUzLtxn11ocuTs22wZoZ51rA5PXmOcvjotXO3-bk0Qqm94oVUNcAEALKD&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:18:27 [D] [mqttController.go:351] im here false false 
+2017/03/24 00:18:27 [D] [mqttController.go:405] result [] 
+2017/03/24 00:23:16 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:23:16 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042168120 0xc04251c370    } 
+2017/03/24 00:23:16 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:23:16 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:23:16 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:23:16 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=IzM7nobBDRWzqhdTyAehYUbDPD9cZzCb4MX7nJv9vI5PveXhGco2QsgkY153A3W9USaF42EtYUMh5g4rEHUzLtxn11ocuTs22wZoZ51rA5PXmOcvjotXO3-bk0Qqm94oVUNcAEALKD&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:23:16 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=IzM7nobBDRWzqhdTyAehYUbDPD9cZzCb4MX7nJv9vI5PveXhGco2QsgkY153A3W9USaF42EtYUMh5g4rEHUzLtxn11ocuTs22wZoZ51rA5PXmOcvjotXO3-bk0Qqm94oVUNcAEALKD&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:28:29 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:23:16 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc0423282d0 0xc04251c0f0    } 
+2017/03/24 00:28:29 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:28:29 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:28:29 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:55:41 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 00:55:41 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 00:58:10 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 00:58:10 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 00:58:11 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 00:58:11 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 00:58:11 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 00:58:16 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:58:16 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc0423446c0 0xc0422fdf90    } 
+2017/03/24 00:58:16 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:58:16 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:58:16 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:58:17 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:58:17 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:58:46 [D] [mqttController.go:351] im here false false 
+2017/03/24 00:58:46 [D] [mqttController.go:405] result [] 
+2017/03/24 00:58:59 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:58:16 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04250bc20 0xc042adeaa0    } 
+2017/03/24 00:58:59 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:58:59 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:58:59 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:59:00 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:59:00 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:59:15 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 00:58:16 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042344900 0xc0425dc550    } 
+2017/03/24 00:59:15 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 00:59:15 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 00:59:15 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 00:59:16 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 00:59:16 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 00:59:21 [D] [mqttController.go:351] im here false false 
+2017/03/24 00:59:21 [D] [mqttController.go:405] result [] 
+2017/03/24 01:00:47 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 01:00:48 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042344c60 0xc04271d1d0    } 
+2017/03/24 01:00:47 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 01:00:47 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 01:00:47 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 01:00:48 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 01:00:48 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 01:01:40 [D] [mqttController.go:351] im here false false 
+2017/03/24 01:01:40 [D] [mqttController.go:405] result [] 
+2017/03/24 01:03:25 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 01:03:26 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc04207c120 0xc0426d21e0    } 
+2017/03/24 01:03:25 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 01:03:25 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 01:03:25 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 01:03:26 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 01:03:26 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 01:03:38 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 01:03:38 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042521a70 0xc0426d1090    } 
+2017/03/24 01:03:38 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 01:03:38 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 01:03:38 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 150} 
+2017/03/24 01:03:39 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 01:03:39 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=YauIs4L9kMEEroNJmxFiRVO7uPSUjxcFOtTV_A9wq0dB5oHMH34BhGtU9KO1W18h0uI_LDte3yBtwjmbB3rg68JlqdW439wRbqZTWdZG_h4JGOjAIADAI&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 01:09:47 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 01:09:47 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 01:10:07 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 01:10:07 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 01:10:08 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 01:10:08 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 01:10:08 [I] [asm_amd64.s:2086] http server Running on http://:80

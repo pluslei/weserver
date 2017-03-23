@@ -13,6 +13,12 @@ type Configer struct {
 	MqIsCleansession bool
 	MqVersion        int
 	MqTopic          string
+	MqusernameAccess string
+	MqpasswordSecret string
+	Mqport           int
+	MquseTLS         int
+	MqgroupId        string
+	Mqurl            string
 	check            bool
 }
 
@@ -33,6 +39,13 @@ func GetMqttConfig() *Configer {
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqcleansession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqVersion")
 	conf.MqTopic = beego.AppConfig.String("mqtopic")
+
+	conf.Mqurl = beego.AppConfig.String("Mqurl")
+	conf.MqusernameAccess = beego.AppConfig.String("mqusernameAccess")
+	conf.MqpasswordSecret = beego.AppConfig.String("mqpasswordSecret")
+	conf.Mqport, _ = beego.AppConfig.Int("mqport")
+	conf.MquseTLS, _ = beego.AppConfig.Int("mquseTLS")
+	conf.MqgroupId = beego.AppConfig.String("MqgroupId")
 	return &conf
 }
 

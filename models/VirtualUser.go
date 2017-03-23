@@ -59,3 +59,13 @@ func VirtualUserList(nDay int64) (userlist []VirtualUser, count int) {
 	count = len(userlist)
 	return userlist, count
 }
+
+// 查询人数count
+func OnlineUser(nDay int64) int64 {
+	dayonlineuser, err := GetAllUserCount(nDay)
+	if err != nil {
+		beego.Error("get the user error", err)
+	}
+	sysconfig, _ := GetAllSysConfig()
+	return dayonlineuser + sysconfig.VirtualUser
+}

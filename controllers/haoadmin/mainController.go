@@ -3,7 +3,6 @@ package haoadmin
 import (
 	"github.com/astaxie/beego"
 	m "weserver/models"
-	p "weserver/src/parameter"
 	. "weserver/src/tools"
 	//"strconv"
 	"fmt"
@@ -74,32 +73,6 @@ func (this *MainController) OnlineIndex() {
 	} else {
 		this.Ctx.Redirect(302, "/public/index")
 	}
-}
-
-func GetMembermsg() (msg Membermsg) {
-	//获取所有的房间号
-	roominfo, num, _ := m.GetAllRoomDate()
-	msg.Totalroom = num //房间数
-	if p.Rediserr == nil && num > 0 {
-		length := int(num)
-		for i := 0; i < length; i++ {
-			//用户列表信息
-			userroom := make(map[string]Usertitle) //房间对应的用户信息
-			jobroom := "coderoom_" + p.Code + "_" + fmt.Sprintf("%d", roominfo[i].RommNumber)
-			roomdata, _ := p.Client.Get(jobroom)
-			if len(roomdata) > 0 {
-				userroom, _ = Jsontoroommap(roomdata)
-				for _, userId := range userroom {
-					if len(userId.Uname) > 0 {
-						msg.Totalonline++
-					}
-				}
-			}
-		}
-		count, _ := m.GetUserNumber()
-		msg.Totalmembers = count
-	}
-	return msg
 }
 
 //登录

@@ -49,6 +49,7 @@ type Usertitle struct {
 //socket内容发送信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
+	Codeid        string    //组合
 	Code          int       //公司代码
 	Room          int       //房间号
 	Uname         string    //用户名
@@ -63,12 +64,19 @@ type MessageInfo struct {
 	IsLogin       bool      //状态 [1、登录 0、未登录]
 	Content       string    //消息内容
 	IsFilter      bool      //消息是否过滤[true: 过滤, false: 不过滤]
-	MsgType       string    //消息类型
+	MsgType       int       //消息类型
 	Datatime      time.Time //添加时间
 	Status        int       //审核状态(0：未审核，1：审核)
 	Uuid          string    //uuid
 }
 
+// 广播消息
+type BrocastInfo struct {
+	Code    int    //公司代码
+	Room    int    //房间号
+	MsgType int    //消息类型
+	Content string //广播内容
+}
 
 //在线人数信息
 type OnlineUserMsg struct {

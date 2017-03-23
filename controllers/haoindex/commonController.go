@@ -3,12 +3,8 @@ package haoindex
 import (
 	"os"
 
-	"github.com/astaxie/beego"
 	"weserver/controllers"
 )
-
-// 获取直播地址
-var LiveUrl = beego.AppConfig.String("liveurl")
 
 type CommonController struct {
 	controllers.PublicController

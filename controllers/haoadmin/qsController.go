@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"strings"
 	"time"
+	"weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
 )
@@ -54,6 +55,36 @@ func (this *QsController) SendBroad() {
 	this.Data["ipaddress"] = this.GetClientip()
 	this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
 	this.TplName = "haoadmin/data/qs/sendbroad.html"
+}
+
+// 发送广播
+func (this *QsController) SendBroadHandle() {
+	code, _ := beego.AppConfig.Int("company")
+	room, _ := beego.AppConfig.Int("room")
+
+	UserInfo := this.GetSession("userinfo")
+	uname := UserInfo.(*m.User).Username
+	data := this.GetString("content")
+
+	broad := new(m.Broadcast)
+	broad.Code = code
+	broad.Room = room
+	broad.Uname = uname
+	broad.Datatime = time.Now()
+	broad.Data = data
+	_, err := m.AddBroadcast(broad)
+	if err != nil {
+		this.Rsp(false, "广播发送失败", "")
+		beego.Debug(err)
+	} else {
+		msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_BROCAST)
+		b := msgtype.SendBrocast(data)
+		if b {
+			this.Rsp(true, "广播发送成功", "")
+			return
+		}
+		this.Rsp(false, "广播发送失败", "")
+	}
 }
 
 //获取客户的真是IP地址

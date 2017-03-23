@@ -103,6 +103,7 @@ func Router() {
 	// 广播
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:BroadList")
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
+	beego.Router("/weserver/data/sendbroadhandle", &haoadmin.QsController{}, "*:SendBroadHandle")
 
 	// 测试
 	beego.Router("/test", &haoadmin.TestController{}, "*:Test")

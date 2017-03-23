@@ -1,7 +1,6 @@
 package haoadmin
 
 import (
-	m "weserver/models"
 	// tool "weserver/src/tool"
 	// "fmt"
 	"fmt"
@@ -10,8 +9,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
-	rpc "weserver/src/rpcserver"
+	"weserver/controllers/mqtt"
 	"weserver/src/tools"
 )
 
@@ -43,23 +41,6 @@ func (this *TestController) PostApi() {
 }
 
 func (this *TestController) Test() {
-	//写数据库
-	var chatrecord m.ChatRecord
-	chatrecord.Id = 71
-	chatrecord.Nickname = "handler"                                                                                                                          //用户昵称
-	chatrecord.UserIcon = "http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0" //用户logo
-	chatrecord.RoleName = "nl_ordinary"                                                                                                                      //用户角色[vip,silver,gold,jewel]
-	chatrecord.RoleTitle = "RoleTitle"                                                                                                                       //用户角色名[会员,白银会员,黄金会员,钻石会员]
-	chatrecord.Sendtype = "IMG"                                                                                                                              //用户发送消息类型('TXT','IMG','VOICE')
-	chatrecord.RoleTitleCss = "#992BAC"                                                                                                                      //头衔颜色
-	chatrecord.RoleTitleBack = 1                                                                                                                             //角色聊天背景
-	chatrecord.Insider = 1                                                                                                                                   //1内部人员或0外部人员
-	chatrecord.IsLogin = 1                                                                                                                                   //状态 [1、登录 0、未登录]
-	chatrecord.Status = 0
-	chatrecord.Uname = "ooex5xBIIiGr4YVk9-02dTTBZVlI"
-	chatrecord.Content = "x9CxJpvVPyD41BDGATQmBE0sN1O_CtFFBtTBx3icGMki5IqnMAd_fy0p" //消息内容
-	chatrecord.Datatime = time.Now()                                                //添加时间
-	chatrecord.DatatimeStr = time.Now().Format("2006-01-02 15:04:05")
-	// 插入成功广播
-	rpc.Broadcast("chat", chatrecord, func(result []string) { beego.Debug("result", result) })
+	msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_BROCAST)
+	msgtype.SendBrocast("12d1d2s1d12")
 }

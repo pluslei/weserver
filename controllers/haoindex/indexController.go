@@ -15,6 +15,7 @@ import (
 	"github.com/silenceper/wechat/cache"
 	"github.com/silenceper/wechat/oauth"
 	m "weserver/models"
+	"weserver/src/mqtt"
 	"weserver/src/tools"
 )
 
@@ -107,7 +108,6 @@ func (this *IndexController) Get() {
 
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
-		beego.Debug("user info:8888888888888888888", userInfo)
 		this.Redirect("/index", 302)
 	}
 	this.Ctx.WriteString("")
@@ -200,6 +200,7 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
+		this.Data["Mq"] = mqtt.Config
 		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
@@ -239,7 +240,6 @@ func (this *IndexController) Voice() {
 		filename = media + ".amr"
 		savefile := savepath + filename
 		resp, err := http.Get(mediaURL)
-		beego.Debug("media info:", mediaURL)
 		if err != nil {
 			beego.Error("http get media url error", err)
 			voice.Info = err.Error()

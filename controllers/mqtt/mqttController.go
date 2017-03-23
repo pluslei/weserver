@@ -1,7 +1,11 @@
 package mqtt
 
 import (
+	"crypto/rand"
+	"encoding/json"
+	"math/big"
 	"strings"
+	"sync"
 	"time"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
@@ -16,9 +20,18 @@ import (
 	// for json get
 )
 
-var w *WriteData
+const (
+	MSG_TYPE_CHAT int = iota
+	MSG_TYPE_BROCAST
+)
 
-type WriteData struct {
+type MessageType struct {
+	Code    int //公司代码
+	Room    int //房间号码
+	Msgtype int //消息类型
+}
+
+type historyMessage struct {
 	infochan chan *MessageInfo
 }
 
@@ -27,21 +40,32 @@ type MqttController struct {
 }
 
 var (
-	recordcount int = 10 //历史消息显示数量
+	history     *historyMessage
+	totalLock   sync.Mutex
+	total       int64      //在线人数
+	recordcount int   = 10 //历史消息显示数量
 )
 
 func init() {
-	w = &WriteData{
+	history = &historyMessage{
 		infochan: make(chan *MessageInfo, 20480),
 	}
-	w.runWriteDb()
+	history.runWriteDb()
+	go userTotal()
 }
 
-// 获取发送消息
+func NewMessageType(msgtype int) *MessageType {
+	code, _ := strconv.Atoi(beego.AppConfig.String("company"))
+	room, _ := strconv.Atoi(beego.AppConfig.String("room"))
+	return &MessageType{Code: code, Room: room, Msgtype: msgtype}
+}
+
+// 获取发送聊天消息
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
-		msg := this.GetString("str")
-		b := this.ParseMsg(msg)
+		chatmsg := this.GetString("str")
+		msgtype := NewMessageType(MSG_TYPE_CHAT)
+		b := msgtype.ParseMsg(chatmsg)
 		if b {
 			this.Rsp(true, "消息发送成功", "")
 			return
@@ -53,8 +77,8 @@ func (this *MqttController) GetMessageToSend() {
 	this.Ctx.WriteString("")
 }
 
-//解析消息
-func (this *MqttController) ParseMsg(msg string) bool {
+// 聊天消息
+func (c *MessageType) ParseMsg(msg string) bool {
 	var info MessageInfo
 	decodeMsg := DecodeB64(msg)
 	js, err := simplejson.NewJson([]byte(decodeMsg))
@@ -64,10 +88,9 @@ func (this *MqttController) ParseMsg(msg string) bool {
 	}
 	codeid := js.Get("Codeid").MustString()
 	codeid = Transformname(codeid, "", -1) //解码公司代码和房间号
-	code, _ := strconv.ParseInt(beego.AppConfig.String("company"), 10, 64)
-	info.Code = int(code)                                               //公司代码
-	room, _ := strconv.ParseInt(beego.AppConfig.String("room"), 10, 64) //房间号
-	info.Room = int(room)
+	info.Codeid = codeid
+	info.Code = c.Code                                      //公司代码
+	info.Room = c.Room                                      //房间号码
 	info.Uuid = js.Get("Uuid").MustString()                 //uuid
 	info.Uname = js.Get("Uname").MustString()               //用户名
 	info.Nickname = js.Get("Nickname").MustString()         //用户昵称
@@ -83,12 +106,43 @@ func (this *MqttController) ParseMsg(msg string) bool {
 	info.IsFilter = js.Get("IsFilter").MustBool()           //消息是否过滤[true: 过滤, false: 不过滤]
 	info.Status = js.Get("Status").MustInt()                //审核状态(0：未审核，1：审核)
 	info.Datatime = time.Now()                              //添加时间
+	info.MsgType = MSG_TYPE_CHAT                            //0 普通消息 1 广播
 	// 消息入库
-	beego.Debug("insider message:", info.Insider)
-	mq.SendMessage(decodeMsg) //发消息
+
+	v, err := c.Json(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(v) //发消息
 
 	SaveChatMsgdata(info)
 	return true
+}
+
+// 发送广播消息
+func (c *MessageType) SendBrocast(content string) bool {
+	info := new(BrocastInfo)
+	info.Content = content
+	info.Code = c.Code
+	info.Room = c.Room
+	info.MsgType = MSG_TYPE_BROCAST
+	v, err := c.Json(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(string(v)) //发消息
+	return true
+}
+
+func (c *MessageType) Json(v interface{}) (string, error) {
+	value, err := json.Marshal(v)
+	if err != nil {
+		beego.Error("json marshal error", err)
+		return "", err
+	}
+	return string(value), nil
 }
 
 //获取客户的真实IP地址
@@ -188,17 +242,9 @@ func (this *MqttController) GetPassId() {
 
 //获取在线人数
 func (this *MqttController) GetOnlineUseCount() {
-	if this.IsAjax() {
-		_, usercount := m.VirtualUserList(30)
-		// data := make(map[string]interface{})
-		// data["count"] = usercount
-		// this.Data["json"] = &data
-		// this.ServeJSON()
-		this.Data["json"] = &map[string]interface{}{"status": true, "count": usercount}
-		this.ServeJSON()
-	} else {
-		this.Ctx.WriteString("")
-	}
+	usercount := getToal()
+	this.Data["json"] = &map[string]interface{}{"status": true, "count": usercount}
+	this.ServeJSON()
 }
 
 // 获取在线用户信息列表
@@ -277,7 +323,7 @@ func SaveBroadCastdata(info MessageInfo) {
 func SaveChatMsgdata(info MessageInfo) {
 	jsondata := &info
 	select {
-	case w.infochan <- jsondata:
+	case history.infochan <- jsondata:
 		break
 	default:
 		beego.Error("write db error!!!")
@@ -286,7 +332,7 @@ func SaveChatMsgdata(info MessageInfo) {
 }
 
 // 写数据
-func (w *WriteData) runWriteDb() {
+func (w *historyMessage) runWriteDb() {
 	go func() {
 		for {
 			infoMsg, ok := <-w.infochan
@@ -341,12 +387,6 @@ func addData(info *MessageInfo) {
 	}
 }
 
-//rpc 推送 给管理页面
-func broadcastChat(chat m.ChatRecord) {
-	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
-	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
-}
-
 func UpdateData(info *MessageInfo) {
 	beego.Debug("im here", info, info.RoleTitleBack)
 	if info.IsLogin && info.Insider == 1 {
@@ -357,4 +397,44 @@ func UpdateData(info *MessageInfo) {
 			beego.Debug(err)
 		}
 	}
+}
+
+//rpc 推送 给管理页面
+func broadcastChat(chat m.ChatRecord) {
+	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
+	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
+}
+
+// 总人数
+func userTotal() {
+	t := time.Tick(time.Second * 5)
+	for {
+		<-t
+		dayonlineuser, err := m.GetAllUserCount(30)
+		if err != nil {
+			beego.Error("get the user error", err)
+		}
+		sysconfig, _ := m.GetAllSysConfig()
+		totalLock.Lock()
+
+		total = dayonlineuser + sysconfig.VirtualUser + RandomInt64(-10, 10)
+		totalLock.Unlock()
+	}
+}
+
+func getToal() int64 {
+	totalLock.Lock()
+	defer totalLock.Unlock()
+	return total
+}
+
+//随机数
+func RandomInt64(min, max int64) int64 {
+	maxBigInt := big.NewInt(max)
+	i, _ := rand.Int(rand.Reader, maxBigInt)
+	iInt64 := i.Int64()
+	if iInt64 < min {
+		iInt64 = RandomInt64(min, max)
+	}
+	return iInt64
 }
