@@ -41,19 +41,26 @@ func init() {
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
-		this.ParseMsg(msg)
+		b := this.ParseMsg(msg)
+		if b {
+			this.Rsp(true, "消息发送成功", "")
+			return
+		} else {
+			this.Rsp(false, "消息发送失败,清新发送", "")
+			return
+		}
 	}
 	this.Ctx.WriteString("")
 }
 
 //解析消息
-func (this *MqttController) ParseMsg(msg string) {
+func (this *MqttController) ParseMsg(msg string) bool {
 	var info MessageInfo
-	msg = DecodeB64(msg)
-	key := []byte(msg)
-	js, err := simplejson.NewJson(key)
+	decodeMsg := DecodeB64(msg)
+	js, err := simplejson.NewJson([]byte(decodeMsg))
 	if err != nil {
-		beego.Error(err)
+		beego.Error("simplejson error", err)
+		return false
 	}
 	codeid := js.Get("Codeid").MustString()
 	codeid = Transformname(codeid, "", -1) //解码公司代码和房间号
@@ -78,10 +85,10 @@ func (this *MqttController) ParseMsg(msg string) {
 	info.Datatime = time.Now()                              //添加时间
 	// 消息入库
 	beego.Debug("insider message:", info.Insider)
-	mq.SendMessage(info) //发消息
+	mq.SendMessage(decodeMsg) //发消息
 
 	SaveChatMsgdata(info)
-	beego.Debug("aaaaa", info)
+	return true
 }
 
 //获取客户的真实IP地址

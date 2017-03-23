@@ -204,8 +204,8 @@ func (this *IndexController) Index() {
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
 		this.Data["servicephone"] = beego.AppConfig.String("servicephone")   //服务电话
-		this.TplName = "dist/index.html"
-		//this.TplName = "index.html"
+		// this.TplName = "dist/index.html"
+		this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}

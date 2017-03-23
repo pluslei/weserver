@@ -2,7 +2,6 @@ package mqtt
 
 import (
 	"github.com/astaxie/beego"
-	"weserver/src/tools"
 )
 
 type Configer struct {
@@ -14,7 +13,6 @@ type Configer struct {
 	MqIsCleansession bool
 	MqVersion        int
 	MqTopic          string
-	MqCheckTopic     string
 	check            bool
 }
 
@@ -35,7 +33,6 @@ func GetMqttConfig() *Configer {
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqcleansession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqVersion")
 	conf.MqTopic = beego.AppConfig.String("mqtopic")
-	conf.MqCheckTopic = beego.AppConfig.String("mqCheckTopic")
 	return &conf
 }
 
@@ -48,11 +45,6 @@ func Run() {
 }
 
 //发消息
-func SendMessage(message tools.MessageInfo) {
-	// 开启消息审核
-	if Config.check {
-		mq.sendMessage(Config.MqCheckTopic, message)
-	} else {
-		mq.sendMessage(Config.MqTopic, message)
-	}
+func SendMessage(message string) {
+	mq.sendMessage(Config.MqTopic, message)
 }
