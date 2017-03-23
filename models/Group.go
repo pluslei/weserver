@@ -5,7 +5,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-//分组表
+// 节点分组表
 type Group struct {
 	Id     int64
 	Name   string  `orm:"size(128)" form:"Name"  valid:"Required"`

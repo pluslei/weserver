@@ -1,14 +1,12 @@
 package routers
 
 import (
-	"weserver/controllers/haoadmin"
-	"weserver/controllers/haoindex"
-	"weserver/controllers/haophone"
-	"weserver/controllers/mqtt"
-	s "weserver/src/rpcserver"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	"weserver/controllers/haoadmin"
+	"weserver/controllers/haoindex"
+	"weserver/controllers/mqtt"
+	s "weserver/src/rpcserver"
 )
 
 func init() {
@@ -18,17 +16,17 @@ func init() {
 	Rpc()
 	// 开启调试模式
 	orm.Debug = false
-	// beego.SetStaticPath("/upload", "../upload")
-	// beego.SetStaticPath("/css", "./views/dist/css")
-	// beego.SetStaticPath("/i", "./views/dist/i")
-	// beego.SetStaticPath("/js", "./views/dist/js")
-	// beego.SetStaticPath("/fonts", "./views/dist/fonts")
+	beego.SetStaticPath("/upload", "../upload")
+	beego.SetStaticPath("/css", "./views/dist/css")
+	beego.SetStaticPath("/i", "./views/dist/i")
+	beego.SetStaticPath("/js", "./views/dist/js")
+	beego.SetStaticPath("/fonts", "./views/dist/fonts")
 
-	beego.SetViewsPath("../weclient/dist")
-	beego.SetStaticPath("/css", "../weclient/dist/css")
-	beego.SetStaticPath("/i", "../weclient/dist/i")
-	beego.SetStaticPath("/js", "../weclient/dist/js")
-	beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
+	// beego.SetViewsPath("../weclient/dist")
+	// beego.SetStaticPath("/css", "../weclient/dist/css")
+	// beego.SetStaticPath("/i", "../weclient/dist/i")
+	// beego.SetStaticPath("/js", "../weclient/dist/js")
+	// beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
 
 }
 
@@ -67,7 +65,6 @@ func Router() {
 
 	//在线用户
 	beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")
-	beego.Router("/weserver/user/verifyuser", &haoadmin.UserController{}, "*:Rerifyuser")
 
 	// 节点管理
 	beego.Router("/weserver/node/addnode", &haoadmin.NodeController{}, "*:AddNode")
@@ -101,85 +98,13 @@ func Router() {
 
 	// 全局设置
 	beego.Router("/weserver/sysconfig/index", &haoadmin.SysConfigController{}, "*:Index")
-	// 主题设置
-	beego.Router("/weserver/sysconfig/theme_index", &haoadmin.ThemeController{}, "*:Index")
-	beego.Router("/weserver/sysconfig/theme_addtheme", &haoadmin.ThemeController{}, "*:AddTheme")
-	beego.Router("/weserver/sysconfig/theme_updatetheme", &haoadmin.ThemeController{}, "*:UpdateTheme")
-	beego.Router("/weserver/sysconfig/theme_deltheme", &haoadmin.ThemeController{}, "*:DelTheme")
 
-	// 数据管理
-	beego.Router("/weserver/data/room_index", &haoadmin.RoomController{}, "*:Index")
-	beego.Router("/weserver/data/room_updateroom", &haoadmin.RoomController{}, "*:UpdateRoom")
-	beego.Router("/weserver/data/room_refresh", &haoadmin.RoomController{}, "*:RefreshRoom")
-
+	// 数据消息
 	beego.Router("/weserver/data/chatrecord", &haoadmin.ChatRecordController{}, "*:ChatRecordList")
 
-	// 讲师介绍
-	beego.Router("/weserver/data/teacher_index", &haoadmin.TeacherController{}, "*:Index")
-	beego.Router("/weserver/data/teacher_addteacher", &haoadmin.TeacherController{}, "*:AddTeacher")
-	beego.Router("/weserver/data/teacher_updateteacher", &haoadmin.TeacherController{}, "*:UpdateTeacher")
-	beego.Router("/weserver/data/teacher_delteacher", &haoadmin.TeacherController{}, "*:DelTeacher")
-	beego.Router("/weserver/data/teacher_upload", &haoadmin.TeacherController{}, "*:UploadTeacher")
-	// 问题解答
-	beego.Router("/weserver/data/qs_index", &haoadmin.QsController{}, "*:Index")
-	beego.Router("/weserver/data/qs_addqs", &haoadmin.QsController{}, "*:AddQs")
-	beego.Router("/weserver/data/qs_updateqs", &haoadmin.QsController{}, "*:UpdateQs")
-	beego.Router("/weserver/data/qs_delqs", &haoadmin.QsController{}, "*:DelQs")
 	// 广播
-	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:DataBroadQs")
+	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:BroadList")
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
-	// 消息管理
-	beego.Router("/weserver/data/message_index", &haoadmin.MessageController{}, "*:MessageList")
-	beego.Router("/weserver/data/message_add", &haoadmin.MessageController{}, "*:AddMessage")
-	beego.Router("/weserver/data/message_byid", &haoadmin.MessageController{}, "*:GetMessageById")
-	beego.Router("/weserver/data/message_edit", &haoadmin.MessageController{}, "*:EditMessage")
-	beego.Router("/weserver/data/message_delete", &haoadmin.MessageController{}, "*:DeleteMessage")
-	// 消息分类管理
-	beego.Router("/weserver/data/messagetype_index", &haoadmin.MessageTypeController{}, "*:MessageTypeList")
-	beego.Router("/weserver/data/messagetype_add", &haoadmin.MessageTypeController{}, "*:AddMessageType")
-	beego.Router("/weserver/data/messagetype_delete", &haoadmin.MessageTypeController{}, "*:DeleteMessageType")
-	beego.Router("/weserver/data/messagetype_byid", &haoadmin.MessageTypeController{}, "*:GetMessageTypeById")
-	beego.Router("/weserver/data/messagetype_edit", &haoadmin.MessageTypeController{}, "*:EditMessageType")
-	//机器人发言
-	beego.Router("/weserver/data/robot_speak", &haoadmin.QsController{}, "*:DataRobotSpeak")
-
-	beego.Router("/weserver/data/face_index", &haoadmin.FaceController{}, "*:List")
-	beego.Router("/weserver/data/face_getfaces", &haoadmin.FaceController{}, "*:GetFaces")
-	beego.Router("/weserver/data/face_delete", &haoadmin.FaceController{}, "*:DeleteFace")
-	beego.Router("/weserver/data/face_getface", &haoadmin.FaceController{}, "*:GetFace")
-	beego.Router("/weserver/data/face_upload", &haoadmin.FaceController{}, "*:Upload")
-	beego.Router("/weserver/data/face_submit", &haoadmin.FaceController{}, "*:AddOrEdit")
-	beego.Router("/weserver/data/face_getMaxValue", &haoadmin.FaceController{}, "*:GetMaxGroupValue")
-
-	// 首页管理
-	beego.Router("/weserver/home/aboutme", &haoadmin.HomeController{}, "*:AboutUs")
-	beego.Router("/weserver/home/contact", &haoadmin.HomeController{}, "*:ContactUs")
-	// 课程管理
-	beego.Router("/weserver/home/course_index", &haoadmin.CourseController{}, "*:Index")
-	beego.Router("/weserver/home/course_addcourse", &haoadmin.CourseController{}, "*:AddCourse")
-	beego.Router("/weserver/home/course_updatecourse", &haoadmin.CourseController{}, "*:UpdateCourse")
-	beego.Router("/weserver/home/course_delcourse", &haoadmin.CourseController{}, "*:DelCourse")
-	beego.Router("/weserver/home/course_coursejson", &haoadmin.CourseController{}, "*:GetCourseJson")
-	// 客服管理
-	beego.Router("/weserver/home/custservice_index", &haoadmin.CustserviceController{}, "*:Index")
-	beego.Router("/weserver/home/custservice_addcust", &haoadmin.CustserviceController{}, "*:AddCust")
-	beego.Router("/weserver/home/custservice_updatecust", &haoadmin.CustserviceController{}, "*:UpdateCust")
-	beego.Router("/weserver/home/custservice_delcust", &haoadmin.CustserviceController{}, "*:DelCust")
-	// 首页讲师管理
-	beego.Router("/weserver/home/teachbanner_index", &haoadmin.TeachBannerController{}, "*:Index")
-	beego.Router("/weserver/home/teachbanner_addbanner", &haoadmin.TeachBannerController{}, "*:AddBanner")
-	beego.Router("/weserver/home/teachbanner_updatebanner", &haoadmin.TeachBannerController{}, "*:UpdateBanner")
-	beego.Router("/weserver/home/teachbanner_delbanner", &haoadmin.TeachBannerController{}, "*:DelBanner")
-	beego.Router("/weserver/home/teachbanner_upload", &haoadmin.TeachBannerController{}, "*:UploadBanner")
-	//首页客服电话管理
-	beego.Router("/weserver/home/telbanner_index", &haoadmin.TelBannerController{}, "*:TelBannerIndex")
-	beego.Router("/weserver/data/telbanner_upload", &haoadmin.TelBannerController{}, "*:UploadTelBanner")
-	// 水军
-	beego.Router("/weserver/data/robot_speak", &haoadmin.QsController{}, "*:DataRobotSpeak")
-
-	//首页财经新闻
-	// beego.Router("/finance_index", &haoadmin.FinanceNewsController{}, "*:GetFinanceNews")
-	beego.Router("/online/public/index", &haoadmin.MainController{}, "*:OnlineIndex")
 
 	// 测试
 	beego.Router("/test", &haoadmin.TestController{}, "*:Test")
@@ -188,13 +113,10 @@ func Router() {
 	// index
 	beego.Router("/", &haoindex.IndexController{})
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
-	beego.Router("/face", &haoindex.FaceController{}, "*:Add")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
-	beego.Router("/usercount", &haoindex.IndexController{}, "*:UserCount")
-	beego.Router("/userlist", &haoindex.IndexController{}, "*:UserList")
 
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
@@ -208,15 +130,4 @@ func Router() {
 	beego.Router("/chat/upload", &mqtt.MqttController{}, "*:ChatUpload")
 	beego.Router("/chat/kickout", &mqtt.MqttController{}, "*:ChatKickOut")
 
-	// 添加网名
-	beego.Router("/weserver/data/netname_add", &haoadmin.NetNameController{}, "*:AddNetName")
-
-	//手机的访问路由
-	beego.Router("/phone/index", &haophone.LoginController{}, "*:PhoneIndex")
-	beego.Router("/phone/login", &haophone.LoginController{}, "*:PhoneLogin")
-	beego.Router("/phone/logout", &haophone.LoginController{}, "*:PhoneLogout")
-	beego.Router("/phone/sendcode", &haophone.LoginController{}, "*:SendCode")
-	beego.Router("/phone/register", &haophone.LoginController{}, "*:PhoneRegister")
-	beego.Router("/phone/getgroups", &haophone.LoginController{}, "*:GetPhoneGroups")
-	beego.Router("/phone/getfaces", &haophone.LoginController{}, "*:GetPhoneFaces")
 }

@@ -337,32 +337,6 @@ func (this *UserController) UserToTitle() {
 	}
 
 }
-func (this *UserController) Rerifyuser() {
-	if this.IsAjax() {
-		sEcho := this.GetString("sEcho")
-		iStart, err := this.GetInt64("iDisplayStart")
-		if err != nil {
-			beego.Error(err)
-		}
-		iLength, err := this.GetInt64("iDisplayLength")
-		if err != nil {
-			beego.Error(err)
-		}
-		titlelist, count := m.GetRegStatusUser(1, iStart, iLength, "Id")
-		// json
-		data := make(map[string]interface{})
-		data["aaData"] = titlelist
-		data["iTotalDisplayRecords"] = count
-		data["iTotalRecords"] = iLength
-		data["sEcho"] = sEcho
-		this.Data["json"] = &data
-		this.ServeJSON()
-
-	} else {
-		this.CommonMenu()
-		this.TplName = "haoadmin/rbac/user/verify.html"
-	}
-}
 
 //在线用户
 func (this *UserController) Onlineuser() {

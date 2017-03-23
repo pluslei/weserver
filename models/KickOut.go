@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-//角色表
+// 踢人记录表
 type KickOut struct {
 	Id        int64
 	Coderoom  int       //房间号

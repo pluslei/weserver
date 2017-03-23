@@ -5,7 +5,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-//分组表
+// 系统控制
 type SysConfig struct {
 	Id            int64
 	Systemname    string //直播室名称

@@ -97,7 +97,6 @@ func (this *GroupController) UpdateGroup() {
 		this.Data["groupList"] = groupList
 		this.TplName = "haoadmin/rbac/group/edit.html"
 	}
-
 }
 
 // 删除组别

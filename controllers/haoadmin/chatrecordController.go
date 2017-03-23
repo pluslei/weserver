@@ -11,6 +11,7 @@ type ChatRecordController struct {
 	CommonController
 }
 
+// 聊天记录
 func (this *ChatRecordController) ChatRecordList() {
 	if this.IsAjax() {
 		sEcho := this.GetString("sEcho")
