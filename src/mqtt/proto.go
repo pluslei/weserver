@@ -1,4 +1,4 @@
-package tools
+package mqtt
 
 import (
 	"encoding/json"
@@ -67,6 +67,14 @@ type MessageInfo struct {
 	Datatime      time.Time //添加时间
 	Status        int       //审核状态(0：未审核，1：审核)
 	Uuid          string    //uuid
+}
+
+func (msg *MessageInfo) serialization() string {
+
+}
+
+func (msg *MessageInfo) Parse(string) error {
+
 }
 
 //在线人数信息

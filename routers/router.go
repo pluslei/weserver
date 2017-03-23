@@ -196,7 +196,7 @@ func Router() {
 	beego.Router("/usercount", &haoindex.IndexController{}, "*:UserCount")
 	beego.Router("/userlist", &haoindex.IndexController{}, "*:UserList")
 
-	beego.Router("chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
+	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
 	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")
 	//获取在线人数信息

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 	m "weserver/models"
-	mq "weserver/src/mqttConn"
+	mq "weserver/src/mqtt"
 	rpc "weserver/src/rpcserver"
 
 	"github.com/astaxie/beego"
@@ -43,6 +43,7 @@ func (this *MqttController) GetMessageToSend() {
 		msg := this.GetString("str")
 		this.ParseMsg(msg)
 	}
+	this.Ctx.WriteString("")
 }
 
 //解析消息
@@ -76,6 +77,9 @@ func (this *MqttController) ParseMsg(msg string) {
 	info.Status = js.Get("Status").MustInt()                //审核状态(0：未审核，1：审核)
 	info.Datatime = time.Now()                              //添加时间
 	// 消息入库
+	beego.Debug("insider message:", info.Insider)
+	mq.SendMessage(info) //发消息
+
 	SaveChatMsgdata(info)
 	beego.Debug("aaaaa", info)
 }
@@ -157,12 +161,6 @@ func (this *MqttController) GetMsgInfoFromDatabase(id int64) MessageInfo {
 	return info
 }
 
-//获取topic
-func (this *MqttController) GetTopic() string {
-	info := m.GetMqttConfig()
-	return info.MqTopic
-}
-
 // 获取后台审核的消息id
 func (this *MqttController) GetPassId() {
 	if this.IsAjax() {
@@ -175,9 +173,9 @@ func (this *MqttController) GetPassId() {
 		}
 		id := js.Get("id").MustInt64()
 		msgInfo := this.GetMsgInfoFromDatabase(id)
-
+		beego.Debug("ddddddddddddddd", msgInfo)
 		topic := this.GetTopic()
-		mq.SendMessage(topic, msgInfo, 0, false, m.MqClient)
+		mq.SendMessage(topic, msgInfo) //发消息
 	}
 }
 
