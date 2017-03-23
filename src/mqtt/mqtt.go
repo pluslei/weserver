@@ -24,7 +24,7 @@ type MQ struct {
 	msgch  chan *message
 }
 
-func NewMQ(o *Config) *MQ {
+func NewMQ(o *Configer) *MQ {
 	m := MQ{}
 	opts := MQTT.NewClientOptions().AddBroker(o.MqAddress)
 	opts.SetUsername(o.MqUserName)

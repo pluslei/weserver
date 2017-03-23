@@ -174,8 +174,8 @@ func (this *MqttController) GetPassId() {
 		id := js.Get("id").MustInt64()
 		msgInfo := this.GetMsgInfoFromDatabase(id)
 		beego.Debug("ddddddddddddddd", msgInfo)
-		topic := this.GetTopic()
-		mq.SendMessage(topic, msgInfo) //发消息
+		// topic := mq.Config.MqTopic // this.GetTopic()
+		// mq.SendMessage(topic, msgInfo) //发消息
 	}
 }
 

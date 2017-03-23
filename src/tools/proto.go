@@ -1,4 +1,4 @@
-package mqtt
+package tools
 
 import (
 	"encoding/json"
@@ -69,13 +69,6 @@ type MessageInfo struct {
 	Uuid          string    //uuid
 }
 
-func (msg *MessageInfo) serialization() string {
-
-}
-
-func (msg *MessageInfo) Parse(string) error {
-
-}
 
 //在线人数信息
 type OnlineUserMsg struct {
