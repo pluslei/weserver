@@ -49,7 +49,6 @@ type Usertitle struct {
 //socket内容发送信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
-	Codeid        string    //组合
 	Code          int       //公司代码
 	Room          int       //房间号
 	Uname         string    //用户名
@@ -78,6 +77,14 @@ type BrocastInfo struct {
 	Content string //广播内容
 }
 
+// 删除消息
+type DelMessage struct {
+	Code    int    //公司代码
+	Room    int    //房间号
+	MsgType int    //消息类型
+	Uuid    string //消息uuid
+}
+
 //在线人数信息
 type OnlineUserMsg struct {
 	Nickname string //用户昵称
@@ -86,6 +93,14 @@ type OnlineUserMsg struct {
 
 var Resultuser []Usertitle  //模拟的用户数据
 var Copyresuser []Usertitle //拷贝数据
+
+func (m *MessageInfo) MashJson(msg []byte) (s MessageInfo, err error) {
+	var result MessageInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
 
 func Jsontosocket(req string) (s []MessageInfo, err error) {
 	var result []MessageInfo

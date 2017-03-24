@@ -1185,6 +1185,8 @@ var FooterBar = function (_React$Component) {
     _this.pthis = _this.props.pthis;
     _this.handleSelect = _this.handleSelect.bind(_this);
     _this.imgcmsg = _this.imgcmsg.bind(_this);
+    _this.success = _this.success.bind(_this);
+    _this.error = _this.error.bind(_this);
     return _this;
   }
 
@@ -1263,7 +1265,8 @@ var FooterBar = function (_React$Component) {
       var sendstr = _MqttConn2.default.base64data('encode', JSON.stringify(sendmsg));
       // post
       // 发送给后台
-      var api = new _Api2.default();
+      var api = new _Api2.default(this.success, this.error);
+
       api.postToServer(sendstr, 'chat/user/message');
       // 发送完消息改变下样式
       this.pthis.setState({
@@ -1293,6 +1296,28 @@ var FooterBar = function (_React$Component) {
           }
         }
       });
+    }
+  }, {
+    key: 'success',
+    value: function success() {
+      var chatlength = this.pthis.refs.chatBar.state.chatdata.length;
+      if (chatlength > 0) {
+        this.pthis.chatBar.state.chatdata[chatlength - 1].sendstatus = 'success';
+        this.pthis.chatBar.setState({
+          chatdata: this.pthis.chatBar.state.chatdata
+        });
+      }
+    }
+  }, {
+    key: 'error',
+    value: function error() {
+      var chatlength = this.pthis.refs.chatBar.state.chatdata.length;
+      if (chatlength > 0) {
+        this.pthis.chatBar.state.chatdata[chatlength - 1].sendstatus = 'fail';
+        this.pthis.chatBar.setState({
+          chatdata: this.pthis.chatBar.state.chatdata
+        });
+      }
     }
     // 点击显示按住说话
 
@@ -1593,7 +1618,7 @@ var FooterBar = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'theInput', style: { width: 'calc(100% - 125px)' } },
+          { className: 'theInput', style: { width: 'calc(100% - 135px)' } },
           btnctron
         ),
         _react2.default.createElement(
@@ -2080,6 +2105,19 @@ var Onepage = function (_React$Component) {
       this.refs.footer.sendmsgtosocket();
     }
   }, {
+    key: 'delHistoryMsg',
+    value: function delHistoryMsg(uuid) {
+      if (uuid !== null) {
+        var resultdata = this.chatBar.state.chatdata.filter(function (item) {
+          var itemstate = item.uuid !== uuid;
+          return itemstate;
+        });
+        this.chatBar.setState({
+          chatdata: resultdata
+        });
+      }
+    }
+  }, {
     key: 'handleSelect',
     value: function handleSelect(link, e) {
       e.preventDefault();
@@ -2094,6 +2132,7 @@ var Onepage = function (_React$Component) {
     value: function mqttCallBack(message) {
       var payload = message.payloadString;
       var data = JSON.parse(payload);
+      console.info(data);
       if (data.MsgType === 0) {
         this.loadchatlist(data, 'now');
       }
@@ -2102,6 +2141,9 @@ var Onepage = function (_React$Component) {
           noticemsg: data.Content
         });
         this.refreshchatbar();
+      }
+      if (data.MsgType === 2) {
+        this.delHistoryMsg(data.Uuid);
       }
     }
   }, {
@@ -2467,21 +2509,26 @@ var ChatInfo = function (_React$Component) {
           count: eachcount
         },
         success: function success(data) {
-          if (data !== null && data.listinfo !== undefined) {
-            var received = data.listinfo;
-            var length = data.listinfo.length;
+          if (data.onlinecount !== null) {
+            _this3.args.onlineCount = parseInt(data.onlinecount, 10);
+            var title = '在线人数：';
+            title += data.onlinecount;
+            _this3.setTitle(title);
+          }
+          if (data.userlist !== undefined) {
+            var length = data.userlist.length;
             for (var i = 0; i < length; i++) {
               var argsdata = {
-                Username: _MqttConn2.default.base64data('decode', received[i].Username),
-                Nickname: _MqttConn2.default.base64data('decode', received[i].Nickname),
-                UserIcon: _MqttConn2.default.base64data('decode', received[i].UserIcon)
+                Username: _MqttConn2.default.base64data('decode', data.userlist[i].Username),
+                Nickname: _MqttConn2.default.base64data('decode', data.userlist[i].Nickname),
+                UserIcon: _MqttConn2.default.base64data('decode', data.userlist[i].UserIcon)
               };
               if (argsdata.Username !== _MqttConn2.default.userinfo.Uname) {
                 _this3.state.chatInfoConetnt.push(argsdata);
               }
             }
             var result = _this3.state.chatInfoConetnt;
-            if (_this3.args.onlineCount === 1) {
+            if (_this3.args.onlineIndex === 1) {
               var temp = {
                 Username: _MqttConn2.default.userinfo.Uname,
                 Nickname: _MqttConn2.default.userinfo.Nickname,
@@ -2789,6 +2836,8 @@ var Weixin = function (_React$Component) {
     };
     _this.pthis = _this.props.pthis;
     _this.handleSelect = _this.handleSelect.bind(_this);
+    _this.success = _this.success.bind(_this);
+    _this.error = _this.error.bind(_this);
     return _this;
   }
 
@@ -3008,7 +3057,7 @@ var Weixin = function (_React$Component) {
             var sendstr = _MqttConn2.default.base64data('encode', JSON.stringify(sendmsg));
             // post
             // 发送给后台
-            var api = new _Api2.default();
+            var api = new _Api2.default(_this6.success, _this6.error);
             api.postToServer(sendstr, 'chat/user/message');
           }
         }
@@ -3091,11 +3140,34 @@ var Weixin = function (_React$Component) {
           var sendstr = _MqttConn2.default.base64data('encode', JSON.stringify(sendmsg));
           // post
           // 发送给后台
-          var api = new _Api2.default();
+          var api = new _Api2.default(_this7.success, _this7.error);
           api.postToServer(sendstr, 'chat/user/message');
         }
       });
     }
+  }, {
+    key: 'success',
+    value: function success() {
+      var chatlength = this.pthis.refs.chatBar.state.chatdata.length;
+      if (chatlength > 0) {
+        this.pthis.chatBar.state.chatdata[chatlength - 1].sendstatus = 'success';
+        this.pthis.chatBar.setState({
+          chatdata: this.pthis.chatBar.state.chatdata
+        });
+      }
+    }
+  }, {
+    key: 'error',
+    value: function error() {
+      var chatlength = this.pthis.refs.chatBar.state.chatdata.length;
+      if (chatlength > 0) {
+        this.pthis.chatBar.state.chatdata[chatlength - 1].sendstatus = 'fail';
+        this.pthis.chatBar.setState({
+          chatdata: this.pthis.chatBar.state.chatdata
+        });
+      }
+    }
+
     // 播放录音
 
   }, {
@@ -3366,6 +3438,8 @@ var Api = function () {
   _createClass(Api, [{
     key: 'postToServer',
     value: function postToServer(sendstr, route) {
+      var _this = this;
+
       this.serverRequest = _jquery2.default.ajax({
         url: route,
         type: 'post',
@@ -3373,8 +3447,15 @@ var Api = function () {
         data: {
           str: sendstr
         },
-        error: function error() {},
+        error: function error(data) {
+          _this.error(data);
+        },
         success: function success(data) {
+          if (data.status) {
+            _this.success(data);
+          } else {
+            _this.error(data);
+          }
           // 成功不做任何动作,失败显示圆圈
           console.log(data);
         }

@@ -32,6 +32,13 @@ func DecodeB64(message string) string {
 	return string(base64Text)
 }
 
+func DecodeBase64Byte(message string) []byte {
+	base64Text := make([]byte, base64.StdEncoding.DecodedLen(len(message)))
+	base64.StdEncoding.Decode(base64Text, []byte(message))
+	base64Text = bytes.TrimRight(base64Text, "\x00")
+	return base64Text
+}
+
 func Encodedata(data string) string {
 	var dataresult string
 	if len(data) < 1 {

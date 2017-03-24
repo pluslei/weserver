@@ -27,7 +27,9 @@ type ChatRecord struct {
 	Datatime      time.Time `orm:"type(datetime)"`                                       //添加时间
 	Status        int       `orm:"default(0)" form:"Status" valid:"Required;Range(0,1)"` //消息审核[1 通过 0 未通过]
 	Uuid          string    // uuid
-	DatatimeStr   string    `orm:"-"`
+
+	DatatimeStr string `orm:"-"`
+	MsgType     int    `orm:"-"`
 }
 
 func init() {

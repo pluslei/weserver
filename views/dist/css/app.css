@@ -557,14 +557,14 @@ body {
 }
 .footer .sendMessage {
   float: left;
-  width: 44px;
+  width: 54px;
 }
 .footer .sendMessage span {
-  height: 29px;
+  height: 31px;
   display: block;
-  margin: 4px 2px 5px 0px;
+  margin: 2px 2px 2px 0px;
   text-align: center;
-  line-height: 29px;
+  line-height: 31px;
   background: #15b014;
   color: #fff;
   border-radius: 2px;

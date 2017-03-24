@@ -99,6 +99,8 @@ func Router() {
 
 	// 历史消息
 	beego.Router("/weserver/data/chatrecord", &haoadmin.ChatRecordController{}, "*:ChatRecordList")
+	beego.Router("/weserver/data/checkrecord", &haoadmin.ChatRecordController{}, "*:CheckRecord")
+	beego.Router("/weserver/data/delrecord", &haoadmin.ChatRecordController{}, "*:DelRecord")
 
 	// 广播
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:BroadList")

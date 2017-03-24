@@ -13,9 +13,25 @@ type CommonController struct {
 	controllers.PublicController
 }
 
+type Tree struct {
+	Id       int64
+	Index    int    `json:"index"`
+	Text     string `json:"text"`
+	IconCls  string `json:"iconCls"`
+	Checked  string `json:"checked"`
+	Name     string `json:"name"`
+	State    string `json:"state"`
+	Children []Tree `json:"menu"`
+	Ico      string `json:"ico"`
+	Url      string `json:"href"`
+}
+
+// 获取节点列表[后台左侧菜单]
 func (this *CommonController) GetResList(uname string, Id int64) []Tree {
-	var cnt, length int = 0, 0
-	var nodes []orm.Params
+	var (
+		cnt, length int
+		nodes       []orm.Params
+	)
 	adminUser := beego.AppConfig.String("rbac_admin_user")
 	if uname == adminUser {
 		_, nodes = m.GetAllNode()
@@ -72,6 +88,7 @@ func (this *CommonController) GetResList(uname string, Id int64) []Tree {
 	return tree
 }
 
+// 直接输入节点树
 func (this *CommonController) GetTree() []Tree {
 	nodes, _ := m.GetNodeTree(0, 1)
 	tree := make([]Tree, len(nodes))
@@ -83,7 +100,6 @@ func (this *CommonController) GetTree() []Tree {
 		for k1, v1 := range children {
 			tree[k].Children[k1].Id = v1["Id"].(int64)
 			tree[k].Children[k1].Text = v1["Title"].(string)
-			// tree[k].Children[k1].Attributes.Url = "/" + v["Name"].(string) + "/" + v1["Name"].(string)
 		}
 	}
 	return tree
@@ -101,12 +117,12 @@ func (this *CommonController) GetGroupTree(gid int64) []Tree {
 		for k1, v1 := range children {
 			tree[k].Children[k1].Id = v1["Id"].(int64)
 			tree[k].Children[k1].Text = v1["Title"].(string)
-			// tree[k].Children[k1].Attributes.Url = "/" + v["Name"].(string) + "/" + v1["Name"].(string)
 		}
 	}
 	return tree
 }
 
+//
 func (this *CommonController) CommonMenu() {
 	userInfo := this.GetSession("userinfo")
 	if userInfo == nil {

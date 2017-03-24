@@ -15,19 +15,6 @@ type MainController struct {
 	CommonController
 }
 
-type Tree struct {
-	Id       int64
-	Index    int    `json:"index"`
-	Text     string `json:"text"`
-	IconCls  string `json:"iconCls"`
-	Checked  string `json:"checked"`
-	Name     string `json:"name"`
-	State    string `json:"state"`
-	Children []Tree `json:"menu"`
-	Ico      string `json:"ico"`
-	Url      string `json:"href"`
-}
-
 //首页
 func (this *MainController) Index() {
 	if this.IsAjax() {

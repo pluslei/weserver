@@ -86,8 +86,6 @@
 <div id="tong" class="hide" ><img src="images/tong.jpg"></div>
 <script src="/static/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/static/js/hprose.js"></script>
-<script type="text/javascript" src="/static/lib/socket/socket.io.js"></script>
-<script type="text/javascript" src="/static/lib/socket/base64.js"></script>
 <script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <script type="text/javascript">
     const localserveraddress = "{{.localserveraddress}}";
@@ -256,28 +254,7 @@
         $('#del-confirm').modal()
         $(".data-modal-del").val(delid);
     }
-    // 删除方法
-    function deleteModel(){
-        var uuid = $(".data-modal-del").val();
-        var sendmsg = {}; //发送的内容
-        sendmsg["Uuid"] = uuid;
-        sendmsg["Codeid"] = codeid; //公司房间标识符
-        var sendstr = base64encode(sendmsg);
-        socket.emit('all deletemsg', sendstr);
-        oTable.fnReloadAjax(oTable.fnSettings());
-    }
-    socket.on('all deletesucess', function() {
-        //消息提示
-        layer.msg('删除成功', {
-            icon: 1
-        });
-    });
-    socket.on('all deleteerror', function() {
-        //消息提示
-        layer.msg('删除失败', {
-            icon: 2
-        });
-    });
+
     // 模态退出
     $('#del-confirm').on('closed.modal.amui', function() {
         $(this).removeData('amui.modal');
@@ -370,24 +347,49 @@
                 icon: 1
             });
         } else {
-            var sendmsg = {}; //发送的内容
-            sendmsg["Id"] = id;
-            sendmsg["Codeid"] = codeid; //公司房间标识符
-            var sendstr = base64encode(sendmsg);
-                this.serverRequest = $.ajax({
-                 url: '/chat/user/online/passid',
-                 type: 'post',
-                 dataType: 'json',
-                 data: {
-                    str: sendstr,
-                },
-                 success: (data) => {
-                     //只传输数据到服务端
-                },
-            });
-            parent.location.reload();
+            $.ajax({
+                url: '/weserver/data/checkrecord',
+                type: 'POST',
+                data: {id: id},
+                success: function(data){
+                    if (data.status) {
+                        layer.msg(data.info, {
+                            icon: 1
+                        });
+                        oTable.fnReloadAjax(oTable.fnSettings());
+                    }else{
+                        layer.msg(data.info, {
+                            icon: 2
+                        });
+                    }
+                }
+            })
         }
     }
+
+    // 删除方法
+    function deleteModel(){
+        var uuid = $(".data-modal-del").val();
+        $.ajax({
+            url: '/weserver/data/delrecord',
+            type: 'POST',
+            data: {uuid: uuid},
+            success: function(data){
+                if (data.status) {
+                    layer.msg(data.info, {
+                        icon: 1
+                    });
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    layer.msg(data.info, {
+                        icon: 2
+                    });
+                }
+            }
+        })
+    }
+
+
 
     // 显示图片
     function showImg() {
