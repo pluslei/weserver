@@ -1,4 +1,4 @@
-package mqtt
+package tools
 
 import (
 	"encoding/json"
@@ -50,7 +50,7 @@ type Usertitle struct {
 type MessageInfo struct {
 	Id            int64     //数据库中id
 	Code          int       //公司代码
-	Room          int       //房间号
+	Room          string    //房间号
 	Uname         string    //用户名
 	Nickname      string    //用户昵称
 	UserIcon      string    //用户logo
@@ -69,13 +69,13 @@ type MessageInfo struct {
 	Uuid          string    //uuid
 }
 
-func (msg *MessageInfo) serialization() string {
+// func (msg *MessageInfo) serialization() string {
 
-}
+// }
 
-func (msg *MessageInfo) Parse(string) error {
+// func (msg *MessageInfo) Parse(string) error {
 
-}
+// }
 
 //在线人数信息
 type OnlineUserMsg struct {

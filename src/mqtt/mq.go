@@ -1,6 +1,8 @@
 package mqtt
 
 import (
+	. "weserver/src/tools"
+
 	"github.com/astaxie/beego"
 )
 
@@ -46,11 +48,5 @@ func Run() {
 
 //发消息
 func SendMessage(message MessageInfo) {
-
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	if m.check {
-		return
-	}
-	mq.sendMessage(topic, message)
+	mq.sendMessage(message., message)
 }

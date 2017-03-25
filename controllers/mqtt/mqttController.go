@@ -58,9 +58,8 @@ func (this *MqttController) ParseMsg(msg string) {
 	codeid := js.Get("Codeid").MustString()
 	codeid = Transformname(codeid, "", -1) //解码公司代码和房间号
 	code, _ := strconv.ParseInt(beego.AppConfig.String("company"), 10, 64)
-	info.Code = int(code)                                               //公司代码
-	room, _ := strconv.ParseInt(beego.AppConfig.String("room"), 10, 64) //房间号
-	info.Room = int(room)
+	info.Code = int(code)                                   //公司代码
+	info.Room = beego.AppConfig.String("room")              //房间号 即 topic
 	info.Uuid = js.Get("Uuid").MustString()                 //uuid
 	info.Uname = js.Get("Uname").MustString()               //用户名
 	info.Nickname = js.Get("Nickname").MustString()         //用户昵称
@@ -174,8 +173,8 @@ func (this *MqttController) GetPassId() {
 		id := js.Get("id").MustInt64()
 		msgInfo := this.GetMsgInfoFromDatabase(id)
 		beego.Debug("ddddddddddddddd", msgInfo)
-		topic := this.GetTopic()
-		mq.SendMessage(topic, msgInfo) //发消息
+		// 发消息
+		//	mq.SendMessage(msgInfo) //发消息
 	}
 }
 
