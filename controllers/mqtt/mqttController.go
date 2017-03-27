@@ -1,7 +1,11 @@
 package mqtt
 
 import (
+	"crypto/rand"
+	"encoding/json"
+	"math/big"
 	"strings"
+	"sync"
 	"time"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
@@ -16,9 +20,19 @@ import (
 	// for json get
 )
 
-var w *WriteData
+const (
+	MSG_TYPE_CHAT    int = iota //聊天消息
+	MSG_TYPE_BROCAST            //广播消息
+	MSG_TYPE_DEL                //删除消息
+)
 
-type WriteData struct {
+type MessageType struct {
+	Code    int //公司代码
+	Room    int //房间号码
+	Msgtype int //消息类型
+}
+
+type historyMessage struct {
 	infochan chan *MessageInfo
 }
 
@@ -27,60 +41,127 @@ type MqttController struct {
 }
 
 var (
-	recordcount int = 10 //历史消息显示数量
+	history     *historyMessage
+	totalLock   sync.Mutex
+	total       int64      //在线人数
+	recordcount int   = 10 //历史消息显示数量
 )
 
 func init() {
-	w = &WriteData{
+	history = &historyMessage{
 		infochan: make(chan *MessageInfo, 20480),
 	}
-	w.runWriteDb()
+	history.runWriteDb()
+	go userTotal()
 }
 
-// 获取发送消息
+func NewMessageType(msgtype int) *MessageType {
+	code, _ := strconv.Atoi(beego.AppConfig.String("company"))
+	room, _ := strconv.Atoi(beego.AppConfig.String("room"))
+	return &MessageType{Code: code, Room: room, Msgtype: msgtype}
+}
+
+// 获取发送聊天消息
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
-		msg := this.GetString("str")
-		this.ParseMsg(msg)
+		chatmsg := this.GetString("str")
+		msgtype := NewMessageType(MSG_TYPE_CHAT)
+		b := msgtype.ParseMsg(chatmsg)
+		if b {
+			this.Rsp(true, "消息发送成功", "")
+			return
+		} else {
+			this.Rsp(false, "消息发送失败,清新发送", "")
+			return
+		}
 	}
 	this.Ctx.WriteString("")
 }
 
-//解析消息
-func (this *MqttController) ParseMsg(msg string) {
-	var info MessageInfo
-	msg = DecodeB64(msg)
-	key := []byte(msg)
-	js, err := simplejson.NewJson(key)
+// 聊天消息
+func (c *MessageType) ParseMsg(msg string) bool {
+	msginfo := new(MessageInfo)
+	info, err := msginfo.MashJson(DecodeBase64Byte(msg))
 	if err != nil {
-		beego.Error(err)
+		beego.Error("simplejson error", err)
+		return false
 	}
-	codeid := js.Get("Codeid").MustString()
-	codeid = Transformname(codeid, "", -1) //解码公司代码和房间号
-	code, _ := strconv.ParseInt(beego.AppConfig.String("company"), 10, 64)
-	info.Code = int(code)                                   //公司代码
-	info.Room = beego.AppConfig.String("room")              //房间号 即 topic
-	info.Uuid = js.Get("Uuid").MustString()                 //uuid
-	info.Uname = js.Get("Uname").MustString()               //用户名
-	info.Nickname = js.Get("Nickname").MustString()         //用户昵称
-	info.UserIcon = js.Get("UserIcon").MustString()         //用户logo
-	info.RoleName = js.Get("RoleName").MustString()         //用户角色[vip,silver,gold,jewel]
-	info.RoleTitle = js.Get("RoleTitle").MustString()       //用户角色名[会员,白银会员,黄金会员,钻石会员]
-	info.Sendtype = js.Get("Sendtype").MustString()         //用户发送消息类型('TXT','IMG','VOICE')
-	info.RoleTitleCss = js.Get("RoleTitleCss").MustString() //头衔颜色
-	info.RoleTitleBack = js.Get("RoleTitleBack").MustBool() //角色聊天背景
-	info.Insider = js.Get("Insider").MustInt()              //1内部人员或0外部人员
-	info.IsLogin = js.Get("IsLogin").MustBool()             //状态 [1、登录 0、未登录]
-	info.Content = js.Get("Content").MustString()           //消息内容
-	info.IsFilter = js.Get("IsFilter").MustBool()           //消息是否过滤[true: 过滤, false: 不过滤]
-	info.Status = js.Get("Status").MustInt()                //审核状态(0：未审核，1：审核)
-	info.Datatime = time.Now()                              //添加时间
-	// 消息入库
-	beego.Debug("insider message:", info.Insider)
-	mq.SendMessage(info) //发消息
+	info.Code = c.Code           //公司代码
+	info.Room = c.Room           //房间号码
+	info.Datatime = time.Now()   //添加时间
+	info.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
 
+	beego.Debug("info", info)
+
+	v, err := c.Json(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+
+	// 内部人员
+	if info.IsFilter == false {
+		mq.SendMessage(v) //发消息
+	}
+	beego.Debug("isfilter", info.IsFilter)
+	// 消息入库
 	SaveChatMsgdata(info)
-	beego.Debug("aaaaa", info)
+	return true
+}
+
+// 发送广播消息
+func (c *MessageType) SendBrocast(content string) bool {
+	info := new(BrocastInfo)
+	info.Content = content
+	info.Code = c.Code
+	info.Room = c.Room
+	info.MsgType = MSG_TYPE_BROCAST
+	v, err := c.Json(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(string(v)) //发消息
+	return true
+}
+
+func (c *MessageType) DelMessage(uuid string) bool {
+	info := new(DelMessage)
+	info.Code = c.Code
+	info.Room = c.Room
+	info.MsgType = MSG_TYPE_DEL
+	info.Uuid = uuid
+
+	v, err := c.Json(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(string(v)) //发消息
+	return true
+}
+
+// 后台审核消息
+func (c *MessageType) CheckMessage(msg m.ChatRecord) bool {
+	msg.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
+	beego.Debug("msg", msg)
+
+	v, err := c.Json(msg)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(v) //发消息
+	return true
+}
+
+func (c *MessageType) Json(v interface{}) (string, error) {
+	value, err := json.Marshal(v)
+	if err != nil {
+		beego.Error("json marshal error", err)
+		return "", err
+	}
+	return string(value), nil
 }
 
 //获取客户的真实IP地址
@@ -123,6 +204,7 @@ func (this *MqttController) GetChatHistoryList() {
 	} else {
 		this.Ctx.Redirect(302, "/")
 	}
+	this.Ctx.WriteString("")
 }
 
 //根据消息id 从数据库获取相应的消息
@@ -175,52 +257,47 @@ func (this *MqttController) GetPassId() {
 		beego.Debug("ddddddddddddddd", msgInfo)
 		// 发消息
 		//	mq.SendMessage(msgInfo) //发消息
+		// topic := mq.Config.MqTopic // this.GetTopic()
+		// mq.SendMessage(topic, msgInfo) //发消息
 	}
 }
 
 //获取在线人数
 func (this *MqttController) GetOnlineUseCount() {
-	if this.IsAjax() {
-		_, usercount := m.VirtualUserList(30)
-		// data := make(map[string]interface{})
-		// data["count"] = usercount
-		// this.Data["json"] = &data
-		// this.ServeJSON()
-		this.Data["json"] = &map[string]interface{}{"status": true, "count": usercount}
-		this.ServeJSON()
-	} else {
-		this.Ctx.WriteString("")
-	}
+	usercount := getToal()
+	this.Data["json"] = &map[string]interface{}{"status": true, "count": usercount}
+	this.ServeJSON()
 }
 
 // 获取在线用户信息列表
 func (this *MqttController) GetOnlineUseInfo() {
 	if this.IsAjax() {
-		count := this.GetString("count")
-		num, error := strconv.Atoi(count)
-		if num <= 0 || error != nil {
-			beego.Error("GetOnlineUseInfo Fail!!")
-		}
-		defult_Rsp, _ := strconv.ParseInt(beego.AppConfig.String("Defult_OnLine_Rsp"), 10, 64) // 默认发送的列表条数
-		userlist, userlen := m.VirtualUserList(30)                                             //人员总列表信息
-		end := num
-		if end > userlen {
-			end = userlen
-		}
-		var userinfor []m.VirtualUser
-		start := num - int(defult_Rsp)
-		for i := start; i < end; i++ {
-			if len(userlist[i].UserIcon) > 0 {
-				var msg m.VirtualUser
-				msg.Id = userlist[i].Id
-				msg.Username = EncodeB64(userlist[i].Username)
-				msg.Nickname = EncodeB64(userlist[i].Nickname)
-				msg.UserIcon = EncodeB64(userlist[i].UserIcon)
-				userinfor = append(userinfor, msg)
-			}
-		}
+		count := this.GetString("count")                //请求的数据总数
+		listindex, _ := strconv.ParseInt(count, 10, 64) //客户端请求的列表个数
 		data := make(map[string]interface{})
-		data["listinfo"] = userinfor
+		if listindex > 0 {
+			defult_Rsp, _ := strconv.ParseInt(beego.AppConfig.String("Defult_OnLine_Rsp"), 10, 64) // 默认发送的列表条数
+			userlist, userlen := m.VirtualUserList(30)                                             //人员总列表信息
+			listend := int(listindex)
+			if listend > userlen {
+				listend = userlen
+			}
+			var userinfor []m.VirtualUser
+			liststart := int(listindex) - int(defult_Rsp)
+			for i := liststart; i < listend; i++ {
+				if len(userlist[i].UserIcon) > 0 {
+					var msg m.VirtualUser
+					msg.Id = userlist[i].Id
+					msg.Username = EncodeB64(userlist[i].Username)
+					msg.Nickname = EncodeB64(userlist[i].Nickname)
+					msg.UserIcon = EncodeB64(userlist[i].UserIcon)
+					userinfor = append(userinfor, msg)
+				}
+			}
+			data["userlist"] = userinfor
+		}
+		_, onlinecount := m.VirtualUserList(30)
+		data["onlinecount"] = onlinecount //在线人数
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {
@@ -269,7 +346,7 @@ func SaveBroadCastdata(info MessageInfo) {
 func SaveChatMsgdata(info MessageInfo) {
 	jsondata := &info
 	select {
-	case w.infochan <- jsondata:
+	case history.infochan <- jsondata:
 		break
 	default:
 		beego.Error("write db error!!!")
@@ -278,7 +355,7 @@ func SaveChatMsgdata(info MessageInfo) {
 }
 
 // 写数据
-func (w *WriteData) runWriteDb() {
+func (w *historyMessage) runWriteDb() {
 	go func() {
 		for {
 			infoMsg, ok := <-w.infochan
@@ -333,12 +410,6 @@ func addData(info *MessageInfo) {
 	}
 }
 
-//rpc 推送 给管理页面
-func broadcastChat(chat m.ChatRecord) {
-	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
-	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
-}
-
 func UpdateData(info *MessageInfo) {
 	beego.Debug("im here", info, info.RoleTitleBack)
 	if info.IsLogin && info.Insider == 1 {
@@ -349,4 +420,44 @@ func UpdateData(info *MessageInfo) {
 			beego.Debug(err)
 		}
 	}
+}
+
+//rpc 推送 给管理页面
+func broadcastChat(chat m.ChatRecord) {
+	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
+	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
+}
+
+// 总人数
+func userTotal() {
+	t := time.Tick(time.Second * 5)
+	for {
+		<-t
+		dayonlineuser, err := m.GetAllUserCount(30)
+		if err != nil {
+			beego.Error("get the user error", err)
+		}
+		sysconfig, _ := m.GetAllSysConfig()
+		totalLock.Lock()
+
+		total = dayonlineuser + sysconfig.VirtualUser + RandomInt64(-10, 10)
+		totalLock.Unlock()
+	}
+}
+
+func getToal() int64 {
+	totalLock.Lock()
+	defer totalLock.Unlock()
+	return total
+}
+
+//随机数
+func RandomInt64(min, max int64) int64 {
+	maxBigInt := big.NewInt(max)
+	i, _ := rand.Int(rand.Reader, maxBigInt)
+	iInt64 := i.Int64()
+	if iInt64 < min {
+		iInt64 = RandomInt64(min, max)
+	}
+	return iInt64
 }

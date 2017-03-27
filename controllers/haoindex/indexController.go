@@ -1,7 +1,6 @@
 package haoindex
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -12,13 +11,12 @@ import (
 	"time"
 
 	"github.com/astaxie/beego"
-	// "github.com/astaxie/beego/httplib"
-	m "weserver/models"
-	"weserver/src/tools"
-	// "github.com/berkaroad/weixinapi"
 	"github.com/silenceper/wechat"
 	"github.com/silenceper/wechat/cache"
 	"github.com/silenceper/wechat/oauth"
+	m "weserver/models"
+	"weserver/src/mqtt"
+	"weserver/src/tools"
 )
 
 type IndexController struct {
@@ -26,8 +24,6 @@ type IndexController struct {
 }
 
 var (
-
-	//
 	APPID     = beego.AppConfig.String("APPID")
 	APPSECRET = beego.AppConfig.String("APPSECRET")
 
@@ -51,6 +47,12 @@ type Userinfor struct {
 	IsFilter      bool   //是否检查
 }
 
+type VoiceResponse struct {
+	Staus   bool
+	Wavfile string
+	Info    string
+}
+
 func init() {
 	macache := cache.NewMemcache()
 	cfg := &wechat.Config{
@@ -61,7 +63,6 @@ func init() {
 		Cache:          macache,
 	}
 	Wx = wechat.NewWechat(cfg)
-	beego.Debug("wx tokenaccess", Wx)
 }
 
 // 获取userinfo
@@ -107,7 +108,6 @@ func (this *IndexController) Get() {
 
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
-		beego.Debug("user info:8888888888888888888", userInfo)
 		this.Redirect("/index", 302)
 	}
 	this.Ctx.WriteString("")
@@ -200,33 +200,33 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
+		this.Data["Mq"] = mqtt.Config
 		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
 		this.Data["servicephone"] = beego.AppConfig.String("servicephone")   //服务电话
 		this.TplName = "dist/index.html"
-		//this.TplName = "index.html"
+		// this.TplName = "index.html"
 	} else {
 		this.Redirect("/", 302)
 	}
 }
 
+// 用户为审核状态
 func (this *IndexController) Login() {
 	this.TplName = "login.html"
 }
 
+// 后台获取声音文件流转换
 func (this *IndexController) Voice() {
-	type VoiceStruct struct {
-		Staus   bool
-		Wavfile string
-		Info    string
-	}
-	voice := new(VoiceStruct)
-	var filename string
 	media := this.GetString("media")
-	savepath := fmt.Sprintf("../upload/temp/%s/", time.Now().Format("2006-01-02"))
 
+	var filename string
+
+	savepath := fmt.Sprintf("../upload/temp/%s/", time.Now().Format("2006-01-02"))
 	wavfilename := savepath + media + ".wav"
+
+	voice := new(VoiceResponse)
 	if Exist(wavfilename) {
 		voice.Staus = true
 		voice.Wavfile = wavfilename
@@ -240,7 +240,6 @@ func (this *IndexController) Voice() {
 		filename = media + ".amr"
 		savefile := savepath + filename
 		resp, err := http.Get(mediaURL)
-		beego.Debug("media info:", mediaURL)
 		if err != nil {
 			beego.Error("http get media url error", err)
 			voice.Info = err.Error()
@@ -270,6 +269,7 @@ func (this *IndexController) Voice() {
 
 }
 
+// 获取图片媒体的文档流
 func (this *IndexController) GetMediaURL() {
 	media := this.GetString("media")
 	material := Wx.GetMaterial()
@@ -297,6 +297,7 @@ func (this *IndexController) GetMediaURL() {
 	this.Ctx.WriteString("")
 }
 
+// 保存用户至数据库
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	config, _ := m.GetSysConfig()
 	configRole := config.Registerrole
@@ -332,6 +333,7 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	return false
 }
 
+// 更新用户数据
 func (this *IndexController) updateUser(id int64, userInfo oauth.UserInfo) error {
 	u := new(m.User)
 	u.Id = id
@@ -369,6 +371,7 @@ func (this *IndexController) SetNickname() {
 	}
 }
 
+// 声音转换 Amr=>Wav
 func (this *IndexController) AmrToWav(filedir, filename string) (string, error) {
 	newfilename := filename[0:strings.LastIndex(filename, ".")]
 
@@ -394,59 +397,4 @@ func (this *IndexController) AmrToWav(filedir, filename string) (string, error) 
 		return "", err
 	}
 	return savepathfilename, nil
-}
-
-func (this *IndexController) UserCount() {
-	type userCountStruct struct {
-		Status bool
-		Info   string
-		Count  int64
-	}
-
-	userCount := new(userCountStruct)
-	onliecount, _ := m.GetUserNumber()
-	sysconfig, _ := m.GetAllSysConfig()
-	userCount.Status = true
-	userCount.Count = sysconfig.VirtualUser + onliecount
-	v, _ := json.Marshal(userCount)
-	this.Ctx.WriteString(string(v))
-}
-
-func (this *IndexController) UserList() {
-	type userListStruct struct {
-		Status   bool
-		Info     string
-		Userlist []m.VirtualUser
-	}
-	usersruct := new(userListStruct)
-
-	userlist := make([]m.VirtualUser, 0)
-	onlineuser, err := m.GetAllUser(30)
-	if err != nil {
-		beego.Error("get the user error", err)
-	} else {
-		for _, item := range onlineuser {
-			var user m.VirtualUser
-			user.Nickname = item.Nickname
-			user.UserIcon = item.UserIcon
-			userlist = append(userlist, user)
-		}
-	}
-
-	sysconfig, _ := m.GetAllSysConfig()
-	if sysconfig.VirtualUser > 0 {
-		virtualUser, err := m.GetNumberVirtualUser(sysconfig.VirtualUser)
-		if err != nil {
-			beego.Error("user count error", err)
-		} else {
-			for _, item := range virtualUser {
-				userlist = append(userlist, item)
-			}
-		}
-	}
-	usersruct.Status = true
-	usersruct.Userlist = userlist
-
-	v, _ := json.Marshal(usersruct)
-	this.Ctx.WriteString(string(v))
 }

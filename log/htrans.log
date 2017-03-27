@@ -1,0 +1,130 @@
+2017/03/24 18:02:26 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 18:02:26 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 18:02:26 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 18:02:26 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 18:02:26 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 18:02:42 [D] [server.go:14] client f1e141e8-9eb7-4786-b9e7-2da08f58c153 online subscribe topic is: chat 
+2017/03/24 18:02:48 [D] [sysConfigController.go:73] configinfo 0 1 
+2017/03/24 18:02:52 [D] [sysConfigController.go:73] configinfo 0 1 
+2017/03/24 18:02:54 [D] [server.go:14] client 10bef4bc-0869-4811-a721-4a482f7dcfd4 online subscribe topic is: chat 
+2017/03/24 18:03:07 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:03:08 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc0427fd0e0 0xc04275a730    } 
+2017/03/24 18:03:07 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:03:07 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:03:07 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:03:09 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=SUXcb-g085WjV0naUbO48jF-lWToACC-uecPE7ISUoiyxaZXAqZuoGiSXyP211JAxxBJ_CwHG_51XHQDhVh6UEFmqY97_MWk77uvYcbDomAq7A06Um08hbQs5dlxsPZcPDXiAAASGA&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:03:09 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=SUXcb-g085WjV0naUbO48jF-lWToACC-uecPE7ISUoiyxaZXAqZuoGiSXyP211JAxxBJ_CwHG_51XHQDhVh6UEFmqY97_MWk77uvYcbDomAq7A06Um08hbQs5dlxsPZcPDXiAAASGA&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:03:12 [D] [mqttController.go:94] info {0 100 1000 ooex5xBIIiGr4YVk9-02dTTBZVlI handler http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 guest 普通 TXT 1472629522.jpg false 1 true fasdfasd false 0 2017-03-24 18:03:12.2237 +0800 CST 0 33bad5bd-5289-405d-8898-3ec63eb65584} 
+2017/03/24 18:03:12 [D] [mqttController.go:106] isfilter false 
+2017/03/24 18:03:12 [D] [mqttController.go:372] im here false false 
+2017/03/24 18:03:12 [D] [mqttController.go:426] result [f1e141e8-9eb7-4786-b9e7-2da08f58c153 10bef4bc-0869-4811-a721-4a482f7dcfd4] 
+2017/03/24 18:03:19 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=SUXcb-g085WjV0naUbO48jF-lWToACC-uecPE7ISUoiyxaZXAqZuoGiSXyP211JAxxBJ_CwHG_51XHQDhVh6UEFmqY97_MWk77uvYcbDomAq7A06Um08hbQs5dlxsPZcPDXiAAASGA&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:03:19 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=SUXcb-g085WjV0naUbO48jF-lWToACC-uecPE7ISUoiyxaZXAqZuoGiSXyP211JAxxBJ_CwHG_51XHQDhVh6UEFmqY97_MWk77uvYcbDomAq7A06Um08hbQs5dlxsPZcPDXiAAASGA&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:04:15 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 18:04:15 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 18:04:15 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 18:04:15 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 18:04:16 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 18:04:16 [D] [server.go:14] client 10bef4bc-0869-4811-a721-4a482f7dcfd4 online subscribe topic is: chat 
+2017/03/24 18:04:25 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:04:25 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042396900 0xc04200f040    } 
+2017/03/24 18:04:25 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:04:25 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:04:25 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:04:26 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:04:26 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:04:43 [D] [server.go:14] client abe815d3-fae1-40f4-a73f-5c268f77af6c online subscribe topic is: chat 
+2017/03/24 18:04:45 [D] [mqttController.go:94] info {0 100 1000 ooex5xBIIiGr4YVk9-02dTTBZVlI handler http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 guest 普通 TXT 1472629522.jpg false 1 true 消息删除 false 0 2017-03-24 18:04:45.0162 +0800 CST 0 1a3b0adb-1361-48ba-bd00-f9bddd00ef17} 
+2017/03/24 18:04:45 [D] [mqttController.go:106] isfilter false 
+2017/03/24 18:04:45 [D] [mqttController.go:372] im here false false 
+2017/03/24 18:04:45 [D] [mqttController.go:426] result [abe815d3-fae1-40f4-a73f-5c268f77af6c 10bef4bc-0869-4811-a721-4a482f7dcfd4] 
+2017/03/24 18:04:48 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:04:48 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:05:01 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:05:02 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042acec60 0xc04256fc20    } 
+2017/03/24 18:05:01 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:05:01 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:05:01 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:05:02 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:05:02 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:05:08 [D] [mqttController.go:94] info {0 100 1000 ooex5xBIIiGr4YVk9-02dTTBZVlI handler http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 guest 普通 TXT 1472629522.jpg false 1 true 删除消息 false 0 2017-03-24 18:05:08.5827 +0800 CST 0 06ab94fa-d167-4e07-8a14-a73b8b20d5fc} 
+2017/03/24 18:05:08 [D] [mqttController.go:106] isfilter false 
+2017/03/24 18:05:08 [D] [mqttController.go:372] im here false false 
+2017/03/24 18:05:11 [D] [server.go:18] client 10bef4bc-0869-4811-a721-4a482f7dcfd4 offline unsubscribe topic is: chat 
+2017/03/24 18:05:11 [D] [mqttController.go:426] result [abe815d3-fae1-40f4-a73f-5c268f77af6c] 
+2017/03/24 18:05:18 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:05:18 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=86e0_JtzcJ9m23CTWMXw0o409kMPEqfwCFRvfE5hVyfKjDfqY_9-BtV9jmNPWdlv7wm1GY5xZzozHSxONeo7rvXBbc2S-4iRyl4i9CexwW93fLGg6VL9PA4AcCFvbNeRCEIeAJAUWA&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:06:41 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 18:06:41 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 18:06:42 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 18:06:42 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 18:06:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 18:06:42 [D] [server.go:14] client abe815d3-fae1-40f4-a73f-5c268f77af6c online subscribe topic is: chat 
+2017/03/24 18:06:50 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:06:51 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc0420ec240 0xc0424e85a0    } 
+2017/03/24 18:06:50 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:06:50 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:06:50 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:06:54 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:06:54 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:07:06 [D] [server.go:14] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 online subscribe topic is: chat 
+2017/03/24 18:07:18 [D] [mqttController.go:94] info {0 100 1000 ooex5xBIIiGr4YVk9-02dTTBZVlI handler http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 guest 普通 TXT 1472629522.jpg false 1 true 删除消息 false 0 2017-03-24 18:07:18.7197 +0800 CST 0 dfef9302-3963-4f2e-a0ce-51fec24edf10} 
+2017/03/24 18:07:18 [D] [mqttController.go:106] isfilter false 
+2017/03/24 18:07:18 [D] [mqttController.go:372] im here false false 
+2017/03/24 18:07:18 [D] [mqttController.go:426] result [66e17fc2-f78e-4269-8de1-d4571d7880d7 abe815d3-fae1-40f4-a73f-5c268f77af6c] 
+2017/03/24 18:07:22 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:07:22 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:08:34 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:06:51 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc0428e0b40 0xc042aef9a0    } 
+2017/03/24 18:08:34 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:08:34 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:08:34 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:08:35 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:08:35 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:09:18 [D] [server.go:18] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 offline unsubscribe topic is: chat 
+2017/03/24 18:09:18 [D] [server.go:14] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 online subscribe topic is: chat 
+2017/03/24 18:10:08 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:10:08 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042e09a70 0xc04200e640    } 
+2017/03/24 18:10:08 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:10:08 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:10:08 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:10:09 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:10:09 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cu69dNjclhYgBaAs120SJdAuRQ0ocagV67jT2jiXKPeLDcP-xdEZ0qr1vmUi8XRRcNlXVy8Etb0y9MTvkot1oeIYelO7B_-u1l40fVMYvECBIyenSAdPqgXJj05pyFggHZAdAAAXPQ&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:11:18 [D] [server.go:18] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 offline unsubscribe topic is: chat 
+2017/03/24 18:11:18 [D] [server.go:14] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 online subscribe topic is: chat 
+2017/03/24 18:11:25 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/24 18:11:25 [I] [Connect.go:19] 数据库连接成功 
+2017/03/24 18:11:25 [I] [mqtt.go:54] mqtt running OK  
+2017/03/24 18:11:25 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/24 18:11:25 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/24 18:11:26 [D] [server.go:14] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 online subscribe topic is: chat 
+2017/03/24 18:11:34 [D] [indexController.go:127] get the userload: &{7 ooex5xBIIiGr4YVk9-02dTTBZVlI   handler  0 0  2 2017-03-24 18:11:35 +0800 CST 2017-03-05 14:32:03 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 2 0 ooex5xBIIiGr4YVk9-02dTTBZVlI 1 湖北 黄石 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0  0xc042702f30 0xc042714370    } 
+2017/03/24 18:11:34 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/24 18:11:34 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/24 18:11:34 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 500} 
+2017/03/24 18:11:35 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=rJ1WrVa5WCFv5KySIl_RNkh_QU-htiIUKye2EVDqJoQ0CjG1avkchPVqiwZvZj1PaNaqO_bkdWAlMJ9_DGa2nOVMSDKtQNqSqQ8CsSulL9cQeqpbIeXVKMYtwjkcEUN6SHSfAJAFUF&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:11:35 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=rJ1WrVa5WCFv5KySIl_RNkh_QU-htiIUKye2EVDqJoQ0CjG1avkchPVqiwZvZj1PaNaqO_bkdWAlMJ9_DGa2nOVMSDKtQNqSqQ8CsSulL9cQeqpbIeXVKMYtwjkcEUN6SHSfAJAFUF&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:11:43 [D] [server.go:14] client 24ec6082-dc8c-4ee4-8ca5-87c8ce9e5303 online subscribe topic is: chat 
+2017/03/24 18:11:46 [D] [mqttController.go:94] info {0 100 1000 ooex5xBIIiGr4YVk9-02dTTBZVlI handler http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 guest 普通 TXT 1472629522.jpg false 1 true 删除消息 false 0 2017-03-24 18:11:46.2022 +0800 CST 0 b31c459d-bb66-4536-8635-21d0e5aceae2} 
+2017/03/24 18:11:46 [D] [mqttController.go:106] isfilter false 
+2017/03/24 18:11:46 [D] [mqttController.go:372] im here false false 
+2017/03/24 18:11:46 [D] [mqttController.go:426] result [24ec6082-dc8c-4ee4-8ca5-87c8ce9e5303 66e17fc2-f78e-4269-8de1-d4571d7880d7] 
+2017/03/24 18:12:36 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=rJ1WrVa5WCFv5KySIl_RNkh_QU-htiIUKye2EVDqJoQ0CjG1avkchPVqiwZvZj1PaNaqO_bkdWAlMJ9_DGa2nOVMSDKtQNqSqQ8CsSulL9cQeqpbIeXVKMYtwjkcEUN6SHSfAJAFUF&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:12:36 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=rJ1WrVa5WCFv5KySIl_RNkh_QU-htiIUKye2EVDqJoQ0CjG1avkchPVqiwZvZj1PaNaqO_bkdWAlMJ9_DGa2nOVMSDKtQNqSqQ8CsSulL9cQeqpbIeXVKMYtwjkcEUN6SHSfAJAFUF&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:13:46 [D] [server.go:18] client 24ec6082-dc8c-4ee4-8ca5-87c8ce9e5303 offline unsubscribe topic is: chat 
+2017/03/24 18:13:46 [D] [server.go:14] client 24ec6082-dc8c-4ee4-8ca5-87c8ce9e5303 online subscribe topic is: chat 
+2017/03/24 18:13:56 [D] [mqttController.go:94] info {0 100 1000 ooex5xBIIiGr4YVk9-02dTTBZVlI handler http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX0czbk6icxcerSR0coP0qLdyVYU4uwdQ2NPDh4b5DcF2mYbOdLl5pcXwNsC4fiacUvTzmzpu2FCJaY/0 guest 普通 TXT 1472629522.jpg false 1 true 删除消息 false 0 2017-03-24 18:13:56.4437 +0800 CST 0 6f89d5d1-e5eb-44ed-89af-5281df9af18a} 
+2017/03/24 18:13:56 [D] [mqttController.go:106] isfilter false 
+2017/03/24 18:13:56 [D] [mqttController.go:372] im here false false 
+2017/03/24 18:13:59 [D] [server.go:18] client 66e17fc2-f78e-4269-8de1-d4571d7880d7 offline unsubscribe topic is: chat 
+2017/03/24 18:13:59 [D] [mqttController.go:426] result [24ec6082-dc8c-4ee4-8ca5-87c8ce9e5303] 
+2017/03/24 18:14:00 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=rJ1WrVa5WCFv5KySIl_RNkh_QU-htiIUKye2EVDqJoQ0CjG1avkchPVqiwZvZj1PaNaqO_bkdWAlMJ9_DGa2nOVMSDKtQNqSqQ8CsSulL9cQeqpbIeXVKMYtwjkcEUN6SHSfAJAFUF&media_id=ZmRJ5P4K11sbUi7wbEdWCBY3EjEZXxIH_dQ4DeBQl9zDojIcyD7j6KpGqkPL65c9 
+2017/03/24 18:14:00 [I] [indexController.go:277] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=rJ1WrVa5WCFv5KySIl_RNkh_QU-htiIUKye2EVDqJoQ0CjG1avkchPVqiwZvZj1PaNaqO_bkdWAlMJ9_DGa2nOVMSDKtQNqSqQ8CsSulL9cQeqpbIeXVKMYtwjkcEUN6SHSfAJAFUF&media_id=0x2USEgrCcLOteo-cncgOVNjOFAllPi5UYO6q1660FwZoASw5_qCLxwaCPbKQzkh 
+2017/03/24 18:15:56 [D] [server.go:18] client 24ec6082-dc8c-4ee4-8ca5-87c8ce9e5303 offline unsubscribe topic is: chat 
+2017/03/27 09:29:30 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 09:29:30 [E] [Connect.go:17] 数据库连接失败 
+2017/03/27 09:35:17 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 09:35:17 [E] [Connect.go:17] 数据库连接失败 
+2017/03/27 09:36:03 [I] [Connect.go:14] 数据库is %s root:admin@tcp(172.16.23.249:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 09:37:02 [I] [Connect.go:14] 数据库is %s root:admin@tcp(172.16.23.249:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 09:40:36 [I] [Connect.go:14] 数据库is %s root:admin@tcp(172.16.23.249:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 10:00:00 [I] [Connect.go:14] 数据库is %s root:admin@tcp(172.16.23.249:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 10:00:00 [I] [Connect.go:19] 数据库连接成功 
+2017/03/27 10:00:00 [D] [client.go:538] subtopic,subqoss, token.subs, token [test_hy] [1] [test_hy] &{{{{0 0} 0 0 0 0} 0xc0422703c0 false <nil>} [test_hy] map[]} 
+2017/03/27 10:00:00 [I] [mqtt.go:54] mqtt running OK  
+2017/03/27 10:00:00 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/27 10:00:00 [I] [asm_amd64.s:2086] http server Running on http://:80

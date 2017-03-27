@@ -911,10 +911,10 @@ Paho.MQTT = (function (global) {
 	 
 	ClientImpl.prototype.send = function (message) {
 		this._trace("Client.send", message);
-		/*
+		
 		if (!this.connected)
 		   throw new Error(format(ERROR.INVALID_STATE, ["not connected"]));
-		*/
+		
 		wireMessage = new WireMessage(MESSAGE_TYPE.PUBLISH);
 		wireMessage.payloadMessage = message;
 		

@@ -7,8 +7,7 @@ import (
 )
 
 /*
-*用户表
-* beego 中会把名为Id的字段自动设置文自增加的主键
+*  消息记录表
  */
 type ChatRecord struct {
 	Id            int64     `orm:"pk;auto"`
@@ -28,7 +27,9 @@ type ChatRecord struct {
 	Datatime      time.Time `orm:"type(datetime)"`                                       //添加时间
 	Status        int       `orm:"default(0)" form:"Status" valid:"Required;Range(0,1)"` //消息审核[1 通过 0 未通过]
 	Uuid          string    // uuid
-	DatatimeStr   string    `orm:"-"`
+
+	DatatimeStr string `orm:"-"`
+	MsgType     int    `orm:"-"`
 }
 
 func init() {
@@ -112,7 +113,7 @@ func GetChatMsgData(count int64) ([]ChatRecord, int64, error) {
 	// if startpos < 0 {
 	// 	startpos = 0
 	// }
-	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Filter("Status", 1).Filter("Id__gt",satrt).All(&chat)
+	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Filter("Status", 1).Filter("Id__gt", satrt).All(&chat)
 	return chat, num, err
 }
 

@@ -7,8 +7,7 @@ import (
 )
 
 /*
-*用户表
-* beego 中会把名为Id的字段自动设置文自增加的主键
+* 发送广播表
  */
 type Broadcast struct {
 	Id       int64     `orm:"pk;auto"`

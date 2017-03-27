@@ -126,7 +126,6 @@ func GetUserNameByPhone(name string, phone int64) (User, error) {
 // 获取用户一对一关系
 func LoadRelatedUser(u *User, fields ...string) (*User, error) {
 	o := orm.NewOrm()
-	beego.Debug("userInfo", u)
 	err := o.Read(u, fields...)
 	if err != nil {
 		beego.Error(err)
@@ -213,4 +212,12 @@ func GetAllUser(nDay int64) (users []User, err error) {
 	nowtime := time.Now().Unix() - nDay*24*60*60
 	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
 	return users, err
+}
+
+//获取user表中最近 nDay 天列表信息
+func GetAllUserCount(nDay int64) (count int64, err error) {
+	o := orm.NewOrm()
+	nowtime := time.Now().Unix() - nDay*24*60*60
+	count, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).Count()
+	return count, err
 }
