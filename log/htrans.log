@@ -314,3 +314,9 @@
 2017/03/28 10:49:40 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
 2017/03/28 10:49:41 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
 2017/03/28 10:52:27 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40029 , errmsg=invalid code, hints: [ req_id: asf6dA0547uth5 ] 
+2017/03/28 18:58:38 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 18:58:39 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 18:58:39 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc042290360 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 18:58:39 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 18:58:39 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 18:58:39 [I] [asm_amd64.s:2086] http server Running on http://:80
