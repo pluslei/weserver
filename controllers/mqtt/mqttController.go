@@ -61,6 +61,26 @@ func NewMessageType(msgtype int) *MessageType {
 	return &MessageType{Code: code, Room: room, Msgtype: msgtype}
 }
 
+// 获取聊天室信息
+func (this *MqttController) GetRoomInfo() {
+	beego.Debug("start1111111111111")
+	// if this.IsAjax() {
+	roomInfo, _, err := m.GetRoomInfo()
+	beego.Debug("ddddddddddddddddddddddddddd", roomInfo)
+	if err != nil {
+		beego.Debug("GetRoomInfo fail", err)
+		return
+	}
+	beego.Debug("11111111111111111111", roomInfo)
+	data := make(map[string]interface{})
+	data["roomInfo"] = roomInfo //聊天室信息
+	this.Data["json"] = &data
+	this.ServeJSON()
+	// }
+	beego.Debug("eeeeeeeeeeeeeee")
+	this.Ctx.WriteString("")
+}
+
 // 获取发送聊天消息
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
@@ -71,7 +91,7 @@ func (this *MqttController) GetMessageToSend() {
 			this.Rsp(true, "消息发送成功", "")
 			return
 		} else {
-			this.Rsp(false, "消息发送失败,清新发送", "")
+			this.Rsp(false, "消息发送失败,请重新发送", "")
 			return
 		}
 	}
@@ -86,8 +106,10 @@ func (c *MessageType) ParseMsg(msg string) bool {
 		beego.Error("simplejson error", err)
 		return false
 	}
-	info.Code = c.Code           //公司代码
-	info.Room = c.Room           //房间号码
+	info.Code = c.Code //公司代码
+	/*
+		info.Room = c.Room           //房间号码
+	*/
 	info.Datatime = time.Now()   //添加时间
 	info.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
 
@@ -191,7 +213,7 @@ func (this *MqttController) GetChatHistoryList() {
 		var historychat []m.ChatRecord
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
-			historychat, _, _ = m.GetChatMsgData(recordcount)
+			historychat, _, _ = m.GetChatMsgData(recordcount, "chat_record")
 		default:
 		}
 		data := make(map[string]interface{})
@@ -375,9 +397,11 @@ func addData(info *MessageInfo) {
 	if info.IsLogin && info.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
-		chatrecord.Uuid = info.Uuid                 //uuid
-		chatrecord.Code = info.Code                 //公司代码
-		chatrecord.Room = info.Room                 //房间号
+		chatrecord.Uuid = info.Uuid //uuid
+		chatrecord.Code = info.Code //公司代码
+		/*
+			chatrecord.Room = info.Room                 //房间号
+		*/
 		chatrecord.Uname = info.Uname               //用户名
 		chatrecord.Nickname = info.Nickname         //用户昵称
 		chatrecord.UserIcon = info.UserIcon         //用户logo

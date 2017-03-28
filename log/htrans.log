@@ -128,3 +128,189 @@
 2017/03/27 10:00:00 [I] [mqtt.go:54] mqtt running OK  
 2017/03/27 10:00:00 [D] [mq.go:57] MQTT Client Init OK. 
 2017/03/27 10:00:00 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/27 10:09:46 [I] [Connect.go:14] 数据库is %s root:admin@tcp(172.16.23.249:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 10:09:46 [I] [Connect.go:19] 数据库连接成功 
+2017/03/27 10:09:46 [D] [client.go:538] subtopic,subqoss, token.subs, token [test_hy] [1] [test_hy] &{{{{0 0} 0 0 0 0} 0xc042268300 false <nil>} [test_hy] map[]} 
+2017/03/27 10:09:46 [I] [mqtt.go:54] mqtt running OK  
+2017/03/27 10:09:46 [D] [mq.go:57] MQTT Client Init OK. 
+2017/03/27 10:09:46 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/27 10:10:12 [D] [indexController.go:127] get the userload: &{10 ooex5xK49v54rbsWVA2KUWT0TNb8   Sir. Lei  0 0  2 2017-03-27 10:10:12 +0800 CST 2017-03-08 19:54:31 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 2 0 ooex5xK49v54rbsWVA2KUWT0TNb8 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0  0xc04206b290 0xc042291a40    } 
+2017/03/27 10:10:12 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/27 10:10:12 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/27 10:10:12 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 10:10:12 [E] [indexController.go:194] get the jsapi config error memcache: no servers configured or available 
+2017/03/27 10:10:54 [D] [mqttController.go:94] info {0 100 1000 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true aaaaa false 0 2017-03-27 10:10:54.9693028 +0800 CST 0 95632e2a-8e62-4486-8eb2-c8b96d137575} 
+2017/03/27 10:10:54 [D] [mqttController.go:106] isfilter false 
+2017/03/27 10:10:54 [D] [mqttController.go:374] im here false false 
+2017/03/27 10:10:54 [D] [mqttController.go:428] result [] 
+2017/03/27 10:11:05 [D] [mqttController.go:94] info {0 100 1000 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true dddddddddddd false 0 2017-03-27 10:11:05.6873028 +0800 CST 0 f819a209-9c7b-4dad-a01d-f13c204a3b84} 
+2017/03/27 10:11:05 [D] [mqttController.go:106] isfilter false 
+2017/03/27 10:11:05 [D] [mqttController.go:374] im here false false 
+2017/03/27 10:11:05 [D] [mqttController.go:428] result [] 
+2017/03/27 10:11:46 [D] [mqttController.go:94] info {0 100 1000 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [喜欢][喜欢][喜欢][喜欢][喜欢][喜欢][喜欢][害怕][害怕][害怕][害怕] false 0 2017-03-27 10:11:46.7263028 +0800 CST 0 c814a9bb-18e4-4ae1-87f0-0e0c5bb129bb} 
+2017/03/27 10:11:46 [D] [mqttController.go:106] isfilter false 
+2017/03/27 10:11:46 [D] [mqttController.go:374] im here false false 
+2017/03/27 10:11:46 [D] [mqttController.go:428] result [] 
+2017/03/27 10:14:58 [D] [indexController.go:127] get the userload: &{10 ooex5xK49v54rbsWVA2KUWT0TNb8   Sir. Lei  0 0  2 2017-03-27 10:14:57 +0800 CST 2017-03-08 19:54:31 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 2 0 ooex5xK49v54rbsWVA2KUWT0TNb8 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0  0xc0431b6120 0xc04218d400    } 
+2017/03/27 10:14:58 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/27 10:14:58 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/27 10:14:58 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 10:14:58 [E] [indexController.go:194] get the jsapi config error memcache: no servers configured or available 
+2017/03/27 10:15:25 [D] [mqttController.go:94] info {0 100 1000 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true helloworld false 0 2017-03-27 10:15:25.2893028 +0800 CST 0 9ea9828e-6afd-4a07-9067-b18a3e8e4af1} 
+2017/03/27 10:15:25 [D] [mqttController.go:106] isfilter false 
+2017/03/27 10:15:25 [D] [mqttController.go:374] im here false false 
+2017/03/27 10:15:25 [D] [mqttController.go:428] result [] 
+2017/03/27 10:15:36 [D] [indexController.go:127] get the userload: &{10 ooex5xK49v54rbsWVA2KUWT0TNb8   Sir. Lei  0 0  2 2017-03-27 10:14:57 +0800 CST 2017-03-08 19:54:31 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 2 0 ooex5xK49v54rbsWVA2KUWT0TNb8 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0  0xc04305f8c0 0xc043230690    } 
+2017/03/27 10:15:36 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/27 10:15:36 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/27 10:15:36 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 10:15:37 [E] [indexController.go:194] get the jsapi config error memcache: no servers configured or available 
+2017/03/27 10:16:08 [D] [indexController.go:127] get the userload: &{10 ooex5xK49v54rbsWVA2KUWT0TNb8   Sir. Lei  0 0  2 2017-03-27 10:16:08 +0800 CST 2017-03-08 19:54:31 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 2 0 ooex5xK49v54rbsWVA2KUWT0TNb8 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0  0xc0432b9cb0 0xc04218d810    } 
+2017/03/27 10:16:08 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/27 10:16:08 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/27 10:16:08 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 10:16:08 [E] [indexController.go:194] get the jsapi config error memcache: no servers configured or available 
+2017/03/27 10:16:45 [D] [indexController.go:127] get the userload: &{10 ooex5xK49v54rbsWVA2KUWT0TNb8   Sir. Lei  0 0  2 2017-03-27 10:16:45 +0800 CST 2017-03-08 19:54:31 +0800 CST http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 2 0 ooex5xK49v54rbsWVA2KUWT0TNb8 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0  0xc04305e240 0xc04264fef0    } 
+2017/03/27 10:16:45 [D] [indexController.go:128] get the userload: &{11 游客 guest 游客 1 1 30 0  <nil> []} 
+2017/03/27 10:16:45 [D] [indexController.go:129] get the userload: &{8 普通 1472629522.jpg 0 1 普通 <nil>} 
+2017/03/27 10:16:45 [D] [indexController.go:161] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 10:16:45 [E] [indexController.go:194] get the jsapi config error memcache: no servers configured or available 
+2017/03/27 10:18:14 [D] [mqttController.go:94] info {0 100 1000 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [合十][合十][合十] false 0 2017-03-27 10:18:14.0093028 +0800 CST 0 d8a4884e-df3f-4a7f-bf7d-c6eb15684040} 
+2017/03/27 10:18:14 [D] [mqttController.go:106] isfilter false 
+2017/03/27 10:18:14 [D] [mqttController.go:374] im here false false 
+2017/03/27 10:18:14 [D] [mqttController.go:428] result [] 
+2017/03/27 10:18:29 [D] [mqttController.go:94] info {0 100 1000 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [幽灵][幽灵][幽灵][恶魔][无奈] false 0 2017-03-27 10:18:29.0063028 +0800 CST 0 c8c17be3-ef5f-4445-b6dc-0453fcb26533} 
+2017/03/27 10:18:29 [D] [mqttController.go:106] isfilter false 
+2017/03/27 10:18:29 [D] [mqttController.go:374] im here false false 
+2017/03/27 10:18:29 [D] [mqttController.go:428] result [] 
+2017/03/27 19:04:17 [I] [Connect.go:14] 数据库is %s root:admin@tcp(172.16.23.249:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 19:09:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 19:09:03 [I] [Connect.go:19] 数据库连接成功 
+2017/03/27 19:09:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04206c420 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/27 19:09:03 [I] [mqtt.go:54] mqtt running OK  
+2017/03/27 19:09:03 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/27 19:09:03 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/27 19:30:52 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 19:30:52 [I] [Connect.go:19] 数据库连接成功 
+2017/03/27 19:30:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc042036900 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/27 19:30:53 [I] [mqtt.go:54] mqtt running OK  
+2017/03/27 19:30:53 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/27 19:30:53 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/27 19:31:17 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 19:31:17 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/27 19:33:02 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/27 19:33:02 [I] [Connect.go:19] 数据库连接成功 
+2017/03/27 19:33:02 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04227a3c0 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/27 19:33:02 [I] [mqtt.go:54] mqtt running OK  
+2017/03/27 19:33:02 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/27 19:33:03 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/27 19:33:15 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/27 19:33:15 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/28 09:15:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:15:53 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:15:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc0422683c0 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:15:53 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:15:53 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:15:53 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 09:16:27 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/28 09:16:28 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/28 09:19:07 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:19:07 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:28:22 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:28:22 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:28:23 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc042282420 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:28:23 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:28:23 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:28:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 09:28:32 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:30:30 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:30:30 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:30:30 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc042292360 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:30:30 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:30:30 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:30:30 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 09:30:41 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:30:50 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:30:51 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:32:31 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:32:31 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:32:31 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04227a480 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:32:31 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:32:31 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:32:31 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 09:32:44 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:36:26 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:36:26 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:36:26 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc042036660 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:36:26 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:36:26 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:36:26 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 09:36:28 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:36:28 [D] [mqttController.go:80] eeeeeeeeeeeeeee 
+2017/03/28 09:36:56 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:36:56 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:36:57 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04206c300 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:36:57 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:36:57 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:36:57 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 09:37:03 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 09:37:03 [D] [RoomInfo.go:86] num11 
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] the request url is  /chat/user/roominfo
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] Handler crashed with error <Ormer.QueryTable> table name: `room_info` not exists
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/orm/orm.go:446
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/RoomInfo.go:89
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/mqttController.go:68
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:802
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/28 09:37:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/28 09:46:44 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 09:46:44 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 09:46:45 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04200c840 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 09:46:45 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 09:46:45 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 09:46:45 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 10:21:41 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 10:21:41 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 10:21:41 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04200c9c0 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 10:21:41 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 10:21:41 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 10:21:41 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 10:23:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 10:23:10 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 10:23:10 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04227a420 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 10:23:11 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 10:23:11 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 10:23:11 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 10:25:18 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/28 10:25:18 [I] [Connect.go:19] 数据库连接成功 
+2017/03/28 10:25:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04200c4e0 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/28 10:25:19 [I] [mqtt.go:54] mqtt running OK  
+2017/03/28 10:25:19 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/28 10:25:19 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/28 10:25:46 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/28 10:25:46 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/28 10:26:46 [D] [mqttController.go:66] start1111111111111 
+2017/03/28 10:26:46 [D] [RoomInfo.go:89] num 0 
+2017/03/28 10:26:46 [D] [mqttController.go:69] ddddddddddddddddddddddddddd [] 
+2017/03/28 10:26:46 [D] [mqttController.go:71] GetRoomInfo fail Error 1054: Unknown column 'T0.room_i_d' in 'field list' 
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] the request url is  /chat/user/roominfo
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:mqttcontroller/getroominfo.tpl
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/template.go:64
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/controller.go:249
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/controller.go:200
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/controller.go:184
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/03/28 10:26:46 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/03/28 10:49:40 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/28 10:49:41 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/28 10:52:27 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40029 , errmsg=invalid code, hints: [ req_id: asf6dA0547uth5 ] 

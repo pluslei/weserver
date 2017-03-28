@@ -6,6 +6,14 @@ import (
 	"time"
 )
 
+//房间信息
+type RoomInfo struct {
+	RoomIcon    string //房间图标
+	RommTitle   string //房间名
+	RoomTeacher string //老师
+	RoomNum     string //关注人数
+}
+
 //用户信息
 type Membermsg struct {
 	Totalmembers  int64  //会员人数
@@ -50,7 +58,7 @@ type Usertitle struct {
 type MessageInfo struct {
 	Id            int64     //数据库中id
 	Code          int       //公司代码
-	Room          int       //房间号
+	Room          string    //房间号
 	Uname         string    //用户名
 	Nickname      string    //用户昵称
 	UserIcon      string    //用户logo

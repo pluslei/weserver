@@ -13,12 +13,6 @@ type Configer struct {
 	MqIsCleansession bool
 	MqVersion        int
 	MqTopic          string
-	MqusernameAccess string
-	MqpasswordSecret string
-	Mqport           int
-	MquseTLS         int
-	MqgroupId        string
-	Mqurl            string
 	check            bool
 }
 
@@ -31,21 +25,14 @@ var Config *Configer
 
 func GetMqttConfig() *Configer {
 	var conf Configer
-	conf.MqAddress = beego.AppConfig.String("mqhost")
-	conf.MqUserName = beego.AppConfig.String("mqaccessKey")
-	conf.MqPwd = beego.AppConfig.String("mqsecretKey")
-	conf.MqClientID = beego.AppConfig.String("mqclientId")
-	conf.MqIsreconnect, _ = beego.AppConfig.Bool("mqIsreconnect")
-	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqcleansession")
-	conf.MqVersion, _ = beego.AppConfig.Int("mqVersion")
-	conf.MqTopic = beego.AppConfig.String("mqtopic")
-
-	conf.Mqurl = beego.AppConfig.String("Mqurl")
-	conf.MqusernameAccess = beego.AppConfig.String("mqusernameAccess")
-	conf.MqpasswordSecret = beego.AppConfig.String("mqpasswordSecret")
-	conf.Mqport, _ = beego.AppConfig.Int("mqport")
-	conf.MquseTLS, _ = beego.AppConfig.Int("mquseTLS")
-	conf.MqgroupId = beego.AppConfig.String("MqgroupId")
+	conf.MqAddress = beego.AppConfig.String("mqServerHost")
+	conf.MqUserName = beego.AppConfig.String("mqServerAccess")
+	conf.MqPwd = beego.AppConfig.String("mqServerKey")
+	conf.MqClientID = beego.AppConfig.String("mqServerClientId")
+	conf.MqIsreconnect, _ = beego.AppConfig.Bool("mqServerIsreconnect")
+	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqSeverCleanSession")
+	conf.MqVersion, _ = beego.AppConfig.Int("mqServerVersion")
+	conf.MqTopic = beego.AppConfig.String("mqServerTopic")
 	return &conf
 }
 
@@ -58,7 +45,6 @@ func Run() {
 }
 
 //发消息
-
 func SendMessage(message string) {
 	mq.sendMessage(Config.MqTopic, message)
 }

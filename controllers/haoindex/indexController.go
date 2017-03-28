@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
+	m "weserver/models"
+	"weserver/src/tools"
+
 	"github.com/astaxie/beego"
 	"github.com/silenceper/wechat"
 	"github.com/silenceper/wechat/cache"
 	"github.com/silenceper/wechat/oauth"
-	m "weserver/models"
-	"weserver/src/mqtt"
-	"weserver/src/tools"
 )
 
 type IndexController struct {
@@ -124,9 +124,6 @@ func (this *IndexController) Index() {
 		if err != nil {
 			beego.Error("load retalteduser error", err)
 		}
-		beego.Debug("get the userload:", userLoad)
-		beego.Debug("get the userload:", userLoad.Role)
-		beego.Debug("get the userload:", userLoad.Title)
 		user := new(Userinfor)
 		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
 		codeid := tools.MainEncrypt(prevalue)
@@ -200,7 +197,6 @@ func (this *IndexController) Index() {
 
 		system, _ := m.GetSysConfig() //获取配置表数据
 		this.Data["system"] = system
-		this.Data["Mq"] = mqtt.Config
 		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo

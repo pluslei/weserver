@@ -2,8 +2,9 @@ package models
 
 import (
 	"errors"
-	"github.com/astaxie/beego/orm"
 	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 /*
@@ -12,7 +13,7 @@ import (
 type ChatRecord struct {
 	Id            int64     `orm:"pk;auto"`
 	Code          int       //公司代码
-	Room          int       //房间号
+	Room          string    //房间号
 	Uname         string    //用户名
 	Nickname      string    //用户昵称
 	UserIcon      string    //用户logo
@@ -96,8 +97,8 @@ func GetLastChatId(count int64) (chat []ChatRecord, countline int64) {
 	return chat, countline
 }
 
-//获取内容
-func GetChatMsgData(count int64) ([]ChatRecord, int64, error) {
+//根据表名和数量 获取信息
+func GetChatMsgData(count int64, tableName string) ([]ChatRecord, int64, error) {
 	o := orm.NewOrm()
 
 	var satrt int64
@@ -108,12 +109,7 @@ func GetChatMsgData(count int64) ([]ChatRecord, int64, error) {
 		satrt = lastdata[fromcount-1].Id
 	}
 	var chat []ChatRecord
-	// chatcount, _ := GetChatCount()
-	// startpos := chatcount - count
-	// if startpos < 0 {
-	// 	startpos = 0
-	// }
-	num, err := o.QueryTable("ChatRecord").OrderBy("Id").Filter("Status", 1).Filter("Id__gt", satrt).All(&chat)
+	num, err := o.QueryTable(tableName).OrderBy("Id").Filter("Status", 1).Filter("Id__gt", satrt).All(&chat)
 	return chat, num, err
 }
 

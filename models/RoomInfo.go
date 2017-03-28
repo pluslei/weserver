@@ -1,0 +1,91 @@
+package models
+
+import (
+	"errors"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
+)
+
+/*
+*  	房间信息
+ */
+type RoomInfo struct {
+	Id          int64  `orm:"pk;auto"`
+	RoomID      string //topic
+	RoomTitle   string //房间名
+	RoomTeacher string //老师
+	RoomNum     string //关注人数
+	GroupId     string //组id
+	Url         string //客户端
+	Port        int
+	TLS         bool
+	Access      string
+	SecretKey   string
+	RoomIcon    string //房间图标
+}
+
+func init() {
+	orm.RegisterModel(new(RoomInfo))
+}
+
+func (c *RoomInfo) TableName() string {
+	return "roominfo"
+}
+
+/*
+* 新增加聊天室
+ */
+func AddRoom(r *RoomInfo) (int64, error) {
+	omodel := orm.NewOrm()
+	id, err := omodel.Insert(r)
+	return id, err
+}
+
+//根据roomid 删除某个聊天室
+func DelRoomById(roomid string) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	status, err := o.QueryTable(chat).Filter("roomid", roomid).Delete()
+	return status, err
+}
+
+//事务添加多个聊天室
+func AddMulRoom(room []RoomInfo, length int) error {
+	model := orm.NewOrm()
+	err := model.Begin()
+	SuccessNum := 0
+	if err == nil {
+		for i := 0; i < length; i++ {
+			id, err := model.Insert(&room[i])
+			if err == nil && id > 0 {
+				SuccessNum++
+			}
+		}
+	} else {
+		err = errors.New("事务申请失败!")
+	}
+	if SuccessNum == length {
+		err = model.Commit()
+	} else {
+		err = errors.New("事务提交失败!")
+	}
+	return err
+}
+
+//获取聊天室个数
+func GetRoomCount() (int64, error) {
+	o := orm.NewOrm()
+	var table RoomInfo
+	count, err := o.QueryTable(table).Count()
+	return count, err
+}
+
+//获取聊天室信息
+func GetRoomInfo() ([]RoomInfo, int64, error) {
+	o := orm.NewOrm()
+	var info []RoomInfo
+	num, err := o.QueryTable("roominfo").OrderBy("Id").All(&info)
+	beego.Debug("num", num)
+	return info, num, err
+}

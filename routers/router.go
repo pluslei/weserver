@@ -1,12 +1,13 @@
 package routers
 
 import (
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"weserver/controllers/haoadmin"
 	"weserver/controllers/haoindex"
 	"weserver/controllers/mqtt"
 	s "weserver/src/rpcserver"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
 )
 
 func init() {
@@ -61,7 +62,7 @@ func Router() {
 	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateUserStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
-	beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")
+	//beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")
 
 	// 节点管理
 	// beego.Router("/weserver/node/addnode", &haoadmin.NodeController{}, "*:AddNode")
@@ -113,12 +114,14 @@ func Router() {
 
 	// index
 	beego.Router("/", &haoindex.IndexController{})
+
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
 
+	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetRoomInfo")
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
 	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")

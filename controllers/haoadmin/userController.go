@@ -1,12 +1,13 @@
 package haoadmin
 
 import (
-	"github.com/astaxie/beego"
 	"strconv"
 	"strings"
 	"time"
 	m "weserver/models"
 	"weserver/src/tools"
+
+	"github.com/astaxie/beego"
 )
 
 type UserController struct {
@@ -338,6 +339,7 @@ func (this *UserController) UserToTitle() {
 
 }
 
+/*
 //在线用户
 func (this *UserController) Onlineuser() {
 	if this.IsAjax() {
@@ -364,6 +366,7 @@ func (this *UserController) Onlineuser() {
 		this.TplName = "haoadmin/rbac/user/online.html"
 	}
 }
+*/
 
 // 用户审核
 func (this *UserController) UpdateRegStatus() {
