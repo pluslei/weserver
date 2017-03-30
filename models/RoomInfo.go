@@ -12,14 +12,14 @@ import (
  */
 type RoomInfo struct {
 	Id          int64  `orm:"pk;auto"`
-	RoomID      string //topic
+	RoomId      string //topic
 	RoomTitle   string //房间名
 	RoomTeacher string //老师
 	RoomNum     string //关注人数
 	GroupId     string //组id
 	Url         string //客户端
 	Port        int
-	TLS         bool
+	Tls         bool
 	Access      string
 	SecretKey   string
 	RoomIcon    string //房间图标
@@ -46,7 +46,7 @@ func AddRoom(r *RoomInfo) (int64, error) {
 func DelRoomById(roomid string) (int64, error) {
 	o := orm.NewOrm()
 	var chat RoomInfo
-	status, err := o.QueryTable(chat).Filter("roomid", roomid).Delete()
+	status, err := o.QueryTable(chat).Filter("RoomId", roomid).Delete()
 	return status, err
 }
 

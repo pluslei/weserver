@@ -63,21 +63,17 @@ func NewMessageType(msgtype int) *MessageType {
 
 // 获取聊天室信息
 func (this *MqttController) GetRoomInfo() {
-	beego.Debug("start1111111111111")
-	// if this.IsAjax() {
-	roomInfo, _, err := m.GetRoomInfo()
-	beego.Debug("ddddddddddddddddddddddddddd", roomInfo)
-	if err != nil {
-		beego.Debug("GetRoomInfo fail", err)
-		return
+	if this.IsAjax() {
+		roomInfo, _, err := m.GetRoomInfo()
+		if err != nil {
+			beego.Debug("GetRoomInfo fail", err)
+			return
+		}
+		data := make(map[string]interface{})
+		data["roomInfo"] = roomInfo //聊天室信息
+		this.Data["json"] = &data
+		this.ServeJSON()
 	}
-	beego.Debug("11111111111111111111", roomInfo)
-	data := make(map[string]interface{})
-	data["roomInfo"] = roomInfo //聊天室信息
-	this.Data["json"] = &data
-	this.ServeJSON()
-	// }
-	beego.Debug("eeeeeeeeeeeeeee")
 	this.Ctx.WriteString("")
 }
 
@@ -459,7 +455,7 @@ func userTotal() {
 		<-t
 		dayonlineuser, err := m.GetAllUserCount(30)
 		if err != nil {
-			beego.Error("get the user error", err)
+			beego.Error("get the usercount error", err)
 		}
 		sysconfig, _ := m.GetAllSysConfig()
 		totalLock.Lock()
