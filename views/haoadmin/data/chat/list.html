@@ -373,7 +373,10 @@
         $.ajax({
             url: '/weserver/data/delrecord',
             type: 'POST',
-            data: {uuid: uuid},
+            data: {
+                uuid: uuid,
+                topic: room
+             },
             success: function(data){
                 if (data.status) {
                     layer.msg(data.info, {
@@ -388,8 +391,6 @@
             }
         })
     }
-
-
 
     // 显示图片
     function showImg() {

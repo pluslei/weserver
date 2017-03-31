@@ -505,3 +505,106 @@
 2017/03/30 15:37:35 [I] [mqtt.go:54] mqtt running OK  
 2017/03/30 15:37:35 [D] [mq.go:44] MQTT Client Init OK. 
 2017/03/30 15:37:35 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/30 16:51:04 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/30 16:51:04 [I] [Connect.go:19] 数据库连接成功 
+2017/03/30 16:51:04 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04206e300 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/30 16:51:04 [I] [mqtt.go:54] mqtt running OK  
+2017/03/30 16:51:04 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/30 16:51:05 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/30 16:51:15 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/30 16:51:15 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/30 16:51:15 [D] [RoomInfo.go:89] num 3 
+2017/03/30 16:51:30 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/30 16:51:30 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/30 16:51:51 [D] [RoomInfo.go:89] num 3 
+2017/03/30 16:52:00 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/30 16:52:00 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/30 16:52:07 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:13:38 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/31 09:13:38 [I] [Connect.go:19] 数据库连接成功 
+2017/03/31 09:13:38 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc0420367e0 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/31 09:13:38 [I] [mqtt.go:54] mqtt running OK  
+2017/03/31 09:13:38 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/31 09:13:39 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/31 09:14:00 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:14:02 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:14:02 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:14:26 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: MRO0869uth8 ] 
+2017/03/31 09:14:29 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:14:29 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:14:30 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:14:34 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: J3XjtA0877th23 ] 
+2017/03/31 09:14:37 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:14:37 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:14:38 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:14:46 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: j1bZ8a0889th19 ] 
+2017/03/31 09:14:48 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:14:49 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:14:49 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:14:59 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: X3Pyua0902th10 ] 
+2017/03/31 09:15:02 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:15:02 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:15:03 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:15:11 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:15:11 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:15:18 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:15:21 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:15:21 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:15:25 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:15:28 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: h62UtA0931th19 ] 
+2017/03/31 09:15:31 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:15:31 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:15:31 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:16:53 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:16:53 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:16:55 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:16:58 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: aXwFKa0021th10 ] 
+2017/03/31 09:17:01 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:17:01 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:17:02 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:17:07 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: E2PV0a0030th19 ] 
+2017/03/31 09:17:10 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:17:10 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:17:10 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:19:01 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: GWkQ8a0144th10 ] 
+2017/03/31 09:19:04 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:19:04 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:19:05 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:21:59 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: jQlEMa0322th20 ] 
+2017/03/31 09:22:02 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:22:02 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:22:03 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:23:27 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: .75Vba0410uth6 ] 
+2017/03/31 09:23:30 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:23:30 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:23:30 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:24:09 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: LKBxTA0451th23 ] 
+2017/03/31 09:24:11 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:24:11 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:24:12 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:24:53 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:24:53 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:24:59 [D] [RoomInfo.go:89] num 3 
+2017/03/31 09:25:02 [E] [indexController.go:85] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: BzEoka0505th13 ] 
+2017/03/31 09:25:05 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 09:25:05 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 09:25:06 [D] [RoomInfo.go:89] num 3 
+2017/03/31 15:20:22 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/31 15:20:22 [I] [Connect.go:19] 数据库连接成功 
+2017/03/31 15:20:22 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04200c960 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/31 15:21:24 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/31 15:21:24 [I] [Connect.go:19] 数据库连接成功 
+2017/03/31 15:21:24 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc04200c960 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/31 15:22:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/03/31 15:22:19 [I] [Connect.go:19] 数据库连接成功 
+2017/03/31 15:22:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage/sub1] [1] [Topic_ChatMessage/sub1] &{{{{0 0} 0 0 0 0} 0xc042288360 false <nil>} [Topic_ChatMessage/sub1] map[]} 
+2017/03/31 15:22:19 [I] [mqtt.go:54] mqtt running OK  
+2017/03/31 15:22:19 [D] [mq.go:44] MQTT Client Init OK. 
+2017/03/31 15:22:19 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/03/31 15:22:31 [D] [indexController.go:158] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 欢迎来到直播间听课学习 0 0 1 591} 
+2017/03/31 15:22:31 [E] [indexController.go:191] get the jsapi config error memcache: no servers configured or available 
+2017/03/31 15:22:32 [D] [RoomInfo.go:89] num 3 
+2017/03/31 15:24:46 [D] [mqttController.go:107] info {0 100  ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true ddd false 0 2017-03-31 15:24:46.6958042 +0800 CST 0 5691de96-e30b-4507-b86f-ffc81722c544} 
+2017/03/31 15:24:46 [D] [mqttController.go:118] isfilter false 
+2017/03/31 15:24:46 [D] [mqttController.go:384] im here false false 
+2017/03/31 15:24:46 [D] [mqttController.go:440] result [] 

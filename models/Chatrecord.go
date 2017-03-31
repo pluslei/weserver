@@ -13,7 +13,7 @@ import (
 type ChatRecord struct {
 	Id            int64     `orm:"pk;auto"`
 	Code          int       //公司代码
-	Room          string    //房间号
+	Room          string    //房间号 topic
 	Uname         string    //用户名
 	Nickname      string    //用户昵称
 	UserIcon      string    //用户logo

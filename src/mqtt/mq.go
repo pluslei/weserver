@@ -1,6 +1,8 @@
 package mqtt
 
 import (
+	"strings"
+
 	"github.com/astaxie/beego"
 )
 
@@ -12,7 +14,7 @@ type Configer struct {
 	MqIsreconnect    bool //是否重连
 	MqIsCleansession bool
 	MqVersion        int
-	MqTopic          string
+	MqTopic          map[string]byte
 	check            bool
 }
 
@@ -32,7 +34,11 @@ func GetMqttConfig() *Configer {
 	conf.MqIsreconnect, _ = beego.AppConfig.Bool("mqServerIsreconnect")
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqSeverCleanSession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqServerVersion")
-	conf.MqTopic = beego.AppConfig.String("mqServerTopic")
+	mqTopic := beego.AppConfig.String("mqServerTopic")
+	slice := strings.Split(",", mqTopic)
+	for index := range slice {
+		conf.MqTopic[slice[index]] = 0
+	}
 	return &conf
 }
 
@@ -45,6 +51,6 @@ func Run() {
 }
 
 //发消息
-func SendMessage(message string) {
-	mq.sendMessage(Config.MqTopic, message)
+func SendMessage(topic, message string) {
+	mq.sendMessage(topic, message)
 }

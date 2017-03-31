@@ -54,12 +54,12 @@ type Usertitle struct {
 	IsLogin   bool   //状态 [true、登录 false、未登录]
 }
 
-//socket内容发送信息
+//mqtt发送信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
 	Code          int       //公司代码
-	Room          string    //房间号
-	Uname         string    //用户名
+	Room          string    //房间号 topic
+	Uname         string    //用户名 openid
 	Nickname      string    //用户昵称
 	UserIcon      string    //用户logo
 	RoleName      string    //用户角色[vip,silver,gold,jewel]

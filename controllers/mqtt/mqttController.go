@@ -22,13 +22,12 @@ import (
 
 const (
 	MSG_TYPE_CHAT    int = iota //聊天消息
-	MSG_TYPE_BROCAST            //广播消息
+	MSG_TYPE_BROCAST            //公告消息
 	MSG_TYPE_DEL                //删除消息
 )
 
 type MessageType struct {
 	Code    int //公司代码
-	Room    int //房间号码
 	Msgtype int //消息类型
 }
 
@@ -57,8 +56,7 @@ func init() {
 
 func NewMessageType(msgtype int) *MessageType {
 	code, _ := strconv.Atoi(beego.AppConfig.String("company"))
-	room, _ := strconv.Atoi(beego.AppConfig.String("room"))
-	return &MessageType{Code: code, Room: room, Msgtype: msgtype}
+	return &MessageType{Code: code, Msgtype: msgtype}
 }
 
 // 获取聊天室信息
@@ -77,7 +75,7 @@ func (this *MqttController) GetRoomInfo() {
 	this.Ctx.WriteString("")
 }
 
-// 获取发送聊天消息
+// 获取聊天消息
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
 		chatmsg := this.GetString("str")
@@ -102,12 +100,10 @@ func (c *MessageType) ParseMsg(msg string) bool {
 		beego.Error("simplejson error", err)
 		return false
 	}
-	info.Code = c.Code //公司代码
-	/*
-		info.Room = c.Room           //房间号码
-	*/
+	info.Code = c.Code           //公司代码
 	info.Datatime = time.Now()   //添加时间
 	info.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
+	topic := info.Room
 
 	beego.Debug("info", info)
 
@@ -116,10 +112,9 @@ func (c *MessageType) ParseMsg(msg string) bool {
 		beego.Error("json error", err)
 		return false
 	}
-
 	// 内部人员
 	if info.IsFilter == false {
-		mq.SendMessage(v) //发消息
+		mq.SendMessage(topic, v) //发消息
 	}
 	beego.Debug("isfilter", info.IsFilter)
 	// 消息入库
@@ -128,25 +123,23 @@ func (c *MessageType) ParseMsg(msg string) bool {
 }
 
 // 发送广播消息
-func (c *MessageType) SendBrocast(content string) bool {
+func (c *MessageType) SendBrocast(topic, content string) bool {
 	info := new(BrocastInfo)
 	info.Content = content
 	info.Code = c.Code
-	info.Room = c.Room
 	info.MsgType = MSG_TYPE_BROCAST
 	v, err := c.Json(info)
 	if err != nil {
 		beego.Error("json error", err)
 		return false
 	}
-	mq.SendMessage(string(v)) //发消息
+	mq.SendMessage(topic, string(v)) //发消息
 	return true
 }
 
-func (c *MessageType) DelMessage(uuid string) bool {
+func (c *MessageType) DelMessage(topic, uuid string) bool {
 	info := new(DelMessage)
 	info.Code = c.Code
-	info.Room = c.Room
 	info.MsgType = MSG_TYPE_DEL
 	info.Uuid = uuid
 
@@ -155,12 +148,12 @@ func (c *MessageType) DelMessage(uuid string) bool {
 		beego.Error("json error", err)
 		return false
 	}
-	mq.SendMessage(string(v)) //发消息
+	mq.SendMessage(topic, string(v)) //发消息
 	return true
 }
 
 // 后台审核消息
-func (c *MessageType) CheckMessage(msg m.ChatRecord) bool {
+func (c *MessageType) CheckMessage(topic string, msg m.ChatRecord) bool {
 	msg.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
 	beego.Debug("msg", msg)
 
@@ -169,7 +162,7 @@ func (c *MessageType) CheckMessage(msg m.ChatRecord) bool {
 		beego.Error("json error", err)
 		return false
 	}
-	mq.SendMessage(v) //发消息
+	mq.SendMessage(topic, v) //发消息
 	return true
 }
 

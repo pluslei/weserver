@@ -1,11 +1,12 @@
 package haoadmin
 
 import (
-	"github.com/astaxie/beego"
 	"time"
 	"weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
+
+	"github.com/astaxie/beego"
 )
 
 type ChatRecordController struct {
@@ -48,6 +49,7 @@ func (this *ChatRecordController) CheckRecord() {
 		this.Rsp(false, "审核失败", "")
 		return
 	}
+
 	chatinfo, err := m.GetChatIdData(id)
 	if err != nil {
 		beego.Error("get chat data error", err)
@@ -56,7 +58,7 @@ func (this *ChatRecordController) CheckRecord() {
 	}
 
 	msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_CHAT)
-	if msgtype.CheckMessage(chatinfo) {
+	if msgtype.CheckMessage(chatinfo.Room, chatinfo) {
 		m.UpdateChatStatus(id)
 		this.Rsp(true, "审核成功", "")
 		return
