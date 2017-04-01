@@ -1,12 +1,13 @@
 package haoadmin
 
 import (
-	"github.com/astaxie/beego"
 	"strings"
 	"time"
 	"weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
+
+	"github.com/astaxie/beego"
 )
 
 type QsController struct {
@@ -60,11 +61,11 @@ func (this *QsController) SendBroad() {
 // 发送广播
 func (this *QsController) SendBroadHandle() {
 	code, _ := beego.AppConfig.Int("company")
-	room, _ := beego.AppConfig.Int("room")
 
 	UserInfo := this.GetSession("userinfo")
 	uname := UserInfo.(*m.User).Username
 	data := this.GetString("content")
+	room := this.GetString("room") //即topic
 
 	broad := new(m.Broadcast)
 	broad.Code = code
@@ -78,7 +79,7 @@ func (this *QsController) SendBroadHandle() {
 		beego.Debug(err)
 	} else {
 		msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_BROCAST)
-		b := msgtype.SendBrocast(data)
+		b := msgtype.SendBrocast(room, data)
 		if b {
 			this.Rsp(true, "广播发送成功", "")
 			return

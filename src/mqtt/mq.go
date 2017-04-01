@@ -1,7 +1,7 @@
 package mqtt
 
 import (
-	"strings"
+	m "weserver/models"
 
 	"github.com/astaxie/beego"
 )
@@ -34,10 +34,24 @@ func GetMqttConfig() *Configer {
 	conf.MqIsreconnect, _ = beego.AppConfig.Bool("mqServerIsreconnect")
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqSeverCleanSession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqServerVersion")
-	mqTopic := beego.AppConfig.String("mqServerTopic")
-	slice := strings.Split(",", mqTopic)
-	for index := range slice {
-		conf.MqTopic[slice[index]] = 0
+	// mqTopic := beego.AppConfig.String("mqServerTopic")
+	// slice := strings.Split(",", mqTopic)
+	// for index := range slice {
+	// 	conf.MqTopic[slice[index]] = 0
+	// }
+	room, count, err := m.GetRoomName()
+	if err != nil {
+		beego.Error("Get Room Topic Fail", err)
+		return nil
+	}
+	beego.Debug("Get Room Topic Num: ", count)
+	conf.MqTopic = make(map[string]byte)
+	for k, v := range room {
+		value, ok := v.(byte)
+		if !ok {
+			beego.Debug("type is no match")
+		}
+		conf.MqTopic[k] = value
 	}
 	return &conf
 }

@@ -4,13 +4,14 @@ import (
 	// tool "weserver/src/tool"
 	// "fmt"
 	"fmt"
-	"github.com/astaxie/beego"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 	"weserver/controllers/mqtt"
 	"weserver/src/tools"
+
+	"github.com/astaxie/beego"
 )
 
 type TestController struct {
@@ -42,5 +43,6 @@ func (this *TestController) PostApi() {
 
 func (this *TestController) Test() {
 	msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_BROCAST)
-	msgtype.SendBrocast("12d1d2s1d12")
+	topic := this.GetString("topic") // 从管理页面获取topic
+	msgtype.SendBrocast(topic, "12d1d2s1d12")
 }

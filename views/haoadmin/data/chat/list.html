@@ -370,6 +370,7 @@
     // 删除方法
     function deleteModel(){
         var uuid = $(".data-modal-del").val();
+        //添加topic 传送topic到后台
         $.ajax({
             url: '/weserver/data/delrecord',
             type: 'POST',

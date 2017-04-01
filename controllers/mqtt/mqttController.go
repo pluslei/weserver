@@ -137,6 +137,7 @@ func (c *MessageType) SendBrocast(topic, content string) bool {
 	return true
 }
 
+//删除消息
 func (c *MessageType) DelMessage(topic, uuid string) bool {
 	info := new(DelMessage)
 	info.Code = c.Code
@@ -386,11 +387,9 @@ func addData(info *MessageInfo) {
 	if info.IsLogin && info.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
-		chatrecord.Uuid = info.Uuid //uuid
-		chatrecord.Code = info.Code //公司代码
-		/*
-			chatrecord.Room = info.Room                 //房间号
-		*/
+		chatrecord.Uuid = info.Uuid                 //uuid
+		chatrecord.Code = info.Code                 //公司代码
+		chatrecord.Room = info.Room                 //房间号
 		chatrecord.Uname = info.Uname               //用户名
 		chatrecord.Nickname = info.Nickname         //用户昵称
 		chatrecord.UserIcon = info.UserIcon         //用户logo

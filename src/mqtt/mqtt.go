@@ -34,6 +34,7 @@ func NewMQ(o *Configer) *MQ {
 	opts.SetProtocolVersion(uint(o.MqVersion))
 	opts.SetAutoReconnect(o.MqIsreconnect) //自动重连
 	opts.SetDefaultPublishHandler(messageHandler)
+	m.topic = make(map[string]byte)
 	m.topic = o.MqTopic
 	m.opts = opts
 	m.msgch = make(chan *message, 102400)
@@ -100,10 +101,14 @@ func (m *MQ) connect(topic map[string]byte) error {
 	}
 	*/
 	//多聊天室
+	for key, v := range topic {
+		beego.Debug("Topic, Qos ", key, v)
+	}
 	if tokenSub := m.conn.SubscribeMultiple(topic, nil); tokenSub.Wait() && tokenSub.Error() != nil {
 		beego.Error("topic sub error", tokenSub.Error())
 		return tokenSub.Error()
 	}
+	beego.Debug("mqtt connect and Subscribe Success！")
 	return nil
 }
 

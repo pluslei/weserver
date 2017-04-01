@@ -70,6 +70,7 @@ func (this *ChatRecordController) CheckRecord() {
 // 删除消息
 func (this *ChatRecordController) DelRecord() {
 	uuid := this.GetString("uuid")
+	topic := this.GetString("topic") //管理页面ajax获取的
 
 	if len(uuid) <= 0 {
 		this.Rsp(false, "删除失败", "")
@@ -77,7 +78,7 @@ func (this *ChatRecordController) DelRecord() {
 	}
 
 	msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_DEL)
-	if msgtype.DelMessage(uuid) {
+	if msgtype.DelMessage(topic, uuid) {
 		m.DelChatById(uuid)
 		this.Rsp(true, "审核成功", "")
 		return

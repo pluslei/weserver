@@ -13,6 +13,7 @@ import (
 type RoomInfo struct {
 	Id          int64  `orm:"pk;auto"`
 	RoomId      string //topic
+	Qos         byte   `orm:"default(0)"` // mqtt 协议订阅等级
 	RoomTitle   string //房间名
 	RoomTeacher string //老师
 	RoomNum     string //关注人数
@@ -73,12 +74,12 @@ func AddMulRoom(room []RoomInfo, length int) error {
 	return err
 }
 
-//获取聊天室个数
-func GetRoomCount() (int64, error) {
+//获取聊天室个数和聊天室名
+func GetRoomName() (map[string]interface{}, int64, error) {
 	o := orm.NewOrm()
-	var table RoomInfo
-	count, err := o.QueryTable(table).Count()
-	return count, err
+	res := make(orm.Params)
+	nums, err := o.Raw("SELECT room_id, qos FROM roominfo Order By Id").RowsToMap(&res, "room_id", "qos")
+	return res, nums, err
 }
 
 //获取聊天室信息

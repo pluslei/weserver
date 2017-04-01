@@ -2,14 +2,15 @@ package models
 
 import (
 	// "github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 // 踢人记录表
 type KickOut struct {
 	Id        int64
-	Coderoom  int       //房间号
+	Coderoom  string    //房间号
 	Uname     string    `orm:"size(128)" form:"Uname" valid:"Required"`    //操作的用户名
 	Objname   string    `orm:"size(128)" form:"Objname"  valid:"Required"` //被提出的用户名
 	Kicktime  int64     //禁言的时间戳

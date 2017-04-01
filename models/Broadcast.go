@@ -2,8 +2,9 @@ package models
 
 import (
 	//"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 /*
@@ -12,7 +13,7 @@ import (
 type Broadcast struct {
 	Id       int64     `orm:"pk;auto"`
 	Code     int       //公司代码
-	Room     int       //房间号
+	Room     string    //房间号 topic
 	Uname    string    `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
 	Data     string    `orm:"type(text)"`                              //消息内容
 	Datatime time.Time `orm:"type(datetime)"`                          //添加时间
