@@ -15,7 +15,7 @@ type QsController struct {
 }
 
 // 发送广播列表
-func (this *QsController) BroadList() {
+func (this *QsController) SendNoticeList() {
 	if this.IsAjax() {
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
@@ -26,13 +26,13 @@ func (this *QsController) BroadList() {
 		if err != nil {
 			beego.Error(err)
 		}
-		Broadlist, count := m.GetBroadcastlist(iStart, iLength, "Room")
-		for _, item := range Broadlist {
+		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "Room")
+		for _, item := range Noticelist {
 			item["Datatime"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 		}
 		// json
 		data := make(map[string]interface{})
-		data["aaData"] = Broadlist
+		data["aaData"] = Noticelist
 		data["iTotalDisplayRecords"] = count
 		data["iTotalRecords"] = iLength
 		data["sEcho"] = sEcho
@@ -58,7 +58,7 @@ func (this *QsController) SendBroad() {
 	this.TplName = "haoadmin/data/qs/sendbroad.html"
 }
 
-// 发送广播
+// 发送公告
 func (this *QsController) SendBroadHandle() {
 	code, _ := beego.AppConfig.Int("company")
 
@@ -67,24 +67,24 @@ func (this *QsController) SendBroadHandle() {
 	data := this.GetString("content")
 	room := this.GetString("room") //即topic
 
-	broad := new(m.Broadcast)
+	broad := new(m.Notice)
 	broad.Code = code
 	broad.Room = room
 	broad.Uname = uname
 	broad.Datatime = time.Now()
 	broad.Data = data
-	_, err := m.AddBroadcast(broad)
+	_, err := m.AddNoticeMsg(broad)
 	if err != nil {
-		this.Rsp(false, "广播发送失败", "")
+		this.Rsp(false, "公告写入数据库失败", "")
 		beego.Debug(err)
 	} else {
 		msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_BROCAST)
 		b := msgtype.SendBrocast(room, data)
 		if b {
-			this.Rsp(true, "广播发送成功", "")
+			this.Rsp(true, "公告发送成功", "")
 			return
 		}
-		this.Rsp(false, "广播发送失败", "")
+		this.Rsp(false, "公告发送失败", "")
 	}
 }
 

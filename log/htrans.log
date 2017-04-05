@@ -778,3 +778,133 @@
 2017/04/01 18:08:00 [I] [mqtt.go:55] mqtt running OK  
 2017/04/01 18:08:00 [D] [mq.go:64] MQTT Client Init OK. 
 2017/04/01 18:08:00 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 09:11:00 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 09:11:00 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 09:11:00 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 09:11:00 [D] [mq.go:52] type is no match 
+2017/04/05 09:11:00 [D] [mq.go:52] type is no match 
+2017/04/05 09:11:00 [D] [mq.go:52] type is no match 
+2017/04/05 09:11:00 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 09:11:00 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 09:11:00 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 09:11:00 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 09:11:00 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 09:11:00 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 09:11:00 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 12:01:30 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 12:01:30 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 12:01:30 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 12:01:30 [D] [mq.go:52] type is no match 
+2017/04/05 12:01:30 [D] [mq.go:52] type is no match 
+2017/04/05 12:01:30 [D] [mq.go:52] type is no match 
+2017/04/05 12:01:30 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 12:01:30 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 12:01:30 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 12:01:30 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 12:01:30 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 12:01:30 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 12:01:31 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 14:17:22 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 14:17:22 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 14:17:22 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 14:17:22 [D] [mq.go:52] type is no match 
+2017/04/05 14:17:22 [D] [mq.go:52] type is no match 
+2017/04/05 14:17:22 [D] [mq.go:52] type is no match 
+2017/04/05 14:17:22 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 14:17:22 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 14:17:22 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 14:17:22 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 14:17:22 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 14:17:22 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 14:17:22 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 14:19:52 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 14:19:52 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 14:19:52 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 14:19:52 [D] [mq.go:52] type is no match 
+2017/04/05 14:19:52 [D] [mq.go:52] type is no match 
+2017/04/05 14:19:52 [D] [mq.go:52] type is no match 
+2017/04/05 14:19:52 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 14:19:52 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 14:19:52 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 14:19:52 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 14:19:52 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 14:19:52 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 14:19:52 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 18:25:37 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 18:25:37 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 18:25:37 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 18:25:37 [D] [mq.go:52] type is no match 
+2017/04/05 18:25:37 [D] [mq.go:52] type is no match 
+2017/04/05 18:25:37 [D] [mq.go:52] type is no match 
+2017/04/05 18:25:37 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 18:25:37 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 18:25:37 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 18:25:37 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 18:25:37 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 18:25:37 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 18:25:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 18:26:04 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 18:26:04 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 18:26:04 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 18:26:04 [D] [mq.go:52] type is no match 
+2017/04/05 18:26:04 [D] [mq.go:52] type is no match 
+2017/04/05 18:26:04 [D] [mq.go:52] type is no match 
+2017/04/05 18:26:04 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 18:26:04 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 18:26:04 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 18:26:04 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 18:26:04 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 18:26:04 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 18:26:04 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 18:42:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 18:42:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 18:42:32 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 18:42:32 [D] [mq.go:52] type is no match 
+2017/04/05 18:42:32 [D] [mq.go:52] type is no match 
+2017/04/05 18:42:32 [D] [mq.go:52] type is no match 
+2017/04/05 18:42:33 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 18:42:33 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 18:42:33 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 18:42:33 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 18:42:33 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 18:42:33 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 18:42:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 18:45:31 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 18:45:31 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 18:45:31 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 18:45:31 [D] [mq.go:52] type is no match 
+2017/04/05 18:45:31 [D] [mq.go:52] type is no match 
+2017/04/05 18:45:31 [D] [mq.go:52] type is no match 
+2017/04/05 18:45:31 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 18:45:31 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 18:45:31 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 18:45:31 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 18:45:31 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 18:45:31 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 18:45:31 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 18:47:17 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 18:47:17 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 18:47:17 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 18:47:17 [D] [mq.go:52] type is no match 
+2017/04/05 18:47:17 [D] [mq.go:52] type is no match 
+2017/04/05 18:47:17 [D] [mq.go:52] type is no match 
+2017/04/05 18:47:18 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 18:47:18 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 18:47:18 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 18:47:18 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 18:47:18 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 18:47:18 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 18:47:18 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/05 18:47:49 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/05 18:47:49 [I] [Connect.go:19] 数据库连接成功 
+2017/04/05 18:47:49 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/05 18:47:49 [D] [mq.go:52] type is no match 
+2017/04/05 18:47:49 [D] [mq.go:52] type is no match 
+2017/04/05 18:47:49 [D] [mq.go:52] type is no match 
+2017/04/05 18:47:49 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/05 18:47:49 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/05 18:47:49 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/05 18:47:49 [D] [mqtt.go:111] mqtt connect and Subscribe Success！ 
+2017/04/05 18:47:49 [I] [mqtt.go:55] mqtt running OK  
+2017/04/05 18:47:49 [D] [mq.go:64] MQTT Client Init OK. 
+2017/04/05 18:47:49 [I] [asm_amd64.s:2086] http server Running on http://:80

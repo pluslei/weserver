@@ -11,7 +11,8 @@ import (
 *  	房间信息
  */
 type RoomInfo struct {
-	Id          int64  `orm:"pk;auto"`
+	Id          int64 `orm:"pk;auto"`
+	Code        int64
 	RoomId      string //topic
 	Qos         byte   `orm:"default(0)"` // mqtt 协议订阅等级
 	RoomTitle   string //房间名

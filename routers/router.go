@@ -104,7 +104,7 @@ func Router() {
 	beego.Router("/weserver/data/delrecord", &haoadmin.ChatRecordController{}, "*:DelRecord")
 
 	// 广播
-	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:BroadList")
+	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:SendNoticeList")
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
 	beego.Router("/weserver/data/sendbroadhandle", &haoadmin.QsController{}, "*:SendBroadHandle")
 
@@ -120,6 +120,13 @@ func Router() {
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
+
+	//收藏
+	beego.Router("/chat/user/Collect", &haoindex.ManagerController{}, "*:GetCollectInfo")
+	//踢人
+	beego.Router("/chat/user/KickOut", &haoindex.ManagerController{}, "*:GetKickOutInfo")
+	//禁言
+	beego.Router("/chat/user/ShutUp", &haoindex.ManagerController{}, "*:GetShutUpInfo")
 
 	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetRoomInfo")
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")

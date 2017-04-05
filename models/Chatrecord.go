@@ -14,7 +14,7 @@ type ChatRecord struct {
 	Id            int64     `orm:"pk;auto"`
 	Code          int       //公司代码
 	Room          string    //房间号 topic
-	Uname         string    //用户名
+	Uname         string    //用户名  openid
 	Nickname      string    //用户昵称
 	UserIcon      string    //用户logo
 	RoleName      string    //用户角色[vip,silver,gold,jewel]

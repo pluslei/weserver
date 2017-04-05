@@ -21,9 +21,10 @@ import (
 )
 
 const (
-	MSG_TYPE_CHAT    int = iota //聊天消息
-	MSG_TYPE_BROCAST            //公告消息
-	MSG_TYPE_DEL                //删除消息
+	MSG_TYPE_CHAT     int = iota //聊天消息
+	MSG_TYPE_BROCAST             //公告消息
+	MSG_TYPE_DEL                 //删除消息
+	MSG_TYPE_STRATEGY            //策略消息
 )
 
 type MessageType struct {
@@ -209,7 +210,7 @@ func (this *MqttController) GetChatHistoryList() {
 		data := make(map[string]interface{})
 		data["historydata"] = historychat //聊天的历史信息
 		//从数据库中获取公告中的最后一条内容
-		broaddata, _ := m.GetBroadcastData(int(roomid))
+		broaddata, _ := m.GetNoticeData(int(roomid))
 		data["notice"] = broaddata //公告
 		this.Data["json"] = &data
 		this.ServeJSON()
