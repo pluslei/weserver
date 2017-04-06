@@ -2,7 +2,7 @@ package haoadmin
 
 import (
 	"time"
-	"weserver/controllers/mqtt"
+	. "weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
 
@@ -57,8 +57,7 @@ func (this *ChatRecordController) CheckRecord() {
 		return
 	}
 
-	msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_CHAT)
-	if msgtype.CheckMessage(chatinfo.Room, chatinfo) {
+	if CheckMessage(chatinfo.Room, chatinfo) {
 		m.UpdateChatStatus(id)
 		this.Rsp(true, "审核成功", "")
 		return
@@ -77,8 +76,7 @@ func (this *ChatRecordController) DelRecord() {
 		return
 	}
 
-	msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_DEL)
-	if msgtype.DelMessage(topic, uuid) {
+	if DelMsg(topic, uuid) {
 		m.DelChatById(uuid)
 		this.Rsp(true, "审核成功", "")
 		return

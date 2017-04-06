@@ -18,7 +18,6 @@ type Collect struct {
 	RoomTeacher string //老师
 	IsCollect   bool   //是否收藏 收藏：1 浏览：0
 	IsAttention bool   //是否关注 收藏：1 浏览：0
-
 }
 
 func init() {
@@ -26,7 +25,7 @@ func init() {
 }
 
 func (c *Collect) TableName() string {
-	return "Collect"
+	return "collect"
 }
 
 // 获取收藏列表

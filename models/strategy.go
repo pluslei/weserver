@@ -13,7 +13,6 @@ import (
  */
 type Strategy struct {
 	Id       int64  `orm:"pk;auto"`
-	Code     int    //公司代码
 	Room     string //房间号 topic
 	Icon     string //头像
 	Name     string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
@@ -30,7 +29,7 @@ func init() {
 }
 
 func (b *Strategy) TableName() string {
-	return "Strategy"
+	return "strategy"
 }
 
 // 获取指定房间的策略列表

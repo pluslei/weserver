@@ -1,7 +1,6 @@
 package models
 
 import (
-	//"github.com/astaxie/beego"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -12,7 +11,6 @@ import (
  */
 type Notice struct {
 	Id       int64  `orm:"pk;auto"`
-	Code     int    //公司代码
 	Room     string //房间号 topic
 	Uname    string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
 	Nickname string
@@ -25,7 +23,7 @@ func init() {
 }
 
 func (b *Notice) TableName() string {
-	return "Notice"
+	return "notice"
 }
 
 // 获取指定房间的公告列表

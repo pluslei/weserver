@@ -11,7 +11,6 @@ import (
 	"time"
 
 	m "weserver/models"
-	"weserver/src/tools"
 
 	"github.com/astaxie/beego"
 	"github.com/silenceper/wechat"
@@ -33,7 +32,6 @@ var (
 )
 
 type Userinfor struct {
-	Codeid        string //房间号公司代码加密
 	Uname         string //用户名
 	Nickname      string //用户昵称
 	UserIcon      string //logo
@@ -125,9 +123,6 @@ func (this *IndexController) Index() {
 			beego.Error("load retalteduser error", err)
 		}
 		user := new(Userinfor)
-		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
-		codeid := tools.MainEncrypt(prevalue)
-		user.Codeid = codeid
 		user.Uname = userInfo.Username
 		user.UserIcon = userInfo.Headimgurl
 		user.RoleName = userLoad.Role.Name

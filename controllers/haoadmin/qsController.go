@@ -3,7 +3,7 @@ package haoadmin
 import (
 	"strings"
 	"time"
-	"weserver/controllers/mqtt"
+	. "weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
 
@@ -60,15 +60,12 @@ func (this *QsController) SendBroad() {
 
 // 发送公告
 func (this *QsController) SendBroadHandle() {
-	code, _ := beego.AppConfig.Int("company")
-
 	UserInfo := this.GetSession("userinfo")
 	uname := UserInfo.(*m.User).Username
 	data := this.GetString("content")
 	room := this.GetString("room") //即topic
 
 	broad := new(m.Notice)
-	broad.Code = code
 	broad.Room = room
 	broad.Uname = uname
 	broad.Datatime = time.Now()
@@ -78,8 +75,7 @@ func (this *QsController) SendBroadHandle() {
 		this.Rsp(false, "公告写入数据库失败", "")
 		beego.Debug(err)
 	} else {
-		msgtype := mqtt.NewMessageType(mqtt.MSG_TYPE_BROCAST)
-		b := msgtype.SendBrocast(room, data)
+		b := SendBrocast(room, data)
 		if b {
 			this.Rsp(true, "公告发送成功", "")
 			return

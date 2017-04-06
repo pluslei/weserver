@@ -6,6 +6,13 @@ import (
 	"time"
 )
 
+const (
+	MSG_TYPE_CHAT     int = iota //聊天消息
+	MSG_TYPE_NOTICE              //公告消息
+	MSG_TYPE_DEL                 //删除消息
+	MSG_TYPE_STRATEGY            //策略消息
+)
+
 //房间信息
 type RoomInfo struct {
 	RoomIcon    string //房间图标
@@ -57,7 +64,6 @@ type Usertitle struct {
 //mqtt发送信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
-	Code          int       //公司代码
 	Room          string    //房间号 topic
 	Uname         string    //用户名 openid
 	Nickname      string    //用户昵称
@@ -84,12 +90,13 @@ type MessageInfo struct {
 // func (msg *MessageInfo) Parse(string) error {
 
 // }
-// 广播消息
-type BrocastInfo struct {
+// 公告消息
+type NoticeInfo struct {
 	Code    int    //公司代码
 	Room    int    //房间号
 	MsgType int    //消息类型
 	Content string //广播内容
+	Time    string //发送公告时间
 }
 
 // 删除消息

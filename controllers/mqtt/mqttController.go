@@ -20,18 +20,6 @@ import (
 	// for json get
 )
 
-const (
-	MSG_TYPE_CHAT     int = iota //聊天消息
-	MSG_TYPE_BROCAST             //公告消息
-	MSG_TYPE_DEL                 //删除消息
-	MSG_TYPE_STRATEGY            //策略消息
-)
-
-type MessageType struct {
-	Code    int //公司代码
-	Msgtype int //消息类型
-}
-
 type historyMessage struct {
 	infochan chan *MessageInfo
 }
@@ -55,11 +43,6 @@ func init() {
 	go userTotal()
 }
 
-func NewMessageType(msgtype int) *MessageType {
-	code, _ := strconv.Atoi(beego.AppConfig.String("company"))
-	return &MessageType{Code: code, Msgtype: msgtype}
-}
-
 // 获取聊天室信息
 func (this *MqttController) GetRoomInfo() {
 	if this.IsAjax() {
@@ -80,8 +63,54 @@ func (this *MqttController) GetRoomInfo() {
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
 		chatmsg := this.GetString("str")
-		msgtype := NewMessageType(MSG_TYPE_CHAT)
-		b := msgtype.ParseMsg(chatmsg)
+		b := ParseMsg(chatmsg)
+		if b {
+			this.Rsp(true, "消息发送成功", "")
+			return
+		} else {
+			this.Rsp(false, "消息发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
+//收藏
+func (this *MqttController) GetCollectInfo() {
+	if this.IsAjax() {
+		collect := new(m.Collect)
+		collect.Uname = this.GetString("Uname")
+		collect.Nickname = this.GetString("Nickname")
+		collect.RoomIcon = this.GetString("RoomIcon")
+		collect.RoomTitle = this.GetString("RoomTitle")
+		collect.RoomTeacher = this.GetString("RoomTeacher")
+		collect.IsCollect, _ = this.GetBool("IsCollect")
+		collect.IsAttention, _ = this.GetBool("IsAttention")
+		_, err := m.AddCollect(collect)
+		if err != nil {
+			this.Rsp(false, "收藏写入数据库失败", "")
+			beego.Debug(err)
+		} else {
+			this.Rsp(true, "收藏写入数据库成功", "")
+		}
+	}
+}
+
+// 禁言
+func (this *MqttController) GetShutUpInfo() {
+
+}
+
+// 移除
+func (this *MqttController) GetKickOutInfo() {
+
+}
+
+//发布公告
+func (this *MqttController) GetPublishNotice() {
+	if this.IsAjax() {
+		noticMsg := this.GetString("str")
+		b := ParseMsg(noticMsg)
 		if b {
 			this.Rsp(true, "消息发送成功", "")
 			return
@@ -94,21 +123,20 @@ func (this *MqttController) GetMessageToSend() {
 }
 
 // 聊天消息
-func (c *MessageType) ParseMsg(msg string) bool {
+func ParseMsg(msg string) bool {
 	msginfo := new(MessageInfo)
 	info, err := msginfo.MashJson(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("simplejson error", err)
 		return false
 	}
-	info.Code = c.Code           //公司代码
 	info.Datatime = time.Now()   //添加时间
 	info.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
 	topic := info.Room
 
 	beego.Debug("info", info)
 
-	v, err := c.Json(info)
+	v, err := Json(info)
 	if err != nil {
 		beego.Error("json error", err)
 		return false
@@ -123,13 +151,12 @@ func (c *MessageType) ParseMsg(msg string) bool {
 	return true
 }
 
-// 发送广播消息
-func (c *MessageType) SendBrocast(topic, content string) bool {
-	info := new(BrocastInfo)
+// 发送公告消息
+func SendBrocast(topic, content string) bool {
+	info := new(NoticeInfo)
 	info.Content = content
-	info.Code = c.Code
-	info.MsgType = MSG_TYPE_BROCAST
-	v, err := c.Json(info)
+	info.MsgType = MSG_TYPE_NOTICE
+	v, err := Json(info)
 	if err != nil {
 		beego.Error("json error", err)
 		return false
@@ -139,13 +166,12 @@ func (c *MessageType) SendBrocast(topic, content string) bool {
 }
 
 //删除消息
-func (c *MessageType) DelMessage(topic, uuid string) bool {
+func DelMsg(topic, uuid string) bool {
 	info := new(DelMessage)
-	info.Code = c.Code
 	info.MsgType = MSG_TYPE_DEL
 	info.Uuid = uuid
 
-	v, err := c.Json(info)
+	v, err := Json(info)
 	if err != nil {
 		beego.Error("json error", err)
 		return false
@@ -155,11 +181,11 @@ func (c *MessageType) DelMessage(topic, uuid string) bool {
 }
 
 // 后台审核消息
-func (c *MessageType) CheckMessage(topic string, msg m.ChatRecord) bool {
+func CheckMessage(topic string, msg m.ChatRecord) bool {
 	msg.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
 	beego.Debug("msg", msg)
 
-	v, err := c.Json(msg)
+	v, err := Json(msg)
 	if err != nil {
 		beego.Error("json error", err)
 		return false
@@ -168,7 +194,7 @@ func (c *MessageType) CheckMessage(topic string, msg m.ChatRecord) bool {
 	return true
 }
 
-func (c *MessageType) Json(v interface{}) (string, error) {
+func Json(v interface{}) (string, error) {
 	value, err := json.Marshal(v)
 	if err != nil {
 		beego.Error("json marshal error", err)
@@ -389,7 +415,6 @@ func addData(info *MessageInfo) {
 		//写数据库
 		var chatrecord m.ChatRecord
 		chatrecord.Uuid = info.Uuid                 //uuid
-		chatrecord.Code = info.Code                 //公司代码
 		chatrecord.Room = info.Room                 //房间号
 		chatrecord.Uname = info.Uname               //用户名
 		chatrecord.Nickname = info.Nickname         //用户昵称

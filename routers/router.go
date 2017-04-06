@@ -103,39 +103,43 @@ func Router() {
 	beego.Router("/weserver/data/checkrecord", &haoadmin.ChatRecordController{}, "*:CheckRecord")
 	beego.Router("/weserver/data/delrecord", &haoadmin.ChatRecordController{}, "*:DelRecord")
 
-	// 广播
+	// 公告消息
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:SendNoticeList")
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
 	beego.Router("/weserver/data/sendbroadhandle", &haoadmin.QsController{}, "*:SendBroadHandle")
 
 	// 测试
-	beego.Router("/test", &haoadmin.TestController{}, "*:Test")
-	beego.Router("/test/postapi", &haoadmin.TestController{}, "*:PostApi")
+	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
+	// beego.Router("/test/postapi", &haoadmin.TestController{}, "*:PostApi")
 
 	// index
 	beego.Router("/", &haoindex.IndexController{})
-
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
-
-	//收藏
-	beego.Router("/chat/user/Collect", &haoindex.ManagerController{}, "*:GetCollectInfo")
-	//踢人
-	beego.Router("/chat/user/KickOut", &haoindex.ManagerController{}, "*:GetKickOutInfo")
-	//禁言
-	beego.Router("/chat/user/ShutUp", &haoindex.ManagerController{}, "*:GetShutUpInfo")
-
 	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetRoomInfo")
+
+	// 聊天
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
+	//历史消息
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
+	//公告
+	beego.Router("/chat/user/Notice", &mqtt.MqttController{}, "*:GetPublishNotice")
+	//收藏
+	beego.Router("/chat/user/Collect", &mqtt.MqttController{}, "*:GetCollectInfo")
+	//踢人
+	beego.Router("/chat/user/KickOut", &mqtt.MqttController{}, "*:GetKickOutInfo")
+	//禁言
+	beego.Router("/chat/user/ShutUp", &mqtt.MqttController{}, "*:GetShutUpInfo")
+
 	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")
 	//获取在线人数信息
 	beego.Router("/chat/user/online/info", &mqtt.MqttController{}, "*:GetOnlineUseInfo")
 	// 获取在线人数
 	beego.Router("/chat/user/online/count", &mqtt.MqttController{}, "*:GetOnlineUseCount")
+
 	// 以下暂时没用
 	beego.Router("/chat/modify/icon", &mqtt.MqttController{}, "*:ChatModifyIcon")
 	beego.Router("/chat/upload", &mqtt.MqttController{}, "*:ChatUpload")
