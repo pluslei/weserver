@@ -3,9 +3,10 @@ package haoadmin
 import (
 	"strings"
 	"time"
-	. "weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
+
+	mq "weserver/src/mqtt"
 
 	"github.com/astaxie/beego"
 )
@@ -97,4 +98,18 @@ func (this *QsController) GetClientip() string {
 		addrArr[0] = "127.0.0.1"
 	}
 	return addrArr[0]
+}
+
+// 发送公告消息
+func SendBrocast(topic, content string) bool {
+	info := new(NoticeInfo)
+	info.Content = content
+	info.MsgType = MSG_TYPE_NOTICE_ADD
+	v, err := ToJSON(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(topic, string(v)) //发消息
+	return true
 }

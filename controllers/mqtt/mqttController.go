@@ -2,7 +2,6 @@ package mqtt
 
 import (
 	"crypto/rand"
-	"encoding/json"
 	"math/big"
 	"strings"
 	"sync"
@@ -63,54 +62,7 @@ func (this *MqttController) GetRoomInfo() {
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
 		chatmsg := this.GetString("str")
-		b := ParseMsg(chatmsg)
-		if b {
-			this.Rsp(true, "消息发送成功", "")
-			return
-		} else {
-			this.Rsp(false, "消息发送失败,请重新发送", "")
-			return
-		}
-	}
-	this.Ctx.WriteString("")
-}
-
-//收藏
-func (this *MqttController) GetCollectInfo() {
-	if this.IsAjax() {
-		collect := new(m.Collect)
-		collect.Uname = this.GetString("Uname")
-		collect.Nickname = this.GetString("Nickname")
-		collect.RoomIcon = this.GetString("RoomIcon")
-		collect.RoomTitle = this.GetString("RoomTitle")
-		collect.RoomTeacher = this.GetString("RoomTeacher")
-		collect.IsCollect, _ = this.GetBool("IsCollect")
-		collect.IsAttention, _ = this.GetBool("IsAttention")
-		_, err := m.AddCollect(collect)
-		if err != nil {
-			this.Rsp(false, "收藏写入数据库失败", "")
-			beego.Debug(err)
-		} else {
-			this.Rsp(true, "收藏写入数据库成功", "")
-		}
-	}
-}
-
-// 禁言
-func (this *MqttController) GetShutUpInfo() {
-
-}
-
-// 移除
-func (this *MqttController) GetKickOutInfo() {
-
-}
-
-//发布公告
-func (this *MqttController) GetPublishNotice() {
-	if this.IsAjax() {
-		noticMsg := this.GetString("str")
-		b := ParseMsg(noticMsg)
+		b := parseMsg(chatmsg)
 		if b {
 			this.Rsp(true, "消息发送成功", "")
 			return
@@ -123,20 +75,20 @@ func (this *MqttController) GetPublishNotice() {
 }
 
 // 聊天消息
-func ParseMsg(msg string) bool {
+func parseMsg(msg string) bool {
 	msginfo := new(MessageInfo)
-	info, err := msginfo.MashJson(DecodeBase64Byte(msg))
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("simplejson error", err)
 		return false
 	}
-	info.Datatime = time.Now()   //添加时间
-	info.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
+	info.Datatime = time.Now()       //添加时间
+	info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
 	topic := info.Room
 
 	beego.Debug("info", info)
 
-	v, err := Json(info)
+	v, err := ToJSON(info)
 	if err != nil {
 		beego.Error("json error", err)
 		return false
@@ -149,58 +101,6 @@ func ParseMsg(msg string) bool {
 	// 消息入库
 	SaveChatMsgdata(info)
 	return true
-}
-
-// 发送公告消息
-func SendBrocast(topic, content string) bool {
-	info := new(NoticeInfo)
-	info.Content = content
-	info.MsgType = MSG_TYPE_NOTICE
-	v, err := Json(info)
-	if err != nil {
-		beego.Error("json error", err)
-		return false
-	}
-	mq.SendMessage(topic, string(v)) //发消息
-	return true
-}
-
-//删除消息
-func DelMsg(topic, uuid string) bool {
-	info := new(DelMessage)
-	info.MsgType = MSG_TYPE_DEL
-	info.Uuid = uuid
-
-	v, err := Json(info)
-	if err != nil {
-		beego.Error("json error", err)
-		return false
-	}
-	mq.SendMessage(topic, string(v)) //发消息
-	return true
-}
-
-// 后台审核消息
-func CheckMessage(topic string, msg m.ChatRecord) bool {
-	msg.MsgType = MSG_TYPE_CHAT //0 普通消息 1 广播
-	beego.Debug("msg", msg)
-
-	v, err := Json(msg)
-	if err != nil {
-		beego.Error("json error", err)
-		return false
-	}
-	mq.SendMessage(topic, v) //发消息
-	return true
-}
-
-func Json(v interface{}) (string, error) {
-	value, err := json.Marshal(v)
-	if err != nil {
-		beego.Error("json marshal error", err)
-		return "", err
-	}
-	return string(value), nil
 }
 
 //获取客户的真实IP地址
@@ -344,44 +244,7 @@ func (this *MqttController) GetOnlineUseInfo() {
 	}
 }
 
-func (this *MqttController) ChatUpload() {
-	this.Ctx.WriteString("")
-}
-
-func (this *MqttController) ChatKickOut() {
-	this.Ctx.WriteString("")
-}
-
-func (this *MqttController) ChatModifyIcon() {
-	if this.GetSession("indexUserInfo") != nil && this.IsAjax() {
-		data := make(map[string]interface{})
-		this.Data["json"] = &data
-		this.ServeJSON()
-	} else {
-		this.Ctx.Redirect(302, "/")
-	}
-}
-
-/*
-//广播入库
-func SaveBroadCastdata(info MessageInfo) {
-	//写数据库
-	var broad m.Broadcast
-	broad.Code = info.Code
-	broad.Room = info.Room
-	broad.Uname = DecodeB64(info.Uname)
-	broad.Data = DecodeB64(info.Content)
-	broad.Datatime = time.Now()
-
-	_, err := m.AddBroadcast(&broad)
-	if err != nil {
-		beego.Debug(err)
-	}
-
-}
-*/
-
-//时时消息入库
+//聊天消息入库
 func SaveChatMsgdata(info MessageInfo) {
 	jsondata := &info
 	select {
@@ -402,7 +265,7 @@ func (w *historyMessage) runWriteDb() {
 				if infoMsg.Status == 0 {
 					addData(infoMsg)
 				} else {
-					UpdateData(infoMsg)
+					updateData(infoMsg)
 				}
 			}
 		}
@@ -442,13 +305,13 @@ func addData(info *MessageInfo) {
 		if err != nil {
 			beego.Debug(err)
 		} else {
-			// 插入成功广播
+			// 推送管理页面
 			broadcastChat(chatrecord)
 		}
 	}
 }
 
-func UpdateData(info *MessageInfo) {
+func updateData(info *MessageInfo) {
 	beego.Debug("im here", info, info.RoleTitleBack)
 	if info.IsLogin && info.Insider == 1 {
 

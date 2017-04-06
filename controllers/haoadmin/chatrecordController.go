@@ -2,9 +2,10 @@ package haoadmin
 
 import (
 	"time"
-	. "weserver/controllers/mqtt"
 	m "weserver/models"
 	. "weserver/src/tools"
+
+	mq "weserver/src/mqtt"
 
 	"github.com/astaxie/beego"
 )
@@ -39,6 +40,35 @@ func (this *ChatRecordController) ChatRecordList() {
 		this.Data["codeid"] = codeid
 		this.TplName = "haoadmin/data/chat/list.html"
 	}
+}
+
+// 审核发消息
+func CheckMessage(topic string, msg m.ChatRecord) bool {
+	msg.MsgType = MSG_TYPE_CHAT_ADD
+	beego.Debug("msg", msg)
+
+	v, err := ToJSON(msg)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(topic, v) //发消息
+	return true
+}
+
+//删除消息
+func DelMsg(topic, uuid string) bool {
+	info := new(MessageDEL)
+	info.MsgType = MSG_TYPE_CHAT_DEL
+	info.Uuid = uuid
+
+	v, err := ToJSON(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+	mq.SendMessage(topic, string(v)) //发消息
+	return true
 }
 
 // 消息审核

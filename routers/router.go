@@ -123,26 +123,28 @@ func Router() {
 
 	// 聊天
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
-	//历史消息
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
-	//公告
-	beego.Router("/chat/user/Notice", &mqtt.MqttController{}, "*:GetPublishNotice")
-	//收藏
-	beego.Router("/chat/user/Collect", &mqtt.MqttController{}, "*:GetCollectInfo")
-	//踢人
-	beego.Router("/chat/user/KickOut", &mqtt.MqttController{}, "*:GetKickOutInfo")
-	//禁言
-	beego.Router("/chat/user/ShutUp", &mqtt.MqttController{}, "*:GetShutUpInfo")
-
 	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")
 	//获取在线人数信息
 	beego.Router("/chat/user/online/info", &mqtt.MqttController{}, "*:GetOnlineUseInfo")
 	// 获取在线人数
 	beego.Router("/chat/user/online/count", &mqtt.MqttController{}, "*:GetOnlineUseCount")
 
-	// 以下暂时没用
-	beego.Router("/chat/modify/icon", &mqtt.MqttController{}, "*:ChatModifyIcon")
-	beego.Router("/chat/upload", &mqtt.MqttController{}, "*:ChatUpload")
-	beego.Router("/chat/kickout", &mqtt.MqttController{}, "*:ChatKickOut")
+	//公告
+	beego.Router("/chat/user/notice", &mqtt.NoticeController{}, "*:GetPublishNotice")
+	beego.Router("/chat/user/deleteNotice", &mqtt.NoticeController{}, "*:DeleteNotice")
+	beego.Router("/chat/user/noticelist", &mqtt.NoticeController{}, "*:GetNoticeList")
+
+	// //策略
+	// beego.Router("/chat/user/strategy", &mqtt.ManagerController{}, "*:GetStrategyInfo")
+	// beego.Router("/chat/user/strategyList", &mqtt.ManagerController{}, "*:GetStrategyList")
+
+	// //收藏
+	// beego.Router("/chat/user/Collect", &mqtt.ManagerController{}, "*:GetCollectInfo")
+
+	// //踢人
+	// beego.Router("/chat/user/KickOut", &mqtt.ManagerController{}, "*:GetKickOutInfo")
+	// //禁言
+	// beego.Router("/chat/user/ShutUp", &mqtt.ManagerController{}, "*:GetShutUpInfo")
 
 }

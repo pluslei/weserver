@@ -4,13 +4,17 @@ import (
 	"encoding/json"
 	"math/rand"
 	"time"
+
+	"github.com/astaxie/beego"
 )
 
 const (
-	MSG_TYPE_CHAT     int = iota //聊天消息
-	MSG_TYPE_NOTICE              //公告消息
-	MSG_TYPE_DEL                 //删除消息
-	MSG_TYPE_STRATEGY            //策略消息
+	MSG_TYPE_CHAT_ADD int = iota //聊天消息
+	MSG_TYPE_CHAT_DEL
+	MSG_TYPE_NOTICE_ADD   //公告消息
+	MSG_TYPE_NOTICE_DEL   //公告消息
+	MSG_TYPE_STRATEGY_ADD //策略消息
+	MSG_TYPE_STRATEGY_DEL //策略消息
 )
 
 //房间信息
@@ -39,17 +43,6 @@ type OnlineUserList struct {
 	Procities  string //省市
 }
 
-//在线用户ip和省市
-type OnlineIpPro struct {
-	Ip  string //ip地址
-	Pro string //省市
-}
-
-//用户角色对应的房间
-type RoleRoom struct {
-	Roomval [2][]string //房间
-}
-
 //用户列表信息
 type Usertitle struct {
 	Uname     string //微信唯一标识
@@ -61,7 +54,8 @@ type Usertitle struct {
 	IsLogin   bool   //状态 [true、登录 false、未登录]
 }
 
-//mqtt发送信息
+//######################################################################################
+//mqtt发送聊天信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
 	Room          string    //房间号 topic
@@ -77,34 +71,61 @@ type MessageInfo struct {
 	IsLogin       bool      //状态 [1、登录 0、未登录]
 	Content       string    //消息内容
 	IsFilter      bool      //消息是否过滤[true: 过滤, false: 不过滤]
-	MsgType       int       //消息类型
 	Datatime      time.Time //添加时间
 	Status        int       //审核状态(0：未审核，1：审核)
 	Uuid          string    //uuid
+
+	MsgType int //消息类型
 }
 
-// func (msg *MessageInfo) serialization() string {
+type MessageDEL struct {
+	Uuid    string //消息uuid
+	Room    string //房间号
+	MsgType int    //消息类型
+}
 
-// }
+func (m *MessageInfo) ParseJSON(msg []byte) (s MessageInfo, err error) {
+	var result MessageInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
 
-// func (msg *MessageInfo) Parse(string) error {
-
-// }
+//######################################################################################
 // 公告消息
 type NoticeInfo struct {
-	Code    int    //公司代码
-	Room    int    //房间号
+	Room     string //房间号
+	Uname    string //操作者的用户名
+	Nickname string
+	Content  string //广播内容
+	Time     string //发送公告时间
+
+	MsgType int //消息类型
+}
+type NoticeDEL struct {
+	Id      int64  //消息id 唯一
+	Room    string //房间号
 	MsgType int    //消息类型
-	Content string //广播内容
-	Time    string //发送公告时间
 }
 
-// 删除消息
-type DelMessage struct {
-	Code    int    //公司代码
-	Room    int    //房间号
-	MsgType int    //消息类型
-	Uuid    string //消息uuid
+func (n *NoticeInfo) ParseJSON(msg []byte) (s NoticeInfo, err error) {
+	var result NoticeInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+
+func ToJSON(v interface{}) (string, error) {
+	value, err := json.Marshal(v)
+	if err != nil {
+		beego.Error("json marshal error", err)
+		return "", err
+	}
+	return string(value), nil
 }
 
 //在线人数信息
@@ -115,14 +136,6 @@ type OnlineUserMsg struct {
 
 var Resultuser []Usertitle  //模拟的用户数据
 var Copyresuser []Usertitle //拷贝数据
-
-func (m *MessageInfo) MashJson(msg []byte) (s MessageInfo, err error) {
-	var result MessageInfo
-	if err := json.Unmarshal(msg, &result); err != nil {
-		return result, err
-	}
-	return result, nil
-}
 
 func Jsontosocket(req string) (s []MessageInfo, err error) {
 	var result []MessageInfo
