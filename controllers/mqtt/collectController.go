@@ -33,13 +33,3 @@ func (this *CollectController) GetCollectInfo() {
 		}
 	}
 }
-
-// 禁言
-func (this *CollectController) GetShutUpInfo() {
-
-}
-
-// 移除
-func (this *CollectController) GetKickOutInfo() {
-
-}
