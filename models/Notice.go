@@ -14,8 +14,9 @@ type Notice struct {
 	Room     string //房间号 topic
 	Uname    string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
 	Nickname string
-	Data     string    `orm:"type(text)"`     //消息内容
-	Datatime time.Time `orm:"type(datetime)"` //添加时间
+	Data     string    `orm:"type(text)"` //消息内容
+	Time     string    //前端发送时间
+	Datatime time.Time `orm:"type(datetime)"` //服务器写入时间
 }
 
 func init() {
@@ -27,10 +28,10 @@ func (b *Notice) TableName() string {
 }
 
 // 获取指定房间的公告列表
-func GetNoticeList(room string) ([]Notice, int64, error) {
+func GetNoticeList(count int64, room string) ([]Notice, int64, error) {
 	o := orm.NewOrm()
 	var info []Notice
-	num, err := o.QueryTable("Notice").Filter("Room", room).OrderBy("-Id").All(&info)
+	num, err := o.QueryTable("notice").Filter("Room", room).OrderBy("-Id").Limit(count).All(&info)
 	return info, num, err
 }
 

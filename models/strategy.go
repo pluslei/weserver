@@ -33,10 +33,10 @@ func (b *Strategy) TableName() string {
 }
 
 // 获取指定房间的策略列表
-func GetStrategyInfo(room string) ([]Strategy, int64, error) {
+func GetStrategyList(room string, count int64) ([]Strategy, int64, error) {
 	o := orm.NewOrm()
 	var info []Strategy
-	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("Id").All(&info)
+	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Id").Limit(count).All(&info)
 	return info, num, err
 }
 

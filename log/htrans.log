@@ -999,3 +999,101 @@
 2017/04/06 19:05:14 [I] [mqtt.go:55] mqtt running OK  
 2017/04/06 19:05:14 [D] [mq.go:64] MQTT Client Init OK. 
 2017/04/06 19:05:14 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 09:05:38 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 09:05:38 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 09:05:39 [D] [mq.go:47] Get Room Topic Num:  3 
+2017/04/07 09:05:39 [D] [mq.go:52] type is no match 
+2017/04/07 09:05:39 [D] [mq.go:52] type is no match 
+2017/04/07 09:05:39 [D] [mq.go:52] type is no match 
+2017/04/07 09:05:39 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub3 0 
+2017/04/07 09:05:39 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub1 0 
+2017/04/07 09:05:39 [D] [mqtt.go:105] Topic, Qos  Topic_ChatMessage/sub2 0 
+2017/04/07 10:13:26 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 10:13:26 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 10:13:27 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [1] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422f6f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 10:13:27 [D] [mqtt.go:105] mqtt connect and Subscribe Success！ 
+2017/04/07 10:13:27 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 10:13:27 [D] [mq.go:62] MQTT Client Init OK. 
+2017/04/07 10:13:28 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 10:15:09 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 10:15:09 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 10:15:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 10:15:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422b4de0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 10:15:30 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 10:15:30 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 10:15:30 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 10:15:30 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042036720 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 10:16:14 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 10:16:14 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 10:16:14 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 10:16:14 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [1] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c7e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 10:16:14 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 10:16:14 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 10:16:14 [D] [mq.go:62] MQTT Client Init OK. 
+2017/04/07 10:16:15 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 10:16:40 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 10:16:40 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 10:16:40 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 10:16:40 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423cc9c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 10:16:40 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 10:16:40 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 10:16:40 [D] [mq.go:62] MQTT Client Init OK. 
+2017/04/07 10:16:40 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 10:19:12 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 10:19:12 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 10:19:12 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 10:19:12 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c7e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 10:19:12 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 10:19:12 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 10:19:12 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 10:19:12 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 11:19:04 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 11:19:04 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 11:19:04 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 11:19:04 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422e43c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 11:19:04 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 11:19:04 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 11:19:04 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 11:19:05 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 11:34:13 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 11:34:13 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 11:34:13 [E] [mqtt.go:97] connect error Network Error : %!s(<nil>) 
+2017/04/07 11:34:13 [E] [mqtt.go:56] mqtt connect:  Network Error : %!s(<nil>) 
+2017/04/07 11:34:13 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 11:34:13 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 11:34:33 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 11:34:33 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 11:34:33 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 11:34:33 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422dede0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 11:34:33 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 11:34:33 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 11:34:33 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 11:34:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 11:39:31 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 11:39:31 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 11:39:31 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 11:39:31 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422fcf00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 11:39:31 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 11:39:31 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 11:39:31 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 11:39:32 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 11:42:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 11:42:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 11:42:12 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 11:42:12 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422e2f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 11:42:12 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 11:42:12 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 11:42:12 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 11:42:12 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 16:51:48 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 16:51:48 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 16:51:49 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 16:51:49 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d560 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 17:03:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 17:03:10 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 17:03:10 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 17:03:10 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236f1a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 17:03:10 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 17:03:10 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 17:03:10 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 17:03:11 [I] [asm_amd64.s:2086] http server Running on http://:80

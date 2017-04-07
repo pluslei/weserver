@@ -14,6 +14,7 @@ import (
 //用户表
 type User struct {
 	Id            int64
+	Room          string
 	Username      string `orm:"unique;size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
@@ -37,6 +38,7 @@ type User struct {
 	Unionid       string    //只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：
 	Role          *Role     `orm:"rel(one)"`
 	Title         *Title    `orm:"rel(one)"`
+	IsShutup      bool      //是否禁言
 
 	LogintimeStr  string `orm:"-"` //登录时间
 	OnlinetimeStr string `orm:"-"` //在线时长
@@ -90,6 +92,13 @@ func DelUserById(Id int64) (int64, error) {
 	return status, err
 }
 
+// 删除指定用户
+func DelUserByUame(Uname, Room string) (int64, error) {
+	o := orm.NewOrm()
+	status, err := o.Delete(&User{Room: Room, Username: Uname})
+	return status, err
+}
+
 //批量删除用户
 func PrepareDelUser(IdArray []int64) (int64, error) {
 	o := orm.NewOrm()
@@ -105,6 +114,14 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 		err = o.Commit()
 	}
 	return status, err
+}
+
+//更新禁言字段
+func UpdateShutUp(room, username string, b bool) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Room", room).Filter("Username", username).Update(orm.Params{"IsShutup": b})
+	return id, err
 }
 
 // 根据用户名查找

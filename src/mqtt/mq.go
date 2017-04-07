@@ -1,8 +1,6 @@
 package mqtt
 
 import (
-	m "weserver/models"
-
 	"github.com/astaxie/beego"
 )
 
@@ -14,12 +12,9 @@ type Configer struct {
 	MqIsreconnect    bool //是否重连
 	MqIsCleansession bool
 	MqVersion        int
-	MqTopic          map[string]byte
+	MqTopic          string //单级订阅
 	check            bool
-}
-
-func init() {
-
+	// MqTopic          map[string]byte //多级订阅
 }
 
 var mq *MQ
@@ -34,25 +29,24 @@ func GetMqttConfig() *Configer {
 	conf.MqIsreconnect, _ = beego.AppConfig.Bool("mqServerIsreconnect")
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqSeverCleanSession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqServerVersion")
-	// mqTopic := beego.AppConfig.String("mqServerTopic")
-	// slice := strings.Split(",", mqTopic)
-	// for index := range slice {
-	// 	conf.MqTopic[slice[index]] = 0
-	// }
-	room, count, err := m.GetRoomName()
-	if err != nil {
-		beego.Error("Get Room Topic Fail", err)
-		return nil
-	}
-	beego.Debug("Get Room Topic Num: ", count)
-	conf.MqTopic = make(map[string]byte)
-	for k, v := range room {
-		value, ok := v.(byte)
-		if !ok {
-			beego.Debug("type is no match")
-		}
-		conf.MqTopic[k] = value
-	}
+	conf.MqTopic = beego.AppConfig.String("mqServerTopic")
+	/*
+		// 多级订阅
+			room, count, err := m.GetRoomName()
+			if err != nil {
+				beego.Error("Get Room Topic Fail", err)
+				return nil
+			}
+			beego.Debug("Get Room Topic Num: ", count)
+			conf.MqTopic = make(map[string]byte)
+			for k, v := range room {
+				value, ok := v.(byte)
+				if !ok {
+					beego.Debug("type is no match")
+				}
+				conf.MqTopic[k] = value
+			}
+	*/
 	return &conf
 }
 

@@ -15,6 +15,14 @@ const (
 	MSG_TYPE_NOTICE_DEL   //公告消息
 	MSG_TYPE_STRATEGY_ADD //策略消息
 	MSG_TYPE_STRATEGY_DEL //策略消息
+	MSG_TYPE_KICKOUT      //踢人
+	MSG_TYPE_SHUTUP       // 禁言
+)
+
+const (
+	OPERATE_KICKOUT = iota
+	OPERATE_SHUTUP
+	OPERATE_UNSHUTUP //取消禁言
 )
 
 //房间信息
@@ -55,6 +63,7 @@ type Usertitle struct {
 }
 
 //######################################################################################
+
 //mqtt发送聊天信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
@@ -93,6 +102,7 @@ func (m *MessageInfo) ParseJSON(msg []byte) (s MessageInfo, err error) {
 }
 
 //######################################################################################
+
 // 公告消息
 type NoticeInfo struct {
 	Room     string //房间号
@@ -119,6 +129,76 @@ func (n *NoticeInfo) ParseJSON(msg []byte) (s NoticeInfo, err error) {
 
 //######################################################################################
 
+// 策略消息
+type StrategyInfo struct {
+	Room     string //房间号 topic
+	Icon     string //头像
+	Name     string //操作者的用户名
+	Titel    string
+	Data     string //策略内容
+	IsTop    bool   //是否置顶 置顶1 否 0
+	IsDelete bool   //是否删除,删除 1 否 0
+	ThumbNum int64  //点赞次数
+	Time     string
+
+	MsgType int //消息类型
+}
+type StrategyDEL struct {
+	Id   int64  //消息id 唯一
+	Room string //房间号
+
+	MsgType int //消息类型
+}
+
+func (t *StrategyInfo) ParseJSON(msg []byte) (s StrategyInfo, err error) {
+	var result StrategyInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+
+//踢人
+type KickOutInfo struct {
+	Room     string //房间号 topic
+	OperUid  string //踢人uuid
+	OperName string //踢人的用户名
+	ObjUid   string //被踢的uuid
+	ObjName  string //被踢的用户名
+
+	MsgType int //消息类型
+}
+
+func (k *KickOutInfo) ParseJSON(msg []byte) (s KickOutInfo, err error) {
+	var result KickOutInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+
+//禁言
+type ShutUpInfo struct {
+	Room     string //房间号 topic
+	Uname    string
+	IsShutUp bool //是否禁言 1 否 0
+
+	MsgType int //消息类型
+}
+
+func (k *ShutUpInfo) ParseJSON(msg []byte) (s ShutUpInfo, err error) {
+	var result ShutUpInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
 func ToJSON(v interface{}) (string, error) {
 	value, err := json.Marshal(v)
 	if err != nil {

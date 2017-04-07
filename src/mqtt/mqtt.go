@@ -16,7 +16,8 @@ type message struct {
 }
 
 type MQ struct {
-	topic  map[string]byte //订阅列表
+	// topic  map[string]byte //订阅列表
+	topic  string
 	qos    byte
 	retain bool
 	opts   *MQTT.ClientOptions
@@ -34,7 +35,8 @@ func NewMQ(o *Configer) *MQ {
 	opts.SetProtocolVersion(uint(o.MqVersion))
 	opts.SetAutoReconnect(o.MqIsreconnect) //自动重连
 	opts.SetDefaultPublishHandler(messageHandler)
-	m.topic = make(map[string]byte)
+	// m.topic = make(map[string]byte)
+	// m.topic = o.MqTopic
 	m.topic = o.MqTopic
 	m.opts = opts
 	m.msgch = make(chan *message, 102400)
@@ -48,7 +50,8 @@ func messageHandler(client MQTT.Client, msg MQTT.Message) {
 }
 
 func (m *MQ) Runing() {
-	err := m.connect(m.topic)
+	// err := m.connect(m.topic)
+	err := m.connect()
 	if err != nil {
 		beego.Error("mqtt connect: ", err)
 	} else {
@@ -88,19 +91,31 @@ func (m *MQ) goHmacSHA1(id, key string) string {
 }
 
 // 连接并订阅消息
+func (m *MQ) connect() error {
+	m.conn = MQTT.NewClient(m.opts)
+	if tokenConn := m.conn.Connect(); tokenConn.Wait() && tokenConn.Error() != nil {
+		beego.Error("connect error", tokenConn.Error())
+		return tokenConn.Error()
+	}
+	// 多聊天室单级订阅
+	beego.Debug("Topic:", m.topic)
+	if tokenSub := m.conn.Subscribe(m.topic, 0, nil); tokenSub.Wait() && tokenSub.Error() != nil {
+		beego.Error("topic sub error", tokenSub.Error())
+		return tokenSub.Error()
+	}
+	beego.Debug("mqtt connect and Subscribe Success！")
+	return nil
+}
+
+/*
+// 连接并订阅消息
 func (m *MQ) connect(topic map[string]byte) error {
 	m.conn = MQTT.NewClient(m.opts)
 	if tokenConn := m.conn.Connect(); tokenConn.Wait() && tokenConn.Error() != nil {
 		beego.Error("connect error", tokenConn.Error())
 		return tokenConn.Error()
 	}
-	/* 单聊天室
-	if tokenSub := m.conn.Subscribe(topic, 1, nil); tokenSub.Wait() && tokenSub.Error() != nil {
-		beego.Error("topic sub error", tokenSub.Error())
-		return tokenSub.Error()
-	}
-	*/
-	//多聊天室
+	//多聊天室,多级订阅
 	for key, v := range topic {
 		beego.Debug("Topic, Qos ", key, v)
 	}
@@ -111,6 +126,7 @@ func (m *MQ) connect(topic map[string]byte) error {
 	beego.Debug("mqtt connect and Subscribe Success！")
 	return nil
 }
+*/
 
 // 取消订阅
 func (m *MQ) UnSubScribe(topic string) error {
@@ -129,11 +145,11 @@ func (m *MQ) DisConnect(client MQTT.Client, quiesce uint) {
 
 //发消息
 func (m *MQ) sendMessage(topic string, args interface{}) error {
-	_, ok := m.topic[topic]
-	if !ok {
-		beego.Error("Topic is no permission")
-		return fmt.Errorf("Topic is no persission")
-	}
+	// _, ok := m.topic[topic]
+	// if !ok {
+	// 	beego.Error("Topic is no permission")
+	// 	return fmt.Errorf("Topic is no persission")
+	// }
 	msg := &message{
 		topic:   topic,
 		message: args,
