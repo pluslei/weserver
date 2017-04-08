@@ -163,9 +163,9 @@ func DeleteStrategyMsg(info StrategyDEL) {
 	}
 }
 
+//删除
 func delStrategyContent(info *StrategyDEL) {
 	beego.Debug("StrategyDEL", info)
-	//写数据库
 	var strategy m.Strategy
 	strategy.Id = info.Id
 	strategy.Room = info.Room
@@ -187,6 +187,7 @@ func addStrategyContent(info *StrategyInfo) {
 	strategy.IsTop = info.IsTop
 	strategy.IsDelete = info.IsDelete
 	strategy.ThumbNum = info.ThumbNum
+	strategy.Time = info.Time
 	strategy.Datatime = time.Now()
 
 	_, err := m.AddStrategy(&strategy)

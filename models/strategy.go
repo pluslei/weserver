@@ -21,6 +21,7 @@ type Strategy struct {
 	IsTop    bool      //是否置顶 置顶1 否 0
 	IsDelete bool      //是否删除,删除 1 否 0
 	ThumbNum int64     //点赞次数
+	Time     string    //前台给的时间
 	Datatime time.Time `orm:"type(datetime)"` //添加时间
 }
 

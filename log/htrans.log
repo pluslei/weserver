@@ -1483,3 +1483,143 @@
 2017/04/08 15:15:06 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
 2017/04/08 15:15:07 [D] [RoomInfo.go:90] num 5 
 2017/04/08 15:15:08 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:22:01 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 15:22:01 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 15:22:02 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 15:22:02 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04243a3c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 15:22:02 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 15:22:02 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 15:22:02 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 15:22:02 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 15:22:22 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:22:23 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:23:02 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:24:34 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 15:24:34 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 15:24:34 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 15:24:34 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042356300 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 15:24:34 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 15:24:34 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 15:24:34 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 15:24:34 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] the request url is  /
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/silenceper/wechat/oauth/oauth.go:63
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:81
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:792
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/08 15:25:47 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/08 15:25:55 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:25:56 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:25:57 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:26:00 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:26:03 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: CUrvZa0366th23 ] 
+2017/04/08 15:26:06 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:26:06 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:26:16 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:20 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:23 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:25 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:42 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:44 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:45 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:47 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:49 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 15:26:56 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: Xv8LiA0418uth8 ] 
+2017/04/08 15:26:58 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:26:59 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:27:00 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:39:38 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 15:39:38 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 15:39:38 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 15:39:38 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042356ea0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 15:47:36 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 15:47:36 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 15:47:36 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 15:47:36 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042373620 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 15:47:36 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 15:47:36 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 15:47:36 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 15:47:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 15:47:55 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 15:47:55 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 15:47:55 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 15:47:55 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234cfc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 15:47:55 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 15:47:55 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 15:47:55 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 15:47:56 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 15:51:10 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:51:11 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:51:16 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:51:17 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:51:20 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:58:55 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 15:58:55 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 15:58:55 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 15:58:55 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04245b1a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 15:58:55 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 15:58:55 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 15:58:55 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 15:58:55 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 15:59:04 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 15:59:04 [D] [RoomInfo.go:90] num 5 
+2017/04/08 15:59:06 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:59:42 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:59:44 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:59:45 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:59:46 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:59:48 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 15:59:49 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:00:41 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:00:44 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: TkpkMa0447uth6 ] 
+2017/04/08 16:00:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 16:00:48 [D] [RoomInfo.go:90] num 5 
+2017/04/08 16:00:50 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:01:29 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:01:30 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:01:33 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: REk_50495th12 ] 
+2017/04/08 16:01:36 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 16:01:36 [D] [RoomInfo.go:90] num 5 
+2017/04/08 16:01:37 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:01:43 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:01:56 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:05:01 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 16:05:01 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 16:05:01 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 16:05:01 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04242ef00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 16:05:02 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 16:05:02 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 16:05:02 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 16:05:02 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 16:05:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 16:05:53 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 16:05:53 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 16:05:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236d800 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 16:05:53 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 16:05:53 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 16:05:53 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 16:05:53 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 16:06:03 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 16:06:22 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 16:06:23 [D] [RoomInfo.go:90] num 5 
+2017/04/08 16:06:28 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 16:06:29 [D] [RoomInfo.go:90] num 5 
+2017/04/08 16:06:30 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:06:49 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:06:50 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:06:50 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:06:51 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:06:57 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:01 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:03 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:06 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:07 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:08 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:10 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 16:07:14 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
