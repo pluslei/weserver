@@ -21,6 +21,9 @@ func Connect() {
 	}
 }
 
+func InitDb() {
+
+}
 func getConfig() (string, string) {
 	db_host := beego.AppConfig.String("host")
 	db_port := beego.AppConfig.String("port")

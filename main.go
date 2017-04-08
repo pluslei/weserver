@@ -3,13 +3,14 @@ package main
 import (
 	"os"
 
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
-	"github.com/astaxie/beego/plugins/cors"
 	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
 	"weserver/src/mqtt"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
+	"github.com/astaxie/beego/plugins/cors"
 )
 
 func main() {
@@ -26,6 +27,7 @@ func main() {
 	m.Connect()
 	// 创建数据库
 	orm.RunSyncdb("default", false, true)
+
 	mqtt.Run()
 
 	beego.ErrorController(&haoindex.ErrorController{}) //注册错误处理的函数

@@ -97,18 +97,19 @@ func GetLastChatId(count int64) (chat []ChatRecord, countline int64) {
 }
 
 //根据表名和数量 获取信息
-func GetChatMsgData(count int64, tableName string) ([]ChatRecord, int64, error) {
+func GetChatMsgData(count int64, roomId, tableName string) ([]ChatRecord, int64, error) {
 	o := orm.NewOrm()
 
-	var satrt int64
-	lastdata, fromcount := GetLastChatId(count)
-	if fromcount == 0 {
-		satrt = 0
-	} else {
-		satrt = lastdata[fromcount-1].Id
-	}
+	// var satrt int64
+	// lastdata, fromcount := GetLastChatId(count)
+	// if fromcount == 0 {
+	// 	satrt = 0
+	// } else {
+	// 	satrt = lastdata[fromcount-1].Id
+	// }
+	//num, err := o.QueryTable(tableName).OrderBy("Id").Filter("Status", 1).Filter("Room", roomId).Filter("Id__gt", satrt).All(&chat)
 	var chat []ChatRecord
-	num, err := o.QueryTable(tableName).OrderBy("Id").Filter("Status", 1).Filter("Id__gt", satrt).All(&chat)
+	num, err := o.QueryTable(tableName).OrderBy("Id").Filter("Status", 1).Filter("Room", roomId).All(&chat)
 	return chat, num, err
 }
 

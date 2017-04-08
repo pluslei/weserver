@@ -121,23 +121,19 @@ func (this *MqttController) GetClientip() string {
 //获取聊天历史信息
 func (this *MqttController) GetChatHistoryList() {
 	if this.IsAjax() {
-		codeid := this.GetString("codeid")              //公司房间标识符
-		codeid = Transformname(codeid, "", -1)          //解码公司代码和房间号
-		coderoom := Transformname(codeid, "", 2)        //房间号
-		roomid, _ := strconv.ParseInt(coderoom, 10, 64) //房间号
-		sysconfig, _ := m.GetAllSysConfig()             //系统设置
-		recordcount := sysconfig.HistoryCount           //显示历史记录条数
+		roomid := this.GetString("codeid")    //房间id
+		sysconfig, _ := m.GetAllSysConfig()   //系统设置
+		recordcount := sysconfig.HistoryCount //显示历史记录条数
 		var historychat []m.ChatRecord
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
-			historychat, _, _ = m.GetChatMsgData(recordcount, "chat_record")
+			historychat, _, _ = m.GetChatMsgData(recordcount, roomid, "chat_record")
 		default:
 		}
+
+		beego.Debug("ssssssss", historychat)
 		data := make(map[string]interface{})
 		data["historydata"] = historychat //聊天的历史信息
-		//从数据库中获取公告中的最后一条内容
-		broaddata, _ := m.GetNoticeData(int(roomid))
-		data["notice"] = broaddata //公告
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {

@@ -1097,3 +1097,330 @@
 2017/04/07 17:03:10 [I] [mqtt.go:58] mqtt running OK  
 2017/04/07 17:03:10 [D] [mq.go:58] MQTT Client Init OK. 
 2017/04/07 17:03:11 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 17:57:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 17:57:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 17:57:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 17:57:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042036600 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 17:57:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 17:57:19 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 17:57:19 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 17:57:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234b260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 17:57:42 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 17:57:42 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 17:57:42 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 17:57:42 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422cef60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 17:57:42 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 17:57:42 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 17:57:42 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 17:57:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 17:57:56 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 17:57:57 [D] [RoomInfo.go:90] num 3 
+2017/04/07 17:58:27 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 17:58:28 [D] [RoomInfo.go:90] num 3 
+2017/04/07 17:59:14 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 17:59:18 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 17:59:24 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 17:59:25 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:02:54 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:02:55 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:02:56 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:02:56 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:03:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:03:48 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:03:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:03:51 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:03:59 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:04:00 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:04:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:04:51 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:04:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:04:53 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:05:49 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:05:50 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:05:56 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:05:57 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:05:57 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:05:58 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:06:37 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:06:37 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:06:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:06:38 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:06:41 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:06:42 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:07:44 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:44 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:07:44 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:45 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:07:45 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:47 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:07:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:07:50 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:08:36 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:08:36 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:08:37 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:08:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 0  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/07 18:08:38 [D] [RoomInfo.go:90] num 3 
+2017/04/07 18:23:32 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:23:37 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:23:42 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:23:47 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:23:52 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:23:57 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:02 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:07 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:12 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:17 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:22 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:27 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:32 [E] [mqttController.go:339] get the usercount error Error 1146: Table 'weserver.user' doesn't exist 
+2017/04/07 18:24:39 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/07 18:24:39 [I] [Connect.go:19] 数据库连接成功 
+2017/04/07 18:24:40 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/07 18:24:40 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042352960 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/07 18:24:40 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/07 18:24:40 [I] [mqtt.go:58] mqtt running OK  
+2017/04/07 18:24:40 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/07 18:24:40 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/07 18:24:56 [E] [User.go:154] <QuerySeter> no row found 
+2017/04/07 18:24:56 [E] [indexController.go:123] load retalteduser error <QuerySeter> no row found 
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:128
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/07 18:24:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/08 12:08:36 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 12:08:36 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 12:08:36 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 12:08:36 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042037f80 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 12:08:36 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 12:08:36 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 12:08:36 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 12:08:36 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 12:09:44 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 12:09:44 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 12:09:44 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 12:09:44 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042488120 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 12:09:44 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 12:09:44 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 12:09:44 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 12:09:44 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 12:09:59 [E] [User.go:154] <QuerySeter> no row found 
+2017/04/08 12:09:59 [E] [indexController.go:123] load retalteduser error <QuerySeter> no row found 
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:128
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/08 12:09:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/08 13:12:56 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 13:12:56 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 13:12:56 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 13:12:56 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04235b200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 13:12:56 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 13:12:56 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 13:12:56 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 13:12:57 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 13:13:11 [E] [User.go:154] <QuerySeter> no row found 
+2017/04/08 13:13:11 [E] [indexController.go:123] load retalteduser error <QuerySeter> no row found 
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:128
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/08 13:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/08 13:23:08 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 13:23:08 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 13:23:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 13:23:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042444f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 13:23:09 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 13:23:09 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 13:23:09 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 13:23:09 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 13:23:17 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:23:18 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:23:35 [E] [User.go:166] <QuerySeter> no row found 
+2017/04/08 13:23:35 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/08 13:23:36 [E] [User.go:166] <QuerySeter> no row found 
+2017/04/08 13:23:36 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/08 13:23:38 [E] [User.go:166] <QuerySeter> no row found 
+2017/04/08 13:23:38 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/08 13:23:39 [E] [User.go:166] <QuerySeter> no row found 
+2017/04/08 13:23:39 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/08 13:31:02 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:31:03 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:31:28 [E] [userController.go:23] strconv.ParseInt: parsing "": invalid syntax 
+2017/04/08 13:31:28 [E] [userController.go:27] strconv.ParseInt: parsing "": invalid syntax 
+2017/04/08 13:31:28 [E] [userController.go:39] strconv.ParseInt: parsing "": invalid syntax 
+2017/04/08 13:31:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:31:38 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:32:19 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: xPtTNa0541uth5 ] 
+2017/04/08 13:32:21 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:32:22 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:32:27 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: O7u1PA0549uth8 ] 
+2017/04/08 13:32:29 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:32:30 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:37:29 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:37:29 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:38:14 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:38:14 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:39:10 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: FZxuTA0953th23 ] 
+2017/04/08 13:39:13 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:39:13 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:43:20 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: c5DMvA0203th19 ] 
+2017/04/08 13:43:23 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:43:24 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:43:29 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: XS4uQa0211th10 ] 
+2017/04/08 13:43:32 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:43:32 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:43:39 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: fSmwEA0222th23 ] 
+2017/04/08 13:43:42 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:43:43 [D] [RoomInfo.go:90] num 5 
+2017/04/08 13:43:49 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: eXP1wA0231uth7 ] 
+2017/04/08 13:43:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 13:43:52 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:06:55 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:06:55 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:06:55 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:06:55 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c960 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:07:23 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:07:23 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:07:23 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:07:23 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04235e360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:07:23 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 14:07:23 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 14:07:23 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:07:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:07:33 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:07:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:08:49 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:08:49 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:08:49 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:08:49 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c480 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:08:49 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 14:08:49 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 14:08:49 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:08:49 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:09:14 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:12:07 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:12:07 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:12:07 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:12:07 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234d020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:12:07 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 14:12:07 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 14:12:07 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:12:08 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:12:18 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:12:18 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] the request url is  /chat/user/historylist
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] Handler crashed with error <Ormer.QueryTable> table name: `topic__chat_message/sub1` not exists
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/orm/orm.go:448
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/Chatrecord.go:111
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/mqttController.go:130
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/08 14:13:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/08 14:13:27 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: NeWDTA0009uth7 ] 
+2017/04/08 14:13:29 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:13:30 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] the request url is  /chat/user/historylist
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] Handler crashed with error <Ormer.QueryTable> table name: `topic__chat_message/sub2` not exists
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/orm/orm.go:448
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/Chatrecord.go:111
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/mqttController.go:130
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/08 14:13:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/08 14:15:13 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:15:13 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:15:13 [E] [mqtt.go:97] connect error Network Error : %!s(<nil>) 
+2017/04/08 14:15:13 [E] [mqtt.go:56] mqtt connect:  Network Error : %!s(<nil>) 
+2017/04/08 14:15:13 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:15:14 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:15:34 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:15:34 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:15:34 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:15:34 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423651a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:15:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:15:53 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:15:54 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:15:54 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042357200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:16:17 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:16:17 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:16:17 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:16:17 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042357260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:16:17 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 14:16:17 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 14:16:17 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:16:17 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:16:34 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:16:35 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:20:34 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:20:34 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:20:35 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:20:35 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234c3c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:20:35 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 14:20:35 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 14:20:35 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:20:35 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:20:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:20:48 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:20:50 [D] [mqttController.go:125] vvvvvvvvvvvvvvv  Topic_ChatMessage/sub1 
+2017/04/08 14:20:50 [D] [mqttController.go:135] ssssssss [] 
+2017/04/08 14:25:07 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/08 14:25:07 [I] [Connect.go:19] 数据库连接成功 
+2017/04/08 14:25:07 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/08 14:25:07 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04229aea0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/08 14:25:07 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/08 14:25:07 [I] [mqtt.go:58] mqtt running OK  
+2017/04/08 14:25:07 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/08 14:25:07 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/08 14:25:15 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:25:15 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:25:17 [D] [mqttController.go:134] ssssssss [{1 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg 0 1 1 hello&nbsp;<span style="font-size: 1.6rem;">world</span> 2017-03-08 12:00:22 +0800 CST 1 90161783-93c1-48dc-bad7-598ae02871a3  0}] 
+2017/04/08 14:25:21 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: TRNPQA0724th10 ] 
+2017/04/08 14:25:24 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:25:25 [D] [RoomInfo.go:90] num 5 
+2017/04/08 14:25:26 [D] [mqttController.go:134] ssssssss [{2 Topic_ChatMessage/sub2 ooex5xFQ6NnAs7ZmJ1DyuZlrbRm8 旭 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRX2DCfHcppb9GohWY00UQiaLibcxdm5auDwz8zHQXhEkgrmHqUuhM0eYic3sQ27ws1ohepiaDOkzjdXX2/0 guest 普通 TXT 1472629522.jpg 0 1 1 哈哈 2017-04-01 13:01:35 +0800 CST 1 ae259730-da72-40ea-b546-65eb9d447477  0}] 
+2017/04/08 14:25:32 [E] [indexController.go:83] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: E4_laa0735th23 ] 
+2017/04/08 14:25:35 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/08 14:25:36 [D] [RoomInfo.go:90] num 5 
