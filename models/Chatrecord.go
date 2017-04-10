@@ -109,7 +109,7 @@ func GetChatMsgData(count int64, roomId, tableName string) ([]ChatRecord, int64,
 	// }
 	//num, err := o.QueryTable(tableName).OrderBy("Id").Filter("Status", 1).Filter("Room", roomId).Filter("Id__gt", satrt).All(&chat)
 	var chat []ChatRecord
-	num, err := o.QueryTable(tableName).Filter("Status", 1).Filter("Room", roomId).OrderBy("-Id").Limit(count).All(&chat)
+	num, err := o.QueryTable(tableName).Filter("Status", 1).Filter("Room", roomId).OrderBy("Id").Limit(count).All(&chat)
 	return chat, num, err
 }
 

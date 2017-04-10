@@ -131,7 +131,6 @@ func (this *MqttController) GetChatHistoryList() {
 		default:
 		}
 
-		beego.Debug("ssssssss", historychat)
 		data := make(map[string]interface{})
 		data["historydata"] = historychat //聊天的历史信息
 		this.Data["json"] = &data
