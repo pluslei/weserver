@@ -74,7 +74,6 @@ type Usertitle struct {
 
 //mqtt发送聊天信息
 type MessageInfo struct {
-	Id            int64     //数据库中id
 	Room          string    //房间号 topic
 	Uname         string    //用户名 openid
 	Nickname      string    //用户昵称
