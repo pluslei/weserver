@@ -14,9 +14,17 @@ const (
 	MSG_TYPE_NOTICE_ADD   //公告消息
 	MSG_TYPE_NOTICE_DEL   //公告消息
 	MSG_TYPE_STRATEGY_ADD //策略消息
-	MSG_TYPE_STRATEGY_DEL //策略消息
-	MSG_TYPE_KICKOUT      //踢人
-	MSG_TYPE_SHUTUP       // 禁言
+	MSG_TYPE_STRATEGY_OPE
+	MSG_TYPE_KICKOUT //踢人
+	MSG_TYPE_SHUTUP  // 禁言
+)
+
+//策略
+const (
+	OPERATE_TOP = iota
+	OPERATE_UNTOP
+	OPERATE_THUMB
+	OPERATE_DEL
 )
 
 const (
@@ -143,9 +151,12 @@ type StrategyInfo struct {
 
 	MsgType int //消息类型
 }
-type StrategyDEL struct {
-	Id   int64  //消息id 唯一
-	Room string //房间号
+
+// 置顶 /取消置顶 /点赞/ 删除
+type StrategyOperate struct {
+	Id       int64  //消息id 唯一
+	Room     string //房间号
+	OperType int64  // 1 /0	/2 /3
 
 	MsgType int //消息类型
 }

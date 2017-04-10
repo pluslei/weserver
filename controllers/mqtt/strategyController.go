@@ -18,7 +18,7 @@ type StrategyController struct {
 
 type strategyMessage struct {
 	infochan chan *StrategyInfo
-	Delchan  chan *StrategyDEL
+	operchan chan *StrategyOperate
 }
 
 var (
@@ -28,7 +28,7 @@ var (
 func init() {
 	strategy = &strategyMessage{
 		infochan: make(chan *StrategyInfo, 20480),
-		Delchan:  make(chan *StrategyDEL, 20480),
+		operchan: make(chan *StrategyOperate, 20480),
 	}
 	strategy.runWriteDb()
 }
@@ -49,17 +49,18 @@ func (this *StrategyController) GetStrategyInfo() {
 	this.Ctx.WriteString("")
 }
 
-//删除策略
-func (this *StrategyController) DeleteStrategy() {
+//策略操作 置顶/取消置顶/点赞/删除
+func (this *StrategyController) OperateStrategy() {
 	if this.IsAjax() {
 		room := this.GetString("Room")
 		id, _ := this.GetInt64("Id")
-		b := DelStrategy(room, id)
+		op, _ := this.GetInt64("OperType")
+		b := OPStrategy(room, id, op)
 		if b {
-			this.Rsp(true, "策略删除成功", "")
+			this.Rsp(true, "策略操作成功", "")
 			return
 		} else {
-			this.Rsp(false, "策略删除失败,请重新发送", "")
+			this.Rsp(false, "策略操作失败,请重新发送", "")
 			return
 		}
 	}
@@ -109,19 +110,21 @@ func parseStrategyMsg(msg string) bool {
 	return true
 }
 
-func DelStrategy(room string, id int64) bool {
-	var info StrategyDEL
+func OPStrategy(room string, id, op int64) bool {
+	var info StrategyOperate
 	info.Id = id
 	info.Room = room
-	info.MsgType = MSG_TYPE_STRATEGY_DEL
+	info.OperType = op
+
+	info.MsgType = MSG_TYPE_STRATEGY_OPE
 
 	v, err := ToJSON(info)
 	if err != nil {
-		beego.Error("DELETE Strategy JSON ERROR", err)
+		beego.Error("OPERATE Strategy JSON ERROR", err)
 		return false
 	}
 	mq.SendMessage(room, v) //发消息
-	DeleteStrategyMsg(info)
+	OperateStrategyMsg(info)
 	return true
 }
 
@@ -133,9 +136,9 @@ func (n *strategyMessage) runWriteDb() {
 			if ok {
 				addStrategyContent(infoMsg)
 			}
-			infoDel, ok1 := <-n.Delchan
+			infoOper, ok1 := <-n.operchan
 			if ok1 {
-				delStrategyContent(infoDel)
+				OperateStrategyContent(infoOper)
 			}
 		}
 	}()
@@ -152,32 +155,45 @@ func insertStrageydata(info StrategyInfo) {
 	}
 }
 
-func DeleteStrategyMsg(info StrategyDEL) {
+func OperateStrategyMsg(info StrategyOperate) {
 	jsondata := &info
 	select {
-	case strategy.Delchan <- jsondata:
+	case strategy.operchan <- jsondata:
 		break
 	default:
-		beego.Error("DELETE NOTICE db error!!!")
+		beego.Error("OPER NOTICE db error!!!")
 		break
 	}
 }
 
-//删除
-func delStrategyContent(info *StrategyDEL) {
-	beego.Debug("StrategyDEL", info)
+func OperateStrategyContent(info *StrategyOperate) {
+	beego.Debug("StrategyOper", info)
 	var strategy m.Strategy
 	strategy.Id = info.Id
 	strategy.Room = info.Room
-	_, err := m.DelStrategyById(strategy.Id)
-	if err != nil {
-		beego.Debug("Delete Strategy Fail:", err)
+	OPERTYPE := info.OperType
+	switch OPERTYPE {
+	case OPERATE_TOP:
+		beego.Debug("top")
+		break
+	case OPERATE_UNTOP:
+		beego.Debug("untop")
+		break
+	case OPERATE_THUMB:
+		beego.Debug("thumb")
+		break
+	case OPERATE_DEL:
+		_, err := m.DelStrategyById(strategy.Id)
+		if err != nil {
+			beego.Debug("Oper Strategy Fail:", err)
+		}
+		break
+	default:
 	}
 }
 
 func addStrategyContent(info *StrategyInfo) {
 	beego.Debug("Add StrategyInfo", info)
-	//写数据库
 	var strategy m.Strategy
 	strategy.Room = info.Room
 	strategy.Icon = info.Icon

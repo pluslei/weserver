@@ -137,7 +137,7 @@ func Router() {
 
 	// //策略
 	beego.Router("/chat/user/strategy", &mqtt.StrategyController{}, "*:GetStrategyInfo")
-	beego.Router("/chat/user/deletestrategy", &mqtt.StrategyController{}, "*:DeleteStrategy")
+	beego.Router("/chat/user/operatestrategy", &mqtt.StrategyController{}, "*:OperateStrategy")
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 
 	//踢人
