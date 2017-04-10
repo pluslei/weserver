@@ -1478,6 +1478,16 @@ a {
   font-weight: lighter;
   color: #ddd;
 }
+.sendNotice .conNotice .icon .istop {
+  float: left;
+  height: 28px;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 28px;
+}
+.sendNotice .conNotice .icon .istop input {
+  border: 1px solid #f5f5f5;
+}
 .sendNotice .conNotice .icon .sendbtn {
   display: block;
   float: right;

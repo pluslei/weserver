@@ -101,7 +101,7 @@ func parseNoticeMsg(msg string) bool {
 		beego.Error("json error", err)
 		return false
 	}
-
+	beego.Debug("vvvvvvvvvvvvvvvvvvvvv", topic)
 	mq.SendMessage(topic, v) //发消息
 
 	// 消息入库
@@ -129,13 +129,15 @@ func DelNotice(room string, id int64) bool {
 func (n *noticeMessage) runWriteDb() {
 	go func() {
 		for {
-			infoMsg, ok := <-n.infochan
-			if ok {
-				addContent(infoMsg)
-			}
-			infoDel, ok1 := <-n.Delchan
-			if ok1 {
-				delContent(infoDel)
+			select {
+			case infoMsg, ok := <-n.infochan:
+				if ok {
+					addContent(infoMsg)
+				}
+			case infoDel, ok1 := <-n.Delchan:
+				if ok1 {
+					delContent(infoDel)
+				}
 			}
 		}
 	}()

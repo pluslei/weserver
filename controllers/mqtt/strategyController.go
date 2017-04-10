@@ -132,13 +132,15 @@ func OPStrategy(room string, id, op int64) bool {
 func (n *strategyMessage) runWriteDb() {
 	go func() {
 		for {
-			infoMsg, ok := <-n.infochan
-			if ok {
-				addStrategyContent(infoMsg)
-			}
-			infoOper, ok1 := <-n.operchan
-			if ok1 {
-				OperateStrategyContent(infoOper)
+			select {
+			case infoMsg, ok := <-n.infochan:
+				if ok {
+					addStrategyContent(infoMsg)
+				}
+			case infoOper, ok1 := <-n.operchan:
+				if ok1 {
+					OperateStrategyContent(infoOper)
+				}
 			}
 		}
 	}()
