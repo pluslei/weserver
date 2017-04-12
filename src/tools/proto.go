@@ -64,6 +64,15 @@ type Usertitle struct {
 
 //######################################################################################
 
+// 在线人数信息
+type OnLineInfo struct {
+	Uname    string //微信唯一标识
+	Nickname string //微信名
+	UserIcon string //微信头像
+}
+
+//######################################################################################
+
 //mqtt发送聊天信息
 type MessageInfo struct {
 	Id            int64     //数据库中id

@@ -31,6 +31,33 @@ func init() {
 	kick.runWriteDb()
 }
 
+// 当前在线
+func (this *ManagerController) GetUserOnline() {
+	if this.IsAjax() {
+		roomId := this.GetString("Room")
+		onlineuser, err := m.GetUserInfoToday(roomId)
+		if err != nil {
+			beego.Error("get the user error", err)
+		}
+		var userInfo []OnLineInfo
+		for _, user := range onlineuser {
+			if len(user.UserIcon) > 0 {
+				var info OnLineInfo
+				info.Uname = EncodeB64(user.Username)
+				info.Nickname = EncodeB64(user.Nickname)
+				info.UserIcon = EncodeB64(user.UserIcon)
+				userInfo = append(userInfo, info)
+			}
+		}
+		data := make(map[string]interface{})
+		data["userlist"] = userInfo
+		this.Data["json"] = &data
+		this.ServeJSON()
+	} else {
+		this.Ctx.Redirect(302, "/")
+	}
+}
+
 //踢人
 func (this *ManagerController) GetKickOutInfo() {
 	if this.IsAjax() {

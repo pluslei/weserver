@@ -125,7 +125,7 @@ func Router() {
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
 	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")
-	//获取在线人数信息
+	//获取在线人次信息
 	beego.Router("/chat/user/online/info", &mqtt.MqttController{}, "*:GetOnlineUseInfo")
 	// 获取在线人数
 	beego.Router("/chat/user/online/count", &mqtt.MqttController{}, "*:GetOnlineUseCount")
@@ -140,6 +140,8 @@ func Router() {
 	beego.Router("/chat/user/operatestrategy", &mqtt.StrategyController{}, "*:OperateStrategy")
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 
+	// 当前在线人信息
+	beego.Router("/chat/user/online", &mqtt.ManagerController{}, "*:GetUserOnline")
 	//踢人
 	beego.Router("/chat/user/KickOut", &mqtt.ManagerController{}, "*:GetKickOutInfo")
 	//禁言
