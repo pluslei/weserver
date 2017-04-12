@@ -641,23 +641,26 @@ ol {
   height: 37px;
 }
 .allchannel .allchannelbox {
-  padding-top: 10px;
+  padding-top: 15px;
   overflow-y: auto;
+  background: #efeff4;
 }
 .allchannel .allchannelbox .singlechannel {
-  height: 50pt;
+  position: relative;
+  height: 45pt;
   background-color: #fff;
   border-radius: 5px;
-  margin: 0px 15px 10px;
+  border: 1px solid #eee;
+  margin: 0px 15px 15px;
 }
 .allchannel .allchannelbox .singlechannel .iconbox {
   border: 1px solid #ccc;
-  height: 40pt;
-  width: 40pt;
+  height: 35pt;
+  width: 35pt;
   float: left;
   margin: 5pt;
   text-align: center;
-  line-height: 40pt;
+  line-height: 35pt;
   background: #eee;
   border-radius: 3px;
 }
@@ -668,36 +671,54 @@ ol {
   border-radius: 5px;
 }
 .allchannel .allchannelbox .singlechannel .channelinfo {
-  width: 55%;
-  height: 40pt;
+  width: 78.5%;
+  height: 35pt;
   float: left;
   margin-top: 5pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .allchannel .allchannelbox .singlechannel .channelinfo .channelname {
   font-size: 16px;
-  margin-bottom: 8px;
   display: block;
 }
 .allchannel .allchannelbox .singlechannel .channelinfo .teacher {
   display: block;
-  color: #3E08FD;
+  font-size: 14px;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .allchannel .allchannelbox .singlechannel .followers {
-  float: right;
+  position: absolute;
+  right: 0px;
+  top: 0px;
   width: 23.5%;
-  height: 40pt;
+  height: 20pt;
   margin-top: 5pt;
   text-align: center;
 }
 .allchannel .allchannelbox .singlechannel .followers .aboutnumname {
+  width: 16px;
+  height: 16px;
   font-size: 14px;
-  margin-bottom: 8px;
-  display: block;
+  display: inline-block;
+  position: relative;
+}
+.allchannel .allchannelbox .singlechannel .followers .aboutnumname img {
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
 }
 .allchannel .allchannelbox .singlechannel .followers .aboutnum {
   font-weight: bold;
-  display: block;
+  display: inline-block;
   font-size: 14px;
+  line-height: 26px;
+  margin-left: 5px;
 }
 /*普通公共chat*/
 /*公共向左浮动*/
@@ -709,7 +730,7 @@ body {
   float: left;
 }
 .chat {
-  position: static;
+  position: relative;
   font-size: 13px;
   background-color: #f4f4f6;
   overflow-y: scroll;
@@ -938,15 +959,37 @@ body {
   height: 20px;
   width: 40px;
 }
+.tip_msg {
+  width: 100%;
+  height: 28px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 28px;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  -webkit-transform: translateY(-28px);
+      -ms-transform: translateY(-28px);
+          transform: translateY(-28px);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.tip_msg span {
+  color: red;
+}
 .title {
   height: 56px;
   width: 100%;
   border-bottom: 1px solid #ccc;
   background-color: #f96400;
+  position: relative;
+  z-index: 400;
 }
 .title .chatlogo {
-  width: 136px;
-  height: 55px;
+  width: 135px;
 }
 .title .titleright {
   float: right;
@@ -1410,14 +1453,13 @@ a {
 .sendNotice {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: #EFEFF4;
   overflow: hidden;
 }
 .sendNotice .conNotice {
-  width: 98%;
+  width: 100%;
   margin: 10px auto;
-  height: 220px;
-  border: 1px solid #ddd;
+  height: 160px;
 }
 .sendNotice .conNotice .sendNoticeText {
   display: inline-block;
@@ -1456,6 +1498,7 @@ a {
   background: #fefefe;
 }
 .sendNotice .conNotice .icon {
+  position: relative;
   margin: 4px 0px;
   overflow: hidden;
 }
@@ -1490,18 +1533,156 @@ a {
 }
 .sendNotice .conNotice .icon .sendbtn {
   display: block;
-  float: right;
-  margin-right: 10px;
-  margin-top: 4px;
+  margin: 20px auto;
+  font-size: 14px;
+  border: none;
+  background: #fff;
+  line-height: 28px;
+  height: 28px;
+  width: 50%;
+  text-align: center;
+  background: #09bb07;
+  color: #fff;
+  border-radius: 2px;
+}
+.sendNotice .conNotice .icon .disable {
+  display: block;
+  margin: 20px auto;
   font-size: 14px;
   color: #aaa;
   border: none;
   background: #fff;
   line-height: 28px;
   height: 28px;
-  width: 50px;
+  width: 50%;
   text-align: center;
-  background: #09bb07;
+  background: #aaa;
   color: #fff;
   border-radius: 2px;
+}
+.choose {
+  position: absolute;
+  height: 22px;
+  left: 10px;
+  top: 23px;
+  line-height: 22px;
+}
+.choose img {
+  width: 18px;
+  height: 18px;
+  float: right;
+  margin-top: 2px;
+  margin-left: 4px;
+}
+.chatRoomInfo {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.chatRoomInfo .RoomInfo_banner {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.chatRoomInfo .RoomInfo_banner img {
+  width: 100%;
+}
+.chatRoomInfo .roomTitle {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  background: #fff;
+}
+.chatRoomInfo .roomTitle p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #353535;
+  background: #fff;
+  line-height: 25px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.chatRoomInfo .roomTitle .RoomInfo_online {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+}
+.chatRoomInfo .info {
+  width: 100%;
+  margin-top: 20px;
+  background: #fff;
+}
+.chatRoomInfo .info .info_title {
+  width: 100%;
+  height: 44px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 15px;
+}
+.chatRoomInfo .info .info_title img {
+  height: 15px;
+  float: left;
+  margin-right: 4px;
+  margin-top: 5px;
+}
+.chatRoomInfo .info .info_content {
+  font-size: 14px;
+  color: #999;
+}
+.chatRoomInfo .info .info_content p.welcome {
+  padding: 0 10px;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+.chatRoomInfo .info .info_content div {
+  padding: 10px;
+  line-height: 20px;
+  text-indent: 2em;
+}
+.chatRoomInfo .intoRoom {
+  width: 100%;
+  height: 45px;
+  display: block;
+  line-height: 45px;
+  text-align: center;
+  letter-spacing: 4px;
+  color: #fff;
+  background: #09bb07;
+  font-size: 18px;
+  border: none;
+}
+.actionTip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+.actionTip .actionTip_c {
+  width: 250px;
+  height: 150px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -120px;
+  margin-left: -125px;
+  border-radius: 6px;
+  overflow: hidden;
+  color: #353535;
+  -webkit-animation: getIn 0.3s;
+          animation: getIn 0.3s;
+}
+@keyframes getIn {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }

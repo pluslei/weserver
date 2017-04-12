@@ -49,13 +49,11 @@ func (this *StrategyController) GetStrategyInfo() {
 	this.Ctx.WriteString("")
 }
 
-//策略操作 置顶/取消置顶/点赞/删除
+//策略操作 置顶/取消置顶/点赞/取消点赞/删除
 func (this *StrategyController) OperateStrategy() {
 	if this.IsAjax() {
-		room := this.GetString("Room")
-		id, _ := this.GetInt64("Id")
-		op, _ := this.GetInt64("OperType")
-		b := OPStrategy(room, id, op)
+		msg := this.GetString("str")
+		b := parseOPStrategyMsg(msg)
 		if b {
 			this.Rsp(true, "策略操作成功", "")
 			return
@@ -89,10 +87,10 @@ func parseStrategyMsg(msg string) bool {
 	msginfo := new(StrategyInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
-		beego.Error("simplejson error", err)
+		beego.Error("Strategy: simplejson error", err)
 		return false
 	}
-	info.MsgType = MSG_TYPE_STRATEGY_ADD //公告
+	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
 
 	beego.Debug("info", info)
@@ -110,13 +108,16 @@ func parseStrategyMsg(msg string) bool {
 	return true
 }
 
-func OPStrategy(room string, id, op int64) bool {
-	var info StrategyOperate
-	info.Id = id
-	info.Room = room
-	info.OperType = op
-
+func parseOPStrategyMsg(msg string) bool {
+	msginfo := new(StrategyOperate)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("StrategyOperate: simplejson error", err)
+		return false
+	}
 	info.MsgType = MSG_TYPE_STRATEGY_OPE
+	room := info.Room
+	beego.Debug("Operate Strategy info", info)
 
 	v, err := ToJSON(info)
 	if err != nil {
@@ -176,18 +177,33 @@ func OperateStrategyContent(info *StrategyOperate) {
 	OPERTYPE := info.OperType
 	switch OPERTYPE {
 	case OPERATE_TOP:
-		beego.Debug("top")
+		_, err := m.StickOption(strategy.Id)
+		if err != nil {
+			beego.Debug("Oper Strategy Top Fail", err)
+		}
 		break
 	case OPERATE_UNTOP:
-		beego.Debug("untop")
+		_, err := m.UnStickOption(strategy.Id)
+		if err != nil {
+			beego.Debug("Oper Strategy UnTop Fail", err)
+		}
 		break
 	case OPERATE_THUMB:
-		beego.Debug("thumb")
+		_, err := m.ThumbOptionAdd(strategy.Id)
+		if err != nil {
+			beego.Debug("Oper Strategy Thumb Fail", err)
+		}
+		break
+	case OPERATE_UNTHUMB:
+		_, err := m.ThumbOptionDel(strategy.Id)
+		if err != nil {
+			beego.Debug("Oper Strategy Thumb Fail", err)
+		}
 		break
 	case OPERATE_DEL:
 		_, err := m.DelStrategyById(strategy.Id)
 		if err != nil {
-			beego.Debug("Oper Strategy Fail:", err)
+			beego.Debug("Oper Strategy Delete Fail:", err)
 		}
 		break
 	default:

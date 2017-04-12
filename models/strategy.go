@@ -75,7 +75,7 @@ func UnStickOption(id int64) (int64, error) {
 }
 
 //点赞操作
-func ThumbOption(id int64) (int64, error) {
+func ThumbOptionAdd(id int64) (int64, error) {
 	num, err := GetThumbNum(id)
 	if err != nil {
 		beego.Debug("Get ThumbNum fail", err)
@@ -87,10 +87,23 @@ func ThumbOption(id int64) (int64, error) {
 	return status, err
 }
 
+//取消点赞
+func ThumbOptionDel(id int64) (int64, error) {
+	num, err := GetThumbNum(id)
+	if err != nil {
+		beego.Debug("Get ThumbNum fail", err)
+		return 0, nil
+	}
+	o := orm.NewOrm()
+	var info Strategy
+	status, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"ThumbNum": num - 1})
+	return status, err
+}
+
 //获取原来点赞次数
 func GetThumbNum(id int64) (int64, error) {
 	o := orm.NewOrm()
 	var info Strategy
-	err := o.QueryTable(info).OrderBy("id").One(&info, "ThumbNum")
+	err := o.QueryTable(info).Filter("id", id).One(&info, "ThumbNum")
 	return info.ThumbNum, err
 }

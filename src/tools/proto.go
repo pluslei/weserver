@@ -19,14 +19,6 @@ const (
 	MSG_TYPE_SHUTUP  // 禁言
 )
 
-//策略
-const (
-	OPERATE_TOP = iota
-	OPERATE_UNTOP
-	OPERATE_THUMB
-	OPERATE_DEL
-)
-
 const (
 	OPERATE_KICKOUT = iota
 	OPERATE_SHUTUP
@@ -136,6 +128,14 @@ func (n *NoticeInfo) ParseJSON(msg []byte) (s NoticeInfo, err error) {
 }
 
 //######################################################################################
+// Operate type
+const (
+	OPERATE_TOP = iota
+	OPERATE_UNTOP
+	OPERATE_THUMB
+	OPERATE_UNTHUMB
+	OPERATE_DEL
+)
 
 // 策略消息
 type StrategyInfo struct {
@@ -163,6 +163,14 @@ type StrategyOperate struct {
 
 func (t *StrategyInfo) ParseJSON(msg []byte) (s StrategyInfo, err error) {
 	var result StrategyInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+func (t *StrategyOperate) ParseJSON(msg []byte) (s StrategyOperate, err error) {
+	var result StrategyOperate
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}
