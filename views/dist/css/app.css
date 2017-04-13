@@ -583,7 +583,7 @@ ol {
 }
 .allchannel .channelbanner {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   text-align: center;
   height: 220px;
 }

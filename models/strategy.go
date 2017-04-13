@@ -37,7 +37,7 @@ func (b *Strategy) TableName() string {
 func GetStrategyList(room string, count int64) ([]Strategy, int64, error) {
 	o := orm.NewOrm()
 	var info []Strategy
-	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Id").Limit(count).All(&info)
+	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Id").OrderBy("-IsTop").Limit(count).All(&info)
 	return info, num, err
 }
 

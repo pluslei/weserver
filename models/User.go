@@ -223,6 +223,14 @@ func CountWeekRegist() (week []orm.ParamsList) {
 	return lists
 }
 
+//获取user表中当天所有禁言人数信息
+func GetShutUpInfoToday() (users []User, err error) {
+	o := orm.NewOrm()
+	nowtime := time.Now().Unix() - 12*60*60
+	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("IsShutUp", 1).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
+	return users, err
+}
+
 //获取user表中最近当天登录列表信息
 func GetUserInfoToday(roomId string) (users []User, err error) {
 	o := orm.NewOrm()

@@ -3361,3 +3361,694 @@
 2017/04/12 18:31:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
 2017/04/12 18:31:47 [D] [RoomInfo.go:90] num 5 
 2017/04/12 18:31:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/12 18:39:48 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/12 18:39:48 [I] [Connect.go:19] 数据库连接成功 
+2017/04/12 18:39:48 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/12 18:39:48 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042370f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/12 18:39:48 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/12 18:39:48 [I] [mqtt.go:58] mqtt running OK  
+2017/04/12 18:39:48 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/12 18:39:48 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/12 18:40:00 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true s的的点点滴滴 false 2017-04-12 18:40:00.256214 +0800 CST 0 f83cfb3f-9dbb-4180-922f-d35d84d2391d 0} 
+2017/04/12 18:40:00 [D] [mqttController.go:100] isfilter false 
+2017/04/12 18:40:00 [D] [mqttController.go:271] im here false false 
+2017/04/12 18:40:00 [D] [mqttController.go:324] result [] 
+2017/04/12 18:40:12 [D] [RoomInfo.go:90] num 5 
+2017/04/12 18:40:17 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/12 18:40:18 [D] [RoomInfo.go:90] num 5 
+2017/04/12 18:40:21 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/12 18:40:28 [D] [RoomInfo.go:90] num 5 
+2017/04/12 18:40:56 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/12 18:41:11 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶大大大 2017-04-12 18:41:11 2} 
+2017/04/12 18:41:11 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:41:11 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶大大大 2017-04-12 18:41:11 2} 
+2017/04/12 18:41:32 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶大大大 2017-04-12 18:41:32 2} 
+2017/04/12 18:41:32 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:41:32 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶大大大 2017-04-12 18:41:32 2} 
+2017/04/12 18:41:57 [D] [RoomInfo.go:90] num 5 
+2017/04/12 18:45:23 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/12 18:45:29 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:45:29 2} 
+2017/04/12 18:45:29 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:45:29 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:45:29 2} 
+2017/04/12 18:46:22 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:46:22 2} 
+2017/04/12 18:46:22 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:46:22 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:46:22 2} 
+2017/04/12 18:46:29 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:46:29 2} 
+2017/04/12 18:46:29 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:46:29 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:46:29 2} 
+2017/04/12 18:48:06 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:48:06 2} 
+2017/04/12 18:48:06 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:48:06 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:48:06 2} 
+2017/04/12 18:48:51 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:48:51 2} 
+2017/04/12 18:48:51 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:48:51 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:48:51 2} 
+2017/04/12 18:53:07 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:07 2} 
+2017/04/12 18:53:07 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:53:07 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:07 2} 
+2017/04/12 18:53:17 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:17 2} 
+2017/04/12 18:53:17 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:53:17 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:17 2} 
+2017/04/12 18:53:52 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:52 2} 
+2017/04/12 18:53:52 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:53:52 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:52 2} 
+2017/04/12 18:53:54 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:54 2} 
+2017/04/12 18:53:54 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:53:54 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:53:54 2} 
+2017/04/12 18:54:50 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:54:50 2} 
+2017/04/12 18:54:50 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:54:50 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:54:50 2} 
+2017/04/12 18:54:53 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:54:53 2} 
+2017/04/12 18:54:53 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:54:53 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:54:53 2} 
+2017/04/12 18:55:56 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:55:56 2} 
+2017/04/12 18:55:56 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:55:56 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:55:56 2} 
+2017/04/12 18:55:57 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:55:57 2} 
+2017/04/12 18:55:57 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:55:57 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:55:57 2} 
+2017/04/12 18:56:04 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:56:04 2} 
+2017/04/12 18:56:04 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:56:04 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:56:04 2} 
+2017/04/12 18:58:05 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:05 2} 
+2017/04/12 18:58:05 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:58:05 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:05 2} 
+2017/04/12 18:58:07 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:07 2} 
+2017/04/12 18:58:07 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:58:07 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:07 2} 
+2017/04/12 18:58:08 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:08 2} 
+2017/04/12 18:58:08 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:58:08 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:08 2} 
+2017/04/12 18:58:08 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:08 2} 
+2017/04/12 18:58:08 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:58:08 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:08 2} 
+2017/04/12 18:58:52 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:52 2} 
+2017/04/12 18:58:52 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 18:58:52 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 达瓦大 2017-04-12 18:58:52 2} 
+2017/04/12 18:59:25 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 没开口口 true false 0 2017-04-12 18:59:25 4} 
+2017/04/12 18:59:25 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 没开口口 true false 0 2017-04-12 18:59:25 4} 
+2017/04/12 19:01:06 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:06 2} 
+2017/04/12 19:01:06 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:01:06 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:06 2} 
+2017/04/12 19:01:11 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:11 2} 
+2017/04/12 19:01:11 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:01:11 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:11 2} 
+2017/04/12 19:01:35 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:35 2} 
+2017/04/12 19:01:35 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:01:35 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:35 2} 
+2017/04/12 19:01:36 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:36 2} 
+2017/04/12 19:01:36 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:01:36 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:36 2} 
+2017/04/12 19:01:37 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:37 2} 
+2017/04/12 19:01:37 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:01:37 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:01:37 2} 
+2017/04/12 19:03:49 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:03:49 2} 
+2017/04/12 19:03:49 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:03:49 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:03:49 2} 
+2017/04/12 19:03:51 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:03:51 2} 
+2017/04/12 19:03:51 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:03:51 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:03:51 2} 
+2017/04/12 19:05:27 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:05:27 2} 
+2017/04/12 19:05:27 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:05:27 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:05:27 2} 
+2017/04/12 19:06:54 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:06:54 2} 
+2017/04/12 19:06:54 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:06:54 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:06:54 2} 
+2017/04/12 19:09:50 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:09:50 2} 
+2017/04/12 19:09:50 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:09:50 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 【【【】【 2017-04-12 19:09:50 2} 
+2017/04/12 19:16:39 [D] [RoomInfo.go:90] num 5 
+2017/04/12 19:16:44 [D] [RoomInfo.go:90] num 5 
+2017/04/12 19:16:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/12 19:16:55 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:16:55 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:17:17 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [胜利][微笑][害怕][害怕] false 2017-04-12 19:17:17.289214 +0800 CST 0 e94a96d6-dd29-456d-8bed-d03d54ce4ca2 0} 
+2017/04/12 19:17:17 [D] [mqttController.go:100] isfilter false 
+2017/04/12 19:17:17 [D] [mqttController.go:271] im here false false 
+2017/04/12 19:17:17 [D] [mqttController.go:324] result [] 
+2017/04/12 19:17:25 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [大哭][害怕][微笑][喜欢][害怕] false 2017-04-12 19:17:25.920214 +0800 CST 0 892b2e94-d998-408f-9f4d-8ff9e421342b 0} 
+2017/04/12 19:17:25 [D] [mqttController.go:100] isfilter false 
+2017/04/12 19:17:25 [D] [mqttController.go:271] im here false false 
+2017/04/12 19:17:25 [D] [mqttController.go:324] result [] 
+2017/04/12 19:17:33 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [微笑][微笑] false 2017-04-12 19:17:33.743214 +0800 CST 0 50d62eb7-1705-4a3e-8c5e-57638fb2d781 0} 
+2017/04/12 19:17:33 [D] [mqttController.go:100] isfilter false 
+2017/04/12 19:17:33 [D] [mqttController.go:271] im here false false 
+2017/04/12 19:17:33 [D] [mqttController.go:324] result [] 
+2017/04/12 19:17:37 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [大哭][微笑][微笑][喜欢][喜欢] false 2017-04-12 19:17:37.051214 +0800 CST 0 bc2a5e70-ba62-4727-800d-8b10fca3d146 0} 
+2017/04/12 19:17:37 [D] [mqttController.go:100] isfilter false 
+2017/04/12 19:17:37 [D] [mqttController.go:271] im here false false 
+2017/04/12 19:17:37 [D] [mqttController.go:324] result [] 
+2017/04/12 19:17:39 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true [害怕][吃惊][闭眼][闭眼] false 2017-04-12 19:17:39.517214 +0800 CST 0 7459291e-2f64-48c9-9d5a-f87764044f53 0} 
+2017/04/12 19:17:39 [D] [mqttController.go:100] isfilter false 
+2017/04/12 19:17:39 [D] [mqttController.go:271] im here false false 
+2017/04/12 19:17:39 [D] [mqttController.go:324] result [] 
+2017/04/12 19:17:59 [D] [strategyController.go:120] Operate Strategy info {6 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:17:59 [D] [strategyController.go:173] StrategyOper &{6 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:01 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:01 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:02 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:02 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:04 [D] [strategyController.go:120] Operate Strategy info {4 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:04 [D] [strategyController.go:173] StrategyOper &{4 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:04 [D] [strategyController.go:120] Operate Strategy info {2 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:18:04 [D] [strategyController.go:173] StrategyOper &{2 Topic_ChatMessage/sub1 2 5} 
+2017/04/12 19:20:41 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的 2017-04-12 19:20:41 2} 
+2017/04/12 19:20:41 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:20:41 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的 2017-04-12 19:20:41 2} 
+2017/04/12 19:21:22 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的 2017-04-12 19:21:22 2} 
+2017/04/12 19:21:22 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:21:22 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的 2017-04-12 19:21:22 2} 
+2017/04/12 19:26:40 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的 2017-04-12 19:26:40 2} 
+2017/04/12 19:26:40 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/12 19:26:40 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的 2017-04-12 19:26:40 2} 
+2017/04/13 09:02:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 09:02:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 09:02:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 09:02:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042364180 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 09:02:04 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 09:02:04 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 09:02:04 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 09:02:04 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 09:02:43 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:02:44 [D] [RoomInfo.go:90] num 5 
+2017/04/13 09:02:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:03:13 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddd 2017-04-13 09:03:13 2} 
+2017/04/13 09:03:13 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 09:03:13 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddd 2017-04-13 09:03:13 2} 
+2017/04/13 09:04:41 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddddd true false 0 2017-04-13 09:04:41 4} 
+2017/04/13 09:04:41 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddddd true false 0 2017-04-13 09:04:41 4} 
+2017/04/13 09:05:16 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:05:16 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:05:21 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:05:21 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:05:25 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:05:25 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:08:55 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 09:08:55 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 09:08:55 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 09:08:55 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042305ce0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 09:08:56 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 09:08:56 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 09:08:56 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 09:08:56 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 09:45:39 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 09:45:39 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 09:45:39 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 09:45:39 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d140 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 09:45:39 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 09:45:39 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 09:45:39 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 09:45:39 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 09:45:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:45:47 [D] [RoomInfo.go:90] num 5 
+2017/04/13 09:45:49 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:45:58 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:45:58 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:00 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:46:00 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:46:01 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:01 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:02 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:46:02 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:46:04 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:04 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:06 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:46:06 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:46:10 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:10 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:31 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:31 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:35 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:35 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:57 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:46:57 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:03 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:03 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:11 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:11 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:15 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:47:15 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:47:20 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:20 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:25 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:25 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 09:47:27 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:47:27 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 09:47:40 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:47:40 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:47:49 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:47:49 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:48:17 [D] [strategyController.go:120] Operate Strategy info {18 Topic_ChatMessage/sub1 4 5} 
+2017/04/13 09:48:17 [D] [strategyController.go:173] StrategyOper &{18 Topic_ChatMessage/sub1 4 5} 
+2017/04/13 09:48:25 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:48:25 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:48:28 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:48:28 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:48:32 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:48:32 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:48:34 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:48:34 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:48:37 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:48:37 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:50:59 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 09:50:59 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 09:51:08 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 09:51:08 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04245c0c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 09:51:08 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 09:51:08 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 09:51:08 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 09:51:08 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 09:51:20 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:51:20 [D] [RoomInfo.go:90] num 5 
+2017/04/13 09:51:23 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:51:27 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:51:27 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:51:36 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:51:36 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:51:44 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:51:44 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:51:48 [D] [strategyController.go:120] Operate Strategy info {7 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:51:48 [D] [strategyController.go:173] StrategyOper &{7 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:28 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 09:56:28 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 09:56:28 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 09:56:28 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d140 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 09:56:28 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 09:56:28 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 09:56:28 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 09:56:28 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 09:56:36 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:56:37 [D] [RoomInfo.go:90] num 5 
+2017/04/13 09:56:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 09:56:42 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:42 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:46 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:46 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:48 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:48 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:51 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:51 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:52 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:52 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:53 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:53 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:54 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:54 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:56 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:56 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:56 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:56 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:57 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:57 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:58 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:58 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:59 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:59 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:56:59 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:56:59 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:01 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:01 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:01 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:01 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:02 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:02 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:03 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:03 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:03 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:03 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:04 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:04 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:05 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:05 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:06 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:06 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:06 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:06 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:07 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:07 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 09:57:08 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:08 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:30 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 09:57:30 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:03:29 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:03:29 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:03:30 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:03:30 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:03:31 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:03:31 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:03:32 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:03:33 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:03:33 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:06:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:06:19 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:06:19 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:06:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042420d80 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:06:19 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:06:19 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:06:19 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:06:20 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:08:21 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:08:21 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:08:33 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddd 2017-04-13 10:08:33 2} 
+2017/04/13 10:08:33 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 10:08:33 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddd 2017-04-13 10:08:33 2} 
+2017/04/13 10:11:49 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true ddddddddddd false 2017-04-13 10:11:49.595604 +0800 CST 0 d7bb9b10-d6a2-486b-85d5-ab77d0ce8bb4 0} 
+2017/04/13 10:11:49 [D] [mqttController.go:100] isfilter false 
+2017/04/13 10:11:49 [D] [mqttController.go:271] im here false false 
+2017/04/13 10:11:49 [D] [mqttController.go:324] result [] 
+2017/04/13 10:16:14 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:16:14 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:16:14 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:16:14 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04235f1a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:16:14 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:16:14 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:16:14 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:16:14 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:16:21 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:16:21 [D] [RoomInfo.go:90] num 5 
+2017/04/13 10:16:23 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:16:30 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddd 2017-04-13 10:16:30 2} 
+2017/04/13 10:16:30 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 10:16:30 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddd 2017-04-13 10:16:30 2} 
+2017/04/13 10:17:55 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddd 2017-04-13 10:17:55 2} 
+2017/04/13 10:17:55 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 10:17:55 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddd 2017-04-13 10:17:55 2} 
+2017/04/13 10:19:04 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true dddddddddd false 2017-04-13 10:19:04.237604 +0800 CST 0 dbb71163-74bb-471e-8231-d78f214e1ff0 0} 
+2017/04/13 10:19:04 [D] [mqttController.go:100] isfilter false 
+2017/04/13 10:19:04 [D] [mqttController.go:271] im here false false 
+2017/04/13 10:19:04 [D] [mqttController.go:324] result [] 
+2017/04/13 10:19:10 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddd 2017-04-13 10:19:10 2} 
+2017/04/13 10:19:10 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 10:19:10 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddd 2017-04-13 10:19:10 2} 
+2017/04/13 10:32:21 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddd true false 0 2017-04-13 10:32:21 4} 
+2017/04/13 10:32:21 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddd true false 0 2017-04-13 10:32:21 4} 
+2017/04/13 10:32:25 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:32:25 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 2 5} 
+2017/04/13 10:32:31 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:32:31 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 3 5} 
+2017/04/13 10:32:40 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:32:40 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:32:45 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:32:45 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:33:10 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:33:10 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:33:34 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 4 5} 
+2017/04/13 10:33:34 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 4 5} 
+2017/04/13 10:33:38 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 4 5} 
+2017/04/13 10:33:38 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 4 5} 
+2017/04/13 10:33:49 [D] [strategyController.go:120] Operate Strategy info {19 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:33:49 [D] [strategyController.go:173] StrategyOper &{19 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:33:55 [D] [strategyController.go:120] Operate Strategy info {6 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:33:55 [D] [strategyController.go:173] StrategyOper &{6 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:35:53 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddd 2017-04-13 10:35:53 2} 
+2017/04/13 10:35:53 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 10:35:53 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddd 2017-04-13 10:35:53 2} 
+2017/04/13 10:38:32 [D] [mqttController.go:89] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true dddddddddddddddd false 2017-04-13 10:38:32.411604 +0800 CST 0 c94c5261-6d65-4f80-80f9-4be6167c131c 0} 
+2017/04/13 10:38:32 [D] [mqttController.go:100] isfilter false 
+2017/04/13 10:38:32 [D] [mqttController.go:271] im here false false 
+2017/04/13 10:38:32 [D] [mqttController.go:324] result [] 
+2017/04/13 10:38:39 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddd 2017-04-13 10:38:39 2} 
+2017/04/13 10:38:39 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 10:38:39 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddd 2017-04-13 10:38:39 2} 
+2017/04/13 10:39:42 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:39:42 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:39:42 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:39:42 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200dbc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:39:42 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:39:42 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:39:42 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:39:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:40:23 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:40:23 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:40:23 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:40:23 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422db9e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:40:23 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:40:23 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:40:23 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:40:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:40:31 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:40:32 [D] [RoomInfo.go:90] num 5 
+2017/04/13 10:40:34 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:40:39 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:40:39 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:40:42 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:40:42 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 0 5} 
+2017/04/13 10:40:44 [D] [strategyController.go:120] Operate Strategy info {17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:40:44 [D] [strategyController.go:173] StrategyOper &{17 Topic_ChatMessage/sub1 1 5} 
+2017/04/13 10:52:47 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:52:47 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:52:47 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:52:47 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042372900 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:52:47 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:52:47 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:52:47 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:52:47 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:52:55 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:52:56 [D] [RoomInfo.go:90] num 5 
+2017/04/13 10:52:58 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:53:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:53:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:53:32 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:53:32 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042421800 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:53:32 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:53:32 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:53:32 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:53:32 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:53:42 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:53:43 [D] [RoomInfo.go:90] num 5 
+2017/04/13 10:53:44 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:55:21 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 10:55:21 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 10:55:21 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 10:55:21 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04237d0e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 10:55:21 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 10:55:21 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 10:55:21 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 10:55:22 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 10:55:29 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:55:30 [D] [RoomInfo.go:90] num 5 
+2017/04/13 10:55:33 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 10:58:52 [E] [managerController.go:98] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 11:53:43 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 11:53:43 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 11:53:43 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 11:53:43 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042374360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 11:53:43 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 11:53:43 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 11:53:43 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 11:53:43 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 11:54:36 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 11:54:36 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 11:54:36 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 11:54:36 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04203a9c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 11:54:36 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 11:54:36 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 11:54:36 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 11:54:36 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 11:55:06 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 11:55:07 [D] [RoomInfo.go:90] num 5 
+2017/04/13 11:55:09 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 11:55:30 [E] [managerController.go:120] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 12:05:50 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 12:05:50 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 12:05:50 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 12:05:50 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042301b60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 12:05:50 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 12:05:50 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 12:05:50 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 12:05:51 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 12:05:59 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 12:06:00 [D] [RoomInfo.go:90] num 5 
+2017/04/13 12:06:02 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 12:06:11 [E] [managerController.go:120] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 12:52:23 [E] [managerController.go:120] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 12:58:15 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 12:58:15 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 12:58:16 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 12:58:16 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c840 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 12:58:16 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 12:58:16 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 12:58:16 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 12:58:16 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 12:58:26 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 12:58:26 [D] [RoomInfo.go:90] num 5 
+2017/04/13 12:58:28 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 12:58:39 [D] [managerController.go:119] aaaaaaaaaaaaaaa {  false 0} 
+2017/04/13 12:58:39 [E] [managerController.go:121] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 13:00:26 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 13:00:26 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 13:00:26 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 13:00:26 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042345d40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 13:00:26 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 13:00:26 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 13:00:26 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 13:00:27 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 13:00:33 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 13:00:33 [D] [RoomInfo.go:90] num 5 
+2017/04/13 13:00:35 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 13:01:01 [D] [managerController.go:119] aaaaaaaaaaaaaaa {  false 0} 
+2017/04/13 13:01:01 [E] [managerController.go:121] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 13:06:50 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 13:06:50 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 13:06:50 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 13:06:50 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042344780 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 13:07:00 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 13:07:00 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 13:07:00 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 13:07:00 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04232c060 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 13:07:00 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 13:07:00 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 13:07:00 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 13:07:00 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 13:07:07 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 13:07:08 [D] [RoomInfo.go:90] num 5 
+2017/04/13 13:07:10 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 13:07:19 [D] [managerController.go:119] aaaaaaaaaaaaaaa {  0 0} 
+2017/04/13 13:07:19 [E] [managerController.go:121] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 14:03:49 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:03:49 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:03:49 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:03:49 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d1a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:04:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:04:10 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:04:10 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:04:10 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422dbda0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:04:10 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:04:10 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:04:10 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:04:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:05:00 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:05:01 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:05:04 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:05:11 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddddddd 2017-04-13 14:05:11 2} 
+2017/04/13 14:05:11 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 14:05:11 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddddddd 2017-04-13 14:05:11 2} 
+2017/04/13 14:06:14 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddd 2017-04-13 14:06:14 2} 
+2017/04/13 14:06:14 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 14:06:14 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddd 2017-04-13 14:06:14 2} 
+2017/04/13 14:09:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:09:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:09:32 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:09:32 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042430720 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:09:32 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:09:32 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:09:32 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:09:32 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:10:02 [D] [managerController.go:118] bbbbbbbbbb W3siUm9vbSI6IlRvcGljX0NoYXRNZXNzYWdlL3N1YjEiLCJVbmFtZSI6Im9vZXg1eEs0OXY1NHJic1dWQTJLVVdUMFROYjgiLCJJc1NodXRVcCI6MX1d 
+2017/04/13 14:10:02 [D] [managerController.go:120] aaaaaaaaaaaaaaa {  0 0} 
+2017/04/13 14:10:02 [E] [managerController.go:122] Shutup simplejson error json: cannot unmarshal array into Go value of type tools.ShutUpInfo 
+2017/04/13 14:13:17 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:13:17 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:13:17 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:13:17 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0420d9c20 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:13:18 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:13:18 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:13:18 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:13:18 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:13:35 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:13:36 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:13:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:13:49 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddddddddddddddd 2017-04-13 14:13:49 2} 
+2017/04/13 14:13:49 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 14:13:49 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddddddddddddddd 2017-04-13 14:13:49 2} 
+2017/04/13 14:14:43 [D] [managerController.go:118] bbbbbbbbbb W3siUm9vbSI6IlRvcGljX0NoYXRNZXNzYWdlL3N1YjEiLCJVbmFtZSI6Im9vZXg1eEs0OXY1NHJic1dWQTJLVVdUMFROYjgiLCJJc1NodXRVcCI6MX1d 
+2017/04/13 14:14:43 [D] [managerController.go:120] aaaaaaaaaaaaaaa [{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 1 0}] 
+2017/04/13 14:18:18 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:18:18 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:18:19 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:18:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422ed7a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:18:19 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:18:19 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:18:19 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:18:19 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:18:26 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:18:26 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:18:28 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:18:37 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei aaaaaaaaaaaaaaaaaaa 2017-04-13 14:18:37 2} 
+2017/04/13 14:18:37 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 14:18:37 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei aaaaaaaaaaaaaaaaaaa 2017-04-13 14:18:37 2} 
+2017/04/13 14:31:56 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:31:56 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:31:56 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:31:56 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422cc720 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:31:56 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:31:56 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:31:56 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:31:57 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:32:50 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:32:50 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:32:50 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:32:50 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422dcf00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:32:50 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:32:50 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:32:50 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:32:50 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:32:56 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:32:57 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:33:01 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:33:02 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:33:04 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:33:15 [D] [managerController.go:118] bbbbbbbbbb W3siUm9vbSI6IlRvcGljX0NoYXRNZXNzYWdlL3N1YjEiLCJVbmFtZSI6Im9vZXg1eEs0OXY1NHJic1dWQTJLVVdUMFROYjgiLCJJc1NodXRVcCI6dHJ1ZX1d 
+2017/04/13 14:33:15 [D] [managerController.go:120] aaaaaaaaaaaaaaa [{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 true 0}] 
+2017/04/13 14:33:15 [D] [managerController.go:132] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 true 7} 
+2017/04/13 14:35:50 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:35:50 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:35:50 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:35:50 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042357680 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:35:50 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:35:50 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:35:50 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:35:50 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:36:02 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:36:03 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:36:07 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:36:12 [D] [managerController.go:118] bbbbbbbbbb W3siUm9vbSI6IlRvcGljX0NoYXRNZXNzYWdlL3N1YjEiLCJVbmFtZSI6Im9vZXg1eEs0OXY1NHJic1dWQTJLVVdUMFROYjgiLCJJc1NodXRVcCI6dHJ1ZX1d 
+2017/04/13 14:36:12 [D] [managerController.go:120] aaaaaaaaaaaaaaa [{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 true 0}] 
+2017/04/13 14:36:12 [D] [managerController.go:132] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 true 7} 
+2017/04/13 14:37:24 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:37:24 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:37:24 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:37:24 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234b920 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:37:24 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:37:24 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:37:24 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:37:24 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:37:35 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:37:35 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:37:37 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:37:43 [D] [managerController.go:131] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 true 7} 
+2017/04/13 14:43:30 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:43:30 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:43:30 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:43:30 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236ec60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:43:30 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:43:30 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:43:30 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:43:30 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 14:43:37 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:43:38 [D] [RoomInfo.go:90] num 5 
+2017/04/13 14:43:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 14:43:48 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddddddd 2017-04-13 14:43:48 2} 
+2017/04/13 14:43:48 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 14:43:48 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddddddd 2017-04-13 14:43:48 2} 
+2017/04/13 14:44:10 [D] [noticeController.go:97] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddddd 2017-04-13 14:44:10 2} 
+2017/04/13 14:44:10 [D] [noticeController.go:104] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/13 14:44:10 [D] [noticeController.go:181] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddddddd 2017-04-13 14:44:10 2} 
+2017/04/13 14:48:58 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddddddddd true false 0 2017-04-13 14:48:58 4} 
+2017/04/13 14:48:58 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddddddddd true false 0 2017-04-13 14:48:58 4} 
+2017/04/13 14:49:39 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 aaaaaaaaaaaaaaaaaaaaaaaaaaa true false 0 2017-04-13 14:49:39 4} 
+2017/04/13 14:49:39 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 aaaaaaaaaaaaaaaaaaaaaaaaaaa true false 0 2017-04-13 14:49:39 4} 
+2017/04/13 14:56:37 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 14:56:37 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 14:56:37 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 14:56:37 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04232efc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 14:56:37 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 14:56:37 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 14:56:37 [D] [mq.go:58] MQTT Client Init OK. 
+2017/04/13 14:56:37 [I] [asm_amd64.s:2086] http server Running on http://:80

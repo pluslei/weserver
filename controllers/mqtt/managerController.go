@@ -1,14 +1,15 @@
 package mqtt
 
 import (
+	"strconv"
 	"time"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
 
-	"github.com/astaxie/beego"
-
 	"weserver/controllers"
 	. "weserver/src/tools"
+
+	"github.com/astaxie/beego"
 	// for json get
 )
 
@@ -31,6 +32,25 @@ func init() {
 	kick.runWriteDb()
 }
 
+/*
+var slice []string
+
+func (this *ManagerController) Init() {
+	slice = make([]string, 0, 100)
+	shutInfo, err := m.GetShutUpInfoToday()
+	if err != nil {
+		beego.Error("get the shutup error", err)
+	}
+	for _, info := range shutInfo {
+		if len(info.UserIcon) > 0 {
+			var Uname string
+			Uname = info.Username
+			slice = append(slice, Uname)
+		}
+	}
+}
+*/
+
 // 当前在线
 func (this *ManagerController) GetUserOnline() {
 	if this.IsAjax() {
@@ -46,6 +66,8 @@ func (this *ManagerController) GetUserOnline() {
 				info.Uname = EncodeB64(user.Username)
 				info.Nickname = EncodeB64(user.Nickname)
 				info.UserIcon = EncodeB64(user.UserIcon)
+				str := strconv.FormatBool(user.IsShutup)
+				info.ShutUp = EncodeB64(str)
 				userInfo = append(userInfo, info)
 			}
 		}
@@ -80,10 +102,10 @@ func (this *ManagerController) GetShutUpInfo() {
 		msg := this.GetString("str")
 		b := parseShutUpMsg(msg)
 		if b {
-			this.Rsp(true, "消息发送成功", "")
+			this.Rsp(true, "禁言消息发送成功", "")
 			return
 		} else {
-			this.Rsp(false, "消息发送失败,请重新发送", "")
+			this.Rsp(false, "禁言消息发送失败,请重新发送", "")
 			return
 		}
 	}
@@ -92,27 +114,32 @@ func (this *ManagerController) GetShutUpInfo() {
 
 //禁言消息
 func parseShutUpMsg(msg string) bool {
-	msginfo := new(ShutUpInfo)
+	var msginfo ShutUpInfo
+	// msginfo := new(ShutUpInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("Shutup simplejson error", err)
 		return false
 	}
-	info.MsgType = MSG_TYPE_SHUTUP
-	// topic := info.Room
+	for i := 0; i < len(info); i++ {
+		var msg ShutUpInfo
+		msg.Room = info[i].Room
+		msg.Uname = info[i].Uname
+		msg.IsShutUp = info[i].IsShutUp
+		msg.MsgType = MSG_TYPE_SHUTUP
 
-	// beego.Debug("info", info)
+		beego.Debug("info", msg)
+		topic := msg.Room
+		v, err := ToJSON(msg)
+		if err != nil {
+			beego.Error("json error", err)
+			return false
+		}
+		mq.SendMessage(topic, v) //发消息
 
-	// v, err := ToJSON(info)
-	// if err != nil {
-	// 	beego.Error("json error", err)
-	// 	return false
-	// }
-
-	// mq.SendMessage(topic, v) //发消息
-
-	// 更新user 字段
-	UpdateUserInfo(info)
+		// 更新user 字段
+		UpdateUserInfo(msg)
+	}
 	return true
 }
 
@@ -123,21 +150,29 @@ func parseKickMsg(msg string) bool {
 		beego.Error("KickOut simplejson error", err)
 		return false
 	}
-	info.MsgType = MSG_TYPE_KICKOUT
-	topic := info.Room
+	for i := 0; i < len(info); i++ {
+		var msg KickOutInfo
+		msg.Room = info[i].Room
+		msg.OperUid = info[i].OperUid
+		msg.OperName = info[i].OperName
+		msg.ObjUid = info[i].ObjUid
+		msg.ObjName = info[i].ObjName
 
-	beego.Debug("info", info)
+		msg.MsgType = MSG_TYPE_KICKOUT
 
-	v, err := ToJSON(info)
-	if err != nil {
-		beego.Error("json error", err)
-		return false
+		beego.Debug("info", info)
+		topic := msg.Room
+		v, err := ToJSON(msg)
+		if err != nil {
+			beego.Error("json error", err)
+			return false
+		}
+
+		mq.SendMessage(topic, v) //发消息
+
+		// 删除此用户
+		delKickout(msg)
 	}
-
-	mq.SendMessage(topic, v) //发消息
-
-	// 删除此用户
-	delKickout(info)
 	return true
 }
 
@@ -202,6 +237,11 @@ func UpdateUserInfo(info ShutUpInfo) {
 	u.Room = info.Room
 	u.Username = info.Uname
 	u.IsShutup = info.IsShutUp
+	// if info.IsShutUp == 1 {
+	// 	u.IsShutup = true
+	// } else {
+	// 	u.IsShutup = false
+	// }
 	_, err := m.UpdateShutUp(u.Room, u.Username, u.IsShutup)
 	if err != nil {
 		beego.Debug("Update Shutup Field fail", err)

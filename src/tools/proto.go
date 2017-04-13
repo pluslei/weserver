@@ -69,6 +69,7 @@ type OnLineInfo struct {
 	Uname    string //微信唯一标识
 	Nickname string //微信名
 	UserIcon string //微信头像
+	ShutUp   string //禁言状态
 }
 
 //######################################################################################
@@ -199,8 +200,8 @@ type KickOutInfo struct {
 	MsgType int //消息类型
 }
 
-func (k *KickOutInfo) ParseJSON(msg []byte) (s KickOutInfo, err error) {
-	var result KickOutInfo
+func (k *KickOutInfo) ParseJSON(msg []byte) (s []KickOutInfo, err error) {
+	var result []KickOutInfo
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}
@@ -218,8 +219,8 @@ type ShutUpInfo struct {
 	MsgType int //消息类型
 }
 
-func (k *ShutUpInfo) ParseJSON(msg []byte) (s ShutUpInfo, err error) {
-	var result ShutUpInfo
+func (k *ShutUpInfo) ParseJSON(msg []byte) (s []ShutUpInfo, err error) {
+	var result []ShutUpInfo
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}
