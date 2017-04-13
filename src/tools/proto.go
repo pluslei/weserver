@@ -8,6 +8,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
+// post status code
+const (
+	POST_STATUS_TRUE int = iota
+	POST_STATUS_FALSE
+	POST_STATUS_SHUTUP
+)
+
 const (
 	MSG_TYPE_CHAT_ADD int = iota //聊天消息
 	MSG_TYPE_CHAT_DEL
@@ -131,6 +138,14 @@ type NoticeDEL struct {
 
 func (n *NoticeInfo) ParseJSON(msg []byte) (s NoticeInfo, err error) {
 	var result NoticeInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+func (n *NoticeDEL) ParseJSON(msg []byte) (s NoticeDEL, err error) {
+	var result NoticeDEL
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}

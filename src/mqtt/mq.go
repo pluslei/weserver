@@ -1,6 +1,8 @@
 package mqtt
 
 import (
+	m "weserver/models"
+
 	"github.com/astaxie/beego"
 )
 
@@ -19,6 +21,7 @@ type Configer struct {
 
 var mq *MQ
 var Config *Configer
+var Slice []string
 
 func GetMqttConfig() *Configer {
 	var conf Configer
@@ -50,8 +53,24 @@ func GetMqttConfig() *Configer {
 	return &conf
 }
 
+func Init() {
+	Slice = make([]string, 0, 100)
+	shutInfo, err := m.GetShutUpInfoToday()
+	if err != nil {
+		beego.Error("get the shutup error", err)
+	}
+	for _, info := range shutInfo {
+		if len(info.UserIcon) > 0 {
+			var Uname string
+			Uname = info.Username
+			Slice = append(Slice, Uname)
+		}
+	}
+}
+
 func Run() {
 	// 获取配置
+	Init()
 	Config = GetMqttConfig()
 	mq = NewMQ(Config)
 	mq.Runing()

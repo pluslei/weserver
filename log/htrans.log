@@ -4052,3 +4052,178 @@
 2017/04/13 14:56:37 [I] [mqtt.go:58] mqtt running OK  
 2017/04/13 14:56:37 [D] [mq.go:58] MQTT Client Init OK. 
 2017/04/13 14:56:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 15:59:05 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 15:59:05 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 15:59:05 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 15:59:05 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042360f00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 15:59:05 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 15:59:05 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 15:59:05 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 15:59:05 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 15:59:46 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 15:59:46 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 15:59:46 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 15:59:46 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042449260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 15:59:46 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 15:59:46 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 15:59:46 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 15:59:47 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:05:02 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:05:02 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:05:02 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:05:02 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04232c540 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:05:02 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:05:02 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:05:02 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:05:02 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:05:30 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:05:30 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:05:32 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:05:33 [D] [managerController.go:51] true dddddddddddddddddddddddddddddd 
+2017/04/13 16:13:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:13:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:13:32 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:13:32 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042364f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:13:32 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:13:32 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:13:32 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:13:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:13:41 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:13:41 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:13:43 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:13:44 [D] [managerController.go:51] true dddddddddddddddddddddddddddddd 
+2017/04/13 16:15:44 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:15:44 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:15:45 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:15:45 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042446d80 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:15:45 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:15:45 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:15:45 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:15:45 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:15:51 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:15:52 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:15:54 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:15:54 [D] [managerController.go:51] true dddddddddddddddddddddddddddddd 
+2017/04/13 16:32:34 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:32:34 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:32:34 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:32:34 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042361620 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:32:34 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:32:34 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:32:34 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:32:34 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:32:42 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:32:43 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:32:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:34:36 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:34:37 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:34:39 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:35:09 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:35:09 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:35:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:35:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422defc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:35:09 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:35:09 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:35:09 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:35:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:35:23 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:35:23 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:35:25 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:35:26 [D] [managerController.go:59] MQ== aaaaaaaaaaaaaaaaaaaaaaa 
+2017/04/13 16:36:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:36:19 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:36:19 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:36:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422ca300 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:36:31 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:36:31 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:36:32 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:36:32 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042444300 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:36:32 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:36:32 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:36:32 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:36:32 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:36:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:36:41 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:36:43 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:36:43 [D] [managerController.go:58]  aaaaaaaaaaaaaaaaaaaaaaa 
+2017/04/13 16:37:25 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:37:25 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:37:25 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:37:25 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234a420 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:37:25 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:37:25 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:37:25 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:37:25 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:37:31 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:37:32 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:37:33 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:37:34 [D] [managerController.go:58] 1 aaaaaaaaaaaaaaaaaaaaaaa 
+2017/04/13 16:41:25 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:41:25 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:41:25 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:41:25 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042361200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:41:25 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:41:25 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:41:25 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:41:25 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:41:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:41:51 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:41:53 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:45:41 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:45:41 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:45:41 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:45:41 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423fac00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:45:41 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:45:41 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:45:41 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:45:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:45:51 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:45:51 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:45:53 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:49:26 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:49:26 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:49:26 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:49:26 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422dd980 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:49:26 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:49:26 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:49:26 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:49:26 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:49:37 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:49:38 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:49:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:53:22 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 16:53:22 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 16:53:22 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 16:53:22 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042447d40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 16:53:22 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 16:53:22 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 16:53:22 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 16:53:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 16:53:29 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:53:30 [D] [RoomInfo.go:90] num 5 
+2017/04/13 16:53:32 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 16:54:28 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 16:55:34 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 16:56:25 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 16:56:26 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 16:56:27 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 16:56:28 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 16:56:29 [D] [noticeController.go:169] NoticeDEL &{0  3} 
+2017/04/13 17:07:41 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/13 17:07:41 [I] [Connect.go:19] 数据库连接成功 
+2017/04/13 17:07:42 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/13 17:07:42 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200cfc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/13 17:07:42 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/13 17:07:42 [I] [mqtt.go:58] mqtt running OK  
+2017/04/13 17:07:42 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/13 17:07:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/13 17:07:49 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 17:07:50 [D] [RoomInfo.go:90] num 5 
+2017/04/13 17:07:51 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 99 7 8 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/13 17:08:06 [D] [noticeController.go:172] NoticeDEL &{71 Topic_ChatMessage/sub1 3} 
+2017/04/13 17:08:18 [D] [noticeController.go:172] NoticeDEL &{70 Topic_ChatMessage/sub1 3} 
+2017/04/13 17:08:25 [D] [noticeController.go:172] NoticeDEL &{69 Topic_ChatMessage/sub1 3} 
+2017/04/13 17:08:31 [D] [noticeController.go:172] NoticeDEL &{68 Topic_ChatMessage/sub1 3} 
+2017/04/13 17:08:32 [D] [noticeController.go:172] NoticeDEL &{67 Topic_ChatMessage/sub1 3} 
+2017/04/13 17:08:34 [D] [noticeController.go:172] NoticeDEL &{66 Topic_ChatMessage/sub1 3} 
+2017/04/13 17:08:35 [D] [noticeController.go:172] NoticeDEL &{65 Topic_ChatMessage/sub1 3} 

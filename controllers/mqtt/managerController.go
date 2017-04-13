@@ -32,25 +32,6 @@ func init() {
 	kick.runWriteDb()
 }
 
-/*
-var slice []string
-
-func (this *ManagerController) Init() {
-	slice = make([]string, 0, 100)
-	shutInfo, err := m.GetShutUpInfoToday()
-	if err != nil {
-		beego.Error("get the shutup error", err)
-	}
-	for _, info := range shutInfo {
-		if len(info.UserIcon) > 0 {
-			var Uname string
-			Uname = info.Username
-			slice = append(slice, Uname)
-		}
-	}
-}
-*/
-
 // 当前在线
 func (this *ManagerController) GetUserOnline() {
 	if this.IsAjax() {
@@ -128,14 +109,22 @@ func parseShutUpMsg(msg string) bool {
 		msg.IsShutUp = info[i].IsShutUp
 		msg.MsgType = MSG_TYPE_SHUTUP
 
-		beego.Debug("info", msg)
-		topic := msg.Room
-		v, err := ToJSON(msg)
-		if err != nil {
-			beego.Error("json error", err)
-			return false
+		for _, v := range mq.Slice {
+			if v == msg.Uname {
+				break
+			} else {
+				mq.Slice = append(mq.Slice, msg.Uname)
+			}
 		}
-		mq.SendMessage(topic, v) //发消息
+		beego.Debug("Shut up", mq.Slice)
+		// beego.Debug("info", msg)
+		// topic := msg.Room
+		// v, err := ToJSON(msg)
+		// if err != nil {
+		// 	beego.Error("json error", err)
+		// 	return false
+		// }
+		// mq.SendMessage(topic, v) //发消息
 
 		// 更新user 字段
 		UpdateUserInfo(msg)

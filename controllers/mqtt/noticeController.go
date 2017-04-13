@@ -52,9 +52,8 @@ func (this *NoticeController) GetPublishNotice() {
 //删除公告
 func (this *NoticeController) DeleteNotice() {
 	if this.IsAjax() {
-		room := this.GetString("Room")
-		id, _ := this.GetInt64("Id")
-		b := DelNotice(room, id)
+		noticMsg := this.GetString("str")
+		b := parseDelMsg(noticMsg)
 		if b {
 			this.Rsp(true, "消息发送成功", "")
 			return
@@ -109,18 +108,22 @@ func parseNoticeMsg(msg string) bool {
 	return true
 }
 
-func DelNotice(room string, id int64) bool {
-	var info NoticeDEL
-	info.Id = id
-	info.Room = room
+func parseDelMsg(msg string) bool {
+	var msginfo NoticeDEL
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("Notice Del simplejson error", err)
+		return false
+	}
 	info.MsgType = MSG_TYPE_NOTICE_DEL
+	topic := info.Room
 
 	v, err := ToJSON(info)
 	if err != nil {
 		beego.Error("DELETE Notice JSON ERROR", err)
 		return false
 	}
-	mq.SendMessage(room, v) //发消息
+	mq.SendMessage(topic, v) //发消息
 	DeleteMsg(info)
 	return true
 }

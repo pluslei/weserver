@@ -62,12 +62,16 @@ func (this *MqttController) GetRoomInfo() {
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
 		chatmsg := this.GetString("str")
-		b := parseMsg(chatmsg)
-		if b {
+		status := parseMsg(chatmsg)
+		switch status {
+		case POST_STATUS_TRUE:
 			this.Rsp(true, "消息发送成功", "")
 			return
-		} else {
+		case POST_STATUS_FALSE:
 			this.Rsp(false, "消息发送失败,请重新发送", "")
+			return
+		case POST_STATUS_SHUTUP:
+			this.Rsp(false, "您已被禁言", "")
 			return
 		}
 	}
@@ -75,12 +79,12 @@ func (this *MqttController) GetMessageToSend() {
 }
 
 // 聊天消息
-func parseMsg(msg string) bool {
+func parseMsg(msg string) int {
 	msginfo := new(MessageInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("simplejson error", err)
-		return false
+		return POST_STATUS_FALSE
 	}
 	info.Datatime = time.Now()       //添加时间
 	info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
@@ -91,7 +95,12 @@ func parseMsg(msg string) bool {
 	v, err := ToJSON(info)
 	if err != nil {
 		beego.Error("json error", err)
-		return false
+		return POST_STATUS_FALSE
+	}
+	for _, v := range mq.Slice {
+		if info.Uname == v {
+			return POST_STATUS_SHUTUP
+		}
 	}
 	// 内部人员
 	if info.IsFilter == false {
@@ -100,7 +109,7 @@ func parseMsg(msg string) bool {
 	beego.Debug("isfilter", info.IsFilter)
 	// 消息入库
 	SaveChatMsgdata(info)
-	return true
+	return POST_STATUS_TRUE
 }
 
 //获取客户的真实IP地址
