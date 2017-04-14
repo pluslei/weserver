@@ -27,11 +27,18 @@ func (b *Notice) TableName() string {
 	return "notice"
 }
 
-// 获取指定房间的公告列表
-func GetNoticeList(count int64, room string) ([]Notice, int64, error) {
+func GetNoticeListCount(count int64, room string) ([]Notice, int64, error) {
 	o := orm.NewOrm()
 	var info []Notice
 	num, err := o.QueryTable("notice").Filter("Room", room).OrderBy("-Id").Limit(count).All(&info)
+	return info, num, err
+}
+
+// 获取指定房间公告列表
+func GetNoticeList(room string) ([]Notice, int64, error) {
+	o := orm.NewOrm()
+	var info []Notice
+	num, err := o.QueryTable("notice").Filter("Room", room).OrderBy("-Id").All(&info)
 	return info, num, err
 }
 

@@ -1475,7 +1475,7 @@ a {
 .sendNotice .conNotice {
   width: 100%;
   margin: 10px auto;
-  height: 160px;
+  height: 140px;
 }
 .sendNotice .conNotice .sendNoticeText {
   display: inline-block;
@@ -1498,7 +1498,7 @@ a {
 .sendNotice .conNotice .sendStrategyText {
   display: inline-block;
   width: 100%;
-  height: 160px;
+  height: 130px;
   line-height: 18px;
   border: none;
   padding: 10px;
@@ -1564,7 +1564,7 @@ a {
 }
 .sendNotice .conNotice .icon .disable {
   display: inline-block;
-  margin: 20px;
+  margin: 10px 20px;
   font-size: 14px;
   color: #aaa;
   border: none;
@@ -1592,7 +1592,7 @@ a {
 }
 .conta {
   background: #fff;
-  height: 180px;
+  height: 160px;
   position: relative;
 }
 .chatRoomInfo {

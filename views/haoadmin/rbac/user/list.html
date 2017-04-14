@@ -23,6 +23,7 @@
                     <tr>
 
                         <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
+                        <th>房间名称</th>
                         <th>用户昵称</th>
                         <th>地址</th>
                         <th>用户状态</th>
@@ -71,6 +72,21 @@
   </div>
 </div>
 
+<!-- 禁言 -->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="shutup-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">禁言</div>
+    <div class="am-modal-bd">
+      你，确定要禁言吗？
+    </div>
+    <div class="am-modal-footer">
+      <input value="" type="hidden" class="data-modal-shutup">
+      <input value="" type="hidden" class="data-modal-objuser">
+      <span class="am-modal-btn data-am-modal-cancel">取消</span>
+      <span class="am-modal-btn data-am-modal-confirm" onclick="shutupModel()">确定</span>
+    </div>
+  </div>
+</div>
 
 
 

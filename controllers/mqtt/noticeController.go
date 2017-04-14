@@ -1,6 +1,7 @@
 package mqtt
 
 import (
+	"strconv"
 	"time"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
@@ -65,16 +66,34 @@ func (this *NoticeController) DeleteNotice() {
 	this.Ctx.WriteString("")
 }
 
-//历史公告
+//HistoryNotice List
 func (this *NoticeController) GetRoomNoticeList() {
 	if this.IsAjax() {
-		roomId := this.GetString("room") //公司房间标识符
-		sysconfig, _ := m.GetAllSysConfig()
-		noticeCount := sysconfig.NoticeCount //公告消息条数
-		var historyNotice []m.Notice
-		historyNotice, _, _ = m.GetNoticeList(noticeCount, roomId)
+		count := this.GetString("count")
+		nEnd, _ := strconv.ParseInt(count, 10, 64)
+		roomId := this.GetString("room")
 		data := make(map[string]interface{})
-		data["historyNotice"] = historyNotice //公告的历史信息
+		if nEnd > 0 {
+			sysconfig, _ := m.GetAllSysConfig()
+			sysCount := sysconfig.NoticeCount
+			var Notice []m.Notice
+			historyNotice, nCount, _ := m.GetNoticeList(roomId)
+			if nEnd > nCount {
+				data["historyNotice"] = nil
+			}
+			nstart := nEnd - sysCount
+			for i := nstart; i < nEnd; i++ {
+				var info m.Notice
+				info.Id = historyNotice[i].Id
+				info.Room = historyNotice[i].Room
+				info.Uname = historyNotice[i].Uname
+				info.Nickname = historyNotice[i].Nickname
+				info.Data = historyNotice[i].Data
+				info.Time = historyNotice[i].Time
+				Notice = append(Notice, info)
+			}
+			data["historyNotice"] = Notice
+		}
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {

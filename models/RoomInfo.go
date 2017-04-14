@@ -24,6 +24,7 @@ type RoomInfo struct {
 	Access      string
 	SecretKey   string
 	RoomIcon    string //房间图标
+	RoomIntro   string `orm:"size(512)"` //简介
 }
 
 func init() {
