@@ -25,6 +25,8 @@ type RoomInfo struct {
 	SecretKey   string
 	RoomIcon    string //房间图标
 	RoomIntro   string `orm:"size(512)"` //简介
+	RoomBanner  string //图片
+	Title       string //标题
 }
 
 func init() {
@@ -41,6 +43,46 @@ func (c *RoomInfo) TableName() string {
 func AddRoom(r *RoomInfo) (int64, error) {
 	omodel := orm.NewOrm()
 	id, err := omodel.Insert(r)
+	return id, err
+}
+
+//更新房间名
+func UpdateRoomName(id int64, str string) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomTitle": str})
+	return id, err
+}
+
+//更新房间小图标
+func UpdateRoomIcon(id int64, str string) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomIcon": str})
+	return id, err
+}
+
+//更新房间banner
+func UpdateRoomBanner(id int64, str string) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomBanner": str})
+	return id, err
+}
+
+//更新房间标题
+func UpdateRoomTitle(id int64, str string) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"Title": str})
+	return id, err
+}
+
+//更新房间简介
+func UpdateRoomIntro(id int64, str string) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomIntro": str})
 	return id, err
 }
 

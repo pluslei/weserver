@@ -173,6 +173,13 @@ input[type=submit] {
   }
 }
 /*表情包*/
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .emjo {
   width: 100%;
   height: 200px;
@@ -234,7 +241,8 @@ input[type=submit] {
   right: 6px;
   top: 6px;
   height: 28px;
-  width: 50px;
+  width: 60px;
+  display: block;
   border-radius: 3px;
   color: #222222;
   letter-spacing: 1px;
@@ -351,6 +359,9 @@ input[type=submit] {
   padding: 5px 6px 0px;
   border-radius: 4px;
   color: #353535;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
 }
 .Editer .theInput .contentText img {
   margin: -1px 2px;
@@ -1023,7 +1034,7 @@ body {
 }
 .title .titlebtn span {
   width: 33%;
-  float: left;
+  position: relative;
   height: 20px;
   text-align: center;
   line-height: 20px;
@@ -1040,6 +1051,23 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #fff;
+}
+.fixd {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.orTip {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 100% !important;
+  background: #4082E6 !important;
+  border: 2px solid #fff !important;
+  margin: 10px !important;
+  position: absolute !important;
+  right: 0px !important;
+  top: -4px !important;
+  display: none !important;
 }
 .noticelist {
   padding: 10px;
@@ -1075,6 +1103,7 @@ a {
 }
 .list .contentbox .infobox .infotime {
   padding-bottom: 4px;
+  color: #000;
 }
 .list .contentbox .infobox .infotime img {
   width: 18px;
@@ -1139,6 +1168,9 @@ a {
   -ms-transform: translateX(-68px);
       transform: translateX(-68px);
   -webkit-transform: translateX(-68px);
+}
+.infobox:nth-of-type(1) {
+  color: red;
 }
 .strategy {
   height: 100%;
@@ -1313,7 +1345,7 @@ a {
 }
 .disableSendMsg .sub .sub_btn {
   margin: 5px 10px;
-  width: 90px;
+  width: 22%;
   height: 30px;
   display: inline-block;
   line-height: 30px;
@@ -1325,7 +1357,7 @@ a {
 }
 .disableSendMsg .sub .ex {
   margin: 5px 10px;
-  width: 90px;
+  width: 22%;
   height: 30px;
   display: inline-block;
   line-height: 30px;
@@ -1468,19 +1500,19 @@ a {
 }
 .sendNotice {
   width: 100%;
-  height: 100%;
   background: #EFEFF4;
+  position: fixed;
+  top: 56px;
+  left: 0px;
   overflow: hidden;
 }
 .sendNotice .conNotice {
   width: 100%;
   margin: 10px auto;
-  height: 140px;
 }
 .sendNotice .conNotice .sendNoticeText {
-  display: inline-block;
   width: 100%;
-  height: 100%;
+  height: 100px;
   line-height: 18px;
   border: none;
   padding: 10px;
@@ -1514,9 +1546,7 @@ a {
   background: #fefefe;
 }
 .sendNotice .conNotice .icon {
-  position: relative;
   margin: 4px 0px;
-  overflow: hidden;
   text-align: center;
 }
 .sendNotice .conNotice .icon .face-icon {

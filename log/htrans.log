@@ -4502,3 +4502,204 @@
 2017/04/14 17:51:44 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
 2017/04/14 17:51:45 [D] [RoomInfo.go:91] num 5 
 2017/04/14 17:51:49 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 09:54:54 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 09:54:54 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 09:54:54 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 09:54:54 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042450fc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 09:55:17 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 09:55:17 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 09:55:17 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 09:55:17 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422dd020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 09:55:17 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 09:55:17 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 09:55:17 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 09:55:17 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 10:43:39 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 10:43:39 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 10:43:39 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 10:43:39 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423434a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 10:43:40 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 10:43:40 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 10:43:40 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 10:43:40 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 10:43:55 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:43:56 [D] [RoomInfo.go:133] num 5 
+2017/04/17 10:43:59 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:43:59 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:46:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 10:46:53 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 10:46:53 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 10:46:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422cd200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 10:46:53 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 10:46:53 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 10:46:53 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 10:46:54 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 10:47:04 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:47:06 [D] [RoomInfo.go:133] num 5 
+2017/04/17 10:47:07 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:47:08 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:52:05 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 10:52:05 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 10:52:05 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 10:52:05 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422c9aa0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 10:52:05 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 10:52:05 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 10:52:05 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 10:52:06 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 10:52:15 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:52:15 [D] [RoomInfo.go:133] num 5 
+2017/04/17 10:52:17 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 10:52:18 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:04:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:04:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:04:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:04:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042368b40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:04:11 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:04:11 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:04:11 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:04:11 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:04:22 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:04:23 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:04:25 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:04:25 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:15:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:15:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:15:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:15:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042465b00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:15:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:15:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:15:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:15:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042439260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:15:11 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:15:11 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:15:11 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:15:11 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:15:24 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:15:25 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:15:26 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] the request url is  /chat/user/strategyList
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] Handler crashed with error runtime error: index out of range
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:27
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/strategy.go:43
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/strategyController.go:75
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/17 11:15:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/17 11:15:27 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:15:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:15:48 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:15:51 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] the request url is  /chat/user/strategyList
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] Handler crashed with error runtime error: index out of range
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:27
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/strategy.go:43
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/strategyController.go:75
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/17 11:15:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/17 11:15:51 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:16:39 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:16:39 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:16:39 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:16:39 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236d1a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:16:39 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:16:39 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:16:39 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:16:39 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:16:49 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:16:50 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:16:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] the request url is  /chat/user/strategyList
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] Handler crashed with error runtime error: index out of range
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:27
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/strategy.go:43
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/strategyController.go:75
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/17 11:16:52 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/17 11:16:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:20:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:20:10 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:20:10 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:20:10 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042365d40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:20:10 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:20:10 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:20:10 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:20:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:20:19 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:20:20 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:20:22 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] the request url is  /chat/user/strategyList
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] Handler crashed with error runtime error: index out of range
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:27
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/strategy.go:43
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/strategyController.go:75
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/17 11:20:22 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/17 11:20:22 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:21:49 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:21:49 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:21:49 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:21:49 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236b9e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:21:49 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:21:49 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:21:49 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:21:50 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:21:58 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:21:59 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:22:00 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:22:01 [D] [strategy.go:43] a 8 
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] the request url is  /chat/user/strategyList
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] Handler crashed with error runtime error: index out of range
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:27
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/models/strategy.go:45
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/mqtt/strategyController.go:75
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/17 11:22:01 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/17 11:22:01 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:27:27 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:27:27 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:27:27 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:27:27 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0424538c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:27:27 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:27:27 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:27:27 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:27:27 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:27:35 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:27:36 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:27:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:27:39 [D] [strategy.go:43] a 8 
+2017/04/17 11:27:39 [D] [strategy.go:47] ssss [{21 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 aaaaaaaaaaaaaaaaaaaaaaaaaaa true false 0 2017-04-13 14:49:39 2017-04-13 14:49:39 +0800 CST} {20 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddddddddd true false 1 2017-04-13 14:48:58 2017-04-13 14:48:59 +0800 CST} {7 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶顶顶顶顶顶的顶顶顶顶顶的顶顶顶顶顶 true false 547 2017-04-12 10:47:50 2017-04-12 10:47:51 +0800 CST} {17 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 没开口口 false false 2 2017-04-12 18:59:25 2017-04-12 18:59:25 +0800 CST} {6 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 不不不不不不不不不 false false 1 2017-04-12 10:42:19 2017-04-12 10:42:19 +0800 CST} {5 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 轻轻去去去去去去去去去 false false 0 2017-04-12 10:41:54 2017-04-12 10:41:54 +0800 CST} {4 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶大大大 false false 1 2017-04-12 10:40:17 2017-04-12 10:40:18 +0800 CST} {2 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/ZkOjia6CWnQ5zUp6NsyFylzsmoCbMfiay0P00BzTCAlDtoDaSrvtRsicLQlaib42XbzhzQ12peQAeXRpBNGFEicVEXb02SA74eDq1/0 小雪 金融分析师 今天受利空影响,建议大家谨慎买入,高抛低吸 false false 135 2017-04-01 12:19:58 2017-04-01 12:19:58 +0800 CST}] 
+2017/04/17 11:27:39 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
