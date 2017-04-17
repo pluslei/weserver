@@ -33,11 +33,23 @@ func (b *Strategy) TableName() string {
 	return "strategy"
 }
 
-// 获取指定房间的策略列表
-func GetStrategyList(room string, count int64) ([]Strategy, int64, error) {
+// 获取指定房间的最低条数
+func GetStrategyCount(room string, count int64) ([]Strategy, int64, error) {
 	o := orm.NewOrm()
 	var info []Strategy
 	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Id").OrderBy("IsTop").Limit(count).All(&info)
+	var infoSort []Strategy
+	for i := 0; i < len(info); i++ {
+		infoSort = append(infoSort, info[len(info)-1-i])
+	}
+	return infoSort, num, err
+}
+
+// 获取指定房间的策略列表
+func GetStrategyList(room string) ([]Strategy, int64, error) {
+	o := orm.NewOrm()
+	var info []Strategy
+	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Id").OrderBy("IsTop").All(&info)
 	var infoSort []Strategy
 	for i := 0; i < len(info); i++ {
 		infoSort = append(infoSort, info[len(info)-1-i])

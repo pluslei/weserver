@@ -73,16 +73,23 @@ func (this *NoticeController) GetRoomNoticeList() {
 		nEnd, _ := strconv.ParseInt(count, 10, 64)
 		roomId := this.GetString("room")
 		data := make(map[string]interface{})
-		if nEnd > 0 {
-			sysconfig, _ := m.GetAllSysConfig()
-			sysCount := sysconfig.NoticeCount
-			var Notice []m.Notice
-			historyNotice, nCount, _ := m.GetNoticeList(roomId)
-			if nEnd > nCount {
-				data["historyNotice"] = nil
-			}
-			nstart := nEnd - sysCount
-			for i := nstart; i < nEnd; i++ {
+		sysconfig, _ := m.GetAllSysConfig()
+		sysCount := sysconfig.NoticeCount
+		var Notice []m.Notice
+		historyNotice, nCount, _ := m.GetNoticeList(roomId)
+		mod := (nEnd - nCount) % sysCount
+		if mod == 0 {
+			data["historyNotice"] = ""
+			this.Data["json"] = &data
+			this.ServeJSON()
+			return
+		}
+		if nEnd > nCount {
+			nEnd = nCount
+		}
+		if nCount < sysCount {
+			var i int64
+			for i = 0; i < nCount; i++ {
 				var info m.Notice
 				info.Id = historyNotice[i].Id
 				info.Room = historyNotice[i].Room
@@ -93,7 +100,22 @@ func (this *NoticeController) GetRoomNoticeList() {
 				Notice = append(Notice, info)
 			}
 			data["historyNotice"] = Notice
+			this.Data["json"] = &data
+			this.ServeJSON()
+			return
 		}
+		nstart := nEnd - sysCount
+		for i := nstart; i < nEnd; i++ {
+			var info m.Notice
+			info.Id = historyNotice[i].Id
+			info.Room = historyNotice[i].Room
+			info.Uname = historyNotice[i].Uname
+			info.Nickname = historyNotice[i].Nickname
+			info.Data = historyNotice[i].Data
+			info.Time = historyNotice[i].Time
+			Notice = append(Notice, info)
+		}
+		data["historyNotice"] = Notice
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {

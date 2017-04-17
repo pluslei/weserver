@@ -4703,3 +4703,73 @@
 2017/04/17 11:27:39 [D] [strategy.go:43] a 8 
 2017/04/17 11:27:39 [D] [strategy.go:47] ssss [{21 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 aaaaaaaaaaaaaaaaaaaaaaaaaaa true false 0 2017-04-13 14:49:39 2017-04-13 14:49:39 +0800 CST} {20 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ddddddddddddddddddddddd true false 1 2017-04-13 14:48:58 2017-04-13 14:48:59 +0800 CST} {7 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶顶顶顶顶顶的顶顶顶顶顶的顶顶顶顶顶 true false 547 2017-04-12 10:47:50 2017-04-12 10:47:51 +0800 CST} {17 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 没开口口 false false 2 2017-04-12 18:59:25 2017-04-12 18:59:25 +0800 CST} {6 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 不不不不不不不不不 false false 1 2017-04-12 10:42:19 2017-04-12 10:42:19 +0800 CST} {5 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 轻轻去去去去去去去去去 false false 0 2017-04-12 10:41:54 2017-04-12 10:41:54 +0800 CST} {4 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶大大大 false false 1 2017-04-12 10:40:17 2017-04-12 10:40:18 +0800 CST} {2 Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/ZkOjia6CWnQ5zUp6NsyFylzsmoCbMfiay0P00BzTCAlDtoDaSrvtRsicLQlaib42XbzhzQ12peQAeXRpBNGFEicVEXb02SA74eDq1/0 小雪 金融分析师 今天受利空影响,建议大家谨慎买入,高抛低吸 false false 135 2017-04-01 12:19:58 2017-04-01 12:19:58 +0800 CST}] 
 2017/04/17 11:27:39 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:40:15 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:40:15 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:40:15 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:40:15 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422dd020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:40:23 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:40:23 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:40:23 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:40:23 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d140 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:40:23 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:40:23 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:40:23 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:40:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 11:40:50 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:40:50 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:40:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:40:53 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 11:41:01 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dddddddddddddd true false 0 2017-04-17 11:41:01 4} 
+2017/04/17 11:41:01 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dddddddddddddd true false 0 2017-04-17 11:41:01 4} 
+2017/04/17 11:41:09 [D] [strategyController.go:96] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 fffffffffffffffffffffffffff true false 0 2017-04-17 11:41:09 4} 
+2017/04/17 11:41:09 [D] [strategyController.go:214] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 fffffffffffffffffffffffffff true false 0 2017-04-17 11:41:09 4} 
+2017/04/17 11:42:34 [D] [RoomInfo.go:133] num 5 
+2017/04/17 11:54:36 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 11:54:36 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 11:54:37 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 11:54:37 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042387320 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 11:54:37 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 11:54:37 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 11:54:37 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 11:54:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 13:37:37 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 13:37:37 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 13:37:37 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 13:37:37 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042462360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 13:37:37 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 13:37:37 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 13:37:37 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 13:37:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 13:37:54 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 13:37:55 [D] [RoomInfo.go:133] num 5 
+2017/04/17 13:37:57 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 13:37:57 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 13:38:00 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-17 13:38:00.3084055 +0800 CST 0 c96e81de-e8f2-436a-8376-bda0c16d6288 0} 
+2017/04/17 13:38:00 [D] [mqttController.go:109] isfilter false 
+2017/04/17 13:38:00 [D] [mqttController.go:280] im here false false 
+2017/04/17 13:38:00 [D] [mqttController.go:333] result [] 
+2017/04/17 14:10:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 14:10:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 14:10:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 14:10:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042379da0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 14:10:58 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 14:10:58 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 14:10:58 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 14:10:58 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 14:11:19 [D] [SysConfigController.go:73] configinfo 0 1 
+2017/04/17 14:16:55 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 TXT 1472629522.jpg false 1 true dddd false 2017-04-17 14:16:55.1694055 +0800 CST 0 70985eb6-f9b9-436f-867d-268d8effa45c 0} 
+2017/04/17 14:16:55 [D] [mqttController.go:108] isfilter false 
+2017/04/17 14:16:55 [D] [mqttController.go:279] im here false false 
+2017/04/17 14:16:55 [D] [mqttController.go:332] result [] 
+2017/04/17 14:54:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 14:54:10 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 14:54:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 14:54:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234b200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 15:14:28 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 15:14:28 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 15:14:28 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 15:14:28 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04240a000 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 15:14:28 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 15:14:28 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 15:14:28 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 15:14:28 [I] [asm_amd64.s:2086] http server Running on http://:80

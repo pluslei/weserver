@@ -1,6 +1,7 @@
 package mqtt
 
 import (
+	"strconv"
 	"time"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
@@ -65,16 +66,43 @@ func (this *StrategyController) OperateStrategy() {
 	this.Ctx.WriteString("")
 }
 
-//策略列表
+//Strategy List
 func (this *StrategyController) GetStrategyList() {
 	if this.IsAjax() {
-		roomId := this.GetString("room") //公司房间标识符
-		sysconfig, _ := m.GetAllSysConfig()
-		Count := sysconfig.StrategyCount
-		var info []m.Strategy
-		info, _, _ = m.GetStrategyList(roomId, Count)
+		count := this.GetString("count")
+		nEnd, _ := strconv.ParseInt(count, 10, 64)
+		roomId := this.GetString("room")
 		data := make(map[string]interface{})
-		data["historyStrategy"] = info //公告的历史信息
+		sysconfig, _ := m.GetAllSysConfig()
+		sysCount := sysconfig.StrategyCount
+		var Strinfo []m.Strategy
+		historyStrategy, nCount, _ := m.GetStrategyList(roomId)
+
+		mod := (nEnd - nCount) % sysCount
+		if mod == 0 {
+			data["historyStrategy"] = ""
+			this.Data["json"] = &data
+			this.ServeJSON()
+			return
+		}
+		if nEnd > nCount {
+			nEnd = nCount
+		}
+		nstart := nEnd - sysCount
+		for i := nstart; i < nEnd; i++ {
+			var info m.Strategy
+			info.Id = historyStrategy[i].Id
+			info.Room = historyStrategy[i].Room
+			info.Icon = historyStrategy[i].Icon
+			info.Titel = historyStrategy[i].Titel
+			info.Data = historyStrategy[i].Data
+			info.IsTop = historyStrategy[i].IsTop
+			info.IsDelete = historyStrategy[i].IsDelete
+			info.ThumbNum = historyStrategy[i].ThumbNum
+			info.Time = historyStrategy[i].Time
+			Strinfo = append(Strinfo, info)
+		}
+		data["historyStrategy"] = Strinfo
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {

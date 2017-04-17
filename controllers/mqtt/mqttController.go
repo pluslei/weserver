@@ -102,11 +102,10 @@ func parseMsg(msg string) int {
 			return POST_STATUS_SHUTUP
 		}
 	}
-	// 内部人员
 	if info.IsFilter == false {
 		mq.SendMessage(topic, v) //发消息
 	}
-	beego.Debug("isfilter", info.IsFilter)
+	beego.Debug("IsFilter", info.IsFilter)
 	// 消息入库
 	SaveChatMsgdata(info)
 	return POST_STATUS_TRUE
