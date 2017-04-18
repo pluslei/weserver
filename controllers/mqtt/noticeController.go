@@ -71,23 +71,23 @@ func (this *NoticeController) GetRoomNoticeList() {
 	if this.IsAjax() {
 		count := this.GetString("count")
 		nEnd, _ := strconv.ParseInt(count, 10, 64)
+		beego.Debug("Requst Count", count)
 		roomId := this.GetString("room")
 		data := make(map[string]interface{})
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.NoticeCount
 		var Notice []m.Notice
 		historyNotice, nCount, _ := m.GetNoticeList(roomId)
-		mod := (nEnd - nCount) % sysCount
-		if mod == 0 {
+		mod := nEnd % sysCount
+		if nEnd > nCount && mod == 0 {
+			beego.Debug("mod = 0")
 			data["historyNotice"] = ""
 			this.Data["json"] = &data
 			this.ServeJSON()
 			return
 		}
-		if nEnd > nCount {
-			nEnd = nCount
-		}
 		if nCount < sysCount {
+			beego.Debug("nCount sysCont", nCount, sysCount)
 			var i int64
 			for i = 0; i < nCount; i++ {
 				var info m.Notice
@@ -104,8 +104,16 @@ func (this *NoticeController) GetRoomNoticeList() {
 			this.ServeJSON()
 			return
 		}
-		nstart := nEnd - sysCount
+		var nstart int64
+		nstart = nEnd - sysCount
+		if nEnd > nCount {
+			nEnd = nCount
+			mod = nEnd % sysCount
+			nstart = nEnd - mod
+			beego.Debug("mod", mod)
+		}
 		for i := nstart; i < nEnd; i++ {
+			beego.Debug("loop", i)
 			var info m.Notice
 			info.Id = historyNotice[i].Id
 			info.Room = historyNotice[i].Room

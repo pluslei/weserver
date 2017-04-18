@@ -4773,3 +4773,1162 @@
 2017/04/17 15:14:28 [I] [mqtt.go:58] mqtt running OK  
 2017/04/17 15:14:28 [D] [mq.go:77] MQTT Client Init OK. 
 2017/04/17 15:14:28 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 18:40:42 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 18:40:42 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 18:40:42 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 18:40:42 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042369260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 18:40:42 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 18:40:42 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 18:40:42 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 18:40:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 18:41:19 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:41:20 [D] [RoomInfo.go:133] num 5 
+2017/04/17 18:41:21 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/17 18:41:22 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/17 18:41:23 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/17 18:48:35 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 18:48:35 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 18:48:35 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 18:48:35 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042365020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 18:48:35 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 18:48:35 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 18:48:35 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 18:48:35 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 18:48:42 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:48:43 [D] [RoomInfo.go:133] num 5 
+2017/04/17 18:48:45 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/17 18:48:45 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/17 18:48:48 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/17 18:51:13 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 18:51:13 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 18:51:13 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 18:51:13 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0420366c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 18:51:13 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 18:51:13 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 18:51:13 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 18:51:13 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 18:51:37 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:51:38 [D] [RoomInfo.go:133] num 5 
+2017/04/17 18:51:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/17 18:51:40 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/17 18:51:42 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/17 18:57:25 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 18:57:25 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 18:57:25 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 18:57:25 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04243d6e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 18:57:26 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 18:57:26 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 18:57:26 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 18:57:26 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 18:57:31 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:57:32 [D] [RoomInfo.go:133] num 5 
+2017/04/17 18:57:35 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/17 18:57:35 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/17 18:57:38 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/17 19:00:21 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/17 19:00:21 [I] [Connect.go:19] 数据库连接成功 
+2017/04/17 19:00:21 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/17 19:00:21 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236d200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/17 19:00:21 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/17 19:00:21 [I] [mqtt.go:58] mqtt running OK  
+2017/04/17 19:00:21 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/17 19:00:22 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/17 19:00:27 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 19:00:28 [D] [RoomInfo.go:133] num 5 
+2017/04/17 19:00:29 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/17 19:00:30 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/17 19:00:32 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 08:59:41 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 08:59:41 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 08:59:41 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 08:59:41 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042440f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 08:59:41 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 08:59:41 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 08:59:41 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 08:59:42 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 08:59:55 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 08:59:56 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:00:00 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:00:00 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:00:07 [D] [noticeController.go:109] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:04:15 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:04:15 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:04:15 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:04:15 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04235ee40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:04:23 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:04:23 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:04:23 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:04:23 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042441020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:04:23 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:04:23 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:04:23 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:04:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:04:36 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:04:37 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:04:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:04:39 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:05:12 [D] [noticeController.go:110] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:11:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:11:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:11:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:11:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0424793e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:11:11 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:11:11 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:11:11 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:11:12 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:11:18 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:11:19 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:11:20 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:11:21 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:11:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:11:23 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:11:23 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:12:46 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:12:46 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:12:46 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:12:46 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042303140 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:12:46 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:12:46 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:12:46 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:12:46 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:12:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:12:52 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:12:54 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:12:54 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:12:54 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:12:56 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:12:56 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:12:57 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 20 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 21 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 22 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 23 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 24 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 25 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 26 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 27 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 28 
+2017/04/18 09:12:57 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 29 
+2017/04/18 09:12:58 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 30 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 31 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 32 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 33 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 34 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 35 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 36 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 37 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 38 
+2017/04/18 09:12:58 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 39 
+2017/04/18 09:12:59 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 40 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 41 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 42 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 43 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 44 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 45 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 46 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:12:59 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:01 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:01 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:02 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:02 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:02 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:03 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:03 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:04 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:04 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:05 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:05 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:05 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:06 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:06 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:07 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:07 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:07 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:08 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:08 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:09 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:09 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:13 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:13 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:15 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:15 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:16 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:16 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:21 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:21 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:13:22 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:13:22 [D] [noticeController.go:111] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:16:24 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:16:24 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:16:24 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:16:24 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422ccf60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:16:24 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:16:24 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:16:24 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:16:25 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:16:37 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:16:38 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:16:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:16:40 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:16:40 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:16:42 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:16:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:16:43 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 20 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 21 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 22 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 23 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 24 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 25 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 26 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 27 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 28 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 29 
+2017/04/18 09:16:43 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 30 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 31 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 32 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 33 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 34 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 35 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 36 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 37 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 38 
+2017/04/18 09:16:43 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 39 
+2017/04/18 09:16:45 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 40 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 41 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 42 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 43 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 44 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 45 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 46 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:16:45 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:16:46 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:16:46 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:16:47 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:16:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:16:49 [D] [noticeController.go:72] dddddddddddddddddd 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:16:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:24:25 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:24:25 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:24:25 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:24:25 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042357200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:24:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:24:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:24:32 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:24:32 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422cdda0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:24:32 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:24:32 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:24:32 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:24:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:24:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:24:39 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:24:41 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:24:41 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:24:41 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:24:41 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:24:41 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:24:41 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:24:41 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:24:41 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:24:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:24:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:24:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:24:42 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:24:44 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:24:44 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:24:47 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 20 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 21 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 22 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 23 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 24 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 25 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 26 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 27 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 28 
+2017/04/18 09:24:47 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 29 
+2017/04/18 09:24:48 [D] [noticeController.go:74] Requst Count 40 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 30 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 31 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 32 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 33 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 34 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 35 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 36 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 37 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 38 
+2017/04/18 09:24:48 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 39 
+2017/04/18 09:24:49 [D] [noticeController.go:74] Requst Count 50 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 40 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 41 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 42 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 43 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 44 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 45 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 46 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:24:49 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:25:03 [D] [noticeController.go:74] Requst Count 60 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:25:03 [D] [noticeController.go:74] Requst Count 70 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:25:03 [D] [noticeController.go:112] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:28:41 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:28:41 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:28:41 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:28:41 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04242c300 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:28:41 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:28:41 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:28:41 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:28:41 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:28:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:28:48 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:28:49 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:28:50 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:28:50 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:28:52 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:28:52 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 20 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 21 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 22 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 23 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 24 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 25 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 26 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 27 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 28 
+2017/04/18 09:28:52 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 29 
+2017/04/18 09:28:54 [D] [noticeController.go:74] Requst Count 40 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 30 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 31 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 32 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 33 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 34 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 35 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 36 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 37 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 38 
+2017/04/18 09:28:54 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 39 
+2017/04/18 09:28:56 [D] [noticeController.go:74] Requst Count 50 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 40 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 41 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 42 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 43 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 44 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 45 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 46 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:28:56 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:28:58 [D] [noticeController.go:74] Requst Count 60 
+2017/04/18 09:28:58 [D] [noticeController.go:110] mod 7 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:28:58 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:29:01 [D] [noticeController.go:74] Requst Count 70 
+2017/04/18 09:29:01 [D] [noticeController.go:110] mod 7 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:29:01 [D] [noticeController.go:114] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:30:37 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:30:37 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:30:37 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:30:37 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04243f800 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:30:37 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:30:37 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:30:37 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:30:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:30:43 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:30:44 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:30:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:30:46 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:31:15 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:31:15 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:31:16 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:31:17 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:35:08 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:35:08 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:35:08 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:35:08 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04243cba0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:35:16 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:35:16 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:35:16 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:35:16 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422fa360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:35:16 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:35:16 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:35:16 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:35:16 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:35:30 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:35:31 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:35:32 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:35:33 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:35:33 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:35:35 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 10 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 11 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 12 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 13 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 14 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 15 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 16 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 17 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 18 
+2017/04/18 09:35:35 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 19 
+2017/04/18 09:35:36 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 20 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 21 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 22 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 23 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 24 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 25 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 26 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 27 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 28 
+2017/04/18 09:35:36 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 29 
+2017/04/18 09:35:37 [D] [noticeController.go:74] Requst Count 40 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 30 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 31 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 32 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 33 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 34 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 35 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 36 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 37 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 38 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 39 
+2017/04/18 09:35:37 [D] [noticeController.go:74] Requst Count 50 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 40 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 41 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 42 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 43 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 44 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 45 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 46 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 47 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 48 
+2017/04/18 09:35:37 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 49 
+2017/04/18 09:35:38 [D] [noticeController.go:74] Requst Count 60 
+2017/04/18 09:35:38 [D] [noticeController.go:113] mod 7 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 50 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 51 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 52 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 53 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 54 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 55 
+2017/04/18 09:35:38 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 56 
+2017/04/18 09:35:45 [D] [noticeController.go:223] NoticeDEL &{72 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:46 [D] [noticeController.go:223] NoticeDEL &{57 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:47 [D] [noticeController.go:223] NoticeDEL &{56 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:48 [D] [noticeController.go:223] NoticeDEL &{55 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:49 [D] [noticeController.go:223] NoticeDEL &{54 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:50 [D] [noticeController.go:223] NoticeDEL &{53 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:51 [D] [noticeController.go:223] NoticeDEL &{52 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:52 [D] [noticeController.go:223] NoticeDEL &{51 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:52 [D] [noticeController.go:223] NoticeDEL &{50 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:53 [D] [noticeController.go:223] NoticeDEL &{49 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:54 [D] [noticeController.go:223] NoticeDEL &{48 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:55 [D] [noticeController.go:223] NoticeDEL &{47 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:57 [D] [noticeController.go:223] NoticeDEL &{46 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:35:59 [D] [noticeController.go:223] NoticeDEL &{45 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:00 [D] [noticeController.go:223] NoticeDEL &{44 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:01 [D] [noticeController.go:223] NoticeDEL &{43 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:02 [D] [noticeController.go:223] NoticeDEL &{42 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:03 [D] [noticeController.go:223] NoticeDEL &{41 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:09 [D] [noticeController.go:223] NoticeDEL &{40 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:09 [D] [noticeController.go:223] NoticeDEL &{39 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:10 [D] [noticeController.go:223] NoticeDEL &{38 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:11 [D] [noticeController.go:223] NoticeDEL &{37 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:12 [D] [noticeController.go:223] NoticeDEL &{36 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:13 [D] [noticeController.go:223] NoticeDEL &{35 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:13 [D] [noticeController.go:223] NoticeDEL &{34 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:14 [D] [noticeController.go:223] NoticeDEL &{33 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:15 [D] [noticeController.go:223] NoticeDEL &{32 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:16 [D] [noticeController.go:223] NoticeDEL &{31 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:17 [D] [noticeController.go:223] NoticeDEL &{30 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:18 [D] [noticeController.go:223] NoticeDEL &{29 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:19 [D] [noticeController.go:223] NoticeDEL &{28 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:20 [D] [noticeController.go:223] NoticeDEL &{27 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:20 [D] [noticeController.go:223] NoticeDEL &{26 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:21 [D] [noticeController.go:223] NoticeDEL &{25 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:22 [D] [noticeController.go:223] NoticeDEL &{24 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:23 [D] [noticeController.go:223] NoticeDEL &{23 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:24 [D] [noticeController.go:223] NoticeDEL &{22 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:25 [D] [noticeController.go:223] NoticeDEL &{21 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:26 [D] [noticeController.go:223] NoticeDEL &{20 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:27 [D] [noticeController.go:223] NoticeDEL &{19 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:28 [D] [noticeController.go:223] NoticeDEL &{18 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:30 [D] [noticeController.go:223] NoticeDEL &{17 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:31 [D] [noticeController.go:223] NoticeDEL &{16 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:32 [D] [noticeController.go:223] NoticeDEL &{15 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:33 [D] [noticeController.go:223] NoticeDEL &{14 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:34 [D] [noticeController.go:223] NoticeDEL &{13 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:34 [D] [noticeController.go:223] NoticeDEL &{12 Topic_ChatMessage/sub1 3} 
+2017/04/18 09:36:53 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:36:54 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:36:54 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:36:56 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:36:56 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:36:58 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:36:59 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 0 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 1 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 2 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 3 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 4 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 5 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 6 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 7 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 8 
+2017/04/18 09:36:59 [D] [noticeController.go:118] bbbbbbbbbbbbbbbbbbbb 9 
+2017/04/18 09:37:03 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:37:03 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:38:48 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 09:38:48 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:38:49 [D] [noticeController.go:74] Requst Count 40 
+2017/04/18 09:38:49 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:38:51 [D] [noticeController.go:74] Requst Count 50 
+2017/04/18 09:38:51 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:38:54 [D] [noticeController.go:74] Requst Count 60 
+2017/04/18 09:38:54 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:38:56 [D] [noticeController.go:74] Requst Count 70 
+2017/04/18 09:38:56 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:39:13 [D] [noticeController.go:74] Requst Count 80 
+2017/04/18 09:39:13 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:39:15 [D] [noticeController.go:74] Requst Count 90 
+2017/04/18 09:39:15 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:39:17 [D] [noticeController.go:74] Requst Count 100 
+2017/04/18 09:39:17 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:44:29 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:44:29 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:44:29 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:44:29 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423024e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:44:29 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:44:29 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:44:29 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:44:29 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:44:38 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:44:39 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:44:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:44:41 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:44:41 [D] [noticeController.go:83] mod = 0 
+2017/04/18 09:46:41 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:46:41 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:46:41 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:46:41 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04241ef60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:46:41 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:46:41 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:46:41 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:46:41 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:46:52 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:46:53 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:46:55 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:46:55 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:46:55 [D] [noticeController.go:83] mod = 0 
+2017/04/18 09:49:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:49:10 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:49:10 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:49:10 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234b920 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:49:15 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:49:15 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:49:15 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:49:15 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d3e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:49:16 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:49:16 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:49:16 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:49:16 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:49:23 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:49:24 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:49:25 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:49:26 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 0 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 1 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 2 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 3 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 4 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 5 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 6 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 7 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 8 
+2017/04/18 09:49:26 [D] [noticeController.go:116] loop 9 
+2017/04/18 09:49:28 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:49:28 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:49:29 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 09:49:29 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:49:32 [D] [noticeController.go:74] Requst Count 40 
+2017/04/18 09:49:32 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:49:35 [D] [noticeController.go:74] Requst Count 50 
+2017/04/18 09:49:35 [D] [noticeController.go:113] mod 0 
+2017/04/18 09:51:59 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 09:51:59 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 09:51:59 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 09:51:59 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042441f80 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 09:51:59 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 09:51:59 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 09:51:59 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 09:52:00 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 09:52:05 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:52:06 [D] [RoomInfo.go:133] num 5 
+2017/04/18 09:52:07 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 09:52:08 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 0 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 1 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 2 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 3 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 4 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 5 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 6 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 7 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 8 
+2017/04/18 09:52:08 [D] [noticeController.go:116] loop 9 
+2017/04/18 09:52:10 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 09:52:10 [D] [noticeController.go:83] mod = 0 
+2017/04/18 09:52:24 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddd 2017-04-18 09:52:24 2} 
+2017/04/18 09:52:24 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 09:52:24 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddd 2017-04-18 09:52:24 2} 
+2017/04/18 10:03:30 [D] [noticeController.go:221] NoticeDEL &{11 Topic_ChatMessage/sub1 3} 
+2017/04/18 10:03:54 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:03:54 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:03:56 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:03:56 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:03:56 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:03:59 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 10:03:59 [D] [noticeController.go:83] mod = 0 
+2017/04/18 10:04:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 10:04:19 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 10:04:19 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 10:04:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042445d40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 10:04:19 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 10:04:19 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 10:04:19 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 10:04:19 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 10:04:28 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:04:29 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:04:30 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:04:31 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:04:31 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:04:33 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 10:04:33 [D] [noticeController.go:83] mod = 0 
+2017/04/18 10:04:55 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddd 2017-04-18 10:04:55 2} 
+2017/04/18 10:04:55 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:04:55 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei dddddddddddddddddd 2017-04-18 10:04:55 2} 
+2017/04/18 10:05:46 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddddddddddddddd 2017-04-18 10:05:46 2} 
+2017/04/18 10:05:46 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:05:46 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddddddddddddddd 2017-04-18 10:05:46 2} 
+2017/04/18 10:05:50 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ssssssssssssssssssssss 2017-04-18 10:05:50 2} 
+2017/04/18 10:05:50 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:05:50 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ssssssssssssssssssssss 2017-04-18 10:05:50 2} 
+2017/04/18 10:05:54 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ffffffffffffffffffffffff 2017-04-18 10:05:54 2} 
+2017/04/18 10:05:54 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:05:54 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ffffffffffffffffffffffff 2017-04-18 10:05:54 2} 
+2017/04/18 10:05:58 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei aaaaaaaaaaaaaaaaaaaa 2017-04-18 10:05:58 2} 
+2017/04/18 10:05:58 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:05:58 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei aaaaaaaaaaaaaaaaaaaa 2017-04-18 10:05:58 2} 
+2017/04/18 10:06:02 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ccccccccccccccccccccccc 2017-04-18 10:06:02 2} 
+2017/04/18 10:06:02 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:06:02 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ccccccccccccccccccccccc 2017-04-18 10:06:02 2} 
+2017/04/18 10:06:12 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei fffffffffffffffffffff 2017-04-18 10:06:12 2} 
+2017/04/18 10:06:12 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:06:12 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei fffffffffffffffffffff 2017-04-18 10:06:12 2} 
+2017/04/18 10:06:17 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei xxxxxxxxxxxxxxxxxxxx 2017-04-18 10:06:17 2} 
+2017/04/18 10:06:17 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:06:17 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei xxxxxxxxxxxxxxxxxxxx 2017-04-18 10:06:17 2} 
+2017/04/18 10:06:21 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei zzzzzzzzzzzzzzzzzzzzzz 2017-04-18 10:06:21 2} 
+2017/04/18 10:06:21 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:06:21 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei zzzzzzzzzzzzzzzzzzzzzz 2017-04-18 10:06:21 2} 
+2017/04/18 10:06:25 [D] [noticeController.go:145] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei fffffffffffffffffffffffffffffff 2017-04-18 10:06:25 2} 
+2017/04/18 10:06:25 [D] [noticeController.go:152] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:06:25 [D] [noticeController.go:233] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei fffffffffffffffffffffffffffffff 2017-04-18 10:06:25 2} 
+2017/04/18 10:08:39 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:08:40 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:08:42 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:08:42 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:08:42 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:08:44 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 10 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 11 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 12 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 13 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 14 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 15 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 16 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 17 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 18 
+2017/04/18 10:08:44 [D] [noticeController.go:116] loop 19 
+2017/04/18 10:08:45 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 10:08:45 [D] [noticeController.go:83] mod = 0 

@@ -173,18 +173,15 @@ input[type=submit] {
   }
 }
 /*表情包*/
-* {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .emjo {
   width: 100%;
   height: 200px;
   border-top: 1px solid #ccc;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .emjo .facebox {
   width: 100%;
@@ -1500,10 +1497,8 @@ a {
 }
 .sendNotice {
   width: 100%;
+  height: calc(100% - 56px);
   background: #EFEFF4;
-  position: fixed;
-  top: 56px;
-  left: 0px;
   overflow: hidden;
 }
 .sendNotice .conNotice {
@@ -1580,7 +1575,7 @@ a {
 }
 .sendNotice .conNotice .icon .sendbtn {
   display: inline-block;
-  margin: 20px;
+  margin: 10px 20px;
   font-size: 14px;
   border: none;
   background: #fff;
@@ -1637,6 +1632,7 @@ a {
 }
 .chatRoomInfo .RoomInfo_banner img {
   width: 100%;
+  height: 100%;
 }
 .chatRoomInfo .roomTitle {
   width: 100%;
@@ -1662,6 +1658,7 @@ a {
   width: 100%;
   margin-top: 20px;
   background: #fff;
+  overflow-y: auto;
 }
 .chatRoomInfo .info .info_title {
   width: 100%;
