@@ -51,6 +51,7 @@
                 <thead>
                     <tr>
                         <th style="width:80px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
+                        <th>房间</th>
                         <th>用户</th>
                         <th>角色</th>
                         <th>消息类型</th>
@@ -187,6 +188,11 @@
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         $(nTd).html(checkbox(oData.Id));
+                    }
+                },
+                {"mDataProp": "Room",
+                    "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
+                        $(nTd).html(sData);
                     }
                 },
                 {"mDataProp": "Nickname",

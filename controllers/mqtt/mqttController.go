@@ -65,13 +65,13 @@ func (this *MqttController) GetMessageToSend() {
 		status := parseMsg(chatmsg)
 		switch status {
 		case POST_STATUS_TRUE:
-			this.Rsp(true, "消息发送成功", "")
+			this.Rsp(true, "POST_STATUS_TRUE", "")
 			return
 		case POST_STATUS_FALSE:
-			this.Rsp(false, "消息发送失败,请重新发送", "")
+			this.Rsp(false, "POST_STATUS_FALSE", "")
 			return
 		case POST_STATUS_SHUTUP:
-			this.Rsp(false, "您已被禁言", "")
+			this.Rsp(false, "POST_STATUS_SHUTUP", "")
 			return
 		}
 	}
@@ -162,7 +162,11 @@ func (this *MqttController) GetChatHistoryList() {
 					info.Uuid = historychat[i].Uuid
 					infoChat = append(infoChat, info)
 				}
-				data["historyChat"] = infoChat
+				var infoSort []m.ChatRecord //sort
+				for i := 0; i < len(infoChat); i++ {
+					infoSort = append(infoSort, infoChat[len(infoChat)-1-i])
+				}
+				data["historyChat"] = infoSort
 				this.Data["json"] = &data
 				this.ServeJSON()
 				return
@@ -203,7 +207,11 @@ func (this *MqttController) GetChatHistoryList() {
 				info.Uuid = historychat[i].Uuid
 				infoChat = append(infoChat, info)
 			}
-			data["historyChat"] = infoChat
+			var arrSort []m.ChatRecord
+			for i := 0; i < len(infoChat); i++ {
+				arrSort = append(arrSort, infoChat[len(infoChat)-1-i])
+			}
+			data["historyChat"] = arrSort
 			this.Data["json"] = &data
 			this.ServeJSON()
 		default:

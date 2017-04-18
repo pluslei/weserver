@@ -104,7 +104,6 @@ func (this *NoticeController) GetRoomNoticeList() {
 			this.ServeJSON()
 			return
 		}
-
 		var nstart int64
 		nstart = nEnd - sysCount
 		if nEnd > nCount {

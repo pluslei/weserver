@@ -6921,3 +6921,247 @@
 2017/04/18 14:24:17 [D] [noticeController.go:74] Requst Count 10 
 2017/04/18 14:24:17 [D] [mqttController.go:171] mod -1 
 2017/04/18 14:24:17 [D] [noticeController.go:82] nCount sysCont 0 10 
+2017/04/18 15:03:46 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 15:03:46 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 15:03:46 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 15:03:46 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042418120 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 15:03:46 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 15:03:46 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 15:03:46 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 15:03:46 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 15:03:53 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:03:54 [D] [RoomInfo.go:133] num 5 
+2017/04/18 15:03:55 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:03:56 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 15:03:56 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:03:56 [D] [strategyController.go:102] mod -8 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 0 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 1 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 2 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 3 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 4 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 5 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 6 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 7 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 8 
+2017/04/18 15:03:56 [D] [noticeController.go:117] loop 9 
+2017/04/18 15:03:56 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:04:21 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 15:04:21 [D] [noticeController.go:114] mod 1 
+2017/04/18 15:04:21 [D] [noticeController.go:117] loop 10 
+2017/04/18 15:04:25 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:04:25 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:04:26 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:26 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:27 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:27 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:28 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:28 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:29 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:29 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:45 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:45 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:46 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:46 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:50 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:50 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:56 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:56 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:04:57 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:04:57 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:06:47 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 15:06:47 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 15:06:47 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 15:06:47 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234c360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 15:06:47 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 15:06:47 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 15:06:47 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 15:06:48 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 15:06:58 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:06:59 [D] [RoomInfo.go:133] num 5 
+2017/04/18 15:07:01 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:07:02 [D] [strategyController.go:102] mod -8 
+2017/04/18 15:07:02 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:07:02 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 15:07:02 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 0 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 1 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 2 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 3 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 4 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 5 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 6 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 7 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 8 
+2017/04/18 15:07:02 [D] [noticeController.go:116] loop 9 
+2017/04/18 15:07:05 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:07:05 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:07:06 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:07:06 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:07:07 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:07:07 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:07:07 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:07:07 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:21:39 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 15:21:39 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 15:21:39 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 15:21:39 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422f3020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 15:21:39 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 15:21:39 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 15:21:39 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 15:21:40 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 15:21:45 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:21:46 [D] [RoomInfo.go:133] num 5 
+2017/04/18 15:21:48 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:21:48 [D] [strategyController.go:102] mod -8 
+2017/04/18 15:21:48 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:21:49 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 0 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 1 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 2 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 3 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 4 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 5 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 6 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 7 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 8 
+2017/04/18 15:21:49 [D] [noticeController.go:116] loop 9 
+2017/04/18 15:21:49 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:21:53 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 15:21:53 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:21:57 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/18 15:21:57 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:22:00 [D] [mqttController.go:135] chat list  40 Topic_ChatMessage/sub1 
+2017/04/18 15:22:00 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:22:06 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 15:22:06 [D] [noticeController.go:113] mod 1 
+2017/04/18 15:22:06 [D] [noticeController.go:116] loop 10 
+2017/04/18 15:22:12 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:22:12 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:22:30 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:22:30 [D] [mqttController.go:171] mod -6 
+2017/04/18 15:22:36 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-18 15:22:36.2704237 +0800 CST 0 0b9f2177-7697-433f-9609-3e8847c07190 0} 
+2017/04/18 15:22:36 [D] [mqttController.go:108] IsFilter false 
+2017/04/18 15:22:36 [D] [mqttController.go:344] im here false false 
+2017/04/18 15:22:36 [D] [mqttController.go:397] result [] 
+2017/04/18 15:23:22 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:23:22 [D] [RoomInfo.go:133] num 5 
+2017/04/18 15:23:24 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 15:23:25 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:23:25 [D] [strategyController.go:102] mod -8 
+2017/04/18 15:23:25 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 15:23:25 [D] [mqttController.go:171] mod -7 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 0 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 1 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 2 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 3 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 4 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 5 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 6 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 7 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 8 
+2017/04/18 15:23:25 [D] [noticeController.go:116] loop 9 
+2017/04/18 15:23:36 [D] [noticeController.go:221] NoticeDEL &{89 Topic_ChatMessage/sub1 3} 
+2017/04/18 15:23:38 [D] [noticeController.go:221] NoticeDEL &{88 Topic_ChatMessage/sub1 3} 
+2017/04/18 15:23:55 [D] [noticeController.go:221] NoticeDEL &{87 Topic_ChatMessage/sub1 3} 
+2017/04/18 15:23:56 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:23:56 [D] [mqttController.go:171] mod -7 
+2017/04/18 15:23:58 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 15:23:58 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 15:24:17 [D] [strategyController.go:102] mod 2 
+2017/04/18 15:24:17 [D] [strategyController.go:116] mod 8 
+2017/04/18 15:24:53 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 15:24:53 [D] [mqttController.go:171] mod -7 
+2017/04/18 15:29:09 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 15:29:09 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 15:29:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 15:29:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042351aa0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 15:29:09 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 15:29:09 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 15:29:09 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 15:29:09 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 15:31:03 [D] [server.go:14] client 659d578b-8465-41e7-8d19-e012853159dd online subscribe topic is: chat 
+2017/04/18 15:31:04 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:33:03 [D] [server.go:18] client 659d578b-8465-41e7-8d19-e012853159dd offline unsubscribe topic is: chat 
+2017/04/18 15:38:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:38:52 [D] [server.go:14] client a3cc2cee-017e-4cbb-a88c-fb10a333591c online subscribe topic is: chat 
+2017/04/18 15:40:52 [D] [server.go:18] client a3cc2cee-017e-4cbb-a88c-fb10a333591c offline unsubscribe topic is: chat 
+2017/04/18 15:40:52 [D] [server.go:14] client a3cc2cee-017e-4cbb-a88c-fb10a333591c online subscribe topic is: chat 
+2017/04/18 15:42:31 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:42:31 [D] [server.go:14] client 52db13c4-e09a-4bf9-9d8a-e80d2ce8df71 online subscribe topic is: chat 
+2017/04/18 15:42:52 [D] [server.go:18] client a3cc2cee-017e-4cbb-a88c-fb10a333591c offline unsubscribe topic is: chat 
+2017/04/18 15:44:02 [D] [server.go:14] client 69145f5e-3280-4efa-85bd-f3bb81b7d386 online subscribe topic is: chat 
+2017/04/18 15:44:02 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:44:31 [D] [server.go:18] client 52db13c4-e09a-4bf9-9d8a-e80d2ce8df71 offline unsubscribe topic is: chat 
+2017/04/18 15:44:58 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:44:58 [D] [server.go:14] client 966d3222-25db-4e98-bb19-93d95ac56136 online subscribe topic is: chat 
+2017/04/18 15:45:54 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:45:54 [D] [server.go:14] client b2ff4a66-f4f6-478a-88f1-4c63d9652adb online subscribe topic is: chat 
+2017/04/18 15:46:02 [D] [server.go:18] client 69145f5e-3280-4efa-85bd-f3bb81b7d386 offline unsubscribe topic is: chat 
+2017/04/18 15:46:58 [D] [server.go:18] client 966d3222-25db-4e98-bb19-93d95ac56136 offline unsubscribe topic is: chat 
+2017/04/18 15:47:54 [D] [server.go:18] client b2ff4a66-f4f6-478a-88f1-4c63d9652adb offline unsubscribe topic is: chat 
+2017/04/18 15:52:56 [D] [SysConfigController.go:73] configinfo 0 1 
+2017/04/18 15:56:31 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:56:31 [D] [server.go:14] client f635185e-3603-4390-a8bb-990704cf84b6 online subscribe topic is: chat 
+2017/04/18 15:57:13 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tMgWca6FuCAMl6BGIbI7acH40duD4XQrpGt0JPzCOXrQRUzMGZ9fWoQuw8XQVj0Ej_7748FOPmC-55WjT66YIZlYH361GhvaFB4YNU8Xp9EFi9ydqTe6CI4QUYMC7YbnQJEhAGAXQL&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 15:57:13 [D] [server.go:14] client fbcc55a2-ab82-42e9-9663-195e8bd54280 online subscribe topic is: chat 
+2017/04/18 15:58:31 [D] [server.go:18] client f635185e-3603-4390-a8bb-990704cf84b6 offline unsubscribe topic is: chat 
+2017/04/18 15:59:13 [D] [server.go:18] client fbcc55a2-ab82-42e9-9663-195e8bd54280 offline unsubscribe topic is: chat 
+2017/04/18 16:10:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 16:10:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 16:10:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 16:10:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04235eae0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 16:10:58 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 16:10:58 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 16:10:58 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 16:10:58 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 16:11:12 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 16:11:12 [D] [RoomInfo.go:133] num 5 
+2017/04/18 16:11:14 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 16:11:15 [D] [strategyController.go:102] mod -8 
+2017/04/18 16:11:15 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 16:11:15 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:11:15 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:11:15 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 16:11:21 [D] [strategyController.go:102] mod 2 
+2017/04/18 16:11:21 [D] [strategyController.go:116] mod 8 
+2017/04/18 16:11:30 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:11:30 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:11:35 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:11:35 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:11:38 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:11:39 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:11:43 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:11:43 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:12:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 16:12:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 16:12:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 16:12:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042450900 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 16:12:03 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 16:12:03 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 16:12:03 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 16:12:04 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 16:12:09 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 16:12:10 [D] [RoomInfo.go:133] num 5 
+2017/04/18 16:12:12 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 16:12:12 [D] [strategyController.go:102] mod -8 
+2017/04/18 16:12:12 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:12:12 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 16:12:12 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:12:12 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 16:12:15 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 TXT 1472629522.jpg false 1 true 顶顶顶顶顶大大大 false 2017-04-18 16:12:15.6444237 +0800 CST 0 90ef0526-7c3f-48a7-859b-a559153ca69f 0} 
+2017/04/18 16:12:36 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 TXT 1472629522.jpg false 1 true 大大大大 false 2017-04-18 16:12:36.3394237 +0800 CST 0 5d9d2e4d-808d-406c-9f01-6edf1d37ab18 0} 
+2017/04/18 16:13:01 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 TXT 1472629522.jpg false 1 true 的顶顶顶顶顶 false 2017-04-18 16:13:01.9714237 +0800 CST 0 4aaa4cac-5424-4329-8795-42cd0bfdc9d8 0} 
+2017/04/18 16:14:42 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 16:15:04 [D] [RoomInfo.go:133] num 5 
+2017/04/18 16:15:16 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 16:15:38 [D] [strategyController.go:102] mod -8 
+2017/04/18 16:15:38 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:15:38 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:15:38 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 16:15:38 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 16:15:44 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 TXT 1472629522.jpg false 1 true 点点滴滴 false 2017-04-18 16:15:44.4324237 +0800 CST 0 53863401-f223-41aa-8c34-c31529515ce2 0} 
+2017/04/18 16:16:49 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 16:16:49 [D] [mqttController.go:171] mod -7 
+2017/04/18 16:16:50 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 16:16:50 [D] [mqttController.go:171] mod -7 
