@@ -113,6 +113,14 @@ func GetChatMsgData(count int64, roomId, tableName string) ([]ChatRecord, int64,
 	return chat, num, err
 }
 
+//获取聊天记录
+func GetAllChatMsgData(roomId, tableName string) ([]ChatRecord, int64, error) {
+	o := orm.NewOrm()
+	var chat []ChatRecord
+	num, err := o.QueryTable(tableName).Filter("Status", 1).Filter("Room", roomId).OrderBy("Id").All(&chat)
+	return chat, num, err
+}
+
 // 根据id查询聊天内容
 func GetChatIdData(id int64) (ChatRecord, error) {
 	o := orm.NewOrm()

@@ -5932,3 +5932,386 @@
 2017/04/18 10:08:44 [D] [noticeController.go:116] loop 19 
 2017/04/18 10:08:45 [D] [noticeController.go:74] Requst Count 30 
 2017/04/18 10:08:45 [D] [noticeController.go:83] mod = 0 
+2017/04/18 10:27:20 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 10:27:20 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 10:27:20 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 10:27:20 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042416fc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 10:27:20 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 10:27:20 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 10:27:20 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 10:27:20 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 10:27:28 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:27:28 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:27:30 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:27:31 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:27:31 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:36:57 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:36:57 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:36:57 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:39:47 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:39:47 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:39:47 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:39:50 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:39:51 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:39:52 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:39:52 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:39:56 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:40:40 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:40:41 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:40:41 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:40:44 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:40:48 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:41:01 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dwdwadwadwadwa true false 0 2017-04-18 10:41:01 4} 
+2017/04/18 10:41:01 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dwdwadwadwadwa true false 0 2017-04-18 10:41:01 4} 
+2017/04/18 10:41:02 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:41:06 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:41:11 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:41:12 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:41:12 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:41:19 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:41:21 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:41:22 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:41:22 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:41:24 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:41:28 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:41:30 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:42:20 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dwadwadwadwadwwwwwwwwwwwwwwww true false 0 2017-04-18 10:42:20 4} 
+2017/04/18 10:42:20 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dwadwadwadwadwwwwwwwwwwwwwwww true false 0 2017-04-18 10:42:20 4} 
+2017/04/18 10:42:21 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:42:33 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:42:33 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:42:33 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:42:36 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:47:07 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:47:07 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:47:07 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:47:08 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:47:09 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:47:09 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:47:15 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dwdwdddddddddddddd true false 0 2017-04-18 10:47:15 4} 
+2017/04/18 10:47:15 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 dwdwdddddddddddddd true false 0 2017-04-18 10:47:15 4} 
+2017/04/18 10:47:24 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ion迪欧我【批文 true false 0 2017-04-18 10:47:24 4} 
+2017/04/18 10:47:24 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 ion迪欧我【批文 true false 0 2017-04-18 10:47:24 4} 
+2017/04/18 10:47:35 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:50:57 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:50:58 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:50:58 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:50:58 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:50:58 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:50:58 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:50:59 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 0 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 1 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 2 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 3 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 4 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 5 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 6 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 7 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 8 
+2017/04/18 10:50:59 [D] [noticeController.go:116] loop 9 
+2017/04/18 10:51:05 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 巫毒娃娃 true false 0 2017-04-18 10:51:05 4} 
+2017/04/18 10:51:05 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 巫毒娃娃 true false 0 2017-04-18 10:51:05 4} 
+2017/04/18 10:51:10 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:51:15 [D] [strategyController.go:82] mod = 0 
+2017/04/18 10:53:00 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 10:53:01 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 10:53:01 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 10:53:01 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422fd0e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 10:53:01 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 10:53:01 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 10:53:01 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 10:53:01 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 10:53:09 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:53:12 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:53:16 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:53:17 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:53:19 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:53:19 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 0 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 1 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 2 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 3 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 4 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 5 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 6 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 7 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 8 
+2017/04/18 10:53:19 [D] [noticeController.go:117] loop 9 
+2017/04/18 10:53:24 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:53:27 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:53:29 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:53:33 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 10 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 11 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 12 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 13 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 14 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 15 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 16 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 17 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 18 
+2017/04/18 10:53:33 [D] [noticeController.go:117] loop 19 
+2017/04/18 10:53:35 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 10:53:35 [D] [noticeController.go:101] mod = 0 
+2017/04/18 10:54:15 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶顶顶顶顶顶 2017-04-18 10:54:15 2} 
+2017/04/18 10:54:15 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 10:54:15 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶顶顶顶顶顶 2017-04-18 10:54:15 2} 
+2017/04/18 10:54:46 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:54:46 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:54:48 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:54:49 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 0 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 1 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 2 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 3 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 4 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 5 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 6 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 7 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 8 
+2017/04/18 10:54:49 [D] [noticeController.go:117] loop 9 
+2017/04/18 10:54:55 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 10 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 11 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 12 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 13 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 14 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 15 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 16 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 17 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 18 
+2017/04/18 10:54:55 [D] [noticeController.go:117] loop 19 
+2017/04/18 10:55:00 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 10:55:00 [D] [noticeController.go:101] mod = 0 
+2017/04/18 10:58:57 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 10:58:57 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 10:58:57 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 10:58:57 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042446c60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 10:59:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 10:59:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 10:59:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 10:59:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c720 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 10:59:03 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 10:59:03 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 10:59:03 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 10:59:03 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 10:59:09 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:59:10 [D] [RoomInfo.go:133] num 5 
+2017/04/18 10:59:12 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 10:59:13 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 0 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 1 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 2 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 3 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 4 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 5 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 6 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 7 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 8 
+2017/04/18 10:59:13 [D] [noticeController.go:117] loop 9 
+2017/04/18 10:59:14 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 10 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 11 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 12 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 13 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 14 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 15 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 16 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 17 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 18 
+2017/04/18 10:59:14 [D] [noticeController.go:117] loop 19 
+2017/04/18 10:59:15 [D] [noticeController.go:74] Requst Count 30 
+2017/04/18 10:59:15 [D] [noticeController.go:114] mod 1 
+2017/04/18 10:59:15 [D] [noticeController.go:117] loop 20 
+2017/04/18 10:59:25 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:59:26 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:59:33 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:59:34 [D] [strategyController.go:103] mod = 0 
+2017/04/18 10:59:54 [D] [noticeController.go:222] NoticeDEL &{84 Topic_ChatMessage/sub1 3} 
+2017/04/18 10:59:54 [D] [noticeController.go:222] NoticeDEL &{83 Topic_ChatMessage/sub1 3} 
+2017/04/18 10:59:55 [D] [noticeController.go:222] NoticeDEL &{82 Topic_ChatMessage/sub1 3} 
+2017/04/18 10:59:56 [D] [noticeController.go:222] NoticeDEL &{81 Topic_ChatMessage/sub1 3} 
+2017/04/18 10:59:57 [D] [noticeController.go:222] NoticeDEL &{80 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:00 [D] [noticeController.go:222] NoticeDEL &{79 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:01 [D] [noticeController.go:222] NoticeDEL &{78 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:02 [D] [noticeController.go:222] NoticeDEL &{77 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:02 [D] [noticeController.go:222] NoticeDEL &{76 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:03 [D] [noticeController.go:222] NoticeDEL &{75 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:04 [D] [noticeController.go:222] NoticeDEL &{74 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:05 [D] [noticeController.go:222] NoticeDEL &{73 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:06 [D] [noticeController.go:222] NoticeDEL &{10 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:07 [D] [noticeController.go:222] NoticeDEL &{9 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:08 [D] [noticeController.go:222] NoticeDEL &{8 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:08 [D] [noticeController.go:222] NoticeDEL &{7 Topic_ChatMessage/sub1 3} 
+2017/04/18 11:00:20 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddd 2017-04-18 11:00:20 2} 
+2017/04/18 11:00:20 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 11:00:20 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddd 2017-04-18 11:00:20 2} 
+2017/04/18 11:00:25 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddd 2017-04-18 11:00:25 2} 
+2017/04/18 11:00:25 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 11:00:25 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei ddddddddddddd 2017-04-18 11:00:25 2} 
+2017/04/18 11:00:31 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 啊啊啊啊啊啊啊啊啊啊啊啊啊 2017-04-18 11:00:31 2} 
+2017/04/18 11:00:31 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 11:00:31 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 啊啊啊啊啊啊啊啊啊啊啊啊啊 2017-04-18 11:00:31 2} 
+2017/04/18 11:00:39 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶的顶顶顶顶顶 2017-04-18 11:00:39 2} 
+2017/04/18 11:00:39 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 11:00:39 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 的顶顶顶顶顶的顶顶顶顶顶 2017-04-18 11:00:39 2} 
+2017/04/18 11:00:43 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei fffffffffffff 2017-04-18 11:00:43 2} 
+2017/04/18 11:00:43 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 11:00:43 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei fffffffffffff 2017-04-18 11:00:43 2} 
+2017/04/18 11:01:20 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 11:01:21 [D] [RoomInfo.go:133] num 5 
+2017/04/18 11:01:22 [D] [indexController.go:153] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 11:01:23 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 0 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 1 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 2 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 3 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 4 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 5 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 6 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 7 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 8 
+2017/04/18 11:01:23 [D] [noticeController.go:117] loop 9 
+2017/04/18 11:01:24 [D] [noticeController.go:74] Requst Count 20 
+2017/04/18 11:01:24 [D] [noticeController.go:101] mod = 0 
+2017/04/18 11:01:36 [D] [noticeController.go:146] info {Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 反福福福福福福福福福 2017-04-18 11:01:36 2} 
+2017/04/18 11:01:36 [D] [noticeController.go:153] vvvvvvvvvvvvvvvvvvvvv Topic_ChatMessage/sub1 
+2017/04/18 11:01:36 [D] [noticeController.go:234] NoticeInfo &{Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei 反福福福福福福福福福 2017-04-18 11:01:36 2} 
+2017/04/18 11:39:10 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 guest 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-18 11:39:10.3526009 +0800 CST 0 c2a2183d-971d-4d2e-99e7-082eca258174 0} 
+2017/04/18 11:39:10 [D] [mqttController.go:108] IsFilter false 
+2017/04/18 11:39:10 [D] [mqttController.go:279] im here false false 
+2017/04/18 11:39:10 [D] [mqttController.go:332] result [] 
+2017/04/18 11:39:13 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶大大大 false false 0 2017-04-18 11:39:13 4} 
+2017/04/18 11:39:13 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶大大大 false false 0 2017-04-18 11:39:13 4} 
+2017/04/18 11:39:20 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶顶顶顶顶顶 true false 0 2017-04-18 11:39:20 4} 
+2017/04/18 11:39:20 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 顶顶顶顶顶顶顶顶顶顶 true false 0 2017-04-18 11:39:20 4} 
+2017/04/18 11:39:22 [D] [strategyController.go:103] mod = 0 
+2017/04/18 11:39:31 [D] [strategyController.go:149] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 发发发发发发发发发发发 true false 0 2017-04-18 11:39:31 4} 
+2017/04/18 11:39:31 [D] [strategyController.go:267] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 Sir. Lei 普通 发发发发发发发发发发发 true false 0 2017-04-18 11:39:31 4} 
+2017/04/18 11:39:35 [D] [strategyController.go:103] mod = 0 
+2017/04/18 12:05:22 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 12:05:22 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 12:05:22 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 12:05:22 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042430f60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 12:05:28 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 12:05:28 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 12:05:28 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 12:05:28 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042350360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 12:05:42 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 12:05:42 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 12:05:43 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 12:05:43 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234d260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 12:05:43 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 12:05:43 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 12:05:43 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 12:05:43 [I] [asm_amd64.s:2086] http server Running on http://:80

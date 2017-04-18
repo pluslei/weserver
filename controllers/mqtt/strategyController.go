@@ -77,14 +77,6 @@ func (this *StrategyController) GetStrategyList() {
 		sysCount := sysconfig.StrategyCount
 		var Strinfo []m.Strategy
 		historyStrategy, nCount, _ := m.GetStrategyList(roomId)
-		mod := nEnd % sysCount
-		if nEnd > nCount && mod == 0 {
-			beego.Debug("mod = 0")
-			data["historyStrategy"] = ""
-			this.Data["json"] = &data
-			this.ServeJSON()
-			return
-		}
 		if nCount < sysCount {
 			beego.Debug("nCount sysCont", nCount, sysCount)
 			var i int64
@@ -102,6 +94,15 @@ func (this *StrategyController) GetStrategyList() {
 				Strinfo = append(Strinfo, info)
 			}
 			data["historyStrategy"] = Strinfo
+			this.Data["json"] = &data
+			this.ServeJSON()
+			return
+		}
+		mod := (nEnd - nCount) % sysCount
+		beego.Debug("mod", mod)
+		if nEnd > nCount && mod == 0 {
+			beego.Debug("mod = 0")
+			data["historyStrategy"] = ""
 			this.Data["json"] = &data
 			this.ServeJSON()
 			return
