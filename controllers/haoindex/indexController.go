@@ -40,9 +40,10 @@ type Userinfor struct {
 	RoleTitleCss  string //用户角色样式
 	RoleTitleBack bool   //角色聊天背景
 	RoleIcon      string //用户角色默认头像
-	Insider       int64  //1内部人员或0外部人员
-	IsLogin       bool   //是否登入
-	IsFilter      bool   //是否检查
+	RoleId        int64
+	Insider       int64 //1内部人员或0外部人员
+	IsLogin       bool  //是否登入
+	IsFilter      bool  //是否检查
 }
 
 type VoiceResponse struct {
@@ -140,7 +141,9 @@ func (this *IndexController) Index() {
 		} else {
 			user.IsLogin = false
 		}
-
+		if userLoad.Role.Id > 0 {
+			user.RoleId = userLoad.Role.Id
+		}
 		if userLoad.Title.Id > 0 {
 			user.RoleTitle = userLoad.Title.Name //用户类型
 		} else {

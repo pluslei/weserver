@@ -132,6 +132,7 @@ func (this *MqttController) GetChatHistoryList() {
 		count := this.GetString("count")
 		nEnd, _ := strconv.ParseInt(count, 10, 64)
 		roomId := this.GetString("room")
+		beego.Debug("chat list ", count, roomId)
 		data := make(map[string]interface{})
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.HistoryCount
