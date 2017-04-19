@@ -1147,10 +1147,10 @@ a {
 .list .contentbox .infobox .infotime img {
   width: 18px;
   vertical-align: text-bottom;
+  margin-right: 10px;
 }
 .list .contentbox .infobox .infotime .newtime {
   font-size: 15px;
-  padding-left: 10px;
 }
 .list .contentbox .infobox .textbox {
   overflow: hidden;
@@ -1191,17 +1191,17 @@ a {
 }
 .list .contentbox .infobox .textbox div i {
   float: right;
-  width: 50px;
+  width: 48px;
   text-align: center;
   color: #fff;
-  height: 50px;
+  height: 48px;
   background: url(../i/support/delete.png) no-repeat 8px center;
   -webkit-background-size: 60% 60%;
           background-size: 60%;
   line-height: 65px;
   letter-spacing: 2px;
   font-size: 14px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .swipeleft {
   -ms-transform: translateX(-68px);
@@ -1209,7 +1209,7 @@ a {
   -webkit-transform: translateX(-68px);
 }
 .infobox:nth-of-type(1) {
-  color: red;
+  color: red !important;
 }
 .strategy {
   height: 100%;

@@ -7458,3 +7458,699 @@
 2017/04/19 09:14:04 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
 2017/04/19 09:14:04 [D] [mqttController.go:171] mod 0 
 2017/04/19 09:14:04 [D] [mqttController.go:173] mod = 0 
+2017/04/19 09:15:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:15:53 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:15:53 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:15:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0421862a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:16:04 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:16:04 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:16:04 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:16:04 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422f5020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:16:04 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:16:04 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:16:04 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:16:04 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:16:28 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:16:29 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:16:31 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:16:32 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:16:32 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:16:32 [D] [mqttController.go:171] mod 0 
+2017/04/19 09:16:32 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:16:32 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:16:35 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:16:38 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:16:38 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:16:38 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:16:38 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:16:39 [D] [mqttController.go:171] mod 0 
+2017/04/19 09:16:39 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:16:41 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-19 09:16:41.8119038 +0800 CST 0 fab00097-fb16-4256-8428-eac1c23b7ad2 0} 
+2017/04/19 09:17:49 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-19 09:17:49.3089038 +0800 CST 0 65c12555-c3ff-4fce-90ca-1e76ac75f236 0} 
+2017/04/19 09:18:02 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:18:02 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:18:02 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:18:02 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422cdbc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:18:02 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:18:02 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:18:02 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:18:02 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:18:11 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:18:13 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:18:15 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:18:15 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:18:15 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:18:15 [D] [mqttController.go:171] mod 0 
+2017/04/19 09:18:15 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:18:15 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:18:18 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-19 09:18:18.2119038 +0800 CST 0 046ef15e-7eed-4c85-8e03-e5b9edfa2acd 0} 
+2017/04/19 09:18:18 [D] [mqttController.go:108] IsFilter false 
+2017/04/19 09:18:18 [D] [mqttController.go:344] im here false false 
+2017/04/19 09:18:18 [D] [mqttController.go:397] result [] 
+2017/04/19 09:19:37 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:20:15 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:20:19 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:20:37 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:20:37 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:20:37 [D] [mqttController.go:171] mod -1 
+2017/04/19 09:20:37 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:20:37 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:20:39 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=G1lCIAmSHVYc7bA1hmw319jUmfHhCLZrn0hqmbaDm6E_Ff6tAhj69nZeOlx_efDwjWHw-AUwJZUZaC-gIDxSXjSyCrMsdDeDWxC3gl_OW-q8yP5bk_XYsaN_2vScSPaZQQZfACAGGP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:21:03 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 IMG 1472629522.jpg false 1 true 3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz false 2017-04-19 09:21:03.0319038 +0800 CST 0 3a5b9c7b-bf0e-447f-865d-4c6f57c2cd6d 0} 
+2017/04/19 09:21:03 [D] [mqttController.go:108] IsFilter false 
+2017/04/19 09:21:03 [D] [mqttController.go:344] im here false false 
+2017/04/19 09:21:03 [D] [mqttController.go:397] result [] 
+2017/04/19 09:21:04 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=G1lCIAmSHVYc7bA1hmw319jUmfHhCLZrn0hqmbaDm6E_Ff6tAhj69nZeOlx_efDwjWHw-AUwJZUZaC-gIDxSXjSyCrMsdDeDWxC3gl_OW-q8yP5bk_XYsaN_2vScSPaZQQZfACAGGP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:21:22 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 VOICE 1472629522.jpg false 1 true zAHZcOPd22BsP4Mc13t0wqlnadf3ySbvmV9xfAnrG0RWLSb8SdFl91Go5oF4rWcd false 2017-04-19 09:21:22.8649038 +0800 CST 0 e043827e-a7ed-42cf-940f-369dd2c26682 0} 
+2017/04/19 09:21:22 [D] [mqttController.go:108] IsFilter false 
+2017/04/19 09:21:22 [D] [mqttController.go:344] im here false false 
+2017/04/19 09:21:22 [D] [mqttController.go:397] result [] 
+2017/04/19 09:21:27 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 VOICE 1472629522.jpg false 1 true wtUbg1w994e42WRE6f0k5cV4vi0svhV9z-DwXgtnaE4XJH7StobJc0S45o90kQkn false 2017-04-19 09:21:27.9149038 +0800 CST 0 37e2ba0c-98af-45c7-a4de-541e9c175758 0} 
+2017/04/19 09:21:27 [D] [mqttController.go:108] IsFilter false 
+2017/04/19 09:21:27 [D] [mqttController.go:344] im here false false 
+2017/04/19 09:21:27 [D] [mqttController.go:397] result [] 
+2017/04/19 09:21:47 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:21:47 [D] [mqttController.go:171] mod -4 
+2017/04/19 09:21:48 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 09:21:48 [D] [mqttController.go:171] mod 6 
+2017/04/19 09:21:48 [D] [mqttController.go:185] mod 4 
+2017/04/19 09:21:55 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 ooex5xK49v54rbsWVA2KUWT0TNb8 Sir. Lei http://wx.qlogo.cn/mmopen/KetjXWSVppsZ0icialcRKRXwLaCpCcoa664FHnSrnL5w6u9x1qyb8FfD35MiavwjibBQKiaQtdzyX9nyMibIicAx5htkLyIGEKJTAhB/0 manager 普通 VOICE 1472629522.jpg false 1 true wYFLZbf37teFdwlcCDaVhy5_a8sWUvXU3fN74PV6NRDRMvUrbrqefgxD0XIxhVxx false 2017-04-19 09:21:55.7789038 +0800 CST 0 b963044d-470b-4f22-b32e-0331188e2a48 0} 
+2017/04/19 09:21:55 [D] [mqttController.go:108] IsFilter false 
+2017/04/19 09:21:55 [D] [mqttController.go:344] im here false false 
+2017/04/19 09:21:55 [D] [mqttController.go:397] result [] 
+2017/04/19 09:22:43 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:26:06 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:26:06 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:26:06 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:26:06 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04232b0e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:26:06 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:26:06 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:26:06 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:26:06 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:26:11 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:26:12 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:26:14 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:26:14 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:26:14 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:26:14 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:26:14 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:26:14 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:26:14 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lF1ctU9yhS8gzi5g5QDUy6C9UFlib_25HaZdxWePZW1UEvlTa3nenyBEuotpmSNgrGxpZF-aEBgv2KnlhjM4x16R9NwVU4v4X7Yv8rJeboIdCx62tkG9-Um5eD55sVBwMGRgAJAYSD&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:26:14 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lF1ctU9yhS8gzi5g5QDUy6C9UFlib_25HaZdxWePZW1UEvlTa3nenyBEuotpmSNgrGxpZF-aEBgv2KnlhjM4x16R9NwVU4v4X7Yv8rJeboIdCx62tkG9-Um5eD55sVBwMGRgAJAYSD&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:26:17 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:26:17 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:26:17 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lF1ctU9yhS8gzi5g5QDUy6C9UFlib_25HaZdxWePZW1UEvlTa3nenyBEuotpmSNgrGxpZF-aEBgv2KnlhjM4x16R9NwVU4v4X7Yv8rJeboIdCx62tkG9-Um5eD55sVBwMGRgAJAYSD&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:39:14 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/19 09:39:15 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 09:39:15 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 09:39:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 09:39:37 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:39:37 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:39:37 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:39:37 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042462900 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:39:37 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:39:37 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:39:37 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:39:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:39:44 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:39:45 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:39:46 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:39:47 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:39:47 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:39:47 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:39:47 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:39:47 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:39:47 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Fm7QGAf5GaecqpKifktlaWgjC4UkYhn18iYk0Rl2W-c39k6I-1qVKP7SJulw_SDGPaKWfUnGPLDgleWUssu70UN2clhArIaROkPle4l_nxaHT6jdmj4_dHJR_7RelzNLOKZbAFAHDS&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:39:47 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Fm7QGAf5GaecqpKifktlaWgjC4UkYhn18iYk0Rl2W-c39k6I-1qVKP7SJulw_SDGPaKWfUnGPLDgleWUssu70UN2clhArIaROkPle4l_nxaHT6jdmj4_dHJR_7RelzNLOKZbAFAHDS&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:39:56 [D] [strategyController.go:103] mod 2 
+2017/04/19 09:39:56 [D] [strategyController.go:117] mod 8 
+2017/04/19 09:40:00 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:40:00 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:40:00 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Fm7QGAf5GaecqpKifktlaWgjC4UkYhn18iYk0Rl2W-c39k6I-1qVKP7SJulw_SDGPaKWfUnGPLDgleWUssu70UN2clhArIaROkPle4l_nxaHT6jdmj4_dHJR_7RelzNLOKZbAFAHDS&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:40:05 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:40:05 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:40:05 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Fm7QGAf5GaecqpKifktlaWgjC4UkYhn18iYk0Rl2W-c39k6I-1qVKP7SJulw_SDGPaKWfUnGPLDgleWUssu70UN2clhArIaROkPle4l_nxaHT6jdmj4_dHJR_7RelzNLOKZbAFAHDS&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:42:57 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:42:57 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:42:57 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:42:57 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423a0000 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:42:57 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:42:57 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:42:57 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:42:57 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:43:08 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:43:09 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:43:18 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:43:18 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:43:23 [E] [indexController.go:84] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: N0206uth5 ] 
+2017/04/19 09:43:26 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:43:27 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:43:31 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:43:31 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:43:31 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:43:31 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:43:31 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:43:31 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:43:32 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:43:32 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:43:38 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:43:38 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:43:38 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:43:38 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:43:38 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:43:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:43:50 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:43:50 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:43:50 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:43:50 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:43:50 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:43:50 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:43:50 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:43:52 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:43:52 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:43:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:43:55 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:43:55 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:43:55 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:43:55 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:43:55 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:43:56 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:43:56 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9sMEne8feQzPyWmI3JZDJichmLvoyHyN9Ysct-beF5LNylSGVWrN-68AG6JijNIs6fhODkEIDBkLBTAdAKT6zQk91cxbGIhybLlrNd3Q9NcDRZcABANBJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:51:29 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:51:29 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:51:30 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:51:30 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042435da0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:51:30 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:51:30 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:51:30 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:51:30 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:51:37 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 09:51:38 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:51:40 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 09:51:40 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:51:40 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:51:40 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:51:40 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:51:40 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:51:40 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:51:40 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 09:51:43 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:51:43 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:51:43 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:51:55 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:51:55 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:51:55 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:51:55 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:51:55 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:51:55 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:52:05 [D] [strategyController.go:103] mod 2 
+2017/04/19 09:52:05 [D] [strategyController.go:117] mod 8 
+2017/04/19 09:52:08 [D] [strategyController.go:176] Operate Strategy info {31 Topic_ChatMessage/sub1 1 5} 
+2017/04/19 09:52:08 [D] [strategyController.go:229] StrategyOper &{31 Topic_ChatMessage/sub1 1 5} 
+2017/04/19 09:52:08 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:52:10 [D] [strategyController.go:176] Operate Strategy info {30 Topic_ChatMessage/sub1 1 5} 
+2017/04/19 09:52:10 [D] [strategyController.go:229] StrategyOper &{30 Topic_ChatMessage/sub1 1 5} 
+2017/04/19 09:52:10 [D] [strategyController.go:103] mod -8 
+2017/04/19 09:52:11 [D] [strategyController.go:103] mod 2 
+2017/04/19 09:52:11 [D] [strategyController.go:117] mod 8 
+2017/04/19 09:52:16 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:52:16 [D] [mqttController.go:171] mod -5 
+2017/04/19 09:52:16 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 09:52:19 [D] [RoomInfo.go:133] num 5 
+2017/04/19 10:01:27 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 10:01:27 [D] [strategyController.go:103] mod -8 
+2017/04/19 10:01:27 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:01:27 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:01:27 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 10:01:27 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 10:01:27 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:01:27 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 10:01:37 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 10:01:37 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:01:37 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:01:39 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 10:01:39 [D] [mqttController.go:171] mod 5 
+2017/04/19 10:01:39 [D] [mqttController.go:185] mod 5 
+2017/04/19 10:01:39 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:01:54 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:01:54 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:01:54 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:02:05 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:02:05 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:02:05 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:02:14 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:02:14 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:02:14 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:02:20 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:02:20 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:02:20 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9J34YCbOp2_hQ3D6-rLXw0u2bqQMsuCtWJsOONYLCt_m0q526raJincoQmEa5QK1hgl5kq8VXTMl4VsnsJrfvSIVaS66FB8JgP0TKLG8USB6-RmJFkTuUJ6zMQA2VfLxJYVaAFAODA&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:10:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 10:10:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 10:10:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 10:10:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c8a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 10:45:29 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 10:45:29 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 10:45:29 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 10:45:29 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042348120 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 10:45:30 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 10:45:30 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 10:45:30 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 10:45:30 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 10:52:36 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 10:52:36 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 10:52:36 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 10:52:36 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042355140 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 10:52:36 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 10:52:36 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 10:52:36 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 10:52:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 10:52:43 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 10:52:43 [D] [RoomInfo.go:133] num 5 
+2017/04/19 10:52:46 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 10:52:47 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:52:47 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 10:52:47 [D] [strategyController.go:103] mod -8 
+2017/04/19 10:52:47 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:52:47 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 10:52:47 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:52:47 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 10:52:49 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 10:52:49 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:52:50 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:52:53 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 10:52:53 [D] [strategyController.go:103] mod -8 
+2017/04/19 10:52:53 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:52:53 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:52:53 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 10:52:53 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 10:52:53 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 10:52:53 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:53:07 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 10:53:07 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:53:07 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:53:15 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 10:53:15 [D] [RoomInfo.go:133] num 5 
+2017/04/19 10:53:18 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 10:53:18 [D] [strategyController.go:103] mod -8 
+2017/04/19 10:53:18 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 10:53:18 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:53:18 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 10:53:18 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 10:53:19 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:53:19 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 10:53:29 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 10:53:29 [D] [mqttController.go:171] mod -5 
+2017/04/19 10:53:29 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:53:31 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 10:53:31 [D] [mqttController.go:171] mod 5 
+2017/04/19 10:53:31 [D] [mqttController.go:185] mod 5 
+2017/04/19 10:53:31 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=Q_cc6pzkuFLhd6lIFx5IJlcJRv_u690PwK-_AJRfShPZyESs40UiZmRCPtW9Fq-teYjFY6D__Q6xq_xzybSSp_FxmAqPcWaYFBeKZ8QCL-KKyUO2XqZlBTW5l1kPzvhKSAPiACAMUJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 10:55:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 10:55:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 10:55:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 10:55:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422362a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 10:55:58 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 10:55:58 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 10:55:58 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 10:55:59 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 10:56:06 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 10:56:06 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 10:56:06 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 10:56:06 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042303d40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 10:56:06 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 10:56:06 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 10:56:06 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 10:56:06 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:09:00 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:09:00 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:09:00 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:09:00 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422da120 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:09:00 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:09:00 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:09:00 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:09:01 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:10:10 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:10:10 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:10:10 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:10:10 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0424511a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:10:10 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:10:10 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:10:10 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:10:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:32:33 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:32:33 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:32:33 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:32:33 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042440b40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:32:33 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:32:33 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:32:33 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:32:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:32:42 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/19 11:32:42 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:32:42 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:32:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:32:50 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/19 11:32:50 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:32:50 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:32:50 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:33:09 [E] [indexController.go:84] get the user token error GetUserAccessToken error : errcode=40163 , errmsg=code been used, hints: [ req_id: 1NB3HA0792uth6 ] 
+2017/04/19 11:33:36 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/19 11:33:36 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:33:36 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:33:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:34:05 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/19 11:34:05 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:34:05 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:34:05 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:37:12 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:37:12 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:37:12 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:37:12 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04243e5a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:37:12 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:37:12 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:37:12 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:37:12 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:38:02 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/19 11:38:02 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:38:02 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:38:02 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:42:40 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:42:40 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:42:41 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:42:41 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042375200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:42:41 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:42:41 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:42:41 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:42:41 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:42:48 [E] [indexController.go:324] Error 1062: Duplicate entry '0' for key 'phone' 
+2017/04/19 11:42:48 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:42:48 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:42:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:43:56 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:43:56 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:43:56 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:43:56 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c180 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:43:56 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:43:56 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:43:56 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:43:56 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:44:04 [E] [indexController.go:324] Error 1062: Duplicate entry '0' for key 'phone' 
+2017/04/19 11:44:04 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:44:04 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:44:04 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:44:14 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:44:14 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:44:14 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:44:14 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042036d80 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:44:21 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:44:21 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:44:21 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:44:21 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04233de00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:44:21 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:44:21 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:44:21 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:44:21 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:45:11 [E] [indexController.go:324] Error 1062: Duplicate entry '0' for key 'phone' 
+2017/04/19 11:45:11 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/19 11:45:11 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/19 11:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/19 11:46:06 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 11:46:06 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 11:46:06 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 11:46:06 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422ddd40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 11:46:07 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 11:46:07 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 11:46:07 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 11:46:07 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 11:46:13 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 11:46:14 [D] [RoomInfo.go:133] num 5 
+2017/04/19 11:47:49 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 11:47:50 [D] [RoomInfo.go:133] num 5 
+2017/04/19 11:48:09 [E] [userController.go:23] strconv.ParseInt: parsing "": invalid syntax 
+2017/04/19 11:48:09 [E] [userController.go:27] strconv.ParseInt: parsing "": invalid syntax 
+2017/04/19 11:48:09 [E] [userController.go:39] strconv.ParseInt: parsing "": invalid syntax 
+2017/04/19 11:48:40 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 11:48:41 [D] [RoomInfo.go:133] num 5 
+2017/04/19 11:48:51 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 11:48:51 [D] [strategyController.go:103] mod -8 
+2017/04/19 11:48:51 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 11:48:51 [D] [mqttController.go:171] mod -5 
+2017/04/19 11:48:51 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 11:48:51 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 11:48:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:48:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:48:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:48:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:48:54 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 11:48:54 [D] [mqttController.go:171] mod -5 
+2017/04/19 11:48:54 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:48:54 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:48:55 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:48:55 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:02 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 11:49:02 [D] [mqttController.go:171] mod 5 
+2017/04/19 11:49:02 [D] [mqttController.go:185] mod 5 
+2017/04/19 11:49:02 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:02 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:03 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:03 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:08 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 11:49:08 [D] [mqttController.go:171] mod -5 
+2017/04/19 11:49:08 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:08 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:09 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:09 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:10 [D] [strategyController.go:103] mod 2 
+2017/04/19 11:49:10 [D] [strategyController.go:117] mod 8 
+2017/04/19 11:49:17 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 11:49:17 [D] [mqttController.go:171] mod -5 
+2017/04/19 11:49:17 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:17 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:17 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:17 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:42 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 11:49:42 [D] [mqttController.go:171] mod -5 
+2017/04/19 11:49:42 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:42 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 11:49:42 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 11:49:42 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=lh7ZJxGMNAFYQxpWFQHFNnR7MXlQAkKbu5fjWRVHiJf213Lbhb6VuaXYaKlnOKOvkUo0-OCOCHzBXBom8SMXmMy6y4Mn2xUNksvy02mFbwR7TyVEnGl5ZVzwx-JMxgz9BMWjAHAOZJ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 12:44:02 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 12:44:02 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 12:44:02 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 12:44:02 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422ca360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 12:44:02 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 12:44:02 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 12:44:02 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 12:44:03 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 12:44:17 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 12:44:18 [D] [RoomInfo.go:133] num 5 
+2017/04/19 12:44:37 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 12:44:37 [D] [strategyController.go:103] mod -8 
+2017/04/19 12:44:37 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 12:44:37 [D] [mqttController.go:171] mod -5 
+2017/04/19 12:44:37 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 12:44:37 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 12:44:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 12:44:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 12:44:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 12:44:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 12:44:41 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 12:44:41 [D] [mqttController.go:171] mod -5 
+2017/04/19 12:44:41 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 12:44:41 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 12:44:41 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 12:44:41 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 12:44:48 [D] [strategyController.go:103] mod 2 
+2017/04/19 12:44:48 [D] [strategyController.go:117] mod 8 
+2017/04/19 12:44:51 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 12:44:51 [D] [mqttController.go:171] mod -5 
+2017/04/19 12:44:51 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 12:44:51 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 12:44:51 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 12:44:51 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=tcglRmRu4acGiFG--sdKAkyrHl9EY4201hqpStSFMqRhYZYxT2i5Et1PI2rpzU1-7ogNBteJrY40AcbK6CzjKNGHZ4NvclgJbmqDShMCizAVLTbAEARHP&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 13:34:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 13:34:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 13:34:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 13:34:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04244d3e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 13:34:28 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 13:34:28 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 13:34:28 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 13:34:28 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234e360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 13:34:28 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 13:34:28 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 13:34:28 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 13:34:28 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 13:37:17 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 13:37:17 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 13:37:17 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 13:37:17 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c4e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 13:37:55 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 13:37:55 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 13:37:55 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 13:37:55 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042359200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 13:37:55 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 13:37:55 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 13:37:55 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 13:37:55 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 13:38:20 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 13:38:21 [D] [RoomInfo.go:133] num 5 
+2017/04/19 13:38:23 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 13:38:24 [D] [strategyController.go:103] mod -8 
+2017/04/19 13:38:24 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 13:38:24 [D] [mqttController.go:171] mod -5 
+2017/04/19 13:38:24 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 13:38:24 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 13:38:24 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 13:38:24 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 13:38:26 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 13:38:26 [D] [mqttController.go:171] mod -5 
+2017/04/19 13:38:26 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 13:38:26 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 13:38:30 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 13:38:30 [D] [mqttController.go:171] mod 5 
+2017/04/19 13:38:30 [D] [mqttController.go:185] mod 5 
+2017/04/19 13:38:31 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 13:38:31 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 13:38:37 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 13:38:37 [D] [mqttController.go:171] mod -5 
+2017/04/19 13:38:37 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 13:38:37 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 13:38:39 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 13:38:39 [D] [mqttController.go:171] mod -5 
+2017/04/19 13:38:39 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 13:38:39 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=CQwLiLj5S4zj1dQrEKvuLZ0cd2MysltQitb-DOp9GgQFe14mSaSauzGFPiB5JCK_Mcyng4TSMq9ZAJ4KUmzpW1fFfcaP7D0eJFkIYSODKJLqbz8nqaZNQeANkDiMOYXAQBMbAHAUFQ&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 
+2017/04/19 13:39:43 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 13:39:43 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 13:39:44 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 13:39:44 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200c840 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 13:39:44 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 13:39:44 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 13:39:44 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 13:39:44 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 13:39:51 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 13:39:52 [D] [RoomInfo.go:133] num 5 
+2017/04/19 13:39:54 [D] [indexController.go:156] userload &{11 游客 guest 游客 1 1 30 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 109} 
+2017/04/19 13:39:54 [D] [strategyController.go:103] mod -8 
+2017/04/19 13:39:54 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 13:39:54 [D] [mqttController.go:171] mod -5 
+2017/04/19 13:39:55 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 13:39:55 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 13:39:55 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cQAGcNMv4q5DMgq0rgo12ugDCy5NYdX44qsqWDsQphYreAwFF25K2gdQ3XFBi4dRDNa6vGYeUfCL9HQE2tjPX2raDqGPOuZrXAk4tKIxxPe8jtpuVfFedj21vVw0bhqyHIZbADAVWN&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/19 13:39:55 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=cQAGcNMv4q5DMgq0rgo12ugDCy5NYdX44qsqWDsQphYreAwFF25K2gdQ3XFBi4dRDNa6vGYeUfCL9HQE2tjPX2raDqGPOuZrXAk4tKIxxPe8jtpuVfFedj21vVw0bhqyHIZbADAVWN&media_id=3rHVZzZCS7WeVRI_tT1uAZ16tsaeGkk0HOPEWomGJoWIse_c5lAbfwyprjyGM-sz 

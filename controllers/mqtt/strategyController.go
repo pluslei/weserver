@@ -85,6 +85,7 @@ func (this *StrategyController) GetStrategyList() {
 				info.Id = historyStrategy[i].Id
 				info.Room = historyStrategy[i].Room
 				info.Icon = historyStrategy[i].Icon
+				info.Name = historyStrategy[i].Name
 				info.Titel = historyStrategy[i].Titel
 				info.Data = historyStrategy[i].Data
 				info.IsTop = historyStrategy[i].IsTop
@@ -120,6 +121,7 @@ func (this *StrategyController) GetStrategyList() {
 			info.Id = historyStrategy[i].Id
 			info.Room = historyStrategy[i].Room
 			info.Icon = historyStrategy[i].Icon
+			info.Name = historyStrategy[i].Name
 			info.Titel = historyStrategy[i].Titel
 			info.Data = historyStrategy[i].Data
 			info.IsTop = historyStrategy[i].IsTop
