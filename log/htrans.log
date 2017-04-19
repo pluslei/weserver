@@ -7165,3 +7165,296 @@
 2017/04/18 16:16:49 [D] [mqttController.go:171] mod -7 
 2017/04/18 16:16:50 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
 2017/04/18 16:16:50 [D] [mqttController.go:171] mod -7 
+2017/04/18 18:28:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 18:28:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 18:28:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 18:28:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d0e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 18:28:58 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 18:28:58 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 18:28:58 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 18:28:58 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 18:34:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 18:34:53 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 18:34:53 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 18:34:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042363b00 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 18:34:53 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 18:34:53 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 18:34:53 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 18:34:54 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 18:37:01 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:37:02 [D] [RoomInfo.go:133] num 5 
+2017/04/18 18:37:06 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:37:06 [D] [strategyController.go:102] mod -8 
+2017/04/18 18:37:06 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 18:37:06 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 18:37:06 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:37:06 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 18:37:08 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 18:37:08 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:38:27 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/18 18:38:27 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:38:27 [D] [mqttController.go:177] mod = 0 
+2017/04/18 18:38:43 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:38:44 [D] [strategyController.go:102] mod -8 
+2017/04/18 18:38:44 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 18:38:44 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 18:38:44 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:38:44 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 18:38:47 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 18:38:47 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:38:59 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:39:00 [D] [RoomInfo.go:133] num 5 
+2017/04/18 18:39:02 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:39:02 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 18:39:02 [D] [strategyController.go:102] mod -8 
+2017/04/18 18:39:02 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 18:39:02 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 18:39:02 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:39:25 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 18:39:25 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:43:09 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 18:43:09 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 18:43:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 18:43:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042365380 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 18:43:09 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 18:43:09 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 18:43:09 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 18:43:09 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 18:43:17 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:43:17 [D] [RoomInfo.go:133] num 5 
+2017/04/18 18:43:22 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 18:43:22 [D] [strategyController.go:102] mod -8 
+2017/04/18 18:43:22 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 18:43:22 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 18:43:22 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:43:22 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 18:47:22 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 18:47:22 [D] [mqttController.go:175] mod 0 
+2017/04/18 18:59:18 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/18 18:59:18 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/18 18:59:18 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/18 18:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/18 18:59:31 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/18 18:59:32 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/18 18:59:32 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/18 18:59:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/18 19:00:31 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/18 19:00:32 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/18 19:00:32 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/18 19:00:32 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/18 19:02:24 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/18 19:02:25 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/18 19:02:25 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/18 19:02:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/18 19:06:32 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=W0kbj6E9oReUqZ9Mscc-3Hu-h3HLx7RNu94DViLg-VVJ5rJdvj-Lh4dLGEbL_3Al8Zcf-s8cIXcDzagt-b1QBzGsFwG0G-6ZL3GawYzJ8bVlZya2xrLXCEJh9erjFs-zIYIhAEAOEO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/18 19:06:59 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/18 19:06:59 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/18 19:06:59 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/18 19:06:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/18 19:07:20 [E] [indexController.go:324] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/18 19:07:20 [E] [User.go:148] <QuerySeter> no row found 
+2017/04/18 19:07:20 [E] [indexController.go:124] load retalteduser error <QuerySeter> no row found 
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:129
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/18 19:07:20 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/18 19:16:33 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 19:16:33 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 19:16:33 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 19:16:33 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042420960 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 19:16:43 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 19:16:43 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 19:16:43 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 19:16:43 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04246f440 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 19:16:43 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 19:16:43 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 19:16:43 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 19:16:43 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 19:17:14 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 19:17:15 [D] [RoomInfo.go:133] num 5 
+2017/04/18 19:17:17 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 19:17:17 [D] [strategyController.go:102] mod -8 
+2017/04/18 19:17:17 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 19:17:17 [D] [mqttController.go:175] mod 0 
+2017/04/18 19:17:17 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 19:17:17 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 19:17:20 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 19:17:20 [D] [mqttController.go:175] mod 0 
+2017/04/18 19:21:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/18 19:21:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/18 19:21:33 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/18 19:21:33 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236c300 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/18 19:21:33 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/18 19:21:33 [I] [mqtt.go:58] mqtt running OK  
+2017/04/18 19:21:33 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/18 19:21:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/18 19:21:42 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 19:21:44 [D] [RoomInfo.go:133] num 5 
+2017/04/18 19:21:46 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/18 19:21:46 [D] [strategyController.go:102] mod -8 
+2017/04/18 19:21:46 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/18 19:21:46 [D] [mqttController.go:175] mod 0 
+2017/04/18 19:21:46 [D] [noticeController.go:74] Requst Count 10 
+2017/04/18 19:21:46 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/18 19:21:49 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/18 19:21:49 [D] [mqttController.go:175] mod 0 
+2017/04/18 19:21:52 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/18 19:21:52 [D] [mqttController.go:175] mod 0 
+2017/04/18 19:21:52 [D] [mqttController.go:177] mod = 0 
+2017/04/19 09:08:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:08:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:08:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:08:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422cbd40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:09:07 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:09:07 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:09:07 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:09:07 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422db020 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:09:07 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:09:07 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:09:07 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:09:07 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:09:18 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:09:19 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:09:20 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:09:21 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:09:21 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:09:21 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:09:21 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:09:21 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:09:24 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:09:24 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:09:26 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 09:09:26 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:09:26 [D] [mqttController.go:177] mod = 0 
+2017/04/19 09:09:36 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:09:36 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:09:38 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:09:38 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:09:38 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:09:38 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:09:38 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:09:38 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:09:41 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:09:41 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:09:48 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 09:09:48 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:09:48 [D] [mqttController.go:177] mod = 0 
+2017/04/19 09:11:48 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:11:48 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:11:48 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:11:48 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423027e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:11:48 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:11:48 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:11:48 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:11:49 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:11:55 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:11:55 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:11:57 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:11:57 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:11:57 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:11:57 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:11:57 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:11:57 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:12:00 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:12:00 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:12:01 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 09:12:01 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:12:01 [D] [mqttController.go:177] mod = 0 
+2017/04/19 09:12:04 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:12:04 [D] [mqttController.go:175] mod 0 
+2017/04/19 09:13:51 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/19 09:13:51 [I] [Connect.go:19] 数据库连接成功 
+2017/04/19 09:13:51 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/19 09:13:51 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04234e300 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/19 09:13:51 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/19 09:13:51 [I] [mqtt.go:58] mqtt running OK  
+2017/04/19 09:13:51 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/19 09:13:52 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/19 09:13:58 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:13:59 [D] [RoomInfo.go:133] num 5 
+2017/04/19 09:14:01 [D] [indexController.go:156] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 11 8 0 10 10 10 欢迎来到直播间听课学习 0 0 1 591} 
+2017/04/19 09:14:01 [D] [strategyController.go:102] mod -8 
+2017/04/19 09:14:01 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/19 09:14:01 [D] [noticeController.go:74] Requst Count 10 
+2017/04/19 09:14:01 [D] [mqttController.go:171] mod 0 
+2017/04/19 09:14:01 [D] [noticeController.go:82] nCount sysCont 8 10 
+2017/04/19 09:14:03 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/19 09:14:03 [D] [mqttController.go:171] mod 0 
+2017/04/19 09:14:04 [D] [mqttController.go:135] chat list  30 Topic_ChatMessage/sub1 
+2017/04/19 09:14:04 [D] [mqttController.go:171] mod 0 
+2017/04/19 09:14:04 [D] [mqttController.go:173] mod = 0 

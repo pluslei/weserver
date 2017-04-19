@@ -162,11 +162,7 @@ func (this *MqttController) GetChatHistoryList() {
 					info.Uuid = historychat[i].Uuid
 					infoChat = append(infoChat, info)
 				}
-				var infoSort []m.ChatRecord //sort
-				for i := 0; i < len(infoChat); i++ {
-					infoSort = append(infoSort, infoChat[len(infoChat)-1-i])
-				}
-				data["historyChat"] = infoSort
+				data["historyChat"] = infoChat
 				this.Data["json"] = &data
 				this.ServeJSON()
 				return
@@ -207,11 +203,7 @@ func (this *MqttController) GetChatHistoryList() {
 				info.Uuid = historychat[i].Uuid
 				infoChat = append(infoChat, info)
 			}
-			var arrSort []m.ChatRecord
-			for i := 0; i < len(infoChat); i++ {
-				arrSort = append(arrSort, infoChat[len(infoChat)-1-i])
-			}
-			data["historyChat"] = arrSort
+			data["historyChat"] = infoChat
 			this.Data["json"] = &data
 			this.ServeJSON()
 		default:
