@@ -93,7 +93,7 @@ func DelUserById(Id int64) (int64, error) {
 }
 
 // 删除指定用户
-func DelUserByUame(Uname, Room string) (int64, error) {
+func DelUserByUame(Room, Uname string) (int64, error) {
 	o := orm.NewOrm()
 	status, err := o.Delete(&User{Room: Room, Username: Uname})
 	return status, err
@@ -235,7 +235,7 @@ func GetShutUpInfoToday() (users []User, err error) {
 func GetUserInfoToday(roomId string) (users []User, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
+	_, err = o.QueryTable("user").Exclude("Username", "admin").Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
 	return users, err
 }
 

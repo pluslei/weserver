@@ -42,7 +42,7 @@ func (this *ManagerController) GetUserOnline() {
 		}
 		var userInfo []OnLineInfo
 		for _, user := range onlineuser {
-			if len(user.UserIcon) > 0 {
+			if len(user.Username) > 0 {
 				var info OnLineInfo
 				info.Uname = EncodeB64(user.Username)
 				info.Nickname = EncodeB64(user.Nickname)

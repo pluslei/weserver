@@ -1095,14 +1095,13 @@ body {
   top: 0;
 }
 .orTip {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 100%;
   background: #4082E6;
-  border: 2px solid #fff;
   position: absolute;
-  right: 8px;
-  top: 30%;
+  right: 9px;
+  top: 39%;
   visibility: hidden;
 }
 .orTip.show {
@@ -1137,7 +1136,7 @@ a {
   overflow-y: auto;
 }
 .list .contentbox .infobox {
-  padding: 7px;
+  padding: 5px 7px 0px 7px;
   overflow: hidden;
 }
 .list .contentbox .infobox .infotime {
@@ -1174,7 +1173,7 @@ a {
   display: inline-block;
   padding: 8px 5px 0px 8px;
   background-color: #fff;
-  border-radius: 5pt;
+  border-radius: 3pt;
   border: 1px solid #e5e5e5;
   line-height: 18px;
   letter-spacing: 1px;
@@ -1195,7 +1194,7 @@ a {
   text-align: center;
   color: #fff;
   height: 48px;
-  background: url(../i/support/delete.png) no-repeat 8px center;
+  background: url(../i/support/delete.png) no-repeat center;
   -webkit-background-size: 60% 60%;
           background-size: 60%;
   line-height: 65px;
@@ -1221,7 +1220,7 @@ a {
 .strategy .strategylist .strategylistinfo {
   border-bottom: 1px solid #E2E2E2;
   background-color: #fff;
-  padding: 10px 10px;
+  padding: 10px 10px 0px 10px;
   font-size: 13px;
   position: relative;
 }
@@ -1260,8 +1259,12 @@ a {
 .strategy .strategylist .strategylistinfo .listhead .handle {
   width: 30px;
   height: 20px;
-  float: right;
   text-align: right;
+  margin-top: -6px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
 }
 .strategy .strategylist .strategylistinfo .listhead .handle img {
   width: 17px;
@@ -1280,6 +1283,7 @@ a {
   font-size: 12px;
   color: #b2b2b2;
   line-height: 28px;
+  margin-top: 7px;
 }
 .strategy .strategylist .strategylistinfo .listfoot .thumb {
   float: right;
@@ -1311,8 +1315,8 @@ a {
   border-radius: 4px;
   background: #fff;
   position: absolute;
-  right: 15px;
-  top: 30px;
+  right: 0px;
+  top: 20px;
   z-index: 100;
   -webkit-box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
@@ -1336,7 +1340,7 @@ a {
 .sticklabel {
   position: absolute;
   top: 0px;
-  right: 40px;
+  right: 16px;
 }
 .sticklabel img {
   width: 80px;
