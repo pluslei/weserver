@@ -15,7 +15,7 @@ import (
 type User struct {
 	Id            int64
 	Room          string
-	Username      string `orm:"unique;size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
+	Username      string `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
 	Nickname      string `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
@@ -95,8 +95,9 @@ func DelUserById(Id int64) (int64, error) {
 // 删除指定用户
 func DelUserByUame(Room, Uname string) (int64, error) {
 	o := orm.NewOrm()
-	status, err := o.Delete(&User{Room: Room, Username: Uname})
-	return status, err
+	beego.Debug("Room, Uname", Room, Uname)
+	num, err := o.QueryTable("user").Filter("Room", Room).Filter("Username", Uname).Delete()
+	return num, err
 }
 
 //批量删除用户
@@ -235,7 +236,7 @@ func GetShutUpInfoToday() (users []User, err error) {
 func GetUserInfoToday(roomId string) (users []User, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("user").Exclude("Username", "admin").Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
+	_, err = o.QueryTable("user").Exclude("Username", "admin").Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
 }
 
