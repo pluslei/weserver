@@ -101,7 +101,7 @@
     var oTable;
     $(function() {
         oTable = initTable();
-
+ 
         var table = $('#rbac-user-list').DataTable();
         $("#delselecteduser").change(function(){
            
@@ -121,7 +121,6 @@
 
         $("select[name=rbac-user-list_length]").change(function(){
             $("#delselecteduser").prop("checked",false);
-
         });
 
         $("#delmoreuser").click(function(){

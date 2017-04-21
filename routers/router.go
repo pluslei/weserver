@@ -62,6 +62,8 @@ func Router() {
 	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateUserStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
+	//解除禁言
+	beego.Router("/weserver/user/UnShutUp", &haoadmin.UserController{}, "*:SetUnShutUp")
 	//beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")
 
 	// 节点管理
@@ -140,6 +142,10 @@ func Router() {
 	beego.Router("/chat/user/operatestrategy", &mqtt.StrategyController{}, "*:OperateStrategy")
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 
+	//登录
+	beego.Router("/chat/user/login", &mqtt.ManagerController{}, "*:GetUserLogin")
+	//申请审核
+	beego.Router("/chat/user/apply", &mqtt.ManagerController{}, "*:GetUserApply")
 	// 当前在线人信息
 	beego.Router("/chat/user/online", &mqtt.ManagerController{}, "*:GetUserOnline")
 	//踢人

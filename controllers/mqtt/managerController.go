@@ -61,6 +61,30 @@ func (this *ManagerController) GetUserOnline() {
 	}
 }
 
+func (this *ManagerController) GetUserLogin() {
+	if this.IsAjax() {
+		roomId := this.GetString("Room")
+		Uname := this.GetString("Username")
+		_, count, err := m.GetUserPermiss(roomId, Uname)
+		if count == 1 && err != nil {
+			this.Rsp(true, "验证权限通过", "")
+			return
+		} else {
+			this.Rsp(false, "验证权限失败", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
+func (this *ManagerController) GetUserApply() {
+	if this.IsAjax() {
+		// roomId := this.GetString("Room")
+		// Uname := this.GetString("Username")
+	}
+	this.Ctx.WriteString("")
+}
+
 //踢人
 func (this *ManagerController) GetKickOutInfo() {
 	if this.IsAjax() {

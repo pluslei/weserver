@@ -42,7 +42,6 @@ func (this *UserController) Index() {
 					item["Titlename"] = titleinfo.Name
 				}
 			}
-
 		}
 
 		// json
@@ -65,6 +64,11 @@ func (this *UserController) Index() {
 		this.Data["codeid"] = codeid
 		this.TplName = "haoadmin/rbac/user/list.html"
 	}
+}
+
+//解除禁言
+func (this *UserController) SetUnShutUp() {
+
 }
 
 // 添加用户

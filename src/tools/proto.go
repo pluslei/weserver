@@ -73,6 +73,7 @@ type Usertitle struct {
 
 // 在线人数信息
 type OnLineInfo struct {
+	Room     string
 	Uname    string //微信唯一标识
 	Nickname string //微信名
 	UserIcon string //微信头像

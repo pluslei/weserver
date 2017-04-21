@@ -104,6 +104,7 @@ func (this *IndexController) Get() {
 		} else {
 			this.updateUser(info.Id, userInfo)
 		}
+		beego.Debug("userInfo", userInfo)
 
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
@@ -115,6 +116,7 @@ func (this *IndexController) Get() {
 //从数据库获取信息
 func (this *IndexController) Index() {
 	Info := this.GetSession("indexUserInfo")
+	beego.Debug("info", Info)
 	if Info != nil {
 		// userInfo := new(m.User)
 		userInfo := Info.(*m.User)

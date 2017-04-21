@@ -133,6 +133,13 @@ func GetUserByUsername(username string) (user User, err error) {
 	return user, err
 }
 
+func GetUserPermiss(room, username string) ([]User, int64, error) {
+	o := orm.NewOrm()
+	var info []User
+	num, err := o.QueryTable("user").Filter("Room", room).Filter("Username", username).All(&info)
+	return info, num, err
+}
+
 // 查询用户名和手机号是否存在
 func GetUserNameByPhone(name string, phone int64) (User, error) {
 	o := orm.NewOrm()
@@ -167,7 +174,6 @@ func ReadFieldUser(u *User, fields ...string) (*User, error) {
 		beego.Error(err)
 		return nil, err
 	}
-
 	return u, nil
 }
 
