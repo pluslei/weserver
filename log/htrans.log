@@ -10175,3 +10175,56 @@
 2017/04/21 17:18:23 [D] [wechat.go:80] Request ok!!!!!!! 
 2017/04/21 17:18:23 [D] [chat.go:54] WeChat Init ok ! 
 2017/04/21 17:18:23 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 19:12:55 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 19:12:55 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 19:12:55 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 19:12:55 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200cae0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 19:12:55 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 19:12:55 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 19:12:55 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 19:12:55 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuvxDguhTeldFbEpyl9y_ehmY oWrhuvyGSohdAnQ5sAk-TapzpSAU oWrhuv5aBx4_LGOTgMK-fLLJ7Ur8 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 19:12:55 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 19:12:55 [D] [wechat.go:77] {"access_token":"tRzlcLiZDchnPSJhnDawCFTY-0hOmdovoKz8zIKWf7uUT20prjTrIJIAx1Ar2iDUvSnC4a_WDX0sEK282WoTsYNDFWfA85Q0iwtaz_IkYMzJa6Q_TGhsa018scSaRKTQLPAdAJAZDO","expires_in":7200} 
+2017/04/21 19:12:55 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 19:12:56 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 19:12:56 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 19:13:00 [D] [indexController.go:119] info <nil> 
+2017/04/21 19:13:23 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 19:13:23 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 19:13:23 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0428ff3b0 0xc042d54050 false    } 
+2017/04/21 19:13:23 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 19:13:24 [D] [RoomInfo.go:133] num 5 
+2017/04/21 19:14:24 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 19:14:24 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 19:14:25 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 19:14:25 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042331d40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 19:14:25 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 19:14:25 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 19:14:25 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 19:14:25 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuvxDguhTeldFbEpyl9y_ehmY oWrhuvyGSohdAnQ5sAk-TapzpSAU oWrhuv5aBx4_LGOTgMK-fLLJ7Ur8 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 19:14:25 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 19:14:26 [D] [wechat.go:77] {"access_token":"P_vPAPCuOFuwP6fPGqxTBzZSDMu_PgKMFRkCi5oOYYV1JqFY2yFKqKFSnv6IJiLoXP9fsGGJfeWGsRcOadLwdfs3I6co43KYxA0l2AwZqe1YSNHHzKJyTl2i35yB-mblHNEiAJALRI","expires_in":7200} 
+2017/04/21 19:14:26 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 19:14:26 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 19:14:26 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 19:14:33 [D] [indexController.go:119] info <nil> 
+2017/04/21 19:14:34 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 19:14:34 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 19:14:35 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042b4cc60 0xc042b4e5a0 false    } 
+2017/04/21 19:14:34 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 19:14:35 [D] [RoomInfo.go:133] num 5 
+2017/04/21 19:58:02 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 19:58:02 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 19:58:02 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 19:58:02 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042325260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 19:58:15 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 19:58:15 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 19:58:15 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 19:58:15 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0420366c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 19:58:15 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 19:58:15 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 19:58:15 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 19:58:15 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuvxDguhTeldFbEpyl9y_ehmY oWrhuvyGSohdAnQ5sAk-TapzpSAU oWrhuv5aBx4_LGOTgMK-fLLJ7Ur8 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 19:58:15 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 19:58:16 [D] [wechat.go:77] {"access_token":"rP9CjwkMzriEtM1-N1AMW_GZMm561GJ_koBeAoSkMp-_ZhqnR3KLsbgl4iWO9qPRQvwEemieeXk8TnP2SlHNp6tegaEs6HawL8X5lYYVYwkC7ygJGLcGoCj6UTOKNUaQGWWeACAXNN","expires_in":7200} 
+2017/04/21 19:58:16 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 19:58:16 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 19:58:16 [I] [asm_amd64.s:2086] http server Running on http://:80

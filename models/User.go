@@ -133,13 +133,6 @@ func GetUserByUsername(username string) (user User, err error) {
 	return user, err
 }
 
-func GetUserPermiss(room, username string) ([]User, int64, error) {
-	o := orm.NewOrm()
-	var info []User
-	num, err := o.QueryTable("user").Filter("Room", room).Filter("Username", username).All(&info)
-	return info, num, err
-}
-
 // 查询用户名和手机号是否存在
 func GetUserNameByPhone(name string, phone int64) (User, error) {
 	o := orm.NewOrm()
@@ -230,26 +223,11 @@ func CountWeekRegist() (week []orm.ParamsList) {
 	return lists
 }
 
-//获取user表中当天所有禁言人数信息
-func GetShutUpInfoToday() (users []User, err error) {
-	o := orm.NewOrm()
-	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("IsShutUp", 1).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
-	return users, err
-}
-
 //获取user表中最近当天登录列表信息
 func GetUserInfoToday(roomId string) (users []User, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 24*60*60
 	_, err = o.QueryTable("user").Exclude("Username", "admin").Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
-	return users, err
-}
-
-func GetWechatUser(nDay int64) (users []User, err error) {
-	o := orm.NewOrm()
-	nowtime := time.Now().Unix() - nDay*24*60*60
-	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("Username", "").Exclude("Room", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
 }
 

@@ -65,8 +65,8 @@ func (this *ManagerController) GetUserLogin() {
 	if this.IsAjax() {
 		roomId := this.GetString("Room")
 		Uname := this.GetString("Username")
-		_, count, err := m.GetUserPermiss(roomId, Uname)
-		if count == 1 && err != nil {
+		_, count, err := m.GetRegistPermiss(roomId, Uname)
+		if count == 1 && err == nil {
 			this.Rsp(true, "验证权限通过", "")
 			return
 		} else {
@@ -79,8 +79,38 @@ func (this *ManagerController) GetUserLogin() {
 
 func (this *ManagerController) GetUserApply() {
 	if this.IsAjax() {
-		// roomId := this.GetString("Room")
-		// Uname := this.GetString("Username")
+		roomId := this.GetString("Room")
+		Uname := this.GetString("Username")
+		Icon := this.GetString("Icon")
+		Nickname := this.GetString("Nickname")
+
+		config, _ := m.GetSysConfig()
+		configRole := config.Registerrole
+		configTitle := config.Registertitle
+		configVerify := config.Verify
+		u := new(m.Regist)
+		u.Room = roomId
+		u.Username = Uname
+		if configVerify == 0 { //是否开启验证  0开启 1不开启
+			u.RegStatus = 1
+		} else {
+			u.RegStatus = 2
+		}
+		u.UserIcon = Icon
+		u.Role = &m.Role{Id: configRole}
+		u.Title = &m.Title{Id: configTitle}
+		u.IsShutup = false //默认0
+		u.Nickname = Nickname
+		u.Lastlogintime = time.Now()
+		userid, err := m.AddRegistUser(u)
+		if err == nil && userid > 0 {
+			this.Rsp(true, "", "")
+			return
+		} else {
+			beego.Error(err)
+			this.Rsp(false, "", "")
+			return
+		}
 	}
 	this.Ctx.WriteString("")
 }
