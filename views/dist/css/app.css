@@ -666,18 +666,18 @@ ol {
 }
 .allchannel .allchannelbox .singlechannel {
   position: relative;
-  height: 45pt;
+  height: 50pt;
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #eee;
-  margin: 0px 15px 15px;
+  margin: 0px 15px 10px;
 }
 .allchannel .allchannelbox .singlechannel .iconbox {
   border: 1px solid #ccc;
-  height: 35pt;
-  width: 35pt;
+  height: 40pt;
+  width: 40pt;
   float: left;
-  margin: 5pt;
+  margin: 4pt;
   text-align: center;
   line-height: 35pt;
   background: #eee;
@@ -697,6 +697,7 @@ ol {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 4px;
 }
 .allchannel .allchannelbox .singlechannel .channelinfo .channelname {
   font-size: 16px;
@@ -708,6 +709,7 @@ ol {
   color: #999;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 4px;
 }
 .allchannel .allchannelbox .singlechannel .followers {
   position: absolute;
@@ -1065,6 +1067,7 @@ body {
 }
 .title .chatlogo {
   width: 135px;
+  margin-left: 10px;
 }
 .title .titleright {
   float: right;
@@ -1127,7 +1130,7 @@ body {
   border-radius: 100%;
   background: #4082E6;
   position: absolute;
-  right: 9px;
+  right: 12%;
   top: 39%;
   visibility: hidden;
 }
@@ -1208,6 +1211,8 @@ a {
   border: 1px solid #e5e5e5;
   line-height: 18px;
   letter-spacing: 1px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .list .contentbox .infobox .textbox div .wordbox .infoTimelist {
   float: right;
@@ -1221,22 +1226,21 @@ a {
 }
 .list .contentbox .infobox .textbox div i {
   float: right;
-  width: 48px;
+  width: 17%;
   text-align: center;
   color: #fff;
   height: 48px;
   background: url(../i/support/delete.png) no-repeat center;
-  -webkit-background-size: 60% 60%;
-          background-size: 60%;
+  -webkit-background-size: 50% 50%;
+          background-size: 50%;
   line-height: 65px;
   letter-spacing: 2px;
   font-size: 14px;
-  margin-right: 15px;
 }
 .swipeleft {
-  -ms-transform: translateX(-68px);
-      transform: translateX(-68px);
-  -webkit-transform: translateX(-68px);
+  -ms-transform: translateX(-17%);
+      transform: translateX(-17%);
+  -webkit-transform: translateX(-17%);
 }
 .infobox:nth-of-type(1) {
   color: red !important;
@@ -1564,6 +1568,20 @@ a {
 .popup .popup_c .popup_action .confirm {
   color: #09bb07;
 }
+.jyTip {
+  color: #fff;
+  font-size: 12px;
+  line-height: 28px;
+  background: #09bb07;
+  display: block;
+  height: 28px;
+  width: 60px;
+  text-align: center;
+  margin-top: 6px;
+  float: right;
+  white-space: nowrap;
+  border-radius: 4px;
+}
 @-webkit-keyframes getIn {
   from {
     -webkit-transform: scale(0);
@@ -1834,4 +1852,6 @@ a {
 }
 .popup_action span.ing {
   width: 100% !important;
+  font-size: 14px;
+  color: #09bb07;
 }

@@ -80,7 +80,8 @@ func (this *ManagerController) GetUserLogin() {
 func (this *ManagerController) GetUserApply() {
 	if this.IsAjax() {
 		roomId := this.GetString("Room")
-		Uname := this.GetString("Username")
+		Uname := this.GetString("Uname")
+		beego.Debug(Uname, "ddddddddddddd")
 		Icon := this.GetString("Icon")
 		Nickname := this.GetString("Nickname")
 

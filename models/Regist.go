@@ -35,8 +35,13 @@ func (r *Regist) TableName() string {
 //添加用户
 func AddRegistUser(r *Regist) (int64, error) {
 	o := orm.NewOrm()
-	id, err := o.Insert(r)
-	return id, err
+	var info []Regist
+	num, err := o.QueryTable("regist").Filter("Room", r.Room).Filter("Username", r.Username).All(&info)
+	if num == 0 && err == nil {
+		id, err := o.Insert(r)
+		return id, err
+	}
+	return 0, err
 }
 
 // 删除指定用户
@@ -59,7 +64,7 @@ func UpdateRegistIsShut(room, username string, b bool) (int64, error) {
 func GetRegistPermiss(room, username string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
 	var info []Regist
-	num, err := o.QueryTable("regist").Filter("Room", room).Filter("Username", username).All(&info)
+	num, err := o.QueryTable("regist").Filter("Room", room).Filter("Username", username).Filter("RegStatus", 2).All(&info)
 	return info, num, err
 }
 
