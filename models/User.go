@@ -240,6 +240,13 @@ func GetUserInfoToday(roomId string) (users []User, err error) {
 	return users, err
 }
 
+func GetWechatUser(nDay int64) (users []User, err error) {
+	o := orm.NewOrm()
+	nowtime := time.Now().Unix() - nDay*24*60*60
+	_, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("Username", "").Exclude("Room", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
+	return users, err
+}
+
 //获取user表中最近 nDay 天列表信息
 func GetAllUser(nDay int64) (users []User, err error) {
 	o := orm.NewOrm()

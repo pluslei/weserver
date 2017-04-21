@@ -8,6 +8,7 @@ import (
 	"weserver/src/mqtt"
 
 	"weserver/controllers/haoindex"
+	"weserver/src/wechat"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -30,17 +31,10 @@ func main() {
 	orm.RunSyncdb("default", false, true)
 
 	mqtt.Run()
+	wechat.WechatRun()
 
-	// token, _, err := we.GetAccessToken()
-	// if err != nil {
-	// 	beego.Debug("Get url error ")
-	// }
-	// beego.Debug("token:", token)
-	// msg := "策略消息"
-	// err1 := we.SendCustomTxTMsg(token, "oWrhuvyGSohdAnQ5sAk-TapzpSAU", msg)
-	// if err1 != nil {
-	// 	beego.Debug("send wechat msg error")
-	// }
+	// msg := "策略消息3"
+	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)
 
 	beego.ErrorController(&haoindex.ErrorController{}) //注册错误处理的函数
 

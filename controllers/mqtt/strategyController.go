@@ -5,6 +5,7 @@ import (
 	"time"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
+	"weserver/src/wechat"
 
 	"github.com/astaxie/beego"
 
@@ -148,6 +149,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
+	sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -157,11 +159,20 @@ func parseStrategyMsg(msg string) bool {
 		return false
 	}
 
-	mq.SendMessage(topic, v) //发消息
-
+	mq.SendMessage(topic, v)
+	SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	insertStrageydata(info)
 	return true
+}
+
+func SendWeChatStrategy(room, msg string) {
+	arr, ok := wechat.MapUname[room]
+	if ok {
+		for _, v := range arr {
+			wechat.SendTxTMsg(v, msg)
+		}
+	}
 }
 
 func parseOPStrategyMsg(msg string) bool {
