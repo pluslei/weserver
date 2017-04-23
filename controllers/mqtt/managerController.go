@@ -3,10 +3,9 @@ package mqtt
 import (
 	"strconv"
 	"time"
+	"weserver/controllers"
 	m "weserver/models"
 	mq "weserver/src/mqtt"
-
-	"weserver/controllers"
 	. "weserver/src/tools"
 
 	"github.com/astaxie/beego"
@@ -52,6 +51,7 @@ func (this *ManagerController) GetUserOnline() {
 				userInfo = append(userInfo, info)
 			}
 		}
+		mq.GetShutMapInfo()
 		data := make(map[string]interface{})
 		data["userlist"] = userInfo
 		this.Data["json"] = &data
@@ -67,6 +67,8 @@ func (this *ManagerController) GetUserLogin() {
 		Uname := this.GetString("Username")
 		_, count, err := m.GetRegistPermiss(roomId, Uname)
 		if count == 1 && err == nil {
+			// 更新时间
+			_, err := m.UpdateLoginTime()
 			var info m.Regist
 			info.Room = roomId
 			info.Username = Uname
@@ -99,7 +101,8 @@ func (this *ManagerController) GetUserLogin() {
 			this.ServeJSON()
 			return
 		} else {
-			this.Rsp(false, "验证权限失败", "")
+			this.Data["json"] = nil
+			this.ServeJSON()
 			return
 		}
 	}

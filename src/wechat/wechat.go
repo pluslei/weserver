@@ -54,7 +54,7 @@ func (w *Wechat) Work() {
 	go w.getAccessToken()
 	Lock.Unlock()
 	time.Sleep(time.Second * 1)
-	go w.Send()
+	go w.send()
 
 }
 
@@ -90,12 +90,12 @@ func (w *Wechat) getAccessToken() (string, float64, error) {
 				return "", 0.0, err
 			}
 		}
-		// beego.Debug(w.AccessToken, w.ExpiresIn, w.TextUrl)
+		beego.Debug(w.AccessToken, w.ExpiresIn, w.TextUrl)
 		<-t.C
 	}
 }
 
-func (w *Wechat) Send() {
+func (w *Wechat) send() {
 	for {
 		msg, ok := <-w.msgch
 		if ok {

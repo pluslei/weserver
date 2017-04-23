@@ -90,6 +90,7 @@ func (this *IndexController) Get() {
 		if err != nil {
 			beego.Error("CheckAccessToken error", err)
 		}
+		beego.Debug("AccessToken", resToken.AccessToken)
 
 		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
 		if err != nil {

@@ -53,8 +53,7 @@ func GetMqttConfig() *Configer {
 	return &conf
 }
 
-func Init() {
-	MapShutUp = make(map[string][]string)
+func GetShutMapInfo() {
 	shutInfo, err := m.GetShutUpInfoToday()
 	if err != nil {
 		beego.Error("get the shutup error", err)
@@ -62,14 +61,25 @@ func Init() {
 	for _, info := range shutInfo {
 		Room := info.Room
 		Uname := info.Username
-		v, ok := MapShutUp[Room]
+		arr, ok := MapShutUp[Room]
 		if !ok {
 			MapShutUp[Room] = []string{Uname}
 		} else {
-			v = append(v, Uname)
-			MapShutUp[Room] = v
+			for _, v := range arr {
+				if v == Uname {
+					break
+				} else {
+					arr = append(arr, Uname)
+					MapShutUp[Room] = arr
+				}
+			}
 		}
 	}
+}
+
+func Init() {
+	MapShutUp = make(map[string][]string)
+	GetShutMapInfo()
 	beego.Debug(MapShutUp)
 }
 

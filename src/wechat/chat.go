@@ -26,8 +26,7 @@ func getParam() *Config {
 	return &info
 }
 
-func Init() {
-	MapUname = make(map[string][]string)
+func GetUnameMapInfo() {
 	Info, err := m.GetWechatUser(2)
 	if err != nil {
 		beego.Error("wechat:get the userinfo error", err)
@@ -35,14 +34,25 @@ func Init() {
 	for _, info := range Info {
 		Room := info.Room
 		Uname := info.Username
-		v, ok := MapUname[Room]
+		arr, ok := MapUname[Room]
 		if !ok {
 			MapUname[Room] = []string{Uname}
 		} else {
-			v = append(v, Uname)
-			MapUname[Room] = v
+			for _, v := range arr {
+				if v == Uname {
+					break
+				} else {
+					arr = append(arr, Uname)
+					MapUname[Room] = arr
+				}
+			}
 		}
 	}
+}
+
+func Init() {
+	MapUname = make(map[string][]string)
+	GetUnameMapInfo()
 	beego.Debug(MapUname)
 }
 

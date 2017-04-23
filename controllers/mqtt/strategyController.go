@@ -51,6 +51,13 @@ func (this *StrategyController) GetStrategyInfo() {
 	this.Ctx.WriteString("")
 }
 
+func (this *StrategyController) GetUnameMapInfo() {
+	if this.IsAjax() {
+		wechat.GetUnameMapInfo()
+	}
+	this.Ctx.WriteString("")
+}
+
 //策略操作 置顶/取消置顶/点赞/取消点赞/删除
 func (this *StrategyController) OperateStrategy() {
 	if this.IsAjax() {
