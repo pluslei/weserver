@@ -690,7 +690,7 @@ ol {
   border-radius: 5px;
 }
 .allchannel .allchannelbox .singlechannel .channelinfo {
-  width: 78.5%;
+  width: 70%;
   height: 35pt;
   float: left;
   margin-top: 5pt;
@@ -1130,7 +1130,7 @@ body {
   border-radius: 100%;
   background: #4082E6;
   position: absolute;
-  right: 12%;
+  right: 14%;
   top: 39%;
   visibility: hidden;
 }
@@ -1198,9 +1198,6 @@ a {
   display: block;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
-}
-.list .contentbox .infobox .textbox div:hover {
-  color: #000;
 }
 .list .contentbox .infobox .textbox div .wordbox {
   width: 82.5%;

@@ -152,6 +152,8 @@ func Router() {
 	beego.Router("/chat/user/KickOut", &mqtt.ManagerController{}, "*:GetKickOutInfo")
 	//禁言
 	beego.Router("/chat/user/ShutUp", &mqtt.ManagerController{}, "*:GetShutUpInfo")
+	beego.Router("/chat/user/UnShutUp", &mqtt.ManagerController{}, "*:GetUnShutUpInfo")
+
 	//收藏
 	// beego.Router("/chat/user/Collect", &mqtt.ManagerController{}, "*:GetCollectInfo")
 

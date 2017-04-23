@@ -138,11 +138,12 @@ func (this *IndexController) Index() {
 		}
 
 		// 用户为禁用和未审核状态不准登录
-		if userLoad.Status == 2 && userLoad.RegStatus == 2 {
-			user.IsLogin = true
-		} else {
-			user.IsLogin = false
-		}
+		// if userLoad.Status == 2 && userLoad.RegStatus == 2 {
+		// 	user.IsLogin = true
+		// } else {
+		// 	user.IsLogin = false
+		// }
+		user.IsLogin = true
 		if userLoad.Role.Id > 0 {
 			user.RoleId = userLoad.Role.Id
 		}
@@ -320,6 +321,7 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	u.Unionid = userInfo.Unionid
 	u.Lastlogintime = time.Now()
 	userid, err := m.AddUser(u)
+	beego.Debug("user", u)
 	if err == nil && userid > 0 {
 		return true
 	} else {

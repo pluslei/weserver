@@ -68,11 +68,11 @@ func GetRegistPermiss(room, username string) ([]Regist, int64, error) {
 	return info, num, err
 }
 
-//获取user表中当天所有禁言人数信息
+//获取Regist表中当天所有禁言人数信息
 func GetShutUpInfoToday() (users []Regist, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("IsShutUp", 1).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
+	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("Username", "").Filter("IsShutUp", 1).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
 }
 

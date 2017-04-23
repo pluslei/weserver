@@ -36,7 +36,7 @@ func init() {
 func (this *ManagerController) GetUserOnline() {
 	if this.IsAjax() {
 		roomId := this.GetString("Room")
-		onlineuser, err := m.GetUserInfoToday(roomId)
+		onlineuser, err := m.GetLoginInfoToday(roomId)
 		if err != nil {
 			beego.Error("get the user error", err)
 		}
@@ -80,8 +80,7 @@ func (this *ManagerController) GetUserLogin() {
 func (this *ManagerController) GetUserApply() {
 	if this.IsAjax() {
 		roomId := this.GetString("Room")
-		Uname := this.GetString("Uname")
-		beego.Debug(Uname, "ddddddddddddd")
+		Username := this.GetString("Username")
 		Icon := this.GetString("Icon")
 		Nickname := this.GetString("Nickname")
 
@@ -91,7 +90,7 @@ func (this *ManagerController) GetUserApply() {
 		configVerify := config.Verify
 		u := new(m.Regist)
 		u.Room = roomId
-		u.Username = Uname
+		u.Username = Username
 		if configVerify == 0 { //是否开启验证  0开启 1不开启
 			u.RegStatus = 1
 		} else {
@@ -148,7 +147,7 @@ func (this *ManagerController) GetShutUpInfo() {
 	this.Ctx.WriteString("")
 }
 
-//禁言消息
+//禁言操作
 func parseShutUpMsg(msg string) bool {
 	var msginfo ShutUpInfo
 	// msginfo := new(ShutUpInfo)
@@ -164,14 +163,83 @@ func parseShutUpMsg(msg string) bool {
 		msg.IsShutUp = info[i].IsShutUp
 		msg.MsgType = MSG_TYPE_SHUTUP
 
-		for _, v := range mq.Slice {
-			if v == msg.Uname {
-				break
-			} else {
-				mq.Slice = append(mq.Slice, msg.Uname)
+		arr, ok := mq.MapShutUp[msg.Room]
+		if ok {
+			for _, v := range arr {
+				if v == msg.Uname {
+					break
+				} else {
+					arr = append(arr, msg.Uname)
+					mq.MapShutUp[msg.Room] = arr
+				}
 			}
+		} else {
+			mq.MapShutUp[msg.Room] = []string{msg.Uname}
 		}
-		beego.Debug("Shut up", mq.Slice)
+		beego.Debug("Shut up", mq.MapShutUp)
+		// beego.Debug("info", msg)
+		// topic := msg.Room
+		// v, err := ToJSON(msg)
+		// if err != nil {
+		// 	beego.Error("json error", err)
+		// 	return false
+		// }
+		// mq.SendMessage(topic, v) //发消息
+
+		// 更新user 字段
+		UpdateUserInfo(msg)
+	}
+	return true
+}
+
+//解除禁言
+func (this *ManagerController) GetUnShutUpInfo() {
+	if this.IsAjax() {
+		msg := this.GetString("str")
+		b := parseUnShutUpMsg(msg)
+		if b {
+			this.Rsp(true, "解除禁言消息发送成功", "")
+			return
+		} else {
+			this.Rsp(false, "解除禁言消息发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
+//解除禁言
+func parseUnShutUpMsg(msg string) bool {
+	var msginfo ShutUpInfo
+	// msginfo := new(ShutUpInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("UnShutup simplejson error", err)
+		return false
+	}
+	for i := 0; i < len(info); i++ {
+		var msg ShutUpInfo
+		msg.Room = info[i].Room
+		msg.Uname = info[i].Uname
+		msg.IsShutUp = info[i].IsShutUp
+		// msg.MsgType = MSG_TYPE_UNSHUTUP
+
+		arr, ok := mq.MapShutUp[msg.Room]
+		if ok {
+			for i, v := range arr {
+				if v == msg.Uname {
+					index := i + 1
+					arr = append(arr[:i], arr[index:]...) //删除
+					mq.MapShutUp[msg.Room] = arr
+					break
+				} else {
+					break
+				}
+			}
+		} else {
+			beego.Debug("UnShutUp no Find element")
+		}
+		beego.Debug("UnShut up", mq.MapShutUp)
 		// beego.Debug("info", msg)
 		// topic := msg.Room
 		// v, err := ToJSON(msg)
@@ -247,10 +315,10 @@ func delKickout(info KickOutInfo) {
 //删除用户
 func delKickContent(info *KickOutInfo) {
 	beego.Debug("KickOut DELETE", info)
-	var user m.User
+	var user m.Regist
 	user.Room = info.Room
 	user.Username = info.ObjUid
-	_, err := m.DelUserByUame(user.Room, user.Username)
+	_, err := m.DelRegistUame(user.Room, user.Username)
 	if err != nil {
 		beego.Debug(" DELETE KickOut Record Fail:", err)
 	}
@@ -277,7 +345,7 @@ func addKickContent(info *KickOutInfo) {
 
 //更新user表禁言字段
 func UpdateUserInfo(info ShutUpInfo) {
-	var u m.User
+	var u m.Regist
 	u.Room = info.Room
 	u.Username = info.Uname
 	u.IsShutup = info.IsShutUp
@@ -286,7 +354,7 @@ func UpdateUserInfo(info ShutUpInfo) {
 	// } else {
 	// 	u.IsShutup = false
 	// }
-	_, err := m.UpdateShutUp(u.Room, u.Username, u.IsShutup)
+	_, err := m.UpdateRegistIsShut(u.Room, u.Username, u.IsShutup)
 	if err != nil {
 		beego.Debug("Update Shutup Field fail", err)
 	}

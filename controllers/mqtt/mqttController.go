@@ -97,9 +97,12 @@ func parseMsg(msg string) int {
 		beego.Error("json error", err)
 		return POST_STATUS_FALSE
 	}
-	for _, v := range mq.Slice {
-		if info.Uname == v {
-			return POST_STATUS_SHUTUP
+	arr, ok := mq.MapShutUp[topic]
+	if ok {
+		for _, v := range arr {
+			if v == info.Uname {
+				return POST_STATUS_SHUTUP
+			}
 		}
 	}
 	if info.IsFilter == false {

@@ -10377,3 +10377,1160 @@
 2017/04/21 20:59:43 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
 2017/04/21 20:59:43 [D] [RoomInfo.go:133] num 5 
 2017/04/21 20:59:45 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:04:09 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:04:09 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:04:09 [E] [mqtt.go:97] connect error Network Error : %!s(<nil>) 
+2017/04/21 21:04:09 [E] [mqtt.go:56] mqtt connect:  Network Error : %!s(<nil>) 
+2017/04/21 21:04:09 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:04:09 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:04:09 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:04:10 [D] [wechat.go:77] {"access_token":"Gfc45AjsGCLCqUESpxJwUhnBwlZvAbBu_TvOE4xEPnEWRw-vTkaK3b9V66bzbZm2hERIMw57zs0cA3AtYa3WUPQxj-G-GmUXlXWKQZ3esZQBMhH3EzV13-UytTr0J_qyLOXaAHARUD","expires_in":7200} 
+2017/04/21 21:04:10 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:04:10 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:04:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:04:35 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:04:37 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:04:37 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:04:37 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042c4a240 0xc042bd0f50 false    } 
+2017/04/21 21:04:37 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:04:38 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:04:40 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:04:40 [E] [managerController.go:111] <nil> 
+2017/04/21 21:05:19 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:05:19 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:05:20 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:05:20 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:21 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042858750 0xc042cb6280 false    } 
+2017/04/21 21:05:20 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:05:21 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:05:23 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:05:23 [E] [managerController.go:111] <nil> 
+2017/04/21 21:05:31 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:05:31 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207ccf0 0xc0427f6870 false    } 
+2017/04/21 21:05:31 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:05:31 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:05:35 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:05:39 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207ce10 0xc0427f6c30 false    } 
+2017/04/21 21:05:39 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:05:40 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:05:40 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042f97ef0 0xc0429c2460 false    } 
+2017/04/21 21:05:40 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:05:40 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:05:42 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:05:42 [E] [managerController.go:111] <nil> 
+2017/04/21 21:05:43 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042f382d0 0xc042f1b8b0 false    } 
+2017/04/21 21:05:43 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:05:43 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:05:43 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04365d680 0xc04366c960 false    } 
+2017/04/21 21:05:43 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:05:44 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:06:04 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:06:05 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04283e900 0xc042cb6b40 false    } 
+2017/04/21 21:06:05 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:06:05 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:06:05 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0435cc7e0 0xc0435ce730 false    } 
+2017/04/21 21:06:05 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:06:06 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:06:08 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:06:08 [E] [managerController.go:111] <nil> 
+2017/04/21 21:06:08 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042d30bd0 0xc042ae2ff0 false    } 
+2017/04/21 21:06:08 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:06:09 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:06:09 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc043060090 0xc043713db0 false    } 
+2017/04/21 21:06:09 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc043060090 0xc043713db0 false    } 
+2017/04/21 21:06:09 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc043060090 0xc043713db0 false    } 
+2017/04/21 21:06:09 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:06:09 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:06:09 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:06:09 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:07:09 [D] [indexController.go:119] info &{41 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:05:31 +0800 CST 2017-04-20 18:28:34 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0438261b0 0xc0430a0ff0 false    } 
+2017/04/21 21:07:09 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:07:10 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:07:10 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:07:10 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:07:10 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:07:10 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:07:12 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:07:13 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:07:13 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:07:14 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:07:16 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:07:17 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:07:18 [D] [strategyController.go:104] mod 6 
+2017/04/21 21:07:18 [D] [strategyController.go:118] mod 4 
+2017/04/21 21:07:20 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:07:20 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:07:21 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:07:21 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:07:22 [D] [noticeController.go:74] Requst Count 20 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 10 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 11 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 12 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 13 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 14 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 15 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 16 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 17 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 18 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 19 
+2017/04/21 21:07:22 [D] [noticeController.go:74] Requst Count 30 
+2017/04/21 21:07:22 [D] [noticeController.go:113] mod 3 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 20 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 21 
+2017/04/21 21:07:22 [D] [noticeController.go:116] loop 22 
+2017/04/21 21:07:26 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:07:26 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:07:26 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:07:27 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:07:27 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:07:27 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:07:27 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:07:29 [D] [noticeController.go:74] Requst Count 20 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 10 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 11 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 12 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 13 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 14 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 15 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 16 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 17 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 18 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 19 
+2017/04/21 21:07:29 [D] [noticeController.go:74] Requst Count 30 
+2017/04/21 21:07:29 [D] [noticeController.go:113] mod 3 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 20 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 21 
+2017/04/21 21:07:29 [D] [noticeController.go:116] loop 22 
+2017/04/21 21:17:03 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:17:03 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:17:03 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:17:03 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042322b40 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:17:40 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:17:40 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:17:40 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:17:40 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042310480 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:17:40 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 21:17:40 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 21:17:40 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:17:40 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:17:40 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:17:40 [D] [wechat.go:77] {"access_token":"Bww7x6C2IRJq5_MaC4PoPVFpmk4YN3lo7dSLahmSkLyOmHcXw0oT1zcp8VC_7DVNMJRjrHJWTlAc2H2xXNYi6-hNINVDfA9Tc_aZayZ6V7sAHChABAFMH","expires_in":7200} 
+2017/04/21 21:17:40 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:17:41 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:17:41 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:18:49 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:18:49 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:18:50 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:18:50 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0424302a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:18:50 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 21:18:50 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 21:18:50 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:18:50 [D] [chat.go:46] map[Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:18:50 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:18:50 [D] [wechat.go:77] {"access_token":"dJtlcF-NixJqY6dlVDlE25NeyPFhV1TypeA_NngR2PnynkXIRd67svrBV3nap-tSO7g0V39fyXrr2P_dkTcZ6qg6UwJYLl7dZmNbT-uVjAsnBrHdXpN1mBGCQx4L2J72FZGbABABVC","expires_in":7200} 
+2017/04/21 21:18:50 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:18:51 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:18:51 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:19:43 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:19:59 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:20:05 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:20:05 [D] [indexController.go:119] info &{1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:20:05 +0800 CST 2017-04-21 21:20:05 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042d81440 0xc042d8ae60    } 
+2017/04/21 21:20:05 [D] [indexController.go:158] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:20:06 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:24:36 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:24:36 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:24:36 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:24:36 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042037140 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:24:36 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 21:24:36 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 21:24:36 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:24:36 [D] [chat.go:46] map[Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:24:36 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:24:36 [D] [wechat.go:77] {"access_token":"ZKwdGIIaTN8FE3Zhxdg_DrRaYAlkezwY3m_Rwo7Zp-If0vOdMojXf-Lw761NODAxB5lA2orrUM5pUCYJTE84l3CA6JBp8CzVqCGAjmfPJz907hQ9FwT99nggKL8le-GfJIAbAGAONF","expires_in":7200} 
+2017/04/21 21:24:36 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:24:37 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:24:37 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:24:45 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:24:47 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:24:47 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:24:47 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042b2ed80 0xc042b32a50    } 
+2017/04/21 21:24:47 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:24:47 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:25:26 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:24:47 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042b2ef30 0xc042b32b40    } 
+2017/04/21 21:25:26 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:25:26 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:25:26 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:25:26 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:25:26 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:25:26 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:25:31 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:25:34 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:25:34 [E] [managerController.go:111] <nil> 
+2017/04/21 21:25:52 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:24:47 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042d5e120 0xc042d5c460    } 
+2017/04/21 21:25:52 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:25:52 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:25:52 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:24:47 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042458ea0 0xc0427eaa50    } 
+2017/04/21 21:25:52 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:25:53 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:25:55 [D] [managerController.go:84] oWrhuv7EjuWJs6d3K3xTJ1YOlkUc ddddddddddddd 
+2017/04/21 21:25:55 [E] [managerController.go:111] <nil> 
+2017/04/21 21:27:20 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:27:20 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:27:20 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:27:20 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422d1080 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:27:20 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 21:27:20 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 21:27:20 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:27:20 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:27:20 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:27:21 [D] [wechat.go:77] {"access_token":"G3ukHeBMZLlXp_clpe7Wh5bbSctjuWZLB2LFzom7R3XGm2yyPDPXrv_VgtvrRaoEXtC2txSlOHjbnBJhzuSiikD_nTnRArTeXdrorVovIE-60yMllaoF9bu3AdaheTlXDAZjABAMJI","expires_in":7200} 
+2017/04/21 21:27:21 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:27:21 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:27:21 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:27:51 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:27:52 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:27:52 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:27:53 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042bf0360 0xc042bf2050    } 
+2017/04/21 21:27:52 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:27:53 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:27:56 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:27:53 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042bf0510 0xc042bf2140    } 
+2017/04/21 21:27:56 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:27:57 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:27:57 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:27:57 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:27:57 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:27:57 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:27:59 [D] [mqttController.go:135] chat list  20 Topic_ChatMessage/sub1 
+2017/04/21 21:27:59 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:27:59 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=ySIi1fXlIjYOt-cqK-1Az7V1LYnSg97wpBNhlWH6nYFktUl0iiTNKTyi0EN7h04uFKDaeiA_VCSp3O4ptJ2ae1vHxcHdVNWwT_6SVAeCvSXBsEtm3vecTxNYtDUWqEl5LIHaAEATQP&media_id=LaMQW7luXiyqywsc_2ABu5b9s_hjwQYDj2_aWUWEazpjDvidadNIoxrCr8QWpEMu 
+2017/04/21 21:28:00 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:28:00 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:28:00 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:28:00 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:28:01 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:29:39 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:29:39 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:29:39 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:29:39 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423672c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:29:39 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 21:29:39 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 21:29:39 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:29:39 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:29:39 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:29:40 [D] [wechat.go:77] {"access_token":"mBhHfkzq8erpvZoHxduXlGDdZLcZddEFe_rNnFeI0BLUJPcytR-N2JZ0GX8zd9nxOR71BRE1uStr3qMj6qhyu4fWwx87BBmiiNUNtojE06gAmbf1YJY7Tb9JxOMLUjmeBIKfAAAKRT","expires_in":7200} 
+2017/04/21 21:29:40 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:29:40 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:29:40 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:29:50 [E] [User.go:157] <QuerySeter> no row found 
+2017/04/21 21:29:50 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/21 21:32:15 [E] [User.go:157] <QuerySeter> no row found 
+2017/04/21 21:32:15 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/21 21:32:16 [E] [User.go:157] <QuerySeter> no row found 
+2017/04/21 21:32:16 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/21 21:32:16 [E] [User.go:157] <QuerySeter> no row found 
+2017/04/21 21:32:16 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/21 21:32:21 [E] [User.go:157] <QuerySeter> no row found 
+2017/04/21 21:32:21 [E] [Access.go:161] <QuerySeter> no row found 
+2017/04/21 21:35:24 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 21:35:24 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 21:35:24 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 21:35:24 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d0e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 21:35:24 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 21:35:24 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 21:35:24 [D] [mq.go:77] MQTT Client Init OK. 
+2017/04/21 21:35:24 [D] [chat.go:46] map[Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 21:35:24 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 21:35:25 [D] [wechat.go:77] {"access_token":"G3ukHeBMZLlXp_clpe7Wh2Mff1DdEbqsBsm0kAPACJIemP2yFU676AsIfN0-y6NTx4t4c8tRdqZfzrX8AMLYCxdffmKrmUO0lfSs4KmFtw9eiowb_y24EsH2fYEw8y5JWZWhAIAZCZ","expires_in":7200} 
+2017/04/21 21:35:25 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 21:35:25 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 21:35:25 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 21:35:30 [D] [indexController.go:119] info <nil> 
+2017/04/21 21:35:32 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 21:35:32 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:35:32 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04288f200 0xc042894d20    } 
+2017/04/21 21:35:32 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:35:32 [D] [RoomInfo.go:133] num 5 
+2017/04/21 21:35:34 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 21:35:32 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04288f3b0 0xc042894e10    } 
+2017/04/21 21:35:34 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 21:35:34 [D] [mqttController.go:135] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 21:35:34 [D] [strategyController.go:104] mod -4 
+2017/04/21 21:35:34 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 21:35:34 [D] [mqttController.go:171] mod -8 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 0 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 1 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 2 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 3 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 4 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 5 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 6 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 7 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 8 
+2017/04/21 21:35:35 [D] [noticeController.go:116] loop 9 
+2017/04/21 21:37:28 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=G3ukHeBMZLlXp_clpe7Wh2Mff1DdEbqsBsm0kAPACJKIa1DwhsTd2y_c-N3RvF-IpPsOZp7nBjE9GMLH1pSLPCfMTCwcF_Eoyimnv-gNXpX0-jDmwOoolAePhhX5lZ3hIAEhAIAWOS&media_id=WUDyla4O1sjGb-2COyJj0u42Lvco3LMw3iS_riL1MHfizmNLRGNh-GVj9qI_wydm 
+2017/04/21 21:37:28 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=G3ukHeBMZLlXp_clpe7Wh2Mff1DdEbqsBsm0kAPACJKIa1DwhsTd2y_c-N3RvF-IpPsOZp7nBjE9GMLH1pSLPCfMTCwcF_Eoyimnv-gNXpX0-jDmwOoolAePhhX5lZ3hIAEhAIAWOS&media_id=LaMQW7luXiyqywsc_2ABu5b9s_hjwQYDj2_aWUWEazpjDvidadNIoxrCr8QWpEMu 
+2017/04/21 21:37:28 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:23:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 22:23:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 22:23:11 [D] [mq.go:73] map[] 
+2017/04/21 22:23:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 22:23:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04243b3e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 22:23:12 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 22:23:12 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 22:23:12 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 22:23:12 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 22:23:12 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 22:23:12 [D] [wechat.go:77] {"access_token":"2__SsitYh2S7idyU6xKe-aoyFK4rZRjxaYUC3OqL1LpUY0a3WqNZrrwI2XLSnNRvo_G7fHLVf1W-e6zkyeFJTl3hx38AlfRTZIAjRStlvvMpRt6r9DlgsxRI9qV8NRyOWTIfAAAMJY","expires_in":7200} 
+2017/04/21 22:23:12 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 22:23:13 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 22:23:13 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 22:23:17 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:27:29 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 22:27:29 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 22:27:29 [D] [mq.go:73] map[] 
+2017/04/21 22:27:30 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 22:27:30 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236f2c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 22:27:30 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 22:27:30 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 22:27:30 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 22:27:30 [D] [chat.go:46] map[Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 22:27:30 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 22:27:30 [D] [wechat.go:77] {"access_token":"bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSiduVdNo7q2ajUH_1R7rbQA2eFI55yCvNQ1wQssTxFwY2_k1FBSBefQzDwAPCc5c5d8vOIN3qMFkpdNGc3CEB1_SCJhABAXHO","expires_in":7200} 
+2017/04/21 22:27:30 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 22:27:31 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 22:27:31 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 22:27:31 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:27:46 [D] [indexController.go:119] info <nil> 
+2017/04/21 22:27:48 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 22:27:48 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:27:48 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207cd80 0xc0421565a0    } 
+2017/04/21 22:27:48 [D] [indexController.go:159] userload &{9 白银 nl_silver 白银 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:27:49 [D] [RoomInfo.go:133] num 5 
+2017/04/21 22:27:51 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:27:48 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207cfc0 0xc042156690    } 
+2017/04/21 22:27:51 [D] [indexController.go:159] userload &{9 白银 nl_silver 白银 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:27:52 [D] [strategyController.go:104] mod -4 
+2017/04/21 22:27:52 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:27:52 [D] [mqttController.go:174] mod -8 
+2017/04/21 22:27:52 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 0 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 1 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 2 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 3 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 4 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 5 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 6 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 7 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 8 
+2017/04/21 22:27:52 [D] [noticeController.go:116] loop 9 
+2017/04/21 22:27:54 [D] [strategyController.go:104] mod -4 
+2017/04/21 22:27:55 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:27:55 [D] [mqttController.go:174] mod -8 
+2017/04/21 22:27:56 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 nl_silver 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-21 22:27:56.5220071 +0800 CST 0 9dfd73c0-edcd-4d3f-b4ad-7a2992c3182f 0} 
+2017/04/21 22:27:56 [D] [mqttController.go:111] IsFilter false 
+2017/04/21 22:27:56 [D] [mqttController.go:347] im here false false 
+2017/04/21 22:27:56 [D] [mqttController.go:400] result [bb8b31d3-cb54-4fc8-a976-95987ca7315e] 
+2017/04/21 22:27:56 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:27:57 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:28:11 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 nl_silver 普通 TXT 1472629522.jpg false 1 true 的顶顶顶顶顶 false 2017-04-21 22:28:11.0510071 +0800 CST 0 a437ff6c-338a-4079-8401-8a999b714615 0} 
+2017/04/21 22:28:11 [D] [mqttController.go:111] IsFilter false 
+2017/04/21 22:28:11 [D] [mqttController.go:347] im here false false 
+2017/04/21 22:28:11 [D] [mqttController.go:400] result [bb8b31d3-cb54-4fc8-a976-95987ca7315e] 
+2017/04/21 22:30:11 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 22:30:11 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:31:23 [D] [indexController.go:119] info <nil> 
+2017/04/21 22:31:25 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 22:31:25 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:31:25 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042a1e2d0 0xc042375860    } 
+2017/04/21 22:31:25 [D] [indexController.go:159] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:31:25 [D] [RoomInfo.go:133] num 5 
+2017/04/21 22:31:27 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:31:25 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042a1e480 0xc042375db0    } 
+2017/04/21 22:31:27 [D] [indexController.go:159] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:31:27 [D] [strategyController.go:104] mod -4 
+2017/04/21 22:31:27 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:31:27 [D] [mqttController.go:174] mod 0 
+2017/04/21 22:31:27 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 0 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 1 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 2 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 3 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 4 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 5 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 6 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 7 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 8 
+2017/04/21 22:31:27 [D] [noticeController.go:116] loop 9 
+2017/04/21 22:31:27 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:31:41 [D] [strategyController.go:154] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 的点点滴滴 false false 0 2017-04-21 22:31:41 4} 
+2017/04/21 22:31:41 [D] [strategyController.go:281] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 的点点滴滴 false false 0 2017-04-21 22:31:41 4} 
+2017/04/21 22:31:44 [D] [strategyController.go:104] mod -5 
+2017/04/21 22:31:58 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:31:58 [D] [mqttController.go:174] mod 0 
+2017/04/21 22:31:58 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:32:02 [D] [strategyController.go:104] mod -5 
+2017/04/21 22:32:03 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:32:03 [D] [mqttController.go:174] mod 0 
+2017/04/21 22:32:03 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:32:08 [D] [strategyController.go:154] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 呵呵哈哈哈 false false 0 2017-04-21 22:32:08 4} 
+2017/04/21 22:32:08 [D] [strategyController.go:281] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 呵呵哈哈哈 false false 0 2017-04-21 22:32:08 4} 
+2017/04/21 22:32:11 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 22:32:11 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:34:11 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 22:34:11 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:35:12 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:35:12 [D] [mqttController.go:174] mod 0 
+2017/04/21 22:35:12 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:35:22 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 manager 普通 TXT 1472629522.jpg false 1 true 姐姐姐姐 false 2017-04-21 22:35:22.1980071 +0800 CST 0 bf0da577-3552-4cef-8e02-240067d07313 0} 
+2017/04/21 22:35:22 [D] [mqttController.go:111] IsFilter false 
+2017/04/21 22:35:22 [D] [mqttController.go:347] im here false false 
+2017/04/21 22:35:22 [D] [mqttController.go:400] result [bb8b31d3-cb54-4fc8-a976-95987ca7315e] 
+2017/04/21 22:35:52 [D] [strategyController.go:104] mod -6 
+2017/04/21 22:35:53 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:35:53 [D] [mqttController.go:174] mod -1 
+2017/04/21 22:35:53 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=bvLORLyiL5YQGPojqvrXr5vFVDs6RSCewmJB8Vb7oSjWXAd0e0-bh_cuRaDCPB1iSPzloKphj47sObUkiB8jvj2QTb0Vbsj68kHVPI7z5SndNvNIfpG5HqR7VHLr-lCGMDPhABARIU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:35:58 [D] [strategyController.go:154] info {Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 姐姐姐姐 false false 0 2017-04-21 22:35:58 4} 
+2017/04/21 22:35:58 [D] [strategyController.go:281] Add StrategyInfo &{Topic_ChatMessage/sub1 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 姐姐姐姐 false false 0 2017-04-21 22:35:58 4} 
+2017/04/21 22:38:08 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 22:38:08 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 22:38:08 [D] [mq.go:73] map[] 
+2017/04/21 22:38:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 22:38:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04203a660 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 22:38:09 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 22:38:09 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 22:38:09 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 22:38:09 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 22:38:09 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 22:38:09 [D] [wechat.go:77] {"access_token":"LU59wF6gcI5BBK5GOlMVOxcUYEVeugKmwG8lqoOaixrZ2VI9ii20zUYROAiX_Mz-L324M8bZkawpjCS9UrfCdvoDWTuaZvS3WanSP-wu6KMXYuQMG1RkqJekXYdSDUawMILcAAASOR","expires_in":7200} 
+2017/04/21 22:38:09 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 22:38:10 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 22:38:10 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 22:38:13 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:38:51 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 22:38:52 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:38:52 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042bfd9e0 0xc042cb0ff0    } 
+2017/04/21 22:38:52 [D] [indexController.go:159] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:38:52 [D] [RoomInfo.go:133] num 5 
+2017/04/21 22:38:54 [D] [indexController.go:119] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:38:52 +0800 CST 2017-04-21 21:24:47 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042bfdb90 0xc042cb10e0    } 
+2017/04/21 22:38:54 [D] [indexController.go:159] userload &{1 管理员 manager 管理员 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:38:54 [D] [strategyController.go:104] mod -7 
+2017/04/21 22:38:54 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:38:54 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 22:38:54 [D] [mqttController.go:174] mod -1 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 0 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 1 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 2 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 3 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 4 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 5 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 6 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 7 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 8 
+2017/04/21 22:38:54 [D] [noticeController.go:116] loop 9 
+2017/04/21 22:38:54 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkF_K5d4vFFjvJr8d-4_LMjtdXZ6lG1XcTt6d8CjBv2r5zSW47mncin0bZ0i7n9Ierm-9BLKCurJvBJJPGdRhKeNxPEvfplh9fehmPXwdS8KXXDBeAEATZX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:38:57 [D] [strategyController.go:104] mod -7 
+2017/04/21 22:38:57 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:38:57 [D] [mqttController.go:174] mod -1 
+2017/04/21 22:38:57 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 0 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 1 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 2 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 3 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 4 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 5 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 6 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 7 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 8 
+2017/04/21 22:38:57 [D] [noticeController.go:116] loop 9 
+2017/04/21 22:38:57 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkF_K5d4vFFjvJr8d-4_LMjtdXZ6lG1XcTt6d8CjBv2r5zSW47mncin0bZ0i7n9Ierm-9BLKCurJvBJJPGdRhKeNxPEvfplh9fehmPXwdS8KXXDBeAEATZX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:38:58 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 0 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 1 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 2 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 3 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 4 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 5 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 6 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 7 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 8 
+2017/04/21 22:38:58 [D] [noticeController.go:116] loop 9 
+2017/04/21 22:38:58 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:38:58 [D] [mqttController.go:174] mod -1 
+2017/04/21 22:38:58 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkF_K5d4vFFjvJr8d-4_LMjtdXZ6lG1XcTt6d8CjBv2r5zSW47mncin0bZ0i7n9Ierm-9BLKCurJvBJJPGdRhKeNxPEvfplh9fehmPXwdS8KXXDBeAEATZX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:39:02 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:39:02 [D] [mqttController.go:174] mod -1 
+2017/04/21 22:39:02 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkF_K5d4vFFjvJr8d-4_LMjtdXZ6lG1XcTt6d8CjBv2r5zSW47mncin0bZ0i7n9Ierm-9BLKCurJvBJJPGdRhKeNxPEvfplh9fehmPXwdS8KXXDBeAEATZX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:39:02 [D] [strategyController.go:104] mod -7 
+2017/04/21 22:39:07 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 0 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 1 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 2 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 3 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 4 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 5 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 6 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 7 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 8 
+2017/04/21 22:39:07 [D] [noticeController.go:116] loop 9 
+2017/04/21 22:39:08 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 22:39:08 [D] [mqttController.go:174] mod -1 
+2017/04/21 22:39:08 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkF_K5d4vFFjvJr8d-4_LMjtdXZ6lG1XcTt6d8CjBv2r5zSW47mncin0bZ0i7n9Ierm-9BLKCurJvBJJPGdRhKeNxPEvfplh9fehmPXwdS8KXXDBeAEATZX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 22:40:13 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 22:40:13 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:40:25 [E] [indexController.go:327] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 22:40:25 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 22:40:25 [D] [indexController.go:119] info &{0 oWrhuvyGSohdAnQ5sAk-TapzpSAU     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 22:40:25 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 22:40:25 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 22:40:25 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 22:42:13 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 22:42:13 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:43:09 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 22:43:09 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 22:43:09 [D] [mq.go:73] map[] 
+2017/04/21 22:43:09 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 22:43:09 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d2c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 22:43:09 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 22:43:09 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 22:43:09 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 22:43:09 [D] [chat.go:46] map[Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 22:43:09 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 22:43:10 [D] [wechat.go:77] {"access_token":"mBhHfkzq8erpvZoHxduXlBQwRXdwwXmkpKyRgL4nm-yNB7XQpMPPyrU3LeW7HsgcNpRPUD2iJah5Ud8_gmBmSvoeGCvIRD0AjG9dMhZTQ1TDEKwa0d2zhXSOyvzrE1UDJYIbAAAETD","expires_in":7200} 
+2017/04/21 22:43:10 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 22:43:10 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 22:43:11 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 22:43:11 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:43:20 [D] [indexController.go:119] info <nil> 
+2017/04/21 22:43:21 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 22:43:21 [D] [indexController.go:119] info &{7 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 22:43:22 +0800 CST 2017-04-21 22:43:22 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0428c9200 0xc0423f6f50    } 
+2017/04/21 22:43:21 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 22:43:22 [D] [RoomInfo.go:133] num 5 
+2017/04/21 22:45:11 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 22:45:11 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 22:45:11 [E] [indexController.go:327] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 22:45:11 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 22:45:11 [D] [indexController.go:119] info &{0 oWrhuvyGSohdAnQ5sAk-TapzpSAU     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 22:45:11 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 22:45:11 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 22:45:11 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:07:04 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 23:07:04 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 23:07:04 [D] [mq.go:73] map[] 
+2017/04/21 23:07:05 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 23:07:05 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0423769c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 23:07:05 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 23:07:05 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 23:07:05 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 23:07:05 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 23:07:05 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 23:07:05 [D] [wechat.go:77] {"access_token":"nbZySkpebB6FZJENCV1u4FEr0H0Y7OwWpxgee4gni7uHnFA-FPbDgz-A1v-gqAFFMvrDgOifboiqYkr_w60dNfHPJifEWyUH1NikRjCL-Atp548AVegIMHwv97TOtbtILNPiACAWYA","expires_in":7200} 
+2017/04/21 23:07:05 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 23:07:06 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 23:07:06 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 23:07:07 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 23:07:20 [D] [indexController.go:119] info <nil> 
+2017/04/21 23:07:21 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 23:07:21 [D] [indexController.go:119] info &{7 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:07:22 +0800 CST 2017-04-21 22:43:22 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042924360 0xc0428b2050    } 
+2017/04/21 23:07:21 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 23:07:22 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:07:24 [D] [indexController.go:119] info &{7 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:07:22 +0800 CST 2017-04-21 22:43:22 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 1 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0429245a0 0xc0428b2190    } 
+2017/04/21 23:07:24 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 23:07:24 [D] [strategyController.go:104] mod -7 
+2017/04/21 23:07:24 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/21 23:07:24 [D] [mqttController.go:174] mod -1 
+2017/04/21 23:07:24 [D] [noticeController.go:74] Requst Count 10 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 0 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 1 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 2 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 3 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 4 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 5 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 6 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 7 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 8 
+2017/04/21 23:07:24 [D] [noticeController.go:116] loop 9 
+2017/04/21 23:07:25 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=nbZySkpebB6FZJENCV1u4FEr0H0Y7OwWpxgee4gni7vN0xWsfiPJAjbCYUw_-HOijM1P3TrtZFbF2aRfroC2tskcbxmQZ0d14khTsGduaOQ4zpdVne_gN0cSzqy6SQdVKHUiACAROB&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/21 23:07:42 [E] [indexController.go:327] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 23:07:42 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:07:42 [D] [indexController.go:119] info &{0 oWrhuvyGSohdAnQ5sAk-TapzpSAU     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 23:07:42 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 23:07:42 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 23:07:42 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:09:07 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 23:09:07 [D] [server.go:14] client bb8b31d3-cb54-4fc8-a976-95987ca7315e online subscribe topic is: chat 
+2017/04/21 23:10:00 [D] [SysConfigController.go:73] configinfo 0 0 
+2017/04/21 23:10:29 [E] [indexController.go:327] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 23:10:29 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:10:30 [D] [indexController.go:119] info &{0 oWrhuvyGSohdAnQ5sAk-TapzpSAU     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 23:10:30 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 23:10:30 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 23:10:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:11:07 [D] [server.go:18] client bb8b31d3-cb54-4fc8-a976-95987ca7315e offline unsubscribe topic is: chat 
+2017/04/21 23:15:37 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:15:37 [D] [indexController.go:119] info &{11 oWrhuvyGSohdAnQ5sAk-TapzpSAU   旭  0 0  2 2017-04-21 23:15:38 +0800 CST 2017-04-21 23:15:38 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 1 0 oWrhuvyGSohdAnQ5sAk-TapzpSAU 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0  0xc042ee22d0 0xc0429003c0    } 
+2017/04/21 23:15:37 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 0 0 0 109} 
+2017/04/21 23:15:38 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:15:46 [D] [managerController.go:84]  ddddddddddddd 
+2017/04/21 23:15:55 [D] [indexController.go:119] info <nil> 
+2017/04/21 23:15:56 [E] [indexController.go:327] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 23:15:56 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 23:15:56 [D] [indexController.go:119] info &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 23:15:56 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 23:15:56 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 23:15:56 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:17:42 [D] [SysConfigController.go:73] configinfo 1 0 
+2017/04/21 23:17:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 23:17:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 23:17:58 [D] [mq.go:73] map[] 
+2017/04/21 23:17:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 23:17:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04200d260 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 23:17:58 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 23:17:58 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 23:17:58 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 23:17:58 [D] [chat.go:46] map[Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 23:17:58 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 23:17:58 [D] [wechat.go:77] {"access_token":"M2xf7i-8z7wxDblFQK-ChtWci2ZAeuKuDUk1xj-AT7YfSlRFj58vtY6HPs14OcTgxrdddTtNkkYzh5ayJ6Yn0_2jhuATC43cxAdeJ2LxXbCT3yN_4H1vWEkSe6BVyilAILHbAGAEHD","expires_in":7200} 
+2017/04/21 23:17:58 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 23:17:59 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 23:17:59 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 23:18:08 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:18:08 [D] [indexController.go:119] info &{11 oWrhuvyGSohdAnQ5sAk-TapzpSAU   旭  0 0  2 2017-04-21 23:18:08 +0800 CST 2017-04-21 23:15:38 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 1 0 oWrhuvyGSohdAnQ5sAk-TapzpSAU 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0  0xc042397440 0xc042b141e0    } 
+2017/04/21 23:18:08 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 0 109} 
+2017/04/21 23:18:09 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:18:14 [D] [indexController.go:119] info <nil> 
+2017/04/21 23:18:16 [D] [indexController.go:324] user &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:18:16.7780071 +0800 CST 2017-04-21 23:18:16.7780071 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207c360 0xc04277d4a0    } 
+2017/04/21 23:18:16 [E] [indexController.go:328] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 23:18:16 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 23:18:16 [D] [indexController.go:119] info &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 23:18:16 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 23:18:16 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 23:18:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:18:30 [D] [SysConfigController.go:73] configinfo 1 0 
+2017/04/21 23:18:34 [D] [SysConfigController.go:73] configinfo 1 1 
+2017/04/21 23:18:44 [D] [indexController.go:119] info <nil> 
+2017/04/21 23:18:45 [D] [indexController.go:324] user &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:18:45.9390071 +0800 CST 2017-04-21 23:18:45.9390071 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207c630 0xc0422548c0    } 
+2017/04/21 23:18:45 [E] [indexController.go:328] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 23:18:45 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 23:18:45 [D] [indexController.go:119] info &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 23:18:45 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 23:18:45 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 23:18:45 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:18:53 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 23:18:53 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 23:18:53 [D] [mq.go:73] map[] 
+2017/04/21 23:18:53 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 23:18:53 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042448540 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 23:18:53 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 23:18:53 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 23:18:53 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 23:18:53 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 23:18:53 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 23:18:53 [D] [wechat.go:77] {"access_token":"z1Hph1XbYQI7gz6vYRU1FEALSyiIKo4Ktv3K8Df6NL5zFSwcrJUOaZzT-_H4c6BK-9LPtP1-N4zcAbGvpcPQCgOHynAagNs-7RNtVmTA_V9GbCYd2E7AI3vpsgw19V4LHPXbACABJR","expires_in":7200} 
+2017/04/21 23:18:53 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 23:18:54 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 23:18:54 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 23:19:05 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:19:05 [D] [indexController.go:119] info &{11 oWrhuvyGSohdAnQ5sAk-TapzpSAU   旭  0 0  2 2017-04-21 23:19:05 +0800 CST 2017-04-21 23:15:38 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 1 0 oWrhuvyGSohdAnQ5sAk-TapzpSAU 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0  0xc04299dd40 0xc04280a730    } 
+2017/04/21 23:19:05 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/21 23:19:06 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:19:10 [D] [indexController.go:119] info <nil> 
+2017/04/21 23:19:13 [D] [indexController.go:324] user &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:19:13.5700071 +0800 CST 2017-04-21 23:19:13.5700071 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042917440 0xc0427cfb30    } 
+2017/04/21 23:19:13 [E] [indexController.go:328] Error 1062: Duplicate entry '' for key 'email' 
+2017/04/21 23:19:13 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 23:19:13 [D] [indexController.go:119] info &{0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc     0 0  0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC  0 0  0      <nil> <nil>    } 
+2017/04/21 23:19:13 [E] [User.go:131] <QuerySeter> no row found 
+2017/04/21 23:19:13 [E] [indexController.go:126] load retalteduser error <QuerySeter> no row found 
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] the request url is  /index
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:62
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/runtime/signal_windows.go:161
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] D:/work/mygo/src/weserver/controllers/haoindex/indexController.go:131
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] D:/work/mygo/src/github.com/astaxie/beego/router.go:809
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2017/04/21 23:19:13 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2017/04/21 23:19:32 [D] [managerController.go:84]  ddddddddddddd 
+2017/04/21 23:19:32 [E] [managerController.go:111] <nil> 
+2017/04/21 23:20:16 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:20:16 [D] [indexController.go:119] info &{11 oWrhuvyGSohdAnQ5sAk-TapzpSAU   旭  0 0  2 2017-04-21 23:20:16 +0800 CST 2017-04-21 23:15:38 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 1 0 oWrhuvyGSohdAnQ5sAk-TapzpSAU 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0  0xc042be47e0 0xc042bf4690    } 
+2017/04/21 23:20:16 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/21 23:20:17 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:21:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 23:21:19 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 23:21:19 [D] [mq.go:73] map[] 
+2017/04/21 23:21:20 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 23:21:20 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04230f200 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 23:21:20 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 23:21:20 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 23:21:20 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 23:21:20 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 23:21:20 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 23:21:20 [D] [wechat.go:77] {"access_token":"Zhet4gKm2Zbc2Pgk4C9gDK-RLaVjUzj_UQvk2uNKktiWgh8rbYDrhm_393iBn6-psdyIVJg7ujk6xo2NjHS32i_YuquT7yWQyp66pHcVpaQOXYfamShdMYkcwIUqYaSpDAMiAJANKW","expires_in":7200} 
+2017/04/21 23:21:20 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 23:21:21 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 23:21:21 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/21 23:21:25 [D] [indexController.go:119] info <nil> 
+2017/04/21 23:21:27 [D] [indexController.go:324] user &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:21:27.1260071 +0800 CST 2017-04-21 23:21:27.1260071 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0423fabd0 0xc04238b810    } 
+2017/04/21 23:21:27 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/21 23:21:27 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-21 23:21:27 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0423fac60 0xc04238b860    } 
+2017/04/21 23:21:27 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/21 23:21:27 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:21:34 [D] [indexController.go:107] userInfo {{0 } oWrhuvyGSohdAnQ5sAk-TapzpSAU 旭 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 [] } 
+2017/04/21 23:21:34 [D] [indexController.go:119] info &{11 oWrhuvyGSohdAnQ5sAk-TapzpSAU   旭  0 0  2 2017-04-21 23:21:35 +0800 CST 2017-04-21 23:15:38 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0 1 0 oWrhuvyGSohdAnQ5sAk-TapzpSAU 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNpecKJO94fMR44FN03B5aGkibhAZbXmJkGuScT7IpFzYU9f4t33lDLDhU9DY9OY3hN8S69kXTPsI1/0  0xc0423fa900 0xc042816aa0    } 
+2017/04/21 23:21:34 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/21 23:21:35 [D] [RoomInfo.go:133] num 5 
+2017/04/21 23:29:33 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/21 23:29:33 [I] [Connect.go:19] 数据库连接成功 
+2017/04/21 23:29:33 [D] [mq.go:73] map[] 
+2017/04/21 23:29:33 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/21 23:29:33 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422d79e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/21 23:29:33 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/21 23:29:33 [I] [mqtt.go:58] mqtt running OK  
+2017/04/21 23:29:33 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/21 23:29:33 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/21 23:29:33 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/21 23:29:34 [D] [wechat.go:77] {"access_token":"CZ38PAgYPs3wUsEs1P5od_LY3B2Ck7Wa3ULBM4X7x6KF2xrkJpWal0lICzyzzEUbnXKcSxdT61rsC9_pc9ZOxZjfI8Wo1O07ZqglIpmyBFcMEJMlsQoFzvej30Dre6RDQKEbAGAXRL","expires_in":7200} 
+2017/04/21 23:29:34 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/21 23:29:34 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/21 23:29:34 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 13:37:53 [I] [Connect.go:14] 数据库is %s root:admin@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:37:53 [E] [Connect.go:17] 数据库连接失败 
+2017/04/23 13:38:23 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:38:23 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 13:38:23 [D] [mq.go:73] map[] 
+2017/04/23 13:38:23 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 13:38:23 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04244d7a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 13:38:23 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/23 13:38:23 [I] [mqtt.go:58] mqtt running OK  
+2017/04/23 13:38:23 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/23 13:38:23 [D] [chat.go:46] map[Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/23 13:38:23 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/23 13:38:24 [D] [wechat.go:77] {"access_token":"YGLECOsqrWKpQ_9aUFgtIx2hhU7YWxof-FUj1TRE_6XzgbbnvutqCfa3rZrjSvhngMYr4LL3yUR5lPQczN4NMvdSQrkOlzGH9vCR07z_l1G-kmzKoOk1akQcOPzNJQ_kBWVaAFAMHG","expires_in":7200} 
+2017/04/23 13:38:24 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/23 13:38:24 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/23 13:38:24 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 13:39:15 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:39:15 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 13:39:15 [D] [mq.go:73] map[] 
+2017/04/23 13:39:15 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 13:39:15 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422fa8a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 13:39:15 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/23 13:39:15 [I] [mqtt.go:58] mqtt running OK  
+2017/04/23 13:39:15 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/23 13:39:15 [D] [chat.go:46] map[Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/23 13:39:15 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/23 13:39:16 [D] [wechat.go:77] {"access_token":"Na1iLnMAn9-tPkmS5piExHBKh-UWWyZHbMOpEHgndc4p9PTfAd1svs8Sjze5RIr64DtGIKw6EjFViFXJVZZ0y9nMAE7x_WT9nD6HQxkYtt3hBQD2VNF9fRfj4_xT16iTHZUhAJAUMH","expires_in":7200} 
+2017/04/23 13:39:16 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/23 13:39:16 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/23 13:39:16 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 13:39:40 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 13:39:40 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 13:39:40 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04206abd0 0xc042823f90    } 
+2017/04/23 13:39:40 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 13:39:41 [D] [RoomInfo.go:133] num 5 
+2017/04/23 13:39:52 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 13:39:40 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04206ad80 0xc0427f00a0    } 
+2017/04/23 13:39:52 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 13:39:52 [D] [strategyController.go:104] mod -7 
+2017/04/23 13:39:52 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 13:39:52 [D] [mqttController.go:174] mod -1 
+2017/04/23 13:39:53 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 0 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 1 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 2 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 3 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 4 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 5 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 6 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 7 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 8 
+2017/04/23 13:39:53 [D] [noticeController.go:116] loop 9 
+2017/04/23 13:39:53 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=5nxizp3r95rAn9b2gH08VOnL620E1DkQPKnRDdtV-4rviabUo2fAepiMMVjiG6y2ACZ3HKTWKaT7oWyODHlG0iK3Py2Vbx310g3FDti_UztpDrdFskp9I7Az7XTjo4_ZMEAaAEAGYU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:39:53 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=5nxizp3r95rAn9b2gH08VOnL620E1DkQPKnRDdtV-4rviabUo2fAepiMMVjiG6y2ACZ3HKTWKaT7oWyODHlG0iK3Py2Vbx310g3FDti_UztpDrdFskp9I7Az7XTjo4_ZMEAaAEAGYU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:39:56 [D] [strategyController.go:104] mod -7 
+2017/04/23 13:39:57 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 13:39:57 [D] [mqttController.go:174] mod -1 
+2017/04/23 13:39:57 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=5nxizp3r95rAn9b2gH08VOnL620E1DkQPKnRDdtV-4rviabUo2fAepiMMVjiG6y2ACZ3HKTWKaT7oWyODHlG0iK3Py2Vbx310g3FDti_UztpDrdFskp9I7Az7XTjo4_ZMEAaAEAGYU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:39:58 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=5nxizp3r95rAn9b2gH08VOnL620E1DkQPKnRDdtV-4rviabUo2fAepiMMVjiG6y2ACZ3HKTWKaT7oWyODHlG0iK3Py2Vbx310g3FDti_UztpDrdFskp9I7Az7XTjo4_ZMEAaAEAGYU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:39:58 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 nl_ordinary 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-23 13:39:58.3645013 +0800 CST 0 73b7c209-4141-43fa-8a4f-e911bc80b36e 0} 
+2017/04/23 13:39:58 [D] [mqttController.go:111] IsFilter false 
+2017/04/23 13:39:58 [D] [mqttController.go:347] im here false false 
+2017/04/23 13:39:58 [D] [mqttController.go:400] result [] 
+2017/04/23 13:40:08 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=5nxizp3r95rAn9b2gH08VOnL620E1DkQPKnRDdtV-4rviabUo2fAepiMMVjiG6y2ACZ3HKTWKaT7oWyODHlG0iK3Py2Vbx310g3FDti_UztpDrdFskp9I7Az7XTjo4_ZMEAaAEAGYU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:40:08 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=5nxizp3r95rAn9b2gH08VOnL620E1DkQPKnRDdtV-4rviabUo2fAepiMMVjiG6y2ACZ3HKTWKaT7oWyODHlG0iK3Py2Vbx310g3FDti_UztpDrdFskp9I7Az7XTjo4_ZMEAaAEAGYU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:41:58 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:41:58 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 13:41:58 [D] [mq.go:73] map[] 
+2017/04/23 13:41:58 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 13:41:58 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042465680 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 13:41:59 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/23 13:41:59 [I] [mqtt.go:58] mqtt running OK  
+2017/04/23 13:41:59 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/23 13:41:59 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/23 13:41:59 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/23 13:41:59 [D] [wechat.go:77] {"access_token":"X-KSWf6VYE_OEpITtX6fDfHsEKEDWpfDDLe48K9rzKe3b20FUzKGgFH0bXtk8DWpO60SBRqY6MQ17LPT0JcLcJaO97J3l0kLU_PJodM1T5aYz1372ID0M4WwA1CSarPbTILaACADSV","expires_in":7200} 
+2017/04/23 13:41:59 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/23 13:42:00 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/23 13:42:00 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 13:42:07 [D] [indexController.go:119] info <nil> 
+2017/04/23 13:42:09 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 13:42:09 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 13:42:09 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0420e78c0 0xc042385090    } 
+2017/04/23 13:42:09 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 13:42:09 [D] [RoomInfo.go:133] num 5 
+2017/04/23 13:42:28 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 13:42:28 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 13:42:28 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042a8a5a0 0xc04200ed20    } 
+2017/04/23 13:42:28 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 13:42:28 [D] [RoomInfo.go:133] num 5 
+2017/04/23 13:42:35 [E] [managerController.go:110] <nil> 
+2017/04/23 13:46:45 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:46:45 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 13:46:45 [D] [mq.go:73] map[] 
+2017/04/23 13:46:45 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 13:46:45 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042375320 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 13:46:54 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:46:54 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 13:46:54 [D] [mq.go:73] map[] 
+2017/04/23 13:46:54 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 13:46:54 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042438ba0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 13:47:04 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 13:47:04 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 13:47:04 [D] [mq.go:73] map[] 
+2017/04/23 13:47:04 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 13:47:04 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042424360 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 13:47:04 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/23 13:47:04 [I] [mqtt.go:58] mqtt running OK  
+2017/04/23 13:47:04 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/23 13:47:04 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/23 13:47:04 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/23 13:47:04 [D] [wechat.go:77] {"access_token":"FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRzGdwSVRjr-IigQHobTUvk_Y-G1cV9D-kOlDcR7sOHmWhFFUwqBuO4kC_Q3hVVlzBiaE6PotOZSia2ib5f2-hiSKIiAAAFXV","expires_in":7200} 
+2017/04/23 13:47:04 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/23 13:47:05 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/23 13:47:05 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 13:47:15 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 13:47:15 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 13:47:15 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0427b2d80 0xc04219ee10    } 
+2017/04/23 13:47:15 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 13:47:16 [D] [RoomInfo.go:133] num 5 
+2017/04/23 13:47:19 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 13:47:15 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0427b2f30 0xc04219ef00    } 
+2017/04/23 13:47:19 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 13:47:19 [D] [strategyController.go:104] mod -7 
+2017/04/23 13:47:19 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 13:47:19 [D] [mqttController.go:174] mod -2 
+2017/04/23 13:47:19 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 0 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 1 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 2 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 3 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 4 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 5 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 6 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 7 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 8 
+2017/04/23 13:47:19 [D] [noticeController.go:116] loop 9 
+2017/04/23 13:47:19 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:20 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:22 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 0 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 1 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 2 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 3 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 4 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 5 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 6 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 7 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 8 
+2017/04/23 13:47:22 [D] [noticeController.go:116] loop 9 
+2017/04/23 13:47:22 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 13:47:22 [D] [mqttController.go:174] mod -2 
+2017/04/23 13:47:23 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:23 [D] [strategyController.go:104] mod -7 
+2017/04/23 13:47:23 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:25 [D] [strategyController.go:104] mod -7 
+2017/04/23 13:47:27 [D] [strategyController.go:104] mod -7 
+2017/04/23 13:47:30 [D] [strategyController.go:104] mod 3 
+2017/04/23 13:47:30 [D] [strategyController.go:118] mod 7 
+2017/04/23 13:47:35 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 13:47:35 [D] [mqttController.go:174] mod -2 
+2017/04/23 13:47:35 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:35 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:36 [D] [mqttController.go:138] chat list  30 Topic_ChatMessage/sub1 
+2017/04/23 13:47:36 [D] [mqttController.go:174] mod -2 
+2017/04/23 13:47:37 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:37 [D] [mqttController.go:138] chat list  30 Topic_ChatMessage/sub1 
+2017/04/23 13:47:37 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:37 [D] [mqttController.go:174] mod -2 
+2017/04/23 13:47:37 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:38 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:39 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 0 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 1 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 2 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 3 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 4 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 5 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 6 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 7 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 8 
+2017/04/23 13:47:39 [D] [noticeController.go:116] loop 9 
+2017/04/23 13:47:40 [D] [noticeController.go:74] Requst Count 20 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 10 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 11 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 12 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 13 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 14 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 15 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 16 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 17 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 18 
+2017/04/23 13:47:40 [D] [noticeController.go:116] loop 19 
+2017/04/23 13:47:41 [D] [noticeController.go:74] Requst Count 30 
+2017/04/23 13:47:41 [D] [noticeController.go:113] mod 3 
+2017/04/23 13:47:41 [D] [noticeController.go:116] loop 20 
+2017/04/23 13:47:41 [D] [noticeController.go:116] loop 21 
+2017/04/23 13:47:41 [D] [noticeController.go:116] loop 22 
+2017/04/23 13:47:44 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 13:47:44 [D] [mqttController.go:174] mod -2 
+2017/04/23 13:47:44 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:44 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:55 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 nl_ordinary 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-23 13:47:55.4775013 +0800 CST 0 f2e440e9-e672-4fe7-92bf-136fb9b1a0e9 0} 
+2017/04/23 13:47:55 [D] [mqttController.go:111] IsFilter false 
+2017/04/23 13:47:55 [D] [mqttController.go:347] im here false false 
+2017/04/23 13:47:55 [D] [mqttController.go:400] result [] 
+2017/04/23 13:47:55 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 13:47:56 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 nl_ordinary 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-23 13:47:56.3565013 +0800 CST 0 397f1614-1f83-4d13-ab41-dedc274004dc 0} 
+2017/04/23 13:47:56 [D] [mqttController.go:111] IsFilter false 
+2017/04/23 13:47:56 [D] [mqttController.go:347] im here false false 
+2017/04/23 13:47:56 [D] [mqttController.go:400] result [] 
+2017/04/23 13:47:56 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=FPX8wj-9BdzQAFWqbKEDkLNnLWUKvCVNprzkZsvljYRMzna5FuR4-exAsF87uZt1h_3Drg5qANuhSQoT8potwsCr77NGDUfEoX1B6HvRsl-rkAet9PDls5edpqDDSJDYZJMiAAAUEH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 14:11:59 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 14:12:00 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 14:12:00 [D] [mq.go:73] map[] 
+2017/04/23 14:12:00 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 14:12:00 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042320c60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 14:12:07 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 14:12:07 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 14:12:07 [D] [mq.go:73] map[] 
+2017/04/23 14:12:08 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 14:12:08 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422d50e0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 14:12:08 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/23 14:12:08 [I] [mqtt.go:58] mqtt running OK  
+2017/04/23 14:12:08 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/23 14:12:08 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/23 14:12:08 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/23 14:12:08 [D] [wechat.go:77] {"access_token":"3uUFddP8zXVExIpZwRjWHo9VNEn3X7Xl-slfKVJjzmuLiG2prwR5twsqdlxqWkgUi49YmfwWDaRlOe0q8KPxb54xmPiSN07QfG_vmymTc9QJLJgAIAUWU","expires_in":7200} 
+2017/04/23 14:12:08 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/23 14:12:09 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/23 14:12:09 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 14:12:37 [D] [indexController.go:119] info <nil> 
+2017/04/23 14:12:38 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 14:12:38 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 14:12:39 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042baa090 0xc042b9b9f0    } 
+2017/04/23 14:12:38 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 14:12:39 [D] [RoomInfo.go:133] num 5 
+2017/04/23 14:12:41 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 14:12:39 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042baa240 0xc042b9bae0    } 
+2017/04/23 14:12:41 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 14:12:41 [D] [strategyController.go:104] mod -7 
+2017/04/23 14:12:41 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 14:12:41 [D] [mqttController.go:174] mod -4 
+2017/04/23 14:12:41 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 0 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 1 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 2 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 3 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 4 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 5 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 6 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 7 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 8 
+2017/04/23 14:12:41 [D] [noticeController.go:116] loop 9 
+2017/04/23 14:12:42 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=3uUFddP8zXVExIpZwRjWHge9wpDNMWLS9u2vr16pbSuz0fJOexQVZ_bRexJve06UQvefv9qkGD8-gjlKYPynUbjAs3bBuxtVbUYVM49o-RNj-exuIJCopGV3GJC99Yj-JJOaAHACCH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 14:12:43 [D] [mqttController.go:93] info {0 Topic_ChatMessage/sub1 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 nl_ordinary 普通 IMG 1472629522.jpg false 1 true 1237378768e7q8e7r8qwesafdasdfasdfaxss111 false 2017-04-23 14:12:43.9665013 +0800 CST 0 ff131773-49c1-49af-8f83-8092cd45a920 0} 
+2017/04/23 14:12:43 [D] [mqttController.go:111] IsFilter false 
+2017/04/23 14:12:43 [D] [mqttController.go:347] im here false false 
+2017/04/23 14:12:43 [D] [mqttController.go:400] result [] 
+2017/04/23 14:14:18 [D] [SysConfigController.go:73] configinfo 1 1 
+2017/04/23 14:14:25 [D] [SysConfigController.go:73] configinfo 1 1 
+2017/04/23 14:15:27 [D] [indexController.go:119] info <nil> 
+2017/04/23 14:15:29 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 14:15:29 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 14:15:30 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04361d320 0xc042be7a40    } 
+2017/04/23 14:15:29 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 14:15:30 [D] [RoomInfo.go:133] num 5 
+2017/04/23 14:15:38 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 14:15:30 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04361d4d0 0xc042be7b30    } 
+2017/04/23 14:15:38 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 14:15:39 [D] [strategyController.go:104] mod -7 
+2017/04/23 14:15:39 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
+2017/04/23 14:15:39 [D] [mqttController.go:174] mod -5 
+2017/04/23 14:15:39 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 0 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 1 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 2 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 3 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 4 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 5 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 6 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 7 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 8 
+2017/04/23 14:15:39 [D] [noticeController.go:116] loop 9 
+2017/04/23 14:15:39 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=3uUFddP8zXVExIpZwRjWHge9wpDNMWLS9u2vr16pbSuz0fJOexQVZ_bRexJve06UQvefv9qkGD8-gjlKYPynUbjAs3bBuxtVbUYVM49o-RNj-exuIJCopGV3GJC99Yj-JJOaAHACCH&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/23 14:16:17 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/23 14:16:17 [I] [Connect.go:19] 数据库连接成功 
+2017/04/23 14:16:17 [D] [mq.go:73] map[] 
+2017/04/23 14:16:17 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/23 14:16:17 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04230d380 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/23 14:16:17 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/23 14:16:17 [I] [mqtt.go:58] mqtt running OK  
+2017/04/23 14:16:17 [D] [mq.go:82] MQTT Client Init OK. 
+2017/04/23 14:16:17 [D] [chat.go:46] map[Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/23 14:16:17 [D] [wechat.go:65] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/23 14:16:17 [D] [wechat.go:77] {"access_token":"9zulTdnG-MwQs67HovfkiynZS0RYQSYSWMu37Ur6Jed9ntxQEzJGmxiw2OocXc2OvJGXwiRGATHgPnuTeAd6F029RmEU_oe-RO_BycxBm0Jdj2GUbt_OIefJp0-7IY3RUIAgAEAPDV","expires_in":7200} 
+2017/04/23 14:16:17 [D] [wechat.go:80] Request ok!!!!!!! 
+2017/04/23 14:16:18 [D] [chat.go:54] WeChat Init ok ! 
+2017/04/23 14:16:18 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/23 14:16:28 [D] [indexController.go:119] info <nil> 
+2017/04/23 14:16:29 [D] [indexController.go:107] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/23 14:16:29 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 14:16:30 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207d560 0xc042a6fa90    } 
+2017/04/23 14:16:29 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 14:16:30 [D] [RoomInfo.go:133] num 5 
+2017/04/23 14:16:46 [D] [indexController.go:119] info &{16 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-23 14:16:30 +0800 CST 2017-04-21 23:21:27 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04207d710 0xc042a6fb80    } 
+2017/04/23 14:16:46 [D] [indexController.go:159] userload &{10 普通 nl_ordinary 普通 1 1 0 1  <nil> []} {1 海丝会员交流间 0 10 8 0 10 10 10 欢迎来到直播间听课学习 1 0 1 109} 
+2017/04/23 14:16:47 [D] [strategyController.go:82] nCount sysCont 3 10 
+2017/04/23 14:16:47 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub2 
+2017/04/23 14:16:47 [D] [mqttController.go:147] nCount sysCont 5 10 
+2017/04/23 14:16:47 [D] [noticeController.go:74] Requst Count 10 
+2017/04/23 14:16:47 [D] [noticeController.go:82] nCount sysCont 0 10 
+2017/04/23 14:16:47 [I] [indexController.go:274] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=9zulTdnG-MwQs67HovfkiynZS0RYQSYSWMu37Ur6JechEJeII3v8tIdSfp8m-ED4UIGZDPXhaxpQ-luoOfkgh1Wu1cW8x-3H0GAJd4qpLgnZh7JpWK7qRNzr-iw_DFyZPVIgAEATZM&media_id=WUDyla4O1sjGb-2COyJj0u42Lvco3LMw3iS_riL1MHfizmNLRGNh-GVj9qI_wydm 

@@ -14,7 +14,6 @@ import (
 //用户表
 type User struct {
 	Id            int64
-	Room          string
 	Username      string `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
@@ -38,7 +37,6 @@ type User struct {
 	Unionid       string    //只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：
 	Role          *Role     `orm:"rel(one)"`
 	Title         *Title    `orm:"rel(one)"`
-	IsShutup      bool      //是否禁言
 
 	LogintimeStr  string `orm:"-"` //登录时间
 	OnlinetimeStr string `orm:"-"` //在线时长
@@ -92,14 +90,6 @@ func DelUserById(Id int64) (int64, error) {
 	return status, err
 }
 
-// 删除指定用户
-func DelUserByUame(Room, Uname string) (int64, error) {
-	o := orm.NewOrm()
-	beego.Debug("Room, Uname", Room, Uname)
-	num, err := o.QueryTable("user").Filter("Room", Room).Filter("Username", Uname).Delete()
-	return num, err
-}
-
 //批量删除用户
 func PrepareDelUser(IdArray []int64) (int64, error) {
 	o := orm.NewOrm()
@@ -115,14 +105,6 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 		err = o.Commit()
 	}
 	return status, err
-}
-
-//更新禁言字段
-func UpdateShutUp(room, username string, b bool) (int64, error) {
-	o := orm.NewOrm()
-	var table User
-	id, err := o.QueryTable(table).Filter("Room", room).Filter("Username", username).Update(orm.Params{"IsShutup": b})
-	return id, err
 }
 
 // 根据用户名查找
@@ -221,14 +203,6 @@ func CountWeekRegist() (week []orm.ParamsList) {
 
 	}
 	return lists
-}
-
-//获取user表中最近当天登录列表信息
-func GetUserInfoToday(roomId string) (users []User, err error) {
-	o := orm.NewOrm()
-	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("user").Exclude("Username", "admin").Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
-	return users, err
 }
 
 //获取user表中最近 nDay 天列表信息
