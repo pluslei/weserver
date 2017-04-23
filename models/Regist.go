@@ -44,6 +44,24 @@ func AddRegistUser(r *Regist) (int64, error) {
 	return 0, err
 }
 
+// 获取用户一对一关系
+func LoadRegist(r *Regist, fields ...string) (*Regist, error) {
+	o := orm.NewOrm()
+	err := o.Read(r, fields...)
+	if err != nil {
+		beego.Error(err)
+		return nil, err
+	}
+	_, err = o.LoadRelated(r, "Role")
+	_, err = o.LoadRelated(r, "Title")
+	if err != nil {
+		beego.Error(err)
+		return nil, err
+	}
+
+	return r, nil
+}
+
 // 删除指定用户
 func DelRegistUame(Room, Uname string) (int64, error) {
 	o := orm.NewOrm()

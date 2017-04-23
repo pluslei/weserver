@@ -71,6 +71,16 @@ type Usertitle struct {
 
 //######################################################################################
 
+type RoleInfo struct {
+	RoleId        int64
+	RoleName      string //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	RoleTitleCss  string //用户角色样式
+	RoleTitleBack bool   //角色聊天背景
+}
+
+//######################################################################################
+
 // 在线人数信息
 type OnLineInfo struct {
 	Room     string

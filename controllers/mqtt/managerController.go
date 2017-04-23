@@ -67,7 +67,36 @@ func (this *ManagerController) GetUserLogin() {
 		Uname := this.GetString("Username")
 		_, count, err := m.GetRegistPermiss(roomId, Uname)
 		if count == 1 && err == nil {
-			this.Rsp(true, "验证权限通过", "")
+			var info m.Regist
+			info.Room = roomId
+			info.Username = Uname
+			regist, err := m.LoadRegist(&info, "Room", "Username")
+			if err != nil {
+				beego.Error("load regist error", err)
+			}
+			role := new(RoleInfo)
+			role.RoleId = regist.Role.Id
+			role.RoleName = regist.Role.Name
+			role.RoleTitle = regist.Title.Name
+			// 设置头衔颜色
+			if len(regist.Title.Css) <= 0 {
+				role.RoleTitleCss = "#000000"
+			} else {
+				role.RoleTitleCss = regist.Title.Css
+			}
+			// RoleTitleBack
+			if regist.Title.Background == 1 {
+				role.RoleTitleBack = true
+			} else {
+				role.RoleTitleBack = false
+			}
+			this.Data["json"] = &map[string]interface{}{
+				"RoleId":        role.RoleId,
+				"RoleName":      role.RoleName,
+				"RoleTitle":     role.RoleTitle,
+				"RoleTitleCss":  role.RoleTitleCss,
+				"RoleTitleBack": role.RoleTitleBack}
+			this.ServeJSON()
 			return
 		} else {
 			this.Rsp(false, "验证权限失败", "")
