@@ -68,7 +68,7 @@ func (this *ManagerController) GetUserLogin() {
 		_, count, err := m.GetRegistPermiss(roomId, Uname)
 		if count == 1 && err == nil {
 			// 更新时间
-			_, err := m.UpdateLoginTime()
+			_, err := m.UpdateLoginTime(roomId, Uname)
 			var info m.Regist
 			info.Room = roomId
 			info.Username = Uname
