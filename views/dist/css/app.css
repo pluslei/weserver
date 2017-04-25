@@ -246,6 +246,7 @@ input[type=submit] {
   border: 1px solid #09bb07;
   background-color: #09bb07;
   color: #fff;
+  white-space: nowrap;
 }
 .Editer {
   position: absolute;
@@ -271,6 +272,7 @@ input[type=submit] {
   width: 40px;
   display: inline-block;
   line-height: 30px;
+  cursor: pointer;
 }
 .Editer .editeText .theInput {
   position: absolute;
@@ -304,6 +306,7 @@ input[type=submit] {
   position: absolute;
   bottom: 7px;
   right: 6px;
+  cursor: pointer;
 }
 .Editer .editeText .add img {
   width: 100%;
@@ -313,6 +316,7 @@ input[type=submit] {
   position: absolute;
   bottom: 10px;
   right: 2px;
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -671,6 +675,7 @@ ol {
   border-radius: 5px;
   border: 1px solid #eee;
   margin: 0px 15px 10px;
+  cursor: pointer;
 }
 .allchannel .allchannelbox .singlechannel .iconbox {
   border: 1px solid #ccc;
@@ -687,7 +692,7 @@ ol {
   width: 100%;
   height: 100%;
   vertical-align: baseline;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .allchannel .allchannelbox .singlechannel .channelinfo {
   width: 70%;
@@ -1131,7 +1136,7 @@ body {
   background: #4082E6;
   position: absolute;
   right: 14%;
-  top: 39%;
+  top: 7px;
   visibility: hidden;
 }
 .orTip.show {
@@ -1731,7 +1736,7 @@ a {
 }
 .chatRoomInfo .RoomInfo_banner {
   width: 100%;
-  height: 180px;
+  height: 220px;
   overflow: hidden;
 }
 .chatRoomInfo .RoomInfo_banner img {
@@ -1740,7 +1745,7 @@ a {
 }
 .chatRoomInfo .roomTitle {
   width: 100%;
-  height: 100px;
+  height: auto;
   padding: 10px;
   background: #fff;
 }
@@ -1749,7 +1754,7 @@ a {
   font-weight: 600;
   color: #353535;
   background: #fff;
-  line-height: 25px;
+  line-height: 20px;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
@@ -1780,17 +1785,16 @@ a {
 }
 .chatRoomInfo .info .info_content {
   font-size: 14px;
-  color: #999;
+  color: #353535;
 }
 .chatRoomInfo .info .info_content p.welcome {
   padding: 0 10px;
-  line-height: 20px;
+  line-height: 10px;
   margin-bottom: 0;
 }
 .chatRoomInfo .info .info_content div {
   padding: 10px;
   line-height: 20px;
-  text-indent: 2em;
 }
 .chatRoomInfo .intoRoom {
   width: 100%;
@@ -1801,7 +1805,7 @@ a {
   letter-spacing: 1px;
   color: #fff;
   background: #09bb07;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
 }
 .actionTip {
@@ -1841,11 +1845,17 @@ a {
 .c_tip {
   height: 100px;
   font-size: 16px;
-  padding: 30px 10px;
+  padding: 25px 15px;
   text-align: center;
 }
 .popup_action {
   font-size: 14px;
+}
+.popup_action span {
+  cursor: pointer;
+}
+.popup_action span:first-of-type {
+  color: #888;
 }
 .popup_action span.ing {
   width: 100% !important;
