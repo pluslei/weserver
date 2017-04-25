@@ -2823,6 +2823,7 @@ var Editer = function (_React$Component) {
     value: function imgsmile() {
       var _this2 = this;
 
+      (0, _jquery2.default)('#msgcontent').blur();
       switch (this.state.imgsmile.issmileshow) {
         case 0:
           this.setState({
@@ -2927,6 +2928,7 @@ var Editer = function (_React$Component) {
   }, {
     key: 'textChange',
     value: function textChange() {
+      console.log('输入框');
       if (document.querySelector('#msgcontent') !== null) {
         var text = document.querySelector('#msgcontent');
         var editeText = document.querySelector('.editeText');
@@ -3047,6 +3049,11 @@ var Editer = function (_React$Component) {
               className: 'sendMessage',
               onTouchEnd: function onTouchEnd() {
                 _this3.sendmsgtosocket();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.sendmsgtosocket();
+                }
               }
             },
             _react2.default.createElement(
@@ -3063,6 +3070,11 @@ var Editer = function (_React$Component) {
               className: 'add',
               onTouchEnd: function onTouchEnd() {
                 _this3.imgrtouch();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.imgrtouch();
+                }
               }
             },
             _react2.default.createElement('img', {
@@ -3102,6 +3114,11 @@ var Editer = function (_React$Component) {
               className: 'smile',
               onTouchEnd: function onTouchEnd() {
                 _this3.imgsmile();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.imgsmile();
+                }
               }
             },
             imgsmile
@@ -3467,7 +3484,7 @@ var AllChannel = function (_React$Component) {
 
     _this.state = {
       channelcontent: [],
-      channelbanner: ['i/allchannel/banner01.png'],
+      channelbanner: ['i/allchannel/banner1.png'],
       roomCount: '',
       touch: {
         startY: 0,
@@ -3517,6 +3534,13 @@ var AllChannel = function (_React$Component) {
           onTouchEnd: function onTouchEnd() {
             if (_this2.state.slide === 0) {
               _this2.props.callbackchannel(item);
+              console.log('这是yi动端');
+            }
+          },
+          onClick: function onClick() {
+            if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+              _this2.props.callbackchannel(item);
+              console.log('这是pc端');
             }
           }
         },
@@ -3536,7 +3560,7 @@ var AllChannel = function (_React$Component) {
           _react2.default.createElement(
             'span',
             { className: 'teacher' },
-            item.Title
+            item.RoomIntro
           )
         ),
         _react2.default.createElement(
@@ -3711,7 +3735,9 @@ var CertifiedTip = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              '\u60A8\u672A\u83B7\u5F97\u8FDB\u5165\u8D44\u683C\uFF0C\u662F\u5426\u7ACB\u5373\u7533\u8BF7\u52A0\u5165?'
+              '\u60A8\u5C1A\u672A\u83B7\u5F97\u6388\u6743',
+              _react2.default.createElement('br', null),
+              '\u662F\u5426\u7ACB\u5373\u7533\u8BF7?'
             )
           ),
           _react2.default.createElement(
@@ -3723,6 +3749,11 @@ var CertifiedTip = function (_React$Component) {
                 className: 'cancel',
                 onTouchEnd: function onTouchEnd() {
                   _this2.cancel();
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    _this2.cancel();
+                  }
                 }
               },
               '\u7A0D\u540E\u518D\u8BF4'
@@ -3733,6 +3764,11 @@ var CertifiedTip = function (_React$Component) {
                 className: 'confirm',
                 onTouchEnd: function onTouchEnd() {
                   _this2.goApply();
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    _this2.goApply();
+                  }
                 }
               },
               '\u7ACB\u5373\u7533\u8BF7'
@@ -3749,7 +3785,7 @@ var CertifiedTip = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              '\u60A8\u7684\u7533\u8BF7\u5DF2\u88AB\u53D7\u7406\uFF0C\u8BF7\u8010\u5FC3\u7B49\u5F85'
+              '\u60A8\u7684\u7533\u8BF7\u5DF2\u88AB\u53D7\u7406\uFF0C\u8BF7\u8010\u5FC3\u7B49\u5F85\u5BA1\u6838\u7ED3\u679C'
             )
           ),
           _react2.default.createElement(
@@ -3760,6 +3796,11 @@ var CertifiedTip = function (_React$Component) {
               {
                 onTouchEnd: function onTouchEnd() {
                   _this2.cancel();
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    _this2.cancel();
+                  }
                 },
                 className: 'ing'
               },
@@ -4187,6 +4228,7 @@ var ChatRoomInfo = function (_React$Component) {
     };
     _this.state.chatRoomInfo = data;
     // this.getchatRoomInfo = this.getchatRoomInfo.bind(this);
+    _this.setStyleHeigt = _this.setStyleHeigt.bind(_this);
     return _this;
   }
 
@@ -4194,6 +4236,7 @@ var ChatRoomInfo = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       // this.getCertifiedinfo('/chat/user/login');
+      this.setStyleHeigt();
     }
   }, {
     key: 'componentDidUpdate',
@@ -4237,6 +4280,18 @@ var ChatRoomInfo = function (_React$Component) {
           _this2.intoRoom();
         }
       });
+    }
+  }, {
+    key: 'setStyleHeigt',
+    value: function setStyleHeigt() {
+      var roomTitle = document.querySelector('.roomTitle').offsetHeight;
+      var info = document.querySelector('.info');
+      var height = 'calc(100% - 220px - ';
+      height += roomTitle + 'px';
+      height += ' - 45px';
+      height += ' - 20px)';
+      info.style.height = height;
+      console.log(height);
     }
   }, {
     key: 'handleSelect',
@@ -4303,7 +4358,7 @@ var ChatRoomInfo = function (_React$Component) {
         roomTitle,
         _react2.default.createElement(
           'div',
-          { className: 'info', style: { height: 'calc(100% - 300px - 45px)' } },
+          { className: 'info' },
           _react2.default.createElement(
             'div',
             { className: 'info_title' },
@@ -4333,6 +4388,11 @@ var ChatRoomInfo = function (_React$Component) {
             className: 'intoRoom',
             onTouchEnd: function onTouchEnd() {
               _this3.getCertifiedinfo('/chat/user/login');
+            },
+            onClick: function onClick() {
+              if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                _this3.getCertifiedinfo('/chat/user/login');
+              }
             }
           },
           '\u8FDB\u5165\u804A\u5929\u5BA4'
@@ -4828,7 +4888,7 @@ var NoticeList = function (_React$Component) {
       setTimeout(function () {
         _this2.showdelete();
       }, 500);
-      // this.getNoticeInfo(10, '/chat/user/noticelist');
+      this.getNoticeInfo(10, '/chat/user/noticelist');
     }
   }, {
     key: 'componentDidUpdate',
@@ -4838,7 +4898,6 @@ var NoticeList = function (_React$Component) {
     value: function getNoticeInfo(eachcount, route) {
       var _this3 = this;
 
-      console.log(eachcount, 'ddddddddddd');
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
       this.serverRequest = _jquery2.default.ajax({
         url: route,
@@ -5071,8 +5130,8 @@ var NoticeList = function (_React$Component) {
                 if (x - X > 10) {
                   event.preventDefault();
                   // container[i].className = 'textbox swipeleft';
-                  container[i].style.left = '-' + 68 + 'px';
-                  // expansion = this;
+                  (0, _jquery2.default)('.list .textbox').css('left', '0px');
+                  container[i].style.left = '-68px';
                 }
                 swipeY = false;
               }
@@ -5271,7 +5330,7 @@ var Strategy = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       window.addEventListener('touchend', this.clearOpera, false);
-      // this.getStrategy(10, '/chat/user/strategyList');
+      this.getStrategy(10, '/chat/user/strategyList');
     }
   }, {
     key: 'componentDidUpdate',
@@ -6156,6 +6215,11 @@ var Title = function (_React$Component) {
           key: index,
           onTouchEnd: function onTouchEnd() {
             _this2.props.callbackcreatetab(index);
+          },
+          onClick: function onClick() {
+            if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+              _this2.props.callbackcreatetab(index);
+            }
           }
         },
         text,

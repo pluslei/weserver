@@ -87,7 +87,7 @@ func (m *MQ) goHmacSHA1(id, key string) string {
 	newkey := []byte(key)
 	mac := hmac.New(sha1.New, newkey)
 	mac.Write([]byte(id))
-	return fmt.Sprintf("%x", mac.Sum(nil))
+	return fmt.Sprintf("%s", mac.Sum(nil))
 }
 
 // 连接并订阅消息

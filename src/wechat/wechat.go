@@ -50,9 +50,7 @@ func Start(p *Config) *Wechat {
 }
 
 func (w *Wechat) Work() {
-	Lock.Lock()
 	go w.getAccessToken()
-	Lock.Unlock()
 	time.Sleep(time.Second * 1)
 	go w.send()
 
@@ -76,6 +74,7 @@ func (w *Wechat) getAccessToken() (string, float64, error) {
 		}
 		beego.Debug(string(body))
 
+		Lock.Lock()
 		if bytes.Contains(body, []byte("access_token")) {
 			beego.Debug("Request ok!!!!!!!")
 			err = json.Unmarshal(body, w)
@@ -90,6 +89,7 @@ func (w *Wechat) getAccessToken() (string, float64, error) {
 				return "", 0.0, err
 			}
 		}
+		Lock.Unlock()
 		beego.Debug(w.AccessToken, w.ExpiresIn, w.TextUrl)
 		<-t.C
 	}

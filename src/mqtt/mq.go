@@ -1,6 +1,9 @@
 package mqtt
 
 import (
+	"crypto/hmac"
+	"crypto/sha1"
+	"encoding/base64"
 	m "weserver/models"
 
 	"github.com/astaxie/beego"
@@ -11,6 +14,7 @@ type Configer struct {
 	MqUserName       string
 	MqPwd            string
 	MqClientID       string
+	MqGroupID        string
 	MqIsreconnect    bool //是否重连
 	MqIsCleansession bool
 	MqVersion        int
@@ -23,16 +27,27 @@ var mq *MQ
 var Config *Configer
 var MapShutUp map[string][]string
 
+//get pwd
+func getSecretKey(secretkey, groupId string) string {
+	key := []byte(secretkey)
+	mac := hmac.New(sha1.New, key)
+	mac.Write([]byte(groupId))
+	return base64.StdEncoding.EncodeToString(mac.Sum(nil))
+}
+
 func GetMqttConfig() *Configer {
 	var conf Configer
 	conf.MqAddress = beego.AppConfig.String("mqServerHost")
 	conf.MqUserName = beego.AppConfig.String("mqServerAccess")
-	conf.MqPwd = beego.AppConfig.String("mqServerKey")
 	conf.MqClientID = beego.AppConfig.String("mqServerClientId")
 	conf.MqIsreconnect, _ = beego.AppConfig.Bool("mqServerIsreconnect")
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqSeverCleanSession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqServerVersion")
 	conf.MqTopic = beego.AppConfig.String("mqServerTopic")
+	conf.MqPwd = beego.AppConfig.String("mqServerKey")
+	key := beego.AppConfig.String("mqServerKey")
+	groupId := beego.AppConfig.String("mqServerGroupId")
+	conf.MqPwd = getSecretKey(key, groupId)
 	/*
 		// 多级订阅
 			room, count, err := m.GetRoomName()

@@ -13188,3 +13188,79 @@
 2017/04/23 18:28:22 [D] [mqttController.go:138] chat list  10 Topic_ChatMessage/sub1 
 2017/04/23 18:28:22 [D] [mqttController.go:174] mod -6 
 2017/04/23 18:28:22 [I] [indexController.go:275] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=75T-kf5l6eRZZCohvoZQnllpn8yV2XteVOR0mrU7T7Ot9jwG0L-uBC7zhtQ-8hF_IG08V9SOsjrIxqIExFfyBFeHTYS33RkZesBeZivrs5mTVy3mT5YSyIBA_zpQiI6bEUUbAEAUKK&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/25 09:59:24 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/25 09:59:24 [I] [Connect.go:19] 数据库连接成功 
+2017/04/25 09:59:24 [D] [mq.go:83] map[] 
+2017/04/25 09:59:25 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/25 09:59:25 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042440de0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/25 09:59:25 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/25 09:59:25 [I] [mqtt.go:58] mqtt running OK  
+2017/04/25 09:59:25 [D] [mq.go:92] MQTT Client Init OK. 
+2017/04/25 09:59:25 [D] [chat.go:56] map[Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv5CD3cXPY-6QlywVGqBTz-w oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub4:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/25 09:59:25 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/25 09:59:25 [D] [wechat.go:75] {"access_token":"3uUFddP8zXVExIpZwRjWHv5gJ6KIb5rhPJ8TTzhy4REz2BhruDniH7conH-NOVKhjr9KTGxrzUSkSavCm_2fcMJqnw5Avv4i7N53-zmDWPKWkH32bvalcz3v_P_SKn_BUPPiAFAZUU","expires_in":7200} 
+2017/04/25 09:59:25 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/25 09:59:25 [D] [wechat.go:93] 3uUFddP8zXVExIpZwRjWHv5gJ6KIb5rhPJ8TTzhy4REz2BhruDniH7conH-NOVKhjr9KTGxrzUSkSavCm_2fcMJqnw5Avv4i7N53-zmDWPKWkH32bvalcz3v_P_SKn_BUPPiAFAZUU 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=3uUFddP8zXVExIpZwRjWHv5gJ6KIb5rhPJ8TTzhy4REz2BhruDniH7conH-NOVKhjr9KTGxrzUSkSavCm_2fcMJqnw5Avv4i7N53-zmDWPKWkH32bvalcz3v_P_SKn_BUPPiAFAZUU 
+2017/04/25 09:59:26 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/25 09:59:26 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/25 10:02:06 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/25 10:02:06 [I] [Connect.go:19] 数据库连接成功 
+2017/04/25 10:02:06 [D] [mq.go:83] map[] 
+2017/04/25 10:02:06 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/25 10:02:06 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04244ac60 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/25 10:02:06 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/25 10:02:06 [I] [mqtt.go:58] mqtt running OK  
+2017/04/25 10:02:06 [D] [mq.go:92] MQTT Client Init OK. 
+2017/04/25 10:02:06 [D] [chat.go:56] map[Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv5CD3cXPY-6QlywVGqBTz-w oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub4:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/25 10:02:06 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/25 10:02:06 [D] [wechat.go:75] {"access_token":"CQwLiLj5S4zj1dQrEKvuLYbT36z_1n2b4HbqGhjJHSC264qm94BOJFPmUsCBKmWVA_acTo4ZP34CsZebabPF-oV7ceEsaIMXBLm34OyxiBcOi7Rsx3eNPZkuRbkowdMHPLNhAEAEAC","expires_in":7200} 
+2017/04/25 10:02:06 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/25 10:02:06 [D] [wechat.go:93] CQwLiLj5S4zj1dQrEKvuLYbT36z_1n2b4HbqGhjJHSC264qm94BOJFPmUsCBKmWVA_acTo4ZP34CsZebabPF-oV7ceEsaIMXBLm34OyxiBcOi7Rsx3eNPZkuRbkowdMHPLNhAEAEAC 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=CQwLiLj5S4zj1dQrEKvuLYbT36z_1n2b4HbqGhjJHSC264qm94BOJFPmUsCBKmWVA_acTo4ZP34CsZebabPF-oV7ceEsaIMXBLm34OyxiBcOi7Rsx3eNPZkuRbkowdMHPLNhAEAEAC 
+2017/04/25 10:02:07 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/25 10:02:07 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/25 10:41:32 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/25 10:41:32 [I] [Connect.go:19] 数据库连接成功 
+2017/04/25 10:41:32 [D] [mq.go:83] map[] 
+2017/04/25 10:41:33 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/25 10:41:33 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042424420 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/25 10:41:33 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/25 10:41:33 [I] [mqtt.go:58] mqtt running OK  
+2017/04/25 10:41:33 [D] [mq.go:92] MQTT Client Init OK. 
+2017/04/25 10:41:33 [D] [chat.go:56] map[Topic_ChatMessage/sub4:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv5CD3cXPY-6QlywVGqBTz-w oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/25 10:41:33 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/25 10:41:33 [D] [wechat.go:75] {"access_token":"LhdsEG22UyNVlz7eSKARiKMKVDcHdz8i7FasuLS1E0OV6q-ulh29PHMSH8W-c6yLCEnZGI4u2nNZ8o2F1KfeghiyLsdy4o4m7l_jrqfKT8c9cZSfiNW_eiSGVhBEvuXSYGUhAHAGOC","expires_in":7200} 
+2017/04/25 10:41:33 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/25 10:41:33 [D] [wechat.go:93] LhdsEG22UyNVlz7eSKARiKMKVDcHdz8i7FasuLS1E0OV6q-ulh29PHMSH8W-c6yLCEnZGI4u2nNZ8o2F1KfeghiyLsdy4o4m7l_jrqfKT8c9cZSfiNW_eiSGVhBEvuXSYGUhAHAGOC 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=LhdsEG22UyNVlz7eSKARiKMKVDcHdz8i7FasuLS1E0OV6q-ulh29PHMSH8W-c6yLCEnZGI4u2nNZ8o2F1KfeghiyLsdy4o4m7l_jrqfKT8c9cZSfiNW_eiSGVhBEvuXSYGUhAHAGOC 
+2017/04/25 10:41:34 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/25 10:41:34 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/25 10:42:50 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/25 10:42:50 [I] [Connect.go:19] 数据库连接成功 
+2017/04/25 10:42:50 [D] [mq.go:83] map[] 
+2017/04/25 10:42:50 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/25 10:42:50 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0420389c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/25 10:42:50 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/25 10:42:50 [I] [mqtt.go:58] mqtt running OK  
+2017/04/25 10:42:50 [D] [mq.go:92] MQTT Client Init OK. 
+2017/04/25 10:42:50 [D] [chat.go:56] map[Topic_ChatMessage/sub2:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv5CD3cXPY-6QlywVGqBTz-w oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub4:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/25 10:42:50 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/25 10:42:51 [D] [wechat.go:75] {"access_token":"KC5nwbJ4wWQcvUHq0_GI8HYlQzigs2pLOjyBp2d_-7j54KKRXmJA5E6I17UJW-I2a2u61u1mNhvWNaooJFrKee-kipG5mY8jJs75zIxAiGzRss67-h_g7xgli6VPpW8GFYAfADALEG","expires_in":7200} 
+2017/04/25 10:42:51 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/25 10:42:51 [D] [wechat.go:93] KC5nwbJ4wWQcvUHq0_GI8HYlQzigs2pLOjyBp2d_-7j54KKRXmJA5E6I17UJW-I2a2u61u1mNhvWNaooJFrKee-kipG5mY8jJs75zIxAiGzRss67-h_g7xgli6VPpW8GFYAfADALEG 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=KC5nwbJ4wWQcvUHq0_GI8HYlQzigs2pLOjyBp2d_-7j54KKRXmJA5E6I17UJW-I2a2u61u1mNhvWNaooJFrKee-kipG5mY8jJs75zIxAiGzRss67-h_g7xgli6VPpW8GFYAfADALEG 
+2017/04/25 10:42:51 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/25 10:42:51 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/25 15:57:11 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/25 15:57:11 [I] [Connect.go:19] 数据库连接成功 
+2017/04/25 15:57:11 [D] [mq.go:101] map[] 
+2017/04/25 15:57:11 [D] [mq.go:53] pwdaaaaaaaaaaaaaa FnB/B6vHvk3ozjJ6KqWnIcnIcdA= 
+2017/04/25 15:57:11 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/25 15:57:11 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042429680 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/25 15:57:11 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/25 15:57:11 [I] [mqtt.go:58] mqtt running OK  
+2017/04/25 15:57:11 [D] [mq.go:110] MQTT Client Init OK. 
+2017/04/25 15:57:11 [D] [chat.go:56] map[Topic_ChatMessage/sub3:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub4:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc] Topic_ChatMessage/sub1:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/25 15:57:11 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/25 15:57:11 [D] [wechat.go:75] {"access_token":"wPUe65h2jk5Hk9uz4NfHXcuPcq68JGszRKpMow5uCwHLbc-Ca9DHH64h-_bNDZgKyR-mqmoMBkVTl4lsqr4fk88rmufTT7A4Ma_woI8YN2-cyQNF9WCKSGxf89ANB4ACNCZjAGAAPM","expires_in":7200} 
+2017/04/25 15:57:11 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/25 15:57:11 [D] [wechat.go:93] wPUe65h2jk5Hk9uz4NfHXcuPcq68JGszRKpMow5uCwHLbc-Ca9DHH64h-_bNDZgKyR-mqmoMBkVTl4lsqr4fk88rmufTT7A4Ma_woI8YN2-cyQNF9WCKSGxf89ANB4ACNCZjAGAAPM 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=wPUe65h2jk5Hk9uz4NfHXcuPcq68JGszRKpMow5uCwHLbc-Ca9DHH64h-_bNDZgKyR-mqmoMBkVTl4lsqr4fk88rmufTT7A4Ma_woI8YN2-cyQNF9WCKSGxf89ANB4ACNCZjAGAAPM 
+2017/04/25 15:57:12 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/25 15:57:12 [I] [asm_amd64.s:2086] http server Running on http://:80
