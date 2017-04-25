@@ -69,6 +69,9 @@ func (this *ManagerController) GetUserLogin() {
 		if count == 1 && err == nil {
 			// 更新时间
 			_, err := m.UpdateLoginTime(roomId, Uname)
+			if err != nil {
+				beego.Debug("UpdateLogin time error", err)
+			}
 			var info m.Regist
 			info.Room = roomId
 			info.Username = Uname

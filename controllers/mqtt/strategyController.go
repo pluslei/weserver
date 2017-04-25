@@ -54,6 +54,7 @@ func (this *StrategyController) GetStrategyInfo() {
 func (this *StrategyController) GetUnameMapInfo() {
 	if this.IsAjax() {
 		wechat.GetUnameMapInfo()
+		beego.Debug("Uname Map", wechat.MapUname)
 	}
 	this.Ctx.WriteString("")
 }
