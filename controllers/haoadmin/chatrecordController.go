@@ -108,8 +108,8 @@ func (this *ChatRecordController) DelRecord() {
 
 	if DelMsg(topic, uuid) {
 		m.DelChatById(uuid)
-		this.Rsp(true, "审核成功", "")
+		this.Rsp(true, "删除成功", "")
 		return
 	}
-	this.Rsp(false, "审核失败", "")
+	this.Rsp(false, "删除失败", "")
 }
