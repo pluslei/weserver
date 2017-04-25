@@ -133,3 +133,10 @@ func GetRoomInfo() ([]RoomInfo, int64, error) {
 	beego.Debug("num", num)
 	return info, num, err
 }
+
+// 获取房间信息
+func GetRoomInfoByRoomID(RoomId string) (info RoomInfo, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable("roominfo").Filter("RoomId", RoomId).All(&info)
+	return info, err
+}

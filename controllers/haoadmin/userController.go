@@ -27,9 +27,9 @@ func (this *UserController) Index() {
 			beego.Error(err)
 		}
 		nickname := this.GetString("sSearch_0")
-		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname)
+		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname)
 		for _, item := range userlist {
-			item["Createtime"] = item["Createtime"].(time.Time).Format("2006-01-02 15:04:05")
+			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
 
 			if item["Title"] == 0 {
 				item["Titlename"] = "未知头衔"
@@ -42,6 +42,13 @@ func (this *UserController) Index() {
 					item["Titlename"] = titleinfo.Name
 				}
 			}
+			roomInfo, err := m.GetRoomInfoByRoomID(item["Room"].(string))
+			if err != nil {
+				item["RoomName"] = "未知房间"
+			} else {
+				item["RoomName"] = roomInfo.RoomTitle
+			}
+
 		}
 
 		// json
@@ -62,7 +69,7 @@ func (this *UserController) Index() {
 		roles, _ := m.GetAllUserRole()
 		this.Data["roles"] = roles
 		this.Data["codeid"] = codeid
-		this.TplName = "haoadmin/rbac/user/list.html"
+		this.TplName = "haoadmin/rbac/user/reglist.html"
 	}
 }
 
@@ -268,10 +275,7 @@ func (this *UserController) SetUserTitle() {
 		beego.Error(err)
 	}
 
-	userUser := new(m.User)
-	userUser.Id = id
-	userUser.Title = &m.Title{Id: value}
-	err = userUser.UpdateUserFields("Title")
+	_, err = m.UpdateWechatUserTitle(id, value)
 	if err != nil {
 		beego.Error(err.Error())
 		this.Rsp(false, "更新失败", "")
@@ -374,34 +378,14 @@ func (this *UserController) Onlineuser() {
 
 // 用户审核
 func (this *UserController) UpdateRegStatus() {
-	Id, _ := this.GetInt64("Id")
-	u := new(m.User)
-	u.Id = Id
-	u.RegStatus = 2
-	err := u.UpdateUserFields("RegStatus")
+	id, _ := this.GetInt64("id")
+	status, _ := this.GetInt("status")
+	_, err := m.UpdateWechtUserStatus(id, status)
 	if err != nil {
-		beego.Error(err)
-		this.Rsp(false, "审核失败", "")
-		return
-	} else {
-		this.Rsp(true, "审核成功", "")
-	}
-}
-
-// 用户状态
-func (this *UserController) UpdateUserStatus() {
-	userid, _ := this.GetInt64("Id")
-	usr := new(m.User)
-	usr.Id = userid
-	user, err := m.ReadFieldUser(usr, "Id")
-	if err != nil {
+		beego.Debug("udpate status error", err, "id=", id, "status=", status)
 		this.Rsp(false, "状态改变失败", "")
 	} else {
-		if this.changeuserstatus(user) {
-			this.Rsp(true, "修改成功", "")
-		} else {
-			this.Rsp(false, "修改失败", "")
-		}
+		this.Rsp(true, "修改成功", "")
 	}
 }
 

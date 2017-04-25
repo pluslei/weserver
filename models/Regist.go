@@ -22,6 +22,8 @@ type Regist struct {
 	IsShutup      bool      //是否禁言
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
+
+	RoomName string `orm:"-"` //房间名字
 }
 
 func init() {
@@ -116,4 +118,30 @@ func GetWechatUser(nDay int64) (users []Regist, err error) {
 	nowtime := time.Now().Unix() - nDay*24*60*60
 	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("Username", "").Exclude("Room", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
+}
+
+//get user list
+func GetWechatUserList(page int64, page_size int64, sort, nickname string) (users []orm.Params, count int64) {
+	o := orm.NewOrm()
+	user := new(Regist)
+	qs := o.QueryTable(user).Exclude("Username", "admin")
+	qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
+	count, _ = qs.Count()
+	return users, count
+}
+
+// 更新用户进入房间状态
+func UpdateWechtUserStatus(id int64, status int) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable("regist").Filter("Id", id).Update(orm.Params{
+		"RegStatus": status,
+	})
+}
+
+// 更新用户头衔
+func UpdateWechatUserTitle(id int64, titleid int64) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable("regist").Filter("Id", id).Update(orm.Params{
+		"title_id": titleid,
+	})
 }
