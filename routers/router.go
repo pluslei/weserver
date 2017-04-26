@@ -109,6 +109,8 @@ func Router() {
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
 	beego.Router("/weserver/data/sendbroadhandle", &haoadmin.QsController{}, "*:SendBroadHandle")
 
+	beego.Router("/weserver/data/room_index", &haoadmin.RoomController{}, "*:Index")
+
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
 	// beego.Router("/test/postapi", &haoadmin.TestController{}, "*:PostApi")
