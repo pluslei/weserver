@@ -150,6 +150,22 @@ func (this *ManagerController) GetUserApply() {
 	this.Ctx.WriteString("")
 }
 
+// 审核状态修改
+func (this *ManagerController) UpdateUserStatus() {
+	Id, _ := this.GetInt64("Id")
+	u := new(m.User)
+	u.Id = Id
+	u.RegStatus = 2
+	err := u.UpdateUserFields("RegStatus")
+	if err != nil {
+		beego.Error(err)
+		this.Rsp(false, "审核失败", "")
+		return
+	} else {
+		this.Rsp(true, "审核成功", "")
+	}
+}
+
 //踢人
 func (this *ManagerController) GetKickOutInfo() {
 	if this.IsAjax() {

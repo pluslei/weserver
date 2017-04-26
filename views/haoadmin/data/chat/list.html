@@ -74,6 +74,7 @@
         <div class="am-modal-hd"><h4>消息删除</h4></div>
         <div class="am-modal-bd" style="border-bottom: none; font-size: 16px;">
             <input value="" type="hidden" class="data-modal-del">
+            <input value="" type="hidden" class="data-modal-topic">
             你确定要删除这条记录吗？
         </div>
         <div class="am-modal-footer">
@@ -215,7 +216,7 @@
                 },
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html(action(sData,oData.Status,oData.Uuid));
+                        $(nTd).html(action(sData,oData.Status,oData.Uuid,oData.Room));
                     }
                 },
             ],
@@ -256,9 +257,10 @@
         });
     }
     // 删除模态层
-    function deleteFun(delid){
+    function deleteFun(delid,room){
         $('#del-confirm').modal()
         $(".data-modal-del").val(delid);
+        $(".data-modal-topic").val(room);
     }
 
     // 模态退出
@@ -323,8 +325,8 @@
     }
 
     // (操作)
-    function action(id,status,uuid) {
-        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+","+status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(`" + uuid + "`);'><span class='am-icon-trash-o'></span> 删除</a></div>";
+    function action(id,status,uuid,room) {
+        return "<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='审核通过' onclick='javascript:autdiomsg("+id+","+status+")'><span class='am-icon-pencil-square-o'></span> 通过</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(`" + uuid + "`,`"+ room +"`);'><span class='am-icon-trash-o'></span> 删除</a></div>";
     }
 
     // 播放语音
@@ -376,6 +378,7 @@
     // 删除方法
     function deleteModel(){
         var uuid = $(".data-modal-del").val();
+        var room = $(".data-modal-topic").val();
         //添加topic 传送topic到后台
         $.ajax({
             url: '/weserver/data/delrecord',

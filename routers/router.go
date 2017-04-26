@@ -59,7 +59,6 @@ func Router() {
 	beego.Router("/weserver/user/setusertitle", &haoadmin.UserController{}, "*:SetUserTitle")
 	beego.Router("/weserver/user/usertotitle", &haoadmin.UserController{}, "*:UserToTitle")
 	beego.Router("/weserver/user/regstatus", &haoadmin.UserController{}, "*:UpdateRegStatus")
-	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateUserStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
 	//解除禁言
