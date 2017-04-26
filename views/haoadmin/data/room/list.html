@@ -16,13 +16,14 @@
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
                 <thead>
                     <tr>
-                        <th>房间号</th>
-                        <th>房间别名</th>
-                        <th>推流地址</th>
-                        <th>流名称</th>
-                        <th>活动ID</th>
-                        <th>房间状态</th>
+                        <th>房间名</th>
+                        <th>房间讲师</th>
+                        <th>房间人数</th>
+                        <th>房间图标</th>
+                        <th>房间介绍</th>
                         <th>房间备注</th>
+                        <th>房间Banner</th>
+                        <th>标题</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -58,27 +59,16 @@
                 [10, 15, 20, 50, "All"]
             ],
             "bServerSide": true,
-            "bSort": false,
-            "aoColumns": [  
-                {"mDataProp": "RommNumber",},
-                {"mDataProp": "Nickname",},
-                {"mDataProp": "Rtmpurl",},
-                {"mDataProp": "Streams",},
-                {"mDataProp": "ActivityId",},
-                {"mDataProp": "RoomStatus",
-                    "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
-                        if (sData == 1) {
-                            $(nTd).html("<span class='am-alert am-alert-success'>直播中</span>");
-                        } else {
-                            $(nTd).html("<span class='am-alert am-alert-danger'>休息中</span>");
-                        }
-                    }
-                },
-                {"mDataProp": "RoomDescription",},
+            "bSort": false,  
+                {"mDataProp": "RoomTitle",},
+                {"mDataProp": "RoomTeacher",},
+                {"mDataProp": "RoomNum",},
+                {"mDataProp": "RoomIcon",},
+                {"mDataProp": "RoomIntro",},
+                {"mDataProp": "RoomBanner",},
+                {"mDataProp": "Title",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        // $(nTd).html("<a title='房间编辑' href='javascript:updateRoom("+sData+");'><span class='am-icon-pencil'></span></a>&nbsp;&nbsp;");
-
                          $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='房间编辑' href='javascript:updateRoom("+sData+");'><span class='am-icon-pencil-square-o'></span> 编辑</a></div>");
                     }
                 }
