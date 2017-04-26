@@ -94,6 +94,14 @@ func DelRoomById(roomid string) (int64, error) {
 	return status, err
 }
 
+// 根据id 删除某个聊天室
+func DelRoomInfoId(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var chat RoomInfo
+	status, err := o.QueryTable(chat).Filter("Id", id).Delete()
+	return status, err
+}
+
 //事务添加多个聊天室
 func AddMulRoom(room []RoomInfo, length int) error {
 	model := orm.NewOrm()
@@ -139,4 +147,41 @@ func GetRoomInfoByRoomID(RoomId string) (info RoomInfo, err error) {
 	o := orm.NewOrm()
 	_, err = o.QueryTable("roominfo").Filter("RoomId", RoomId).All(&info)
 	return info, err
+}
+
+// 判断是否存在
+func IsRoomInfo(roomid string) bool {
+	o := orm.NewOrm()
+	return o.QueryTable("roominfo").Filter("RoomId", roomid).Exist()
+}
+
+// 获取房间信息
+func GetRoomInfoById(id int64) (info RoomInfo, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable("roominfo").Filter("Id", id).Limit(1).One(&info)
+	return info, err
+}
+
+// 获取消息列表
+func GetRoomInfoList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
+	o := orm.NewOrm()
+	roominfo := new(RoomInfo)
+	query := o.QueryTable(roominfo)
+	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	count, _ = query.Count()
+	return ms, count
+}
+
+// 获取房间信息
+func GetRoomInfoOne() (info RoomInfo, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable("roominfo").Limit(1).One(&info)
+	return info, err
+}
+
+// 更新房间信息
+func UpdateRoomInfo(id int64, roominfo orm.Params) (int64, error) {
+	beego.Debug("roominfo", roominfo, id)
+	o := orm.NewOrm()
+	return o.QueryTable("roominfo").Filter("Id", id).Update(roominfo)
 }

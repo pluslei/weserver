@@ -1,0 +1,142 @@
+<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#FileName').uploadify({
+        'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+        'uploader' : '/weserver/data/upload',//后台处理程序的相对路径
+        'floder': '/upload/teachbanner',          
+        'fileSizeLimit': '120KB',
+        'queueID': 'fileQueue',
+        'queueSizeLimit': 999999999,
+        'uploadLimit': 999999999,
+        //'progressData': 'speed',
+        'auto': true,
+        'multi': false,
+        'buttonClass' : 'some-class',//自定义的样式类名
+        //'queueID'  : 'some_file_queue',
+        //'buttonCursor' : 'arrow',
+        //'buttonText': '上传图片',
+        'buttonTitle': '提示文字',
+        'buttonImage':'/static/images/i/img/upload_file.png',
+        'requeueErrors' : true,
+        'debug': false,
+        'height'   : 28, // The height of the flash button
+        'width'    : 155, // The width of the flash button
+        'itemTemplate':false,
+        'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+        'fileTypeExts': '*.bmp;*.jpg;.jpeg;*.png;*.gif',//设置允许上传的文件扩展名（也就是文件类型）。但手动键入文件名可以绕过这种级别的安全检查，所以你应该始终在服务端中检查文件类型。输入多个扩展名时用分号隔开('*.*;*.jpg;*.png;*.gif')
+        'fileTypeDesc': '文件格式',//可选文件的描述。这个值出现在文件浏览窗口中的文件类型下拉选项中。（但我设置了好像没效果？原文：The description of the selectable files.  This string appears in the browse files dialog box in the file type drop down.）
+        'fileObjName':'Filedata', //设置后台的文件名
+        'method'   : 'post',
+        'formData': {"uploadtype":"roomico"},
+        'onUploadSuccess': function(file,data,response){
+          if(data!=null){
+            data = jQuery.parseJSON(data);
+            if(data.status){
+              $("input[name=FileNameFile]").val(data.url);
+              $("#preview").attr("src",data.url);
+            }
+          }
+        },
+        'onSelectError':function(file,data,response){
+          if(data!=null){
+            data = jQuery.parseJSON(data);
+            if(data.status){
+              var str = data.url;
+              switch(errorCode) {
+                case -110:
+                    alert("文件 ["+str+"] 大小超出系统限制的" + jQuery('#Img').uploadify('settings', 'fileSizeLimit') + "大小！");
+                    break;
+                case -120:
+                    alert("文件 ["+str+"] 大小异常！");
+                    break;
+                case -130:
+                    alert("文件 ["+str+"] 类型不正确！");
+                    break;
+              }
+            }
+          }
+        },
+    });
+  });
+</script>
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/qs_index">问答管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加问答</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="/weserver/data/strategy_add" id="qsform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" name="action" value="add">
+        <div class="am-form-group">
+          <label for="doc-select-1">请选择房间</label>
+          <select id="doc-select-2" name="Room"  required data-validation-message="请选择房间">
+            <option value="">-=请选择房间=-</option>
+            {{range $index,$ele := .roonInfo}}
+            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <div class="am-form-group">
+          <label for="doc-ta-1">策略内容：</label>
+          <textarea class="" name="Data" rows="5" id="doc-ta-1"></textarea>
+        </div>
+        <div class="am-form-group">
+            <label for="doc-vld-Title-2">策略图片(请上传jpg,png文件)：</label>
+            <input type="file" name="FileName" id="FileName" multiple="true" />
+            <input type="hidden" name="FileNameFile" id="FileNameFile" multiple="true" /> 
+        </div>
+        <div class="am-form-group" >
+            <img id="preview" src="" style="width:375px;height:100px;border: 0px;soild:#FFFFFF; " />
+        </div>
+
+        <label for="doc-select-1">是否置顶  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
+        <div class="am-form-group">
+          <label class="am-radio-inline">
+            <input type="radio"  value="1" name="Top"> 置顶
+          </label>
+          <label class="am-radio-inline">
+            <input type="radio" value="0" name="Top" checked> 普通
+          </label>
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">点赞数量：</label>
+          <input type="number" name="ThumbNum" id="doc-vld-Title-2" placeholder="输入点赞数量" data-validation-message="输入点赞数量"/>
+        </div>
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('#qsform').validator({
+    onValid: function(validity) {
+      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+    },
+
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.am-form-group');
+      var $alert = $group.find('.am-alert');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+      if (!$alert.length) {
+        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+          appendTo($group);
+      }
+
+      $alert.html(msg).show();
+    }
+  });
+});
+</script>

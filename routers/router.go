@@ -109,7 +109,18 @@ func Router() {
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
 	beego.Router("/weserver/data/sendbroadhandle", &haoadmin.QsController{}, "*:SendBroadHandle")
 
+	// 房间管理
 	beego.Router("/weserver/data/room_index", &haoadmin.RoomController{}, "*:Index")
+	beego.Router("/weserver/data/room_add", &haoadmin.RoomController{}, "*:Add")
+	beego.Router("/weserver/data/room_edit", &haoadmin.RoomController{}, "*:Edit")
+	beego.Router("/weserver/data/room_del", &haoadmin.RoomController{}, "*:Del")
+	beego.Router("/weserver/data/upload", &haoadmin.RoomController{}, "*:Upload")
+
+	// 策略管理
+	beego.Router("/weserver/data/strategy_index", &haoadmin.StrategyController{}, "*:Index")
+	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")
+	beego.Router("/weserver/data/strategy_add", &haoadmin.StrategyController{}, "*:Add")
+	beego.Router("/weserver/data/strategy_del", &haoadmin.StrategyController{}, "*:Del")
 
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
@@ -143,6 +154,7 @@ func Router() {
 	beego.Router("/chat/user/operatestrategy", &mqtt.StrategyController{}, "*:OperateStrategy")
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 	beego.Router("/chat/user/strategyMap", &mqtt.StrategyController{}, "*:GetUnameMapInfo")
+	beego.Router("/chat/user/upload", &mqtt.StrategyController{}, "*:Upload")
 
 	//登录
 	beego.Router("/chat/user/login", &mqtt.ManagerController{}, "*:GetUserLogin")

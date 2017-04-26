@@ -157,15 +157,11 @@ func (this *IndexController) Index() {
 
 		// 消息审核(0 开启 1 关闭(默认))
 		// 是否隶属公司内部角色[0、否 1、是]
-		beego.Debug("userload", userLoad.Role, sysconfig)
+		beego.Debug("userload", userLoad.Role.IsInsider, sysconfig, sysconfig.AuditMsg)
 		if sysconfig.AuditMsg == 1 {
 			user.IsFilter = false
 		} else {
-			if userLoad.Role.IsInsider == 1 {
-				user.IsFilter = false
-			} else {
-				user.IsFilter = true
-			}
+			user.IsFilter = true
 		}
 
 		// 设置头衔颜色
