@@ -141,44 +141,19 @@ func (this *UserController) AddUser() {
 func (this *UserController) UpdateUser() {
 	action := this.GetString("action")
 	if action == "edit" {
-		email := this.GetString("email")
-		phone, _ := this.GetInt64("phone")
-		nickname := this.GetString("nickname")
-		password := this.GetString("password")
-		remark := this.GetString("remark")
-		status, err := this.GetInt("status")
+		id, err := this.GetInt64("id")
 		if err != nil {
 			beego.Error(err)
+			return
 		}
+		role, _ := this.GetInt64("role")
+		title, _ := this.GetInt64("title")
 		regstatus, err := this.GetInt("regstatus")
 		if err != nil {
 			beego.Error(err)
 			return
 		}
-		id, err := this.GetInt64("id")
-		if err != nil {
-			beego.Error(err)
-		}
-		role, err := this.GetInt64("role")
-		if err != nil {
-			beego.Error(err)
-		}
-		u := new(m.User)
-		u.Id = id
-		u.Email = email
-		u.Phone = phone
-		u.Nickname = nickname
-		u.Password = password
-		u.Remark = remark
-		u.Status = status
-		u.RegStatus = regstatus
-		u.Role = &m.Role{Id: role}
-		if len(u.Password) > 0 {
-			u.Password = tools.EncodeUserPwd(u.Username, u.Password)
-			err = u.UpdateUserFields("Email", "Phone", "Nickname", "Password", "Remark", "Status", "RegStatus", "Role")
-		} else {
-			err = u.UpdateUserFields("Email", "Phone", "Nickname", "Remark", "Status", "RegStatus", "Role")
-		}
+		_, err = m.UpdateWechatUserInfo(id, role, title, regstatus)
 		if err == nil {
 			this.Alert("用户更新成功", "index")
 			return
@@ -192,18 +167,19 @@ func (this *UserController) UpdateUser() {
 			beego.Error(err)
 			return
 		}
-		roles, _ := m.GetAllUserRole()
-		u := new(m.User)
-		u.Id = id
-		userList, err := m.ReadFieldUser(u, "Id")
-		if userList == nil || err != nil {
+
+		userList, err := m.GetWechatUserInfoById(id)
+		if err != nil {
 			this.Alert("获取用户失败", "index")
 			return
 		}
+		roles, _ := m.GetAllUserRole()
+		titles, _ := m.GetAllUserTitle()
 		this.CommonMenu()
 		this.Data["userList"] = userList
 		this.Data["RoleList"] = roles
-		this.TplName = "haoadmin/rbac/user/edit.html"
+		this.Data["TitleList"] = titles
+		this.TplName = "haoadmin/rbac/user/regedit.html"
 	}
 }
 

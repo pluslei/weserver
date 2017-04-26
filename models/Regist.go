@@ -145,3 +145,20 @@ func UpdateWechatUserTitle(id int64, titleid int64) (int64, error) {
 		"title_id": titleid,
 	})
 }
+
+// 获取用户信息
+func GetWechatUserInfoById(id int64) (user Regist, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable("regist").Filter("Id", id).One(&user)
+	return user, err
+}
+
+// 更新用户
+func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable("regist").Filter("Id", id).Update(orm.Params{
+		"title_id":  titleId,
+		"role_id":   roleId,
+		"RegStatus": regstatus,
+	})
+}
