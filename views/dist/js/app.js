@@ -6964,7 +6964,10 @@ var MqttConn = {
   sendeventtime: null,
   mqttCallBack: null,
   mqttConnect: function mqttConnect(onMessage) {
+    // Topic_ChatMessage
     var password = 'D9w+TSvvwlI/YkkRjuuQVoiJvvc=';
+    // hy_four_wechat
+    // const password = 'eVIVRGFtbHdhVjxGUYIEMv+nAD8=';
     MqttConn.mqttCallBack = onMessage;
     MqttConn.mqtt = new window.Paho.MQTT.Client(MqttConn.url, // MQTT域名
     MqttConn.port, // WebSocket端口

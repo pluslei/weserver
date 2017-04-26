@@ -23,8 +23,8 @@
                     <tr>
 
                         <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
-                        <th>用户</th>
                         <th>申请房间</th>
+                        <th>用户</th>
                         <th>审核状态</th>
                         <th>头衔</th>
                         <th>登录时间</th>
@@ -183,6 +183,7 @@
                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+oData.Id+"' onchange='chkuser("+oData.Id+")'  ></input></div>");
                     }
                 },
+                {"mDataProp": "RoomName",},
                 {"mDataProp": "Nickname",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         // 用户头衔
@@ -194,7 +195,6 @@
                         $(nTd).html("<img src="+icoImg+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData);
                     }
                 },
-                {"mDataProp": "RoomName",},
                 {"mDataProp": "RegStatus",
                     "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
                         if (sData == 2) {
