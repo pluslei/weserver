@@ -14,6 +14,21 @@ type ChatRecordController struct {
 	CommonController
 }
 
+type ChatMessage struct {
+	Delchan chan *MessageDEL
+}
+
+var (
+	delMsg *ChatMessage
+)
+
+func init() {
+	delMsg = &ChatMessage{
+		Delchan: make(chan *MessageDEL, 20480),
+	}
+	delMsg.runWriteDb()
+}
+
 // 聊天记录
 func (this *ChatRecordController) ChatRecordList() {
 	if this.IsAjax() {
@@ -49,7 +64,7 @@ func CheckMessage(topic string, msg m.ChatRecord) bool {
 
 	v, err := ToJSON(msg)
 	if err != nil {
-		beego.Error("json error", err)
+		beego.Error("CheckMessge json error", err)
 		return false
 	}
 	mq.SendMessage(topic, v) //发消息
@@ -59,15 +74,17 @@ func CheckMessage(topic string, msg m.ChatRecord) bool {
 //删除消息
 func DelMsg(topic, uuid string) bool {
 	info := new(MessageDEL)
-	info.MsgType = MSG_TYPE_CHAT_DEL
 	info.Uuid = uuid
+	info.Room = topic
+	info.MsgType = MSG_TYPE_CHAT_DEL
 
 	v, err := ToJSON(info)
 	if err != nil {
-		beego.Error("json error", err)
+		beego.Error("DeMsg json error", err)
 		return false
 	}
 	mq.SendMessage(topic, string(v)) //发消息
+	deleteMsg(info)
 	return true
 }
 
@@ -102,14 +119,41 @@ func (this *ChatRecordController) DelRecord() {
 	topic := this.GetString("topic") //管理页面ajax获取的
 
 	if len(uuid) <= 0 {
-		this.Rsp(false, "删除失败", "")
+		this.Rsp(false, "Get UUid error", "")
 		return
 	}
+	DelMsg(topic, uuid)
+}
 
-	if DelMsg(topic, uuid) {
-		m.DelChatById(uuid)
-		this.Rsp(true, "删除成功", "")
-		return
+// 写数据
+func (m *ChatMessage) runWriteDb() {
+	go func() {
+		for {
+			infoMsg, ok := <-m.Delchan
+			if ok {
+				deleteConten(infoMsg)
+			}
+		}
+	}()
+}
+
+func deleteMsg(info *MessageDEL) {
+	jsondata := info
+	select {
+	case delMsg.Delchan <- jsondata:
+		break
+	default:
+		beego.Error("DELETE ChatRecord db error!!!")
+		break
 	}
-	this.Rsp(false, "删除失败", "")
+}
+
+func deleteConten(info *MessageDEL) {
+	beego.Debug("Delete ChatMSG:", info)
+	// room := info.Room
+	Uuid := info.Uuid
+	_, err := m.DelChatById(Uuid)
+	if err != nil {
+		beego.Debug("Delete ChatMsg error:", err)
+	}
 }

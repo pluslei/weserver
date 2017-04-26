@@ -161,11 +161,11 @@ func (this *IndexController) Index() {
 		if sysconfig.AuditMsg == 1 {
 			user.IsFilter = false
 		} else {
-			if userLoad.Role.IsInsider == 1 {
-				user.IsFilter = false
-			} else {
-				user.IsFilter = true
-			}
+			// if userLoad.Role.IsInsider == 1 {
+			// 	user.IsFilter = false
+			// } else {
+			user.IsFilter = true
+			// }
 		}
 
 		// 设置头衔颜色
