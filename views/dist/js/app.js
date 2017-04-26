@@ -889,6 +889,7 @@ var Content = function (_React$Component) {
     key: 'createchathistoryItem',
     value: function createchathistoryItem(receivedata) {
       var data = {
+        Id: receivedata.Id,
         uuid: receivedata.Uuid,
         nickname: receivedata.Nickname,
         usericon: receivedata.UserIcon,
@@ -1093,59 +1094,23 @@ var Content = function (_React$Component) {
     value: function msgScroll() {
       var _this5 = this;
 
-      var allitems = document.querySelector('.allitems');
+      // const allitems = document.querySelector('.allitems');
       var chat = document.querySelector('.chat');
       var msgload = document.querySelector('.msgload');
-      if (allitems.offsetTop - chat.scrollTop >= 0) {
+      if (chat.scrollTop <= 0) {
+        this.state.listcount.isTop = true;
+        console.log(this.state.chatdata[0].Id, 'data');
         var oldscrollheight = chat.scrollHeight;
         var nowscrollheight = 0;
         this.state.listcount.pageCount += 1;
         msgload.style.display = 'block';
         setTimeout(function () {
-          _this5.pthis.getHistoryList(_this5.state.listcount.pageCount * 10, '/chat/user/historylist');
+          _this5.pthis.getHistoryList(_this5.state.chatdata[0].Id, '/chat/user/historylist');
           nowscrollheight = chat.scrollHeight;
           chat.scrollTop = nowscrollheight - oldscrollheight;
         }, 1000);
       }
-      // if (chat.scrollTop >= chat.scrollHeight - chat.offsetHeight) {
-      //   console.log(chat.scrollTop, chat.scrollHeight - chat.offsetHeight);
-      //   chat.addEventListener('touchstart', this.msgloadstart, false);
-      // }
     }
-    // msgloadstart(e) {
-    //   const chat = document.querySelector('.chat');
-    //   chat.addEventListener('touchmove', this.msgloadmove, false);
-    //   chat.addEventListener('touchend', this.msgloadend, false);
-    //   this.state.msgload.disY = 0;
-    //   this.state.msgload.startY = e.targetTouches[0].clientY;
-    // }
-    // msgloadmove(e) {
-    //   // const allitems = document.querySelector('.allitems');
-    //   const r = e.targetTouches[0].clientY - this.state.msgload.startY;
-    //   if (-r > 20) {
-    //     // this.state.chatdata = [];
-    //     // $('.bottom_load').css('display', 'block');
-    //     // this.pthis.getHistoryList(10, '/chat/user/historylist');
-    //     $('.allitems').css('bottom', `${-r}px`);
-    //   }
-    // }
-    // msgloadend() {
-    //   const chat = document.querySelector('.chat');
-    //   chat.removeEventListener('touchstart', this.msgloadstart, false);
-    //   chat.removeEventListener('touchmove', this.msgloadmove, false);
-    //   chat.removeEventListener('touchend', this.msgloadend, false);
-    //   $('.allitems').css('bottom', '0px');
-    //   this.state.chatdata = [];
-    //   $('.bottom_load').css('display', 'block');
-    //   setTimeout(() => {
-    //     this.pthis.getHistoryList(10, '/chat/user/historylist');
-    //     $('.bottom_load').css('display', 'none');
-    //   }, 1000);
-    //   setTimeout(() => {
-    //     chat.scrollTop = chat.scrollHeight;
-    //   }, 1500);
-    // }
-
   }, {
     key: 'createchatList',
     value: function createchatList(item, index) {
@@ -1619,28 +1584,6 @@ var DisableSendMsg = function (_React$Component) {
       // post 发送给后台
       var api = new _Api2.default(this.success, this.error);
       api.postToServer(sendstr, '/chat/user/UnShutUp');
-      // console.log('解除禁言');
-      // console.log($(e.target).parents('.uName').attr('data-Uuid'), 'uid');
-      // console.log(this.state.adminlist);
-      // const roominfo = JSON.parse(sessionStorage.getItem('roomId'));
-      // const relieve = [];
-      // const arge = {
-      //   Room: roominfo.RoomId,
-      //   Uname: $(e.target).parents('.uName').attr('data-Uuid'),
-      //   IsShutUp: false,
-      // };
-      // relieve.push(arge);
-      // console.log(relieve);
-      // const sendstr = MqttConn.base64data('encode', JSON.stringify(relieve));
-      // this.serverRequest = $.ajax({
-      //   url: '/chat/user/UnShutUp',
-      //   type: 'post',
-      //   dataType: 'json',
-      //   data: sendstr,
-      //   success: (data) => {
-      //     console.log(data);
-      //   },
-      // });
       for (var i = 0; i < this.state.adminlist.length; i++) {
         if (arge.Uname === this.state.adminlist[i].Username) {
           this.state.adminlist[i].IsShutUp = 'false';
@@ -1672,6 +1615,12 @@ var DisableSendMsg = function (_React$Component) {
             onTouchEnd: function onTouchEnd(e) {
               e.stopPropagation();
               _this4.unShutUp(e);
+            },
+            onClick: function onClick(e) {
+              if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                e.stopPropagation();
+                _this4.unShutUp(e);
+              }
             }
           },
           '\u89E3\u9664\u7981\u8A00'
@@ -1694,8 +1643,12 @@ var DisableSendMsg = function (_React$Component) {
           'data-Uuid': item.Username,
           'data-Uname': item.Nickname,
           onTouchEnd: function onTouchEnd(e) {
-            console.log(item);
             if (_this4.state.slide.disY === 0) {
+              _this4.listchecked(e);
+            }
+          },
+          onClick: function onClick(e) {
+            if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
               _this4.listchecked(e);
             }
           }
@@ -1776,6 +1729,13 @@ var DisableSendMsg = function (_React$Component) {
                   if (_this5.state.isChecked === true) {
                     _this5.disableSendMsg(0);
                   }
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    if (_this5.state.isChecked === true) {
+                      _this5.disableSendMsg(0);
+                    }
+                  }
                 }
               },
               '\u7981\u8A00'
@@ -1787,6 +1747,13 @@ var DisableSendMsg = function (_React$Component) {
                 onTouchEnd: function onTouchEnd() {
                   if (_this5.state.isChecked === true) {
                     _this5.disableSendMsg(1);
+                  }
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    if (_this5.state.isChecked === true) {
+                      _this5.disableSendMsg(1);
+                    }
                   }
                 }
               },
@@ -1802,6 +1769,15 @@ var DisableSendMsg = function (_React$Component) {
                       index: 1
                     }
                   });
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    _this5.chatRoom.setState({
+                      tab: {
+                        index: 1
+                      }
+                    });
+                  }
                 }
               },
               '\u53D6\u6D88'
@@ -2037,6 +2013,11 @@ var Popup = function (_React$Component) {
               className: 'cancel',
               onTouchEnd: function onTouchEnd() {
                 _this2.cancel();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this2.cancel();
+                }
               }
             },
             '\u53D6\u6D88'
@@ -2047,6 +2028,11 @@ var Popup = function (_React$Component) {
               className: 'confirm',
               onTouchEnd: function onTouchEnd() {
                 _this2.forbidConfirm();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this2.forbidConfirm();
+                }
               }
             },
             '\u786E\u8BA4'
@@ -2077,6 +2063,11 @@ var Popup = function (_React$Component) {
               className: 'cancel',
               onTouchEnd: function onTouchEnd() {
                 _this2.cancel();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this2.cancel();
+                }
               }
             },
             '\u53D6\u6D88'
@@ -2087,6 +2078,11 @@ var Popup = function (_React$Component) {
               className: 'confirm',
               onTouchEnd: function onTouchEnd() {
                 _this2.delConfirm();
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this2.delConfirm();
+                }
               }
             },
             '\u786E\u8BA4'
@@ -2312,6 +2308,11 @@ var SendStrategy = function (_React$Component) {
                   className: 'choose',
                   onTouchEnd: function onTouchEnd() {
                     _this2.topchoose();
+                  },
+                  onClick: function onClick() {
+                    if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                      _this2.topchoose();
+                    }
                   }
                 },
                 _react2.default.createElement('img', { src: this.arge.checkedurl.unchecked, alt: 'istop' }),
@@ -2331,6 +2332,15 @@ var SendStrategy = function (_React$Component) {
                         index: 1
                       }
                     });
+                  },
+                  onClick: function onClick() {
+                    if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                      _this2.pthis.setState({
+                        tab: {
+                          index: 1
+                        }
+                      });
+                    }
                   }
                 },
                 '\u53D6\u6D88'
@@ -2344,6 +2354,14 @@ var SendStrategy = function (_React$Component) {
                     var sendS = document.getElementById('sendS');
                     if (sendS.className === 'sendbtn') {
                       _this2.sendStrategy();
+                    }
+                  },
+                  onClick: function onClick() {
+                    if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                      var sendS = document.getElementById('sendS');
+                      if (sendS.className === 'sendbtn') {
+                        _this2.sendStrategy();
+                      }
                     }
                   }
                 },
@@ -2504,6 +2522,11 @@ var Adminlist = function (_React$Component) {
           key: index,
           onTouchEnd: function onTouchEnd() {
             _this2.openediterlist(item.showmode);
+          },
+          onClick: function onClick() {
+            if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+              _this2.openediterlist(item.showmode);
+            }
           }
         },
         _react2.default.createElement(
@@ -3219,6 +3242,11 @@ var Emjo = function (_React$Component) {
           key: index,
           onTouchEnd: function onTouchEnd() {
             _this2.touchEmjo(text);
+          },
+          onClick: function onClick() {
+            if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+              _this2.touchEmjo(text);
+            }
           }
         },
         _react2.default.createElement('img', {
@@ -3285,6 +3313,11 @@ var Emjo = function (_React$Component) {
           onTouchEnd: function onTouchEnd(e) {
             e.preventDefault();
             _this3.facebtnclose();
+          },
+          onClick: function onClick() {
+            if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+              _this3.facebtnclose();
+            }
           }
         },
         _react2.default.createElement('img', { src: 'i/face/facebtn.png', alt: 'facebtn' })
@@ -3323,6 +3356,11 @@ var Emjo = function (_React$Component) {
               {
                 onTouchEnd: function onTouchEnd() {
                   _this3.pthis.sendmsgtosocket();
+                },
+                onClick: function onClick() {
+                  if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    _this3.pthis.sendmsgtosocket();
+                  }
                 }
               },
               '\u53D1\u9001'
@@ -3494,6 +3532,7 @@ var AllChannel = function (_React$Component) {
     };
     _this.handleSelect = _this.handleSelect.bind(_this);
     _this.channelStart = _this.channelStart.bind(_this);
+    _this.channelMove = _this.channelMove.bind(_this);
     return _this;
   }
 
@@ -3513,7 +3552,7 @@ var AllChannel = function (_React$Component) {
     key: 'channelMove',
     value: function channelMove(e) {
       this.state.disY = e.targetTouches[0].clientY - this.state.startY;
-      this.state.slide = this.state.disY;
+      this.state.slide = 1;
     }
   }, {
     key: 'createchannel',
@@ -3525,23 +3564,21 @@ var AllChannel = function (_React$Component) {
         {
           className: 'singlechannel',
           key: index,
-          onTouchStart: function onTouchStart(e) {
-            _this2.channelStart(e);
-          },
-          onTouchMove: function onTouchMove(e) {
-            _this2.channelMove(e);
-          },
           onTouchEnd: function onTouchEnd() {
             if (_this2.state.slide === 0) {
               _this2.props.callbackchannel(item);
-              console.log('这是yi动端');
             }
           },
           onClick: function onClick() {
             if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
               _this2.props.callbackchannel(item);
-              console.log('这是pc端');
             }
+          },
+          onTouchStart: function onTouchStart(e) {
+            _this2.channelStart(e);
+          },
+          onTouchMove: function onTouchMove(e) {
+            _this2.channelMove(e);
           }
         },
         _react2.default.createElement(
@@ -3561,20 +3598,6 @@ var AllChannel = function (_React$Component) {
             'span',
             { className: 'teacher' },
             item.RoomIntro
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'followers' },
-          _react2.default.createElement(
-            'span',
-            { className: 'aboutnumname' },
-            _react2.default.createElement('img', { src: 'i/allchannel/follow.png', alt: 'follow' })
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'aboutnum' },
-            item.RoomNum
           )
         )
       );
@@ -3979,7 +4002,6 @@ var ChatRoom = function (_React$Component) {
     key: 'bringInputBlur',
     value: function bringInputBlur() {
       document.getElementById('msgcontent').blur();
-      console.log('zzz~~~');
     }
     // 提示消息
 
@@ -3990,10 +4012,18 @@ var ChatRoom = function (_React$Component) {
       console.log(tip);
       if (tip !== null) {
         tip.innerHTML = '\u6709<span> 1 </span>\u6761\u65B0' + type + '\u53D1\u5E03';
-        tip.style.transform = 'translateY(0px)';
-        setTimeout(function () {
-          tip.style.transform = 'translateY(-28px)';
-        }, 2000);
+        // tip.style.transform = 'translateY(0px)';
+        // setTimeout(() => {
+        //   tip.style.transform = 'translateY(-28px)';
+        // }, 2000);
+        (0, _jquery2.default)('.tip_msg').css('display', 'block');
+        (0, _jquery2.default)('.tip_msg').animate({ top: '56px' }, 500, function () {
+          (0, _jquery2.default)('.tip_msg').animate({ top: '56px' }, 1000, function () {
+            (0, _jquery2.default)('.tip_msg').animate({ top: '28px' }, 500, function () {
+              (0, _jquery2.default)('.tip_msg').css('display', 'none');
+            });
+          });
+        });
       }
     }
   }, {
@@ -4015,51 +4045,72 @@ var ChatRoom = function (_React$Component) {
           }
           break;
         case this.MSG_TYPE.MSG_TYPE_CHAT_DEL:
+          console.log('MSG DEL', data);
+          if (roomId === roominfo.RoomId + '/') {
+            this.refs.Interact.chatdel(data);
+          }
           break;
         case this.MSG_TYPE.MSG_TYPE_NOTICE_ADD:
           console.log('Notice Add:', data);
-          this.refs.NoticeList.newNotice(data);
-          (0, _jquery2.default)('.titlebtn .orTip').eq(2).addClass('show');
-          setTimeout(function () {
-            _this2.messageTip('公告');
-          }, 0);
+          if (roomId === roominfo.RoomId + '/') {
+            this.refs.NoticeList.newNotice(data);
+            (0, _jquery2.default)('.titlebtn .orTip').eq(2).addClass('show');
+            setTimeout(function () {
+              _this2.messageTip('公告');
+            }, 0);
+          }
           break;
         case this.MSG_TYPE.MSG_TYPE_NOTICE_DEL:
           console.log('Notice Del:', data);
           break;
         case this.MSG_TYPE.MSG_TYPE_STRATEGY_ADD:
           console.log('Strategy Add:', data);
-          this.refs.Strategy.strategyAdd(data);
-          (0, _jquery2.default)('.titlebtn .orTip').eq(0).addClass('show');
-          setTimeout(function () {
-            _this2.messageTip('策略');
-          }, 0);
+          if (roomId === roominfo.RoomId + '/') {
+            this.refs.Strategy.strategyAdd(data);
+            (0, _jquery2.default)('.titlebtn .orTip').eq(0).addClass('show');
+            setTimeout(function () {
+              _this2.messageTip('策略');
+            }, 0);
+          }
           break;
         case this.MSG_TYPE.MSG_TYPE_STRATEGY_OPE:
           if (data.OperType === this.OPERATE_TYPE.OPERATE_TOP) {
             console.log('Strategy Top:', data);
-            this.refs.Strategy.refStrategy();
+            if (roomId === roominfo.RoomId + '/') {
+              this.refs.Strategy.refStrategy();
+            }
           }
           if (data.OperType === this.OPERATE_TYPE.OPERATE_UNTOP) {
             console.log('Strategy UnTop:', data);
+            if (roomId === roominfo.RoomId + '/') {
+              console.log('Strategy UnTop:', data);
+            }
           }
           if (data.OperType === this.OPERATE_TYPE.OPERATE_THUMB) {
             console.log('Strategy Thumb:', data);
+            if (roomId === roominfo.RoomId + '/') {
+              console.log('Strategy Thumb:', data);
+            }
           }
           if (data.OperType === this.OPERATE_TYPE.OPERATE_UNTHUMB) {
             console.log('Strategy UnThumb:', data);
+            if (roomId === roominfo.RoomId + '/') {
+              console.log('Strategy UnThumb:', data);
+            }
           }
           if (data.OperType === this.OPERATE_TYPE.OPERATE_DEL) {
             console.log('Strategy Del:', data);
-            this.refs.Strategy.strategyDel(data);
+            if (roomId === roominfo.RoomId + '/') {
+              this.refs.Strategy.strategyDel(data);
+            }
           }
           break;
         case this.MSG_TYPE.MSG_TYPE_KICKOUT:
           console.log('KICK Out:', data);
-          // window.history.go(-1);
-          console.log(window.userinfo.Uname, data.ObjUid);
-          if (window.userinfo.Uname === data.ObjUid) {
-            window.location.href = '/index.html#';
+          if (roomId === roominfo.RoomId + '/') {
+            if (window.userinfo.Uname === data.ObjUid) {
+              window.location.href = '/index.html#';
+            }
           }
           break;
         case this.MSG_TYPE.MSG_TYPE_SHUTUP:
@@ -4554,7 +4605,7 @@ var Interact = function (_React$Component) {
     value: function componentDidMount() {
       this.loadeventmsg();
       this.getOnlineCount('/chat/user/online/count');
-      this.getHistoryList(10, '/chat/user/historylist');
+      this.getHistoryList(0, '/chat/user/historylist');
       var chat = document.querySelector('.chat');
       var title = document.querySelector('.title');
       chat.addEventListener('touchend', this.wintouch, false);
@@ -4578,7 +4629,7 @@ var Interact = function (_React$Component) {
             break;
         }
         this.args.reload = false;
-        this.getHistoryList(10, '/chat/user/historylist');
+        this.getHistoryList(0, '/chat/user/historylist');
       }
     }
     // 获取在线数量
@@ -4606,7 +4657,7 @@ var Interact = function (_React$Component) {
 
   }, {
     key: 'getHistoryList',
-    value: function getHistoryList(ncount, route) {
+    value: function getHistoryList(id, route) {
       var _this3 = this;
 
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
@@ -4617,10 +4668,10 @@ var Interact = function (_React$Component) {
         dataType: 'json',
         data: {
           room: roominfo.RoomId,
-          count: ncount
+          Id: id
         },
         success: function success(data) {
-          console.log(ncount, data, '聊天历史');
+          console.log(data, '聊天历史');
           if (data != null) {
             if (data.historyChat != null) {
               var length = data.historyChat.length;
@@ -4628,7 +4679,6 @@ var Interact = function (_React$Component) {
               for (var i = 0; i < length; i++) {
                 _this3.loadchatlist(received[i], 'history');
               }
-              console.log('request data', received);
               setTimeout(function () {
                 _this3.Content.setControlscrollbar('.chat', scrchat);
               }, 10);
@@ -4636,6 +4686,8 @@ var Interact = function (_React$Component) {
               msgload.style.display = 'none';
               if (length < 10) {
                 _this3.refs.Content.state.listcount.isTop = true;
+              } else {
+                _this3.refs.Content.state.listcount.isTop = false;
               }
             } else {
               _this3.refs.Content.state.listcount.isTop = true;
@@ -4697,6 +4749,22 @@ var Interact = function (_React$Component) {
         default:
           break;
       }
+    }
+    // 删除消息
+
+  }, {
+    key: 'chatdel',
+    value: function chatdel(data) {
+      console.log(data, this.Content.state.chatdata);
+      var length = this.Content.state.chatdata.length;
+      for (var i = 0; i < length; i++) {
+        if (data.Uuid === this.Content.state.chatdata[i].uuid) {
+          this.Content.state.chatdata.splice(i, 1);
+        }
+      }
+      this.Content.setState({
+        chatdata: this.Content.state.chatdata
+      });
     }
   }, {
     key: 'refreshContent',
@@ -4895,7 +4963,7 @@ var NoticeList = function (_React$Component) {
     value: function componentDidUpdate() {}
   }, {
     key: 'getNoticeInfo',
-    value: function getNoticeInfo(eachcount, route) {
+    value: function getNoticeInfo(id, route) {
       var _this3 = this;
 
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
@@ -4905,7 +4973,7 @@ var NoticeList = function (_React$Component) {
         dataType: 'json',
         data: {
           room: roominfo.RoomId,
-          count: eachcount
+          Id: id
         },
         success: function success(data) {
           if (data.historyNotice === null) {
@@ -5157,7 +5225,7 @@ var NoticeList = function (_React$Component) {
       var tarTop = contentbox.offsetHeight - scroll.scrollTop;
       if (tarTop <= scroll.offsetHeight) {
         this.state.listcount.NoticeIndex += 1;
-        this.getNoticeInfo(this.state.listcount.NoticeIndex * 10, '/chat/user/noticelist');
+        this.getNoticeInfo(this.state.noticedata[this.state.noticedata.length - 1].Id, '/chat/user/noticelist');
         (0, _jquery2.default)('.load').css('display', 'block');
       }
     }
@@ -5330,7 +5398,7 @@ var Strategy = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       window.addEventListener('touchend', this.clearOpera, false);
-      this.getStrategy(10, '/chat/user/strategyList');
+      this.getStrategy(0, '/chat/user/strategyList');
     }
   }, {
     key: 'componentDidUpdate',
@@ -5339,7 +5407,7 @@ var Strategy = function (_React$Component) {
 
   }, {
     key: 'getStrategy',
-    value: function getStrategy(eachcount, route) {
+    value: function getStrategy(id, route) {
       var _this2 = this;
 
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
@@ -5349,7 +5417,7 @@ var Strategy = function (_React$Component) {
         dataType: 'json',
         data: {
           room: roominfo.RoomId,
-          count: eachcount
+          Id: id
         },
         success: function success(data) {
           if (data.historyStrategy === null) {
@@ -5571,9 +5639,7 @@ var Strategy = function (_React$Component) {
           strategylist2.push(this.state.strategylist[i]);
         }
       }
-      // concat
       this.state.strategylist = strategylist1.concat(strategylist2);
-      // this.getStrategy('/chat/user/strategyList');
       this.setState({
         strategylist: this.state.strategylist
       });
@@ -5612,7 +5678,7 @@ var Strategy = function (_React$Component) {
       var tarTop = listcontent.offsetHeight - scroll.scrollTop;
       if (tarTop <= scroll.offsetHeight) {
         this.state.listcount.strategyIndex += 1;
-        this.getStrategy(this.state.listcount.strategyIndex * 10, '/chat/user/strategyList');
+        this.getStrategy(this.state.strategylist[this.state.strategylist.length - 1].Id, '/chat/user/strategyList');
         (0, _jquery2.default)('.bottomload').css('display', 'block');
       }
     }
@@ -5633,6 +5699,11 @@ var Strategy = function (_React$Component) {
               className: 'stickinfo',
               onTouchEnd: function onTouchEnd() {
                 _this3.stickinfo(item, index);
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.stickinfo(item, index);
+                }
               }
             },
             '\u53D6\u6D88\u7F6E\u9876'
@@ -5643,6 +5714,11 @@ var Strategy = function (_React$Component) {
               className: 'delinfo',
               onTouchEnd: function onTouchEnd() {
                 _this3.delinfo(item);
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.delinfo(item);
+                }
               }
             },
             '\u5220\u9664\u4FE1\u606F'
@@ -5663,6 +5739,11 @@ var Strategy = function (_React$Component) {
               className: 'stickinfo',
               onTouchEnd: function onTouchEnd() {
                 _this3.stickinfo(item, index);
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.stickinfo(item, index);
+                }
               }
             },
             '\u7F6E\u9876\u4FE1\u606F'
@@ -5673,6 +5754,11 @@ var Strategy = function (_React$Component) {
               className: 'delinfo',
               onTouchEnd: function onTouchEnd() {
                 _this3.delinfo(item);
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.delinfo(item);
+                }
               }
             },
             '\u5220\u9664\u4FE1\u606F'
@@ -5699,6 +5785,12 @@ var Strategy = function (_React$Component) {
             onTouchEnd: function onTouchEnd(e) {
               e.stopPropagation();
               _this3.operation(item, index);
+            },
+            onClick: function onClick(e) {
+              if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                e.stopPropagation();
+                _this3.operation(item, index);
+              }
             }
           },
           _react2.default.createElement('img', {
@@ -5766,13 +5858,17 @@ var Strategy = function (_React$Component) {
               className: 'thumb',
               onTouchEnd: function onTouchEnd() {
                 _this3.thumb(index, item);
+              },
+              onClick: function onClick() {
+                if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                  _this3.thumb(index, item);
+                }
               }
             },
             _react2.default.createElement('img', {
               src: 'i/strategy/thumb.png',
               alt: 'thumb',
               className: 'thumbimg'
-
             }),
             _react2.default.createElement(
               'span',
@@ -5973,7 +6069,7 @@ var SendNotice = function (_React$Component) {
           index: 2
         }
       });
-      this.pthis.callbackSendNotice();
+      // this.pthis.callbackSendNotice();
     }
   }, {
     key: 'success',
@@ -6042,6 +6138,15 @@ var SendNotice = function (_React$Component) {
                         index: 1
                       }
                     });
+                  },
+                  onClick: function onClick() {
+                    if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                      _this2.pthis.setState({
+                        tab: {
+                          index: 1
+                        }
+                      });
+                    }
                   }
                 },
                 '\u53D6\u6D88'
@@ -6055,6 +6160,14 @@ var SendNotice = function (_React$Component) {
                     var sendN = document.getElementById('sendN');
                     if (sendN.className === 'sendbtn') {
                       _this2.sendNotice();
+                    }
+                  },
+                  onClick: function onClick() {
+                    if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                      var sendN = document.getElementById('sendN');
+                      if (sendN.className === 'sendbtn') {
+                        _this2.sendNotice();
+                      }
                     }
                   }
                 },
@@ -6248,6 +6361,11 @@ var Title = function (_React$Component) {
             alt: 'chatlogo',
             onTouchEnd: function onTouchEnd() {
               window.location.href = '/index.html#';
+            },
+            onClick: function onClick() {
+              if (!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                window.location.href = '/index.html#';
+              }
             }
           }),
           _react2.default.createElement(

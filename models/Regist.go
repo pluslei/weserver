@@ -120,6 +120,14 @@ func GetWechatUser(nDay int64) (users []Regist, err error) {
 	return users, err
 }
 
+// //最近 X 天 人员总列表信息
+// func GetAllRegistList(RoomId string, nDay int64) (users []Regist, count int) {
+// 	o := orm.NewOrm()
+// 	nowtime := time.Now().Unix() - nDay*24*60*60
+// 	_, err = o.QueryTable("regist").Exclude("Username", "admin").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
+// 	return users, err
+// }
+
 //get user list
 func GetWechatUserList(page int64, page_size int64, sort, nickname string) (users []orm.Params, count int64) {
 	o := orm.NewOrm()

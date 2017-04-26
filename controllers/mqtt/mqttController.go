@@ -132,6 +132,143 @@ func (this *MqttController) GetClientip() string {
 //chat List
 func (this *MqttController) GetChatHistoryList() {
 	if this.IsAjax() {
+		strId := this.GetString("Id")
+		beego.Debug("id", strId)
+		nId, _ := strconv.ParseInt(strId, 10, 64)
+		roomId := this.GetString("room")
+		beego.Debug("chat list ", nId, roomId)
+		data := make(map[string]interface{})
+		sysconfig, _ := m.GetAllSysConfig()
+		sysCount := sysconfig.HistoryCount
+		var infoChat []m.ChatRecord
+		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
+		case 0:
+			historychat, totalCount, _ := m.GetAllChatMsgData(roomId, "chat_record")
+			if nId == 0 {
+				var i int64
+				if totalCount < sysCount {
+					beego.Debug("nCount sysCont", totalCount, sysCount)
+					for i = 0; i < totalCount; i++ {
+						var info m.ChatRecord
+						info.Id = historychat[i].Id
+						info.Room = historychat[i].Room
+						info.Uname = historychat[i].Uname
+						info.Nickname = historychat[i].Nickname
+						info.UserIcon = historychat[i].UserIcon
+						info.RoleName = historychat[i].RoleName
+						info.RoleTitle = historychat[i].RoleTitle
+						info.Sendtype = historychat[i].Sendtype
+						info.RoleTitleCss = historychat[i].RoleTitleCss
+						info.RoleTitleBack = historychat[i].RoleTitleBack
+						info.Insider = historychat[i].Insider
+						info.IsLogin = historychat[i].IsLogin
+						info.Content = historychat[i].Content
+						info.Status = historychat[i].Status
+						info.Uuid = historychat[i].Uuid
+						infoChat = append(infoChat, info)
+					}
+					// data["historyChat"] = infoChat
+					// this.Data["json"] = &data
+					// this.ServeJSON()
+				} else {
+					for i = 0; i < sysCount; i++ {
+						var info m.ChatRecord
+						info.Id = historychat[i].Id
+						info.Room = historychat[i].Room
+						info.Uname = historychat[i].Uname
+						info.Nickname = historychat[i].Nickname
+						info.UserIcon = historychat[i].UserIcon
+						info.RoleName = historychat[i].RoleName
+						info.RoleTitle = historychat[i].RoleTitle
+						info.Sendtype = historychat[i].Sendtype
+						info.RoleTitleCss = historychat[i].RoleTitleCss
+						info.RoleTitleBack = historychat[i].RoleTitleBack
+						info.Insider = historychat[i].Insider
+						info.IsLogin = historychat[i].IsLogin
+						info.Content = historychat[i].Content
+						info.Status = historychat[i].Status
+						info.Uuid = historychat[i].Uuid
+						infoChat = append(infoChat, info)
+					}
+				}
+				data["historyChat"] = infoChat
+				this.Data["json"] = &data
+				this.ServeJSON()
+			} else {
+				var index int64
+				for nindex, value := range historychat {
+					if value.Id == nId {
+						index = int64(nindex) + 1
+					}
+				}
+				beego.Debug("index", index)
+				nCount := index + sysCount
+				mod := (totalCount - nCount) % sysCount
+				beego.Debug("mod", mod)
+				if nCount > totalCount && mod == 0 {
+					beego.Debug("mod = 0")
+					data["historyChat"] = ""
+					this.Data["json"] = &data
+					this.ServeJSON()
+					return
+				}
+				if nCount < totalCount {
+					for i := index; i < nCount; i++ {
+						var info m.ChatRecord
+						info.Id = historychat[i].Id
+						info.Room = historychat[i].Room
+						info.Uname = historychat[i].Uname
+						info.Nickname = historychat[i].Nickname
+						info.UserIcon = historychat[i].UserIcon
+						info.RoleName = historychat[i].RoleName
+						info.RoleTitle = historychat[i].RoleTitle
+						info.Sendtype = historychat[i].Sendtype
+						info.RoleTitleCss = historychat[i].RoleTitleCss
+						info.RoleTitleBack = historychat[i].RoleTitleBack
+						info.Insider = historychat[i].Insider
+						info.IsLogin = historychat[i].IsLogin
+						info.Content = historychat[i].Content
+						info.Status = historychat[i].Status
+						info.Uuid = historychat[i].Uuid
+						infoChat = append(infoChat, info)
+					}
+				} else {
+					for i := index; i < totalCount; i++ {
+						var info m.ChatRecord
+						info.Id = historychat[i].Id
+						info.Room = historychat[i].Room
+						info.Uname = historychat[i].Uname
+						info.Nickname = historychat[i].Nickname
+						info.UserIcon = historychat[i].UserIcon
+						info.RoleName = historychat[i].RoleName
+						info.RoleTitle = historychat[i].RoleTitle
+						info.Sendtype = historychat[i].Sendtype
+						info.RoleTitleCss = historychat[i].RoleTitleCss
+						info.RoleTitleBack = historychat[i].RoleTitleBack
+						info.Insider = historychat[i].Insider
+						info.IsLogin = historychat[i].IsLogin
+						info.Content = historychat[i].Content
+						info.Status = historychat[i].Status
+						info.Uuid = historychat[i].Uuid
+						infoChat = append(infoChat, info)
+					}
+				}
+				data["historyChat"] = infoChat
+				this.Data["json"] = &data
+				this.ServeJSON()
+			}
+		default:
+		}
+	} else {
+		this.Ctx.Redirect(302, "/")
+	}
+	this.Ctx.WriteString("")
+}
+
+/*
+//chat List
+func (this *MqttController) GetChatHistoryList() {
+	if this.IsAjax() {
 		count := this.GetString("count")
 		nEnd, _ := strconv.ParseInt(count, 10, 64)
 		roomId := this.GetString("room")
@@ -216,6 +353,7 @@ func (this *MqttController) GetChatHistoryList() {
 	}
 	this.Ctx.WriteString("")
 }
+*/
 
 //根据消息id 从数据库获取相应的消息
 func (this *MqttController) GetMsgInfoFromDatabase(id int64) MessageInfo {
@@ -396,6 +534,7 @@ func updateData(info *MessageInfo) {
 
 //rpc 推送 给管理页面
 func broadcastChat(chat m.ChatRecord) {
+	beego.Debug("ssssssssssss", chat)
 	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
 	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
 }

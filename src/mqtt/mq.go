@@ -44,10 +44,10 @@ func GetMqttConfig() *Configer {
 	conf.MqIsCleansession, _ = beego.AppConfig.Bool("mqSeverCleanSession")
 	conf.MqVersion, _ = beego.AppConfig.Int("mqServerVersion")
 	conf.MqTopic = beego.AppConfig.String("mqServerTopic")
-	conf.MqPwd = beego.AppConfig.String("mqServerKey")
 	key := beego.AppConfig.String("mqServerKey")
 	groupId := beego.AppConfig.String("mqServerGroupId")
 	conf.MqPwd = getSecretKey(key, groupId)
+	beego.Debug(conf)
 	/*
 		// 多级订阅
 			room, count, err := m.GetRoomName()

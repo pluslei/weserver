@@ -993,16 +993,12 @@ body {
   text-align: center;
   line-height: 28px;
   position: fixed;
-  top: 56px;
+  top: 28px;
   left: 0;
   z-index: 100;
   background: #fff;
   border-bottom: 1px solid #eee;
-  -webkit-transform: translateY(-28px);
-      -ms-transform: translateY(-28px);
-          transform: translateY(-28px);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  display: none;
 }
 .tip_msg span {
   color: red;
@@ -1585,6 +1581,7 @@ a {
   float: right;
   white-space: nowrap;
   border-radius: 4px;
+  cursor: pointer;
 }
 @-webkit-keyframes getIn {
   from {

@@ -27,6 +27,7 @@ type RoomInfo struct {
 	RoomIntro   string `orm:"size(512)"` //简介
 	RoomBanner  string //图片
 	Title       string //标题
+	MidPage     int64  //0 不显示 1 显示
 }
 
 func init() {

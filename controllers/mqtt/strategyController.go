@@ -79,6 +79,116 @@ func (this *StrategyController) OperateStrategy() {
 }
 
 //Strategy List
+//HistoryNotice List
+func (this *StrategyController) GetStrategyList() {
+	if this.IsAjax() {
+		strId := this.GetString("Id")
+		beego.Debug("id", strId)
+		nId, _ := strconv.ParseInt(strId, 10, 64)
+		roomId := this.GetString("room")
+		beego.Debug("Stragety list ", nId, roomId)
+		data := make(map[string]interface{})
+		sysconfig, _ := m.GetAllSysConfig()
+		sysCount := sysconfig.StrategyCount
+		var Strinfo []m.Strategy
+		historyStrategy, totalCount, _ := m.GetStrategyList(roomId)
+		if nId == 0 {
+			var i int64
+			if totalCount < sysCount {
+				beego.Debug("nCount sysCont", totalCount, sysCount)
+				for i = 0; i < totalCount; i++ {
+					var info m.Strategy
+					info.Id = historyStrategy[i].Id
+					info.Room = historyStrategy[i].Room
+					info.Icon = historyStrategy[i].Icon
+					info.Name = historyStrategy[i].Name
+					info.Titel = historyStrategy[i].Titel
+					info.Data = historyStrategy[i].Data
+					info.IsTop = historyStrategy[i].IsTop
+					info.IsDelete = historyStrategy[i].IsDelete
+					info.ThumbNum = historyStrategy[i].ThumbNum
+					info.Time = historyStrategy[i].Time
+					Strinfo = append(Strinfo, info)
+				}
+			} else {
+				for i = 0; i < sysCount; i++ {
+					var info m.Strategy
+					info.Id = historyStrategy[i].Id
+					info.Room = historyStrategy[i].Room
+					info.Icon = historyStrategy[i].Icon
+					info.Name = historyStrategy[i].Name
+					info.Titel = historyStrategy[i].Titel
+					info.Data = historyStrategy[i].Data
+					info.IsTop = historyStrategy[i].IsTop
+					info.IsDelete = historyStrategy[i].IsDelete
+					info.ThumbNum = historyStrategy[i].ThumbNum
+					info.Time = historyStrategy[i].Time
+					Strinfo = append(Strinfo, info)
+				}
+			}
+			data["historyStrategy"] = Strinfo
+			this.Data["json"] = &data
+			this.ServeJSON()
+		} else {
+			var index int64
+			for nindex, value := range historyStrategy {
+				if value.Id == nId {
+					index = int64(nindex) + 1
+				}
+			}
+			beego.Debug("index", index)
+			nCount := index + sysCount
+			mod := (totalCount - nCount) % sysCount
+			beego.Debug("mod", mod)
+			if nCount > totalCount && mod == 0 {
+				beego.Debug("mod = 0")
+				data["historyStrategy"] = ""
+				this.Data["json"] = &data
+				this.ServeJSON()
+				return
+			}
+			if nCount < totalCount {
+				for i := index; i < nCount; i++ {
+					var info m.Strategy
+					info.Id = historyStrategy[i].Id
+					info.Room = historyStrategy[i].Room
+					info.Icon = historyStrategy[i].Icon
+					info.Name = historyStrategy[i].Name
+					info.Titel = historyStrategy[i].Titel
+					info.Data = historyStrategy[i].Data
+					info.IsTop = historyStrategy[i].IsTop
+					info.IsDelete = historyStrategy[i].IsDelete
+					info.ThumbNum = historyStrategy[i].ThumbNum
+					info.Time = historyStrategy[i].Time
+					Strinfo = append(Strinfo, info)
+				}
+			} else {
+				for i := index; i < totalCount; i++ {
+					var info m.Strategy
+					info.Id = historyStrategy[i].Id
+					info.Room = historyStrategy[i].Room
+					info.Icon = historyStrategy[i].Icon
+					info.Name = historyStrategy[i].Name
+					info.Titel = historyStrategy[i].Titel
+					info.Data = historyStrategy[i].Data
+					info.IsTop = historyStrategy[i].IsTop
+					info.IsDelete = historyStrategy[i].IsDelete
+					info.ThumbNum = historyStrategy[i].ThumbNum
+					info.Time = historyStrategy[i].Time
+					Strinfo = append(Strinfo, info)
+				}
+			}
+			data["historyStrategy"] = Strinfo
+			this.Data["json"] = &data
+			this.ServeJSON()
+		}
+	} else {
+		this.Ctx.Redirect(302, "/")
+	}
+	this.Ctx.WriteString("")
+}
+
+/*
 func (this *StrategyController) GetStrategyList() {
 	if this.IsAjax() {
 		count := this.GetString("count")
@@ -150,6 +260,7 @@ func (this *StrategyController) GetStrategyList() {
 	}
 	this.Ctx.WriteString("")
 }
+*/
 
 func (this *StrategyController) Upload() {
 	uploadtype := this.GetString("uploadtype")
