@@ -168,10 +168,9 @@ func Router() {
 	beego.Router("/chat/user/UnShutUp", &mqtt.ManagerController{}, "*:GetUnShutUpInfo")
 
 	//专家团队
-	beego.Router("/chat/user/teacherList", &mqtt.TeacherController{}, "*:GetTeahcerList")
+	beego.Router("/chat/user/teacherList", &mqtt.TeacherController{}, "*:GetTeacherList")
 	beego.Router("/chat/user/allList", &mqtt.TeacherController{}, "*:GetAllTeahcerList")
-	beego.Router("/chat/user/AddTeacher", &mqtt.TeacherController{}, "*:AddTeacher")
-	beego.Router("/chat/user/deleteteacher", &mqtt.TeacherController{}, "*:DeleteTeacher")
+	beego.Router("/chat/user/AddTeacher", &mqtt.TeacherController{}, "*:OperateTeacher")
 
 	//收藏
 	// beego.Router("/chat/user/Collect", &mqtt.ManagerController{}, "*:GetCollectInfo")
