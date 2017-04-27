@@ -130,52 +130,51 @@
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
-    <form action="/weserver/data/room_edit" id="teachbannerform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+    <form action="/weserver/data/room_add" id="teachbannerform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
       <fieldset>
         <legend></legend>
-        <input type="hidden" name="action" value="edit"/>
-        <input type="hidden" name="id" value="{{.roomInfo.Id}}" />
+        <input type="hidden" name="action" value="add"/>
         <div class="am-form-group">
           <label for="doc-vld-Title-2">首页房间标题：</label>
-          <input type="text" name="RoomTitle" value="{{.roomInfo.RoomTitle}}" id="doc-vld-Title-2" placeholder="房间标题" data-validation-message="请输入房间标题" required/>
+          <input type="text" name="RoomTitle" id="doc-vld-Title-2" placeholder="房间标题" data-validation-message="请输入房间标题" required/>
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间讲师：</label>
-          <input type="text" name="RoomTeacher" value="{{.roomInfo.RoomTeacher}}" id="doc-vld-Title-2" placeholder="房间讲师" data-validation-message="请输入房间讲师"/>
+          <input type="text" name="RoomTeacher" id="doc-vld-Title-2" placeholder="房间讲师" data-validation-message="请输入房间讲师"/>
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间显示人数：</label>
-          <input type="text" name="RoomNum" value="{{.roomInfo.RoomNum}}" id="doc-vld-Title-2" placeholder="显示人数" data-validation-message="请输入房间显示人数" required/>
+          <input type="text" name="RoomNum" id="doc-vld-Title-2" placeholder="显示人数" data-validation-message="请输入房间显示人数" required/>
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间ICO(请上传128*128，文件为jpg,png文件)：</label>
             <input type="file" name="RoomIco" id="RoomIco" multiple="true"/>
-            <input type="hidden" name="RoomIcoFile" value="{{.roomInfo.RoomIcon}}" id="RoomIcoFile" multiple="true"/> 
+            <input type="hidden" name="RoomIcoFile" id="RoomIcoFile" multiple="true"/> 
         </div>
         <div class="am-form-group" >
-            <img id="previewico" src="{{.roomInfo.RoomIcon}}" style="width:128px;height: 128px;border: 0px;soild:#FFFFFF; " />
+            <img id="previewico" src="" style="width:128px;height: 128px;border: 0px;soild:#FFFFFF; " />
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间简介：  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '点击进入房间后下面简介', trigger: 'hover focus'}"></a></label>
-            <input type="text" name="RoomIntro" value="{{.roomInfo.RoomIntro}}"  multiple="true" placeholder="请输入房间简介" data-validation-message="请输入房间简介#" required/> 
+            <input type="text" name="RoomIntro"  multiple="true" placeholder="请输入房间简介" data-validation-message="请输入房间简介#" required/> 
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间banner(请上传750*440，文件为jpg,png文件)：</label>
             <input type="file" name="RoomBanner" id="RoomBanner" multiple="true" />
-            <input type="hidden" name="RoomBannerFile" value="{{.roomInfo.RoomBanner}}" id="RoomBannerFile" multiple="true" /> 
+            <input type="hidden" name="RoomBannerFile" id="RoomBannerFile" multiple="true" /> 
         </div>
         <div class="am-form-group" >
-            <img id="previewbanner" src="{{.roomInfo.RoomBanner}}" style="width:375px;height:220px;border: 0px;soild:#FFFFFF; " />
+            <img id="previewbanner" src="" style="width:375px;height:220px;border: 0px;soild:#FFFFFF; " />
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间名称  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '点击进入房间后显示内容', trigger: 'hover focus'}"></a></label>
-            <input type="text" name="Title" value="{{.roomInfo.Title}}"  multiple="true" placeholder="请输入房间名称" data-validation-message="请输入房间名称" /> 
+            <input type="text" name="Title"  multiple="true" placeholder="请输入房间名称" data-validation-message="请输入房间名称" /> 
         </div>
 
         <span class="am-btn am-btn-primary" data-am-collapse="{target: '#collapse-nav'}">高级设置 <i class="am-icon-angle-double-down"></i></span>
@@ -183,32 +182,31 @@
           <div id="collapse-nav" class="am-nav am-collapse">
             <div class="am-form-group">
               <label for="doc-vld-Title-2">MQTT_Groupid：<a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
-              <input type="text" name="GroupId" id="GroupId" value="{{.roomInfo.GroupId}}" placeholder="请输入goupid" data-validation-message="请输入goupid"/>
+              <input type="text" name="GroupId" id="GroupId" placeholder="请输入goupid" data-validation-message="请输入goupid"/>
             </div>
             <div class="am-form-group">
               <label for="doc-vld-Title-2">URL：<a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
-              <input type="text" name="Url" id="Url" value="{{.roomInfo.Url}}" placeholder="请输入Url" data-validation-message="请输入Url"/>
+              <input type="text" name="Url" id="Url" placeholder="请输入Url" data-validation-message="请输入Url"/>
             </div>
             <div class="am-form-group">
               <label for="doc-vld-Title-2">Port：<a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
-              <input type="text" name="Port" id="Port" value="{{.roomInfo.Port}}" placeholder="请输入Port" data-validation-message="请输入Port"/>
+              <input type="text" name="Port" id="Port" placeholder="请输入Port" data-validation-message="请输入Port"/>
             </div>
             <div class="am-form-group">
               <label for="doc-select-1">tls  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
-              <label class="am-radio-inline">
-                <input type="radio"  value="0" name="Tls" {{if eq .roomInfo.Tls false}}checked{{end}} required> 关闭
-              </label>
-              <label class="am-radio-inline">
-                <input type="radio" value="1" name="Tls" {{if eq .roomInfo.Tls true}}checked{{end}}> 开启
-              </label>
+              <select name="Tls" id="Tls" name="Weight">
+                <option value="0">-=关闭=-</option>
+                <option value="1">-=开启=-</option>
+              </select>
+              <span class="am-form-caret"></span>
             </div>
             <div class="am-form-group">
               <label for="doc-vld-Title-2">Access：<a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
-              <input type="text" name="Access" id="Access" value="{{.roomInfo.Access}}" placeholder="请输入Access" data-validation-message="请输入Access"/>
+              <input type="text" name="Access" id="Access" placeholder="请输入Access" data-validation-message="请输入Access"/>
             </div>
             <div class="am-form-group">
               <label for="doc-vld-Title-2">SecretKey：<a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '不填默认获取上次', trigger: 'hover focus'}"></a></label>
-              <input type="text" name="SecretKey" id="SecretKey" value="{{.roomInfo.SecretKey}}" placeholder="请输入SecretKey" data-validation-message="请输入SecretKey"/>
+              <input type="text" name="SecretKey" id="SecretKey" placeholder="请输入SecretKey" data-validation-message="请输入SecretKey"/>
             </div>
           </div>
         </nav>
@@ -222,16 +220,6 @@
 
 <script type="text/javascript">
 $(function() {
-  var RoomIcon = "{{.roomInfo.RoomIcon}}";
-  var RoomBanner = "{{.roomInfo.RoomBanner}}";
-  if (RoomIcon.indexOf("upload") < 0){
-      $("#previewico").attr("src","../../"+RoomIcon);
-  }
-  if (RoomBanner.indexOf("upload") < 0){
-      $("#previewbanner").attr("src","../../"+RoomBanner);
-  }
-
-
   $('#teachbannerform').validator({
     onValid: function(validity) {
       $(validity.field).closest('.am-form-group').find('.am-alert').hide();

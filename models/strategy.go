@@ -18,6 +18,7 @@ type Strategy struct {
 	Name     string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
 	Titel    string
 	Data     string    `orm:"type(text)"` //策略内容
+	FileName string    //图片
 	IsTop    bool      //是否置顶 置顶1 否 0
 	IsDelete bool      //是否删除,删除 1 否 0
 	ThumbNum int64     //点赞次数
@@ -122,4 +123,14 @@ func GetThumbNum(id int64) (int64, error) {
 	var info Strategy
 	err := o.QueryTable(info).Filter("id", id).One(&info, "ThumbNum")
 	return info.ThumbNum, err
+}
+
+// 策略分页
+func GetStrategyInfoList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
+	o := orm.NewOrm()
+	strategy := new(Strategy)
+	query := o.QueryTable(strategy)
+	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	count, _ = query.Count()
+	return ms, count
 }

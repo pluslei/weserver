@@ -1,6 +1,9 @@
 package mqtt
 
 import (
+	"fmt"
+	"os"
+	"path"
 	"strconv"
 	"time"
 	m "weserver/models"
@@ -259,6 +262,36 @@ func (this *StrategyController) GetStrategyList() {
 }
 */
 
+func (this *StrategyController) Upload() {
+	uploadtype := this.GetString("uploadtype")
+
+	_, h, err := this.GetFile("file")
+	if err != nil {
+		beego.Error("getfile error", err)
+		this.Rsp(false, uploadtype, "")
+	}
+
+	dir := path.Join("..", "upload", "room")
+	err = os.MkdirAll(dir, 0755)
+	if err != nil {
+		beego.Error(err)
+		this.Rsp(false, uploadtype, "")
+	}
+	// 设置保存文件名
+
+	nowtime := time.Now().Unix()
+	FileName := fmt.Sprintf("%d%s", nowtime, h.Filename)
+	dirPath := path.Join("..", "upload", "room", FileName)
+	// 将文件保存到服务器中
+	err = this.SaveToFile("file", dirPath)
+	if err != nil {
+		beego.Error(err)
+		this.Rsp(false, uploadtype, "")
+	}
+	filepath := path.Join("/upload", "room", FileName)
+	this.Rsp(true, uploadtype, filepath)
+}
+
 func parseStrategyMsg(msg string) bool {
 	msginfo := new(StrategyInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
@@ -268,7 +301,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
-	sendmsg := info.Data
+	//sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -279,7 +312,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-	SendWeChatStrategy(topic, sendmsg) // send to wechat
+	//SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	insertStrageydata(info)
 	return true
