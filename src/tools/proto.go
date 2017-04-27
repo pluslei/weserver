@@ -234,7 +234,7 @@ type PositionInfo struct {
 	RoomId      string //topic
 	RoomTeacher string //老师
 	Type        string //种类
-	BuySell     int64  //买卖 0 1
+	BuySell     int    //买卖 0 1
 	Entrust     string //委托类型
 	Index       string //点位
 	Position    string //仓位

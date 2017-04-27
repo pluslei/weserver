@@ -134,3 +134,13 @@ func (this *TeacherController) Del() {
 	}
 	this.Rsp(true, "删除成功", "")
 }
+
+func (this *TeacherController) GetTeacher() {
+	room := this.GetString("room")
+	t, err := models.GetTeacherListByRoom(room)
+	if err != nil {
+		beego.Error("error", err)
+	}
+	this.Data["json"] = t
+	this.ServeJSON()
+}

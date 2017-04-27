@@ -128,12 +128,14 @@ func Router() {
 	beego.Router("/weserver/data/teacher_add", &haoadmin.TeacherController{}, "*:Add")
 	beego.Router("/weserver/data/teacher_edit", &haoadmin.TeacherController{}, "*:Edit")
 	beego.Router("/weserver/data/teacher_del", &haoadmin.TeacherController{}, "*:Del")
+	beego.Router("/weserver/data/teacher_room", &haoadmin.TeacherController{}, "*:GetTeacher")
 
 	// 操作建议
 	beego.Router("/weserver/data/suggest_index", &haoadmin.SuggestController{}, "*:Index")
 	beego.Router("/weserver/data/suggest_add", &haoadmin.SuggestController{}, "*:Add")
 	beego.Router("/weserver/data/suggest_edit", &haoadmin.SuggestController{}, "*:Edit")
 	beego.Router("/weserver/data/suggest_del", &haoadmin.SuggestController{}, "*:Del")
+	beego.Router("/weserver/data/suggest_addclose", &haoadmin.SuggestController{}, "*:AddClose")
 
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
@@ -187,6 +189,7 @@ func Router() {
 	beego.Router("/chat/user/AddTeacher", &mqtt.TeacherController{}, "*:OperateTeacher")
 
 	//仓位
+	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")
 	beego.Router("/chat/user/positionList", &mqtt.PositionController{}, "*:GetPositionList")
 	beego.Router("/chat/user/positionNear", &mqtt.PositionController{}, "*:GetPositionNearRecord")
 	beego.Router("/chat/user/positionAllList", &mqtt.PositionController{}, "*:GetAllPositionList")

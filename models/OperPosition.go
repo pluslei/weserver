@@ -15,7 +15,7 @@ type OperPosition struct {
 	RoomTeacher   string //老师
 	Time          time.Time
 	Type          string           //种类
-	BuySell       int64            //买卖 0 1
+	BuySell       int              //买卖 0 1
 	Entrust       string           //委托类型
 	Index         string           //点位
 	Position      string           //仓位
@@ -24,6 +24,8 @@ type OperPosition struct {
 	Notes         string           // 备注
 	Liquidation   int              //平仓详情 (0:未平仓 1:平仓)
 	ClosePosition []*ClosePosition `orm:"reverse(many)"` //一对多
+
+	Timestr string `orm:"-"` //时间字符
 }
 
 func init() {
@@ -41,6 +43,21 @@ func AddPosition(o *OperPosition) (int64, error) {
 	omodel := orm.NewOrm()
 	id, err := omodel.Insert(o)
 	return id, err
+}
+
+// 修改平仓详情
+func UpdatePositonLq(id int64) {
+	o := orm.NewOrm()
+	o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
+		"Liquidation": 1,
+	})
+}
+
+// 根据id查询
+func GetOpersitionInfoById(id int64) (oper OperPosition, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(OperPosition)).Filter("Id", id).One(&oper)
+	return oper, err
 }
 
 //删除建仓信息
