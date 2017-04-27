@@ -540,11 +540,11 @@ input[type=submit] {
   opacity: 0;
 }
 .Uploadadmin {
-  height: 120px;
+  height: 200px;
   background-color: #f4f4f6;
   border-top: 1px solid #ccccce;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .Uploadadmin ul {
   list-style: none;
@@ -555,14 +555,14 @@ input[type=submit] {
 .Uploadadmin ul .uploadlistadmin {
   float: left;
   width: 25%;
-  height: 110px;
+  height: 95px;
 }
 .Uploadadmin ul .uploadlistadmin .photopicadmin {
   height: 64px;
   width: 64px;
   text-align: center;
   line-height: 64px;
-  margin: 20px auto 0px;
+  margin: 10px auto 0px;
   border-radius: 8pt;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -1633,7 +1633,7 @@ a {
 .sendNotice .conNotice .sendStrategyText {
   display: inline-block;
   width: 100%;
-  height: 130px;
+  height: 90px;
   line-height: 18px;
   border: none;
   padding: 10px;
@@ -1728,6 +1728,74 @@ a {
   height: 160px;
   position: relative;
 }
+.Imgfile {
+  position: absolute;
+  height: 30px;
+  left: 80px;
+  bottom: 10px;
+}
+.Imgfile img {
+  width: 60px;
+  height: 60px;
+}
+.file {
+  position: absolute;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 10px 12px 4px;
+  overflow: hidden;
+  color: #1E88C7;
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 20px;
+  left: 10px;
+  bottom: 10px;
+}
+.file span {
+  display: block;
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.file span .delimg {
+  display: none;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 100%;
+  background: #ffffff;
+  position: absolute;
+  right: -8px;
+  top: -9px;
+  z-index: 200;
+  border: 1px solid #f5f5f5;
+}
+.file span .delimg img {
+  width: 20px;
+  height: 20px;
+}
+.file span img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 60px;
+  height: 60px;
+}
+.file input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.file:hover {
+  color: #004974;
+  text-decoration: none;
+}
+.showImg {
+  z-index: 300;
+}
 .chatRoomInfo {
   width: 100%;
   height: 100%;
@@ -1797,9 +1865,9 @@ a {
 }
 .chatRoomInfo .intoRoom {
   width: 100%;
-  height: 45px;
+  height: 50px;
   display: block;
-  line-height: 45px;
+  line-height: 50px;
   text-align: center;
   letter-spacing: 1px;
   color: #fff;
@@ -1860,4 +1928,120 @@ a {
   width: 100% !important;
   font-size: 14px;
   color: #09bb07;
+}
+.red {
+  color: #f00;
+}
+.green {
+  color: #0BB109;
+}
+.trade {
+  overflow: hidden;
+}
+.trade .trade-title {
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+.trade .trade-title p {
+  margin: 0;
+}
+.trade .trade-title .trade-title-left {
+  background: #4D4D4D;
+}
+.trade .trade-title .trade-title-right {
+  background: #282828;
+}
+.trade .trade-title .trade-title-right > div {
+  height: 100%;
+}
+.trade .trade-title .trade-title-right > div.am-text-left {
+  border-left: 1px solid #444;
+  padding-left: 6px !important;
+  padding-top: 8px !important;
+}
+.trade .trade-title .trade-title-right > div.am-text-left > p {
+  line-height: 25px;
+}
+.trade .trade-title .trade-title-right > div.am-text-left > p > span {
+  color: #d9d9d9;
+}
+.trade .trade-title .tradeType {
+  border-bottom: 1px solid #444;
+  height: 70px;
+  padding-top: 8px !important;
+}
+.trade .trade-title .tradeType .tradeTypeName {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #f1b157;
+}
+.trade .trade-title .trade-title-suggest {
+  height: 35px;
+  line-height: 35px;
+  clear: both;
+}
+.trade .trade-title .trade-title-suggest > .trade-title-right {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.trade .trade-title .trade-title-suggest .dropdown-history {
+  background: #ccc;
+  text-align: center;
+  float: right;
+  width: 110px;
+  color: #000;
+  letter-spacing: normal;
+}
+.newTab {
+  height: 35px;
+  line-height: 35px;
+  margin: 5px 0;
+  list-style: none;
+  overflow: hidden;
+}
+.newTab > li {
+  float: left;
+  text-align: center;
+  padding: 0 !important;
+  border: 1px solid #ECEAEB;
+  border-left: none;
+  border-right: none;
+  background: #ECEAEB;
+}
+.newTab > li.acitve {
+  background: #fff;
+}
+.tradeDatail {
+  height: calc(100% - 105px);
+  background: #fff;
+}
+.tradeDatail > ul {
+  width: 100%;
+}
+.tradeDatail > ul li {
+  margin: 0 5px;
+}
+.tradeDatail > ul .header .name {
+  font-size: 20px;
+  color: #000;
+}
+.tradeDatail > ul .header .timer {
+  font-size: 12px;
+  color: #4D4D4D;
+}
+.tradeDatail > ul .content .buying-selling {
+  background: #f00;
+  color: #fff;
+  border-radius: 5px;
+}
+.tradeDatail > ul .content .buying-selling {
+  background: #09bb07;
+  color: #fff;
+  border-radius: 5px;
+}
+.tradeDatail > ul .footer .number {
+  font-size: 20px;
+  color: #000;
 }
