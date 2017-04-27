@@ -1,0 +1,49 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">添加操作建议</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加讲师</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="/weserver/data/teacher_add" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" value="add" name="action">
+        <div class="am-form-group">
+          <label for="doc-select-1">请选择房间</label>
+          <select id="doc-select-2" name="Room"  required data-validation-message="请选择房间">
+            <option value="">-=请选择房间=-</option>
+            {{range $index,$ele := .roonInfo}}
+            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师名称：</label>
+          <input type="text" name="Name" id="doc-vld-Title-2" placeholder="输入讲师名称" data-validation-message="请输入讲师名称" required/>
+           <input type="hidden" name="fname" />
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师图片：</label>
+            <input type="file" name="Image" id="Image" multiple="true" /> 
+            <input type="hidden" name="Icon" id="Icon" multiple="true" /> 
+        </div>
+
+        <div class="am-form-group" >
+            <img id="preview" src="" style="width:200px;height: 200px;border: 0px;soild:#FFFFFF; " />
+        </div>
+
+         <div class="am-form-group">
+          <label for="doc-vld-ta-2">讲师简介：</label>
+          <textarea id="doc-vld-ta-2" name="Data" placeholder="输入讲师简介" data-validation-message="请输入讲师简介" required></textarea>
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+

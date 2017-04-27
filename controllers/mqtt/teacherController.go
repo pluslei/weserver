@@ -28,7 +28,7 @@ func init() {
 	teacher = &teacherMessage{
 		infochan: make(chan *TeacherInfo, 20480),
 	}
-	strategy.runWriteDb()
+	teacher.runWriteDb()
 }
 
 //Add teacher

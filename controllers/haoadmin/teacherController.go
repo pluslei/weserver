@@ -44,6 +44,13 @@ func (this *TeacherController) Index() {
 		this.ServeJSON()
 	} else {
 		this.CommonMenu()
+
+		roonInfo, _, err := models.GetRoomInfo()
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/teacher/list.html"
 	}
 }

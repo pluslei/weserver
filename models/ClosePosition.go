@@ -22,7 +22,6 @@ type ClosePosition struct {
 	ProfitPoint  string        //止盈点
 	LossPoint    string        //止损点
 	Notes        string        // 备注
-	Liquidation  string        //平仓详情
 	OperPosition *OperPosition `orm:"rel(fk)"`
 }
 
@@ -31,7 +30,7 @@ func init() {
 }
 
 func (c *ClosePosition) TableName() string {
-	return "ClosePosition"
+	return "closeposition"
 }
 
 /*
