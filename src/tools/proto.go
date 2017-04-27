@@ -26,6 +26,8 @@ const (
 	MSG_TYPE_SHUTUP      // 禁言
 	MSG_TYPE_TEACHER_ADD //teacher
 	MSG_TYPE_TEACHER_DEL
+	MSG_TYPE_POSITION_ADD
+	MSG_TYPE_POSITION_DEL
 )
 
 const (
@@ -211,6 +213,58 @@ func (t *StrategyInfo) ParseJSON(msg []byte) (s StrategyInfo, err error) {
 
 func (t *StrategyOperate) ParseJSON(msg []byte) (s StrategyOperate, err error) {
 	var result StrategyOperate
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+
+// Operate type
+const (
+	OPERATE_POSITION_ADD = iota
+	OPERATE_POSITION_DEL
+	OPERATE_POSITION_UPDATE
+)
+
+// 建仓信息
+type PositionInfo struct {
+	Id          int64
+	RoomId      string //topic
+	RoomTeacher string //老师
+	Type        string //种类
+	BuySell     int64  //买卖 0 1
+	Entrust     string //委托类型
+	Index       string //点位
+	Position    string //仓位
+	ProfitPoint string //止盈点
+	LossPoint   string //止损点
+	Notes       string // 备注
+	Liquidation int    //平仓详情 (0:未平仓 1:平仓)
+
+	OperType int64
+	MsgType  int //消息类型
+}
+
+type PositionOperate struct {
+	Id       int64  //消息id 唯一
+	Room     string //房间号
+	OperType int64  // 1 /0	/2 /3
+
+	MsgType int //消息类型
+}
+
+func (t *PositionInfo) ParseJSON(msg []byte) (s PositionInfo, err error) {
+	var result PositionInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+func (t *PositionOperate) ParseJSON(msg []byte) (s PositionOperate, err error) {
+	var result PositionOperate
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}

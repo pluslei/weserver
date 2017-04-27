@@ -17,6 +17,7 @@ type SysConfig struct {
 	NoticeCount   int64  //公告消息条数
 	StrategyCount int64  //策略消息条数
 	TeacherCount  int64
+	PositionCount int64
 	WelcomeMsg    string //欢迎语
 	Verify        int64  //是否开启用户审核  0开启 1不开启
 	LoginSys      int64  //是否允许登陆后台  0允许 1禁止

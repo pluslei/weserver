@@ -45,6 +45,7 @@ func AddPosition(o *OperPosition) (int64, error) {
 	return id, err
 }
 
+<<<<<<< HEAD
 // 修改平仓详情
 func UpdatePositonLq(id int64) {
 	o := orm.NewOrm()
@@ -58,6 +59,33 @@ func GetOpersitionInfoById(id int64) (oper OperPosition, err error) {
 	o := orm.NewOrm()
 	err = o.QueryTable(new(OperPosition)).Filter("Id", id).One(&oper)
 	return oper, err
+=======
+//删除建仓信息
+func DelPositionById(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var info OperPosition
+	status, err := o.QueryTable(info).Filter("Id", id).Delete()
+	return status, err
+}
+
+//更新
+func UpdatePositionInfo(t *OperPosition) (int64, error) {
+	o := orm.NewOrm()
+	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+		"RoomTeacher": t.RoomTeacher,
+		"Type":        t.Type,
+		"BuySell":     t.BuySell,
+		"Entrust":     t.Entrust,
+		"Index":       t.Index,
+		"Position":    t.Position,
+		"ProfitPoint": t.Position,
+		"LossPoint":   t.LossPoint,
+		"Notes":       t.Notes,
+		"Liquidation": t.Liquidation,
+		"Time":        t.Time,
+	})
+	return id, err
+>>>>>>> 78c369fe9084d35184936dad17bd7819e870e1e5
 }
 
 // 分页
@@ -68,4 +96,20 @@ func GetOperPositionList(page int64, page_size int64, sort string) (ms []orm.Par
 	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()
 	return ms, count
+}
+
+//获取最近的一条记录
+func GetNearRecord(Room string) (OperPosition, error) {
+	o := orm.NewOrm()
+	var oper OperPosition
+	err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").Limit(1).One(&oper)
+	return oper, err
+}
+
+//获取所有记录
+func GetAllPositionList(Room string) ([]OperPosition, int64, error) {
+	o := orm.NewOrm()
+	var info []OperPosition
+	num, err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").All(&info)
+	return info, num, err
 }
