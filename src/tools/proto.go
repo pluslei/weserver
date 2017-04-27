@@ -22,8 +22,10 @@ const (
 	MSG_TYPE_NOTICE_DEL
 	MSG_TYPE_STRATEGY_ADD //策略消息
 	MSG_TYPE_STRATEGY_OPE
-	MSG_TYPE_KICKOUT //踢人
-	MSG_TYPE_SHUTUP  // 禁言
+	MSG_TYPE_KICKOUT     //踢人
+	MSG_TYPE_SHUTUP      // 禁言
+	MSG_TYPE_TEACHER_ADD //teacher
+	MSG_TYPE_TEACHER_DEL
 )
 
 const (
@@ -207,6 +209,52 @@ func (t *StrategyInfo) ParseJSON(msg []byte) (s StrategyInfo, err error) {
 
 func (t *StrategyOperate) ParseJSON(msg []byte) (s StrategyOperate, err error) {
 	var result StrategyOperate
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+// Operate type
+const (
+	OPERATE_TEACHER_ADD = iota
+	OPERATE_TEACHER_DEL
+	OPERATE_TEACHER_UPDATE
+)
+
+// 老师信息
+type TeacherInfo struct {
+	Id       int64
+	Room     string //房间号 topic
+	Name     string
+	Icon     string //头像
+	Title    string
+	Data     string //策略内容
+	Time     string
+	OperType int64
+
+	MsgType int //消息类型
+}
+
+type TeacherOperate struct {
+	Id       int64  //消息id 唯一
+	Room     string //房间号
+	OperType int64
+
+	MsgType int //消息类型
+}
+
+func (t *TeacherInfo) ParseJSON(msg []byte) (s TeacherInfo, err error) {
+	var result TeacherInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+func (t *TeacherOperate) ParseJSON(msg []byte) (s TeacherOperate, err error) {
+	var result TeacherOperate
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}

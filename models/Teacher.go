@@ -46,6 +46,20 @@ func AddTeacher(t *Teacher) (int64, error) {
 	return id, err
 }
 
+//更新
+func UpdateTeacherInfo(t *Teacher) (int64, error) {
+	o := orm.NewOrm()
+	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+		"Name":  t.Name,
+		"Room":  t.Room,
+		"Icon":  t.Icon,
+		"Title": t.Title,
+		"Data":  t.Data,
+		"Time":  t.Time,
+	})
+	return id, err
+}
+
 //删除老师
 func DelTeacherById(id int64) (int64, error) {
 	o := orm.NewOrm()
