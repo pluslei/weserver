@@ -112,3 +112,9 @@ func GetAllPositionList(Room string) ([]OperPosition, int64, error) {
 	num, err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").All(&info)
 	return info, num, err
 }
+
+// 更新
+func UpdatePosition(id int64, position map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(OperPosition)).Filter("Id", id).Update(position)
+}

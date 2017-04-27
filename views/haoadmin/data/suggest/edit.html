@@ -1,82 +1,19 @@
 <style type="text/css">
   legend{border-bottom: 0px;}
 </style>
-<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
-<script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('#Image').uploadify({
-      'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
-      'uploader' : '/weserver/data/upload',//后台处理程序的相对路径
-      'floder': '/upload/teacher',          
-      'fileSizeLimit': '2MB',
-      'queueID': 'fileQueue',
-      'queueSizeLimit': 999999999,
-      'uploadLimit': 999999999,
-      //'progressData': 'speed',
-      'auto': true,
-      'multi': false,
-      'buttonClass' : 'some-class',//自定义的样式类名
-      //'queueID'  : 'some_file_queue',
-      //'buttonCursor' : 'arrow',
-      //'buttonText': '上传图片',
-      'buttonTitle': '提示文字',
-      'buttonImage':'/static/images/i/img/upload_file.png',
-      'requeueErrors' : true,
-      'debug': false,
-       'height'   : 28, // The height of the flash button
-      'width'    : 155, // The width of the flash button
-      'itemTemplate':false,
-      'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
-      'fileTypeExts': '*.bmp;*.jpg;.jpeg;*.png;*.gif',//设置允许上传的文件扩展名（也就是文件类型）。但手动键入文件名可以绕过这种级别的安全检查，所以你应该始终在服务端中检查文件类型。输入多个扩展名时用分号隔开('*.*;*.jpg;*.png;*.gif')
-      'fileTypeDesc': '文件格式',//可选文件的描述。这个值出现在文件浏览窗口中的文件类型下拉选项中。（但我设置了好像没效果？原文：The description of the selectable files.  This string appears in the browse files dialog box in the file type drop down.）
-      'fileObjName':'Filedata', //设置后台的文件名
-      'method'   : 'post',
-      'onUploadSuccess': function(file,data,response){
-        if(data!=null){
-          data = jQuery.parseJSON(data);
-          if(data.status){
-            $("input[name=Icon]").val(data.url);
-            $("#preview").attr("src",data.url);
-          }
-        }
-      },
-      'onSelectError':function(file,data,response){
-        if(data!=null){
-          data = jQuery.parseJSON(data);
-          if(data.status){
-            var str = data.url;
-            switch(errorCode) {
-                case -110:
-                    alert("文件 ["+str+"] 大小超出系统限制的" + jQuery('#Img').uploadify('settings', 'fileSizeLimit') + "大小！");
-                    break;
-                case -120:
-                    alert("文件 ["+str+"] 大小异常！");
-                    break;
-                case -130:
-                    alert("文件 ["+str+"] 类型不正确！");
-                    break;
-            }
-          }
-        }
-      },
-    });
-  });
-</script>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">讲师管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加讲师</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">添加操作建议</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加讲师</span></div>
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
-    <form action="teacher_edit" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
+    <form action="/weserver/data/suggest_edit" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
       <fieldset>
         <legend></legend>
-        <input type="hidden" value="{{.teacher.Id}}" name="id">
+        <input type="hidden" value="{{.operInfo.Id}}" name="id">
         <input type="hidden" value="edit" name="action">
         <div class="am-form-group">
           <label for="doc-select-1">请选择房间</label>
-          <select id="doc-select-room" name="Room"  required data-validation-message="请选择房间">
+          <select id="doc-select-room" name="RoomId" onchange="selectTeacher(this)"  required data-validation-message="请选择房间">
             <option value="">-=请选择房间=-</option>
             {{range $index,$ele := .roonInfo}}
             <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
@@ -86,22 +23,76 @@
         </div>
         <div class="am-form-group">
           <label for="doc-vld-Title-2">讲师名称：</label>
-          <input type="text" name="Name" value="{{.teacher.Name}}" id="doc-vld-Title-2" placeholder="输入讲师名称" data-validation-message="请输入讲师名称" required/>
-           <input type="hidden" name="fname" />
+          <select id="doc-select-roomteacher" name="RoomTeacher"  required data-validation-message="请选择讲师">
+            <option value="">-=请选择房间=-</option>
+            {{range $index,$ele := .roomteacherInfo}}
+            <option value="{{$ele.Name}}">{{$ele.Name}}</option>
+            {{end}}
+          </select>
         </div>
+
         <div class="am-form-group">
-          <label for="doc-vld-Title-2">讲师图片：</label>
-            <input type="file" name="Image" id="Image" multiple="true" /> 
-            <input type="hidden" name="Icon" id="Icon" value="{{.teacher.Icon}}" multiple="true" /> 
+          <label for="doc-vld-Title-2">交易品种  </label>
+            <input type="text" name="Type" value="{{.operInfo.Type}}" multiple="true" placeholder="请输入交易品种" data-validation-message="请输入交易品种" required/> 
         </div>
 
-        <div class="am-form-group" >
-            <img id="preview" src="{{.teacher.Icon}}" style="width:200px;height: 200px;border: 0px;soild:#FFFFFF; " />
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">买入/卖出：<a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '请填写买入或者卖出', trigger: 'hover focus'}"></a></label>
+            <div class="am-form-group">
+              <label class="am-radio-inline">
+                <input type="radio"  value="0" name="BuySell" {{if eq .operInfo.BuySell 0}}checked{{end}} required> 买入
+              </label>
+              <label class="am-radio-inline">
+                <input type="radio" value="1" name="BuySell" {{if eq .operInfo.BuySell 1}}checked{{end}}> 卖出
+              </label>
+            </div>
         </div>
 
-         <div class="am-form-group">
-          <label for="doc-vld-ta-2">讲师简介：</label>
-          <textarea id="doc-vld-ta-2" name="Data" placeholder="输入讲师简介" data-validation-message="请输入讲师简介" required>{{.teacher.Data}}</textarea>
+        <div class="am-form-group">
+            <label for="doc-select-1">委托类型  </label>
+            <select name="Entrust" id="Entrust" required>
+              <option {{if eq .operInfo.Entrust "市价"}}selected{{end}} value="市价">市价</option>
+              <option {{if eq .operInfo.Entrust "指定价格"}}selected{{end}} value="指定价格">指定价格</option>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">点位  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '当前品种的行情点位', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Index" id="Index" value="{{.operInfo.Index}}" placeholder="请输入点位" data-validation-message="请输入点位" required/> 
+        </div>
+
+        <div class="am-form-group">
+            <label for="doc-select-position">仓位  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '指导入市仓位大小', trigger: 'hover focus'}"></a></label>
+            <select id="doc-select-position" name="Position" required>
+              <option value="">-=请选择仓位=-</option>
+              <option value="一成仓">一成仓</option>
+              <option value="二成仓">二成仓</option>
+              <option value="三成仓">三成仓</option>
+              <option value="四成仓">四成仓</option>
+              <option value="五成仓">五成仓</option>
+              <option value="六成仓">六成仓</option>
+              <option value="七成仓">七成仓</option>
+              <option value="八成仓">八成仓</option>
+              <option value="九成仓">九成仓</option>
+              <option value="满仓">满仓</option>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">止盈  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '可设置具体区间，获取指定值', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="ProfitPoint" id="ProfitPoint" value="{{.operInfo.ProfitPoint}}"  multiple="true" placeholder="请输入止盈" data-validation-message="请输入止盈" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">止损  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '指导止损点数', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="LossPoint" id="LossPoint" value="{{.operInfo.LossPoint}}"  multiple="true" placeholder="请输入止损" data-validation-message="请输入止损" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">备注  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '备注', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Notes" id="Notes" value="{{.operInfo.Notes}}"  multiple="true" placeholder="请输入备注" data-validation-message="请输入备注" required/> 
         </div>
 
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
@@ -109,11 +100,28 @@
     </form>
   </div>
 </div>
-
-<script type="text/javascript">
-$(function() {
-  $("#doc-select-room").find("option[value='{{.teacher.Room}}']").attr("selected",true);
+<script>
+  function selectTeacher(obj){
+    var room = $(obj).val();
+    console.info(room);
+    $.ajax({
+        url: '/weserver/data/teacher_room',
+        type: 'POST',
+        data: {room: room},
+        success: function(rsp){
+            var html = "<option value=''>-=请选择房间=-</option>";
+            rsp.forEach(function(element) {
+              html = html + "<option value='"+element.Name+"'>"+element.Name+"</option>"
+            }, this);
+            console.info(html);
+            $("#doc-select-roomteacher").html(html);
+        }
+    })
+  }
+  $(function() {
+  $("#doc-select-room").find("option[value='{{.operInfo.RoomId}}']").attr("selected",true);
+  $("#doc-select-roomteacher").find("option[value='{{.operInfo.RoomTeacher}}']").attr("selected",true);
+  $("#doc-select-position").find("option[value='{{.operInfo.Position}}']").attr("selected",true);
 });
 </script>
-
 
