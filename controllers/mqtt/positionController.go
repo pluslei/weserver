@@ -68,6 +68,25 @@ func (this *PositionController) GetAllPositionList() {
 	this.Ctx.WriteString("")
 }
 
+func (this *PositionController) GetPositionNearRecord() {
+	if this.IsAjax() {
+		roomId := this.GetString("room")
+		data := make(map[string]interface{})
+		historyNear, err := m.GetNearRecord(roomId)
+		if err != nil {
+			beego.Debug("Get All Position List error", err)
+			this.Rsp(false, "Get All Position List Error", "")
+			return
+		}
+		data["historyNear"] = historyNear
+		this.Data["json"] = &data
+		this.ServeJSON()
+	} else {
+		this.Ctx.Redirect(302, "/")
+	}
+	this.Ctx.WriteString("")
+}
+
 //Position List
 func (this *PositionController) GetPositionList() {
 	if this.IsAjax() {
