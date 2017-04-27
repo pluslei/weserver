@@ -23,6 +23,8 @@ type ClosePosition struct {
 	LossPoint    string        //止损点
 	Notes        string        // 备注
 	OperPosition *OperPosition `orm:"rel(fk)"`
+
+	Timestr string `orm:"-"` //时间字符
 }
 
 func init() {
@@ -46,6 +48,6 @@ func AddClosePosition(c *ClosePosition) (int64, error) {
 func GetMoreClosePosition(id int64) ([]*ClosePosition, int64, error) {
 	o := orm.NewOrm()
 	var close []*ClosePosition
-	num, err := o.QueryTable("ClosePosition").Filter("OperPosition", id).RelatedSel().All(&close)
+	num, err := o.QueryTable(new(ClosePosition)).Filter("OperPosition", id).RelatedSel().All(&close)
 	return close, num, err
 }

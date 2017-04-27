@@ -136,6 +136,7 @@ func Router() {
 	beego.Router("/weserver/data/suggest_edit", &haoadmin.SuggestController{}, "*:Edit")
 	beego.Router("/weserver/data/suggest_del", &haoadmin.SuggestController{}, "*:Del")
 	beego.Router("/weserver/data/suggest_addclose", &haoadmin.SuggestController{}, "*:AddClose")
+	beego.Router("/weserver/data/suggest_getclose", &haoadmin.SuggestController{}, "*:GetClose")
 
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")

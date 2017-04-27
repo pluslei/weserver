@@ -121,9 +121,9 @@
                 {"mDataProp": "Liquidation",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         if (sData == 0){
-                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 添加平仓</a></div>");
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 添加平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='讲师编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a></div>");
                         }else{
-                            $(nTd).html("<div class='am-btn-group am-btn-group-xs' onclick='showRow(this,"+oData.Id+")'>查看平仓</div>");
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='讲师编辑' onclick='showRow(this,"+oData.Id+")'><span class='am-icon-info-circle'></span> 查看平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='讲师编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a></div>");
                         }  
                     }
                 },
@@ -151,7 +151,7 @@
 
     function showRow(obj,id){
         console.info(id);
-        var tr= $(obj).parent().parent();
+        var tr= $(obj).parent().parent().parent();
         var row=oTable.row(tr);
         if (row.child.isShown()){
             row.child.hide();
@@ -166,7 +166,7 @@
     function format(id){
         var html = "";
         $.ajax({
-            url: '../resource/typedeta',
+            url: '/weserver/data/suggest_getclose',
             type: 'get',
             async:false,
             dataType:'json',
@@ -182,21 +182,30 @@
         });
         if (datainfo.length != 0) {
             for (var i = 0; i < datainfo.length; i++) {
-                html += '<table class="resTable-info table table-bordered" cellpadding="10" cellspacing="0" border="0">'+
+                var buysell = "";
+                if (datainfo[i].BuySell == 0) {
+                    buysell = "<span class='am-alert am-alert-danger regstatus'>买入建仓</span>";
+                }else{
+                    buysell = "<span class='am-alert am-alert-success regstatus'>卖出建仓</span>";
+                }
+                html += '<table class="am-table am-table-bordered am-table-radius am-table-striped" cellpadding="10" cellspacing="0" border="0">'+
                     '<tr>'+
-                        '<td style="width: 15%">'+datainfo[i].AddTime+'</td>'+
-                        // '<td style="width: 18%">'+datainfo[i].ResourceType+'</td>'+
-                        '<td style="width: 15%">'+datainfo[i].TotalResource+'</td>'+
-                        '<td style="width: 15%">'+datainfo[i].UsdeResource+'</td>'+
-                        '<td style="width: 14%">'+datainfo[i].CanUseResource+'</td>'+
-                        '<td style="width: 14%">'+datainfo[i].Team+'</td>'+
-                        '<td style="width: 14%">'+datainfo[i].Username+'</td>'+
-                        '<td style="width: 17%">'+datainfo[i].UsePersent+"%"+'</td>'+
+                        '<td style="width: 9%">'+datainfo[i].RoomId+'</td>'+
+                        '<td style="width: 9%">'+datainfo[i].RoomTeacher+'</td>'+
+                        '<td style="width: 13%">'+datainfo[i].Timestr+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].Type+'</td>'+
+                        '<td style="width: 8%">'+buysell+'</td>'+
+                        '<td style="width: 10%">'+datainfo[i].Entrust+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].Index+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].Position+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].ProfitPoint+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].LossPoint+'</td>'+
+                        '<td style="width: 17%">'+datainfo[i].Notes+'</td>'+
                     '</tr>'+
                 '</table>';
             }
         } else {
-            html += '<table class="resTable-info table table-bordered" cellpadding="10" cellspacing="0" border="0">'+
+            html += '<table class="am-table am-table-bordered am-table-radius am-table-striped" cellpadding="10" cellspacing="0" border="0">'+
                 '<tr>'+
                     '<td colspan="7">无数据</td>'+
                 '</tr>'+

@@ -138,12 +138,36 @@ func (this *SuggestController) AddClose() {
 		this.Data["operInfo"] = operInfo
 		room, err := models.GetRoomInfoByRoomID(operInfo.RoomId)
 		if err != nil {
-			this.Data["RoomId"] = "未知房间"
+			this.Data["Room"] = "未知房间"
 		} else {
-			this.Data["RoomId"] = room.Title
+			this.Data["Room"] = room.Title
 		}
 		this.TplName = "haoadmin/data/suggest/addclose.html"
 	}
+}
+
+func (this *SuggestController) GetClose() {
+	id, err := this.GetInt64("id")
+	if err != nil {
+		beego.Error("error", err)
+		return
+	}
+	closeOper, _, err := models.GetMoreClosePosition(id)
+	if err != nil {
+		beego.Error("error", err)
+		return
+	}
+	for _, item := range closeOper {
+		roomInfo, err := models.GetRoomInfoByRoomID(item.RoomId)
+		if err != nil {
+			item.RoomId = "未知房间"
+		} else {
+			item.RoomId = roomInfo.RoomTitle
+		}
+		item.Timestr = item.Time.Format("2006-01-02 15:04:05")
+	}
+	this.Data["json"] = closeOper
+	this.ServeJSON()
 }
 
 // 编辑建仓
