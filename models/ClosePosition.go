@@ -55,7 +55,7 @@ func GetMoreClosePosition(id int64) ([]*ClosePosition, int64, error) {
 // 根据id获取信息
 func GetClosePositionInfo(id int64) (close ClosePosition, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(new(ClosePosition)).Filter("Id", id).One(close)
+	err = o.QueryTable(new(ClosePosition)).Filter("Id", id).One(&close)
 	return close, err
 }
 
