@@ -118,7 +118,7 @@ func GetTeacherInfoById(id int64) (t Teacher, err error) {
 }
 
 // 更新
-func UpdateTeacherInfo(id int64, teacher map[string]interface{}) (int64, error) {
+func UpdateTeacherInfoById(id int64, teacher map[string]interface{}) (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable(new(Teacher)).Filter("Id", id).Update(teacher)
 }

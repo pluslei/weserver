@@ -1,6 +1,4 @@
 package mqtt
-<<<<<<< HEAD
-=======
 
 import (
 	"strconv"
@@ -171,6 +169,10 @@ func (this *TeacherController) GetTeacherList() {
 	this.Ctx.WriteString("")
 }
 
+func (this *TeacherController) DeleteTeacher() {
+
+}
+
 func parseAddTeacherMsg(msg string) bool {
 	msginfo := new(TeacherInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
@@ -291,4 +293,3 @@ func updateTeacherConten(info *TeacherInfo) error {
 	}
 	return nil
 }
->>>>>>> d77d10bda1b3d56a334f4937a04739ec42454c31

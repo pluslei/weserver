@@ -91,7 +91,7 @@ func (this *TeacherController) Edit() {
 		teacher["Icon"] = this.GetString("Icon")
 		teacher["Data"] = this.GetString("Data")
 		teacher["Datatime"] = time.Now()
-		_, err := models.UpdateTeacherInfo(id, teacher)
+		_, err := models.UpdateTeacherInfoById(id, teacher)
 		if err != nil {
 			this.AlertBack("修改失败")
 		}
