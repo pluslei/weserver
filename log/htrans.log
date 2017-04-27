@@ -14956,3 +14956,5 @@
 2017/04/27 15:32:36 [D] [wechat.go:93] Na1iLnMAn9-tPkmS5piExBATYrmuBzb1I_G1vChA9g2_NQ4X3grtQLg36_r6DBHTe-OhfPfU1a5o2LBjNPEGKXs-NTrEbA7jtiQJvQaWxv4R_aGyVv5y-bwd2p5SkdYKSZDfAGAAHL 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=Na1iLnMAn9-tPkmS5piExBATYrmuBzb1I_G1vChA9g2_NQ4X3grtQLg36_r6DBHTe-OhfPfU1a5o2LBjNPEGKXs-NTrEbA7jtiQJvQaWxv4R_aGyVv5y-bwd2p5SkdYKSZDfAGAAHL 
 2017/04/27 15:32:36 [D] [chat.go:64] WeChat Init ok ! 
 2017/04/27 15:32:36 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/27 15:49:52 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/27 15:49:52 [E] [Connect.go:17] 数据库连接失败 
