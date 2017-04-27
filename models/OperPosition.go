@@ -45,7 +45,6 @@ func AddPosition(o *OperPosition) (int64, error) {
 	return id, err
 }
 
-<<<<<<< HEAD
 // 修改平仓详情
 func UpdatePositonLq(id int64) {
 	o := orm.NewOrm()
@@ -59,7 +58,8 @@ func GetOpersitionInfoById(id int64) (oper OperPosition, err error) {
 	o := orm.NewOrm()
 	err = o.QueryTable(new(OperPosition)).Filter("Id", id).One(&oper)
 	return oper, err
-=======
+}
+
 //删除建仓信息
 func DelPositionById(id int64) (int64, error) {
 	o := orm.NewOrm()
@@ -85,7 +85,6 @@ func UpdatePositionInfo(t *OperPosition) (int64, error) {
 		"Time":        t.Time,
 	})
 	return id, err
->>>>>>> 78c369fe9084d35184936dad17bd7819e870e1e5
 }
 
 // 分页
