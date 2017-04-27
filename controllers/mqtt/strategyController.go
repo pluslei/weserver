@@ -79,7 +79,6 @@ func (this *StrategyController) OperateStrategy() {
 }
 
 //Strategy List
-//HistoryNotice List
 func (this *StrategyController) GetStrategyList() {
 	if this.IsAjax() {
 		strId := this.GetString("Id")
