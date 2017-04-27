@@ -3,7 +3,7 @@
     .am-alert{border-radius: 5px;padding:3px;}
 </style>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">讲师管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">讲师列表</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">操作建议管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">讲师列表</span></div>
 </div>
 <div class="result-wrap">
 
@@ -13,7 +13,7 @@
                     <div class="result-list am-form-inline am-form">
                         <div class="am-input-group">
                             <span class="am-input-group-btn">
-                                <a href="/weserver/data/teacher_add" class="am-btn am-btn-success">添加讲师</a>
+                                <a href="/weserver/data/suggest_add" class="am-btn am-btn-success">添加建仓</a>
                             </span>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         oTable = initTable();
     });
     function initTable() {
-        var actionUrl = '/weserver/data/teacher_index';
+        var actionUrl = '/weserver/data/suggest_index';
         var table = $('#data-teacher-list').dataTable({
             "bFilter": false,
             "bAutoWidth": false,

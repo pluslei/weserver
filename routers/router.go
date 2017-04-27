@@ -129,6 +129,12 @@ func Router() {
 	beego.Router("/weserver/data/teacher_edit", &haoadmin.TeacherController{}, "*:Edit")
 	beego.Router("/weserver/data/teacher_del", &haoadmin.TeacherController{}, "*:Del")
 
+	// 操作建议
+	beego.Router("/weserver/data/suggest_index", &haoadmin.SuggestController{}, "*:Index")
+	beego.Router("/weserver/data/suggest_add", &haoadmin.SuggestController{}, "*:Add")
+	beego.Router("/weserver/data/suggest_edit", &haoadmin.SuggestController{}, "*:Edit")
+	beego.Router("/weserver/data/suggest_del", &haoadmin.SuggestController{}, "*:Del")
+
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
 	// beego.Router("/test/postapi", &haoadmin.TestController{}, "*:PostApi")

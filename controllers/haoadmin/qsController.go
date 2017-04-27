@@ -30,6 +30,12 @@ func (this *QsController) SendNoticeList() {
 		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "-Id")
 		for _, item := range Noticelist {
 			item["Datatime"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
+			roomInfo, err := m.GetRoomInfoByRoomID(item["Room"].(string))
+			if err != nil {
+				item["Room"] = "未知房间"
+			} else {
+				item["Room"] = roomInfo.RoomTitle
+			}
 		}
 		// json
 		data := make(map[string]interface{})
