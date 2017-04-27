@@ -177,15 +177,17 @@ const (
 
 // 策略消息
 type StrategyInfo struct {
-	Room     string //房间号 topic
-	Icon     string //头像
-	Name     string //操作者的用户名
-	Titel    string
-	Data     string //策略内容
-	IsTop    bool   //是否置顶 置顶1 否 0
-	IsDelete bool   //是否删除,删除 1 否 0
-	ThumbNum int64  //点赞次数
-	Time     string
+	Room      string //房间号 topic
+	Icon      string //头像
+	Name      string //操作者的用户名
+	Titel     string
+	Data      string //策略内容
+	FileName  string
+	TxtColour string //颜色字段
+	IsTop     bool   //是否置顶 置顶1 否 0
+	IsDelete  bool   //是否删除,删除 1 否 0
+	ThumbNum  int64  //点赞次数
+	Time      string
 
 	MsgType int //消息类型
 }
