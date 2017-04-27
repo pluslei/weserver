@@ -85,10 +85,28 @@ func (this *StrategyController) Add() {
 
 func (this *StrategyController) Edit() {
 	action := this.GetString("action")
+	id, err := this.GetInt64("id")
+	if err != nil {
+		this.AlertBack("编辑失败")
+		return
+	}
 	if action == "edit" {
 
 	} else {
 		this.CommonMenu()
+		info, err := models.GetStrategyInfoById(id)
+		if err != nil {
+			this.AlertBack("编辑失败")
+			return
+		}
+		beego.Debug("info", info)
+		this.Data["Info"] = info
+		roonInfo, _, err := models.GetRoomInfo()
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/strategy/edit.html"
 	}
 }

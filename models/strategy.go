@@ -134,3 +134,10 @@ func GetStrategyInfoList(page int64, page_size int64, sort string) (ms []orm.Par
 	count, _ = query.Count()
 	return ms, count
 }
+
+// 获取单个信息
+func GetStrategyInfoById(id int64) (info Strategy, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(info).Filter("id", id).One(&info)
+	return info, err
+}
