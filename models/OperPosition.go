@@ -37,7 +37,7 @@ func (o *OperPosition) TableName() string {
 }
 
 /*
-* 新增加建仓操作
+* 建仓操作
  */
 func AddPosition(o *OperPosition) (int64, error) {
 	omodel := orm.NewOrm()
