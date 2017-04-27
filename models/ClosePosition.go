@@ -15,7 +15,7 @@ type ClosePosition struct {
 	RoomTeacher  string //老师
 	Time         time.Time
 	Type         string        //种类
-	BuySell      string        //买卖
+	BuySell      int           //买卖 0 1
 	Entrust      string        //委托类型
 	Index        string        //点位
 	Position     string        //仓位

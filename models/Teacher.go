@@ -122,3 +122,10 @@ func UpdateTeacherInfoById(id int64, teacher map[string]interface{}) (int64, err
 	o := orm.NewOrm()
 	return o.QueryTable(new(Teacher)).Filter("Id", id).Update(teacher)
 }
+
+// 根据房间查询讲师
+func GetTeacherListByRoom(roomid string) (t []Teacher, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable(new(Teacher)).Filter("Room", roomid).All(&t)
+	return t, err
+}
