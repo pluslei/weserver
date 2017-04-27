@@ -32,10 +32,10 @@ func init() {
 }
 
 //Add teacher
-func (this *TeacherController) AddTeacher() {
+func (this *TeacherController) OperateTeacher() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
-		b := parseAddTeacherMsg(msg)
+		b := parseTeacherMsg(msg)
 		if b {
 			this.Rsp(true, "老师信息发送成功", "")
 			return
@@ -169,11 +169,7 @@ func (this *TeacherController) GetTeacherList() {
 	this.Ctx.WriteString("")
 }
 
-func (this *TeacherController) DeleteTeacher() {
-
-}
-
-func parseAddTeacherMsg(msg string) bool {
+func parseTeacherMsg(msg string) bool {
 	msginfo := new(TeacherInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {

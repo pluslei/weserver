@@ -12,18 +12,19 @@ import (
 * 策略表
  */
 type Strategy struct {
-	Id       int64  `orm:"pk;auto"`
-	Room     string //房间号 topic
-	Icon     string //头像
-	Name     string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
-	Titel    string
-	Data     string    `orm:"type(text)"` //策略内容
-	FileName string    //图片
-	IsTop    bool      //是否置顶 置顶1 否 0
-	IsDelete bool      //是否删除,删除 1 否 0
-	ThumbNum int64     //点赞次数
-	Time     string    //前台给的时间
-	Datatime time.Time `orm:"type(datetime)"` //添加时间
+	Id        int64  `orm:"pk;auto"`
+	Room      string //房间号 topic
+	Icon      string //头像
+	Name      string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
+	Titel     string
+	Data      string    `orm:"type(text)"` //策略内容
+	FileName  string    //图片
+	TxtColour string    //文字颜色
+	IsTop     bool      //是否置顶 置顶1 否 0
+	IsDelete  bool      //是否删除,删除 1 否 0
+	ThumbNum  int64     //点赞次数
+	Time      string    //前台给的时间
+	Datatime  time.Time `orm:"type(datetime)"` //添加时间
 }
 
 func init() {
