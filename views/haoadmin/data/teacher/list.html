@@ -9,17 +9,17 @@
     <form name="myform" id="myform" method="post">
         <div class="result-title">
             <div class="result-list">
-                <a href="teacher_addteacher"><i class="icon-font"></i>新增讲师</a>
+                <a href="/weserver/data/teacher_add" class="am-btn am-btn-success">添加房间</a>
             </div>
         </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-teacher-list">
                 <thead>
                     <tr>
+                        <th>所属房间</th>
                         <th>讲师名称</th>
-                        <th>讲师昵称</th>
+                        <th>讲师头像</th>
                         <th>讲师简介</th>
-                        <th>是否显示首页</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -68,24 +68,17 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
+                {"mDataProp": "Room",},
                 {"mDataProp": "Name",},
-                {"mDataProp": "Title",},
-                {"mDataProp": "Detail",},
-                {"mDataProp": "Display",
-                    "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
-                        if (sData == 1) {
-                            $(nTd).html("<span class='am-alert am-alert-success'>显示</span>");
-                        } else {
-                            $(nTd).html("<span class='am-alert am-alert-danger'>未显示</span>");
-                        }
+                {"mDataProp": "Icon",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<img  width='35px' height='35px'  src='"+sData+"'>");
                     }
-
                 },
+                {"mDataProp": "Data",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        // $(nTd).html("<a title='编辑' href='teacher_updateteacher?Id="+sData+"'><span class='am-icon-pencil'></span></a>&nbsp;&nbsp;<a title='删除' href='#' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash'></span></a>");
-
-                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='讲师编辑' href='teacher_updateteacher?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='讲师删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='讲师编辑' href='teacher_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='讲师删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                     }
                 },
             ],
@@ -137,9 +130,9 @@
     function deleteModel(){
         var Id = $(".data-modal-del").val();
         $.ajax({
-            url: '/weserver/data/teacher_delteacher',
+            url: '/weserver/data/teacher_del',
             type: 'POST',
-            data: {Id: Id},
+            data: {id: Id},
             success: function(rsp){
                 if (rsp.status){
                     alert(rsp.info);

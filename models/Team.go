@@ -85,3 +85,26 @@ func UpdateContent(id int64, strContent string) (int64, error) {
 	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"Data": strContent})
 	return id, err
 }
+
+// 讲师分页
+func GetTeacherInfoList(page int64, page_size int64, sort string) (t []orm.Params, count int64) {
+	o := orm.NewOrm()
+	teacher := new(Teacher)
+	query := o.QueryTable(teacher)
+	query.Limit(page_size, page).OrderBy(sort).Values(&t)
+	count, _ = query.Count()
+	return t, count
+}
+
+// 根据id查询
+func GetTeacherInfoById(id int64) (t Teacher, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(Teacher)).Filter("Id", id).One(&t)
+	return t, err
+}
+
+// 更新
+func UpdateTeacherInfo(id int64, teacher map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Teacher)).Filter("Id", id).Update(teacher)
+}

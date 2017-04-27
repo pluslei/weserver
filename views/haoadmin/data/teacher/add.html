@@ -8,7 +8,7 @@
   $(document).ready(function () {
     $('#Image').uploadify({
       'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
-      'uploader' : '/weserver/data/teacher_upload',//后台处理程序的相对路径
+      'uploader' : '/weserver/data/upload',//后台处理程序的相对路径
       'floder': '/upload/teacher',          
       'fileSizeLimit': '2MB',
       'queueID': 'fileQueue',
@@ -37,7 +37,7 @@
         if(data!=null){
           data = jQuery.parseJSON(data);
           if(data.status){
-            $("input[name=fname]").val(data.url);
+            $("input[name=Icon]").val(data.url);
             $("#preview").attr("src",data.url);
           }
         }
@@ -69,40 +69,38 @@
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
-    <form action="teacher_addteacher" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
+    <form action="/weserver/data/teacher_add" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
       <fieldset>
         <legend></legend>
+        <input type="hidden" value="add" name="action">
+        <div class="am-form-group">
+          <label for="doc-select-1">请选择房间</label>
+          <select id="doc-select-2" name="Room"  required data-validation-message="请选择房间">
+            <option value="">-=请选择房间=-</option>
+            {{range $index,$ele := .roonInfo}}
+            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
         <div class="am-form-group">
           <label for="doc-vld-Title-2">讲师名称：</label>
           <input type="text" name="Name" id="doc-vld-Title-2" placeholder="输入讲师名称" data-validation-message="请输入讲师名称" required/>
            <input type="hidden" name="fname" />
         </div>
         <div class="am-form-group">
-          <label for="doc-vld-Title-2">讲师昵称：</label>
-          <input type="text" name="Uname" id="doc-vld-Title-2" placeholder="输入讲师昵称" data-validation-message="请输入讲师昵称" required/>
-        </div>
-        <div class="am-form-group">
-          <label for="doc-vld-Title-2">讲师介绍图片：</label>
+          <label for="doc-vld-Title-2">讲师图片：</label>
             <input type="file" name="Image" id="Image" multiple="true" /> 
+            <input type="hidden" name="Icon" id="Icon" multiple="true" /> 
         </div>
 
         <div class="am-form-group" >
-            <img id="preview" src="" style="width:500px;height: 91px;border: 0px;soild:#FFFFFF; " />
+            <img id="preview" src="" style="width:200px;height: 200px;border: 0px;soild:#FFFFFF; " />
         </div>
 
          <div class="am-form-group">
           <label for="doc-vld-ta-2">讲师简介：</label>
-          <textarea id="doc-vld-ta-2" name="Detail" placeholder="输入讲师简介" data-validation-message="请输入讲师简介" required></textarea>
-        </div>
-
-        <div class="am-form-group">
-          <label for="doc-select-1">是否显示首页   <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '在页面上显示/不显示讲师的信息', trigger: 'hover focus'}"></a></label>
-          <select id="doc-select-1" name="Display" data-validation-message="请选择是否显示首页" required>
-            <option value="">-=请选择是否显示首页=-</option>
-            <option value="1">显示</option>
-            <option value="0">不显示</option>
-          </select>
-          <span class="am-form-caret"></span>
+          <textarea id="doc-vld-ta-2" name="Data" placeholder="输入讲师简介" data-validation-message="请输入讲师简介" required></textarea>
         </div>
 
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
@@ -110,30 +108,5 @@
     </form>
   </div>
 </div>
-
-<script type="text/javascript">
-$(function() {
-  $('#teacherform').validator({
-    onValid: function(validity) {
-      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
-    },
-
-    onInValid: function(validity) {
-      var $field = $(validity.field);
-      var $group = $field.closest('.am-form-group');
-      var $alert = $group.find('.am-alert');
-      // 使用自定义的提示信息 或 插件内置的提示信息
-      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
-
-      if (!$alert.length) {
-        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
-          appendTo($group);
-      }
-
-      $alert.html(msg).show();
-    }
-  });
-});
-</script>
 
 
