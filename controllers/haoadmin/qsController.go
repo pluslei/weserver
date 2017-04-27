@@ -15,7 +15,7 @@ type QsController struct {
 	CommonController
 }
 
-// 发送广播列表
+// 发送公告列表
 func (this *QsController) SendNoticeList() {
 	if this.IsAjax() {
 		sEcho := this.GetString("sEcho")
@@ -41,48 +41,60 @@ func (this *QsController) SendNoticeList() {
 		this.ServeJSON()
 	} else {
 		this.CommonController.CommonMenu()
-		this.TplName = "haoadmin/data/qs/databroad.html"
+		this.TplName = "haoadmin/data/qs/list.html"
 	}
-}
-
-// 发送广播
-func (this *QsController) SendBroad() {
-	prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
-	codeid := MainEncrypt(prevalue)
-	this.Data["codeid"] = codeid
-	if this.GetSession("userinfo") != nil {
-		UserInfo := this.GetSession("userinfo")
-		this.Data["uname"] = UserInfo.(*m.User).Username
-	}
-	this.Data["ipaddress"] = this.GetClientip()
-	this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
-	this.TplName = "haoadmin/data/qs/sendbroad.html"
 }
 
 // 发送公告
-func (this *QsController) SendBroadHandle() {
-	UserInfo := this.GetSession("userinfo")
-	uname := UserInfo.(*m.User).Username
-	data := this.GetString("content")
-	room := this.GetString("room") //即topic
+func (this *QsController) SendBroad() {
+	action := this.GetString("action")
+	if action == "add" {
+		UserInfo := this.GetSession("userinfo")
+		uname := UserInfo.(*m.User).Username
+		data := this.GetString("Content")
+		room := this.GetString("Room")
+		filename := this.GetString("FileNameFile")
 
-	broad := new(m.Notice)
-	broad.Room = room
-	broad.Uname = uname
-	broad.Datatime = time.Now()
-	broad.Data = data
-	_, err := m.AddNoticeMsg(broad)
-	if err != nil {
-		this.Rsp(false, "公告写入数据库失败", "")
-		beego.Debug(err)
+		broad := new(m.Notice)
+		broad.Room = room
+		broad.Uname = uname
+		broad.Datatime = time.Now()
+		broad.Data = data
+		broad.FileName = filename
+		_, err := m.AddNoticeMsg(broad)
+		if err != nil {
+			this.AlertBack("公告写入数据库失败")
+			return
+		} else {
+			b := SendBrocast(room, data)
+			if b {
+				this.Alert("公告发送成功", "/weserver/data/qs_broad")
+				return
+			}
+			this.AlertBack("公告添加失败")
+		}
 	} else {
-		b := SendBrocast(room, data)
-		if b {
-			this.Rsp(true, "公告发送成功", "")
+		this.CommonController.CommonMenu()
+
+		roonInfo, _, err := m.GetRoomInfo()
+		if err != nil {
+			beego.Error("get the roominfo error", err)
 			return
 		}
-		this.Rsp(false, "公告发送失败", "")
+		this.Data["roonInfo"] = roonInfo
+		this.TplName = "haoadmin/data/qs/add.html"
 	}
+
+	// prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+	// codeid := MainEncrypt(prevalue)
+	// this.Data["codeid"] = codeid
+	// if this.GetSession("userinfo") != nil {
+	// 	UserInfo := this.GetSession("userinfo")
+	// 	this.Data["uname"] = UserInfo.(*m.User).Username
+	// }
+	// this.Data["ipaddress"] = this.GetClientip()
+	// this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
+	// this.TplName = "haoadmin/data/qs/sendbroad.html"
 }
 
 //获取客户的真是IP地址

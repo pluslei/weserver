@@ -1,28 +1,48 @@
 <link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <style type="text/css">
     .am-alert{border-radius: 5px;padding:3px;}
+    .am-form-group { clear:both; }
+    @media only screen and (min-width: 641px){
+        #my-popup {
+            width: 460px;
+            margin-left: -300px;
+            padding-bottom: 20px;
+        }        
+    }
+    .faceBtn { cursor: pointer; }
+    .faceImg .active { display: block; }
+    .faceTab { background: #eee; }
+    .faceTab > span { color:#000; padding: 5px; display: inline-block; cursor: pointer;}
+    .faceTab > span.active { background: #888; color:#fff; }
+    .face-content { border:1px solid #ccc; }
+    .faceImg { padding-left: 7px; }
+    .faceImg img { margin: 3px; }
+    .face-content { border:1px solid #ccc; display: none;}
+    .delete-box { width: 100%; height: 100px; box-shadow: 0 0 1px #000; margin-left: 0px;}
 </style>
+<input type="hidden" name="webUsername" value={{.uname}}></input>
+<input type="hidden" name="webIp" value={{.ippro.Ip}}></input>
+<input type="hidden" name="webPro" value={{.ippro.Pro}}></input>
+
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/qs_index">问答管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">问答列表</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">数据管理</span></div>
 </div>
+
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
-        <div class="result-title">
-            <div class="result-list">
-                <a href="qs_addqs"><i class="icon-font"></i>新增问答</a>
-            </div>
-        </div>
+        <a type="button" class="am-btn am-btn-secondary" href="sendbroad"> 发送公告 </a>
         <div class="result-content">
-            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-qs-list">
+            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-broad-list">
                 <thead>
                     <tr>
-                        <th>问</th>
-                        <th>答</th>
-                        <th>排序</th>
-                        <th>操作</th>
+                        <th>房间号</th>
+                        <th>用户名</th>
+                        <th>历史内容</th>
+                        <th>发送时间</th>
                     </tr>
                 </thead>
-                <tbody id="data_body">
+                <tbody id="">
                     <tr>
                     </tr>
                 </tbody>
@@ -30,28 +50,23 @@
         </div>
     </form>
 </div>
-<div class="am-modal am-modal-confirm" tabindex="-1" id="del-confirm">
-  <div class="am-modal-dialog">
-    <div class="am-modal-hd">QS删除</div>
-    <div class="am-modal-bd">
-      你，确定要删除这条记录吗？
-    </div>
-    <div class="am-modal-footer">
-      <input value="" type="hidden" class="data-modal-del">
-      <span class="am-modal-btn data-am-modal-cancel">取消</span>
-      <span class="am-modal-btn data-am-modal-confirm" onclick="deleteModel()">确定</span>
-    </div>
-  </div>
-</div>
-<script src="/static/js/jquery.dataTables.min.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"> -->
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.jeditable.js"></script>
+
+<!-- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script> -->
 <script type="text/javascript">
+
     var oTable;
     $(function() {
         oTable = initTable();
-    });
+    });    
+
     function initTable() {
-        var actionUrl = '/weserver/data/qs_index';
-        var table = $('#data-qs-list').dataTable({
+        var actionUrl = '/weserver/data/qs_broad';
+        var table = $('#rbac-broad-list').dataTable({
+            "bRetrieve": true,
             "bFilter": false,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
@@ -67,19 +82,13 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
-                {"mDataProp": "Question",},
-                {"mDataProp": "Answer",},
-                {"mDataProp": "Weight",},
-                {"mDataProp": "Id",
-                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        // $(nTd).html("<a title='编辑' href='qs_updateqs?Id="+sData+"'><span class='am-icon-pencil'></span></a>&nbsp;&nbsp;<a title='删除' href='#' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash'></span></a>");
-
-                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='问答编辑' href='qs_updateqs?Id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='问答删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
-                    }
-                },
+                {"mDataProp": "Room",},
+                {"mDataProp": "Nickname",},
+                {"mDataProp": "Data",},
+                {"mDataProp": "Datatime",},
             ],
             "oLanguage": {
-                "sProcessing": "正在加载中...",
+                "sProcessing": "正在加载中......",
                 "sLengthMenu": "每页显示 _MENU_ 条记录，",
                 "sZeroRecords": "没有数据！",
                 "sEmptyTable": "表中无数据存在！",
@@ -98,6 +107,9 @@
         });
         return table;
     }
+
+
+
     /**
     table刷新表格
     */
@@ -105,6 +117,7 @@
         this.fnClearTable(this);
         this.oApi._fnProcessingDisplay(oSettings, true);
         var that = this;
+
         $.getJSON(oSettings.sAjaxSource, null, function(json) {
             for (var i = 0; i < json.aaData.length; i++) {
                 that.oApi._fnAddData(oSettings, json.aaData[i]);
@@ -114,31 +127,18 @@
             that.oApi._fnProcessingDisplay(oSettings, false);
         });
     }
-    // 删除模态层
-    function deleteFun(delid){
-        $('#del-confirm').modal()
-        $(".data-modal-del").val(delid);
+
+
+    function sendbroadmsg(){
+        layer.open({
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+           // closeBtn: 0, //不显示关闭按钮
+            shift: 2,
+            area: ['500px', '310px'],
+            title: '发送广播', 
+            shadeClose: true, //开启遮罩关闭
+            content: "<iframe src='/weserver/data/sendbroad' frameborder='0' scrolling='0' height='268px' width='500px' ></iframe>"
+        });
     }
-    // 删除方法
-    function deleteModel(){
-        var Id = $(".data-modal-del").val();
-        $.ajax({
-            url: '/weserver/data/qs_delqs',
-            type: 'POST',
-            data: {Id: Id},
-            success: function(rsp){
-                if (rsp.status){
-                    alert(rsp.info);
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }else{
-                    alert(rsp.info);
-                }
-            }
-        })
-    }
-    // 模态退出
-    $('#del-confirm').on('closed.modal.amui', function() {
-        $(this).removeData('amui.modal');
-        $(".data-modal-del").val("");
-    });
 </script>
