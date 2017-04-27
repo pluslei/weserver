@@ -107,6 +107,8 @@ func Router() {
 	// 公告消息
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:SendNoticeList")
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
+	beego.Router("/weserver/data/notice_edit", &haoadmin.QsController{}, "*:Edit")
+	beego.Router("/weserver/data/notice_del", &haoadmin.QsController{}, "*:Del")
 
 	// 房间管理
 	beego.Router("/weserver/data/room_index", &haoadmin.RoomController{}, "*:Index")
@@ -120,6 +122,12 @@ func Router() {
 	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")
 	beego.Router("/weserver/data/strategy_add", &haoadmin.StrategyController{}, "*:Add")
 	beego.Router("/weserver/data/strategy_del", &haoadmin.StrategyController{}, "*:Del")
+
+	// 讲师管理
+	beego.Router("/weserver/data/teacher_index", &haoadmin.TeacherController{}, "*:Index")
+	beego.Router("/weserver/data/teacher_add", &haoadmin.TeacherController{}, "*:Add")
+	beego.Router("/weserver/data/teacher_edit", &haoadmin.TeacherController{}, "*:Edit")
+	beego.Router("/weserver/data/teacher_del", &haoadmin.TeacherController{}, "*:Del")
 
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
