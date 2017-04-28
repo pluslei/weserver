@@ -78,9 +78,9 @@ func UpdateClosePosition(id int64, close map[string]interface{}) (int64, error) 
 }
 
 //更新
-func UpdateClosePositionInfo(t *ClosePosition) (int64, error) {
+func UpdateClosePositionInfo(id int64, t *ClosePosition) (int64, error) {
 	o := orm.NewOrm()
-	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+	id, err := o.QueryTable(new(ClosePosition)).Filter("Id", id).Update(orm.Params{
 		"RoomTeacher": t.RoomTeacher,
 		"Type":        t.Type,
 		"BuySell":     t.BuySell,
@@ -94,4 +94,11 @@ func UpdateClosePositionInfo(t *ClosePosition) (int64, error) {
 		"Timestr":     t.Timestr,
 	})
 	return id, err
+}
+
+// 根据建仓查出平仓id
+func GetIdByOperPositionId(id int64) (c ClosePosition, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(ClosePosition)).Filter("OperPosition", id).Limit(1).One(&c)
+	return c, err
 }

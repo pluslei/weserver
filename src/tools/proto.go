@@ -291,7 +291,6 @@ type ClosePositionInfo struct {
 	Id          int64  //开仓信息的id
 	RoomId      string //topic
 	RoomTeacher string //老师
-	Time        time.Time
 	Type        string //种类
 	BuySell     int    //买卖 0 1
 	Entrust     string //委托类型

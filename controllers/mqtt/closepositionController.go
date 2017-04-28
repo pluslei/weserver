@@ -154,24 +154,28 @@ func addClosePositionConten(info *ClosePositionInfo) error {
 
 func updateClosePositionConten(info *ClosePositionInfo) error {
 	beego.Debug("Update ClosePosition Info", info)
-	var pos m.ClosePosition
-	pos.RoomId = info.RoomId
-	pos.RoomTeacher = info.RoomTeacher
-	pos.Type = info.Type
-	pos.BuySell = info.BuySell
-	pos.Entrust = info.Entrust
-	pos.Index = info.Index
-	pos.Position = info.Position
-	pos.ProfitPoint = info.ProfitPoint
-	pos.LossPoint = info.LossPoint
-	pos.Notes = info.Notes
-	pos.Time = time.Now()
-	pos.Timestr = info.Timestr
-	pos.OperPosition.Id = info.Id
-	_, err := m.UpdateClosePositionInfo(&pos)
+	close, err := m.GetIdByOperPositionId(info.Id)
 	if err != nil {
-		beego.Debug("Add ClosePosition Fail:", err)
-		return err
+		addClosePositionConten(info)
+	} else {
+		var pos m.ClosePosition
+		pos.RoomId = info.RoomId
+		pos.RoomTeacher = info.RoomTeacher
+		pos.Type = info.Type
+		pos.BuySell = info.BuySell
+		pos.Entrust = info.Entrust
+		pos.Index = info.Index
+		pos.Position = info.Position
+		pos.ProfitPoint = info.ProfitPoint
+		pos.LossPoint = info.LossPoint
+		pos.Notes = info.Notes
+		pos.Time = time.Now()
+		pos.Timestr = info.Timestr
+		_, err = m.UpdateClosePositionInfo(close.Id, &pos)
+		if err != nil {
+			beego.Debug("Add ClosePosition Fail:", err)
+			return err
+		}
 	}
 	return nil
 }
