@@ -136,6 +136,9 @@ func Router() {
 	beego.Router("/weserver/data/suggest_edit", &haoadmin.SuggestController{}, "*:Edit")
 	beego.Router("/weserver/data/suggest_del", &haoadmin.SuggestController{}, "*:Del")
 	beego.Router("/weserver/data/suggest_addclose", &haoadmin.SuggestController{}, "*:AddClose")
+	beego.Router("/weserver/data/suggest_getclose", &haoadmin.SuggestController{}, "*:GetClose")
+	beego.Router("/weserver/data/suggest_editclose", &haoadmin.SuggestController{}, "*:EditClose")
+	beego.Router("/weserver/data/suggest_delclose", &haoadmin.SuggestController{}, "*:DelClose")
 
 	// 测试
 	// beego.Router("/test", &haoadmin.TestController{}, "*:Test")
@@ -189,6 +192,7 @@ func Router() {
 	beego.Router("/chat/user/AddTeacher", &mqtt.TeacherController{}, "*:OperateTeacher")
 
 	//仓位
+	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")
 	beego.Router("/chat/user/positionList", &mqtt.PositionController{}, "*:GetPositionList")
 	beego.Router("/chat/user/positionNear", &mqtt.PositionController{}, "*:GetPositionNearRecord")
 	beego.Router("/chat/user/positionAllList", &mqtt.PositionController{}, "*:GetAllPositionList")

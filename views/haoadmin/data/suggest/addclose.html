@@ -22,14 +22,14 @@
         <hr>
         <div class="am-form-group">
           <label for="doc-select-1">请选择房间</label>
-          <select id="doc-select-2" name="RoomId" readonly="readonly" required data-validation-message="请选择房间">
-            <option value="{{.RoomId}}">{{.RoomId}}</option>
+          <select id="doc-select-2" name="RoomId" readonly="readonly" data-validation-message="请选择房间">
+            <option value="{{.operInfo.RoomId}}">{{.Room}}</option>
           </select>
           <span class="am-form-caret"></span>
         </div>
         <div class="am-form-group">
           <label for="doc-vld-Title-2">讲师名称：</label>
-          <select id="doc-select-roomteacher" name="RoomTeacher" readonly="readonly" required data-validation-message="请选择讲师">
+          <select id="doc-select-roomteacher" name="RoomTeacher" readonly="readonly" data-validation-message="请选择讲师">
             <option value="{{.operInfo.RoomTeacher}}">{{.operInfo.RoomTeacher}}</option>
           </select>
         </div>

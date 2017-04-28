@@ -63,14 +63,28 @@
 </div>
 <div class="am-modal am-modal-confirm" tabindex="-1" id="del-confirm">
   <div class="am-modal-dialog">
-    <div class="am-modal-hd">删除讲师</div>
+    <div class="am-modal-hd">删除建仓</div>
     <div class="am-modal-bd">
-      你，确定要删除这条记录吗？
+      你，确定要删除这条记录吗，平仓信息也会删除？
     </div>
     <div class="am-modal-footer">
       <input value="" type="hidden" class="data-modal-del">
       <span class="am-modal-btn data-am-modal-cancel">取消</span>
       <span class="am-modal-btn data-am-modal-confirm" onclick="deleteModel()">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="del-close-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">删除平仓</div>
+    <div class="am-modal-bd">
+      你，确定要删除这条记录吗？
+    </div>
+    <div class="am-modal-footer">
+      <input value="" type="hidden" class="data-modal-closedel">
+      <span class="am-modal-btn data-am-modal-cancel">取消</span>
+      <span class="am-modal-btn data-am-modal-confirm" onclick="deleteCloseModel()">确定</span>
     </div>
   </div>
 </div>
@@ -121,9 +135,9 @@
                 {"mDataProp": "Liquidation",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         if (sData == 0){
-                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 添加平仓</a></div>");
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square'></span> 添加平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a></div>");
                         }else{
-                            $(nTd).html("<div class='am-btn-group am-btn-group-xs' onclick='showRow(this,"+oData.Id+")'>查看平仓</div>");
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='查看平仓' onclick='showRow(this,"+oData.Id+")'><span class='am-icon-info-circle'></span> 查看平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='追加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-plus-square-o'></span> 追加平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                         }  
                     }
                 },
@@ -151,7 +165,7 @@
 
     function showRow(obj,id){
         console.info(id);
-        var tr= $(obj).parent().parent();
+        var tr= $(obj).parent().parent().parent();
         var row=oTable.row(tr);
         if (row.child.isShown()){
             row.child.hide();
@@ -166,7 +180,7 @@
     function format(id){
         var html = "";
         $.ajax({
-            url: '../resource/typedeta',
+            url: '/weserver/data/suggest_getclose',
             type: 'get',
             async:false,
             dataType:'json',
@@ -181,22 +195,32 @@
                 }
         });
         if (datainfo.length != 0) {
+            html += '<table class="am-table am-table-bordered am-table-radius am-table-striped" cellpadding="10" cellspacing="0" border="0">';
             for (var i = 0; i < datainfo.length; i++) {
-                html += '<table class="resTable-info table table-bordered" cellpadding="10" cellspacing="0" border="0">'+
-                    '<tr>'+
-                        '<td style="width: 15%">'+datainfo[i].AddTime+'</td>'+
-                        // '<td style="width: 18%">'+datainfo[i].ResourceType+'</td>'+
-                        '<td style="width: 15%">'+datainfo[i].TotalResource+'</td>'+
-                        '<td style="width: 15%">'+datainfo[i].UsdeResource+'</td>'+
-                        '<td style="width: 14%">'+datainfo[i].CanUseResource+'</td>'+
-                        '<td style="width: 14%">'+datainfo[i].Team+'</td>'+
-                        '<td style="width: 14%">'+datainfo[i].Username+'</td>'+
-                        '<td style="width: 17%">'+datainfo[i].UsePersent+"%"+'</td>'+
-                    '</tr>'+
-                '</table>';
+                var buysell = "";
+                if (datainfo[i].BuySell == 0) {
+                    buysell = "<span class='am-alert am-alert-danger regstatus'>买入建仓</span>";
+                }else{
+                    buysell = "<span class='am-alert am-alert-success regstatus'>卖出建仓</span>";
+                }
+                html += '<tr>'+
+                        '<td style="width: 7%">'+datainfo[i].RoomId+'</td>'+
+                        '<td style="width: 7%">'+datainfo[i].RoomTeacher+'</td>'+
+                        '<td style="width: 12%">'+datainfo[i].Timestr+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].Type+'</td>'+
+                        '<td style="width: 8%">'+buysell+'</td>'+
+                        '<td style="width: 6%">'+datainfo[i].Entrust+'</td>'+
+                        '<td style="width: 6%">'+datainfo[i].Index+'</td>'+
+                        '<td style="width: 6%">'+datainfo[i].Position+'</td>'+
+                        '<td style="width: 6%">'+datainfo[i].ProfitPoint+'</td>'+
+                        '<td style="width: 6%">'+datainfo[i].LossPoint+'</td>'+
+                        '<td style="width: 8%">'+datainfo[i].Notes+'</td>'+
+                        '<td style="width: 17%"><a title="编辑" href="suggest_editclose?id='+datainfo[i].Id+'"><span class="am-icon-pencil-square-o"></span></a> <a title="删除" href="javascript:;" onclick="deleteCloseFun('+datainfo[i].Id+');"><span class="am-icon-trash-o"></span></a></td>'+
+                    '</tr>';
             }
+            html += '</table>';
         } else {
-            html += '<table class="resTable-info table table-bordered" cellpadding="10" cellspacing="0" border="0">'+
+            html += '<table class="am-table am-table-bordered am-table-radius am-table-striped" cellpadding="10" cellspacing="0" border="0">'+
                 '<tr>'+
                     '<td colspan="7">无数据</td>'+
                 '</tr>'+
@@ -238,7 +262,7 @@
     function deleteModel(){
         var Id = $(".data-modal-del").val();
         $.ajax({
-            url: '/weserver/data/teacher_del',
+            url: '/weserver/data/suggest_del',
             type: 'POST',
             data: {id: Id},
             success: function(rsp){
@@ -251,6 +275,31 @@
             }
         })
     }
+
+    
+    // 删除模态层
+    function deleteCloseFun(delid){
+        $('#del-close-confirm').modal()
+        $(".data-modal-closedel").val(delid);
+    }
+    // 删除方法
+    function deleteCloseModel(){
+        var Id = $(".data-modal-closedel").val();
+        $.ajax({
+            url: '/weserver/data/suggest_delclose',
+            type: 'POST',
+            data: {id: Id},
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        })
+    }
+
     // 模态退出
     $('#del-confirm').on('closed.modal.amui', function() {
         $(this).removeData('amui.modal');

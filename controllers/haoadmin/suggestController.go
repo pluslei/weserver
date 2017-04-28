@@ -88,6 +88,71 @@ func (this *SuggestController) Add() {
 	}
 }
 
+// 编辑建仓
+func (this *SuggestController) Edit() {
+	action := this.GetString("action")
+	id, err := this.GetInt64("id")
+	if err != nil {
+		this.AlertBack("编辑失败")
+		return
+	}
+	if action == "edit" {
+		oper := make(map[string]interface{})
+		oper["RoomId"] = this.GetString("RoomId")
+		oper["RoomTeacher"] = this.GetString("RoomTeacher")
+		oper["Time"] = time.Now()
+		oper["Type"] = this.GetString("Type")
+		BuySell, _ := this.GetInt("BuySell")
+		oper["BuySell"] = BuySell
+		oper["Entrust"] = this.GetString("Entrust")
+		oper["Index"] = this.GetString("Index")
+		oper["Position"] = this.GetString("Position")
+		oper["ProfitPoint"] = this.GetString("ProfitPoint")
+		oper["LossPoint"] = this.GetString("LossPoint")
+		oper["Notes"] = this.GetString("Notes")
+
+		_, err := models.UpdatePosition(id, oper)
+		if err != nil {
+			this.AlertBack("修改失败")
+			return
+		}
+		this.Alert("修改成功", "suggest_index")
+	} else {
+		this.CommonMenu()
+
+		roonInfo, _, err := models.GetRoomInfo()
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		operInfo, err := models.GetOpersitionInfoById(id)
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		roomteacher, err := models.GetTeacherListByRoom(operInfo.RoomId)
+		if err != nil {
+			beego.Error("error", err)
+		}
+		this.Data["roomteacherInfo"] = roomteacher
+		this.Data["operInfo"] = operInfo
+		this.Data["roonInfo"] = roonInfo
+		this.TplName = "haoadmin/data/suggest/edit.html"
+	}
+}
+
+// 删除建仓
+func (this *SuggestController) Del() {
+	id, _ := this.GetInt64("id")
+	_, err := models.DelPositionById(id)
+	if err != nil {
+		this.Rsp(false, "删除失败", "")
+	} else {
+		this.Rsp(true, "删除成功", "")
+	}
+	models.DelClosePositionByOperId(id)
+}
+
 // 添加平仓
 func (this *SuggestController) AddClose() {
 	action := this.GetString("action")
@@ -138,44 +203,82 @@ func (this *SuggestController) AddClose() {
 		this.Data["operInfo"] = operInfo
 		room, err := models.GetRoomInfoByRoomID(operInfo.RoomId)
 		if err != nil {
-			this.Data["RoomId"] = "未知房间"
+			this.Data["Room"] = "未知房间"
 		} else {
-			this.Data["RoomId"] = room.Title
+			this.Data["Room"] = room.Title
 		}
 		this.TplName = "haoadmin/data/suggest/addclose.html"
 	}
 }
 
-// 编辑建仓
-func (this *SuggestController) Edit() {
+// 获取平仓
+func (this *SuggestController) GetClose() {
+	id, err := this.GetInt64("id")
+	if err != nil {
+		beego.Error("error", err)
+		return
+	}
+	closeOper, _, err := models.GetMoreClosePosition(id)
+	if err != nil {
+		beego.Error("error", err)
+		return
+	}
+	for _, item := range closeOper {
+		roomInfo, err := models.GetRoomInfoByRoomID(item.RoomId)
+		if err != nil {
+			item.RoomId = "未知房间"
+		} else {
+			item.RoomId = roomInfo.RoomTitle
+		}
+		item.Timestr = item.Time.Format("2006-01-02 15:04:05")
+	}
+	this.Data["json"] = closeOper
+	this.ServeJSON()
+}
+
+// 编辑平仓
+func (this *SuggestController) EditClose() {
 	action := this.GetString("action")
-	_, err := this.GetInt64("id")
+	id, err := this.GetInt64("id")
 	if err != nil {
 		this.AlertBack("编辑失败")
 		return
 	}
 	if action == "edit" {
+		close := make(map[string]interface{})
+		close["Index"] = this.GetString("Index")
+		close["Notes"] = this.GetString("Notes")
 
+		_, err = models.UpdateClosePosition(id, close)
+		if err != nil {
+			this.AlertBack("修改失败")
+			return
+		}
+		models.UpdatePositonLq(id)
+		this.Alert("修改成功", "suggest_index")
 	} else {
 		this.CommonMenu()
-
-		roonInfo, _, err := models.GetRoomInfo()
+		closeInfo, err := models.GetClosePositionInfo(id)
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
 		}
-		this.Data["roonInfo"] = roonInfo
-		this.TplName = "haoadmin/data/strategy/edit.html"
+		this.Data["closeInfo"] = closeInfo
+
+		this.TplName = "haoadmin/data/suggest/addclose.html"
 	}
 }
 
-// 删除建仓
-func (this *SuggestController) Del() {
-	id, _ := this.GetInt64("id")
-	_, err := models.DelStrategyById(id)
+// 删除平仓
+func (this *SuggestController) DelClose() {
+	id, err := this.GetInt64("id")
 	if err != nil {
 		this.Rsp(false, "删除失败", "")
 	} else {
+		_, err = models.DelClosePositionById(id)
+		if err != nil {
+			this.Rsp(false, "删除失败", "")
+		}
 		this.Rsp(true, "删除成功", "")
 	}
 }

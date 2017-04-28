@@ -23,6 +23,8 @@ type ClosePosition struct {
 	LossPoint    string        //止损点
 	Notes        string        // 备注
 	OperPosition *OperPosition `orm:"rel(fk)"`
+
+	Timestr string `orm:"-"` //时间字符
 }
 
 func init() {
@@ -46,6 +48,31 @@ func AddClosePosition(c *ClosePosition) (int64, error) {
 func GetMoreClosePosition(id int64) ([]*ClosePosition, int64, error) {
 	o := orm.NewOrm()
 	var close []*ClosePosition
-	num, err := o.QueryTable("ClosePosition").Filter("OperPosition", id).RelatedSel().All(&close)
+	num, err := o.QueryTable(new(ClosePosition)).Filter("OperPosition", id).RelatedSel().All(&close)
 	return close, num, err
+}
+
+// 根据id获取信息
+func GetClosePositionInfo(id int64) (close ClosePosition, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(ClosePosition)).Filter("Id", id).One(&close)
+	return close, err
+}
+
+// 根据operpositon删除
+func DelClosePositionByOperId(id int64) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(ClosePosition)).Filter("OperPosition", id).Delete()
+}
+
+// 根据id删除
+func DelClosePositionById(id int64) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(ClosePosition)).Filter("Id", id).Delete()
+}
+
+// 更新
+func UpdateClosePosition(id int64, close map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(ClosePosition)).Filter("Id", id).Update(close)
 }

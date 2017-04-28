@@ -37,7 +37,7 @@ func (o *OperPosition) TableName() string {
 }
 
 /*
-* 新增加建仓操作
+* 建仓操作
  */
 func AddPosition(o *OperPosition) (int64, error) {
 	omodel := orm.NewOrm()
@@ -111,4 +111,10 @@ func GetAllPositionList(Room string) ([]OperPosition, int64, error) {
 	var info []OperPosition
 	num, err := o.QueryTable("operposition").Filter("RoomId", Room).OrderBy("-Id").All(&info)
 	return info, num, err
+}
+
+// 更新
+func UpdatePosition(id int64, position map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(OperPosition)).Filter("Id", id).Update(position)
 }
