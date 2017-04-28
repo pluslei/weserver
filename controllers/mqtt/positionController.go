@@ -312,6 +312,7 @@ func addPositionConten(info *PositionInfo) error {
 	pos.LossPoint = info.LossPoint
 	pos.Notes = info.Notes
 	pos.Liquidation = info.Liquidation
+	pos.Icon = info.Icon
 	pos.Time = time.Now()
 	_, err := m.AddPosition(&pos)
 	if err != nil {
@@ -335,6 +336,7 @@ func updatePositionConten(info *PositionInfo) error {
 	pos.LossPoint = info.LossPoint
 	pos.Notes = info.Notes
 	pos.Liquidation = info.Liquidation
+	pos.Icon = info.Icon
 	pos.Time = time.Now()
 
 	_, err := m.UpdatePositionInfo(&pos)

@@ -246,6 +246,7 @@ type PositionInfo struct {
 	LossPoint   string //止损点
 	Notes       string // 备注
 	Liquidation int    //平仓详情 (0:未平仓 1:平仓)
+	Icon        string //头像
 
 	OperType int64
 	MsgType  int //消息类型
