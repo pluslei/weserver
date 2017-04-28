@@ -4,6 +4,7 @@ import (
 	//"github.com/astaxie/beego"
 	"time"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -16,6 +17,8 @@ type Teacher struct {
 	Name     string
 	Icon     string //头像
 	Title    string
+	IsTop    bool      //是否置顶 置顶1 否 0
+	ThumbNum int64     //点赞次数
 	Data     string    `orm:"type(text)"` //专家介绍
 	Time     string    //前台给的时间
 	Datatime time.Time `orm:"type(datetime)"` //添加时间
@@ -128,4 +131,54 @@ func GetTeacherListByRoom(roomid string) (t []Teacher, err error) {
 	o := orm.NewOrm()
 	_, err = o.QueryTable(new(Teacher)).Filter("Room", roomid).All(&t)
 	return t, err
+}
+
+//置顶操作
+func TopOption(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var info Teacher
+	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsTop": 1})
+	return id, err
+}
+
+//取消置顶
+func UnTopOption(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var info Teacher
+	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsTop": 0})
+	return id, err
+}
+
+//点赞操作
+func ThumbTeacherAdd(id int64) (int64, error) {
+	num, err := GetThumbNum(id)
+	if err != nil {
+		beego.Debug("Get TeacherThumbNum fail", err)
+		return 0, nil
+	}
+	o := orm.NewOrm()
+	var info Teacher
+	status, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"ThumbNum": num + 1})
+	return status, err
+}
+
+//取消点赞
+func ThumbTeacherDel(id int64) (int64, error) {
+	num, err := GetTeacherNum(id)
+	if err != nil {
+		beego.Debug("Get TeacherThumbNum fail", err)
+		return 0, nil
+	}
+	o := orm.NewOrm()
+	var info Teacher
+	status, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"ThumbNum": num - 1})
+	return status, err
+}
+
+//获取原来点赞次数
+func GetTeacherNum(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var info Teacher
+	err := o.QueryTable(info).Filter("id", id).One(&info, "ThumbNum")
+	return info.ThumbNum, err
 }
