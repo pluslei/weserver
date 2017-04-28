@@ -1348,7 +1348,7 @@ a {
 }
 .opera {
   width: 80px;
-  height: 62px;
+  height: 30px;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   background: #fff;
@@ -1364,14 +1364,6 @@ a {
   width: 80px;
   height: 30px;
   color: #333;
-  text-align: center;
-  line-height: 30px;
-  border-bottom: 1px solid #dfdfdf;
-}
-.opera .delinfo {
-  width: 80px;
-  height: 30px;
-  color: red;
   text-align: center;
   line-height: 30px;
 }
@@ -1745,7 +1737,6 @@ a {
   position: absolute;
   display: inline-block;
   border-radius: 4px;
-  overflow: hidden;
   color: #1E88C7;
   text-decoration: none;
   text-indent: 0;
@@ -2039,10 +2030,9 @@ a {
   letter-spacing: normal;
 }
 .newTab {
-  height: 40px;
+  height: 33px;
   line-height: 33px;
   margin: 0px;
-  padding: 5px 0;
   list-style: none;
   background: #F0EFF5;
 }
@@ -2050,15 +2040,13 @@ a {
   float: left;
   text-align: center;
   padding: 0 !important;
-  border: 1px solid #CCC;
-  border-left: none;
-  border-right: none;
-  background: #CCC;
+  background: #f96400;
   font-size: 14px;
+  color: #eee;
 }
 .newTab > li.active {
-  background: #fff;
-  color: #f1b157;
+  background: #F0EFF5;
+  color: #f96400;
   border-color: transparent;
 }
 .newTab > li:nth-child(odd):after {
@@ -2071,13 +2059,18 @@ a {
 .tradeDatail {
   height: calc(100% - 105px);
   background: #F0EFF5;
+  padding-top: 5px;
+}
+.tradeDatail > ul {
+  list-style: none;
+  height: 100%;
   overflow-y: auto;
 }
 .tradeDatail .tradeDatail-item {
   list-style: none;
   font-size: 14px;
   padding: 10px 7px 7px 7px;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   background: #fff;
   border: 1px solid #ddd;
   border-left: none;
@@ -2113,6 +2106,7 @@ a {
 }
 .tradeDatail .teacher-info .teacher-name {
   font-size: 16px;
+  height: 25px;
 }
 .tradeDatail .teacher-info .time {
   font-size: 12px;
@@ -2120,10 +2114,11 @@ a {
 }
 .tradeDatail .commodity-name {
   font-weight: bold;
+  font-size: 16px;
 }
 .tradeDatail .big_price {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
 }
 .tradeDatail .remark {
@@ -2134,11 +2129,12 @@ a {
   border-bottom: 1px solid #eee;
   margin: 5px 0;
 }
+.tradeDatail .trade_btn {
+  margin: 0;
+}
 .tradeDatail .trade_btn > span {
-  width: 80px;
-  height: 22px;
-  line-height: 22px;
   border-radius: 5px;
+  margin-top: 5px;
   color: #fff;
   display: block;
   text-align: center;
@@ -2305,14 +2301,14 @@ a {
 }
 .expert .strategylist {
   overflow-y: scroll;
-  margin-top: 10px;
   position: relative;
 }
 .expert .strategylist .strategylistinfo {
   border-bottom: 1px solid #E2E2E2;
   background-color: #fff;
-  padding: 10px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   font-size: 13px;
+  overflow: hidden;
   position: relative;
 }
 .expert .strategylist .strategylistinfo .listhead {
@@ -2322,12 +2318,13 @@ a {
   float: left;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon img {
   width: 100%;
+  border-radius: 100%;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher {
   margin: 0 10px;
@@ -2341,7 +2338,9 @@ a {
 .expert .strategylist .strategylistinfo .listhead .teacher .Name {
   color: #353535;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
+  height: 50px;
+  line-height: 50px;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher .teachertitle {
   font-size: 12px;
@@ -2365,6 +2364,7 @@ a {
   padding: 6px 0px;
   color: #000;
   font-size: 14px;
+  width: calc(100% - 50px);
 }
 .expert .strategylist .strategylistinfo .listfoot {
   overflow: hidden;
@@ -2399,9 +2399,9 @@ a {
   color: #999;
   line-height: 22px;
 }
-.opera {
+.expert .opera {
   width: 80px;
-  height: 62px;
+  height: 30px;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   background: #fff;
@@ -2413,7 +2413,7 @@ a {
           box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
-.opera .stickinfo {
+.expert .opera .stickinfo {
   width: 80px;
   height: 30px;
   color: #333;
@@ -2421,7 +2421,7 @@ a {
   line-height: 30px;
   border-bottom: 1px solid #dfdfdf;
 }
-.opera .delinfo {
+.expert .opera .delinfo {
   width: 80px;
   height: 30px;
   color: red;
