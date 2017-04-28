@@ -229,6 +229,12 @@ func (this *UserController) AddUser() {
 		}
 	} else {
 		this.CommonMenu()
+		roonInfo, _, err := m.GetRoomInfo()
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		this.Data["roonInfo"] = roonInfo
 		roles, _ := m.GetAllUserRole()
 		titles, _ := m.GetAllUserTitle()
 		this.Data["RoleList"] = roles

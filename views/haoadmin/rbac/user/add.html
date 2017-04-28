@@ -29,7 +29,7 @@
           <label for="doc-vld-age-2">密码：</label>
           <input type="password" name="password" id="doc-vld-age-2" data-validation-message="输入密码(至少6个字符)" placeholder="输入密码(至少6个字符)" min="6" required />
         </div>
-        <div class="am-form-group">
+        <!--<div class="am-form-group">
           <label>用户状态  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '状态为开启时可以正常登陆,关闭时无法登陆', trigger: 'hover focus'}"></a>： </label>
           <label class="am-radio-inline">
             <input type="radio"  value="2" name="status" required checked> 开启
@@ -46,7 +46,7 @@
           <label class="am-radio-inline">
             <input type="radio" value="1" name="regstatus"> 关闭
           </label>
-        </div>
+        </div>-->
         <div class="am-form-group">
           <label for="doc-select-1">角色  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的初始角色', trigger: 'hover focus'}"></a></label>
           <select id="doc-select-1" name="role" required data-validation-message="请选择角色">
@@ -70,6 +70,11 @@
         <div class="am-form-group">
           <label for="doc-vld-ta-2">备注：</label>
           <textarea id="doc-vld-ta-2" name="remark"></textarea>
+        </div>
+        <div class="am-form-group">
+            {{range $index,$ele := .roonInfo}}
+              <label class="am-checkbox-inline"><input type="checkbox" name="RoomId" value="{{$ele.RoomId}}"> {{$ele.RoomTitle}}</label>
+            {{end}}
         </div>
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
       </fieldset>
