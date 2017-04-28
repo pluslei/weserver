@@ -145,7 +145,7 @@ func (this *PositionController) GetPositionList() {
 					info.Timestr = historyPosition[i].Timestr
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(nId)
+						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
 						}
@@ -173,7 +173,7 @@ func (this *PositionController) GetPositionList() {
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					info.Timestr = historyPosition[i].Timestr
 					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(nId)
+						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
 						}
@@ -223,7 +223,7 @@ func (this *PositionController) GetPositionList() {
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					info.Timestr = historyPosition[i].Timestr
 					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(nId)
+						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
 						}
@@ -252,7 +252,7 @@ func (this *PositionController) GetPositionList() {
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					info.Timestr = historyPosition[i].Timestr
 					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(nId)
+						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
 						}

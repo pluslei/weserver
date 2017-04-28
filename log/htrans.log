@@ -1929,3 +1929,19 @@
 2017/04/28 14:17:49 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
 2017/04/28 14:17:49 [D] [mqttController.go:150] nCount sysCont 2 10 
 2017/04/28 14:17:49 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=dn-1dNT9yzD9dhGKZ-KavXA6paDakKCDJmx7pm7OtjxZrn_ZJX8Rvo-ccx7kcQ5cF5oB7DpyVOlpMKxxwnhU6a72XGLbXSLx5omukpkgX3gTWQiAAALOI&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 15:11:21 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 15:11:21 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 15:11:21 [D] [mq.go:98] map[] 
+2017/04/28 15:11:21 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 15:11:21 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 15:11:21 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042374780 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 15:11:21 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 15:11:21 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 15:11:21 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 15:11:21 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 15:11:21 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 15:11:22 [D] [wechat.go:75] {"access_token":"GhKPRh7x_XzHAKRnRb_TUILGASlzlgSD8xA5JO5PXkyGcrels8qJE2ZrL0xlX1y2465uy8qsext3k71Pn4vHpOOV3X6FN75ZmtPLHpT972UJTOhAFARBW","expires_in":7200} 
+2017/04/28 15:11:22 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 15:11:22 [D] [wechat.go:93] GhKPRh7x_XzHAKRnRb_TUILGASlzlgSD8xA5JO5PXkyGcrels8qJE2ZrL0xlX1y2465uy8qsext3k71Pn4vHpOOV3X6FN75ZmtPLHpT972UJTOhAFARBW 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=GhKPRh7x_XzHAKRnRb_TUILGASlzlgSD8xA5JO5PXkyGcrels8qJE2ZrL0xlX1y2465uy8qsext3k71Pn4vHpOOV3X6FN75ZmtPLHpT972UJTOhAFARBW 
+2017/04/28 15:11:22 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 15:11:22 [I] [asm_amd64.s:2086] http server Running on http://:80

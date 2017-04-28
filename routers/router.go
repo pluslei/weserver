@@ -200,7 +200,7 @@ func Router() {
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")
 	beego.Router("/chat/user/positionList", &mqtt.PositionController{}, "*:GetPositionList")
-	beego.Router("/chat/user/closeposition", &mqtt.PositionController{}, "*:GetClosePosition")
+	beego.Router("/chat/user/closeposition", &mqtt.PositionController{}, "*:GetClosePositionRecord")
 	beego.Router("/chat/user/positionNear", &mqtt.PositionController{}, "*:GetPositionNearRecord")
 	beego.Router("/chat/user/positionAllList", &mqtt.PositionController{}, "*:GetAllPositionList")
 
