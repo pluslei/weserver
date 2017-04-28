@@ -765,3 +765,19 @@
 2017/04/28 09:56:18 [D] [suggestController.go:110] roonInfo [{1 Topic_ChatMessage/sub121 0 互动社区 王老师 376 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon1.png 时刻为您提供最新的红木行情分析，为广大客户提供交流的平台 i/allchannel/banner1.png 互动社区 0} {2 Topic_ChatMessage/sub122 0 会员专区 马老师 438 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon2.png 专业的分析给您更准确的投资建议 i/allchannel/banner1.png 会员专区 0} {3 Topic_ChatMessage/sub123 0 贵宾专区 雷老师 217 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon3.png 尊享专人一对一的贴心服务，给您专属的投资指导 i/allchannel/banner1.png 贵宾专区 0} {4 Topic_ChatMessage/sub124 0 铂金VIP 胡老师 185 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon4.png 网罗最新最全的红木行情，由数位具有十数年经验的高级分析师为您提供专属服务 i/allchannel/banner1.png 铂金VIP 0}] 
 2017/04/28 09:56:41 [D] [suggestController.go:93] msginfo &{0 Topic_ChatMessage/sub121 雷老师 ddddddddddd 1 市价 33333 三成仓 444 555 dddd 0 0 10} 
 2017/04/28 09:58:11 [D] [server.go:18] client be5201ec-b3f4-43d0-93f3-2ec227c6d3cd offline unsubscribe topic is: chat 
+2017/04/28 10:11:45 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 10:11:45 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 10:11:45 [D] [mq.go:98] map[] 
+2017/04/28 10:11:45 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 10:11:45 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 10:11:45 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04236c480 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 10:11:46 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 10:11:46 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 10:11:46 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 10:11:46 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:11:46 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 10:11:46 [D] [wechat.go:75] {"access_token":"M2xf7i-8z7wxDblFQK-Chk6_qCNEp3z2zMa4_gJLMkRIFPKxJbvzbhqNFK0hjqUftidundXJgpdOQft9BSsdcmW6rncpowTC85UCzE6gA7LvQ2phdwyPXz9aYYXE0yJACBMhABAUTE","expires_in":7200} 
+2017/04/28 10:11:46 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 10:11:46 [D] [wechat.go:93] M2xf7i-8z7wxDblFQK-Chk6_qCNEp3z2zMa4_gJLMkRIFPKxJbvzbhqNFK0hjqUftidundXJgpdOQft9BSsdcmW6rncpowTC85UCzE6gA7LvQ2phdwyPXz9aYYXE0yJACBMhABAUTE 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=M2xf7i-8z7wxDblFQK-Chk6_qCNEp3z2zMa4_gJLMkRIFPKxJbvzbhqNFK0hjqUftidundXJgpdOQft9BSsdcmW6rncpowTC85UCzE6gA7LvQ2phdwyPXz9aYYXE0yJACBMhABAUTE 
+2017/04/28 10:11:47 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 10:11:47 [I] [asm_amd64.s:2086] http server Running on http://:80
