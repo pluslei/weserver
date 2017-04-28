@@ -3,6 +3,9 @@ package haoadmin
 import (
 	"time"
 	"weserver/models"
+	. "weserver/src/tools"
+
+	mq "weserver/src/mqtt"
 
 	"github.com/astaxie/beego"
 )
@@ -77,6 +80,7 @@ func (this *StrategyController) Add() {
 		if err != nil {
 			this.AlertBack("添加失败")
 		}
+		SendStrage(strategy)
 		this.Alert("添加成功", "/weserver/data/strategy_index")
 	} else {
 		this.CommonMenu()
@@ -88,6 +92,33 @@ func (this *StrategyController) Add() {
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/strategy/add.html"
 	}
+}
+
+func SendStrage(info *models.Strategy) {
+	msg := new(StrategyInfo)
+	msg.Room = info.Room
+	msg.Icon = info.Icon
+	msg.Name = info.Name
+	msg.Titel = info.Titel
+	msg.Data = info.Data
+	msg.FileName = info.FileName
+	msg.TxtColour = info.TxtColour
+	msg.IsTop = info.IsTop
+	msg.IsDelete = info.IsDelete
+	msg.ThumbNum = info.ThumbNum
+	msg.Time = info.Time
+	msg.MsgType = MSG_TYPE_STRATEGY_ADD
+
+	topic := msg.Room
+
+	beego.Debug("msginfo", msg)
+
+	v, err := ToJSON(msg)
+	if err != nil {
+		beego.Error(" Suggest add position json error", err)
+		return
+	}
+	mq.SendMessage(topic, v)
 }
 
 func (this *StrategyController) Edit() {
