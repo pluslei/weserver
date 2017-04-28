@@ -114,6 +114,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -126,6 +128,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -160,6 +164,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -172,6 +178,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
