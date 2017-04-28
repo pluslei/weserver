@@ -81,7 +81,7 @@ func (this *MainController) Login() {
 			user, err = m.GetUserInfoByUsername(username, md5password)
 		}
 		adminUser := beego.AppConfig.String("rbac_admin_user")
-
+		beego.Debug("user", user, err)
 		sysconfig, _ := m.GetSysConfig()
 		loginsys := sysconfig.LoginSys
 		if loginsys == 0 {
@@ -96,7 +96,7 @@ func (this *MainController) Login() {
 				return
 			}
 		} else {
-			if username == adminUser {
+			if username == adminUser || user.Role.IsInsider == 1 {
 				if err == nil {
 					this.SetSession("userinfo", &user)
 					accesslist, _ := m.GetAccessList(user.Id)

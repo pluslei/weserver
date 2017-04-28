@@ -237,14 +237,14 @@ func InitUserPassword(id int64, username, password string, role, title int64) (i
 // 根据登录名查找
 func GetUserInfoByAccount(account, password string) (user User, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(new(User)).Filter("Account", account).Filter("Password", password).Limit(1).One(&user)
+	err = o.QueryTable(new(User)).Filter("Account", account).Filter("Password", password).RelatedSel().Limit(1).One(&user)
 	return user, err
 }
 
 // 根据登录名查找
 func GetUserInfoByUsername(loginuser, password string) (user User, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(new(User)).Filter("Username", loginuser).Filter("Password", password).Limit(1).One(&user)
+	err = o.QueryTable(new(User)).Filter("Username", loginuser).Filter("Password", password).RelatedSel().Limit(1).One(&user)
 	return user, err
 }
 
