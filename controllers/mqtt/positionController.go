@@ -87,6 +87,26 @@ func (this *PositionController) GetPositionNearRecord() {
 	this.Ctx.WriteString("")
 }
 
+func (this *PositionController) GetClosePositionRecord() {
+	if this.IsAjax() {
+		strId := this.GetString("Id")
+		nId, _ := strconv.ParseInt(strId, 10, 64)
+		data := make(map[string]interface{})
+		historyClose, _, err := m.GetMoreClosePosition(nId)
+		if err != nil {
+			beego.Debug("Get All Position List error", err)
+			this.Rsp(false, "Get All Position List Error", "")
+			return
+		}
+		data["historyClose"] = historyClose
+		this.Data["json"] = &data
+		this.ServeJSON()
+	} else {
+		this.Ctx.Redirect(302, "/")
+	}
+	this.Ctx.WriteString("")
+}
+
 //Position List
 func (this *PositionController) GetPositionList() {
 	if this.IsAjax() {
@@ -122,9 +142,18 @@ func (this *PositionController) GetPositionList() {
 					info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
 					info.LossPoint = historyPosition[i].LossPoint     //止损点
 					info.Notes = historyPosition[i].Notes             // 备注
+					info.Timestr = historyPosition[i].Timestr
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Time = historyPosition[i].Time
-
+					if info.Liquidation == 1 {
+						historyClose, _, err := m.GetMoreClosePosition(nId)
+						if err != nil {
+							beego.Debug("Get historyClosePosition info error", err)
+						}
+						info.CloseType = historyClose[0].Type    //平仓种类
+						info.CloseIndex = historyClose[0].Index  //平仓点位
+						info.CloseNotes = historyClose[0].Notes  //平仓备注
+						info.CloseTime = historyClose[0].Timestr //平仓时间
+					}
 					positionInfo = append(positionInfo, info)
 				}
 			} else {
@@ -142,8 +171,17 @@ func (this *PositionController) GetPositionList() {
 					info.LossPoint = historyPosition[i].LossPoint     //止损点
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Time = historyPosition[i].Time
-
+					info.Timestr = historyPosition[i].Timestr
+					if info.Liquidation == 1 {
+						historyClose, _, err := m.GetMoreClosePosition(nId)
+						if err != nil {
+							beego.Debug("Get historyClosePosition info error", err)
+						}
+						info.CloseType = historyClose[0].Type    //平仓种类
+						info.CloseIndex = historyClose[0].Index  //平仓点位
+						info.CloseNotes = historyClose[0].Notes  //平仓备注
+						info.CloseTime = historyClose[0].Timestr //平仓时间
+					}
 					positionInfo = append(positionInfo, info)
 				}
 			}
@@ -183,7 +221,17 @@ func (this *PositionController) GetPositionList() {
 					info.LossPoint = historyPosition[i].LossPoint     //止损点
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Time = historyPosition[i].Time
+					info.Timestr = historyPosition[i].Timestr
+					if info.Liquidation == 1 {
+						historyClose, _, err := m.GetMoreClosePosition(nId)
+						if err != nil {
+							beego.Debug("Get historyClosePosition info error", err)
+						}
+						info.CloseType = historyClose[0].Type    //平仓种类
+						info.CloseIndex = historyClose[0].Index  //平仓点位
+						info.CloseNotes = historyClose[0].Notes  //平仓备注
+						info.CloseTime = historyClose[0].Timestr //平仓时间
+					}
 
 					positionInfo = append(positionInfo, info)
 				}
@@ -202,7 +250,17 @@ func (this *PositionController) GetPositionList() {
 					info.LossPoint = historyPosition[i].LossPoint     //止损点
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Time = historyPosition[i].Time
+					info.Timestr = historyPosition[i].Timestr
+					if info.Liquidation == 1 {
+						historyClose, _, err := m.GetMoreClosePosition(nId)
+						if err != nil {
+							beego.Debug("Get historyClosePosition info error", err)
+						}
+						info.CloseType = historyClose[0].Type    //平仓种类
+						info.CloseIndex = historyClose[0].Index  //平仓点位
+						info.CloseNotes = historyClose[0].Notes  //平仓备注
+						info.CloseTime = historyClose[0].Timestr //平仓时间
+					}
 
 					positionInfo = append(positionInfo, info)
 				}

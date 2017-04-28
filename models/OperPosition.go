@@ -26,7 +26,14 @@ type OperPosition struct {
 	Icon          string           //头像
 	ClosePosition []*ClosePosition `orm:"reverse(many)"` //一对多
 
-	Timestr string `orm:"-"` //时间字符
+	Timestr string //时间字符
+
+	//平仓信息
+	CloseType  string `orm:"-"` //平仓种类
+	CloseIndex string `orm:"-"` //平仓点位
+	CloseNotes string `orm:"-"` //平仓备注
+	CloseTime  string `orm:"-"` //平仓时间
+
 }
 
 func init() {
