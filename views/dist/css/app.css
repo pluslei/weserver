@@ -2065,7 +2065,84 @@ a {
 }
 .tradeDatail {
   height: calc(100% - 105px);
+  background: #F0EFF5;
+  overflow-y: auto;
+}
+.tradeDatail .tradeDatail-item {
+  list-style: none;
+  font-size: 14px;
+  padding: 10px 7px 7px 7px;
+  margin-bottom: 7px;
   background: #fff;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  overflow: hidden;
+}
+.tradeDatail .tradeDatail-item:last-child {
+  margin-bottom: 0;
+}
+.tradeDatail .label-left {
+  width: 75px;
+  float: left;
+  line-height: 26px;
+  clear: both;
+}
+.tradeDatail .label-right {
+  width: calc(100% - 75px);
+  line-height: 26px;
+  overflow: hidden;
+}
+.tradeDatail .label-right > .am-u-end {
+  text-align: center;
+}
+.tradeDatail .teacher-info {
+  overflow: hidden;
+}
+.tradeDatail .teacher-info > img {
+  width: 40px;
+  height: 40px;
+}
+.tradeDatail .teacher-info > div {
+  margin-left: 8px;
+}
+.tradeDatail .teacher-info .teacher-name {
+  font-size: 16px;
+}
+.tradeDatail .teacher-info .time {
+  font-size: 12px;
+  color: #777;
+}
+.tradeDatail .commodity-name {
+  font-weight: bold;
+}
+.tradeDatail .big_price {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+.tradeDatail .remark {
+  padding-right: 15px;
+  text-align: right;
+}
+.tradeDatail .s-area {
+  border-bottom: 1px solid #eee;
+  margin: 5px 0;
+}
+.tradeDatail .trade_btn > span {
+  width: 80px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+.tradeDatail .trade_btn > span.bgRed {
+  background: #FE0000;
+}
+.tradeDatail .trade_btn > span.bgGreen {
+  background: #09BA07;
 }
 .advice {
   width: 100%;

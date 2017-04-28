@@ -781,3 +781,510 @@
 2017/04/28 10:11:46 [D] [wechat.go:93] M2xf7i-8z7wxDblFQK-Chk6_qCNEp3z2zMa4_gJLMkRIFPKxJbvzbhqNFK0hjqUftidundXJgpdOQft9BSsdcmW6rncpowTC85UCzE6gA7LvQ2phdwyPXz9aYYXE0yJACBMhABAUTE 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=M2xf7i-8z7wxDblFQK-Chk6_qCNEp3z2zMa4_gJLMkRIFPKxJbvzbhqNFK0hjqUftidundXJgpdOQft9BSsdcmW6rncpowTC85UCzE6gA7LvQ2phdwyPXz9aYYXE0yJACBMhABAUTE 
 2017/04/28 10:11:47 [D] [chat.go:64] WeChat Init ok ! 
 2017/04/28 10:11:47 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 10:20:44 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 10:20:44 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 10:20:44 [D] [mq.go:98] map[] 
+2017/04/28 10:20:44 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 10:20:44 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 10:20:44 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04215f2c0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 10:20:44 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 10:20:44 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 10:20:44 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 10:20:44 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:20:44 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 10:20:45 [D] [wechat.go:75] {"access_token":"Y1EjH0GYHoL4bJuvxC7GukjgcRnQJHUrx8IOENZUGj3Aw6gynTCXmDNGw-keSSYSlQVqz7fPuD6g-aF7qzSOwV-IyMuuRrJjHBIWwhqY8LDap7UhdQOJ4a2Nt8V9TuIcUXVdAIAADB","expires_in":7200} 
+2017/04/28 10:20:45 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 10:20:45 [D] [wechat.go:93] Y1EjH0GYHoL4bJuvxC7GukjgcRnQJHUrx8IOENZUGj3Aw6gynTCXmDNGw-keSSYSlQVqz7fPuD6g-aF7qzSOwV-IyMuuRrJjHBIWwhqY8LDap7UhdQOJ4a2Nt8V9TuIcUXVdAIAADB 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=Y1EjH0GYHoL4bJuvxC7GukjgcRnQJHUrx8IOENZUGj3Aw6gynTCXmDNGw-keSSYSlQVqz7fPuD6g-aF7qzSOwV-IyMuuRrJjHBIWwhqY8LDap7UhdQOJ4a2Nt8V9TuIcUXVdAIAADB 
+2017/04/28 10:20:45 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 10:20:46 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 10:21:03 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:21:03 [D] [strategyController.go:80] roonInfo [{1 Topic_ChatMessage/sub121 0 互动社区 王老师 376 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon1.png 时刻为您提供最新的红木行情分析，为广大客户提供交流的平台 i/allchannel/banner1.png 互动社区 0} {2 Topic_ChatMessage/sub122 0 会员专区 马老师 438 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon2.png 专业的分析给您更准确的投资建议 i/allchannel/banner1.png 会员专区 0} {3 Topic_ChatMessage/sub123 0 贵宾专区 雷老师 217 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon3.png 尊享专人一对一的贴心服务，给您专属的投资指导 i/allchannel/banner1.png 贵宾专区 0} {4 Topic_ChatMessage/sub124 0 铂金VIP 胡老师 185 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon4.png 网罗最新最全的红木行情，由数位具有十数年经验的高级分析师为您提供专属服务 i/allchannel/banner1.png 铂金VIP 0}] 
+2017/04/28 10:21:14 [D] [strategyController.go:54] userInfo &{3 admin 4bc08e686673c541e4c70815763955b4    0 0  1 0001-01-01 00:00:00 +0000 UTC 0001-01-01 08:00:00 +0800 CST  1 0  0      0xc042c45050 0xc042c3f270    } 
+2017/04/28 10:21:18 [D] [strategyController.go:102] info {1 Topic_ChatMessage/sub121    ddddddddddddddddd /upload/room/1493346070icon2.png  false false 0  2017-04-28 10:21:14 +0800 CST} 
+2017/04/28 10:21:18 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:28:14 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 10:28:14 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 10:28:14 [D] [mq.go:98] map[] 
+2017/04/28 10:28:14 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 10:28:14 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 10:28:14 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0425762a0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 10:28:14 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 10:28:14 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 10:28:14 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 10:28:14 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:28:14 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 10:28:14 [D] [wechat.go:75] {"access_token":"7S9LRpswznLaKgF_QZKI0c3tV-iA2jR3uebhHCf43IzjooR7u3YtXcyuBszqif_NWcH904VfOpS1PX46bWnuviPoc2LNXevlj6X6YuZJMoLlV0BWQR8Cg1MMtwgnQbeJTQOeAHAMJH","expires_in":7198} 
+2017/04/28 10:28:14 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 10:28:14 [D] [wechat.go:93] 7S9LRpswznLaKgF_QZKI0c3tV-iA2jR3uebhHCf43IzjooR7u3YtXcyuBszqif_NWcH904VfOpS1PX46bWnuviPoc2LNXevlj6X6YuZJMoLlV0BWQR8Cg1MMtwgnQbeJTQOeAHAMJH 7198 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=7S9LRpswznLaKgF_QZKI0c3tV-iA2jR3uebhHCf43IzjooR7u3YtXcyuBszqif_NWcH904VfOpS1PX46bWnuviPoc2LNXevlj6X6YuZJMoLlV0BWQR8Cg1MMtwgnQbeJTQOeAHAMJH 
+2017/04/28 10:28:15 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 10:28:15 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 10:28:19 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:28:20 [D] [indexController.go:93] AccessToken gw57Sxi-RMCpfe1xn_HFtHhGvSJZI1INldyjvcs6H4udkb3s-rhTUPmFDO6GWDjyVgTGfYFCS0QgrRCrLmRDtVb9-tQ4GwLd5hX8fQoNlq4 
+2017/04/28 10:28:20 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:28:20 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:28:21 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0428803f0 0xc042b22640    } 
+2017/04/28 10:28:20 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:28:21 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:28:23 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:28:21 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042880750 0xc042b22730    } 
+2017/04/28 10:28:23 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:28:24 [D] [strategyController.go:85] id 0 
+2017/04/28 10:28:24 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:28:24 [D] [noticeController.go:73] id 10 
+2017/04/28 10:28:24 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:28:24 [D] [strategyController.go:97] nCount sysCont 1 10 
+2017/04/28 10:28:24 [D] [strategyController.go:85] id 0 
+2017/04/28 10:28:24 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:28:24 [D] [strategyController.go:97] nCount sysCont 1 10 
+2017/04/28 10:28:24 [D] [noticeController.go:118] index 0 
+2017/04/28 10:28:24 [D] [noticeController.go:121] mod 0 
+2017/04/28 10:28:24 [D] [noticeController.go:123] mod = 0 
+2017/04/28 10:28:38 [D] [mqttController.go:136] id 0 
+2017/04/28 10:28:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:28:38 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:30:58 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:31:00 [D] [indexController.go:93] AccessToken 97SyuhhM0_HsMXHYy3P2wqwRsT0iJh5Ion2E4F1Rn_NqswbfDr3pSmtnlCTkGEhrw9Zs2ZNR6Lka7X1jnjS0ZBTTxthdNljyO5gh0E0lZvk 
+2017/04/28 10:31:00 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:31:00 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:31:00 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0420658c0 0xc042cb9400    } 
+2017/04/28 10:31:00 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:31:00 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:31:02 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:31:00 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042065c20 0xc042cb94f0    } 
+2017/04/28 10:31:02 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:31:02 [D] [strategyController.go:85] id 0 
+2017/04/28 10:31:02 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:31:02 [D] [strategyController.go:97] nCount sysCont 1 10 
+2017/04/28 10:31:02 [D] [strategyController.go:85] id 0 
+2017/04/28 10:31:02 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:31:02 [D] [noticeController.go:73] id 10 
+2017/04/28 10:31:02 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:31:02 [D] [strategyController.go:97] nCount sysCont 1 10 
+2017/04/28 10:31:02 [D] [noticeController.go:118] index 0 
+2017/04/28 10:31:02 [D] [noticeController.go:121] mod 0 
+2017/04/28 10:31:02 [D] [noticeController.go:123] mod = 0 
+2017/04/28 10:31:10 [D] [mqttController.go:136] id 0 
+2017/04/28 10:31:10 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:31:10 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:32:00 [D] [mqttController.go:136] id 0 
+2017/04/28 10:32:00 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:32:00 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:36:02 [D] [mqttController.go:136] id 0 
+2017/04/28 10:36:02 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:36:02 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:36:06 [D] [mqttController.go:136] id 0 
+2017/04/28 10:36:06 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:36:06 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:44:30 [D] [strategyController.go:313] info {Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 dddddddddddd /upload/room/1493347464cityse.png #ee0404 false false 0 2017-04-28 10:44:30 4} 
+2017/04/28 10:44:30 [D] [strategyController.go:60] Uname Map map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:44:30 [D] [strategyController.go:440] Add StrategyInfo &{Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 dddddddddddd /upload/room/1493347464cityse.png #ee0404 false false 0 2017-04-28 10:44:30 4} 
+2017/04/28 10:44:32 [D] [strategyController.go:313] info {Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 dddddddddddd /upload/room/1493347464cityse.png #ee0404 false false 0 2017-04-28 10:44:32 4} 
+2017/04/28 10:44:32 [D] [strategyController.go:60] Uname Map map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:44:32 [D] [strategyController.go:440] Add StrategyInfo &{Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 dddddddddddd /upload/room/1493347464cityse.png #ee0404 false false 0 2017-04-28 10:44:32 4} 
+2017/04/28 10:44:33 [D] [mqttController.go:136] id 0 
+2017/04/28 10:44:33 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:44:33 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:44:44 [D] [strategyController.go:313] info {Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 dddddddddddd /upload/room/1493347482replay.png #ee0404 false false 0 2017-04-28 10:44:44 4} 
+2017/04/28 10:44:44 [D] [strategyController.go:440] Add StrategyInfo &{Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 dddddddddddd /upload/room/1493347482replay.png #ee0404 false false 0 2017-04-28 10:44:44 4} 
+2017/04/28 10:44:44 [D] [strategyController.go:60] Uname Map map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:44:50 [D] [mqttController.go:136] id 0 
+2017/04/28 10:44:50 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:44:50 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:44:52 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:31:00 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042ee4900 0xc04219ca00    } 
+2017/04/28 10:44:52 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:44:52 [D] [strategyController.go:85] id 0 
+2017/04/28 10:44:52 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:44:52 [D] [noticeController.go:73] id 10 
+2017/04/28 10:44:52 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:44:52 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:44:52 [D] [noticeController.go:118] index 0 
+2017/04/28 10:44:52 [D] [noticeController.go:121] mod 0 
+2017/04/28 10:44:52 [D] [noticeController.go:123] mod = 0 
+2017/04/28 10:44:52 [D] [strategyController.go:85] id 0 
+2017/04/28 10:44:52 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:44:52 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:44:54 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:44:56 [D] [indexController.go:93] AccessToken 0iyqilFijmHBcJNn78zlMlCb6CSBBf5vfPOFGVFgBNJG-T1t9XoAZ3bcngSjc4PSIBGqMfzr3vA8Db4OlTP-jOWKgJYbQ3JRx7FHe68QV0Q 
+2017/04/28 10:44:56 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:44:56 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:44:57 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042065c20 0xc043018ff0    } 
+2017/04/28 10:44:56 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:44:57 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:44:58 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:44:57 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0425a1e60 0xc043600cd0    } 
+2017/04/28 10:44:58 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:44:59 [D] [strategyController.go:85] id 0 
+2017/04/28 10:44:59 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:44:59 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:44:59 [D] [noticeController.go:73] id 10 
+2017/04/28 10:44:59 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:44:59 [D] [strategyController.go:85] id 0 
+2017/04/28 10:44:59 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:44:59 [D] [noticeController.go:118] index 0 
+2017/04/28 10:44:59 [D] [noticeController.go:121] mod 0 
+2017/04/28 10:44:59 [D] [noticeController.go:123] mod = 0 
+2017/04/28 10:44:59 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:45:00 [D] [mqttController.go:136] id 0 
+2017/04/28 10:45:00 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:45:00 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:47:52 [D] [mqttController.go:136] id 0 
+2017/04/28 10:47:52 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:47:52 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:48:00 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:48:12 [D] [mqttController.go:136] id 0 
+2017/04/28 10:48:12 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:12 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:48:14 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:44:57 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042881950 0xc042f59180    } 
+2017/04/28 10:48:14 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:14 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:14 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:14 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:14 [D] [noticeController.go:73] id 10 
+2017/04/28 10:48:14 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:48:14 [D] [noticeController.go:118] index 0 
+2017/04/28 10:48:14 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:48:14 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:14 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:14 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:16 [D] [mqttController.go:136] id 0 
+2017/04/28 10:48:16 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:16 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:48:19 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:48:20 [D] [indexController.go:93] AccessToken htEVlv1ggcAwMQ2ba7yszVrd8jESIUijjuKUfFqu7DnaI2hsH1MZyMy6iD9DFmHE8H1_GyTfrpvmW9em9qyhMr4cGsyfusfO3LoYqHNw0e8 
+2017/04/28 10:48:21 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:48:21 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:21 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04213def0 0xc042fdf5e0    } 
+2017/04/28 10:48:21 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:21 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:48:23 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:21 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0431d42d0 0xc042fdf6d0    } 
+2017/04/28 10:48:23 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:23 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:23 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:23 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:23 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:23 [D] [noticeController.go:73] id 10 
+2017/04/28 10:48:23 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:48:23 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:23 [D] [noticeController.go:118] index 0 
+2017/04/28 10:48:23 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:48:23 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:25 [D] [mqttController.go:136] id 0 
+2017/04/28 10:48:25 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:25 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:48:26 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:21 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042d72360 0xc0439be3c0    } 
+2017/04/28 10:48:26 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:27 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:27 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:27 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:27 [D] [noticeController.go:73] id 10 
+2017/04/28 10:48:27 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:48:27 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:27 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:27 [D] [noticeController.go:118] index 0 
+2017/04/28 10:48:27 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:48:27 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:28 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:21 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc043794630 0xc043b582d0    } 
+2017/04/28 10:48:28 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:29 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:29 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:29 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:29 [D] [noticeController.go:73] id 10 
+2017/04/28 10:48:29 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:48:29 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:29 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:29 [D] [noticeController.go:118] index 0 
+2017/04/28 10:48:29 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:48:29 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:52 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:48:53 [D] [indexController.go:93] AccessToken 0iyqilFijmHBcJNn78zlMqmC-kG8b0LPTl-GRKCqdjUFMDp3FotObxjb0txZGHf7VChvBVQJ9IpNJ4FAOat-xCJFBZzD5oAqVsL2giL-f0Y 
+2017/04/28 10:48:53 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:48:53 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:54 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042efb320 0xc04305a460    } 
+2017/04/28 10:48:53 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:54 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:48:55 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:54 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042efb680 0xc04305a550    } 
+2017/04/28 10:48:55 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:56 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:56 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:56 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:56 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:56 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:56 [D] [noticeController.go:73] id 10 
+2017/04/28 10:48:56 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:48:56 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:56 [D] [noticeController.go:118] index 0 
+2017/04/28 10:48:56 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:48:57 [D] [mqttController.go:136] id 0 
+2017/04/28 10:48:57 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:57 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:48:57 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:54 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04396f4d0 0xc042f0f4a0    } 
+2017/04/28 10:48:57 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:48:58 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:58 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:58 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:48:58 [D] [strategyController.go:85] id 0 
+2017/04/28 10:48:58 [D] [noticeController.go:73] id 10 
+2017/04/28 10:48:58 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:48:58 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:48:58 [D] [noticeController.go:118] index 0 
+2017/04/28 10:48:58 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:48:58 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:28 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:48:54 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042803ef0 0xc042807770    } 
+2017/04/28 10:49:28 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:49:28 [D] [strategyController.go:85] id 0 
+2017/04/28 10:49:28 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:49:28 [D] [noticeController.go:73] id 10 
+2017/04/28 10:49:28 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:49:28 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:28 [D] [strategyController.go:85] id 0 
+2017/04/28 10:49:28 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:49:28 [D] [noticeController.go:118] index 0 
+2017/04/28 10:49:28 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:49:28 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:31 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:49:33 [D] [indexController.go:93] AccessToken MmFi2NGVQqGO4cQp4D9Wa1dMP81gf1qy0pjgbXZqCsa48wWtJShwMw1HMUBCEQcl99esPiCsUwJj8fS36ZCLg5NaP195iiTEIq_YwSCgMNI 
+2017/04/28 10:49:33 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:49:33 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:49:33 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04376ddd0 0xc043bfadc0    } 
+2017/04/28 10:49:33 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:49:33 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:49:35 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:49:33 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc043c181b0 0xc043bfaeb0    } 
+2017/04/28 10:49:35 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:49:35 [D] [strategyController.go:85] id 0 
+2017/04/28 10:49:35 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:49:35 [D] [noticeController.go:73] id 10 
+2017/04/28 10:49:35 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:49:35 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:35 [D] [noticeController.go:118] index 0 
+2017/04/28 10:49:35 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:49:35 [D] [strategyController.go:85] id 0 
+2017/04/28 10:49:35 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:49:35 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:37 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:49:33 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04376c2d0 0xc0431d3f90    } 
+2017/04/28 10:49:37 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:49:37 [D] [strategyController.go:85] id 0 
+2017/04/28 10:49:37 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:49:37 [D] [noticeController.go:73] id 10 
+2017/04/28 10:49:37 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:49:37 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:37 [D] [strategyController.go:85] id 0 
+2017/04/28 10:49:37 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:49:37 [D] [noticeController.go:118] index 0 
+2017/04/28 10:49:37 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:49:37 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:49:53 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:49:58 [D] [indexController.go:93] AccessToken G6XGzBiJz3UrwWZP_SPogX3EqNhqoCAL-CYIyrdxeigWUIHVQZBB12csFZP_MiA-du97Oeb5Zlsz9CJTl0SwjOT0np34E19-7Q39Q3Vq_gg 
+2017/04/28 10:49:58 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:49:58 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:49:58 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0430ba480 0xc042c6e8c0    } 
+2017/04/28 10:49:58 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:49:58 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:50:00 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:49:58 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0430ba7e0 0xc042c6e9b0    } 
+2017/04/28 10:50:00 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:50:00 [D] [strategyController.go:85] id 0 
+2017/04/28 10:50:00 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:50:00 [D] [strategyController.go:85] id 0 
+2017/04/28 10:50:00 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:50:00 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:50:00 [D] [strategyController.go:97] nCount sysCont 4 10 
+2017/04/28 10:50:00 [D] [noticeController.go:73] id 10 
+2017/04/28 10:50:00 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:50:00 [D] [noticeController.go:118] index 0 
+2017/04/28 10:50:00 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:58:19 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 10:58:19 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 10:58:19 [D] [mq.go:98] map[] 
+2017/04/28 10:58:19 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 10:58:19 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 10:58:19 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc042037c20 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 10:58:19 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 10:58:19 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 10:58:19 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 10:58:19 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 10:58:19 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 10:58:20 [D] [wechat.go:75] {"access_token":"G3ukHeBMZLlXp_clpe7WhxdqCLW-eg0xBUMGp_nH9GE-4KwKaTvohxFg_WntZBbYMGhJGykdZkTB7JXoi5rh4mnthorqZJ0ofJQxw9S-kycZORbAHAJYB","expires_in":7200} 
+2017/04/28 10:58:20 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 10:58:20 [D] [wechat.go:93] G3ukHeBMZLlXp_clpe7WhxdqCLW-eg0xBUMGp_nH9GE-4KwKaTvohxFg_WntZBbYMGhJGykdZkTB7JXoi5rh4mnthorqZJ0ofJQxw9S-kycZORbAHAJYB 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=G3ukHeBMZLlXp_clpe7WhxdqCLW-eg0xBUMGp_nH9GE-4KwKaTvohxFg_WntZBbYMGhJGykdZkTB7JXoi5rh4mnthorqZJ0ofJQxw9S-kycZORbAHAJYB 
+2017/04/28 10:58:20 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 10:58:21 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 10:58:41 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:58:41 [D] [strategyController.go:82] roonInfo [{1 Topic_ChatMessage/sub121 0 互动社区 王老师 376 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon1.png 时刻为您提供最新的红木行情分析，为广大客户提供交流的平台 i/allchannel/banner1.png 互动社区 0} {2 Topic_ChatMessage/sub122 0 会员专区 马老师 438 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon2.png 专业的分析给您更准确的投资建议 i/allchannel/banner1.png 会员专区 0} {3 Topic_ChatMessage/sub123 0 贵宾专区 雷老师 217 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon3.png 尊享专人一对一的贴心服务，给您专属的投资指导 i/allchannel/banner1.png 贵宾专区 0} {4 Topic_ChatMessage/sub124 0 铂金VIP 胡老师 185 GID_SUB_ChatMSG mqf-dfbt0o9yg6.mqtt.aliyuncs.com 80 false LTAIpFkq7b3IOvXu QnewzgFKXHPBTOEV5BDAOSSGe1iuRA i/allchannel/icon4.png 网罗最新最全的红木行情，由数位具有十数年经验的高级分析师为您提供专属服务 i/allchannel/banner1.png 铂金VIP 0}] 
+2017/04/28 10:58:52 [D] [strategyController.go:54] userInfo &{3 admin 4bc08e686673c541e4c70815763955b4    0 0  1 0001-01-01 00:00:00 +0000 UTC 0001-01-01 08:00:00 +0800 CST  1 0  0      0xc042084360 0xc042116ff0    } 
+2017/04/28 10:59:28 [D] [indexController.go:120] info <nil> 
+2017/04/28 10:59:29 [D] [indexController.go:93] AccessToken vdXK6PCMdoGlDwtKZIDWuBPOkGXPoGGjbUrABERhUqGk8BhMe70RDynZSk6PxWyBHau9GiZvri1HnL7KfsIw0uKWCzJ9KFv02C1z5NSR-24 
+2017/04/28 10:59:29 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 10:59:29 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:59:30 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0429d0480 0xc0421203c0    } 
+2017/04/28 10:59:29 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:59:30 [D] [RoomInfo.go:142] num 4 
+2017/04/28 10:59:32 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 10:59:30 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0429d07e0 0xc0421204b0    } 
+2017/04/28 10:59:32 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 10:59:32 [D] [strategyController.go:85] id 0 
+2017/04/28 10:59:32 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:59:32 [D] [noticeController.go:73] id 10 
+2017/04/28 10:59:32 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 10:59:32 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 10:59:32 [D] [strategyController.go:85] id 0 
+2017/04/28 10:59:32 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:59:32 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 10:59:32 [D] [noticeController.go:118] index 0 
+2017/04/28 10:59:32 [D] [noticeController.go:121] mod -9 
+2017/04/28 10:59:35 [D] [mqttController.go:136] id 0 
+2017/04/28 10:59:35 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:59:35 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 10:59:38 [D] [mqttController.go:136] id 0 
+2017/04/28 10:59:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 10:59:38 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:00:03 [D] [mqttController.go:136] id 0 
+2017/04/28 11:00:03 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:00:03 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:00:07 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:00:08 [D] [indexController.go:93] AccessToken Y3x9r7ypJFnJEM61UYo0o5HCYo5JVVQApmJQsV_obbRxmJFV083CuXy8SSPpoXKfVPJ40GZmXOXSagE-UD8wJ5FoFx71WLMNErfQy7z9obg 
+2017/04/28 11:00:08 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:00:08 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:00:09 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042ebed80 0xc042ec05a0    } 
+2017/04/28 11:00:08 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:00:09 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:00:10 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:00:09 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042ebf0e0 0xc042ec0690    } 
+2017/04/28 11:00:10 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:00:10 [D] [strategyController.go:85] id 0 
+2017/04/28 11:00:10 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:00:10 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:00:10 [D] [noticeController.go:73] id 10 
+2017/04/28 11:00:10 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:00:10 [D] [strategyController.go:85] id 0 
+2017/04/28 11:00:10 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:00:10 [D] [noticeController.go:118] index 0 
+2017/04/28 11:00:10 [D] [noticeController.go:121] mod -9 
+2017/04/28 11:00:10 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:00:52 [D] [mqttController.go:136] id 0 
+2017/04/28 11:00:52 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:00:52 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:00:55 [D] [mqttController.go:136] id 0 
+2017/04/28 11:00:55 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:00:55 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:01:17 [D] [mqttController.go:136] id 0 
+2017/04/28 11:01:17 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:17 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:01:18 [D] [mqttController.go:136] id 0 
+2017/04/28 11:01:18 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:18 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:01:19 [D] [mqttController.go:136] id 0 
+2017/04/28 11:01:19 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:19 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:01:24 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:01:26 [D] [indexController.go:93] AccessToken 9IMPYSu5ZlAOZeEELeReQrfQxz1Us8wgrgKBGeQpG-5D8RJRESd-9JkB24wTZv_MlOTKOjqBg3Y84llFBXnY31fvFmr0YzglEyZkhyF-ftM 
+2017/04/28 11:01:26 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:01:26 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:01:27 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042e99320 0xc042117ef0    } 
+2017/04/28 11:01:26 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:01:26 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:01:28 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:01:27 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042e99680 0xc043802000    } 
+2017/04/28 11:01:28 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:01:28 [D] [strategyController.go:85] id 0 
+2017/04/28 11:01:28 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:28 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:01:28 [D] [strategyController.go:85] id 0 
+2017/04/28 11:01:28 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:28 [D] [noticeController.go:73] id 10 
+2017/04/28 11:01:28 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:01:28 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:01:28 [D] [noticeController.go:118] index 0 
+2017/04/28 11:01:28 [D] [noticeController.go:121] mod -9 
+2017/04/28 11:01:29 [D] [mqttController.go:136] id 0 
+2017/04/28 11:01:29 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:29 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:01:32 [D] [mqttController.go:136] id 0 
+2017/04/28 11:01:32 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:01:32 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:02:06 [D] [mqttController.go:136] id 0 
+2017/04/28 11:02:06 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:02:06 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:06:31 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 11:06:31 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 11:06:31 [D] [mq.go:98] map[] 
+2017/04/28 11:06:31 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 11:06:31 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 11:06:31 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422b4900 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 11:06:31 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 11:06:31 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 11:06:31 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 11:06:31 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 11:06:31 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 11:06:32 [D] [wechat.go:75] {"access_token":"Gfc45AjsGCLCqUESpxJwUiesmVTETsx3k86zrkwUd51tjhbc4EmqYv9ZGM7K3bykzfP0m8IZe3bXiYF0OYLP265l_E7TC6P8UjsVhK_wK9vcVp0bGJNkq8bYBE8k41HeFAVaADALGB","expires_in":7200} 
+2017/04/28 11:06:32 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 11:06:32 [D] [wechat.go:93] Gfc45AjsGCLCqUESpxJwUiesmVTETsx3k86zrkwUd51tjhbc4EmqYv9ZGM7K3bykzfP0m8IZe3bXiYF0OYLP265l_E7TC6P8UjsVhK_wK9vcVp0bGJNkq8bYBE8k41HeFAVaADALGB 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=Gfc45AjsGCLCqUESpxJwUiesmVTETsx3k86zrkwUd51tjhbc4EmqYv9ZGM7K3bykzfP0m8IZe3bXiYF0OYLP265l_E7TC6P8UjsVhK_wK9vcVp0bGJNkq8bYBE8k41HeFAVaADALGB 
+2017/04/28 11:06:32 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 11:06:33 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 11:06:37 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:06:39 [D] [indexController.go:93] AccessToken vweEuAlIHKXCCfBBL6mPyequBwrGB-XsNjKqK69xtjcswgTtx4P2GAicG1U3XQfgDesPvDFuYzrPhD9dF4P1j2s2rcj0wx06sRFeRDEKRUs 
+2017/04/28 11:06:39 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:06:39 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:06:39 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042982ab0 0xc042438870    } 
+2017/04/28 11:06:39 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:06:39 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:06:41 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:06:39 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042982e10 0xc0424389b0    } 
+2017/04/28 11:06:41 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:06:42 [D] [strategyController.go:85] id 0 
+2017/04/28 11:06:42 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:06:42 [D] [strategyController.go:85] id 0 
+2017/04/28 11:06:42 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:06:42 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:06:42 [D] [noticeController.go:73] id 10 
+2017/04/28 11:06:42 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:06:42 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:06:42 [D] [noticeController.go:118] index 0 
+2017/04/28 11:06:42 [D] [noticeController.go:121] mod -9 
+2017/04/28 11:06:44 [D] [mqttController.go:136] id 0 
+2017/04/28 11:06:44 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:06:44 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:06:46 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:06:39 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042c2cb40 0xc042423f40    } 
+2017/04/28 11:06:46 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:06:47 [D] [strategyController.go:85] id 0 
+2017/04/28 11:06:47 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:06:47 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:06:47 [D] [strategyController.go:85] id 0 
+2017/04/28 11:06:47 [D] [noticeController.go:73] id 10 
+2017/04/28 11:06:47 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:06:47 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:06:47 [D] [noticeController.go:118] index 0 
+2017/04/28 11:06:47 [D] [noticeController.go:121] mod -9 
+2017/04/28 11:06:47 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:07:11 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:07:36 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:36 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:36 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:07:38 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:38 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:07:40 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:06:39 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042c2cc60 0xc042b3c870    } 
+2017/04/28 11:07:40 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:07:40 [D] [strategyController.go:85] id 0 
+2017/04/28 11:07:40 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:40 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:07:40 [D] [strategyController.go:85] id 0 
+2017/04/28 11:07:40 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:40 [D] [noticeController.go:73] id 10 
+2017/04/28 11:07:40 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:07:40 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:07:40 [D] [noticeController.go:118] index 0 
+2017/04/28 11:07:40 [D] [noticeController.go:121] mod -8 
+2017/04/28 11:07:43 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:43 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:43 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:07:45 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:45 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:45 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:07:48 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:48 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:48 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:07:53 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:53 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:53 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:07:58 [D] [mqttController.go:136] id 0 
+2017/04/28 11:07:58 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:07:58 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:08:07 [D] [mqttController.go:136] id 0 
+2017/04/28 11:08:07 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:08:08 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:08:09 [D] [mqttController.go:136] id 0 
+2017/04/28 11:08:09 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:08:09 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:08:14 [D] [mqttController.go:136] id 0 
+2017/04/28 11:08:14 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:08:14 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:08:18 [D] [mqttController.go:136] id 0 
+2017/04/28 11:08:18 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:08:18 [D] [mqttController.go:150] nCount sysCont 0 10 
+2017/04/28 11:08:23 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:08:25 [D] [indexController.go:93] AccessToken 96yEZ3s2bTo4-_lP9fG9rgou2XXS_D7_WUsfCMeVxtBNcH50RR1RDoCeBaihgjHhVZONEmLAq5sI6Clg3exAdXBA5avveHcn4TOJDRB2q8A 
+2017/04/28 11:08:25 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:08:25 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:08:25 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0439ddb90 0xc042f32a50    } 
+2017/04/28 11:08:25 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 0 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:08:25 [D] [RoomInfo.go:142] num 4 
