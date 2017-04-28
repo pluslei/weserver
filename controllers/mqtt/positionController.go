@@ -38,10 +38,10 @@ func (this *PositionController) OperatePosition() {
 		msg := this.GetString("str")
 		b := parsePositionMsg(msg)
 		if b {
-			this.Rsp(true, "老师信息发送成功", "")
+			this.Rsp(true, "操作信息发送成功", "")
 			return
 		} else {
-			this.Rsp(false, "老师信息发送失败,请重新发送", "")
+			this.Rsp(false, "操作信息发送失败,请重新发送", "")
 			return
 		}
 	}

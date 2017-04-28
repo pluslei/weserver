@@ -18,6 +18,7 @@ type TeacherController struct {
 
 type teacherMessage struct {
 	infochan chan *TeacherInfo
+	operchan chan *TeacherOperate
 }
 
 var (
@@ -27,15 +28,32 @@ var (
 func init() {
 	teacher = &teacherMessage{
 		infochan: make(chan *TeacherInfo, 20480),
+		operchan: make(chan *TeacherOperate, 20480),
 	}
 	teacher.runWriteDb()
 }
 
 //Add teacher
-func (this *TeacherController) OperateTeacher() {
+func (this *TeacherController) AddTeacher() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
 		b := parseTeacherMsg(msg)
+		if b {
+			this.Rsp(true, "老师信息发送成功", "")
+			return
+		} else {
+			this.Rsp(false, "老师信息发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
+//OP teacher
+func (this *TeacherController) OperateTeacher() {
+	if this.IsAjax() {
+		msg := this.GetString("str")
+		b := parseOPTeacherMsg(msg)
 		if b {
 			this.Rsp(true, "老师信息发送成功", "")
 			return
@@ -96,6 +114,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -108,6 +128,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -142,6 +164,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -154,6 +178,8 @@ func (this *TeacherController) GetTeacherList() {
 					info.Icon = historyTeacher[i].Icon
 					info.Name = historyTeacher[i].Name
 					info.Title = historyTeacher[i].Title
+					info.IsTop = historyTeacher[i].IsTop
+					info.ThumbNum = historyTeacher[i].ThumbNum
 					info.Data = historyTeacher[i].Data
 					info.Time = historyTeacher[i].Time
 					teacherinfo = append(teacherinfo, info)
@@ -195,6 +221,29 @@ func parseTeacherMsg(msg string) bool {
 	return true
 }
 
+func parseOPTeacherMsg(msg string) bool {
+	msginfo := new(TeacherOperate)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("TeacherOperate: simplejson error", err)
+		return false
+	}
+	info.MsgType = MSG_TYPE_STRATEGY_OPE
+
+	beego.Debug("Operate Teacher info", info)
+	/*
+		room := info.Room
+		v, err := ToJSON(info)
+		if err != nil {
+			beego.Error("OPERATE Strategy JSON ERROR", err)
+			return false
+		}
+		mq.SendMessage(room, v) //发消息
+	*/
+	OperateTeacherMsg(info)
+	return true
+}
+
 // 写数据
 func (n *teacherMessage) runWriteDb() {
 	go func() {
@@ -203,6 +252,10 @@ func (n *teacherMessage) runWriteDb() {
 			case infoMsg, ok := <-n.infochan:
 				if ok {
 					operateData(infoMsg)
+				}
+			case infoOper, ok1 := <-n.operchan:
+				if ok1 {
+					OperateTeacherContent(infoOper)
 				}
 			}
 		}
@@ -220,6 +273,58 @@ func operateTeacherdata(info TeacherInfo) {
 	}
 }
 
+func OperateTeacherMsg(info TeacherOperate) {
+	jsondata := &info
+	select {
+	case teacher.operchan <- jsondata:
+		break
+	default:
+		beego.Error("OPER NOTICE db error!!!")
+		break
+	}
+}
+
+func OperateTeacherContent(info *TeacherOperate) {
+	beego.Debug("TeacherOper", info)
+	var teacher m.Teacher
+	teacher.Id = info.Id
+	teacher.Room = info.Room
+	OPERTYPE := info.OperType
+	switch OPERTYPE {
+	case OPERATE_TEACHER_TOP:
+		_, err := m.TopOption(teacher.Id)
+		if err != nil {
+			beego.Debug("Oper Teacher Top Fail", err)
+		}
+		break
+	case OPERATE_TEACHER_UNTOP:
+		_, err := m.UnTopOption(teacher.Id)
+		if err != nil {
+			beego.Debug("Oper Teacher UnTop Fail", err)
+		}
+		break
+	case OPERATE_TEACHER_THUMB:
+		_, err := m.ThumbTeacherAdd(teacher.Id)
+		if err != nil {
+			beego.Debug("Oper Teacher Thumb Fail", err)
+		}
+		break
+	case OPERATE_TEACHER_UNTHUMB:
+		_, err := m.ThumbTeacherDel(teacher.Id)
+		if err != nil {
+			beego.Debug("Oper Teacher Thumb Fail", err)
+		}
+		break
+	case OPERATE_TEACHER_DEL:
+		_, err := m.DelTeacherById(teacher.Id)
+		if err != nil {
+			beego.Debug("Oper Teacher Del Fail", err)
+		}
+		break
+	default:
+	}
+}
+
 func operateData(info *TeacherInfo) {
 	beego.Debug("TeacherOperate", info)
 	var teacher m.Teacher
@@ -233,12 +338,6 @@ func operateData(info *TeacherInfo) {
 			if err != nil {
 				beego.Debug("Oper Teacher Add Fail", err)
 			}
-		}
-		break
-	case OPERATE_TEACHER_DEL:
-		_, err := m.DelTeacherById(teacher.Id)
-		if err != nil {
-			beego.Debug("Oper Teacher Del Fail", err)
 		}
 		break
 	case OPERATE_TEACHER_UPDATE:
@@ -258,6 +357,8 @@ func addTeacherConten(info *TeacherInfo) error {
 	teacher.Icon = info.Icon
 	teacher.Name = info.Name
 	teacher.Title = info.Title
+	teacher.IsTop = info.IsTop
+	teacher.ThumbNum = info.ThumbNum
 	teacher.Data = info.Data
 	teacher.Time = info.Time
 	teacher.Datatime = time.Now()
@@ -271,13 +372,15 @@ func addTeacherConten(info *TeacherInfo) error {
 }
 
 func updateTeacherConten(info *TeacherInfo) error {
-	beego.Debug("Add TeacherInfo", info)
+	beego.Debug("Update TeacherInfo", info)
 	var teacher m.Teacher
 	teacher.Id = info.Id
 	teacher.Room = info.Room
 	teacher.Icon = info.Icon
 	teacher.Name = info.Name
 	teacher.Title = info.Title
+	teacher.IsTop = info.IsTop
+	teacher.ThumbNum = info.ThumbNum
 	teacher.Data = info.Data
 	teacher.Time = info.Time
 	teacher.Datatime = time.Now()

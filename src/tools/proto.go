@@ -282,6 +282,10 @@ const (
 	OPERATE_TEACHER_ADD = iota
 	OPERATE_TEACHER_DEL
 	OPERATE_TEACHER_UPDATE
+	OPERATE_TEACHER_TOP
+	OPERATE_TEACHER_UNTOP
+	OPERATE_TEACHER_THUMB
+	OPERATE_TEACHER_UNTHUMB
 )
 
 // 老师信息
@@ -291,6 +295,8 @@ type TeacherInfo struct {
 	Name     string
 	Icon     string //头像
 	Title    string
+	IsTop    bool   //是否置顶 置顶1 否 0
+	ThumbNum int64  //点赞次数
 	Data     string //老师简介
 	Time     string
 	OperType int64
