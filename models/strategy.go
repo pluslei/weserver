@@ -70,6 +70,24 @@ func AddStrategy(s *Strategy) (int64, error) {
 	return id, err
 }
 
+func UpdateStrategyById(s *Strategy) (int64, error) {
+	o := orm.NewOrm()
+	id, err := o.QueryTable("strategy").Filter("Id", s.Id).Update(orm.Params{
+		"Room":      s.Room,
+		"Icon":      s.Icon,
+		"Name":      s.Name,
+		"Titel":     s.Titel,
+		"Data":      s.Data,
+		"FileName":  s.FileName,
+		"TxtColour": s.TxtColour,
+		"IsTop":     s.IsTop,
+		"IsDelete":  s.IsDelete,
+		"ThumbNum":  s.ThumbNum,
+		"Time":      s.Time,
+	})
+	return id, err
+}
+
 //删除策略
 func DelStrategyById(id int64) (int64, error) {
 	o := orm.NewOrm()

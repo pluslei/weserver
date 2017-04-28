@@ -23,9 +23,17 @@ type OperPosition struct {
 	LossPoint     string           //止损点
 	Notes         string           // 备注
 	Liquidation   int              //平仓详情 (0:未平仓 1:平仓)
+	Icon          string           //头像
 	ClosePosition []*ClosePosition `orm:"reverse(many)"` //一对多
 
-	Timestr string `orm:"-"` //时间字符
+	Timestr string //时间字符
+
+	//平仓信息
+	CloseType  string `orm:"-"` //平仓种类
+	CloseIndex string `orm:"-"` //平仓点位
+	CloseNotes string `orm:"-"` //平仓备注
+	CloseTime  string `orm:"-"` //平仓时间
+
 }
 
 func init() {
@@ -72,6 +80,7 @@ func DelPositionById(id int64) (int64, error) {
 func UpdatePositionInfo(t *OperPosition) (int64, error) {
 	o := orm.NewOrm()
 	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+		"Icon":        t.Icon,
 		"RoomTeacher": t.RoomTeacher,
 		"Type":        t.Type,
 		"BuySell":     t.BuySell,

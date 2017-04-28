@@ -24,7 +24,7 @@ type ClosePosition struct {
 	Notes        string        // 备注
 	OperPosition *OperPosition `orm:"rel(fk)"`
 
-	Timestr string `orm:"-"` //时间字符
+	Timestr string //时间字符
 }
 
 func init() {

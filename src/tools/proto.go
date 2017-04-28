@@ -175,10 +175,13 @@ const (
 	OPERATE_THUMB
 	OPERATE_UNTHUMB
 	OPERATE_DEL
+	OPERATE_ADD
+	OPERATE_UPDATE
 )
 
 // 策略消息
 type StrategyInfo struct {
+	Id        int64
 	Room      string //房间号 topic
 	Icon      string //头像
 	Name      string //操作者的用户名
@@ -191,7 +194,8 @@ type StrategyInfo struct {
 	ThumbNum  int64  //点赞次数
 	Time      string
 
-	MsgType int //消息类型
+	OperType int64
+	MsgType  int //消息类型
 }
 
 // 置顶 /取消置顶 /点赞/ 删除
@@ -242,6 +246,7 @@ type PositionInfo struct {
 	LossPoint   string //止损点
 	Notes       string // 备注
 	Liquidation int    //平仓详情 (0:未平仓 1:平仓)
+	Icon        string //头像
 
 	OperType int64
 	MsgType  int //消息类型

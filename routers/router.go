@@ -161,6 +161,7 @@ func Router() {
 
 	// //策略
 	beego.Router("/chat/user/strategy", &mqtt.StrategyController{}, "*:GetStrategyInfo")
+	beego.Router("/chat/user/editstrategy", &mqtt.StrategyController{}, "*:GetEditStrategyInfo")
 	beego.Router("/chat/user/operatestrategy", &mqtt.StrategyController{}, "*:OperateStrategy")
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 	beego.Router("/chat/user/strategyMap", &mqtt.StrategyController{}, "*:GetUnameMapInfo")
@@ -186,6 +187,7 @@ func Router() {
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")
 	beego.Router("/chat/user/positionList", &mqtt.PositionController{}, "*:GetPositionList")
+	beego.Router("/chat/user/closeposition", &mqtt.PositionController{}, "*:GetClosePositionRecord")
 	beego.Router("/chat/user/positionNear", &mqtt.PositionController{}, "*:GetPositionNearRecord")
 	beego.Router("/chat/user/positionAllList", &mqtt.PositionController{}, "*:GetAllPositionList")
 

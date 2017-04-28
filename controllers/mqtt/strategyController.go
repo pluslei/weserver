@@ -54,6 +54,22 @@ func (this *StrategyController) GetStrategyInfo() {
 	this.Ctx.WriteString("")
 }
 
+//发策略
+func (this *StrategyController) GetEditStrategyInfo() {
+	if this.IsAjax() {
+		msg := this.GetString("str")
+		b := parseEditStrategyMsg(msg)
+		if b {
+			this.Rsp(true, "编辑策略发送成功", "")
+			return
+		} else {
+			this.Rsp(false, "编辑策略发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
 func (this *StrategyController) GetUnameMapInfo() {
 	if this.IsAjax() {
 		wechat.GetUnameMapInfo()
@@ -306,6 +322,7 @@ func parseStrategyMsg(msg string) bool {
 		beego.Error("Strategy: simplejson error", err)
 		return false
 	}
+	info.OperType = OPERATE_ADD
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
 	//sendmsg := info.Data
@@ -321,7 +338,36 @@ func parseStrategyMsg(msg string) bool {
 	mq.SendMessage(topic, v)
 	//SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
-	insertStrageydata(info)
+	editStrageydata(info)
+	return true
+}
+
+func parseEditStrategyMsg(msg string) bool {
+	msginfo := new(StrategyInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("EditStrategy: simplejson error", err)
+		return false
+	}
+	info.OperType = OPERATE_UPDATE
+	/*
+		info.MsgType = MSG_TYPE_STRATEGY_UPDATE
+		topic := info.Room
+		//sendmsg := info.Data
+
+		beego.Debug("info", info)
+
+		v, err := ToJSON(info)
+		if err != nil {
+			beego.Error("json error", err)
+			return false
+		}
+
+		mq.SendMessage(topic, v)
+	*/
+	//SendWeChatStrategy(topic, sendmsg) // send to wechat
+	// 消息入库
+	editStrageydata(info)
 	return true
 }
 
@@ -362,7 +408,7 @@ func (n *strategyMessage) runWriteDb() {
 			select {
 			case infoMsg, ok := <-n.infochan:
 				if ok {
-					addStrategyContent(infoMsg)
+					editStrategyContent(infoMsg)
 				}
 			case infoOper, ok1 := <-n.operchan:
 				if ok1 {
@@ -373,7 +419,7 @@ func (n *strategyMessage) runWriteDb() {
 	}()
 }
 
-func insertStrageydata(info StrategyInfo) {
+func editStrageydata(info StrategyInfo) {
 	jsondata := &info
 	select {
 	case strategy.infochan <- jsondata:
@@ -436,24 +482,50 @@ func OperateStrategyContent(info *StrategyOperate) {
 	}
 }
 
-func addStrategyContent(info *StrategyInfo) {
-	beego.Debug("Add StrategyInfo", info)
-	var strategy m.Strategy
-	strategy.Room = info.Room
-	strategy.Icon = info.Icon
-	strategy.Name = info.Name
-	strategy.Titel = info.Titel
-	strategy.Data = info.Data
-	strategy.FileName = info.FileName
-	strategy.TxtColour = info.TxtColour
-	strategy.IsTop = info.IsTop
-	strategy.IsDelete = info.IsDelete
-	strategy.ThumbNum = info.ThumbNum
-	strategy.Time = info.Time
-	strategy.Datatime = time.Now()
-
-	_, err := m.AddStrategy(&strategy)
-	if err != nil {
-		beego.Debug("Add Strategy Fail:", err)
+func editStrategyContent(info *StrategyInfo) {
+	beego.Debug("edit StrategyInfo", info)
+	OPERATETYPE := info.OperType
+	switch OPERATETYPE {
+	case OPERATE_ADD:
+		var strategy m.Strategy
+		strategy.Room = info.Room
+		strategy.Icon = info.Icon
+		strategy.Name = info.Name
+		strategy.Titel = info.Titel
+		strategy.Data = info.Data
+		strategy.FileName = info.FileName
+		strategy.TxtColour = info.TxtColour
+		strategy.IsTop = info.IsTop
+		strategy.IsDelete = info.IsDelete
+		strategy.ThumbNum = info.ThumbNum
+		strategy.Time = info.Time
+		strategy.Datatime = time.Now()
+		_, err := m.AddStrategy(&strategy)
+		if err != nil {
+			beego.Debug("Add Strategy Fail:", err)
+		}
+		break
+	case OPERATE_UPDATE:
+		var strategy m.Strategy
+		strategy.Id = info.Id
+		strategy.Room = info.Room
+		strategy.Icon = info.Icon
+		strategy.Name = info.Name
+		strategy.Titel = info.Titel
+		strategy.Data = info.Data
+		strategy.FileName = info.FileName
+		strategy.TxtColour = info.TxtColour
+		strategy.IsTop = info.IsTop
+		strategy.IsDelete = info.IsDelete
+		strategy.ThumbNum = info.ThumbNum
+		strategy.Time = info.Time
+		strategy.Datatime = time.Now()
+		_, err := m.UpdateStrategyById(&strategy)
+		if err != nil {
+			beego.Debug("Update Strategy Fail:", err)
+		}
+		break
+	default:
 	}
+
 }

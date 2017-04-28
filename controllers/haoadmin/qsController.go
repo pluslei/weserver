@@ -75,7 +75,14 @@ func (this *QsController) SendBroad() {
 			this.AlertBack("公告写入数据库失败")
 			return
 		} else {
-			b := SendBrocast(room, data)
+			msg := new(NoticeInfo)
+			msg.Uname = broad.Uname
+			msg.Nickname = broad.Nickname
+			msg.Content = broad.Data
+			msg.Time = broad.Time
+			msg.MsgType = MSG_TYPE_NOTICE_ADD
+
+			b := SendBrocast(room, msg)
 			if b {
 				this.Alert("公告发送成功", "/weserver/data/qs_broad")
 				return
@@ -164,10 +171,7 @@ func (this *QsController) GetClientip() string {
 }
 
 // 发送公告消息
-func SendBrocast(topic, content string) bool {
-	info := new(NoticeInfo)
-	info.Content = content
-	info.MsgType = MSG_TYPE_NOTICE_ADD
+func SendBrocast(topic string, info *NoticeInfo) bool {
 	v, err := ToJSON(info)
 	if err != nil {
 		beego.Error("json error", err)
