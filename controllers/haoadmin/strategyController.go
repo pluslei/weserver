@@ -71,9 +71,16 @@ func (this *StrategyController) Add() {
 		ThumbNum, _ := this.GetInt64("ThumbNum")
 		strategy.ThumbNum = ThumbNum
 		strategy.Datatime = time.Now()
+<<<<<<< HEAD
 		strategy.TxtColour = this.GetString("TxtColour")
 
 		_, err = models.AddStrategy(strategy)
+=======
+		time := time.Now()
+		tm := time.Format("2006-01-02 03:04:05")
+		strategy.Time = tm
+		_, err := models.AddStrategy(strategy)
+>>>>>>> 380074943d451274a1f5680abc9e8bcf6a24091d
 		if err != nil {
 			this.AlertBack("添加失败")
 		}

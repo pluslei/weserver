@@ -1,11 +1,13 @@
 package haoadmin
 
 import (
-	"weserver/models"
-
 	"time"
+	"weserver/models"
+	. "weserver/src/tools"
 
 	"github.com/astaxie/beego"
+	// "github.com/denverdino/aliyungo/mq"
+	mq "weserver/src/mqtt"
 )
 
 type SuggestController struct {
@@ -73,6 +75,29 @@ func (this *SuggestController) Add() {
 			this.AlertBack("添加失败")
 			return
 		}
+		msg := new(PositionInfo)
+		msg.RoomId = oper.RoomId
+		msg.RoomTeacher = oper.RoomTeacher
+		msg.Type = oper.Type
+		msg.BuySell = oper.BuySell
+		msg.Entrust = oper.Entrust
+		msg.Index = oper.Index
+		msg.Position = oper.Position
+		msg.ProfitPoint = oper.ProfitPoint
+		msg.LossPoint = oper.LossPoint
+		msg.Notes = oper.Notes
+		msg.Liquidation = 0
+		msg.MsgType = MSG_TYPE_POSITION_ADD
+		topic := msg.RoomId
+
+		beego.Debug("msginfo", msg)
+
+		v, err := ToJSON(msg)
+		if err != nil {
+			beego.Error(" Suggest add position json error", err)
+			return
+		}
+		mq.SendMessage(topic, v)
 		this.Alert("添加成功", "suggest_index")
 
 	} else {

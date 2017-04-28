@@ -64,6 +64,9 @@ func (this *TeacherController) Add() {
 		teacher.Icon = this.GetString("Icon")
 		teacher.Data = this.GetString("Data")
 		teacher.Datatime = time.Now()
+		time := time.Now()
+		tm := time.Format("2006-01-02 03:04:05")
+		teacher.Time = tm
 		_, err := models.AddTeacher(teacher)
 		if err != nil {
 			this.AlertBack("添加失败")

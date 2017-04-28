@@ -67,6 +67,9 @@ func (this *QsController) SendBroad() {
 		broad.Datatime = time.Now()
 		broad.Data = data
 		broad.FileName = filename
+		time := time.Now()
+		tm := time.Format("2006-01-02 03:04:05")
+		broad.Time = tm
 		_, err := m.AddNoticeMsg(broad)
 		if err != nil {
 			this.AlertBack("公告写入数据库失败")

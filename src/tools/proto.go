@@ -286,7 +286,7 @@ type TeacherInfo struct {
 	Name     string
 	Icon     string //头像
 	Title    string
-	Data     string //策略内容
+	Data     string //老师简介
 	Time     string
 	OperType int64
 
