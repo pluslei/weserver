@@ -21,15 +21,6 @@
           </select>
           <span class="am-form-caret"></span>
         </div>
-        <div class="am-form-group">
-          <label for="doc-vld-Title-2">讲师名称：</label>
-          <select id="doc-select-roomteacher" name="RoomTeacher"  required data-validation-message="请选择讲师">
-            <option value="">-=请选择房间=-</option>
-            {{range $index,$ele := .roomteacherInfo}}
-            <option value="{{$ele.Name}}">{{$ele.Name}}</option>
-            {{end}}
-          </select>
-        </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">交易品种  </label>
@@ -52,7 +43,6 @@
             <label for="doc-select-1">委托类型  </label>
             <select name="Entrust" id="Entrust" required>
               <option {{if eq .operInfo.Entrust "市价"}}selected{{end}} value="市价">市价</option>
-              <option {{if eq .operInfo.Entrust "指定价格"}}selected{{end}} value="指定价格">指定价格</option>
             </select>
             <span class="am-form-caret"></span>
         </div>
@@ -120,7 +110,6 @@
   }
   $(function() {
   $("#doc-select-room").find("option[value='{{.operInfo.RoomId}}']").attr("selected",true);
-  $("#doc-select-roomteacher").find("option[value='{{.operInfo.RoomTeacher}}']").attr("selected",true);
   $("#doc-select-position").find("option[value='{{.operInfo.Position}}']").attr("selected",true);
 });
 </script>

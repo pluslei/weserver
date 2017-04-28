@@ -26,7 +26,7 @@
 <input type="hidden" name="webPro" value={{.ippro.Pro}}></input>
 
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">数据管理</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/weserver/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/home/qs_broad">公告管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">公告列表</span></div>
 </div>
 
 <div class="result-wrap">
@@ -107,7 +107,7 @@
                 {"mDataProp": "Datatime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='/weserver/data/room_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='/weserver/data/notice_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                     }
                 }
             ],

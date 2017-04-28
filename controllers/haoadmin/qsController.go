@@ -136,7 +136,7 @@ func (this *QsController) Edit() {
 		}
 		this.Data["notice"] = notice
 		this.Data["roonInfo"] = roonInfo
-		this.TplName = "haoadmin/data/qs/add.html"
+		this.TplName = "haoadmin/data/qs/edit.html"
 	}
 }
 

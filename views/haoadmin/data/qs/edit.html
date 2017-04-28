@@ -68,11 +68,11 @@
   legend{border-bottom: 0px;}
 </style>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/qs_index">公告管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加问答</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/weserver/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/home/qs_broad">公告管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">编辑公告</span></div>
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
-    <form action="sendbroad" id="qsform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+    <form action="notice_edit" id="qsform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
       <fieldset>
         <legend></legend>
             <input type="hidden" value="{{.notice.Id}}" name="id">
@@ -84,7 +84,7 @@
             <div class="am-form-group">
                 <label for="doc-vld-Title-2">公告图片(请上传jpg,png文件)：</label>
                 <input type="file" name="FileName" id="FileName" multiple="true" />
-                <input type="hidden" name="FileNameFile" id="FileNameFile" multiple="true" /> 
+                <input type="hidden" name="FileNameFile" value="{{.notice.FileName}}" id="FileNameFile" multiple="true" /> 
             </div>
             <div class="am-form-group" >
                 <img id="preview" src="{{.notice.FileName}}" style="width:375px;height:100px;border: 0px;soild:#FFFFFF; " />

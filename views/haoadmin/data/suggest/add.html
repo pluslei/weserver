@@ -2,7 +2,7 @@
   legend{border-bottom: 0px;}
 </style>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">添加操作建议</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加讲师</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/suggest_index">建议管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加建议</span></div>
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
@@ -11,20 +11,14 @@
         <legend></legend>
         <input type="hidden" value="add" name="action">
         <div class="am-form-group">
-          <label for="doc-select-1">请选择房间</label>
-          <select id="doc-select-2" name="RoomId" onchange="selectTeacher(this)"  required data-validation-message="请选择房间">
+          <label for="doc-select-1">发布建议房间</label>
+          <select id="doc-select-2" name="RoomId" required data-validation-message="请选择房间">
             <option value="">-=请选择房间=-</option>
             {{range $index,$ele := .roonInfo}}
             <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
             {{end}}
           </select>
           <span class="am-form-caret"></span>
-        </div>
-        <div class="am-form-group">
-          <label for="doc-vld-Title-2">讲师名称：</label>
-          <select id="doc-select-roomteacher" name="RoomTeacher"  required data-validation-message="请选择讲师">
-            <option value="">-=请选择房间=-</option>
-          </select>
         </div>
 
         <div class="am-form-group">
@@ -33,7 +27,7 @@
         </div>
 
         <div class="am-form-group">
-          <label for="doc-vld-Title-2">买入/卖出：<a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '请填写买入或者卖出', trigger: 'hover focus'}"></a></label>
+          <label for="doc-vld-Title-2">买入建仓/卖出建仓：<a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '请填写买入或者卖出', trigger: 'hover focus'}"></a></label>
             <div class="am-form-group">
               <label class="am-radio-inline">
                 <input type="radio"  value="0" name="BuySell"  required> 买入
@@ -48,7 +42,6 @@
             <label for="doc-select-1">委托类型  </label>
             <select name="Entrust" id="Entrust" required>
               <option value="市价">市价</option>
-              <option value="指定价格">指定价格</option>
             </select>
             <span class="am-form-caret"></span>
         </div>

@@ -70,19 +70,6 @@ func Router() {
 	beego.Router("/weserver/user/UnShutUp", &haoadmin.UserController{}, "*:SetUnShutUp")
 	//beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")
 
-	// 节点管理
-	// beego.Router("/weserver/node/addnode", &haoadmin.NodeController{}, "*:AddNode")
-	// beego.Router("/weserver/node/updatenode", &haoadmin.NodeController{}, "*:UpdateNode")
-	// beego.Router("/weserver/node/getnodetree", &haoadmin.NodeController{}, "*:GetNodeTree")
-	// beego.Router("/weserver/node/delnode", &haoadmin.NodeController{}, "*:DelNode")
-	// beego.Router("/weserver/node/index", &haoadmin.NodeController{}, "*:Index")
-	// beego.Router("/weserver/node/getNode", &haoadmin.NodeController{}, "*:GetNode")
-	// 节点分组分组管理
-	// beego.Router("/weserver/group/addgroup", &haoadmin.GroupController{}, "*:AddGroup")
-	// beego.Router("/weserver/group/updategroup", &haoadmin.GroupController{}, "*:UpdateGroup")
-	// beego.Router("/weserver/group/delgroup", &haoadmin.GroupController{}, "*:DelGroup")
-	// beego.Router("/weserver/group/index", &haoadmin.GroupController{}, "*:Index")
-
 	// 头衔
 	beego.Router("/weserver/title/addtitle", &haoadmin.TitleController{}, "*:AddTitle")
 	beego.Router("/weserver/title/updatetitle", &haoadmin.TitleController{}, "*:UpdateTitle")

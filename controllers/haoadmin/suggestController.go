@@ -56,9 +56,20 @@ func (this *SuggestController) Index() {
 func (this *SuggestController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
+		userInfo := this.GetSession("userinfo")
+		if userInfo == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		}
+		beego.Debug("userInfo", userInfo.(*models.User).Title.Id)
+		titleInfo, err := models.ReadTitleById(userInfo.(*models.User).Title.Id)
+		if err != nil {
+			beego.Debug("title info error", err)
+		}
+		beego.Debug("titleInfo", titleInfo)
+
 		oper := new(models.OperPosition)
 		oper.RoomId = this.GetString("RoomId")
-		oper.RoomTeacher = this.GetString("RoomTeacher")
+		oper.RoomTeacher = titleInfo.Name
 		oper.Time = time.Now()
 		oper.Type = this.GetString("Type")
 		BuySell, _ := this.GetInt("BuySell")
@@ -73,7 +84,7 @@ func (this *SuggestController) Add() {
 		tm := time.Format("2006-01-02 03:04:05")
 		oper.Timestr = tm
 
-		_, err := models.AddPosition(oper)
+		_, err = models.AddPosition(oper)
 		if err != nil {
 			this.AlertBack("添加失败")
 			return
@@ -110,7 +121,6 @@ func (this *SuggestController) Add() {
 			beego.Error("get the roominfo error", err)
 			return
 		}
-		beego.Debug("roonInfo", roonInfo)
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/suggest/add.html"
 	}
