@@ -1,9 +1,11 @@
 package haoadmin
 
 import (
-	"github.com/astaxie/beego"
 	m "weserver/models"
+	"weserver/src/tools"
 	. "weserver/src/tools"
+
+	"github.com/astaxie/beego"
 	//"strconv"
 	"fmt"
 	"strconv"
@@ -17,6 +19,7 @@ type MainController struct {
 
 //首页
 func (this *MainController) Index() {
+	beego.Debug("===index")
 	if this.IsAjax() {
 		// json
 		data := make(map[string]interface{})
@@ -28,6 +31,7 @@ func (this *MainController) Index() {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
 		}
 		this.CommonMenu()
+		beego.Debug("userinfo", userinfo)
 		// verifyuser, _ := m.GetRegStatusUser(1)
 		onlineuser, _ := m.GetUserByOnlineDesc()
 		//countonline := m.CountOnline()
@@ -65,21 +69,27 @@ func (this *MainController) OnlineIndex() {
 //登录
 func (this *MainController) Login() {
 	isajax := this.GetString("isajax")
-
 	if isajax == "1" {
+		var user m.User
+		var err error
 		username := this.GetString("username")
 		password := this.GetString("password")
-		user, err := m.CheckLogin(username, password)
+		md5password := tools.EncodeUserPwd(username, password)
+
+		user, err = m.GetUserInfoByLoginUsername(username, md5password)
+		if err != nil {
+			user, err = m.GetUserInfoByUsername(username, md5password)
+		}
 		adminUser := beego.AppConfig.String("rbac_admin_user")
+
 		sysconfig, _ := m.GetSysConfig()
 		loginsys := sysconfig.LoginSys
 		if loginsys == 0 {
 			if err == nil {
-				this.SetSession("userinfo", user)
+				this.SetSession("userinfo", &user)
 				accesslist, _ := m.GetAccessList(user.Id)
 				this.SetSession("accesslist", accesslist)
 				this.Rsp(true, "登录成功", "/weserver/public/index")
-
 				return
 			} else {
 				this.Rsp(false, err.Error(), "")
@@ -88,11 +98,10 @@ func (this *MainController) Login() {
 		} else {
 			if username == adminUser {
 				if err == nil {
-					this.SetSession("userinfo", user)
+					this.SetSession("userinfo", &user)
 					accesslist, _ := m.GetAccessList(user.Id)
 					this.SetSession("accesslist", accesslist)
 					this.Rsp(true, "登录成功", "/weserver/public/index")
-
 					return
 				} else {
 					this.Rsp(false, err.Error(), "")
@@ -104,10 +113,6 @@ func (this *MainController) Login() {
 		}
 
 	}
-	// userinfo := this.GetSession("userinfo")
-	// if userinfo != nil {
-	// 	this.Ctx.Redirect(302, "/public/index")
-	// }
 	this.TplName = "haoadmin/login.html"
 }
 

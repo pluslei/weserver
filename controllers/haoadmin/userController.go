@@ -73,6 +73,102 @@ func (this *UserController) Index() {
 	}
 }
 
+// 用户设置列表
+func (this *UserController) UserList() {
+	if this.IsAjax() {
+		sEcho := this.GetString("sEcho")
+		iStart, err := this.GetInt64("iDisplayStart")
+		if err != nil {
+			beego.Error(err)
+		}
+		iLength, err := this.GetInt64("iDisplayLength")
+		if err != nil {
+			beego.Error(err)
+		}
+		nickname := this.GetString("sSearch_0")
+		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname)
+		for _, item := range userlist {
+			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
+
+			if item["Title"] == 0 {
+				item["Titlename"] = "未知头衔"
+			} else {
+				titleinfo, _ := m.ReadTitleById(item["Title"].(int64))
+				if err != nil {
+					beego.Error(err)
+					item["Titlename"] = "未知头衔"
+				} else {
+					item["Titlename"] = titleinfo.Name
+				}
+			}
+			roleInfo, err := m.GetRoleInfoById(item["Role"].(int64))
+			if err != nil {
+				item["Rolename"] = "未知角色"
+			} else {
+				item["Rolename"] = roleInfo.Title
+			}
+		}
+
+		// json
+		data := make(map[string]interface{})
+		data["aaData"] = userlist
+		data["iTotalDisplayRecords"] = count
+		data["iTotalRecords"] = iLength
+		data["sEcho"] = sEcho
+		this.Data["json"] = &data
+		this.ServeJSON()
+	} else {
+		user := this.GetSession("userinfo")
+		username := user.(*m.User).Username
+		this.Data["username"] = username
+		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
+		codeid := tools.MainEncrypt(prevalue)
+		this.CommonController.CommonMenu()
+		roles, _ := m.GetAllUserRole()
+		this.Data["roles"] = roles
+		this.Data["codeid"] = codeid
+		this.TplName = "haoadmin/rbac/user/list.html"
+	}
+}
+
+// 设置用户名
+func (this *UserController) SetUsername() {
+	action := this.GetString("action")
+	id, err := this.GetInt64("Id")
+	if err != nil {
+		beego.Error("get the id", err)
+		return
+	}
+	if action == "set" {
+		Username := this.GetString("Username")
+		Password := this.GetString("Password")
+		role, _ := this.GetInt64("role")
+		title, _ := this.GetInt64("title")
+		md5password := tools.EncodeUserPwd(Username, Password)
+		_, err = m.InitUserPassword(id, Username, md5password, role, title)
+		if err != nil {
+			beego.Error("init user error", err)
+			return
+		}
+		this.Alert("用户修改成功", "usersetlist")
+	} else {
+		userInfo := new(m.User)
+		userInfo.Id = id
+		userLoad, err := m.LoadRelatedUser(userInfo, "Id")
+		if err != nil {
+			beego.Error("load retalteduser error", err)
+		}
+
+		roles, _ := m.GetAllUserRole()
+		titles, _ := m.GetAllUserTitle()
+		this.CommonMenu()
+		this.Data["userList"] = userLoad
+		this.Data["RoleList"] = roles
+		this.Data["TitleList"] = titles
+		this.TplName = "haoadmin/rbac/user/setusername.html"
+	}
+}
+
 //解除禁言
 func (this *UserController) SetUnShutUp() {
 

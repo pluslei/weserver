@@ -3,10 +3,11 @@ package haoadmin
 import (
 	"strings"
 
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"weserver/controllers"
 	m "weserver/models"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
 )
 
 type CommonController struct {
@@ -137,9 +138,4 @@ func (this *CommonController) CommonMenu() {
 	}
 	this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
 	this.Layout = "haoadmin/layout/base.html"
-}
-
-func init() {
-	//验证权限
-	m.AccessRegister()
 }
