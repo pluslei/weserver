@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 	"os"
+	"weserver/src/tools"
 
 	"time"
 
@@ -48,7 +49,9 @@ func inserData() {
 	inserUser()
 	insertNodes()
 	inserSys()
+	inserRoominfo()
 
+	// 删除唯一索引
 	o := orm.NewOrm()
 	_, err := o.Raw("DROP INDEX role_id ON `user`").Exec()
 	if err != nil {
@@ -124,6 +127,24 @@ func inserUser() {
 	_, err := AddUser(user)
 	if err != nil {
 		beego.Error("add user error", err)
+	}
+}
+
+func inserRoominfo() {
+	roomGroupId := beego.AppConfig.String("roomGroupId")
+	roomUrl := beego.AppConfig.String("roomUrl")
+	roomAccess := beego.AppConfig.String("roomAccess")
+	roomSecretKey := beego.AppConfig.String("roomSecretKey")
+	roominfo := [...]RoomInfo{
+		{Id: 1, Qos: 0, RoomTitle: "互动社区", RoomTeacher: "胡老师", RoomNum: "1352", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon1.png", RoomIntro: "时刻为您提供最新的红木行情分析，为广大客户提供交流的平台", RoomBanner: "i/allchannel/banner1.png", Title: "互动社区", MidPage: 1},
+		{Id: 2, Qos: 0, RoomTitle: "会员专区", RoomTeacher: "徐老师", RoomNum: "1982", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon1.png", RoomIntro: "专业的分析给您更准确的投资建议", RoomBanner: "i/allchannel/banner1.png", Title: "会员专区", MidPage: 1},
+		{Id: 3, Qos: 0, RoomTitle: "贵宾专区", RoomTeacher: "王老师", RoomNum: "650", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon3.png", RoomIntro: "尊享专人一对一的贴心服务，给您专属的投资指导", RoomBanner: "i/allchannel/banner1.png", Title: "贵宾专区", MidPage: 1},
+		{Id: 4, Qos: 0, RoomTitle: "铂金VIP", RoomTeacher: "雷老师", RoomNum: "960", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon4.png", RoomIntro: "网罗最新最全的红木行情，由数位具有十数年经验的高级分析师为您提供专属服务", RoomBanner: "i/allchannel/banner1.png", Title: "铂金VIP", MidPage: 1},
+	}
+
+	for _, v := range roominfo {
+		v.RoomId = beego.AppConfig.String("mqServerTopic") + "/" + getRoomId()
+		AddRoom(&v)
 	}
 }
 
@@ -221,4 +242,12 @@ func inserSys() {
 	if err != nil {
 		beego.Error("init db", err)
 	}
+}
+
+func getRoomId() string {
+	random := tools.RandomAlphanumeric(6)
+	if IsRoomInfo(random) {
+		getRoomId()
+	}
+	return random
 }
