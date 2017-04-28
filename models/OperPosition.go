@@ -101,7 +101,7 @@ func GetOperPositionList(page int64, page_size int64, sort string) (ms []orm.Par
 func GetNearRecord(Room string) (OperPosition, error) {
 	o := orm.NewOrm()
 	var oper OperPosition
-	err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").Limit(1).One(&oper)
+	err := o.QueryTable("operposition").Filter("RoomId", Room).OrderBy("-Id").Limit(1).One(&oper)
 	return oper, err
 }
 
@@ -109,6 +109,6 @@ func GetNearRecord(Room string) (OperPosition, error) {
 func GetAllPositionList(Room string) ([]OperPosition, int64, error) {
 	o := orm.NewOrm()
 	var info []OperPosition
-	num, err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").All(&info)
+	num, err := o.QueryTable("operposition").Filter("RoomId", Room).OrderBy("-Id").All(&info)
 	return info, num, err
 }
