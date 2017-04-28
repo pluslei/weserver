@@ -6,9 +6,10 @@ import (
 	"strconv"
 	"strings"
 
+	"weserver/src/tools"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
-	"weserver/src/tools"
 )
 
 //
@@ -18,31 +19,29 @@ func AccessRegister() {
 		rbac_auth_gateway := beego.AppConfig.String("rbac_auth_gateway")
 		var accesslist map[string]bool
 		if user_auth_type > 0 {
-			params := strings.Split(strings.ToLower(ctx.Request.URL.Path), "/")
-			if CheckAccess(params) {
-				uinfo := ctx.Input.Session("userinfo")
-				if uinfo == nil {
-					ctx.Redirect(302, rbac_auth_gateway)
-					return
-				}
-				//admin不需要验证
-				adminuser := beego.AppConfig.String("rbac_admin_user")
-				if uinfo.(*User).Username == adminuser {
-					return
-				}
-				if user_auth_type == 1 {
-					listbysession := ctx.Input.Session("accesslist")
-					if listbysession != nil {
-						accesslist = listbysession.(map[string]bool)
-					}
-				} else if user_auth_type == 2 {
-					accesslist, _ = GetAccessList(uinfo.(*User).Id)
-				}
-				ret := AccessDecision(params, accesslist)
-				if !ret {
-					ctx.Redirect(302, rbac_auth_gateway)
-					ctx.Output.JSON(&map[string]interface{}{"status": false, "info": "权限不足"}, true, false)
-				}
+			pathUrl := strings.ToLower(ctx.Request.URL.Path)
+			if len(pathUrl) < 3 {
+				ctx.Redirect(302, rbac_auth_gateway)
+			}
+			params := strings.Split(pathUrl[1:], "/")
+			uinfo := ctx.Input.Session("userinfo")
+			if uinfo == nil {
+				ctx.Redirect(302, rbac_auth_gateway)
+				return
+			}
+			//admin不需要验证
+			adminuser := beego.AppConfig.String("rbac_admin_user")
+			if uinfo.(*User).Username == adminuser {
+				return
+			}
+			accesslist, _ = GetAccessList(uinfo.(*User).Id)
+			ret := AccessDecision(params, accesslist)
+
+			if ret == false {
+				ctx.Redirect(302, rbac_auth_gateway)
+				ctx.Output.JSON(&map[string]interface{}{"status": false, "info": "权限不足"}, true, false)
+			} else {
+				return
 			}
 		}
 	}
@@ -51,9 +50,6 @@ func AccessRegister() {
 
 //Determine whether need to verify
 func CheckAccess(params []string) bool {
-	if len(params) < 3 {
-		return false
-	}
 	for _, nap := range strings.Split(beego.AppConfig.String("not_auth_package"), ",") {
 		if params[1] == nap {
 			return false
@@ -64,9 +60,11 @@ func CheckAccess(params []string) bool {
 
 //To test whether permissions
 func AccessDecision(params []string, accesslist map[string]bool) bool {
+	if len(params) < 3 {
+		return false
+	}
 	if CheckAccess(params) {
-		s := fmt.Sprintf("/%s/%s/%s", params[1], params[2], params[3])
-		//s := fmt.Sprintf("%s/%s", params[1], params[2])
+		s := fmt.Sprintf("/%s/%s/%s", params[0], params[1], params[2])
 		if len(accesslist) < 1 {
 			return false
 		}

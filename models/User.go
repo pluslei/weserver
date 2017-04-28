@@ -15,6 +15,7 @@ import (
 type User struct {
 	Id            int64
 	Username      string `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
+	LoginUsername string `orm:"unique"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
 	Nickname      string `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
@@ -42,6 +43,7 @@ type User struct {
 	OnlinetimeStr string `orm:"-"` //在线时长
 	Ipaddress     string `orm:"-"` //ip地址
 	Titlename     string `orm:"-"` //头衔名称
+	Rolename      string `orm:"-"` //头衔名称
 }
 
 func (u *User) TableName() string {
@@ -219,4 +221,29 @@ func GetAllUserCount(nDay int64) (count int64, err error) {
 	nowtime := time.Now().Unix() - nDay*24*60*60
 	count, err = o.QueryTable("user").Exclude("Username", "admin").Exclude("UserIcon", "").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).Count()
 	return count, err
+}
+
+// 初始化用户名和密码
+func InitUserPassword(id int64, username, password string, role, title int64) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Id", id).Update(orm.Params{
+		"LoginUsername": username,
+		"Password":      password,
+		"Role":          role,
+		"Title":         title,
+	})
+}
+
+// 根据登录名查找
+func GetUserInfoByLoginUsername(loginuser, password string) (user User, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(User)).Filter("LoginUsername", loginuser).Filter("Password", password).Limit(1).One(&user)
+	return user, err
+}
+
+// 根据登录名查找
+func GetUserInfoByUsername(loginuser, password string) (user User, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(User)).Filter("Username", loginuser).Filter("Password", password).Limit(1).One(&user)
+	return user, err
 }

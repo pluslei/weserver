@@ -4,6 +4,7 @@ import (
 	"weserver/controllers/haoadmin"
 	"weserver/controllers/haoindex"
 	"weserver/controllers/mqtt"
+	"weserver/models"
 	s "weserver/src/rpcserver"
 
 	"github.com/astaxie/beego"
@@ -28,7 +29,7 @@ func init() {
 	// beego.SetStaticPath("/i", "../weclient/dist/i")
 	// beego.SetStaticPath("/js", "../weclient/dist/js")
 	// beego.SetStaticPath("/fonts", "../weclient/dist/fonts")
-
+	models.AccessRegister()
 }
 
 // 路由必须三个/以上
@@ -61,6 +62,10 @@ func Router() {
 	beego.Router("/weserver/user/regstatus", &haoadmin.UserController{}, "*:UpdateRegStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
+
+	beego.Router("/weserver/user/usersetlist", &haoadmin.UserController{}, "*:UserList")
+	beego.Router("/weserver/user/setusername", &haoadmin.UserController{}, "*:SetUsername")
+
 	//解除禁言
 	beego.Router("/weserver/user/UnShutUp", &haoadmin.UserController{}, "*:SetUnShutUp")
 	//beego.Router("/weserver/user/onlineuser", &haoadmin.UserController{}, "*:Onlineuser")

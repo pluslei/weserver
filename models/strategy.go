@@ -25,6 +25,8 @@ type Strategy struct {
 	ThumbNum  int64     //点赞次数
 	Time      string    //前台给的时间
 	Datatime  time.Time `orm:"type(datetime)"` //添加时间
+
+	DatatimeStr string `orm:"-"`
 }
 
 func init() {
@@ -68,7 +70,7 @@ func AddStrategy(s *Strategy) (int64, error) {
 	return id, err
 }
 
-func UpdateStrategy(s *Strategy) (int64, error) {
+func UpdateStrategyById(s *Strategy) (int64, error) {
 	o := orm.NewOrm()
 	id, err := o.QueryTable("strategy").Filter("Id", s.Id).Update(orm.Params{
 		"Room":      s.Room,
@@ -159,4 +161,10 @@ func GetStrategyInfoById(id int64) (info Strategy, err error) {
 	o := orm.NewOrm()
 	err = o.QueryTable(info).Filter("id", id).One(&info)
 	return info, err
+}
+
+// 更新
+func UpdateStrategy(id int64, strate map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Strategy)).Filter("Id", id).Update(strate)
 }

@@ -31,6 +31,7 @@ func (this *StrategyController) Index() {
 			} else {
 				item["Room"] = roomInfo.RoomTitle
 			}
+			item["DatatimeStr"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 		}
 
 		// json
@@ -51,12 +52,18 @@ func (this *StrategyController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
 		userInfo := this.GetSession("userinfo").(*models.User)
-		beego.Debug("userInfo", userInfo)
+
+		beego.Debug("userInfo", userInfo, userInfo.Title.Id)
 		strategy := new(models.Strategy)
 		strategy.Room = this.GetString("Room")
 		strategy.Icon = userInfo.Headimgurl
 		strategy.Name = userInfo.Nickname
-		strategy.Titel = userInfo.Title.Name
+		userTitleInfo, err := models.ReadTitleById(userInfo.Title.Id)
+		if err != nil {
+			strategy.Titel = userInfo.Nickname
+		} else {
+			strategy.Titel = userTitleInfo.Name
+		}
 		strategy.Data = this.GetString("Data")
 		strategy.FileName = this.GetString("FileNameFile")
 		Top, _ := this.GetBool("Top")
@@ -64,10 +71,9 @@ func (this *StrategyController) Add() {
 		ThumbNum, _ := this.GetInt64("ThumbNum")
 		strategy.ThumbNum = ThumbNum
 		strategy.Datatime = time.Now()
-		time := time.Now()
-		tm := time.Format("2006-01-02 03:04:05")
-		strategy.Time = tm
-		_, err := models.AddStrategy(strategy)
+		strategy.TxtColour = this.GetString("TxtColour")
+		strategy.Time = time.Now().Format("2006-01-02 03:04:05")
+		_, err = models.AddStrategy(strategy)
 		if err != nil {
 			this.AlertBack("添加失败")
 		}
@@ -79,7 +85,6 @@ func (this *StrategyController) Add() {
 			beego.Error("get the roominfo error", err)
 			return
 		}
-		beego.Debug("roonInfo", roonInfo)
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/strategy/add.html"
 	}
@@ -93,7 +98,16 @@ func (this *StrategyController) Edit() {
 		return
 	}
 	if action == "edit" {
-
+		strategy := make(map[string]interface{})
+		strategy["Room"] = this.GetString("Room")
+		strategy["Data"] = this.GetString("Data")
+		strategy["TxtColour"] = this.GetString("TxtColour")
+		strategy["FileName"] = this.GetString("FileNameFile")
+		_, err = models.UpdateStrategy(id, strategy)
+		if err != nil {
+			this.AlertBack("修改失败")
+		}
+		this.Alert("修改成功", "strategy_index")
 	} else {
 		this.CommonMenu()
 		info, err := models.GetStrategyInfoById(id)

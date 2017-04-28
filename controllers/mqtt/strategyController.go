@@ -520,7 +520,7 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.ThumbNum = info.ThumbNum
 		strategy.Time = info.Time
 		strategy.Datatime = time.Now()
-		_, err := m.UpdateStrategy(&strategy)
+		_, err := m.UpdateStrategyById(&strategy)
 		if err != nil {
 			beego.Debug("Update Strategy Fail:", err)
 		}
