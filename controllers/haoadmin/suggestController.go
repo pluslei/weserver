@@ -69,6 +69,9 @@ func (this *SuggestController) Add() {
 		oper.ProfitPoint = this.GetString("ProfitPoint")
 		oper.LossPoint = this.GetString("LossPoint")
 		oper.Notes = this.GetString("Notes")
+		time := time.Now()
+		tm := time.Format("2006-01-02 03:04:05")
+		oper.Timestr = tm
 
 		_, err := models.AddPosition(oper)
 		if err != nil {
@@ -201,6 +204,9 @@ func (this *SuggestController) AddClose() {
 		oper.LossPoint = this.GetString("LossPoint")
 		oper.Notes = this.GetString("Notes")
 		oper.OperPosition = &models.OperPosition{Id: id}
+		time := time.Now()
+		tm := time.Format("2006-01-02 03:04:05")
+		oper.Timestr = tm
 
 		_, err = models.AddClosePosition(oper)
 		if err != nil {
