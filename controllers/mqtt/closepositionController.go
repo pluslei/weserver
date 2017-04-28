@@ -143,7 +143,7 @@ func addClosePositionConten(info *ClosePositionInfo) error {
 	pos.Notes = info.Notes
 	pos.Time = time.Now()
 	pos.Timestr = info.Timestr
-	pos.OperPosition.Id = info.Id
+	pos.OperPosition = &m.OperPosition{Id:info.Id} 
 	_, err := m.AddClosePosition(&pos)
 	if err != nil {
 		beego.Debug("Add ClosePosition Fail:", err)
@@ -153,7 +153,7 @@ func addClosePositionConten(info *ClosePositionInfo) error {
 }
 
 func updateClosePositionConten(info *ClosePositionInfo) error {
-	beego.Debug("Update ClosePosition Info", info)
+	beego.Debug("Update ClosePosition Info", info,info.Id)
 	close, err := m.GetIdByOperPositionId(info.Id)
 	if err != nil {
 		addClosePositionConten(info)
