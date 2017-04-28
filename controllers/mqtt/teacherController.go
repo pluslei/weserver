@@ -357,6 +357,8 @@ func addTeacherConten(info *TeacherInfo) error {
 	teacher.Icon = info.Icon
 	teacher.Name = info.Name
 	teacher.Title = info.Title
+	teacher.IsTop = info.IsTop
+	teacher.ThumbNum = info.ThumbNum
 	teacher.Data = info.Data
 	teacher.Time = info.Time
 	teacher.Datatime = time.Now()
@@ -377,6 +379,8 @@ func updateTeacherConten(info *TeacherInfo) error {
 	teacher.Icon = info.Icon
 	teacher.Name = info.Name
 	teacher.Title = info.Title
+	teacher.IsTop = info.IsTop
+	teacher.ThumbNum = info.ThumbNum
 	teacher.Data = info.Data
 	teacher.Time = info.Time
 	teacher.Datatime = time.Now()

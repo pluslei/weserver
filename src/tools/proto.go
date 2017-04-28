@@ -295,6 +295,8 @@ type TeacherInfo struct {
 	Name     string
 	Icon     string //头像
 	Title    string
+	IsTop    bool   //是否置顶 置顶1 否 0
+	ThumbNum int64  //点赞次数
 	Data     string //老师简介
 	Time     string
 	OperType int64
