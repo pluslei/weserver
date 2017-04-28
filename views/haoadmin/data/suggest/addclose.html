@@ -1,0 +1,109 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">添加操作建议</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加平仓</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="/weserver/data/suggest_addclose" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" value="{{.operInfo.Id}}" name="id">
+        <input type="hidden" value="add" name="action">
+
+        <p class="am-text-warning am-text-default">时间: {{.timestr}} 
+            ，买入/卖出：{{if .operInfo.BuySell}}卖出{{else}}买入{{end}}
+            ，交易品种：{{.operInfo.Type}}
+            ，止盈点位：{{.operInfo.ProfitPoint}}
+            ，止损点位：{{.operInfo.LossPoint}}
+        </p>
+        
+        <hr>
+        <div class="am-form-group">
+          <label for="doc-select-1">请选择房间</label>
+          <select id="doc-select-2" name="RoomId" readonly="readonly" required data-validation-message="请选择房间">
+            <option value="{{.RoomId}}">{{.RoomId}}</option>
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师名称：</label>
+          <select id="doc-select-roomteacher" name="RoomTeacher" readonly="readonly" required data-validation-message="请选择讲师">
+            <option value="{{.operInfo.RoomTeacher}}">{{.operInfo.RoomTeacher}}</option>
+          </select>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">交易品种  </label>
+            <input type="text" name="Type" value="{{.operInfo.Type}}"  multiple="true" readonly="readonly" placeholder="请输入交易品种" data-validation-message="请输入交易品种" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">买入/卖出：<a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '请填写买入或者卖出', trigger: 'hover focus'}"></a></label>
+            <div class="am-form-group">
+              <label class="am-radio-inline">
+                <input type="radio"  value="0" readonly="readonly" {{if eq .operInfo.BuySell 1}}checked{{end}} name="BuySell" > 买入
+              </label>
+              <label class="am-radio-inline">
+                <input type="radio" value="1" readonly="readonly" {{if eq .operInfo.BuySell 0}}checked{{end}} name="BuySell" > 卖出
+              </label>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="doc-select-1">委托类型  </label>
+            <select name="Entrust" id="Entrust" required>
+              <option value="市价">市价</option>
+              <option value="指定价格">指定价格</option>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">点位  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '平仓点位', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Index" id="Index" value=""  multiple="true" placeholder="请输入点位" data-validation-message="请输入点位" required/> 
+        </div>
+
+        <div class="am-form-group">
+            <input type="hidden" name="Position" id="Position" value="--"/> 
+        </div>
+
+        <div class="am-form-group">
+            <input type="hidden" name="ProfitPoint" id="ProfitPoint" value="--"/> 
+        </div>
+
+        <div class="am-form-group">
+            <input type="hidden" name="LossPoint" id="LossPoint" value="--" /> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">备注  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '备注', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Notes" id="Notes" value="转让"  multiple="true" placeholder="请输入备注" data-validation-message="请输入备注" required/> 
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script>
+  function selectTeacher(obj){
+    var room = $(obj).val();
+    console.info(room);
+    $.ajax({
+        url: '/weserver/data/teacher_room',
+        type: 'POST',
+        data: {room: room},
+        success: function(rsp){
+            var html = "<option value=''>-=请选择房间=-</option>";
+            rsp.forEach(function(element) {
+              html = html + "<option value='"+element.Name+"'>"+element.Name+"</option>"
+            }, this);
+            console.info(html);
+            $("#doc-select-roomteacher").html(html);
+        }
+    })
+  }
+</script>
+

@@ -1,0 +1,118 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">添加操作建议</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加讲师</span></div>
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+    <form action="/weserver/data/suggest_add" id="teacherform" class="am-form" method="post" enctype="multipart/form-data"  data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" value="add" name="action">
+        <div class="am-form-group">
+          <label for="doc-select-1">请选择房间</label>
+          <select id="doc-select-2" name="RoomId" onchange="selectTeacher(this)"  required data-validation-message="请选择房间">
+            <option value="">-=请选择房间=-</option>
+            {{range $index,$ele := .roonInfo}}
+            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">讲师名称：</label>
+          <select id="doc-select-roomteacher" name="RoomTeacher"  required data-validation-message="请选择讲师">
+            <option value="">-=请选择房间=-</option>
+          </select>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">交易品种  </label>
+            <input type="text" name="Type" value=""  multiple="true" placeholder="请输入交易品种" data-validation-message="请输入交易品种" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">买入/卖出：<a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '请填写买入或者卖出', trigger: 'hover focus'}"></a></label>
+            <div class="am-form-group">
+              <label class="am-radio-inline">
+                <input type="radio"  value="0" name="BuySell"  required> 买入
+              </label>
+              <label class="am-radio-inline">
+                <input type="radio" value="1" name="BuySell" > 卖出
+              </label>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="doc-select-1">委托类型  </label>
+            <select name="Entrust" id="Entrust" required>
+              <option value="市价">市价</option>
+              <option value="指定价格">指定价格</option>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">点位  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '当前品种的行情点位', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Index" id="Index" value=""  multiple="true" placeholder="请输入点位" data-validation-message="请输入点位" required/> 
+        </div>
+
+        <div class="am-form-group">
+            <label for="doc-select-1">仓位  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '指导入市仓位大小', trigger: 'hover focus'}"></a></label>
+            <select id="Position" name="Position" required>
+              <option value="">-=请选择仓位=-</option>
+              <option value="一成仓">一成仓</option>
+              <option value="二成仓">二成仓</option>
+              <option value="三成仓">三成仓</option>
+              <option value="四成仓">四成仓</option>
+              <option value="五成仓">五成仓</option>
+              <option value="六成仓">六成仓</option>
+              <option value="七成仓">七成仓</option>
+              <option value="八成仓">八成仓</option>
+              <option value="九成仓">九成仓</option>
+              <option value="满仓">满仓</option>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">止盈  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '可设置具体区间，获取指定值', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="ProfitPoint" id="ProfitPoint" value=""  multiple="true" placeholder="请输入止盈" data-validation-message="请输入止盈" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">止损  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '指导止损点数', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="LossPoint" id="LossPoint" value=""  multiple="true" placeholder="请输入止损" data-validation-message="请输入止损" required/> 
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">备注  <a class="am-icon-question-circle" data-am-popover="{theme: 'sm',content: '备注', trigger: 'hover focus'}"></a></label>
+            <input type="text" name="Notes" id="Notes" value=""  multiple="true" placeholder="请输入备注" data-validation-message="请输入备注" required/> 
+        </div>
+
+        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script>
+  function selectTeacher(obj){
+    var room = $(obj).val();
+    console.info(room);
+    $.ajax({
+        url: '/weserver/data/teacher_room',
+        type: 'POST',
+        data: {room: room},
+        success: function(rsp){
+            var html = "<option value=''>-=请选择房间=-</option>";
+            rsp.forEach(function(element) {
+              html = html + "<option value='"+element.Name+"'>"+element.Name+"</option>"
+            }, this);
+            console.info(html);
+            $("#doc-select-roomteacher").html(html);
+        }
+    })
+  }
+</script>
+

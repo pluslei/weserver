@@ -77,3 +77,16 @@ func GetNoticeData(codeid int) (string, error) {
 	err := o.QueryTable(notice).Filter("Room", codeid).OrderBy("-Id").Limit(1).One(&notice, "Id", "Data")
 	return notice.Data, err
 }
+
+// 更新
+func UpdateNoticeData(id int64, notice map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Notice)).Filter("Id", id).Update(notice)
+}
+
+// 获取
+func GetNoticeInfoByID(id int64) (n Notice, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(Notice)).Filter("Id", id).One(&n)
+	return n, err
+}

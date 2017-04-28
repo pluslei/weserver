@@ -27,9 +27,15 @@ func (this *QsController) SendNoticeList() {
 		if err != nil {
 			beego.Error(err)
 		}
-		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "Room")
+		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "-Id")
 		for _, item := range Noticelist {
 			item["Datatime"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
+			roomInfo, err := m.GetRoomInfoByRoomID(item["Room"].(string))
+			if err != nil {
+				item["Room"] = "未知房间"
+			} else {
+				item["Room"] = roomInfo.RoomTitle
+			}
 		}
 		// json
 		data := make(map[string]interface{})
@@ -49,15 +55,15 @@ func (this *QsController) SendNoticeList() {
 func (this *QsController) SendBroad() {
 	action := this.GetString("action")
 	if action == "add" {
-		UserInfo := this.GetSession("userinfo")
-		uname := UserInfo.(*m.User).Username
+		UserInfo := this.GetSession("userinfo").(*m.User)
 		data := this.GetString("Content")
 		room := this.GetString("Room")
 		filename := this.GetString("FileNameFile")
 
 		broad := new(m.Notice)
+		broad.Nickname = UserInfo.Nickname
 		broad.Room = room
-		broad.Uname = uname
+		broad.Uname = UserInfo.Username
 		broad.Datatime = time.Now()
 		broad.Data = data
 		broad.FileName = filename
@@ -84,17 +90,59 @@ func (this *QsController) SendBroad() {
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/qs/add.html"
 	}
+}
 
-	// prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
-	// codeid := MainEncrypt(prevalue)
-	// this.Data["codeid"] = codeid
-	// if this.GetSession("userinfo") != nil {
-	// 	UserInfo := this.GetSession("userinfo")
-	// 	this.Data["uname"] = UserInfo.(*m.User).Username
-	// }
-	// this.Data["ipaddress"] = this.GetClientip()
-	// this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
-	// this.TplName = "haoadmin/data/qs/sendbroad.html"
+// 编辑
+func (this *QsController) Edit() {
+	action := this.GetString("action")
+	id, err := this.GetInt64("id")
+	if err != nil {
+		this.AlertBack("数据错误")
+		return
+	}
+	if action == "edit" {
+		notice := make(map[string]interface{})
+		notice["Data"] = this.GetString("Content")
+		notice["FileName"] = this.GetString("FileNameFile")
+
+		_, err := m.UpdateNoticeData(id, notice)
+		if err != nil {
+			this.AlertBack("更新失败")
+			return
+		}
+		this.Alert("更新成功", "qs_broad")
+	} else {
+		this.CommonController.CommonMenu()
+
+		roonInfo, _, err := m.GetRoomInfo()
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		notice, err := m.GetNoticeInfoByID(id)
+		if err != nil {
+			beego.Error("get the roominfo error", err)
+			return
+		}
+		this.Data["notice"] = notice
+		this.Data["roonInfo"] = roonInfo
+		this.TplName = "haoadmin/data/qs/add.html"
+	}
+}
+
+// 删除
+func (this *QsController) Del() {
+	id, err := this.GetInt64("id")
+	if err != nil {
+		this.Rsp(false, "删除失败", "")
+	} else {
+		_, err := m.DelNoticeById(id)
+		if err != nil {
+			this.Rsp(false, "删除失败", "")
+			return
+		}
+		this.Rsp(true, "删除成功", "")
+	}
 }
 
 //获取客户的真是IP地址

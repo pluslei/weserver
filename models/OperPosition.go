@@ -15,15 +15,17 @@ type OperPosition struct {
 	RoomTeacher   string //老师
 	Time          time.Time
 	Type          string           //种类
-	BuySell       int64            //买卖 0 1
+	BuySell       int              //买卖 0 1
 	Entrust       string           //委托类型
 	Index         string           //点位
 	Position      string           //仓位
 	ProfitPoint   string           //止盈点
 	LossPoint     string           //止损点
 	Notes         string           // 备注
-	Liquidation   string           //平仓详情
+	Liquidation   int              //平仓详情 (0:未平仓 1:平仓)
 	ClosePosition []*ClosePosition `orm:"reverse(many)"` //一对多
+
+	Timestr string `orm:"-"` //时间字符
 }
 
 func init() {
@@ -31,7 +33,7 @@ func init() {
 }
 
 func (o *OperPosition) TableName() string {
-	return "OperPosition"
+	return "operposition"
 }
 
 /*
@@ -43,99 +45,70 @@ func AddPosition(o *OperPosition) (int64, error) {
 	return id, err
 }
 
-/*
-//更新房间名
-func UpdateRoomName(id int64, str string) (int64, error) {
+// 修改平仓详情
+func UpdatePositonLq(id int64) {
 	o := orm.NewOrm()
-	var chat RoomInfo
-	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomTitle": str})
-	return id, err
+	o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
+		"Liquidation": 1,
+	})
 }
 
-//更新房间小图标
-func UpdateRoomIcon(id int64, str string) (int64, error) {
+// 根据id查询
+func GetOpersitionInfoById(id int64) (oper OperPosition, err error) {
 	o := orm.NewOrm()
-	var chat RoomInfo
-	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomIcon": str})
-	return id, err
+	err = o.QueryTable(new(OperPosition)).Filter("Id", id).One(&oper)
+	return oper, err
 }
 
-//更新房间banner
-func UpdateRoomBanner(id int64, str string) (int64, error) {
+//删除建仓信息
+func DelPositionById(id int64) (int64, error) {
 	o := orm.NewOrm()
-	var chat RoomInfo
-	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomBanner": str})
-	return id, err
-}
-
-//更新房间标题
-func UpdateRoomTitle(id int64, str string) (int64, error) {
-	o := orm.NewOrm()
-	var chat RoomInfo
-	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"Title": str})
-	return id, err
-}
-
-//更新房间简介
-func UpdateRoomIntro(id int64, str string) (int64, error) {
-	o := orm.NewOrm()
-	var chat RoomInfo
-	id, err := o.QueryTable(chat).Filter("Id", id).Update(orm.Params{"RoomIntro": str})
-	return id, err
-}
-
-//根据roomid 删除某个聊天室
-func DelRoomById(roomid string) (int64, error) {
-	o := orm.NewOrm()
-	var chat RoomInfo
-	status, err := o.QueryTable(chat).Filter("RoomId", roomid).Delete()
+	var info OperPosition
+	status, err := o.QueryTable(info).Filter("Id", id).Delete()
 	return status, err
 }
 
-//事务添加多个聊天室
-func AddMulRoom(room []RoomInfo, length int) error {
-	model := orm.NewOrm()
-	err := model.Begin()
-	SuccessNum := 0
-	if err == nil {
-		for i := 0; i < length; i++ {
-			id, err := model.Insert(&room[i])
-			if err == nil && id > 0 {
-				SuccessNum++
-			}
-		}
-	} else {
-		err = errors.New("事务申请失败!")
-	}
-	if SuccessNum == length {
-		err = model.Commit()
-	} else {
-		err = errors.New("事务提交失败!")
-	}
-	return err
+//更新
+func UpdatePositionInfo(t *OperPosition) (int64, error) {
+	o := orm.NewOrm()
+	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+		"RoomTeacher": t.RoomTeacher,
+		"Type":        t.Type,
+		"BuySell":     t.BuySell,
+		"Entrust":     t.Entrust,
+		"Index":       t.Index,
+		"Position":    t.Position,
+		"ProfitPoint": t.Position,
+		"LossPoint":   t.LossPoint,
+		"Notes":       t.Notes,
+		"Liquidation": t.Liquidation,
+		"Time":        t.Time,
+	})
+	return id, err
 }
 
-//获取聊天室个数和聊天室名
-func GetRoomName() (map[string]interface{}, int64, error) {
+// 分页
+func GetOperPositionList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
-	res := make(orm.Params)
-	nums, err := o.Raw("SELECT room_id, qos FROM roominfo Order By Id").RowsToMap(&res, "room_id", "qos")
-	return res, nums, err
+	poer := new(OperPosition)
+	query := o.QueryTable(poer)
+	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	count, _ = query.Count()
+	return ms, count
 }
 
-//获取聊天室信息
-func GetRoomInfo() ([]RoomInfo, int64, error) {
+//获取最近的一条记录
+func GetNearRecord(Room string) (OperPosition, error) {
 	o := orm.NewOrm()
-	var info []RoomInfo
-	num, err := o.QueryTable("roominfo").OrderBy("Id").All(&info)
-	beego.Debug("num", num)
+	var oper OperPosition
+	err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").Limit(1).One(&oper)
+	return oper, err
+}
+
+//获取所有记录
+func GetAllPositionList(Room string) ([]OperPosition, int64, error) {
+	o := orm.NewOrm()
+	var info []OperPosition
+	num, err := o.QueryTable("operposition").Filter("Room", Room).OrderBy("-Id").All(&info)
 	return info, num, err
 }
-
-// 获取房间信息
-func GetRoomInfoByRoomID(RoomId string) (info RoomInfo, err error) {
-	o := orm.NewOrm()
-	_, err = o.QueryTable("roominfo").Filter("RoomId", RoomId).All(&info)
-	return info, err
-}
-*/

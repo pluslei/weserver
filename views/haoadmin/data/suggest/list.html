@@ -3,7 +3,7 @@
     .am-alert{border-radius: 5px;padding:3px;}
 </style>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">讲师管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">讲师列表</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">操作建议管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">讲师列表</span></div>
 </div>
 <div class="result-wrap">
 
@@ -13,7 +13,7 @@
                     <div class="result-list am-form-inline am-form">
                         <div class="am-input-group">
                             <span class="am-input-group-btn">
-                                <a href="/weserver/data/teacher_add" class="am-btn am-btn-success">添加讲师</a>
+                                <a href="/weserver/data/suggest_add" class="am-btn am-btn-success">添加建仓</a>
                             </span>
                         </div>
                     </div>
@@ -38,12 +38,19 @@
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-teacher-list">
                 <thead>
-                    <tr>
+                    <tr> 
                         <th>所属房间</th>
                         <th>讲师名称</th>
-                        <th>讲师头像</th>
-                        <th>讲师简介</th>
-                        <th>操作</th>
+                        <th>时间</th>
+                        <th>品种</th>
+                        <th>买入/卖出</th>
+                        <th>委托类型</th>
+                        <th>点位</th>
+                        <th>仓位</th>
+                        <th>止盈</th>
+                        <th>止损</th>
+                        <th>备注</th>
+                        <th>平仓详情</th>
                     </tr>
                 </thead>
                 <tbody id="data_body">
@@ -73,9 +80,10 @@
     $(function() {
         oTable = initTable();
     });
+
     function initTable() {
-        var actionUrl = '/weserver/data/teacher_index';
-        var table = $('#data-teacher-list').dataTable({
+        var actionUrl = '/weserver/data/suggest_index';
+        var table = $('#data-teacher-list').DataTable({
             "bFilter": false,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
@@ -91,17 +99,32 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
-                {"mDataProp": "Room",},
-                {"mDataProp": "Name",},
-                {"mDataProp": "Icon",
-                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<img  width='35px' height='35px'  src='"+sData+"'>");
+                {"mDataProp": "RoomId",},
+                {"mDataProp": "RoomTeacher",},
+                {"mDataProp": "Timestr",},
+                {"mDataProp": "Type",},
+                {"mDataProp": "BuySell",
+                    "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
+                        if (sData == 1) {
+                            $(nTd).html("<span class='am-alert am-alert-success regstatus'>卖出建仓</span>");
+                        } else {
+                            $(nTd).html("<span class='am-alert am-alert-danger regstatus'>买入建仓</span>");
+                        }
                     }
                 },
-                {"mDataProp": "Data",},
-                {"mDataProp": "Id",
+                {"mDataProp": "Entrust",},
+                {"mDataProp": "Index",},
+                {"mDataProp": "Position",},
+                {"mDataProp": "ProfitPoint",},
+                {"mDataProp": "LossPoint",},
+                {"mDataProp": "Notes",},
+                {"mDataProp": "Liquidation",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='讲师编辑' href='teacher_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='讲师删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                        if (sData == 0){
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 添加平仓</a></div>");
+                        }else{
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs' onclick='showRow(this,"+oData.Id+")'>查看平仓</div>");
+                        }  
                     }
                 },
             ],
@@ -124,6 +147,63 @@
             "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
         });
         return table;
+    }
+
+    function showRow(obj,id){
+        console.info(id);
+        var tr= $(obj).parent().parent();
+        var row=oTable.row(tr);
+        if (row.child.isShown()){
+            row.child.hide();
+            tr.removeClass('shown');
+        }else{
+            row.child(format(id)).show();
+            tr.addClass('shown');
+        }
+    }
+
+    var datainfo = [];
+    function format(id){
+        var html = "";
+        $.ajax({
+            url: '../resource/typedeta',
+            type: 'get',
+            async:false,
+            dataType:'json',
+            data: {
+                "id":id,
+            },
+            success:function(data){
+                console.info(data);
+                if (data != null) {
+                        datainfo=data;
+                    }
+                }
+        });
+        if (datainfo.length != 0) {
+            for (var i = 0; i < datainfo.length; i++) {
+                html += '<table class="resTable-info table table-bordered" cellpadding="10" cellspacing="0" border="0">'+
+                    '<tr>'+
+                        '<td style="width: 15%">'+datainfo[i].AddTime+'</td>'+
+                        // '<td style="width: 18%">'+datainfo[i].ResourceType+'</td>'+
+                        '<td style="width: 15%">'+datainfo[i].TotalResource+'</td>'+
+                        '<td style="width: 15%">'+datainfo[i].UsdeResource+'</td>'+
+                        '<td style="width: 14%">'+datainfo[i].CanUseResource+'</td>'+
+                        '<td style="width: 14%">'+datainfo[i].Team+'</td>'+
+                        '<td style="width: 14%">'+datainfo[i].Username+'</td>'+
+                        '<td style="width: 17%">'+datainfo[i].UsePersent+"%"+'</td>'+
+                    '</tr>'+
+                '</table>';
+            }
+        } else {
+            html += '<table class="resTable-info table table-bordered" cellpadding="10" cellspacing="0" border="0">'+
+                '<tr>'+
+                    '<td colspan="7">无数据</td>'+
+                '</tr>'+
+            '</table>';
+        }
+        datainfo="";
+        return html;
     }
 
     function search(){

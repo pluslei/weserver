@@ -46,6 +46,20 @@ func AddTeacher(t *Teacher) (int64, error) {
 	return id, err
 }
 
+//更新
+func UpdateTeacherInfo(t *Teacher) (int64, error) {
+	o := orm.NewOrm()
+	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+		"Name":  t.Name,
+		"Room":  t.Room,
+		"Icon":  t.Icon,
+		"Title": t.Title,
+		"Data":  t.Data,
+		"Time":  t.Time,
+	})
+	return id, err
+}
+
 //删除老师
 func DelTeacherById(id int64) (int64, error) {
 	o := orm.NewOrm()
@@ -84,4 +98,34 @@ func UpdateContent(id int64, strContent string) (int64, error) {
 	var info Teacher
 	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"Data": strContent})
 	return id, err
+}
+
+// 讲师分页
+func GetTeacherInfoList(page int64, page_size int64, sort string) (t []orm.Params, count int64) {
+	o := orm.NewOrm()
+	teacher := new(Teacher)
+	query := o.QueryTable(teacher)
+	query.Limit(page_size, page).OrderBy(sort).Values(&t)
+	count, _ = query.Count()
+	return t, count
+}
+
+// 根据id查询
+func GetTeacherInfoById(id int64) (t Teacher, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(Teacher)).Filter("Id", id).One(&t)
+	return t, err
+}
+
+// 更新
+func UpdateTeacherInfoById(id int64, teacher map[string]interface{}) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Teacher)).Filter("Id", id).Update(teacher)
+}
+
+// 根据房间查询讲师
+func GetTeacherListByRoom(roomid string) (t []Teacher, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable(new(Teacher)).Filter("Room", roomid).All(&t)
+	return t, err
 }

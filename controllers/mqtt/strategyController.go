@@ -103,6 +103,8 @@ func (this *StrategyController) GetStrategyList() {
 					info.Name = historyStrategy[i].Name
 					info.Titel = historyStrategy[i].Titel
 					info.Data = historyStrategy[i].Data
+					info.FileName = historyStrategy[i].FileName
+					info.TxtColour = historyStrategy[i].TxtColour
 					info.IsTop = historyStrategy[i].IsTop
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
@@ -118,6 +120,8 @@ func (this *StrategyController) GetStrategyList() {
 					info.Name = historyStrategy[i].Name
 					info.Titel = historyStrategy[i].Titel
 					info.Data = historyStrategy[i].Data
+					info.FileName = historyStrategy[i].FileName
+					info.TxtColour = historyStrategy[i].TxtColour
 					info.IsTop = historyStrategy[i].IsTop
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
@@ -155,6 +159,8 @@ func (this *StrategyController) GetStrategyList() {
 					info.Name = historyStrategy[i].Name
 					info.Titel = historyStrategy[i].Titel
 					info.Data = historyStrategy[i].Data
+					info.FileName = historyStrategy[i].FileName
+					info.TxtColour = historyStrategy[i].TxtColour
 					info.IsTop = historyStrategy[i].IsTop
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
@@ -170,6 +176,8 @@ func (this *StrategyController) GetStrategyList() {
 					info.Name = historyStrategy[i].Name
 					info.Titel = historyStrategy[i].Titel
 					info.Data = historyStrategy[i].Data
+					info.FileName = historyStrategy[i].FileName
+					info.TxtColour = historyStrategy[i].TxtColour
 					info.IsTop = historyStrategy[i].IsTop
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
@@ -436,6 +444,8 @@ func addStrategyContent(info *StrategyInfo) {
 	strategy.Name = info.Name
 	strategy.Titel = info.Titel
 	strategy.Data = info.Data
+	strategy.FileName = info.FileName
+	strategy.TxtColour = info.TxtColour
 	strategy.IsTop = info.IsTop
 	strategy.IsDelete = info.IsDelete
 	strategy.ThumbNum = info.ThumbNum
