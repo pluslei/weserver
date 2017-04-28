@@ -10,21 +10,21 @@ import (
 *  	平仓操作
  */
 type ClosePosition struct {
-	Id           int64  `orm:"pk;auto"`
-	RoomId       string //topic
-	RoomTeacher  string //老师
-	Time         time.Time
-	Type         string        //种类
-	BuySell      int           //买卖 0 1
-	Entrust      string        //委托类型
-	Index        string        //点位
-	Position     string        //仓位
-	ProfitPoint  string        //止盈点
-	LossPoint    string        //止损点
-	Notes        string        // 备注
-	OperPosition *OperPosition `orm:"rel(fk)"`
+	Id          int64  `orm:"pk;auto"`
+	RoomId      string //topic
+	RoomTeacher string //老师
+	Time        time.Time
+	Type        string //种类
+	BuySell     int    //买卖 0 1
+	Entrust     string //委托类型
+	Index       string //点位
+	Position    string //仓位
+	ProfitPoint string //止盈点
+	LossPoint   string //止损点
+	Notes       string // 备注
+	Timestr     string //时间字符
 
-	Timestr string //时间字符
+	OperPosition *OperPosition `orm:"rel(fk)"`
 }
 
 func init() {
@@ -75,4 +75,23 @@ func DelClosePositionById(id int64) (int64, error) {
 func UpdateClosePosition(id int64, close map[string]interface{}) (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable(new(ClosePosition)).Filter("Id", id).Update(close)
+}
+
+//更新
+func UpdateClosePositionInfo(t *ClosePosition) (int64, error) {
+	o := orm.NewOrm()
+	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+		"RoomTeacher": t.RoomTeacher,
+		"Type":        t.Type,
+		"BuySell":     t.BuySell,
+		"Entrust":     t.Entrust,
+		"Index":       t.Index,
+		"Position":    t.Position,
+		"ProfitPoint": t.Position,
+		"LossPoint":   t.LossPoint,
+		"Notes":       t.Notes,
+		"Time":        t.Time,
+		"Timestr":     t.Timestr,
+	})
+	return id, err
 }

@@ -192,6 +192,8 @@ func Router() {
 	beego.Router("/chat/user/positionNear", &mqtt.PositionController{}, "*:GetPositionNearRecord")
 	beego.Router("/chat/user/positionAllList", &mqtt.PositionController{}, "*:GetAllPositionList")
 
+	//平仓操作
+	beego.Router("/chat/user/operateclose", &mqtt.PositionController{}, "*:OperateClosePosition")
 	//收藏
 	// beego.Router("/chat/user/Collect", &mqtt.ManagerController{}, "*:GetCollectInfo")
 

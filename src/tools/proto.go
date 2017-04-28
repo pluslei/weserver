@@ -28,6 +28,8 @@ const (
 	MSG_TYPE_TEACHER_DEL
 	MSG_TYPE_POSITION_ADD
 	MSG_TYPE_POSITION_DEL
+	MSG_TYPE_CLOSEPOSITION_ADD
+	MSG_TYPE_CLOSEPOSITION_DEL
 )
 
 const (
@@ -277,6 +279,59 @@ func (t *PositionOperate) ParseJSON(msg []byte) (s PositionOperate, err error) {
 }
 
 //######################################################################################
+// Operate type
+const (
+	OPERATE_CLOSEPOSITION_ADD = iota
+	OPERATE_CLOSEPOSITION_DEL
+	OPERATE_CLOSEPOSITION_UPDATE
+)
+
+// 平仓信息
+type ClosePositionInfo struct {
+	Id          int64  //开仓信息的id
+	RoomId      string //topic
+	RoomTeacher string //老师
+	Time        time.Time
+	Type        string //种类
+	BuySell     int    //买卖 0 1
+	Entrust     string //委托类型
+	Index       string //点位
+	Position    string //仓位
+	ProfitPoint string //止盈点
+	LossPoint   string //止损点
+	Notes       string // 备注
+	Timestr     string //时间字符
+
+	OperType int64
+	MsgType  int //消息类型
+}
+
+type ClosePositionOperate struct {
+	Id       int64  //消息id 唯一
+	Room     string //房间号
+	OperType int64  // 1 /0	/2 /3
+
+	MsgType int //消息类型
+}
+
+func (t *ClosePositionInfo) ParseJSON(msg []byte) (s ClosePositionInfo, err error) {
+	var result ClosePositionInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+func (t *ClosePositionOperate) ParseJSON(msg []byte) (s ClosePositionInfo, err error) {
+	var result ClosePositionInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+
 // Operate type
 const (
 	OPERATE_TEACHER_ADD = iota
