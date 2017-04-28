@@ -1410,3 +1410,395 @@
 2017/04/28 11:28:31 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
 2017/04/28 11:28:31 [D] [mqttController.go:150] nCount sysCont 2 10 
 2017/04/28 11:28:31 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=P_vPAPCuOFuwP6fPGqxTBwN3oKzyNGLshIiYgKbkBSoY0-SCV4CtEvFiBDct_5qrwqE1t4SRPyYyFFsUWx5rZVKzgKlnQUUG57RLgRfuXx-eQdlJQ7UJyA1gT-0tFZTmYQYcAIAUMU&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:37:18 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 11:37:18 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 11:37:18 [D] [mq.go:98] map[] 
+2017/04/28 11:37:18 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 11:37:18 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 11:37:18 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0421c5320 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 11:37:18 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 11:37:18 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 11:37:18 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 11:37:18 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 11:37:18 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 11:37:19 [D] [wechat.go:75] {"access_token":"8UUrgEudAgvfB3Zdrs0N829yBXH8nc3zwHs_Xd9lcb_6O3nkA9rZiHvM2g-rcW9uYP3aLfZw-BwhINHDKAQ0sKmKW-cQeSkefFnWg8Uv7UcVMQdABAFWA","expires_in":7200} 
+2017/04/28 11:37:19 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 11:37:19 [D] [wechat.go:93] 8UUrgEudAgvfB3Zdrs0N829yBXH8nc3zwHs_Xd9lcb_6O3nkA9rZiHvM2g-rcW9uYP3aLfZw-BwhINHDKAQ0sKmKW-cQeSkefFnWg8Uv7UcVMQdABAFWA 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=8UUrgEudAgvfB3Zdrs0N829yBXH8nc3zwHs_Xd9lcb_6O3nkA9rZiHvM2g-rcW9uYP3aLfZw-BwhINHDKAQ0sKmKW-cQeSkefFnWg8Uv7UcVMQdABAFWA 
+2017/04/28 11:37:19 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 11:37:19 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 11:37:27 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:37:29 [D] [indexController.go:93] AccessToken zSYEnwSaTxrv30v0FFMXDJHvwUw2jvpXY28jiW28LfeUEVTVGSWalBRtmlBufwm_2qQ3dGvfqcIB2yJG4o8bNQAZ7-hPEoEBfu7DIsT0xOM 
+2017/04/28 11:37:29 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:37:29 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:37:29 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0428138c0 0xc0429f9f90    } 
+2017/04/28 11:37:29 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:37:40 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:37:41 [D] [indexController.go:93] AccessToken 69iP0WLJ769nzIkGCOJDH6RKwSlmSIE2xYrYTNng0olJFT6GYj-Sj_PoFhkIiwTCq2I21BAKYzinflnDYzjIB5uWjmPQ9hGUMH8MtZqtvPQ 
+2017/04/28 11:37:41 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:37:41 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:37:42 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04293b200 0xc042104ff0    } 
+2017/04/28 11:37:41 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:37:51 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:37:57 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:37:42 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc04293b560 0xc0421051d0    } 
+2017/04/28 11:37:57 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:37:58 [D] [strategyController.go:85] id 0 
+2017/04/28 11:37:58 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:37:58 [D] [noticeController.go:73] id 10 
+2017/04/28 11:37:58 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:37:58 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:37:58 [D] [teacherController.go:74] id 0 
+2017/04/28 11:37:58 [D] [teacherController.go:77] teacher list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:37:58 [D] [noticeController.go:118] index 0 
+2017/04/28 11:37:58 [D] [noticeController.go:121] mod -8 
+2017/04/28 11:37:58 [D] [teacherController.go:91] nCount sysCont 1 10 
+2017/04/28 11:38:00 [D] [mqttController.go:136] id 0 
+2017/04/28 11:38:00 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:38:00 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:38:00 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=8UUrgEudAgvfB3Zdrs0N829yBXH8nc3zwHs_Xd9lcb_2nh0erM3oBpnuXb6GMdcRPA0F4plSAfjx5a5GtPNS_Kqfy5tmZoeF_5sOAnb3Y98EDUdABAHGX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:38:11 [D] [mqttController.go:136] id 0 
+2017/04/28 11:38:11 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:38:11 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:38:11 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=8UUrgEudAgvfB3Zdrs0N829yBXH8nc3zwHs_Xd9lcb_2nh0erM3oBpnuXb6GMdcRPA0F4plSAfjx5a5GtPNS_Kqfy5tmZoeF_5sOAnb3Y98EDUdABAHGX&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:44:46 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 11:44:46 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 11:44:46 [D] [mq.go:98] map[] 
+2017/04/28 11:44:46 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 11:44:46 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 11:44:46 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc04251eae0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 11:44:46 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 11:44:46 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 11:44:46 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 11:44:46 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 11:44:46 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 11:44:46 [D] [wechat.go:75] {"access_token":"HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYTA9Vz2K7gIeX8xrGu4gHSPXCLMKvf0LpRcW8XVBI7Uw_nlj7ELNLtfh3g1lw69dnfLOQs_hqmIXcRurxhy3o3oACAdAGAOQO","expires_in":7200} 
+2017/04/28 11:44:46 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 11:44:46 [D] [wechat.go:93] HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYTA9Vz2K7gIeX8xrGu4gHSPXCLMKvf0LpRcW8XVBI7Uw_nlj7ELNLtfh3g1lw69dnfLOQs_hqmIXcRurxhy3o3oACAdAGAOQO 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYTA9Vz2K7gIeX8xrGu4gHSPXCLMKvf0LpRcW8XVBI7Uw_nlj7ELNLtfh3g1lw69dnfLOQs_hqmIXcRurxhy3o3oACAdAGAOQO 
+2017/04/28 11:44:47 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 11:44:47 [I] [asm_amd64.s:2086] http server Running on http://:80
+2017/04/28 11:44:54 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:44:56 [D] [indexController.go:93] AccessToken AlUOh06uP9gM5hmdqIOriHQa9ENjvMvBGYZd5I2hFlYZzHyOzOJr3y4__uH8FIEy_HQn2ZhF4g68J14J9lbV_VjKj39cYy4udKzqD4TSg_0 
+2017/04/28 11:44:56 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:44:56 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:44:56 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042b25440 0xc0429989b0    } 
+2017/04/28 11:44:56 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:44:57 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:44:58 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:44:56 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042b257a0 0xc042998aa0    } 
+2017/04/28 11:44:58 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:44:59 [D] [teacherController.go:74] id 0 
+2017/04/28 11:44:59 [D] [teacherController.go:77] teacher list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:44:59 [D] [strategyController.go:85] id 0 
+2017/04/28 11:44:59 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:44:59 [D] [noticeController.go:73] id 10 
+2017/04/28 11:44:59 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:44:59 [D] [teacherController.go:91] nCount sysCont 1 10 
+2017/04/28 11:44:59 [D] [noticeController.go:118] index 0 
+2017/04/28 11:44:59 [D] [noticeController.go:121] mod -8 
+2017/04/28 11:44:59 [D] [strategyController.go:97] nCount sysCont 5 10 
+2017/04/28 11:45:33 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:33 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:33 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:33 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:45:36 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:36 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:36 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:36 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:45:36 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:36 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:36 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:36 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:45:38 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:38 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:45:38 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:38 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:45:49 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:49 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:49 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:49 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:45:58 [D] [mqttController.go:136] id 0 
+2017/04/28 11:45:58 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:45:58 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:45:58 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:00 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:00 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:00 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:00 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:16 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:16 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:16 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:16 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:20 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:20 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:20 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:20 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:21 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:21 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:21 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:21 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:24 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:24 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:24 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:24 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:25 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:25 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:25 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:25 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:27 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:27 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:27 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:27 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:46:28 [D] [mqttController.go:136] id 0 
+2017/04/28 11:46:28 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:46:28 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:46:28 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:09 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:09 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:09 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:09 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:11 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:11 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:11 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:11 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:11 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:11 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:11 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:11 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:13 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:13 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:13 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:13 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:27 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:27 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:27 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:27 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:28 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:28 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:28 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:28 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:37 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:37 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:37 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:37 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:38 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:38 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:40 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:40 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:40 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:40 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:41 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:41 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:41 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:41 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:51 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:51 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:51 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:51 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:52 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:52 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:52 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:53 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:53 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:53 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:53 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:54 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:54 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:54 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:54 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:55 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:55 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:55 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:55 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:49:56 [D] [mqttController.go:136] id 0 
+2017/04/28 11:49:56 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:49:56 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:49:56 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:52:58 [D] [mqttController.go:136] id 0 
+2017/04/28 11:52:58 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:52:58 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:52:58 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:52:59 [D] [mqttController.go:136] id 0 
+2017/04/28 11:52:59 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:52:59 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:52:59 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:53:08 [D] [strategyController.go:313] info {Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 ddddddddddd /upload/room/1493351587like.png #ee0404 false false 0 2017-04-28 11:53:08 4} 
+2017/04/28 11:53:08 [D] [strategyController.go:440] Add StrategyInfo &{Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 ddddddddddd /upload/room/1493351587like.png #ee0404 false false 0 2017-04-28 11:53:08 4} 
+2017/04/28 11:53:08 [D] [strategyController.go:60] Uname Map map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 11:53:11 [D] [mqttController.go:136] id 0 
+2017/04/28 11:53:11 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:53:11 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:53:11 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:53:12 [D] [mqttController.go:136] id 0 
+2017/04/28 11:53:12 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:53:12 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:53:12 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:53:34 [D] [strategyController.go:313] info {Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 sssssssssssssssssssss /upload/room/1493351612song.png #ee0404 false false 0 2017-04-28 11:53:34 4} 
+2017/04/28 11:53:34 [D] [strategyController.go:440] Add StrategyInfo &{Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 sssssssssssssssssssss /upload/room/1493351612song.png #ee0404 false false 0 2017-04-28 11:53:34 4} 
+2017/04/28 11:53:34 [D] [strategyController.go:60] Uname Map map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 11:54:00 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:44:56 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc042ba6a20 0xc0429989b0    } 
+2017/04/28 11:54:00 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 0 109} 0 
+2017/04/28 11:54:01 [D] [strategyController.go:85] id 0 
+2017/04/28 11:54:01 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:54:01 [D] [strategyController.go:97] nCount sysCont 7 10 
+2017/04/28 11:54:01 [D] [noticeController.go:73] id 10 
+2017/04/28 11:54:01 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:54:01 [D] [noticeController.go:118] index 0 
+2017/04/28 11:54:01 [D] [noticeController.go:121] mod -8 
+2017/04/28 11:54:01 [D] [teacherController.go:74] id 0 
+2017/04/28 11:54:01 [D] [teacherController.go:77] teacher list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:54:01 [D] [teacherController.go:91] nCount sysCont 1 10 
+2017/04/28 11:54:33 [D] [SysConfigController.go:73] configinfo 0 0 
+2017/04/28 11:54:37 [D] [SysConfigController.go:73] configinfo 0 1 
+2017/04/28 11:54:41 [D] [mqttController.go:136] id 0 
+2017/04/28 11:54:41 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:54:41 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:54:41 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:54:46 [D] [indexController.go:120] info <nil> 
+2017/04/28 11:54:48 [D] [indexController.go:93] AccessToken 7L0dKR9l7LH-qxsXJUfdGwVLoScW6ublzGU7Y0o4N0sc2Rr3JKw42mZ_phknNnX4AWxLXdyjkyPszG2RqNv6E2o4O8LjyJy1HfzVF1Y2OUA 
+2017/04/28 11:54:48 [D] [indexController.go:108] userInfo {{0 } oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 [] } 
+2017/04/28 11:54:48 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:54:48 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0439d5710 0xc043b3c5f0    } 
+2017/04/28 11:54:48 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 1 109} 1 
+2017/04/28 11:54:48 [D] [RoomInfo.go:142] num 4 
+2017/04/28 11:54:50 [D] [indexController.go:120] info &{2 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc   Sir. Lei  0 0  2 2017-04-28 11:54:48 +0800 CST 2017-04-21 23:22:09 +0800 CST http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 2 0 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc 1 湖北 武汉 中国 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0  0xc0439d5a70 0xc043b3c6e0    } 
+2017/04/28 11:54:50 [D] [indexController.go:160] userload 1 {1 互动社区 0 10 8 0 10 10 10 10 10 欢迎来到互动社区 0 0 1 109} 1 
+2017/04/28 11:54:51 [D] [strategyController.go:85] id 0 
+2017/04/28 11:54:51 [D] [strategyController.go:88] Stragety list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:54:51 [D] [strategyController.go:97] nCount sysCont 7 10 
+2017/04/28 11:54:51 [D] [teacherController.go:74] id 0 
+2017/04/28 11:54:51 [D] [noticeController.go:73] id 10 
+2017/04/28 11:54:51 [D] [noticeController.go:76] Notice list  10 Topic_ChatMessage/sub121 
+2017/04/28 11:54:51 [D] [teacherController.go:77] teacher list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:54:51 [D] [noticeController.go:118] index 0 
+2017/04/28 11:54:51 [D] [noticeController.go:121] mod -8 
+2017/04/28 11:54:51 [D] [teacherController.go:91] nCount sysCont 1 10 
+2017/04/28 11:54:52 [D] [mqttController.go:136] id 0 
+2017/04/28 11:54:52 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:54:52 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:54:52 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:55:00 [D] [strategyController.go:313] info {Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 xxxxxxxxxxxx /upload/room/1493351699game.png #ee0404 false false 0 2017-04-28 11:55:00 4} 
+2017/04/28 11:55:00 [D] [strategyController.go:60] Uname Map map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 11:55:00 [D] [strategyController.go:440] Add StrategyInfo &{Topic_ChatMessage/sub121 http://wx.qlogo.cn/mmopen/wbKdib81ny68GytW8KBocNlPYzA7t3TqeTZdbvtOArXyls7Q7vp1wZ4LyBeJFFGFcZicxzBe54eRncW5AYDqgYRE82lIJw1WicC/0 Sir. Lei 普通 xxxxxxxxxxxx /upload/room/1493351699game.png #ee0404 false false 0 2017-04-28 11:55:00 4} 
+2017/04/28 11:55:34 [D] [mqttController.go:136] id 0 
+2017/04/28 11:55:34 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:55:34 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:55:34 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:55:36 [D] [mqttController.go:136] id 0 
+2017/04/28 11:55:36 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:55:36 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:55:36 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:55:37 [D] [mqttController.go:136] id 0 
+2017/04/28 11:55:37 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:55:37 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:55:37 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:55:56 [D] [noticeController.go:238] info {Topic_ChatMessage/sub121 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei zzzzzzzzzzzz 2017-04-28 11:55:55 2} 
+2017/04/28 11:55:56 [D] [noticeController.go:325] NoticeInfo &{Topic_ChatMessage/sub121 oWrhuv7EjuWJs6d3K3xTJ1YOlkUc Sir. Lei zzzzzzzzzzzz 2017-04-28 11:55:55 2} 
+2017/04/28 11:55:58 [D] [mqttController.go:136] id 0 
+2017/04/28 11:55:58 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:55:58 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:55:58 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:55:59 [D] [mqttController.go:136] id 0 
+2017/04/28 11:55:59 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:55:59 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:55:59 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:02 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:02 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:02 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:02 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:09 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:09 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:09 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:09 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:10 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:10 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:10 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:10 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:11 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:11 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:11 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:11 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:12 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:12 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:12 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:12 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:28 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:28 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:28 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:28 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:30 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:30 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:30 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:30 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:56:38 [D] [mqttController.go:136] id 0 
+2017/04/28 11:56:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:56:38 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:56:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:58:56 [D] [mqttController.go:136] id 0 
+2017/04/28 11:58:56 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:58:56 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:58:56 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:58:58 [D] [mqttController.go:136] id 0 
+2017/04/28 11:58:58 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:58:58 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:58:58 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:14 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:14 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:14 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:14 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:16 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:16 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:16 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:16 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:21 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:21 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:21 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:21 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:34 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:34 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:34 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:34 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:34 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:34 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:34 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:34 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:35 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:35 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:35 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:35 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:36 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:36 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:36 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:36 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:38 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:38 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:38 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:38 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:40 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:40 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:40 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:40 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 11:59:43 [D] [mqttController.go:136] id 0 
+2017/04/28 11:59:43 [D] [mqttController.go:139] chat list  0 Topic_ChatMessage/sub121 
+2017/04/28 11:59:43 [D] [mqttController.go:150] nCount sysCont 2 10 
+2017/04/28 11:59:43 [I] [indexController.go:271] mediaURL is https://api.weixin.qq.com/cgi-bin/media/get?access_token=HRRubmeHxDzAd9odxyhn6_9HmaI0XnyceLRC_TItvYSdH4EBQNbHL5NYVgxLcb9OxqmSmKH5vTtFjbqSSmQTg6XwepBKgOYw6AaGVKoI3i6JG16BxiKtCHjpHlBoYP2zUKHdAGABRO&media_id=1237378768e7q8e7r8qwesafdasdfasdfaxss111 
+2017/04/28 12:44:46 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 12:44:46 [D] [wechat.go:75] {"access_token":"k4-Dudv40G0TNX8bKw_Ez6LKBQlpDGzTm1wEViZv7DHUxoua91JxS5Q0ecXgTKsXH-IxkM7SIrpDyZ-2ArYmG4nxdQl3eaMg6PZyBmm1jwDNxkwNVFewZ8ajLp0tT9BNAMLcADAOAZ","expires_in":7200} 
+2017/04/28 12:44:46 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 12:44:46 [D] [wechat.go:93] k4-Dudv40G0TNX8bKw_Ez6LKBQlpDGzTm1wEViZv7DHUxoua91JxS5Q0ecXgTKsXH-IxkM7SIrpDyZ-2ArYmG4nxdQl3eaMg6PZyBmm1jwDNxkwNVFewZ8ajLp0tT9BNAMLcADAOAZ 7200 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=k4-Dudv40G0TNX8bKw_Ez6LKBQlpDGzTm1wEViZv7DHUxoua91JxS5Q0ecXgTKsXH-IxkM7SIrpDyZ-2ArYmG4nxdQl3eaMg6PZyBmm1jwDNxkwNVFewZ8ajLp0tT9BNAMLcADAOAZ 
+2017/04/28 13:57:35 [I] [Connect.go:14] 数据库is %s root:123456@tcp(localhost:3306)/weserver?charset=utf8&loc=Local 
+2017/04/28 13:57:35 [I] [Connect.go:19] 数据库连接成功 
+2017/04/28 13:57:35 [D] [mq.go:98] map[] 
+2017/04/28 13:57:35 [D] [mq.go:50] {tcp://mqf-dfbt0o9yg6.mqtt.aliyuncs.com:1883 LTAIggaqgLgcFyCb FnB/B6vHvk3ozjJ6KqWnIcnIcdA= GID_CHAT@@@localserver1  true false 3 Topic_ChatMessage false} 
+2017/04/28 13:57:35 [D] [mqtt.go:101] Topic: Topic_ChatMessage 
+2017/04/28 13:57:35 [D] [client.go:538] subtopic,subqoss, token.subs, token [Topic_ChatMessage] [0] [Topic_ChatMessage] &{{{{0 0} 0 0 0 0} 0xc0422bacc0 false <nil>} [Topic_ChatMessage] map[]} 
+2017/04/28 13:57:35 [D] [mqtt.go:106] mqtt connect and Subscribe Success！ 
+2017/04/28 13:57:36 [I] [mqtt.go:58] mqtt running OK  
+2017/04/28 13:57:36 [D] [mq.go:107] MQTT Client Init OK. 
+2017/04/28 13:57:36 [D] [chat.go:56] map[Topic_ChatMessage/sub121:[oWrhuv7EjuWJs6d3K3xTJ1YOlkUc]] 
+2017/04/28 13:57:36 [D] [wechat.go:63] GetTokenString https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx2b036d187ac31e24&&secret=39dab8ba2941c8604e0c948729eeaffe 
+2017/04/28 13:57:36 [D] [wechat.go:75] {"access_token":"zC3Qf4sHGR1zh3a7T_su14Gu1unBJ1o46hVF-i1ebI0TCdJiLM4FiOMeXRRhLQBDdm4C2sgeMXaDZO0YmJk_fV6OxRlEFqx_yJ5Q29rsedHLAD0AV-_Y3sWOs09qxnq-IYJeAJAEUF","expires_in":7198} 
+2017/04/28 13:57:36 [D] [wechat.go:79] Request ok!!!!!!! 
+2017/04/28 13:57:36 [D] [wechat.go:93] zC3Qf4sHGR1zh3a7T_su14Gu1unBJ1o46hVF-i1ebI0TCdJiLM4FiOMeXRRhLQBDdm4C2sgeMXaDZO0YmJk_fV6OxRlEFqx_yJ5Q29rsedHLAD0AV-_Y3sWOs09qxnq-IYJeAJAEUF 7198 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=zC3Qf4sHGR1zh3a7T_su14Gu1unBJ1o46hVF-i1ebI0TCdJiLM4FiOMeXRRhLQBDdm4C2sgeMXaDZO0YmJk_fV6OxRlEFqx_yJ5Q29rsedHLAD0AV-_Y3sWOs09qxnq-IYJeAJAEUF 
+2017/04/28 13:57:37 [D] [chat.go:64] WeChat Init ok ! 
+2017/04/28 13:57:37 [I] [asm_amd64.s:2086] http server Running on http://:80

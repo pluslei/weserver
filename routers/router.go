@@ -169,6 +169,7 @@ func Router() {
 
 	// //策略
 	beego.Router("/chat/user/strategy", &mqtt.StrategyController{}, "*:GetStrategyInfo")
+	beego.Router("/chat/user/editstrategy", &mqtt.StrategyController{}, "*:GetEditStrategyInfo")
 	beego.Router("/chat/user/operatestrategy", &mqtt.StrategyController{}, "*:OperateStrategy")
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 	beego.Router("/chat/user/strategyMap", &mqtt.StrategyController{}, "*:GetUnameMapInfo")
