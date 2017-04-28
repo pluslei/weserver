@@ -151,7 +151,7 @@ func UnTopOption(id int64) (int64, error) {
 
 //点赞操作
 func ThumbTeacherAdd(id int64) (int64, error) {
-	num, err := GetThumbNum(id)
+	num, err := GetTeacherNum(id)
 	if err != nil {
 		beego.Debug("Get TeacherThumbNum fail", err)
 		return 0, nil
