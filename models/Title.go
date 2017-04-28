@@ -38,13 +38,7 @@ func GetTitlelist(page int64, page_size int64, sort string) (titles []orm.Params
 
 func AddTitle(t *Title) (int64, error) {
 	o := orm.NewOrm()
-	title := new(Title)
-	title.Name = t.Name
-	title.Css = t.Css
-	title.Background = t.Background
-	title.Weight = t.Weight
-	title.Remark = t.Remark
-	id, err := o.Insert(title)
+	id, err := o.Insert(t)
 	return id, err
 }
 

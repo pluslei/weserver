@@ -161,3 +161,8 @@ func GetResourcesByRoleId(Nid int64) ([]orm.Params, error) {
 	}
 	return nodes, nil
 }
+
+func GetNodeCount() (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Node)).Count()
+}

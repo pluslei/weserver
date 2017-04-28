@@ -178,7 +178,10 @@ func (this *UserController) SetUnShutUp() {
 func (this *UserController) AddUser() {
 	action := this.GetString("action")
 	if action == "add" {
-		username := this.GetString("username")
+		account := this.GetString("account")
+		if m.CheckAccountIsExist(account) {
+			this.AlertBack("用户名已存在")
+		}
 		email := this.GetString("email")
 		phone, _ := this.GetInt64("phone")
 		nickname := this.GetString("nickname")
@@ -205,11 +208,11 @@ func (this *UserController) AddUser() {
 			return
 		}
 		u := new(m.User)
-		u.Username = username
+		u.Account = account
 		u.Email = email
 		u.Phone = phone
 		u.Nickname = nickname
-		u.Password = tools.EncodeUserPwd(username, password)
+		u.Password = tools.EncodeUserPwd(account, password)
 		u.Remark = remark
 		u.Status = status
 		u.RegStatus = regstatus
@@ -220,6 +223,7 @@ func (this *UserController) AddUser() {
 			this.Alert("用户添加成功", "index")
 			return
 		} else {
+			beego.Error("add user error", err)
 			this.AlertBack("用户添加失败")
 			return
 		}

@@ -15,12 +15,12 @@ import (
 type User struct {
 	Id            int64
 	Username      string `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
-	LoginUsername string `orm:"unique"`
+	Account       string
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
 	Nickname      string `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
-	Email         string `orm:"unique;size(32)" form:"Email" valid:"Email"`
-	Phone         int64  `orm:"unique;size(11)" form:"Phone" valid:"MaxSize(11);MinSize(1)"`
+	Email         string `orm:"size(32)" form:"Email" valid:"Email"`
+	Phone         int64  `orm:"size(11)" form:"Phone" valid:"MaxSize(11);MinSize(1)"`
 	Qq            int64
 	Remark        string    `orm:"null;size(255)" form:"Remark" valid:"MaxSize(255)"`
 	Status        int       `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //用户注册状态 1为未审核 2为审核通过
@@ -36,8 +36,8 @@ type User struct {
 	Country       string    //	国家，如中国为CN
 	Headimgurl    string    //用户头像最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
 	Unionid       string    //只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：
-	Role          *Role     `orm:"rel(one)"`
-	Title         *Title    `orm:"rel(one)"`
+	Role          *Role     `orm:"null;rel(one)"`
+	Title         *Title    `orm:"null;rel(one)"`
 
 	LogintimeStr  string `orm:"-"` //登录时间
 	OnlinetimeStr string `orm:"-"` //在线时长
@@ -227,23 +227,29 @@ func GetAllUserCount(nDay int64) (count int64, err error) {
 func InitUserPassword(id int64, username, password string, role, title int64) (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable(new(User)).Filter("Id", id).Update(orm.Params{
-		"LoginUsername": username,
-		"Password":      password,
-		"Role":          role,
-		"Title":         title,
+		"Account":  username,
+		"Password": password,
+		"Role":     role,
+		"Title":    title,
 	})
 }
 
 // 根据登录名查找
-func GetUserInfoByLoginUsername(loginuser, password string) (user User, err error) {
+func GetUserInfoByAccount(account, password string) (user User, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(new(User)).Filter("LoginUsername", loginuser).Filter("Password", password).Limit(1).One(&user)
+	err = o.QueryTable(new(User)).Filter("Account", account).Filter("Password", password).RelatedSel().Limit(1).One(&user)
 	return user, err
 }
 
 // 根据登录名查找
 func GetUserInfoByUsername(loginuser, password string) (user User, err error) {
 	o := orm.NewOrm()
-	err = o.QueryTable(new(User)).Filter("Username", loginuser).Filter("Password", password).Limit(1).One(&user)
+	err = o.QueryTable(new(User)).Filter("Username", loginuser).Filter("Password", password).RelatedSel().Limit(1).One(&user)
 	return user, err
+}
+
+// 判断account是否存在
+func CheckAccountIsExist(account string) bool {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Account", account).Exist()
 }

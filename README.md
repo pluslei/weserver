@@ -1,6 +1,6 @@
 ## weserver
 
-微信聊天室后台，系统采用beego框架,后台界面采用Amazeui
+微信聊天室后台，系统采用beego框架,后台界面采用Amazeui,系统消息推送采用阿里云mqtt形式
 
 VERSION = "V0.12.28"
 
@@ -21,6 +21,8 @@ go get git@git.haoyue.me:hlive/weserver.git
 
 具体的接口参考 [Wiki](http://git.haoyue.me:8080/hlive/weserver/wiki)
 
-## 期待功能
-1. 房间暂时固定，具体修改可以使用数据库加配置文件进行[需修改haoindex/indexControler]
+## 系统数据库初始化
+将当前目录切换到`weserver`中
+1. win系统中 `weserver.exe db`
+2. linux系统中 `./weserver db`
 
