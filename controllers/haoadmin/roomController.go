@@ -116,8 +116,6 @@ func (this *RoomController) Edit() {
 	}
 	if action == "edit" {
 		var room = make(orm.Params)
-
-		room["RoomId"] = beego.AppConfig.String("mqServerTopic") + "/" + getRoomId()
 		room["RoomTitle"] = this.GetString("RoomTitle")
 		room["RoomTeacher"] = this.GetString("RoomTeacher")
 		room["RoomNum"] = this.GetString("RoomNum")

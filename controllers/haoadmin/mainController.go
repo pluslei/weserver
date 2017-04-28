@@ -76,7 +76,7 @@ func (this *MainController) Login() {
 		password := this.GetString("password")
 		md5password := tools.EncodeUserPwd(username, password)
 
-		user, err = m.GetUserInfoByLoginUsername(username, md5password)
+		user, err = m.GetUserInfoByAccount(username, md5password)
 		if err != nil {
 			user, err = m.GetUserInfoByUsername(username, md5password)
 		}
