@@ -3,7 +3,7 @@
     .am-alert{border-radius: 5px;padding:3px;}
 </style>
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/teacher_index">操作建议管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">讲师列表</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/suggest_index">建议管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">建议列表</span></div>
 </div>
 <div class="result-wrap">
 
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="am-fr">
+                <!--<div class="am-fr">
                     <div class="result-list am-form-inline am-form">
                     <div class="am-form-group">
                             <select id="doc-select-room">
@@ -32,7 +32,7 @@
                             <a onclick="search()" class="am-btn am-btn-primary">搜索</a>
                         </div>
                      </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="result-content">
@@ -135,7 +135,7 @@
                 {"mDataProp": "Liquidation",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         if (sData == 0){
-                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square'></span> 添加平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a></div>");
+                            $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='添加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-pencil-square'></span> 添加平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                         }else{
                             $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='查看平仓' onclick='showRow(this,"+oData.Id+")'><span class='am-icon-info-circle'></span> 查看平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='追加平仓' href='suggest_addclose?id="+oData.Id+"'><span class='am-icon-plus-square-o'></span> 追加平仓</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='编辑' href='suggest_edit?id="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                         }  
@@ -268,7 +268,8 @@
             success: function(rsp){
                 if (rsp.status){
                     alert(rsp.info);
-                    oTable.fnReloadAjax(oTable.fnSettings());
+                    history.go(0);
+                    //oTable.fnReloadAjax(oTable.settings());
                 }else{
                     alert(rsp.info);
                 }
@@ -292,7 +293,8 @@
             success: function(rsp){
                 if (rsp.status){
                     alert(rsp.info);
-                    oTable.fnReloadAjax(oTable.fnSettings());
+                    //oTable.fnReloadAjax(oTable.settings());
+                    history.go(0);
                 }else{
                     alert(rsp.info);
                 }

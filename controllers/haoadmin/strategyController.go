@@ -53,7 +53,6 @@ func (this *StrategyController) Add() {
 	if action == "add" {
 		userInfo := this.GetSession("userinfo").(*models.User)
 
-		beego.Debug("userInfo", userInfo, userInfo.Title.Id)
 		strategy := new(models.Strategy)
 		strategy.Room = this.GetString("Room")
 		strategy.Icon = userInfo.Headimgurl
