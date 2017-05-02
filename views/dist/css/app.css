@@ -2293,6 +2293,8 @@ a {
 }
 .advice .trad_submit button:nth-of-type(2) {
   float: right;
+  background: #09bb07;
+  color: #fff;
 }
 .trad_btn {
   width: 83%;
