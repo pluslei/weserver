@@ -299,7 +299,6 @@ type ClosePositionInfo struct {
 	ProfitPoint string //止盈点
 	LossPoint   string //止损点
 	Notes       string // 备注
-	Timestr     string //时间字符
 
 	OperType int64
 	MsgType  int //消息类型

@@ -173,6 +173,7 @@ func (this *PositionController) GetPositionList() {
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					info.Timestr = historyPosition[i].Timestr
+					info.Icon = historyPosition[i].Icon
 					if info.Liquidation == 1 {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
@@ -223,6 +224,7 @@ func (this *PositionController) GetPositionList() {
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					info.Timestr = historyPosition[i].Timestr
+					info.Icon = historyPosition[i].Icon
 					if info.Liquidation == 1 {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
@@ -252,6 +254,7 @@ func (this *PositionController) GetPositionList() {
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					info.Timestr = historyPosition[i].Timestr
+					info.Icon = historyPosition[i].Icon
 					if info.Liquidation == 1 {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
@@ -373,6 +376,7 @@ func addPositionConten(info *PositionInfo) error {
 	pos.Liquidation = info.Liquidation
 	pos.Icon = info.Icon
 	pos.Time = time.Now()
+	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
 	_, err := m.AddPosition(&pos)
 	if err != nil {
 		beego.Debug("Add Teacher Fail:", err)
@@ -397,6 +401,7 @@ func updatePositionConten(info *PositionInfo) error {
 	pos.Liquidation = info.Liquidation
 	pos.Icon = info.Icon
 	pos.Time = time.Now()
+	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
 
 	_, err := m.UpdatePositionInfo(&pos)
 	if err != nil {

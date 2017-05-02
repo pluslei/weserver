@@ -2341,12 +2341,13 @@ a {
   float: left;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon img {
-  width: 100%;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher {
@@ -2387,7 +2388,8 @@ a {
   padding: 6px 0px;
   color: #000;
   font-size: 14px;
-  width: calc(100% - 50px);
+  width: calc(100% - 70px);
+  margin-left: 70px;
 }
 .expert .strategylist .strategylistinfo .listfoot {
   overflow: hidden;
