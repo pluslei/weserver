@@ -372,6 +372,7 @@ func addPositionConten(info *PositionInfo) error {
 	pos.Liquidation = info.Liquidation
 	pos.Icon = info.Icon
 	pos.Time = time.Now()
+	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
 	_, err := m.AddPosition(&pos)
 	if err != nil {
 		beego.Debug("Add Teacher Fail:", err)
@@ -396,6 +397,7 @@ func updatePositionConten(info *PositionInfo) error {
 	pos.Liquidation = info.Liquidation
 	pos.Icon = info.Icon
 	pos.Time = time.Now()
+	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
 
 	_, err := m.UpdatePositionInfo(&pos)
 	if err != nil {
