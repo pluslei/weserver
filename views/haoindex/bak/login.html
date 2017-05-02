@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title> 
+        <meta charset="utf-8">
+        <meta name="_xsrf" content="{{.xsrf_token}}" />
+        <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/static/js/login.js"></script>
+    </head>
+<body>
+<div class="login">
+    <div class="header">
+        <div class="switch" id="switch">
+            <a {{if eq .cate "1"}}class="switch_btn_focus"{{else}} class="switch_btn"{{end}} id="switch_qlogin" href="javascript:void(0);" tabindex="7">快速登录</a>
+			<a {{if eq .cate "2"}}class="switch_btn_focus"{{else}} class="switch_btn"{{end}} id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a>
+            <div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 70px; {{if eq .cate "1"}} left: 0px;{{else}}  left: 154px;{{end}}"></div>
+        </div>
+    </div>    
+    
+    <div class="web_qr_login web_none" id="web_qr_login" {{if eq .cate "1"}}style="display: block;"{{end}}>   
+        <!--登录-->
+        <div class="web_login" id="web_login">
+            <div class="login-box">
+    	        <div class="login_form">
+                    <p id="showLoginErr" style="color:red;display:none">账号或者密码不准为空</p>
+            		<div action="login" id="login_form" class="loginForm" method="post">
+                        <input name="logintime" id="logintime" value="{{.logintime}}" type="hidden">
+                        <div class="uinArea" id="uinArea">
+                            <label class="input-tips" for="u">帐　号：</label>
+                            <div class="inputOuter" id="uArea">
+                                <input id="u" name="username" class="inputstyle" type="text">
+                            </div>
+                        </div>
+                        <div class="pwdArea" id="pwdArea">
+                            <label class="input-tips" for="p">密　码：</label> 
+                            <div class="inputOuter" id="pArea">
+                                <input id="p" name="p" class="inputstyle" type="password">
+                            </div>
+                        </div>
+                        <div class="pwdArea" id="pwdArea">
+                            <label class="input-tips" for="p">验证码：</label> 
+                            <div class="inputOuter" id="pArea">
+                                <input id="c" name="c" class="inputstyle" type="text" style="width:90px">
+                                <span style="cursor:pointer;"><img class="imagecode" id="refreshimgcode" src="imagecode" title="点击刷新验证码" alt="点击刷新验证码"></span>
+                            </div>
+                        </div>
+                        <div style="padding-left:50px;margin-top:-6px;">
+                            <input value="登 录" style="width:150px;" class="button_blue" id="userlogin" type="submit">
+                        </div>
+                        <div style="margin-left: 82px;" class="inputOuter">
+                            <a href="/index/resetpwd" target="_Parent" style="color: #0081c1;">忘记密码</a>
+                        </div>
+                    </div>
+                </div>
+        	</div>
+        </div>
+        <!--登录end-->
+    </div>
+    <!--注册-->
+    <div class="qlogin web_none" id="qlogin" {{if eq .cate "2"}}style="display: block;"{{end}}>
+        <div class="web_login">
+            <div name="form2"  style="margin-top: 15px;" id="regUser" accept-charset="utf-8" action="register" method="post">
+    	    <input name="Regtime" id="Regtime" value="{{.logintime}}" type="hidden">
+            <ul class="reg_form" id="reg-ul">
+                <div id="userCue" class="cue"></div>
+                <div id="phonediv">
+               <div class="uinArea" id="uinArea">
+                    <label for="Phone" class="input-tips2">手机号：</label>
+                    <div class="inputOuter">
+                        <input id="Phone" name="Phone" maxlength="11" class="inputstyle2" type="text">
+                    </div>
+                </div>
+                 <div class="uinArea" id="uinArea">
+                    <label for="PhoneCode" class="input-tips2">验证码：</label>
+                    <div class="inputOuter">
+                        <input id="PhoneCode" name="PhoneCode" maxlength="6" class="inputstyle2" type="text" style="width:80px">
+                        <span id="btnSendCode" class="nowsend" onclick="sendMessage()"><span class=""></span>获取验证码</span>
+                        <span id="validataShow" class="hide danger-top">　验证码15分钟有效</span>
+                    </div>
+                </div>
+                 <div class="uinArea" id="uinArea">
+                    <div style="margin-left: 82px;" class="inputOuter">
+                       <input style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  type="checkbox" id="agreement">
+                        阅读并接受<a href="/index/agreement" target="_Parent" style="color: #0081c1;">《皓月直播服务条款》</a>
+                    </div>
+                </div>
+                <li>
+                    <div class="reg-div">
+                        <input value="注 册" style="width:150px;" class="button_blue" type="button" id="reg">
+                    </div> 
+                </li>
+                </div>
+                <div id="userdiv" style="display: none;">
+                <div class="uinArea" id="uinArea">
+                    <label for="UserName" class="input-tips2">用户名：</label>
+                    <div class="inputOuter">
+                        <input id="UserName" name="UserName" maxlength="16" class="inputstyle2" type="text">
+                    </div> 
+                </div> 
+                <div class="uinArea" id="uinArea">
+                    <label for="PassWord" class="input-tips2">密码：</label>
+                    <div class="inputOuter">
+                        <input id="PassWord" name="PassWord" maxlength="16" class="inputstyle2" type="password">
+                    </div>  
+                </div> 
+                <div class="uinArea" id="uinArea">
+                    <label for="Password2" class="input-tips2">确认密码：</label>
+                    <div class="inputOuter">
+                        <input id="Password2" name="Password2" maxlength="16" class="inputstyle2" type="password">
+                    </div>
+               </div> 
+                <li>
+                    <div class="reg-div">
+                        <input value="注 册" style="width:150px;" class="button_blue" type="button" id="reg1">
+                    </div> 
+                </li>
+                </div>
+                <div class="cl"></div>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!--注册end-->
+</div>
+</body></html>
+

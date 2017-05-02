@@ -14,6 +14,7 @@ type Regist struct {
 	Id            int64
 	Room          string
 	Username      string    `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
+	UserId        int64     `orm:"index"`
 	Nickname      string    `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
 	UserIcon      string    `orm:"null;size(255)" form:"UserIcon" valid:"MaxSize(255)"`
 	RegStatus     int       `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //用户注册状态 1为未审核 2为审核通过
@@ -168,5 +169,13 @@ func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, erro
 		"title_id":  titleId,
 		"role_id":   roleId,
 		"RegStatus": regstatus,
+	})
+}
+
+// 更新指定账户的username
+func UpdateUserName(userid int64, username string) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable("regist").Filter("UserId", userid).Update(orm.Params{
+		"Username": username,
 	})
 }

@@ -1,8 +1,9 @@
 package haoadmin
 
 import (
-	"github.com/astaxie/beego"
 	m "weserver/models"
+
+	"github.com/astaxie/beego"
 )
 
 type SysConfigController struct {
@@ -19,11 +20,15 @@ func (this *SysConfigController) Index() {
 		registerrole, _ := this.GetInt64("registerrole")   //默认注册角色
 		historymsg, _ := this.GetInt64("historymsg")       //是否显示历史消息
 		historycount, _ := this.GetInt64("historycount")   //显示历史记录条数
-		welcomemsg := this.GetString("welcomemsg")         //欢迎语
 		verify, _ := this.GetInt64("verify")               //是否开启注册验证
 		loginsys, _ := this.GetInt64("loginsys")           //是否允许登陆后台
 		auditmsg, _ := this.GetInt64("auditmsg")           //是否消息审核
 		virtualuser, _ := this.GetInt64("virtualuser")     //增加虚拟用户
+		noticecount, _ := this.GetInt64("noticecount")     //公告消息条数
+		strategycount, _ := this.GetInt64("strategycount") //策略消息条数
+		teachercount, _ := this.GetInt64("teachercount")   //老师消息条数
+		positioncount, _ := this.GetInt64("positioncount") //操作建议显示条数
+		welcomemsg := this.GetString("welcomemsg")         //欢迎语
 		sys := new(m.SysConfig)
 		sys.Systemname = systemname
 		sys.ChatInterval = chartinterval
@@ -36,6 +41,11 @@ func (this *SysConfigController) Index() {
 		sys.LoginSys = loginsys
 		sys.AuditMsg = auditmsg
 		sys.VirtualUser = virtualuser
+		sys.NoticeCount = noticecount
+		sys.StrategyCount = strategycount
+		sys.TeacherCount = teachercount
+		sys.PositionCount = positioncount
+		sys.WelcomeMsg = welcomemsg
 		count := m.GetSysConfigCount()
 		if count == 0 {
 			id, err := m.AddSysConfig(sys)
@@ -48,7 +58,7 @@ func (this *SysConfigController) Index() {
 		} else {
 			sysid, _ := this.GetInt64("Id")
 			sys.Id = sysid
-			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg", "VirtualUser")
+			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg", "VirtualUser", "NoticeCount", "StrategyCount", "TeacherCount", "PositionCount", "WelcomeMsg")
 			if err != nil {
 				beego.Error(err)
 				this.AlertBack("配置修改失败")

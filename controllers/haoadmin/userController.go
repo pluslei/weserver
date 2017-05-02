@@ -192,11 +192,11 @@ func (this *UserController) AddUser() {
 			beego.Error(err)
 			return
 		}
-		regstatus, err := this.GetInt("regstatus")
-		if err != nil {
-			beego.Error(err)
-			return
-		}
+		// regstatus, err := this.GetInt("regstatus")
+		// if err != nil {
+		// 	beego.Error(err)
+		// 	return
+		// }
 		role, err := this.GetInt64("role")
 		if err != nil {
 			beego.Error(err)
@@ -215,12 +215,25 @@ func (this *UserController) AddUser() {
 		u.Password = tools.EncodeUserPwd(account, password)
 		u.Remark = remark
 		u.Status = status
-		u.RegStatus = regstatus
+		u.RegStatus = 2
 		u.Role = &m.Role{Id: role}
 		u.Title = &m.Title{Id: title}
+		u.Lastlogintime = time.Now()
 		id, err := m.AddUser(u)
 		if err == nil && id > 0 {
 			this.Alert("用户添加成功", "index")
+			roomId := this.GetStrings("RoomId")
+			for _, val := range roomId {
+				reg := new(m.Regist)
+				reg.Room = val
+				reg.UserId = id
+				reg.Nickname = u.Nickname
+				reg.RegStatus = 2
+				reg.Role = &m.Role{Id: role}
+				reg.Title = &m.Title{Id: title}
+				reg.Lastlogintime = time.Now()
+				m.AddRegistUser(reg)
+			}
 			return
 		} else {
 			beego.Error("add user error", err)
@@ -471,6 +484,23 @@ func (this *UserController) UpdateRegStatus() {
 	}
 }
 
+// 更改用户状态
+func (this *UserController) UpdateStatus() {
+	id, _ := this.GetInt64("id")
+	status, _ := this.GetInt("status")
+	usr := new(m.User)
+	usr.Id = id
+	user, _ := m.ReadFieldUser(usr, "Id")
+	user.Status = status
+	if this.changeuserstatus(user) {
+		this.Rsp(true, "修改成功", "")
+	} else {
+		beego.Debug("udpate status error id=", id, "status=", status)
+		this.Rsp(false, "状态改变失败", "")
+
+	}
+}
+
 // 踢出房间
 // 房间踢出失败原因可能人不再map里面
 func (this *UserController) KictUser() {
@@ -505,7 +535,7 @@ func (this *UserController) changeuserstatus(user *m.User) bool {
 	}
 	err := user.UpdateUserFields("Status")
 	if err != nil {
-		beego.Error(err)
+		beego.Error("update the status is error:", err)
 		return false
 	} else {
 		return true
