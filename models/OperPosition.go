@@ -79,8 +79,6 @@ func DelPositionById(id int64) (int64, error) {
 func UpdatePositionInfo(t *OperPosition) (int64, error) {
 	o := orm.NewOrm()
 	id, err := o.QueryTable(new(OperPosition)).Filter("Id", t.Id).Update(orm.Params{
-		"Icon":        t.Icon,
-		"RoomTeacher": t.RoomTeacher,
 		"Type":        t.Type,
 		"BuySell":     t.BuySell,
 		"Entrust":     t.Entrust,
