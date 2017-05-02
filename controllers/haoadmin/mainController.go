@@ -84,6 +84,7 @@ func (this *MainController) Login() {
 		beego.Debug("user", user, err)
 		sysconfig, _ := m.GetSysConfig()
 		loginsys := sysconfig.LoginSys
+		beego.Debug("user", loginsys, username, adminUser, user.Role.IsInsider)
 		if loginsys == 0 {
 			if err == nil {
 				this.SetSession("userinfo", &user)
