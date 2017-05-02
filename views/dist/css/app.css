@@ -540,7 +540,7 @@ input[type=submit] {
   opacity: 0;
 }
 .Uploadadmin {
-  height: 200px;
+  height: 108px;
   background-color: #f4f4f6;
   border-top: 1px solid #ccccce;
   -webkit-box-sizing: border-box;
@@ -1362,7 +1362,7 @@ a {
 }
 .opera {
   width: 80px;
-  height: 30px;
+  height: 60px;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   background: #fff;
@@ -1380,6 +1380,10 @@ a {
   color: #333;
   text-align: center;
   line-height: 30px;
+}
+.opera .delinfo {
+  color: red;
+  border-top: 1px solid #dfdfdf;
 }
 .viewImage {
   width: 100%;
@@ -2134,9 +2138,6 @@ a {
 .tradeDatail .label-right > .am-u-end {
   text-align: center;
 }
-.tradeDatail .teacher-info {
-  overflow: hidden;
-}
 .tradeDatail .teacher-info > img {
   width: 40px;
   height: 40px;
@@ -2204,6 +2205,37 @@ a {
 }
 .tradeDatail .trade_btn > span.bgGreen {
   background: #09BA07;
+}
+.tradeDatail .handle {
+  width: 30px;
+  height: 20px;
+  text-align: right;
+  position: relative;
+}
+.tradeDatail .handle img {
+  width: 17px;
+  height: 10px;
+}
+.tradeDatail .handle .opera {
+  width: 80px;
+  height: 60px;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  background: #fff;
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  z-index: 100;
+}
+.tradeDatail .handle .info {
+  width: 80px;
+  height: 30px;
+  color: #333;
+  text-align: center;
+  line-height: 30px;
+}
+.tradeDatail .handle .delinfo {
+  color: red;
 }
 .noData {
   color: #b2b2b2;
