@@ -2028,6 +2028,14 @@ a {
   color: #fff;
   letter-spacing: normal;
 }
+.trade .noData {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #fff;
+  background: #282828;
+}
 .newTab {
   height: 33px;
   line-height: 33px;
@@ -2128,7 +2136,6 @@ a {
 }
 .tradeDatail .s-area {
   border-bottom: 1px solid #eee;
-  margin: 5px 0;
 }
 .tradeDatail .trade_btn {
   margin: 0;
@@ -2229,9 +2236,6 @@ a {
   height: 30px;
   line-height: 30px;
   border: none;
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
 }
 .advice .trad_info .trad_content div:nth-last-of-type(1) {
   border-bottom: none;
@@ -2253,9 +2257,6 @@ a {
   line-height: 30px;
   border: none;
   outline: none;
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
 }
 .advice .unwind span {
   display: inline-block;
@@ -2295,6 +2296,7 @@ a {
   float: right;
   background: #09bb07;
   color: #fff;
+  border: none;
 }
 .trad_btn {
   width: 83%;
@@ -2318,6 +2320,13 @@ a {
   background: #09bb07;
   color: #fff;
 }
+.line {
+  margin: 0;
+  padding: 0;
+  height: 10px;
+  background: #EFEFF4;
+  width: 100%;
+}
 .expert {
   height: 100%;
 }
@@ -2340,12 +2349,13 @@ a {
   float: left;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon img {
-  width: 100%;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher {
@@ -2386,7 +2396,8 @@ a {
   padding: 6px 0px;
   color: #000;
   font-size: 14px;
-  width: calc(100% - 50px);
+  width: calc(100% - 70px);
+  margin-left: 70px;
 }
 .expert .strategylist .strategylistinfo .listfoot {
   overflow: hidden;
