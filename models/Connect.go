@@ -51,13 +51,23 @@ func inserData() {
 	inserSys()
 	inserRoominfo()
 
-	// 删除唯一索引
+	// 删除User唯一索引
 	o := orm.NewOrm()
 	_, err := o.Raw("DROP INDEX role_id ON `user`").Exec()
 	if err != nil {
 		beego.Error("del role_index error", err)
 	}
 	_, err = o.Raw("DROP INDEX title_id ON `user`").Exec()
+	if err != nil {
+		beego.Error("del title_index error", err)
+	}
+
+	// 删除Regist唯一索引
+	_, err = o.Raw("DROP INDEX role_id ON `regist`").Exec()
+	if err != nil {
+		beego.Error("del role_index error", err)
+	}
+	_, err = o.Raw("DROP INDEX title_id ON `regist`").Exec()
 	if err != nil {
 		beego.Error("del title_index error", err)
 	}
@@ -158,7 +168,7 @@ func insertNodes() {
 		nodes := [...]Node{
 			{Id: 1, Title: "用户管理", Name: "user", Level: 1, Pid: 0, Remark: "用户管理", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user", Hide: 1, Ico: "am-icon-user"},
 			{Id: 2, Title: "用户列表", Name: "user/index", Level: 2, Pid: 1, Remark: "用户管理/用户列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/index", Hide: 1, Ico: ""},
-			{Id: 3, Title: "增加用户", Name: "user/add", Level: 2, Pid: 1, Remark: "用户管理/增加用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/adduser", Hide: 1, Ico: ""},
+			{Id: 3, Title: "用户设置列表", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
 			{Id: 4, Title: "更新用户", Name: "user/update", Level: 3, Pid: 2, Remark: "用户管理/增加用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/updateuser", Hide: 1, Ico: ""},
 			{Id: 5, Title: "删除用户", Name: "user/deluser", Level: 3, Pid: 2, Remark: "用户管理/删除用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/deluser", Hide: 1, Ico: ""},
 			{Id: 6, Title: "用户赋予角色", Name: "user/usertorole", Level: 3, Pid: 2, Remark: "用户管理/用户赋予角色", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usertorole", Hide: 1, Ico: ""},
@@ -166,7 +176,7 @@ func insertNodes() {
 			{Id: 8, Title: "房间用户审核", Name: "user/regstatus", Level: 3, Pid: 2, Remark: "用户管理/房间用户审核", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/regstatus", Hide: 1, Ico: ""},
 			{Id: 9, Title: "踢出房间", Name: "user/kictuser", Level: 3, Pid: 2, Remark: "用户管理/踢出房间", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/kictuser", Hide: 1, Ico: ""},
 			{Id: 10, Title: "批量删除用户", Name: "user/preparedel", Level: 3, Pid: 2, Remark: "用户管理/踢出房间", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/preparedel", Hide: 1, Ico: ""},
-			{Id: 11, Title: "用户设置列表", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
+			{Id: 11, Title: "增加用户", Name: "user/add", Level: 2, Pid: 1, Remark: "用户管理/增加用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/adduser", Hide: 1, Ico: ""},
 			{Id: 12, Title: "初始化用户", Name: "user/setusername", Level: 3, Pid: 11, Remark: "用户管理/初始化用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/setusername", Hide: 1, Ico: ""},
 			{Id: 13, Title: "解除禁言", Name: "user/UnShutUp", Level: 3, Pid: 2, Remark: "用户管理/解除禁言", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/UnShutUp", Hide: 1, Ico: ""},
 			{Id: 14, Title: "头衔管理", Name: "title", Level: 1, Pid: 0, Remark: "头衔管理", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/title", Hide: 1, Ico: "am-icon-header"},
@@ -213,6 +223,7 @@ func insertNodes() {
 			{Id: 55, Title: "系统设置", Name: "sysconfig", Level: 1, Pid: 0, Remark: "系统设置", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/sysconfig", Hide: 1, Ico: "am-icon-cog"},
 			{Id: 56, Title: "全局设置", Name: "sysconfig/index", Level: 2, Pid: 55, Remark: "全局设置", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/sysconfig/index", Hide: 1, Ico: ""},
 			{Id: 57, Title: "图片上传", Name: "data/upload", Level: 3, Pid: 56, Remark: "图片上传", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/data/upload", Hide: 1, Ico: ""},
+			{Id: 58, Title: "用户状态修改", Name: "user/userstatus", Level: 3, Pid: 3, Remark: "用户状态修改", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/userstatus", Hide: 1, Ico: ""},
 		}
 		for _, v := range nodes {
 			AddNode(&v)

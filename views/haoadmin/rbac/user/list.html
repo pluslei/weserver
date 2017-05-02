@@ -27,6 +27,7 @@
                         <th>地址</th>
                         <th>头衔</th>
                         <th>角色</th>
+                        <th>状态</th>
                         <th>登录时间</th>
                         <th style="width:100px;">操作</th>
                     </tr>
@@ -211,6 +212,15 @@
                         $(nTd).addClass('selectRoleTd').attr('id', oData.Id);
                     }
                 },
+                {"mDataProp": "Status",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData == 2) {
+                            $(nTd).html("<span class='am-alert am-alert-success regstatus' onclick='javascript:chnageUserStatus("+oData.Id+",2);'>正常</span>");
+                        } else {
+                            $(nTd).html("<span class='am-alert am-alert-danger regstatus' onclick='javascript:chnageUserStatus("+oData.Id+",1);'>禁用</span>");
+                        }
+                    }
+                },
                 {"mDataProp": "Createtime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
@@ -337,11 +347,11 @@
         })
     }
 
-    function chnageUserStatus(id){
+    function chnageUserStatus(id,status){
         $.ajax({
             url: '/weserver/user/userstatus',
             type: 'POST',
-            data: {Id: id},
+            data: {id: id,status:status},
             success:function(data){
                 alert(data.info);
                 if (data.status) {
@@ -364,9 +374,9 @@
         var id = $(".data-modal-kick").val();
         var objname = $(".data-modal-objuser").val();
         var sendmsg = {}; //发送的内容
-        sendmsg["Uname"] = {{.username}};
+        sendmsg["Uname"] = "{{.username}}";
         sendmsg["Objname"] = objname;
-        sendmsg["Codeid"] = {{.codeid}}; //公司房间标识符
+        sendmsg["Codeid"] = "{{.codeid}}"; //公司房间标识符
         var sendstr = base64encode(sendmsg);
         socket.emit('all kickout', sendstr);
         $.ajax({

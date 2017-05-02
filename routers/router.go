@@ -60,6 +60,7 @@ func Router() {
 	beego.Router("/weserver/user/setusertitle", &haoadmin.UserController{}, "*:SetUserTitle")
 	beego.Router("/weserver/user/usertotitle", &haoadmin.UserController{}, "*:UserToTitle")
 	beego.Router("/weserver/user/regstatus", &haoadmin.UserController{}, "*:UpdateRegStatus")
+	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
 
@@ -140,6 +141,7 @@ func Router() {
 	beego.Router("/", &haoindex.IndexController{})
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
+	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")

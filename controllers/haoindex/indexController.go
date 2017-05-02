@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"strings"
 	"time"
+	"weserver/src/tools"
 
 	m "weserver/models"
 
@@ -107,11 +108,67 @@ func (this *IndexController) Get() {
 		}
 		beego.Debug("userInfo", userInfo)
 
+		// if len(info.Account) > 0 {
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
 		this.Redirect("/index", 302)
+		// } else {
+		// 	this.Redirect("/login?openid="+userInfo.OpenID, 302)
+		// }
+
 	}
 	this.Ctx.WriteString("")
+}
+
+func (this *IndexController) Login() {
+	openid := this.GetString("openid")
+	if this.IsAjax() {
+		if len(openid) <= 0 {
+			this.Rsp(false, "请退出重新进入", "")
+			return
+		}
+		username := this.GetString("username")
+		password := this.GetString("password")
+		beego.Debug("userinfo", username, password)
+		if len(username) <= 0 || len(password) <= 0 {
+			this.Rsp(false, "请填写账户信息", "")
+			return
+		}
+
+		var u m.User
+		u.Account = username
+		user, err := m.ReadFieldUser(&u, "Account")
+		beego.Debug("ReadFieldUser", user, err)
+		if user == nil || err != nil {
+			this.Rsp(false, "用户名和密码错误 401", "")
+			return
+		}
+		beego.Debug("userinfo", user.Password, tools.EncodeUserPwd(username, password), err)
+		if user.Password != tools.EncodeUserPwd(username, password) {
+			this.Rsp(false, "用户名和密码错误 402", "")
+			return
+		}
+
+		_, err = m.BindUserAccount(openid, user)
+		if err != nil {
+			this.Rsp(false, "用户名和密码错误 404", "")
+			return
+		} else {
+			sessionUser, err := m.GetUserByUsername(openid)
+			if err != nil {
+				this.Rsp(false, "用户名和密码错误 405", "")
+				return
+			}
+			m.DelUserById(user.Id)
+			m.UpdateUserName(sessionUser.Id, sessionUser.Username)
+
+			this.SetSession("indexUserInfo", &sessionUser)
+			this.Redirect("/index", 302)
+		}
+		this.Ctx.WriteString("")
+	}
+	this.Data["openid"] = openid
+	this.TplName = "haoindex/login.html"
 }
 
 //从数据库获取信息
@@ -204,11 +261,6 @@ func (this *IndexController) Index() {
 	} else {
 		this.Redirect("/", 302)
 	}
-}
-
-// 用户为审核状态
-func (this *IndexController) Login() {
-	this.TplName = "login.html"
 }
 
 // 后台获取声音文件流转换
@@ -333,7 +385,6 @@ func (this *IndexController) updateUser(id int64, userInfo oauth.UserInfo) error
 	u := new(m.User)
 	u.Id = id
 	u.UserIcon = userInfo.HeadImgURL
-	u.Nickname = userInfo.Nickname
 	u.Sex = userInfo.Sex
 	u.Province = userInfo.Province
 	u.City = userInfo.City
@@ -341,7 +392,7 @@ func (this *IndexController) updateUser(id int64, userInfo oauth.UserInfo) error
 	u.Headimgurl = userInfo.HeadImgURL
 	u.Unionid = userInfo.Unionid
 	u.Lastlogintime = time.Now()
-	return u.UpdateUserFields("UserIcon", "Nickname", "Sex", "Province", "City", "Country", "Headimgurl", "Unionid", "Lastlogintime")
+	return u.UpdateUserFields("UserIcon", "Sex", "Province", "City", "Country", "Headimgurl", "Unionid", "Lastlogintime")
 }
 
 func (this *IndexController) SetNickname() {
