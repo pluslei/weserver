@@ -53,7 +53,16 @@
             <input type="text" name="virtualuser" value="{{.configinfo.VirtualUser}}" placeholder="最大不超过999" max="999">
             <span class="am-form-caret"></span>
           </div>
-          
+          <div class="am-form-group">
+            <label for="doc-select-1">策略消息条数：</label>
+            <input type="text" name="strategycount" value="{{.configinfo.StrategyCount}}" placeholder="最大不超过999" max="999">
+            <span class="am-form-caret"></span>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">操作建议显示条数：</label>
+            <input type="text" name="positioncount" value="{{.configinfo.PositionCount}}" placeholder="最大不超过999" max="999">
+            <span class="am-form-caret"></span>
+          </div>
 
           <button class="am-btn am-btn-secondary" type="submit">提交</button>
         </fieldset>
@@ -103,7 +112,21 @@
             </select>
             <span class="am-form-caret"></span>
           </div>
-
+          <div class="am-form-group">
+            <label for="doc-select-1">公告消息条数：</label>
+            <input type="text" name="noticecount" value="{{.configinfo.NoticeCount}}" placeholder="最大不超过999" max="999">
+            <span class="am-form-caret"></span>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">老师显示条数：</label>
+            <input type="text" name="teachercount" value="{{.configinfo.TeacherCount}}" placeholder="最大不超过999" max="999">
+            <span class="am-form-caret"></span>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-select-1">欢迎语：</label>
+            <input type="text" name="welcomemsg" value="{{.configinfo.WelcomeMsg}}" placeholder="页面中间显示欢迎语句" max="999">
+            <span class="am-form-caret"></span>
+          </div>
 
         </fieldset>
     </div>
