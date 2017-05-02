@@ -424,10 +424,10 @@ func updatePositionConten(info *PositionInfo) error {
 	pos.Icon = info.Icon
 	pos.Time = time.Now()
 	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
-
+	beego.Debug("ssssssss", pos.Liquidation)
 	_, err := m.UpdatePositionInfo(&pos)
 	if err != nil {
-		beego.Debug("Add Teacher Fail:", err)
+		beego.Debug("Update Position Fail:", err)
 		return err
 	}
 	return nil

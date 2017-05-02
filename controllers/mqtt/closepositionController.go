@@ -109,6 +109,7 @@ func operateClosePosData(info *ClosePositionInfo) {
 			err := addClosePositionConten(info)
 			if err != nil {
 				beego.Debug("Oper ClosePosition Add Fail", err)
+				return
 			}
 		}
 		break
@@ -116,12 +117,14 @@ func operateClosePosData(info *ClosePositionInfo) {
 		_, err := m.DelClosePositionById(op.Id)
 		if err != nil {
 			beego.Debug("Oper ClosePosition Del Fail", err)
+			return
 		}
 		break
 	case OPERATE_CLOSEPOSITION_UPDATE:
 		err := updateClosePositionConten(info)
 		if err != nil {
 			beego.Debug("Oper ClosePosition update Fail", err)
+			return
 		}
 		break
 	default:

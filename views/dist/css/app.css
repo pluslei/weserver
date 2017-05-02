@@ -1377,9 +1377,9 @@ a {
 }
 .no {
   color: #b2b2b2;
-  font-size: 12px;
+  font-size: 20px;
   text-align: center;
-  line-height: 40px;
+  line-height: 40rem;
   width: 100%;
 }
 .topload {
@@ -1762,9 +1762,8 @@ a {
   right: -8px;
   top: -9px;
   z-index: 200;
-  border: 1px solid #f5f5f5;
 }
-.file span .delimg img {
+.file span .delimg > img {
   width: 20px;
   height: 20px;
 }
@@ -2029,6 +2028,14 @@ a {
   color: #fff;
   letter-spacing: normal;
 }
+.trade .noData {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #fff;
+  background: #282828;
+}
 .newTab {
   height: 33px;
   line-height: 33px;
@@ -2060,6 +2067,8 @@ a {
   height: calc(100% - 105px);
   background: #F0EFF5;
   padding-top: 5px;
+  position: relative;
+  z-index: 1000;
 }
 .tradeDatail > ul {
   list-style: none;
@@ -2127,7 +2136,6 @@ a {
 }
 .tradeDatail .s-area {
   border-bottom: 1px solid #eee;
-  margin: 5px 0;
 }
 .tradeDatail .trade_btn {
   margin: 0;
@@ -2145,11 +2153,24 @@ a {
 .tradeDatail .trade_btn > span.bgGreen {
   background: #09BA07;
 }
+.noData {
+  color: #b2b2b2;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40rem;
+  width: 100%;
+  height: 100%;
+}
 .advice {
   width: 100%;
   height: auto;
   overflow-y: auto;
   color: #353535;
+}
+.advice .line {
+  height: 10px;
+  width: 100%;
+  background: #EFEFF4;
 }
 .advice .tradType {
   width: 100%;
@@ -2162,8 +2183,8 @@ a {
 .advice .tradType span {
   display: inline-block;
   width: 26%;
-  height: 44px;
-  line-height: 44px;
+  height: 40px;
+  line-height: 40px;
 }
 .advice .tradType input {
   width: 62%;
@@ -2194,7 +2215,7 @@ a {
 .advice .trad_info span {
   display: inline-block;
   width: 26%;
-  height: 44px;
+  height: 40px;
   line-height: 44px;
 }
 .advice .trad_info input {
@@ -2211,7 +2232,7 @@ a {
 .advice .trad_info .trad_content > div select {
   outline: none;
   margin-top: -6px;
-  width: 30%;
+  width: 100px;
   height: 30px;
   line-height: 30px;
   border: none;
@@ -2230,7 +2251,7 @@ a {
   border-bottom: 1px solid #e5e5e5;
 }
 .advice .unwind > div select {
-  width: 30%;
+  width: 100px;
   margin-top: -6px;
   height: 30px;
   line-height: 30px;
@@ -2240,7 +2261,7 @@ a {
 .advice .unwind span {
   display: inline-block;
   width: 26%;
-  height: 44px;
+  height: 40px;
   line-height: 44px;
 }
 .advice .unwind input {
@@ -2273,6 +2294,9 @@ a {
 }
 .advice .trad_submit button:nth-of-type(2) {
   float: right;
+  background: #09bb07;
+  color: #fff;
+  border: none;
 }
 .trad_btn {
   width: 83%;
@@ -2296,6 +2320,13 @@ a {
   background: #09bb07;
   color: #fff;
 }
+.line {
+  margin: 0;
+  padding: 0;
+  height: 10px;
+  background: #EFEFF4;
+  width: 100%;
+}
 .expert {
   height: 100%;
 }
@@ -2318,12 +2349,13 @@ a {
   float: left;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
 }
 .expert .strategylist .strategylistinfo .listhead .list-icon img {
-  width: 100%;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher {
@@ -2364,7 +2396,8 @@ a {
   padding: 6px 0px;
   color: #000;
   font-size: 14px;
-  width: calc(100% - 50px);
+  width: calc(100% - 70px);
+  margin-left: 70px;
 }
 .expert .strategylist .strategylistinfo .listfoot {
   overflow: hidden;
@@ -2435,13 +2468,6 @@ a {
 }
 .sticklabel img {
   width: 80px;
-}
-.no {
-  color: #b2b2b2;
-  font-size: 12px;
-  text-align: center;
-  line-height: 40px;
-  width: 100%;
 }
 .topload {
   top: 0px;

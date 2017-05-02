@@ -13,20 +13,19 @@ type OperPosition struct {
 	Id            int64  `orm:"pk;auto"`
 	RoomId        string //topic
 	RoomTeacher   string //老师
+	Timestr       string //时间字符
+	Type          string //种类
+	BuySell       int    //买卖 0 1
+	Entrust       string //委托类型
+	Index         string //点位
+	Position      string //仓位
+	ProfitPoint   string //止盈点
+	LossPoint     string //止损点
+	Notes         string // 备注
+	Liquidation   int    //平仓详情 (0:未平仓 1:平仓)
+	Icon          string //头像
 	Time          time.Time
-	Type          string           //种类
-	BuySell       int              //买卖 0 1
-	Entrust       string           //委托类型
-	Index         string           //点位
-	Position      string           //仓位
-	ProfitPoint   string           //止盈点
-	LossPoint     string           //止损点
-	Notes         string           // 备注
-	Liquidation   int              //平仓详情 (0:未平仓 1:平仓)
-	Icon          string           //头像
 	ClosePosition []*ClosePosition `orm:"reverse(many)"` //一对多
-
-	Timestr string //时间字符
 
 	//平仓信息
 	CloseType  string `orm:"-"` //平仓种类
@@ -79,7 +78,7 @@ func DelPositionById(id int64) (int64, error) {
 //更新
 func UpdatePositionInfo(t *OperPosition) (int64, error) {
 	o := orm.NewOrm()
-	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
+	id, err := o.QueryTable(new(OperPosition)).Filter("Id", t.Id).Update(orm.Params{
 		"Icon":        t.Icon,
 		"RoomTeacher": t.RoomTeacher,
 		"Type":        t.Type,
@@ -91,7 +90,7 @@ func UpdatePositionInfo(t *OperPosition) (int64, error) {
 		"LossPoint":   t.LossPoint,
 		"Notes":       t.Notes,
 		"Liquidation": t.Liquidation,
-		"Time":        t.Time,
+		"Timestr":     t.Timestr,
 	})
 	return id, err
 }
