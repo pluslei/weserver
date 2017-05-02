@@ -252,6 +252,12 @@ type PositionInfo struct {
 
 	OperType int64
 	MsgType  int //消息类型
+
+	//平仓信息
+	/********************/
+	CloseBuySell int    //平仓操作
+	CloseIndex   string //平仓点位
+	CloseNotes   string //平仓备注
 }
 
 type PositionOperate struct {
