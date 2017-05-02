@@ -159,7 +159,7 @@ func inserRoominfo() {
 }
 
 func insertNodes() {
-	countNode := 54
+	countNode := 60
 	count, _ := GetNodeCount()
 	if int(count) >= countNode {
 		fmt.Println("node haved")
@@ -168,7 +168,7 @@ func insertNodes() {
 		nodes := [...]Node{
 			{Id: 1, Title: "用户管理", Name: "user", Level: 1, Pid: 0, Remark: "用户管理", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user", Hide: 1, Ico: "am-icon-user"},
 			{Id: 2, Title: "用户列表", Name: "user/index", Level: 2, Pid: 1, Remark: "用户管理/用户列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/index", Hide: 1, Ico: ""},
-			{Id: 3, Title: "用户设置列表", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
+			{Id: 3, Title: "用户设置", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
 			{Id: 4, Title: "更新用户", Name: "user/update", Level: 3, Pid: 2, Remark: "用户管理/增加用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/updateuser", Hide: 1, Ico: ""},
 			{Id: 5, Title: "删除用户", Name: "user/deluser", Level: 3, Pid: 2, Remark: "用户管理/删除用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/deluser", Hide: 1, Ico: ""},
 			{Id: 6, Title: "用户赋予角色", Name: "user/usertorole", Level: 3, Pid: 2, Remark: "用户管理/用户赋予角色", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usertorole", Hide: 1, Ico: ""},
@@ -224,7 +224,7 @@ func insertNodes() {
 			{Id: 56, Title: "全局设置", Name: "sysconfig/index", Level: 2, Pid: 55, Remark: "全局设置", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/sysconfig/index", Hide: 1, Ico: ""},
 			{Id: 57, Title: "图片上传", Name: "data/upload", Level: 3, Pid: 56, Remark: "图片上传", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/data/upload", Hide: 1, Ico: ""},
 			{Id: 58, Title: "用户状态修改", Name: "user/userstatus", Level: 3, Pid: 3, Remark: "用户状态修改", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/userstatus", Hide: 1, Ico: ""},
-			{Id: 59, Title: "聊天记录", Name: "data/chatrecord", Level: 2, Pid: 0, Remark: "聊天记录", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/data/chatrecord", Hide: 1, Ico: ""},
+			{Id: 59, Title: "聊天记录", Name: "data/chatrecord", Level: 2, Pid: 30, Remark: "聊天记录", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/data/chatrecord", Hide: 1, Ico: ""},
 		}
 		for _, v := range nodes {
 			AddNode(&v)

@@ -140,16 +140,46 @@ func (this *UserController) SetUsername() {
 		return
 	}
 	if action == "set" {
+		userInfo := new(m.User)
+		userInfo.Id = id
+		userLoad, err := m.LoadRelatedUser(userInfo, "Id")
+		if err != nil {
+			beego.Error("load retalteduser error", err)
+		}
+
 		Username := this.GetString("Username")
 		Password := this.GetString("Password")
 		role, _ := this.GetInt64("role")
 		title, _ := this.GetInt64("title")
-		md5password := tools.EncodeUserPwd(Username, Password)
-		_, err = m.InitUserPassword(id, Username, md5password, role, title)
-		if err != nil {
-			beego.Error("init user error", err)
-			return
+
+		if len(userLoad.Account) <= 0 {
+			md5password := tools.EncodeUserPwd(Username, Password)
+			_, err = m.InitUserPassword(id, Username, md5password, role, title)
+			if err != nil {
+				beego.Error("init user error", err)
+				this.AlertBack("修改失败")
+				return
+			}
+		} else {
+			u := new(m.User)
+			u.Id = id
+			u.Role = &m.Role{Id: role}
+			u.Title = &m.Title{Id: title}
+			if len(Password) > 0 {
+				beego.Debug("user===", Username, Password)
+				u.Password = tools.EncodeUserPwd(Username, Password)
+				err = u.UpdateUserFields("Role", "Title", "Password")
+			}
+			err = u.UpdateUserFields("Role", "Title")
+
+			if err != nil {
+				beego.Error(err)
+				this.AlertBack("密码修改失败")
+				this.Rsp(false, "修改失败", "")
+				return
+			}
 		}
+
 		this.Alert("用户修改成功", "usersetlist")
 	} else {
 		userInfo := new(m.User)

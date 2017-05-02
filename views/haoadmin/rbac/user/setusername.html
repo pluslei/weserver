@@ -21,14 +21,13 @@
 
         <div class="am-form-group">
           <label for="doc-vld-email-2">*初始化用户名：</label>
-          <input type="text" name="Username" id="doc-vld-email-2" value="" data-validation-message="请输入登录用户" placeholder="请输入登录用户" required/>
+          <input type="text" name="Username" id="doc-vld-email-2" {{if gt (.userList.Account|len) 0}}readonly="readonly"{{end}} value="{{.userList.Account}}" data-validation-message="请输入登录用户" placeholder="请输入登录用户" required/>
         </div>
 
         <div class="am-form-group">
           <label for="doc-vld-email-2">*初始化密码：</label>
-          <input type="text" name="Password" id="doc-vld-email-2" value="" data-validation-message="请输入初始密码" placeholder="请输入初始密码" required/>
+          <input type="password" name="Password" id="doc-vld-email-2" value="" data-validation-message="请输入初始密码" placeholder="请输入初始密码" {{if eq (.userList.Account|len) 0}}required{{end}}/>
         </div>
-
        
         <div class="am-form-group">
           <label for="doc-select-1">角色</label>
