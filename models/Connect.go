@@ -159,7 +159,7 @@ func inserRoominfo() {
 }
 
 func insertNodes() {
-	countNode := 54
+	countNode := 60
 	count, _ := GetNodeCount()
 	if int(count) >= countNode {
 		fmt.Println("node haved")
