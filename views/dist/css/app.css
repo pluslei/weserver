@@ -2128,7 +2128,6 @@ a {
 }
 .tradeDatail .s-area {
   border-bottom: 1px solid #eee;
-  margin: 5px 0;
 }
 .tradeDatail .trade_btn {
   margin: 0;
@@ -2229,9 +2228,6 @@ a {
   height: 30px;
   line-height: 30px;
   border: none;
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
 }
 .advice .trad_info .trad_content div:nth-last-of-type(1) {
   border-bottom: none;
@@ -2253,9 +2249,6 @@ a {
   line-height: 30px;
   border: none;
   outline: none;
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
 }
 .advice .unwind span {
   display: inline-block;
@@ -2293,6 +2286,9 @@ a {
 }
 .advice .trad_submit button:nth-of-type(2) {
   float: right;
+  background: #09bb07;
+  color: #fff;
+  border: none;
 }
 .trad_btn {
   width: 83%;
@@ -2315,6 +2311,13 @@ a {
 .trad_btn_active {
   background: #09bb07;
   color: #fff;
+}
+.line {
+  margin: 0;
+  padding: 0;
+  height: 10px;
+  background: #EFEFF4;
+  width: 100%;
 }
 .expert {
   height: 100%;

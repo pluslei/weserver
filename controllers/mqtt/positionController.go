@@ -143,6 +143,7 @@ func (this *PositionController) GetPositionList() {
 					info.LossPoint = historyPosition[i].LossPoint     //止损点
 					info.Notes = historyPosition[i].Notes             // 备注
 					info.Timestr = historyPosition[i].Timestr
+					info.Icon = historyPosition[i].Icon
 					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
 					if info.Liquidation == 1 {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
