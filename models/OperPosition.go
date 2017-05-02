@@ -52,12 +52,22 @@ func AddPosition(o *OperPosition) (int64, error) {
 	return id, err
 }
 
-// 修改平仓详情
-func UpdatePositonLq(id int64) {
+// 设为已平仓
+func UpdatePositonLq(id int64) error {
 	o := orm.NewOrm()
-	o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
+	_, err := o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
 		"Liquidation": 1,
 	})
+	return err
+}
+
+// 设为未平仓
+func UpdatePositonUnLq(id int64) error {
+	o := orm.NewOrm()
+	_, err := o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
+		"Liquidation": 0,
+	})
+	return err
 }
 
 // 根据id查询

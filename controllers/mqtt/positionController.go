@@ -149,6 +149,7 @@ func (this *PositionController) GetPositionList() {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
+							return
 						}
 						info.CloseType = historyClose[0].Type    //平仓种类
 						info.CloseIndex = historyClose[0].Index  //平仓点位
@@ -178,6 +179,7 @@ func (this *PositionController) GetPositionList() {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
+							return
 						}
 						info.CloseType = historyClose[0].Type    //平仓种类
 						info.CloseIndex = historyClose[0].Index  //平仓点位
@@ -229,6 +231,7 @@ func (this *PositionController) GetPositionList() {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
+							return
 						}
 						info.CloseType = historyClose[0].Type    //平仓种类
 						info.CloseIndex = historyClose[0].Index  //平仓点位
@@ -259,6 +262,7 @@ func (this *PositionController) GetPositionList() {
 						historyClose, _, err := m.GetMoreClosePosition(info.Id)
 						if err != nil {
 							beego.Debug("Get historyClosePosition info error", err)
+							return
 						}
 						info.CloseType = historyClose[0].Type    //平仓种类
 						info.CloseIndex = historyClose[0].Index  //平仓点位
@@ -398,7 +402,7 @@ func addPositionConten(info *PositionInfo) (int64, error) {
 	op.Liquidation = info.Liquidation
 	op.Icon = info.Icon
 	op.Time = time.Now()
-	op.Timestr = op.Time.Format("2006-01-02 03:04:05")
+	op.Timestr = op.Time.Format("2006-01-02 15:04:05")
 	id, err := m.AddPosition(&op)
 	if err != nil {
 		beego.Debug("Add Teacher Fail:", err)
@@ -424,7 +428,7 @@ func updatePositionConten(info *PositionInfo) error {
 	pos.Liquidation = info.Liquidation
 	pos.Icon = info.Icon
 	pos.Time = time.Now()
-	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
+	pos.Timestr = pos.Time.Format("2006-01-02 15:04:05")
 	_, err := m.UpdatePositionInfo(&pos)
 	if err != nil {
 		beego.Debug("Update Position Fail:", err)
@@ -447,7 +451,7 @@ func addClosePositionData(info *PositionInfo, Id int64) error {
 	pos.LossPoint = "--"
 	pos.Notes = info.CloseNotes
 	pos.Time = time.Now()
-	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
+	pos.Timestr = pos.Time.Format("2006-01-02 15:04:05")
 	pos.OperPosition = &m.OperPosition{Id: Id}
 	_, err := m.AddClosePosition(&pos)
 	if err != nil {
@@ -475,7 +479,7 @@ func updateClosePositionData(info *PositionInfo) error {
 		pos.LossPoint = "--"
 		pos.Notes = info.CloseNotes
 		pos.Time = time.Now()
-		pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
+		pos.Timestr = pos.Time.Format("2006-01-02 15:04:05")
 		_, err = m.UpdateClosePositionInfo(close.Id, &pos)
 		if err != nil {
 			beego.Debug("Add ClosePosition Fail:", err)

@@ -992,7 +992,7 @@ body {
   text-align: center;
   line-height: 28px;
   position: fixed;
-  top: 28px;
+  top: 138px;
   left: 0;
   z-index: 100;
   background: #fff;
@@ -1366,6 +1366,23 @@ a {
   color: #333;
   text-align: center;
   line-height: 30px;
+}
+.viewImage {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  z-index: 999;
+}
+.viewImage img {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
 }
 .sticklabel {
   position: absolute;
@@ -2078,7 +2095,7 @@ a {
 .tradeDatail .tradeDatail-item {
   list-style: none;
   font-size: 14px;
-  padding: 10px 7px 7px 7px;
+  padding: 10px 7px 0px 7px;
   margin-bottom: 5px;
   background: #fff;
   border: 1px solid #ddd;
@@ -2096,7 +2113,7 @@ a {
   clear: both;
 }
 .tradeDatail .label-right {
-  width: calc(100% - 75px);
+  width: calc(100% - 85px);
   line-height: 26px;
   overflow: hidden;
 }
@@ -2121,31 +2138,52 @@ a {
   font-size: 12px;
   color: #777;
 }
-.tradeDatail .commodity-name {
-  font-weight: bold;
-  font-size: 16px;
+.tradeDatail .teacher-info .contron-list {
+  /*
+      .chevron-down {
+        width: 100px;
+        background: url(../handle.png)
+      }
+      */
+}
+.tradeDatail .teacher-info .contron-list .edit-list {
+  height: 24px;
+  padding: 0 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  cursor: pointer;
 }
 .tradeDatail .big_price {
   font-weight: bold;
   font-size: 20px;
   text-align: center;
 }
-.tradeDatail .remark {
-  padding-right: 15px;
-  text-align: right;
+.tradeDatail .spei_style {
+  clear: both;
+}
+.tradeDatail .spei_style > span {
+  margin-right: 5px;
 }
 .tradeDatail .s-area {
   border-bottom: 1px solid #eee;
+}
+.tradeDatail .remark {
+  text-align: right;
+  padding-right: 12px;
 }
 .tradeDatail .trade_btn {
   margin: 0;
 }
 .tradeDatail .trade_btn > span {
-  border-radius: 5px;
-  margin-top: 5px;
+  border-radius: 3px;
   color: #fff;
-  display: block;
   text-align: center;
+  padding: 0 1rem;
+  height: 24px;
+  font-size: 13px;
 }
 .tradeDatail .trade_btn > span.bgRed {
   background: #FE0000;
@@ -2359,7 +2397,8 @@ a {
   border-radius: 100%;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher {
-  margin: 0 10px;
+  margin: 0 0px 0px 10px;
+  width: calc(100% - 90px);
 }
 .expert .strategylist .strategylistinfo .listhead .teacher h3,
 .expert .strategylist .strategylistinfo .listhead .teacher p {
@@ -2371,8 +2410,8 @@ a {
   color: #353535;
   font-weight: 600;
   font-size: 18px;
-  height: 50px;
-  line-height: 50px;
+  height: 40px;
+  line-height: 57px;
 }
 .expert .strategylist .strategylistinfo .listhead .teacher .teachertitle {
   font-size: 12px;
@@ -2396,8 +2435,7 @@ a {
   padding: 6px 0px;
   color: #000;
   font-size: 14px;
-  width: calc(100% - 70px);
-  margin-left: 70px;
+  width: 100%;
 }
 .expert .strategylist .strategylistinfo .listfoot {
   overflow: hidden;
