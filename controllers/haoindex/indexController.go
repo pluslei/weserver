@@ -99,7 +99,6 @@ func (this *IndexController) Get() {
 			this.Redirect("/", 302)
 			return
 		}
-
 		info, err := m.GetUserByUsername(userInfo.OpenID)
 		if err != nil || info.Id <= 0 {
 			this.saveUser(userInfo)
@@ -108,14 +107,13 @@ func (this *IndexController) Get() {
 		}
 		beego.Debug("userInfo", userInfo)
 
-		// if len(info.Account) > 0 {
-		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
-		this.SetSession("indexUserInfo", &sessionUser)
-		this.Redirect("/index", 302)
-		// } else {
-		// 	this.Redirect("/login?openid="+userInfo.OpenID, 302)
-		// }
-
+		if len(info.Account) > 0 {
+			sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
+			this.SetSession("indexUserInfo", &sessionUser)
+			this.Redirect("/index", 302)
+		} else {
+			this.Redirect("/login?openid="+userInfo.OpenID, 302)
+		}
 	}
 	this.Ctx.WriteString("")
 }
@@ -135,6 +133,7 @@ func (this *IndexController) Login() {
 			return
 		}
 
+		beego.Debug("openid", openid)
 		var u m.User
 		u.Account = username
 		user, err := m.ReadFieldUser(&u, "Account")
@@ -146,29 +145,42 @@ func (this *IndexController) Login() {
 		beego.Debug("userinfo", user.Password, tools.EncodeUserPwd(username, password), err)
 		if user.Password != tools.EncodeUserPwd(username, password) {
 			this.Rsp(false, "用户名和密码错误 402", "")
+			beego.Debug("PassWord Error")
 			return
 		}
 
 		_, err = m.BindUserAccount(openid, user)
 		if err != nil {
 			this.Rsp(false, "用户名和密码错误 404", "")
+			beego.Debug("Bind User Account Error", err)
 			return
-		} else {
-			sessionUser, err := m.GetUserByUsername(openid)
+		}
+		if user.Username == "" {
+			_, err := m.DelUserById(user.Id)
 			if err != nil {
-				this.Rsp(false, "用户名和密码错误 405", "")
+				beego.Debug("DELETE User ID Error", err)
 				return
 			}
-			m.DelUserById(user.Id)
-			m.UpdateUserName(sessionUser.Id, sessionUser.Username)
-
-			this.SetSession("indexUserInfo", &sessionUser)
-			this.Redirect("/index", 302)
 		}
-		this.Ctx.WriteString("")
+		sessionUser, err := m.GetUserByUsername(openid)
+		if err != nil {
+			this.Rsp(false, "用户名和密码错误 405", "")
+			beego.Debug("Get UseInfo Error", err)
+			return
+		}
+		beego.Debug("sssssssssssssssss")
+		_, err1 := m.UpdateRegistName(user.Id, sessionUser.Username, sessionUser.UserIcon)
+		if err1 != nil {
+			this.Rsp(false, "用户名和密码错误 406", "")
+			beego.Debug("Update Regist UserName Error", err1)
+			return
+		}
+		this.SetSession("indexUserInfo", &sessionUser)
+		this.Redirect("/index", 302)
 	}
 	this.Data["openid"] = openid
 	this.TplName = "haoindex/login.html"
+	// this.Ctx.WriteString("")
 }
 
 //从数据库获取信息

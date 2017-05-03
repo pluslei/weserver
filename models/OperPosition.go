@@ -94,7 +94,7 @@ func UpdatePositionInfo(t *OperPosition) (int64, error) {
 		"Entrust":     t.Entrust,
 		"Index":       t.Index,
 		"Position":    t.Position,
-		"ProfitPoint": t.Position,
+		"ProfitPoint": t.ProfitPoint,
 		"LossPoint":   t.LossPoint,
 		"Notes":       t.Notes,
 		"Liquidation": t.Liquidation,
