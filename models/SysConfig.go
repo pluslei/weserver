@@ -14,15 +14,15 @@ type SysConfig struct {
 	Registertitle int64  //默认注册用户头衔
 	HistoryMsg    int64  //是否显示历史消息 0显示  1 不显示
 	HistoryCount  int64  //显示历史记录条数
-	NoticeCount   int64  //公告消息条数
-	StrategyCount int64  //策略消息条数
-	TeacherCount  int64
-	PositionCount int64
-	WelcomeMsg    string //欢迎语
 	Verify        int64  //是否开启用户审核  0开启 1不开启
 	LoginSys      int64  //是否允许登陆后台  0允许 1禁止
 	AuditMsg      int64  //是否开启消息审核  0开启 1关闭
 	VirtualUser   int64  //虚拟用户人数
+	NoticeCount   int64  //公告消息条数
+	StrategyCount int64  //策略消息条数
+	TeacherCount  int64  //老师显示条数
+	PositionCount int64  //操作建议
+	WelcomeMsg    string //欢迎语
 }
 
 func (s *SysConfig) TableName() string {

@@ -68,7 +68,7 @@ func (this *QsController) SendBroad() {
 		broad.Data = data
 		broad.FileName = filename
 		time := time.Now()
-		tm := time.Format("2006-01-02 03:04:05")
+		tm := time.Format("2006-01-02 15:04:05")
 		broad.Time = tm
 		_, err := m.AddNoticeMsg(broad)
 		if err != nil {

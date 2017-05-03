@@ -32,6 +32,7 @@ func init() {
 // 聊天记录
 func (this *ChatRecordController) ChatRecordList() {
 	if this.IsAjax() {
+		beego.Debug("aaaaaaaaaa")
 		sEcho := this.GetString("sEcho")
 		iStart, _ := this.GetInt64("iDisplayStart")
 		iLength, _ := this.GetInt64("iDisplayLength")

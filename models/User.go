@@ -14,8 +14,8 @@ import (
 //用户表
 type User struct {
 	Id            int64
-	Username      string `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
-	Account       string
+	Username      string `orm:"size(32);index" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
+	Account       string `orm:"size(32);index"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
 	Nickname      string `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
@@ -252,4 +252,23 @@ func GetUserInfoByUsername(loginuser, password string) (user User, err error) {
 func CheckAccountIsExist(account string) bool {
 	o := orm.NewOrm()
 	return o.QueryTable(new(User)).Filter("Account", account).Exist()
+}
+
+// 绑定用户
+func BindUserAccount(openid string, userInfo *User) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Openid", openid).Update(orm.Params{
+		"Account":  userInfo.Account,
+		"Password": userInfo.Password,
+		"Nickname": userInfo.Nickname,
+		"Email":    userInfo.Email,
+		"Phone":    userInfo.Phone,
+		"Qq":       userInfo.Qq,
+		"Remark":   userInfo.Remark,
+		"Status":   userInfo.Status,
+		"UserIcon": userInfo.Username,
+		"Role":     userInfo.Role.Id,
+		"Title":    userInfo.Title.Id,
+	})
+
 }

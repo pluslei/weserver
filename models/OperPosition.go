@@ -13,20 +13,19 @@ type OperPosition struct {
 	Id            int64  `orm:"pk;auto"`
 	RoomId        string //topic
 	RoomTeacher   string //老师
+	Timestr       string //时间字符
+	Type          string //种类
+	BuySell       int    //买卖 0 1
+	Entrust       string //委托类型
+	Index         string //点位
+	Position      string //仓位
+	ProfitPoint   string //止盈点
+	LossPoint     string //止损点
+	Notes         string // 备注
+	Liquidation   int    //平仓详情 (0:未平仓 1:平仓)
+	Icon          string //头像
 	Time          time.Time
-	Type          string           //种类
-	BuySell       int              //买卖 0 1
-	Entrust       string           //委托类型
-	Index         string           //点位
-	Position      string           //仓位
-	ProfitPoint   string           //止盈点
-	LossPoint     string           //止损点
-	Notes         string           // 备注
-	Liquidation   int              //平仓详情 (0:未平仓 1:平仓)
-	Icon          string           //头像
 	ClosePosition []*ClosePosition `orm:"reverse(many)"` //一对多
-
-	Timestr string //时间字符
 
 	//平仓信息
 	CloseType  string `orm:"-"` //平仓种类
@@ -53,12 +52,22 @@ func AddPosition(o *OperPosition) (int64, error) {
 	return id, err
 }
 
-// 修改平仓详情
-func UpdatePositonLq(id int64) {
+// 设为已平仓
+func UpdatePositonLq(id int64) error {
 	o := orm.NewOrm()
-	o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
+	_, err := o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
 		"Liquidation": 1,
 	})
+	return err
+}
+
+// 设为未平仓
+func UpdatePositonUnLq(id int64) error {
+	o := orm.NewOrm()
+	_, err := o.QueryTable(new(OperPosition)).Filter("Id", id).Update(orm.Params{
+		"Liquidation": 0,
+	})
+	return err
 }
 
 // 根据id查询
@@ -79,9 +88,7 @@ func DelPositionById(id int64) (int64, error) {
 //更新
 func UpdatePositionInfo(t *OperPosition) (int64, error) {
 	o := orm.NewOrm()
-	id, err := o.QueryTable("teacher").Filter("Id", t.Id).Update(orm.Params{
-		"Icon":        t.Icon,
-		"RoomTeacher": t.RoomTeacher,
+	id, err := o.QueryTable(new(OperPosition)).Filter("Id", t.Id).Update(orm.Params{
 		"Type":        t.Type,
 		"BuySell":     t.BuySell,
 		"Entrust":     t.Entrust,
@@ -91,7 +98,7 @@ func UpdatePositionInfo(t *OperPosition) (int64, error) {
 		"LossPoint":   t.LossPoint,
 		"Notes":       t.Notes,
 		"Liquidation": t.Liquidation,
-		"Time":        t.Time,
+		"Timestr":     t.Timestr,
 	})
 	return id, err
 }

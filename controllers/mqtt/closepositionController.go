@@ -109,6 +109,7 @@ func operateClosePosData(info *ClosePositionInfo) {
 			err := addClosePositionConten(info)
 			if err != nil {
 				beego.Debug("Oper ClosePosition Add Fail", err)
+				return
 			}
 		}
 		break
@@ -116,12 +117,14 @@ func operateClosePosData(info *ClosePositionInfo) {
 		_, err := m.DelClosePositionById(op.Id)
 		if err != nil {
 			beego.Debug("Oper ClosePosition Del Fail", err)
+			return
 		}
 		break
 	case OPERATE_CLOSEPOSITION_UPDATE:
 		err := updateClosePositionConten(info)
 		if err != nil {
 			beego.Debug("Oper ClosePosition update Fail", err)
+			return
 		}
 		break
 	default:
@@ -142,7 +145,7 @@ func addClosePositionConten(info *ClosePositionInfo) error {
 	pos.LossPoint = info.LossPoint
 	pos.Notes = info.Notes
 	pos.Time = time.Now()
-	pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
+	pos.Timestr = pos.Time.Format("2006-01-02 15:04:05")
 	pos.OperPosition = &m.OperPosition{Id: info.Id}
 	_, err := m.AddClosePosition(&pos)
 	if err != nil {
@@ -170,7 +173,7 @@ func updateClosePositionConten(info *ClosePositionInfo) error {
 		pos.LossPoint = info.LossPoint
 		pos.Notes = info.Notes
 		pos.Time = time.Now()
-		pos.Timestr = pos.Time.Format("2006-01-02 03:04:05")
+		pos.Timestr = pos.Time.Format("2006-01-02 15:04:05")
 		_, err = m.UpdateClosePositionInfo(close.Id, &pos)
 		if err != nil {
 			beego.Debug("Add ClosePosition Fail:", err)

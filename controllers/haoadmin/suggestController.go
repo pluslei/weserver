@@ -81,7 +81,7 @@ func (this *SuggestController) Add() {
 		oper.LossPoint = this.GetString("LossPoint")
 		oper.Notes = this.GetString("Notes")
 		time := time.Now()
-		tm := time.Format("2006-01-02 03:04:05")
+		tm := time.Format("2006-01-02 15:04:05")
 		oper.Timestr = tm
 
 		_, err = models.AddPosition(oper)
@@ -171,6 +171,7 @@ func (this *SuggestController) Edit() {
 		roomteacher, err := models.GetTeacherListByRoom(operInfo.RoomId)
 		if err != nil {
 			beego.Error("error", err)
+			beego.Error("error", err)
 		}
 		this.Data["roomteacherInfo"] = roomteacher
 		this.Data["operInfo"] = operInfo
@@ -215,7 +216,7 @@ func (this *SuggestController) AddClose() {
 		oper.Notes = this.GetString("Notes")
 		oper.OperPosition = &models.OperPosition{Id: id}
 		time := time.Now()
-		tm := time.Format("2006-01-02 03:04:05")
+		tm := time.Format("2006-01-02 15:04:05")
 		oper.Timestr = tm
 
 		_, err = models.AddClosePosition(oper)
@@ -316,10 +317,20 @@ func (this *SuggestController) DelClose() {
 	if err != nil {
 		this.Rsp(false, "删除失败", "")
 	} else {
+		info, err := models.GetClosePositionInfo(id)
+		if err != nil {
+			this.Rsp(false, "获取建仓id失败", "")
+		}
+		id := info.OperPosition.Id
 		_, err = models.DelClosePositionById(id)
 		if err != nil {
 			this.Rsp(false, "删除失败", "")
 		}
+		err1 := models.UpdatePositonUnLq(id)
+		if err1 != nil {
+			this.Rsp(false, "设置平仓信息失败", "")
+		}
+
 		this.Rsp(true, "删除成功", "")
 	}
 }
