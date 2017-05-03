@@ -13,6 +13,7 @@ import (
 	"github.com/astaxie/beego"
 
 	"weserver/controllers"
+	"weserver/controllers/haoindex"
 	. "weserver/src/tools"
 	// for json get
 )
@@ -487,18 +488,20 @@ func editStrategyContent(info *StrategyInfo) {
 	OPERATETYPE := info.OperType
 	switch OPERATETYPE {
 	case OPERATE_ADD:
+		fileName := haoindex.GetWxServerImg(info.FileName)
 		var strategy m.Strategy
 		strategy.Room = info.Room
 		strategy.Icon = info.Icon
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		strategy.FileName = info.FileName
+		strategy.FileName = fileName
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
 		strategy.ThumbNum = info.ThumbNum
 		strategy.Time = info.Time
+		strategy.WxServerImgid = info.FileName
 		strategy.Datatime = time.Now()
 		_, err := m.AddStrategy(&strategy)
 		if err != nil {
@@ -506,6 +509,11 @@ func editStrategyContent(info *StrategyInfo) {
 		}
 		break
 	case OPERATE_UPDATE:
+		strategyInfo, err := m.GetStrategyInfoById(info.Id)
+		if err != nil {
+			beego.Debug("get Strategy id error", err)
+		}
+
 		var strategy m.Strategy
 		strategy.Id = info.Id
 		strategy.Room = info.Room
@@ -513,14 +521,21 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		strategy.FileName = info.FileName
+		if strategyInfo.WxServerImgid != info.FileName {
+			fileName := haoindex.GetWxServerImg(info.FileName)
+			strategy.FileName = fileName
+			strategy.WxServerImgid = info.FileName
+		} else {
+			strategy.FileName = strategyInfo.FileName
+			strategy.WxServerImgid = strategyInfo.WxServerImgid
+		}
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
 		strategy.ThumbNum = info.ThumbNum
 		strategy.Time = info.Time
 		strategy.Datatime = time.Now()
-		_, err := m.UpdateStrategyById(&strategy)
+		_, err = m.UpdateStrategyById(&strategy)
 		if err != nil {
 			beego.Debug("Update Strategy Fail:", err)
 		}

@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"path"
 	"strings"
 	"time"
 	"weserver/src/tools"
@@ -455,4 +456,56 @@ func (this *IndexController) AmrToWav(filedir, filename string) (string, error) 
 		return "", err
 	}
 	return savepathfilename, nil
+}
+
+func (this *IndexController) WxServerImg() {
+	media := this.GetString("img")
+	imgpath := GetWxServerImg(media)
+	beego.Debug("firlena", imgpath)
+}
+
+// 获取图片保存至本地
+func GetWxServerImg(media string) (imgpath string) {
+	material := Wx.GetMaterial()
+	mediaURL, err := material.GetMediaURL(media)
+	beego.Info("mediaURL is", mediaURL)
+
+	notFile := "/static/images/nono.jpg"
+	if err != nil {
+		beego.Debug("get url error", err)
+		return notFile
+	} else {
+		resp, err := http.Get(mediaURL)
+		defer resp.Body.Close()
+		if err != nil {
+			beego.Error("get images error:", err)
+			return notFile
+		}
+		dir := path.Join("..", "upload", "room")
+		err = os.MkdirAll(dir, 0755)
+		if err != nil {
+			beego.Error("mkdir images dir error:", err)
+			return notFile
+		}
+		nowtime := time.Now().UnixNano()
+		extimg := "jpg"
+		if ext, ok := tools.ContentTypeToExt[resp.Header.Get("Content-Type")]; ok {
+			extimg = ext
+		}
+		FileName := fmt.Sprintf("%d%s%s%s", nowtime, tools.RandomNumeric(4), ".", extimg)
+		dirPath := path.Join("..", "upload", "room", FileName)
+
+		f, err := os.Create(dirPath)
+		defer f.Close()
+		if err != nil {
+			beego.Error("create images error:", err)
+			return notFile
+		}
+		_, err = io.Copy(f, resp.Body)
+		if err != nil {
+			beego.Error("ioread error", err)
+			return notFile
+		}
+		return dirPath
+	}
 }

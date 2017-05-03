@@ -196,6 +196,8 @@ func Router() {
 
 	//平仓操作
 	beego.Router("/chat/user/operateclose", &mqtt.PositionController{}, "*:OperateClosePosition")
+	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
+
 	//收藏
 	// beego.Router("/chat/user/Collect", &mqtt.ManagerController{}, "*:GetCollectInfo")
 
