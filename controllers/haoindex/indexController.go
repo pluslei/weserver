@@ -169,7 +169,6 @@ func (this *IndexController) Login() {
 			beego.Debug("Get UseInfo Error", err)
 			return
 		}
-		beego.Debug("sssssssssssssssss")
 		_, err1 := m.UpdateRegistName(user.Id, sessionUser.Username, sessionUser.UserIcon)
 		if err1 != nil {
 			this.Rsp(false, "用户名和密码错误 406", "")
