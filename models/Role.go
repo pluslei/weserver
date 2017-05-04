@@ -99,6 +99,11 @@ func AddRoleNode(roleid int64, nodeid int64) (int64, error) {
 	return num, err
 }
 
+func GetRoleCount() (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Role)).Count()
+}
+
 // 删除用户上所有的角色
 func DelUserRole(userid int64) error {
 	o := orm.NewOrm()

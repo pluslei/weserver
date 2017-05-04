@@ -186,3 +186,9 @@ func UpdateRoomInfo(id int64, roominfo orm.Params) (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable("roominfo").Filter("Id", id).Update(roominfo)
 }
+
+// 获取最大数量
+func GetRoomInfoCount() (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(RoomInfo)).Count()
+}
