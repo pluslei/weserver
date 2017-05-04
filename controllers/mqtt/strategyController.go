@@ -377,11 +377,11 @@ func parseEditStrategyMsg(msg string) bool {
 }
 
 func SendWeChatStrategy(room, msg string) {
-	beego.Debug("send wechat aaaaaaaaaaaaa")
 	arr, ok := wechat.MapUname[room]
 	if ok {
 		for _, v := range arr {
 			wechat.SendTxTMsg(v, msg)
+			beego.Debug("send wechat aaaaaaaaaaaaa")
 		}
 	}
 }
