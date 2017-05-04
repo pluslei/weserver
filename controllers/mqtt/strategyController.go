@@ -326,7 +326,7 @@ func parseStrategyMsg(msg string) bool {
 	info.OperType = OPERATE_ADD
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
-	//sendmsg := info.Data
+	// sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -337,7 +337,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-	//SendWeChatStrategy(topic, sendmsg) // send to wechat
+	// SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	editStrageydata(info)
 	return true

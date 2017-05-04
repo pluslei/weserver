@@ -2007,6 +2007,7 @@ var EditStrategy = function (_React$Component) {
         processData: false,
         contentType: false,
         success: function success(result) {
+          (0, _jquery2.default)('.imgUploadTip').css('display', 'none');
           _this2.state.getImage = result.url;
           _this2.state.files = '';
           var addImg = document.querySelector('.addImg');
@@ -2014,6 +2015,13 @@ var EditStrategy = function (_React$Component) {
           var delimg = document.querySelector('.delimg');
           delimg.style.display = 'block';
           (0, _jquery2.default)('.file>span>img').css('z-index', '199');
+        },
+        error: function error(result) {
+          console.log(result);
+          (0, _jquery2.default)('.imgUploading').text('上传失败');
+          setTimeout(function () {
+            (0, _jquery2.default)('.imgUploadTip').css('display', 'none');
+          }, 1000);
         }
       });
     }
@@ -2026,6 +2034,7 @@ var EditStrategy = function (_React$Component) {
       var form = new FormData();
       form.append('file', files);
       this.state.files = form;
+      (0, _jquery2.default)('.imgUploadTip').css('display', 'block');
       // const imgUrl = window.URL.createObjectURL(files);
       // addImg.src = imgUrl;
       // const delimg = document.querySelector('.delimg');
@@ -2090,6 +2099,16 @@ var EditStrategy = function (_React$Component) {
         return _react2.default.createElement(
           'div',
           { className: 'sendNotice' },
+          _react2.default.createElement(
+            'div',
+            { className: 'imgUploadTip imgup' },
+            _react2.default.createElement(
+              'div',
+              { className: 'imgUploading' },
+              _react2.default.createElement('img', { src: 'i/editer/loading.gif', alt: '' }),
+              '\u6B63\u5728\u4E0A\u4F20...'
+            )
+          ),
           _react2.default.createElement(
             'div',
             { className: 'conNotice' },
@@ -2741,9 +2760,23 @@ var SendStrategy = function (_React$Component) {
         processData: false,
         contentType: false,
         success: function success(result) {
-          console.log(result);
           _this2.state.getImage = result.url;
           _this2.state.files = '';
+          var addImg = document.querySelector('.addImg');
+          addImg.src = result.url;
+          var delimg = document.querySelector('.delimg');
+          delimg.style.display = 'block';
+          (0, _jquery2.default)('.file>span>img').css('z-index', '199');
+          setTimeout(function () {
+            (0, _jquery2.default)('.imgUploadTip').css('display', 'none');
+          }, 500);
+        },
+        error: function error(result) {
+          console.log(result);
+          (0, _jquery2.default)('.imgUploading').text('上传失败');
+          setTimeout(function () {
+            (0, _jquery2.default)('.imgUploadTip').css('display', 'none');
+          }, 1000);
         }
       });
     }
@@ -2751,17 +2784,18 @@ var SendStrategy = function (_React$Component) {
     key: 'file',
     value: function file() {
       // const Imgfile = document.querySelector('.Imgfile');
-      var addImg = document.querySelector('.addImg');
+      // const addImg = document.querySelector('.addImg');
       var files = (0, _jquery2.default)('#fileId').get(0).files[0];
       var form = new FormData();
       form.append('file', files);
       this.state.files = form;
+      (0, _jquery2.default)('.imgUploadTip').css('display', 'block');
       // console.log(files, form, files.path, '上传图片');
-      var imgUrl = window.URL.createObjectURL(files);
-      addImg.src = imgUrl;
-      var delimg = document.querySelector('.delimg');
-      delimg.style.display = 'block';
-      (0, _jquery2.default)('.file>span>img').css('z-index', '199');
+      // const imgUrl = window.URL.createObjectURL(files);
+      // addImg.src = imgUrl;
+      // const delimg = document.querySelector('.delimg');
+      // delimg.style.display = 'block';
+      // $('.file>span>img').css('z-index', '199');
       // 上传图片
       this.uploadimg();
       // const img = document.createElement('img');
@@ -2821,6 +2855,16 @@ var SendStrategy = function (_React$Component) {
         return _react2.default.createElement(
           'div',
           { className: 'sendNotice' },
+          _react2.default.createElement(
+            'div',
+            { className: 'imgUploadTip imgup' },
+            _react2.default.createElement(
+              'div',
+              { className: 'imgUploading' },
+              _react2.default.createElement('img', { src: 'i/editer/loading.gif', alt: '' }),
+              '\u4E0A\u4F20\u56FE\u7247\u4E2D...'
+            )
+          ),
           _react2.default.createElement(
             'div',
             { className: 'conNotice' },
@@ -5321,9 +5365,11 @@ var Interact = function (_React$Component) {
       // this.getOnlineCount('/chat/user/online/count');
       this.getHistoryList(0, '/chat/user/historylist');
       var chat = document.querySelector('.chat');
-      var title = document.querySelector('.trade-title');
+      var title = document.querySelector('.trade');
+      var newTab = document.querySelector('.newTab');
       chat.addEventListener('touchend', this.wintouch, false);
       title.addEventListener('touchmove', this.titlemove, false);
+      newTab.addEventListener('touchmove', this.titlemove, false);
     }
   }, {
     key: 'componentDidUpdate',
@@ -6594,7 +6640,6 @@ var Strategy = function (_React$Component) {
     value: function componentDidMount() {
       window.addEventListener('touchend', this.clearOpera, false);
       this.getStrategy(0, '/chat/user/strategyList');
-      console.log('componentDidMount');
     }
   }, {
     key: 'componentDidUpdate',
@@ -6616,7 +6661,6 @@ var Strategy = function (_React$Component) {
           Id: id
         },
         success: function success(data) {
-          console.log(data, 'haha');
           if (data.historyStrategy === null) {
             (0, _jquery2.default)('.load').css('display', 'none');
           }
@@ -6716,7 +6760,6 @@ var Strategy = function (_React$Component) {
   }, {
     key: 'stickinfo',
     value: function stickinfo(item, index) {
-      // console.log(this.state.strategylist[index], '\\\\\\');
       this.state.strategylist[index].IsTop = !this.state.strategylist[index].IsTop;
       var status = this.state.strategylist[index].IsTop;
       if (status) {
@@ -6767,7 +6810,6 @@ var Strategy = function (_React$Component) {
   }, {
     key: 'strategyAdd',
     value: function strategyAdd(data) {
-      console.log(data);
       // if (data.IsTop) {
       //   this.state.strategylist.unshift(data);
       //   // console.log('Top:', this.state.strategylist);
@@ -6780,7 +6822,6 @@ var Strategy = function (_React$Component) {
       //   // console.log('strategylist:', this.state.strategylist);
       // }
       this.state.strategylist.unshift(data);
-      console.log('strategylist:', this.state.strategylist);
       this.setState({
         strategylist: this.state.strategylist
       });
@@ -6788,7 +6829,6 @@ var Strategy = function (_React$Component) {
   }, {
     key: 'strategyDel',
     value: function strategyDel(data) {
-      // console.log('strategy Del');
       for (var i = 0; i < this.state.strategylist.length; i++) {
         if (this.state.strategylist[i].Id === data.Id) {
           this.state.strategylist.splice(i, 1);
@@ -6891,7 +6931,6 @@ var Strategy = function (_React$Component) {
       (0, _jquery2.default)('.viewImage img').attr('src', imgurl);
       var imgH = (0, _jquery2.default)('.viewImage img').height();
       var imgW = (0, _jquery2.default)('.viewImage img').width();
-      console.log(imgH, imgW);
       (0, _jquery2.default)('.viewImage img').css('margin-top', '-' + imgH / 2 + 'px');
       (0, _jquery2.default)('.viewImage img').css('margin-left', '-' + imgW / 2 + 'px');
     }
@@ -6986,6 +7025,17 @@ var Strategy = function (_React$Component) {
         icon = item.Icon;
       }
       var itemTime = item.Time.slice(11);
+
+      // 图片
+      var strategyIMG = item.FileName === '' ? null : _react2.default.createElement('img', {
+        onTouchEnd: function onTouchEnd() {
+          if (_this3.state.touch.slide === 0) {
+            _this3.viewImage(item.FileName);
+          }
+        },
+        src: item.FileName,
+        alt: '\u56FE\u7247\u52A0\u8F7D\u5931\u8D25'
+      });
       return _react2.default.createElement(
         'div',
         {
@@ -7031,15 +7081,7 @@ var Strategy = function (_React$Component) {
               null,
               item.Data
             ),
-            _react2.default.createElement('img', {
-              onTouchEnd: function onTouchEnd() {
-                if (_this3.state.touch.slide === 0) {
-                  _this3.viewImage(item.FileName);
-                }
-              },
-              src: item.FileName,
-              alt: ''
-            })
+            strategyIMG
           )
         )
       );
@@ -8155,12 +8197,12 @@ var Trade = function (_React$Component) {
       var _this3 = this;
 
       var drapARW = this.props.Trade.state.isShowHistory ? 'am-icon-caret-up am-margin-left-sm' : 'am-icon-caret-down am-margin-left-sm';
-      this.msg.style = this.state.dataList.Notes === '卖出' ? 'red' : 'green';
-      this.msg.stylelist = this.state.dataList.BuySell === 0 ? 'red' : 'green';
-      this.msg.nameStyle = this.state.dataList.BuySell === 1 ? '卖出建仓' : '买入建仓';
       if (this.state.dataList !== undefined) {
         this.props.Trade.isTradeData = false;
         if (this.state.dataList.length !== 0) {
+          this.msg.style = this.state.dataList.Notes === '卖出' ? 'green' : 'red';
+          this.msg.stylelist = this.state.dataList.BuySell === 0 ? 'red' : 'green';
+          this.msg.nameStyle = this.state.dataList.BuySell === 1 ? '卖出建仓' : '买入建仓';
           this.props.Trade.isTradeData = true;
           return _react2.default.createElement(
             'div',
