@@ -142,6 +142,7 @@ func Router() {
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")

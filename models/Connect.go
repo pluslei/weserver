@@ -77,7 +77,7 @@ func inserData() {
 func inserGroup() {
 	count, _ := GetGroupCount()
 	if count >= 1 {
-		beego.Error("group max count", count)
+		beego.Info("group max count", count)
 		return
 	}
 
@@ -91,7 +91,9 @@ func inserGroup() {
 	_, err := AddGroup(group)
 	if err != nil {
 		beego.Error("init group error")
+		return
 	}
+	beego.Info("init grouop success")
 }
 
 func inserRole() {
@@ -111,7 +113,7 @@ func inserRole() {
 	for _, v := range role {
 		AddRole(&v)
 	}
-	beego.Info("init role")
+	beego.Info("init role success")
 }
 
 func insertTitle() {
@@ -135,6 +137,7 @@ func insertTitle() {
 	for _, v := range title {
 		AddTitle(&v)
 	}
+	beego.Info("init title success")
 }
 
 func inserUser() {
@@ -144,6 +147,7 @@ func inserUser() {
 		return
 	}
 
+	userImg := beego.AppConfig.String("httplocalServerAdress") + "/static/img/defaultIco.png"
 	user := new(User)
 	user.Id = 1
 	user.Username = "admin"
@@ -153,6 +157,7 @@ func inserUser() {
 	user.Lastlogintime = time.Now()
 	user.Createtime = time.Now()
 	user.UserIcon = ""
+	user.Headimgurl = userImg
 	user.RegStatus = 1
 	user.Role = &Role{Id: 1}
 	user.Title = &Title{Id: 1}
@@ -160,6 +165,7 @@ func inserUser() {
 	if err != nil {
 		beego.Error("add user error", err)
 	}
+	beego.Info("init user success")
 }
 
 func inserRoominfo() {
@@ -183,19 +189,20 @@ func inserRoominfo() {
 		v.RoomId = beego.AppConfig.String("mqServerTopic") + "/" + getRoomId()
 		AddRoom(&v)
 	}
+	beego.Info("init roominfo success")
 }
 
 func insertNodes() {
 	countNode := 60
 	count, _ := GetNodeCount()
 	if int(count) >= countNode {
-		fmt.Println("node haved")
+		beego.Info("init node error")
 	} else {
 		fmt.Println("insert node start")
 		nodes := [...]Node{
 			{Id: 1, Title: "用户管理", Name: "user", Level: 1, Pid: 0, Remark: "用户管理", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user", Hide: 1, Ico: "am-icon-user"},
-			{Id: 2, Title: "用户列表", Name: "user/index", Level: 2, Pid: 1, Remark: "用户管理/用户列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/index", Hide: 1, Ico: ""},
-			{Id: 3, Title: "用户设置", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
+			{Id: 2, Title: "用户审核", Name: "user/index", Level: 2, Pid: 1, Remark: "用户管理/用户列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/index", Hide: 1, Ico: ""},
+			{Id: 3, Title: "用户列表", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
 			{Id: 4, Title: "更新用户", Name: "user/update", Level: 3, Pid: 2, Remark: "用户管理/增加用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/updateuser", Hide: 1, Ico: ""},
 			{Id: 5, Title: "删除用户", Name: "user/deluser", Level: 3, Pid: 2, Remark: "用户管理/删除用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/deluser", Hide: 1, Ico: ""},
 			{Id: 6, Title: "用户赋予角色", Name: "user/usertorole", Level: 3, Pid: 2, Remark: "用户管理/用户赋予角色", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usertorole", Hide: 1, Ico: ""},
@@ -257,6 +264,7 @@ func insertNodes() {
 			AddNode(&v)
 		}
 	}
+	beego.Info("init node success")
 }
 
 func inserSys() {
@@ -279,8 +287,9 @@ func inserSys() {
 	sys.VirtualUser = 10
 	_, err := AddSysConfig(sys)
 	if err != nil {
-		beego.Error("init db", err)
+		beego.Error("init db error", err)
 	}
+	beego.Info("init node success")
 }
 
 func getRoomId() string {
