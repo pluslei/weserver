@@ -126,6 +126,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			} else {
@@ -143,6 +144,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			}
@@ -182,6 +184,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			} else {
@@ -199,6 +202,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			}
@@ -490,7 +494,6 @@ func editStrategyContent(info *StrategyInfo) {
 	switch OPERATETYPE {
 	case OPERATE_ADD:
 		var strategy m.Strategy
-
 		if info.FileName != "" {
 			fileName := haoindex.GetWxServerImg(info.FileName)
 			strategy.FileName = fileName
