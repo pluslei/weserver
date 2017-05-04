@@ -261,12 +261,12 @@ func BindUserAccount(openid string, userInfo *User) (int64, error) {
 		"Account":  userInfo.Account,
 		"Password": userInfo.Password,
 		"Nickname": userInfo.Nickname,
+		"UserIcon": userInfo.UserIcon,
 		"Email":    userInfo.Email,
 		"Phone":    userInfo.Phone,
 		"Qq":       userInfo.Qq,
 		"Remark":   userInfo.Remark,
 		"Status":   userInfo.Status,
-		"UserIcon": userInfo.Username,
 		"Role":     userInfo.Role.Id,
 		"Title":    userInfo.Title.Id,
 	})

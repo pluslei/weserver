@@ -1285,16 +1285,16 @@ a {
   margin-left: 5px;
 }
 .strategy .strategylist .strategylistinfo .strategycontent .handle {
-  width: 30px;
-  height: 20px;
+  width: 40px;
+  height: 30px;
+  line-height: 15px;
   text-align: right;
-  margin-top: -6px;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 5px;
   z-index: 10;
 }
-.strategy .strategylist .strategylistinfo .strategycontent .handle img {
+.strategy .strategylist .strategylistinfo .strategycontent .handle > img {
   width: 17px;
   height: 10px;
 }
@@ -1361,28 +1361,29 @@ a {
   line-height: 16px;
 }
 .opera {
-  width: 80px;
-  height: 60px;
+  width: 60px;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   background: #fff;
   position: absolute;
   right: 0px;
-  top: 20px;
+  top: 17px;
   z-index: 100;
   -webkit-box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
 .opera .stickinfo {
-  width: 80px;
-  height: 30px;
+  width: 60px;
+  height: 22px;
   color: #333;
   text-align: center;
-  line-height: 30px;
+  line-height: 22px;
 }
 .opera .delinfo {
   color: red;
+  height: 23px;
+  line-height: 23px;
   border-top: 1px solid #dfdfdf;
 }
 .viewImage {
@@ -1856,10 +1857,47 @@ a {
 .textColor_active {
   border: 2px solid #61D963 !important;
 }
+.imgUploadTip {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: rgba(255, 255, 255, 0);
+  z-index: 10;
+  display: none;
+}
+.imgUploading {
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  text-align: center;
+  line-height: 115px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -60px;
+  font-size: 13px;
+  z-index: 100;
+  color: #fff;
+}
+.imgUploading img {
+  display: block;
+  margin: 0 auto;
+  width: 20px;
+  margin-top: 7px;
+  position: absolute;
+  left: 50%;
+  margin-left: -10px;
+  top: 10px;
+}
 .chatRoomInfo {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: #efeff8;
 }
 .chatRoomInfo .RoomInfo_banner {
   width: 100%;
@@ -2180,7 +2218,7 @@ a {
   clear: both;
 }
 .tradeDatail .spei_style > span {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .tradeDatail .s-area {
   border-bottom: 1px solid #eee;
@@ -2196,7 +2234,7 @@ a {
   border-radius: 3px;
   color: #fff;
   text-align: center;
-  padding: 0 1rem;
+  padding: 2px 1rem;
   height: 24px;
   font-size: 13px;
 }
@@ -2215,6 +2253,7 @@ a {
 .tradeDatail .handle img {
   width: 17px;
   height: 10px;
+  float: right;
 }
 .tradeDatail .handle .opera {
   width: 80px;
@@ -2376,11 +2415,14 @@ a {
 .advice .trad_submit button:nth-of-type(1) {
   float: left;
 }
-.advice .trad_submit button:nth-of-type(2) {
-  float: right;
-  background: #09bb07;
+.advice .trad_submit .trad_sub {
+  background: rgba(9, 187, 7, 0.5);
   color: #fff;
+  float: right;
   border: none;
+}
+.advice .trad_submit .sub_right {
+  background: #09bb07;
 }
 .trad_btn {
   width: 83%;

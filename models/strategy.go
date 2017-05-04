@@ -54,12 +54,13 @@ func GetStrategyCount(room string, count int64) ([]Strategy, int64, error) {
 func GetStrategyList(room string) ([]Strategy, int64, error) {
 	o := orm.NewOrm()
 	var info []Strategy
-	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Id").OrderBy("IsTop").All(&info)
-	var infoSort []Strategy
-	for i := 0; i < len(info); i++ {
-		infoSort = append(infoSort, info[len(info)-1-i])
-	}
-	return infoSort, num, err
+	num, err := o.QueryTable("Strategy").Filter("Room", room).OrderBy("-Time").All(&info)
+	// var infoSort []Strategy
+	// for i := 0; i < len(info); i++ {
+	// 	infoSort = append(infoSort, info[len(info)-1-i])
+	// }
+	// return infoSort, num, err
+	return info, num, err
 }
 
 /*

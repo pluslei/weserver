@@ -6,9 +6,9 @@ import (
 	m "weserver/models"
 	_ "weserver/routers"
 	"weserver/src/mqtt"
+	"weserver/src/wechat"
 
 	"weserver/controllers/haoindex"
-	"weserver/src/wechat"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
