@@ -42,6 +42,11 @@ func AddTitle(t *Title) (int64, error) {
 	return id, err
 }
 
+func GetTitleCount() (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Title)).Count()
+}
+
 func (this *Title) UpdateTitle(fields ...string) error {
 	if _, err := orm.NewOrm().Update(this, fields...); err != nil {
 		return err

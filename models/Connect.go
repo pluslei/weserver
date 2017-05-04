@@ -75,6 +75,12 @@ func inserData() {
 }
 
 func inserGroup() {
+	count, _ := GetGroupCount()
+	if count >= 1 {
+		beego.Error("group max count", count)
+		return
+	}
+
 	group := new(Group)
 	group.Id = 1
 	group.Name = "admin"
@@ -89,6 +95,11 @@ func inserGroup() {
 }
 
 func inserRole() {
+	count, _ := GetRoleCount()
+	if count >= 6 {
+		beego.Error("role max count", count)
+		return
+	}
 	role := [...]Role{
 		{Id: 1, Title: "管理员", Name: "manager", Remark: "管理员", Status: 1, Weight: 1, Delay: 0, IsInsider: 1},
 		{Id: 2, Title: "客服", Name: "customer", Remark: "客服", Status: 1, Weight: 1, Delay: 0, IsInsider: 1},
@@ -104,6 +115,11 @@ func inserRole() {
 }
 
 func insertTitle() {
+	count, _ := GetTitleCount()
+	if count >= 10 {
+		beego.Error("title max count", count)
+		return
+	}
 	title := [...]Title{
 		{Id: 1, Name: "管理员", Css: "#CC0000", Background: 1, Weight: 999, Remark: "管理员"},
 		{Id: 2, Name: "至尊", Css: "#000000", Background: 0, Weight: 999, Remark: "至尊"},
@@ -122,6 +138,12 @@ func insertTitle() {
 }
 
 func inserUser() {
+	userInfo, err := GetUserByUsername("admin")
+	if userInfo.Id > 0 {
+		beego.Error("user admin is exist", err)
+		return
+	}
+
 	user := new(User)
 	user.Id = 1
 	user.Username = "admin"
@@ -134,13 +156,18 @@ func inserUser() {
 	user.RegStatus = 1
 	user.Role = &Role{Id: 1}
 	user.Title = &Title{Id: 1}
-	_, err := AddUser(user)
+	_, err = AddUser(user)
 	if err != nil {
 		beego.Error("add user error", err)
 	}
 }
 
 func inserRoominfo() {
+	count, _ := GetRoomInfoCount()
+	if count >= 4 {
+		beego.Info("roomInfo max count:", count)
+		return
+	}
 	roomGroupId := beego.AppConfig.String("roomGroupId")
 	roomUrl := beego.AppConfig.String("roomUrl")
 	roomAccess := beego.AppConfig.String("roomAccess")
@@ -239,7 +266,7 @@ func inserSys() {
 	sys.ChatInterval = 0
 	sys.Registerrole = 6
 	sys.Registertitle = 7
-	sys.HistoryMsg = 0
+	sys.HistoryMsg = 10
 	sys.HistoryCount = 10
 	sys.NoticeCount = 10
 	sys.StrategyCount = 10

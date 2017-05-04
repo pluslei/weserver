@@ -30,6 +30,7 @@ func GetUnameMapInfo() {
 	Info, err := m.GetWechatUser(2)
 	if err != nil {
 		beego.Error("wechat:get the userinfo error", err)
+		return
 	}
 	for _, info := range Info {
 		Room := info.Room

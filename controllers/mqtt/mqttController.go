@@ -144,6 +144,7 @@ func (this *MqttController) GetChatHistoryList() {
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
 			historychat, totalCount, _ := m.GetAllChatMsgData(roomId, "chat_record")
+			beego.Debug("ssssssssssss")
 			if nId == 0 {
 				var i int64
 				if totalCount < sysCount {
