@@ -126,6 +126,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			} else {
@@ -143,6 +144,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			}
@@ -182,6 +184,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			} else {
@@ -199,6 +202,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			}
@@ -326,7 +330,7 @@ func parseStrategyMsg(msg string) bool {
 	info.OperType = OPERATE_ADD
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
-	// sendmsg := info.Data
+	sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -337,7 +341,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-	// SendWeChatStrategy(topic, sendmsg) // send to wechat
+	SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	editStrageydata(info)
 	return true
@@ -366,13 +370,14 @@ func parseEditStrategyMsg(msg string) bool {
 
 		mq.SendMessage(topic, v)
 	*/
-	//SendWeChatStrategy(topic, sendmsg) // send to wechat
+	// SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	editStrageydata(info)
 	return true
 }
 
 func SendWeChatStrategy(room, msg string) {
+	beego.Debug("send wechat aaaaaaaaaaaaa")
 	arr, ok := wechat.MapUname[room]
 	if ok {
 		for _, v := range arr {
@@ -488,14 +493,19 @@ func editStrategyContent(info *StrategyInfo) {
 	OPERATETYPE := info.OperType
 	switch OPERATETYPE {
 	case OPERATE_ADD:
-		fileName := haoindex.GetWxServerImg(info.FileName)
 		var strategy m.Strategy
+		if info.FileName != "" {
+			fileName := haoindex.GetWxServerImg(info.FileName)
+			strategy.FileName = fileName
+		} else {
+			strategy.FileName = info.FileName
+		}
 		strategy.Room = info.Room
 		strategy.Icon = info.Icon
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		strategy.FileName = fileName
+
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
@@ -521,7 +531,7 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		if strategyInfo.WxServerImgid != info.FileName {
+		if strategyInfo.WxServerImgid != info.FileName && info.FileName != "" {
 			fileName := haoindex.GetWxServerImg(info.FileName)
 			strategy.FileName = fileName
 			strategy.WxServerImgid = info.FileName
