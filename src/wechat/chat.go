@@ -61,7 +61,7 @@ func WechatRun() {
 	Init()
 	info := getParam()
 	chat = Start(info)
-	chat.Work()
+	chat.Running()
 	beego.Debug("WeChat Init ok !")
 }
 
