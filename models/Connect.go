@@ -266,11 +266,7 @@ func inserSys() {
 	sys.ChatInterval = 0
 	sys.Registerrole = 6
 	sys.Registertitle = 7
-<<<<<<< HEAD
 	sys.HistoryMsg = 10
-=======
-	sys.HistoryMsg = 0
->>>>>>> f63e91a9e38e2a93b0361da055fb0a2641b02c88
 	sys.HistoryCount = 10
 	sys.NoticeCount = 10
 	sys.StrategyCount = 10
