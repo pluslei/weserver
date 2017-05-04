@@ -46,6 +46,11 @@ func (this *Group) UpdateGroup(fields ...string) error {
 	return nil
 }
 
+func GetGroupCount() (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(Group)).Count()
+}
+
 func DelGroupById(Id int64) (int64, error) {
 	o := orm.NewOrm()
 	status, err := o.Delete(&Group{Id: Id})
