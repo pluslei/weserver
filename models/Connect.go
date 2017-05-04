@@ -146,10 +146,10 @@ func inserRoominfo() {
 	roomAccess := beego.AppConfig.String("roomAccess")
 	roomSecretKey := beego.AppConfig.String("roomSecretKey")
 	roominfo := [...]RoomInfo{
-		{Id: 1, Qos: 0, RoomTitle: "互动社区", RoomTeacher: "胡老师", RoomNum: "1352", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon1.png", RoomIntro: "时刻为您提供最新的红木行情分析，为广大客户提供交流的平台", RoomBanner: "i/allchannel/banner1.png", Title: "互动社区", MidPage: 1},
-		{Id: 2, Qos: 0, RoomTitle: "会员专区", RoomTeacher: "徐老师", RoomNum: "1982", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon1.png", RoomIntro: "专业的分析给您更准确的投资建议", RoomBanner: "i/allchannel/banner1.png", Title: "会员专区", MidPage: 1},
-		{Id: 3, Qos: 0, RoomTitle: "贵宾专区", RoomTeacher: "王老师", RoomNum: "650", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon3.png", RoomIntro: "尊享专人一对一的贴心服务，给您专属的投资指导", RoomBanner: "i/allchannel/banner1.png", Title: "贵宾专区", MidPage: 1},
-		{Id: 4, Qos: 0, RoomTitle: "铂金VIP", RoomTeacher: "雷老师", RoomNum: "960", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon4.png", RoomIntro: "网罗最新最全的红木行情，由数位具有十数年经验的高级分析师为您提供专属服务", RoomBanner: "i/allchannel/banner1.png", Title: "铂金VIP", MidPage: 1},
+		{Id: 1, Qos: 0, RoomTitle: "会员专区", RoomTeacher: "徐老师", RoomNum: "1982", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon1.png", RoomIntro: "专业的分析给您更准确的投资建议", RoomBanner: "i/allchannel/banner1.png", Title: "会员专区", MidPage: 1},
+		{Id: 2, Qos: 0, RoomTitle: "贵宾专区", RoomTeacher: "王老师", RoomNum: "650", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon2.png", RoomIntro: "尊享专人一对一的贴心服务，给您专属的投资指导", RoomBanner: "i/allchannel/banner1.png", Title: "贵宾专区", MidPage: 1},
+		{Id: 3, Qos: 0, RoomTitle: "铂金VIP", RoomTeacher: "雷老师", RoomNum: "960", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon3.png", RoomIntro: "网罗最新最全的红木行情，由数位具有十数年经验的高级分析师为您提供专属服务", RoomBanner: "i/allchannel/banner1.png", Title: "铂金VIP", MidPage: 1},
+		{Id: 4, Qos: 0, RoomTitle: "专家交流", RoomTeacher: "胡老师", RoomNum: "239", GroupId: roomGroupId, Url: roomUrl, Port: 80, Tls: false, Access: roomAccess, SecretKey: roomSecretKey, RoomIcon: "i/allchannel/icon4.png", RoomIntro: "行业专家交流区，不定期邀请行业专家交流", RoomBanner: "i/allchannel/banner1.png", Title: "专家交流", MidPage: 1},
 	}
 
 	for _, v := range roominfo {
@@ -240,11 +240,11 @@ func inserSys() {
 	sys.Registerrole = 6
 	sys.Registertitle = 7
 	sys.HistoryMsg = 0
-	sys.HistoryCount = 50
+	sys.HistoryCount = 10
 	sys.NoticeCount = 10
-	sys.StrategyCount = 0
-	sys.TeacherCount = 0
-	sys.PositionCount = 0
+	sys.StrategyCount = 10
+	sys.TeacherCount = 10
+	sys.PositionCount = 10
 	sys.WelcomeMsg = "欢迎来到互动社区"
 	sys.Verify = 0
 	sys.LoginSys = 1

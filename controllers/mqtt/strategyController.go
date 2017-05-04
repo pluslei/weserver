@@ -326,7 +326,7 @@ func parseStrategyMsg(msg string) bool {
 	info.OperType = OPERATE_ADD
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
-	//sendmsg := info.Data
+	// sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -337,7 +337,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-	//SendWeChatStrategy(topic, sendmsg) // send to wechat
+	// SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	editStrageydata(info)
 	return true
@@ -488,14 +488,18 @@ func editStrategyContent(info *StrategyInfo) {
 	OPERATETYPE := info.OperType
 	switch OPERATETYPE {
 	case OPERATE_ADD:
-		fileName := haoindex.GetWxServerImg(info.FileName)
 		var strategy m.Strategy
+		if info.FileName == "" {
+			strategy.FileName = info.FileName
+		}else{
+			fileName := haoindex.GetWxServerImg(info.FileName)
+			strategy.FileName = fileName
+		}
 		strategy.Room = info.Room
 		strategy.Icon = info.Icon
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		strategy.FileName = fileName
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
