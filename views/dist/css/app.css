@@ -251,7 +251,6 @@ input[type=submit] {
 .Editer {
   position: absolute;
   left: 0;
-  bottom: 0;
   z-index: 999;
   border-top: 1px solid #dfdfdf;
   height: auto;
@@ -991,8 +990,8 @@ body {
   font-size: 14px;
   text-align: center;
   line-height: 28px;
-  position: fixed;
-  top: 138px;
+  position: absolute;
+  top: 0;
   left: 0;
   z-index: 100;
   background: #fff;
@@ -1346,6 +1345,16 @@ a {
   color: #999;
   line-height: 22px;
 }
+.strategy .strategylist .listcontent {
+  height: 100%;
+}
+.strategy .strategylist .listcontent .no {
+  color: #b2b2b2;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40rem;
+  width: 100%;
+}
 .strategy .sendStratetgy {
   position: fixed;
   right: 4vh;
@@ -1411,13 +1420,6 @@ a {
 .sticklabel img {
   width: 80px;
 }
-.no {
-  color: #b2b2b2;
-  font-size: 20px;
-  text-align: center;
-  line-height: 40rem;
-  width: 100%;
-}
 .topload {
   top: 0px;
   background: #fff;
@@ -1449,6 +1451,13 @@ a {
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
   }
+}
+.no {
+  color: #b2b2b2;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40rem;
+  width: 100%;
 }
 .disableSendMsg {
   width: 100%;
