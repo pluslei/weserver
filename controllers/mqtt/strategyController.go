@@ -490,13 +490,13 @@ func editStrategyContent(info *StrategyInfo) {
 	switch OPERATETYPE {
 	case OPERATE_ADD:
 		var strategy m.Strategy
-		if info.FileName == "" {
-			strategy.FileName = ""
-		} else {
+
+		if info.FileName != "" {
 			fileName := haoindex.GetWxServerImg(info.FileName)
 			strategy.FileName = fileName
+		} else {
+			strategy.FileName = info.FileName
 		}
-
 		strategy.Room = info.Room
 		strategy.Icon = info.Icon
 		strategy.Name = info.Name
