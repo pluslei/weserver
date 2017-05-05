@@ -72,6 +72,7 @@ func (w *Wechat) Running() {
 					postReq, err := http.NewRequest("POST", w.TextUrl, bytes.NewReader(msg))
 					if err != nil {
 						beego.Debug("POST WeChatText fail", err)
+						break
 					}
 					postReq.Header.Set("Content-Type", "application/json; encoding=utf-8")
 
