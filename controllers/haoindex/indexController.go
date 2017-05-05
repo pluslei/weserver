@@ -108,13 +108,13 @@ func (this *IndexController) Get() {
 		}
 		beego.Debug("userInfo", userInfo)
 
-		// if len(info.Account) > 0 {
-		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
-		this.SetSession("indexUserInfo", &sessionUser)
-		this.Redirect("/index", 302)
-		// } else {
-		// 	this.Redirect("/login?openid="+userInfo.OpenID, 302)
-		// }
+		if len(info.Account) > 0 {
+			sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
+			this.SetSession("indexUserInfo", &sessionUser)
+			this.Redirect("/index", 302)
+		} else {
+			this.Redirect("/login?openid="+userInfo.OpenID, 302)
+		}
 	}
 	this.Ctx.WriteString("")
 }
@@ -510,4 +510,9 @@ func GetWxServerImg(media string) (imgpath string) {
 		}
 		return dirPath
 	}
+}
+
+//收藏
+func (this *IndexController) WechatFree() {
+	this.Rsp(true, "", "")
 }

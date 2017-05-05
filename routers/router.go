@@ -200,6 +200,8 @@ func Router() {
 	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
 
 	//收藏
-	// beego.Router("/chat/user/Collect", &mqtt.ManagerController{}, "*:GetCollectInfo")
+	beego.Router("/chat/user/Collect", &mqtt.CollectController{}, "*:GetCollectInfo")
+	//free
+	beego.Router("/wechatSocket", &haoindex.IndexController{}, "*:WechatFree")
 
 }
