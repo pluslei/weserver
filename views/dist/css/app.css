@@ -249,8 +249,9 @@ input[type=submit] {
   white-space: nowrap;
 }
 .Editer {
-  position: absolute;
+  position: fixed;
   left: 0;
+  bottom: 0;
   z-index: 999;
   border-top: 1px solid #dfdfdf;
   height: auto;
@@ -991,7 +992,7 @@ body {
   text-align: center;
   line-height: 28px;
   position: absolute;
-  top: 0;
+  top: -28px;
   left: 0;
   z-index: 100;
   background: #fff;
@@ -1368,6 +1369,7 @@ a {
   font-size: 12px;
   padding: 5px;
   line-height: 16px;
+  z-index: 15;
 }
 .opera {
   width: 60px;

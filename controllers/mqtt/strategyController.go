@@ -377,11 +377,11 @@ func parseEditStrategyMsg(msg string) bool {
 }
 
 func SendWeChatStrategy(room, msg string) {
-	beego.Debug("send wechat aaaaaaaaaaaaa")
 	arr, ok := wechat.MapUname[room]
 	if ok {
 		for _, v := range arr {
 			wechat.SendTxTMsg(v, msg)
+			beego.Debug("send wechat aaaaaaaaaaaaa")
 		}
 	}
 }
@@ -519,11 +519,6 @@ func editStrategyContent(info *StrategyInfo) {
 		}
 		break
 	case OPERATE_UPDATE:
-		strategyInfo, err := m.GetStrategyInfoById(info.Id)
-		if err != nil {
-			beego.Debug("get Strategy id error", err)
-		}
-
 		var strategy m.Strategy
 		strategy.Id = info.Id
 		strategy.Room = info.Room
@@ -531,21 +526,21 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		if strategyInfo.WxServerImgid != info.FileName && info.FileName != "" {
+
+		if info.FileName != "" {
 			fileName := haoindex.GetWxServerImg(info.FileName)
 			strategy.FileName = fileName
-			strategy.WxServerImgid = info.FileName
 		} else {
-			strategy.FileName = strategyInfo.FileName
-			strategy.WxServerImgid = strategyInfo.WxServerImgid
+			strategy.FileName = info.FileName
 		}
+		strategy.WxServerImgid = info.FileName
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
 		strategy.ThumbNum = info.ThumbNum
 		strategy.Time = info.Time
 		strategy.Datatime = time.Now()
-		_, err = m.UpdateStrategyById(&strategy)
+		_, err := m.UpdateStrategyById(&strategy)
 		if err != nil {
 			beego.Debug("Update Strategy Fail:", err)
 		}
