@@ -332,10 +332,55 @@ func (this *UserController) UpdateUser() {
 		roles, _ := m.GetAllUserRole()
 		titles, _ := m.GetAllUserTitle()
 		this.CommonMenu()
+		if userList.Username != "" {
+			this.Data["username"] = userList.Username
+		} else {
+			userInfo, err := m.GetUserInfoById(userList.UserId)
+			if err != nil {
+				this.Data["username"] = userList.Username
+			} else {
+				this.Data["username"] = userInfo.Username
+			}
+		}
 		this.Data["userList"] = userList
 		this.Data["RoleList"] = roles
 		this.Data["TitleList"] = titles
 		this.TplName = "haoadmin/rbac/user/regedit.html"
+	}
+}
+
+// 删除房间用户
+func (this *UserController) DelRegistUser() {
+	Id, _ := this.GetInt64("Id")
+	status, err := m.DelRegistUserById(Id)
+	if err == nil && status > 0 {
+		this.Rsp(true, "删除成功", "")
+		return
+	} else {
+		this.Rsp(false, err.Error(), "")
+		return
+	}
+}
+
+// 批量删除用户
+func (this *UserController) PrepareDelRegistUser() {
+	IdArray := this.GetString("Id")
+	var idarr []int64
+	if len(IdArray) > 0 {
+		preValue := strings.Split(IdArray, ",")
+		for _, v := range preValue {
+			id, _ := strconv.ParseInt(v, 10, 64)
+			idarr = append(idarr, id)
+
+		}
+	}
+	status, err := m.PrepareDelUser(idarr)
+	if err == nil && status > 0 {
+		this.Rsp(true, "删除成功", "")
+		return
+	} else {
+		this.Rsp(false, err.Error(), "")
+		return
 	}
 }
 
@@ -364,7 +409,7 @@ func (this *UserController) PrepareDelUser() {
 
 		}
 	}
-	status, err := m.PrepareDelUser(idarr)
+	status, err := m.PrepareDelReisterUser(idarr)
 	if err == nil && status > 0 {
 		this.Rsp(true, "删除成功", "")
 		return

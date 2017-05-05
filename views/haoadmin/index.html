@@ -11,7 +11,7 @@
       <li><a href="javascript:void(0);" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线总时长<br/>{{.companyinfo.Totallinetime}}</a></li>
     </ul>
 
-    <div class="am-g">
+<!--     <div class="am-g">
         <div class="am-u-sm-12">
           <div class="am-panel am-panel-default">
             <div class="am-panel-hd am-cf" name="onlineuser">在线用户<span class="am-icon-chevron-down am-fr"></span></div>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="am-g">
       <div class="am-u-md-6">
@@ -175,7 +175,6 @@
       }
 
       //在线用户列表
-      ShowOnlineList();
       //点击隐藏控制滚动条
       $("div[name=onlineuser]").click(function(){
           if($('#collapse-panel-1').css('display').length==5){
@@ -226,57 +225,6 @@
         });
     }
 
-    //在线用户列表
-    function ShowOnlineList(){
-       $.ajax({
-            url: '/online/public/index',
-            type: 'POST',
-            success: function(json){
-                var  data=JSON.stringify(json);
-                data=jQuery.parseJSON(data);
-                if (data.onlinelist!=null){
-                    data=data.onlinelist;
-                    var countnum=data.length;
-                    var onlinecontent = $('table tbody[name=allonline]');//在线用户列表
-                    var onlinelistval="";
-                    for (var i=0; i<countnum;i++){
-                       onlinelistval+="<tr><td>";
-                       onlinelistval+=data[i].Roomid+"</td><td>";
-                       onlinelistval+=data[i].Uname+"</td><td>";
-                       onlinelistval+=data[i].Procities+"</td><td>";
-                       onlinelistval+=data[i].Logintime+"</td><td>";
-                       onlinelistval+=data[i].Onlinetime+"</td><td>";
-                       onlinelistval+=data[i].Ipaddress;
-                       onlinelistval+="</td></tr>";
-                    }
-                    onlinecontent.append(onlinelistval);
-
-                    //设置对齐
-                    var onlinetdw=$('#collapse-panel-1').width()/6;
-                    $('#collapse-panel-1 tr th').css('width',onlinetdw);
-                    $('#collapse-panel-2 tr td').css('width',onlinetdw);
-
-                    $('#collapse-panel-1').css('display','');
-                    $('#collapse-panel-2').css('display','');
-                    $("div[name=onlineuser]").css('cursor','pointer');
-
-                    if(countnum>8){
-                      $('#collapse-panel-2').css('height','300px');
-                      $("#collapse-panel-2").niceScroll({
-                            touchbehavior:false,  
-                            cursorcolor:"#3FA7CB",  
-                            cursoropacitymax:1.6,  
-                            cursorwidth:"8px", 
-                            //horizrailenabled:false,  
-                            cursorborder:"0",
-                            cursorborderradius:"5px",
-                            autohidemode:false  
-                      });
-                    }
-                }
-             }
-        });
-    }
 
     //显示两位数
     function  ShownumbertoFixed(number){

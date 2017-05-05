@@ -272,3 +272,10 @@ func BindUserAccount(openid string, userInfo *User) (int64, error) {
 	})
 
 }
+
+// 根据id查询
+func GetUserInfoById(id int64) (u User, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(User)).Filter("Id", id).One(&u)
+	return u, err
+}
