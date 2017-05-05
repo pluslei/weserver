@@ -121,66 +121,69 @@ func (this *IndexController) Get() {
 
 func (this *IndexController) Login() {
 	openid := this.GetString("openid")
-	if this.IsAjax() {
-		if len(openid) <= 0 {
-			this.Rsp(false, "请退出重新进入", "")
-			return
-		}
-		username := this.GetString("username")
-		password := this.GetString("password")
-		beego.Debug("userinfo", username, password)
-		if len(username) <= 0 || len(password) <= 0 {
-			this.Rsp(false, "请填写账户信息", "")
-			return
-		}
 
-		beego.Debug("openid", openid)
-		var u m.User
-		u.Account = username
-		user, err := m.ReadFieldUser(&u, "Account")
-		beego.Debug("ReadFieldUser", user, err)
-		if user == nil || err != nil {
-			this.Rsp(false, "用户名和密码错误 401", "")
-			return
-		}
-		beego.Debug("userinfo", user.Password, tools.EncodeUserPwd(username, password), err)
-		if user.Password != tools.EncodeUserPwd(username, password) {
-			this.Rsp(false, "用户名和密码错误 402", "")
-			beego.Debug("PassWord Error")
-			return
-		}
-
-		_, err = m.BindUserAccount(openid, user)
-		if err != nil {
-			this.Rsp(false, "用户名和密码错误 404", "")
-			beego.Debug("Bind User Account Error", err)
-			return
-		}
-		if user.Username == "" {
-			_, err := m.DelUserById(user.Id)
-			if err != nil {
-				beego.Debug("DELETE User ID Error", err)
-				return
-			}
-		}
-		sessionUser, err := m.GetUserByUsername(openid)
-		if err != nil {
-			this.Rsp(false, "用户名和密码错误 405", "")
-			beego.Debug("Get UseInfo Error", err)
-			return
-		}
-		_, err1 := m.UpdateRegistName(user.Id, sessionUser.Username, sessionUser.UserIcon)
-		if err1 != nil {
-			this.Rsp(false, "用户名和密码错误 406", "")
-			beego.Debug("Update Regist UserName Error", err1)
-			return
-		}
-		this.SetSession("indexUserInfo", &sessionUser)
-		this.Redirect("/index", 302)
-	}
 	this.Data["openid"] = openid
 	this.TplName = "haoindex/login.html"
 	// this.Ctx.WriteString("")
+}
+
+func (this *IndexController) LoginHandle() {
+	openid := this.GetString("openid")
+	if len(openid) <= 0 {
+		this.AlertBack("请退出重新进入")
+		return
+	}
+	username := this.GetString("username")
+	password := this.GetString("password")
+	beego.Debug("userinfo", username, password)
+	if len(username) <= 0 || len(password) <= 0 {
+		this.AlertBack("请填写账户信息")
+		return
+	}
+
+	beego.Debug("openid", openid)
+	var u m.User
+	u.Account = username
+	user, err := m.ReadFieldUser(&u, "Account")
+	beego.Debug("ReadFieldUser", user, err)
+	if user == nil || err != nil {
+		this.AlertBack("用户名和密码错误 401")
+		return
+	}
+	beego.Debug("userinfo", user.Password, tools.EncodeUserPwd(username, password), err)
+	if user.Password != tools.EncodeUserPwd(username, password) {
+		this.AlertBack("用户名和密码错误 402")
+		beego.Debug("PassWord Error")
+		return
+	}
+
+	_, err = m.BindUserAccount(openid, user)
+	if err != nil {
+		this.AlertBack("用户名和密码错误 404")
+		beego.Debug("Bind User Account Error", err)
+		return
+	}
+	if user.Username == "" {
+		_, err := m.DelUserById(user.Id)
+		if err != nil {
+			beego.Debug("DELETE User ID Error", err)
+			return
+		}
+	}
+	sessionUser, err := m.GetUserByUsername(openid)
+	if err != nil {
+		this.AlertBack("用户名和密码错误 405")
+		beego.Debug("Get UseInfo Error", err)
+		return
+	}
+	_, err1 := m.UpdateRegistName(user.Id, sessionUser.Username, sessionUser.UserIcon)
+	if err1 != nil {
+		this.AlertBack("用户名和密码错误 406")
+		beego.Debug("Update Regist UserName Error", err1)
+		return
+	}
+	this.SetSession("indexUserInfo", &sessionUser)
+	this.Redirect("/index", 302)
 }
 
 //从数据库获取信息

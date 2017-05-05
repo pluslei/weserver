@@ -47,6 +47,12 @@ func AddRegistUser(r *Regist) (int64, error) {
 	return 0, err
 }
 
+// 后台添加用户
+func AddRegist(r *Regist) (int64, error) {
+	o := orm.NewOrm()
+	return o.Insert(r)
+}
+
 // 获取用户一对一关系
 func LoadRegist(r *Regist, fields ...string) (*Regist, error) {
 	o := orm.NewOrm()

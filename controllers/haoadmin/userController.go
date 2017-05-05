@@ -237,6 +237,8 @@ func (this *UserController) AddUser() {
 			beego.Error(err)
 			return
 		}
+
+		urlImage := beego.AppConfig.String("httplocalServerAdress") + "/static/img/defaultIco.png"
 		u := new(m.User)
 		u.Account = account
 		u.Email = email
@@ -245,6 +247,7 @@ func (this *UserController) AddUser() {
 		u.Password = tools.EncodeUserPwd(account, password)
 		u.Remark = remark
 		u.Status = status
+		u.Headimgurl = urlImage
 		u.RegStatus = 2
 		u.Role = &m.Role{Id: role}
 		u.Title = &m.Title{Id: title}
@@ -262,7 +265,11 @@ func (this *UserController) AddUser() {
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
-				m.AddRegistUser(reg)
+				reg.UserIcon = urlImage
+				_, err := m.AddRegist(reg)
+				if err != nil {
+					beego.Error("add regist error", err)
+				}
 			}
 			return
 		} else {

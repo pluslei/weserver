@@ -126,6 +126,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			} else {
@@ -143,6 +144,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			}
@@ -182,6 +184,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			} else {
@@ -199,6 +202,7 @@ func (this *StrategyController) GetStrategyList() {
 					info.IsDelete = historyStrategy[i].IsDelete
 					info.ThumbNum = historyStrategy[i].ThumbNum
 					info.Time = historyStrategy[i].Time
+					info.WxServerImgid = historyStrategy[i].WxServerImgid
 					Strinfo = append(Strinfo, info)
 				}
 			}
@@ -326,7 +330,7 @@ func parseStrategyMsg(msg string) bool {
 	info.OperType = OPERATE_ADD
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
-	sendmsg := info.Data
+	// sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -337,7 +341,7 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-	SendWeChatStrategy(topic, sendmsg) // send to wechat
+	// SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
 	editStrageydata(info)
 	return true
@@ -514,11 +518,6 @@ func editStrategyContent(info *StrategyInfo) {
 		}
 		break
 	case OPERATE_UPDATE:
-		strategyInfo, err := m.GetStrategyInfoById(info.Id)
-		if err != nil {
-			beego.Debug("get Strategy id error", err)
-		}
-
 		var strategy m.Strategy
 		strategy.Id = info.Id
 		strategy.Room = info.Room
@@ -526,21 +525,21 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-		if strategyInfo.WxServerImgid != info.FileName && info.FileName != "" {
+
+		if info.FileName != "" {
 			fileName := haoindex.GetWxServerImg(info.FileName)
 			strategy.FileName = fileName
-			strategy.WxServerImgid = info.FileName
 		} else {
-			strategy.FileName = strategyInfo.FileName
-			strategy.WxServerImgid = strategyInfo.WxServerImgid
+			strategy.FileName = info.FileName
 		}
+		strategy.WxServerImgid = info.FileName
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
 		strategy.ThumbNum = info.ThumbNum
 		strategy.Time = info.Time
 		strategy.Datatime = time.Now()
-		_, err = m.UpdateStrategyById(&strategy)
+		_, err := m.UpdateStrategyById(&strategy)
 		if err != nil {
 			beego.Debug("Update Strategy Fail:", err)
 		}
