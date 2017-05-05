@@ -362,7 +362,7 @@ func (this *UserController) DelRegistUser() {
 	}
 }
 
-// 批量删除用户
+// 批量删除房间用户
 func (this *UserController) PrepareDelRegistUser() {
 	IdArray := this.GetString("Id")
 	var idarr []int64
@@ -374,7 +374,7 @@ func (this *UserController) PrepareDelRegistUser() {
 
 		}
 	}
-	status, err := m.PrepareDelUser(idarr)
+	status, err := m.PrepareDelReisterUser(idarr)
 	if err == nil && status > 0 {
 		this.Rsp(true, "删除成功", "")
 		return

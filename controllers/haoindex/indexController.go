@@ -150,39 +150,49 @@ func (this *IndexController) LoginHandle() {
 		this.AlertBack("用户名和密码错误 401")
 		return
 	}
-	beego.Debug("userinfo", user.Password, tools.EncodeUserPwd(username, password), err)
+
 	if user.Password != tools.EncodeUserPwd(username, password) {
 		this.AlertBack("用户名和密码错误 402")
 		beego.Debug("PassWord Error")
 		return
 	}
 
-	_, err = m.BindUserAccount(openid, user)
-	if err != nil {
-		this.AlertBack("用户名和密码错误 404")
-		beego.Debug("Bind User Account Error", err)
+	// sessionUser, err := m.GetUserByUsername(openid)
+	// if err != nil {
+	// 	this.AlertBack("用户名和密码错误 405")
+	// 	beego.Debug("Get UseInfo Error", err)
+	// 	return
+	// }
+
+	beego.Debug("userinfo msg", user, user.Username, openid)
+	if len(user.Username) > 0 && user.Username != openid {
+		this.AlertBack("账户已被绑定")
 		return
 	}
-	if user.Username == "" {
-		_, err := m.DelUserById(user.Id)
+
+	if len(user.Username) <= 0 {
+		_, err = m.BindUserAccount(openid, user)
 		if err != nil {
-			beego.Debug("DELETE User ID Error", err)
+			this.AlertBack("用户名和密码错误 404")
+			beego.Debug("Bind User Account Error", err)
+			return
+		}
+		if user.Username == "" {
+			_, err := m.DelUserById(user.Id)
+			if err != nil {
+				beego.Debug("DELETE User ID Error", err)
+				return
+			}
+		}
+
+		_, err1 := m.UpdateRegistName(user.Id, user.Username, user.UserIcon)
+		if err1 != nil {
+			this.AlertBack("用户名和密码错误 406")
+			beego.Debug("Update Regist UserName Error", err1)
 			return
 		}
 	}
-	sessionUser, err := m.GetUserByUsername(openid)
-	if err != nil {
-		this.AlertBack("用户名和密码错误 405")
-		beego.Debug("Get UseInfo Error", err)
-		return
-	}
-	_, err1 := m.UpdateRegistName(user.Id, sessionUser.Username, sessionUser.UserIcon)
-	if err1 != nil {
-		this.AlertBack("用户名和密码错误 406")
-		beego.Debug("Update Regist UserName Error", err1)
-		return
-	}
-	this.SetSession("indexUserInfo", &sessionUser)
+	this.SetSession("indexUserInfo", user)
 	this.Redirect("/index", 302)
 }
 
