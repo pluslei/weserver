@@ -3,11 +3,10 @@ package main
 import (
 	"os"
 
+	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
 	"weserver/src/mqtt"
-
-	"weserver/controllers/haoindex"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -30,6 +29,7 @@ func main() {
 	orm.RunSyncdb("default", false, true)
 
 	mqtt.Run()
+
 	//wechat.WechatRun()
 
 	// msg := "策略消息3"

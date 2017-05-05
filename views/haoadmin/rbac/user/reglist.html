@@ -21,7 +21,6 @@
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
                 <thead>
                     <tr>
-
                         <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
                         <th>申请房间</th>
                         <th>用户</th>
@@ -135,7 +134,7 @@
 
                 if(confirm("确定要删除数据吗?")){
                     $.ajax({
-                    url: '/weserver/user/preparedel',
+                    url: '/weserver/user/preparedelregistuser',
                     type: 'POST',
                     data: {Id: userId.toString()},
                     success: function(rsp){
@@ -288,7 +287,7 @@
     function deleteModel(){
         var id = $(".data-modal-del").val();
         $.ajax({
-            url: '/weserver/user/deluser',
+            url: '/weserver/user/delregisteruser',
             type: 'POST',
             data: {Id: id},
             success: function(rsp){
@@ -343,31 +342,6 @@
         $(".data-modal-objroom").val(objroom);
     }
 
-    // 踢出方法
-    function kickOutModel(){
-
-        var id = $(".data-modal-kick").val();
-        var objname = $(".data-modal-objuser").val();
-        var objnick =  $(".data-modal-objnick").val();
-        var objroom = $(".data-modal-objroom").val();
-        var sendmsg = {}; //发送的内容
-        sendmsg["Room"] = objroom;
-        sendmsg["OperUid"] = {{.username}};
-        sendmsg["OperName"] = {{.username}};
-        sendmsg["ObjUid"] = objname;
-        sendmsg["ObjName"] = objnick;
-        var sendstr = base64encode([sendmsg]);
-        $.ajax({
-            url: '/chat/user/KickOut',
-            type: 'POST',
-            data: {Id: id,str: sendstr},
-            success:function(data){
-                if (data.status) {
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }
-            }
-        })
-    }
     // 模态退出
     $('#kick-confirm').on('closed.modal.amui', function() {
         $(this).removeData('amui.modal');
