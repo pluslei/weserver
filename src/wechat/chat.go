@@ -71,7 +71,8 @@ func WechatRun() {
 func SendTxTMsg(openId, msg string) error {
 	err := chat.sendCustomTxTMsg(openId, msg)
 	if err != nil {
-		beego.Debug("SendTxTMsg error:", err)
+		beego.Debug("SendTxTMsg() error:", err)
+		return err
 	}
 	beego.Debug("SendTxTMsg() ok!!")
 	return nil

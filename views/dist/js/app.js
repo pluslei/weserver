@@ -2077,7 +2077,7 @@ var EditStrategy = function (_React$Component) {
         addImg.src = 'i/support/add.png';
         (0, _jquery2.default)('.file>span>img').css('z-index', '0');
         _this2.state.getImage = '';
-        _this2.state.serverId = '';
+        _this2.arge.serverId = '';
       }, 100);
     }
   }, {
@@ -4647,6 +4647,7 @@ var ChatRoom = function (_React$Component) {
   }, {
     key: 'setStateStrategy',
     value: function setStateStrategy(sendmsg) {
+      var imgurl = sendmsg.FileName === '' ? '' : this.uploadimage.imgurl;
       var argsdata = {
         Id: sendmsg.Id,
         Room: sendmsg.Room,
@@ -4658,7 +4659,7 @@ var ChatRoom = function (_React$Component) {
         IsDelete: sendmsg.IsDelete,
         ThumbNum: sendmsg.ThumbNum,
         Time: sendmsg.Time,
-        FileName: sendmsg.FileName,
+        FileName: imgurl,
         TxtColour: sendmsg.TxtColour
       };
       this.refs.Strategy.state.strategylist[this.state.editStrategy.index] = argsdata;
@@ -4731,6 +4732,7 @@ var ChatRoom = function (_React$Component) {
     value: function mqttCallBack(message) {
       var _this3 = this;
 
+      console.log(message);
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
       var roomId = message.destinationName; // 目标房间名
       var payload = message.payloadString;
@@ -6950,7 +6952,9 @@ var Strategy = function (_React$Component) {
       var scroll = document.querySelector('.strategylist');
       var listcontent = document.querySelector('.listcontent');
       var tarTop = listcontent.offsetHeight - scroll.scrollTop;
+      console.log(listcontent.offsetHeight, scroll.scrollTop, scroll.offsetHeight);
       if (tarTop <= scroll.offsetHeight) {
+        // console.log(tarTop, scroll.offsetHeight);
         this.state.listcount.strategyIndex += 1;
         this.getStrategy(this.state.strategylist[this.state.strategylist.length - 1].Id, '/chat/user/strategyList');
         (0, _jquery2.default)('.bottomload').css('display', 'block');
@@ -8209,10 +8213,16 @@ var Trade = function (_React$Component) {
           room: roominfo.RoomId
         },
         success: function success(result) {
+          console.log(result);
           if (result !== null) {
             _this2.setState({
               dataList: result.historyNear
             });
+          }
+          if (!result.status) {
+            console.log(result);
+            _this2.props.Trade.isTradeData = false;
+            _this2.props.Trade.refs.Interact.setchatHeight();
           }
         }
       });
@@ -8227,6 +8237,11 @@ var Trade = function (_React$Component) {
           dataList: data
         });
       }
+    }
+  }, {
+    key: 'componentDidUpdata',
+    value: function componentDidUpdata() {
+      console.log('12345');
     }
   }, {
     key: 'render',
@@ -8361,6 +8376,9 @@ var Trade = function (_React$Component) {
                         _this3.props.showHistory();
                         if (!_this3.props.Trade.state.isShowHistory) {
                           _this3.getpositionNear('/chat/user/positionNear');
+                          setTimeout(function () {
+                            _this3.props.Trade.refs.Interact.setchatHeight();
+                          }, 1000);
                         }
                       },
                       onClick: function onClick() {
@@ -8513,6 +8531,7 @@ var TradeDatail = function (_React$Component) {
             _this2.setState({
               listConetnt: _this2.state.listConetnt
             });
+            _this2.props.TradeDatail.refs.Interact.setchatHeight();
           }
         }
       });
@@ -8522,6 +8541,7 @@ var TradeDatail = function (_React$Component) {
   }, {
     key: 'delinfo',
     value: function delinfo(item) {
+      console.log(item, '11111');
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
       var sendmsg = {
         Id: item.Id,
@@ -8547,6 +8567,19 @@ var TradeDatail = function (_React$Component) {
       // post 发送给后台
       var api = new _Api2.default(this.success, this.error);
       api.postToServer(sendstr, '/chat/user/positionInfo');
+      // this.getStrategyList(0, '/chat/user/positionList');
+      var length = this.state.listConetnt.length;
+      var newlist = [];
+      console.log(this.state.listConetnt[0].Id);
+      for (var i = 0; i < length; i++) {
+        console.log(this.state.listConetnt[i].Id);
+        if (item.Id !== this.state.listConetnt[i].Id) {
+          newlist.push(this.state.listConetnt[i]);
+        }
+      }
+      this.setState({
+        listConetnt: newlist
+      });
     }
   }, {
     key: 'success',

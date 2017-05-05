@@ -161,6 +161,7 @@ func (w *Wechat) sendCustomTxTMsg(openId, msg string) error {
 	}
 	body, err := json.MarshalIndent(TxtMsg, " ", "  ")
 	if err != nil {
+		beego.Debug("sendCustomTxTMsg() error:", err)
 		return err
 	}
 	select {

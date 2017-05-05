@@ -331,6 +331,11 @@ func parseStrategyMsg(msg string) bool {
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
 
+	if info.FileName != "" {
+		fileName := haoindex.GetWxServerImg(info.FileName)
+		info.FileName = fileName
+	}
+
 	beego.Debug("info", info)
 
 	v, err := ToJSON(info)
@@ -386,7 +391,11 @@ func SendWeChatStrategy(room, msg string) {
 	arr, ok := wechat.MapUname[room]
 	if ok {
 		for _, v := range arr {
-			wechat.SendTxTMsg(v, msg)
+			err := wechat.SendTxTMsg(v, msg)
+			if err != nil {
+				beego.Debug("Send Strategy To Wechat Error: ", err)
+				continue
+			}
 		}
 	}
 }
