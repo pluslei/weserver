@@ -69,6 +69,7 @@ func GetMqttConfig() *Configer {
 }
 
 func GetShutMapInfo() {
+	var status bool = true
 	shutInfo, err := m.GetShutUpInfoToday()
 	if err != nil {
 		beego.Error("get the shutup error", err)
@@ -82,11 +83,13 @@ func GetShutMapInfo() {
 		} else {
 			for _, v := range arr {
 				if v == Uname {
+					status = false
 					break
-				} else {
-					arr = append(arr, Uname)
-					MapShutUp[Room] = arr
 				}
+			}
+			if status {
+				arr = append(arr, Uname)
+				MapShutUp[Room] = arr
 			}
 		}
 	}

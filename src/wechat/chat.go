@@ -27,6 +27,7 @@ func getParam() *Config {
 }
 
 func GetUnameMapInfo() {
+	var status bool = true
 	Info, err := m.GetWechatUser(2)
 	if err != nil {
 		beego.Error("wechat:get the userinfo error", err)
@@ -40,12 +41,14 @@ func GetUnameMapInfo() {
 			MapUname[Room] = []string{Uname}
 		} else {
 			for _, v := range arr {
-				if v == Uname {
+				if Uname == v {
+					status = false
 					break
-				} else {
-					arr = append(arr, Uname)
-					MapUname[Room] = arr
 				}
+			}
+			if status {
+				arr = append(arr, Uname)
+				MapUname[Room] = arr
 			}
 		}
 	}
@@ -68,7 +71,9 @@ func WechatRun() {
 func SendTxTMsg(openId, msg string) error {
 	err := chat.sendCustomTxTMsg(openId, msg)
 	if err != nil {
-		beego.Debug("SendTxTMsg error:", err)
+		beego.Debug("SendTxTMsg() error:", err)
+		return err
 	}
+	beego.Debug("SendTxTMsg() ok!!")
 	return nil
 }

@@ -189,8 +189,9 @@ type StrategyInfo struct {
 	Name      string //操作者的用户名
 	Titel     string
 	Data      string //策略内容
-	FileName  string
+	FileName  string //图片
 	TxtColour string //颜色字段
+	IsPush    bool   //微信推送
 	IsTop     bool   //是否置顶 置顶1 否 0
 	IsDelete  bool   //是否删除,删除 1 否 0
 	ThumbNum  int64  //点赞次数
@@ -249,9 +250,9 @@ type PositionInfo struct {
 	Notes       string // 备注
 	Liquidation int    //平仓详情 (0:未平仓 1:平仓)
 	Icon        string //头像
-
-	OperType int64
-	MsgType  int //消息类型
+	IsPush      bool   //是否推送到微信
+	OperType    int64
+	MsgType     int //消息类型
 
 	//平仓信息
 	/********************/

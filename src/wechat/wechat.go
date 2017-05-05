@@ -78,6 +78,7 @@ func (w *Wechat) Running() {
 					client := &http.Client{}
 					resp, err := client.Do(postReq)
 					if resp != nil {
+						beego.Debug("client Rsp error: ", err)
 						resp.Body.Close()
 						break
 					}
@@ -91,6 +92,7 @@ func (w *Wechat) Running() {
 						resp.Body.Close()
 						break
 					}
+					beego.Debug("msg is ok")
 					resp.Body.Close()
 				} else {
 					beego.Error("Wechat Publish msg shutdown!!! ")
@@ -124,13 +126,13 @@ func (w *Wechat) getAccessToken() error {
 	if err != nil || resp.StatusCode != http.StatusOK {
 		return err
 	}
-
 	defer resp.Body.Close()
+
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
-	beego.Debug(string(body))
+	beego.Debug("AccessToken:", string(body))
 
 	if bytes.Contains(body, []byte("access_token")) {
 		beego.Debug("Request ok!!!!!!!")
@@ -159,6 +161,7 @@ func (w *Wechat) sendCustomTxTMsg(openId, msg string) error {
 	}
 	body, err := json.MarshalIndent(TxtMsg, " ", "  ")
 	if err != nil {
+		beego.Debug("sendCustomTxTMsg() error:", err)
 		return err
 	}
 	select {

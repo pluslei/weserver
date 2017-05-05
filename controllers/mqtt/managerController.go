@@ -201,6 +201,7 @@ func (this *ManagerController) GetShutUpInfo() {
 //禁言操作
 func parseShutUpMsg(msg string) bool {
 	var msginfo ShutUpInfo
+	var status bool = true
 	// msginfo := new(ShutUpInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
@@ -218,16 +219,17 @@ func parseShutUpMsg(msg string) bool {
 		if ok {
 			for _, v := range arr {
 				if v == msg.Uname {
+					status = false
 					break
-				} else {
-					arr = append(arr, msg.Uname)
-					mq.MapShutUp[msg.Room] = arr
 				}
+			}
+			if status {
+				arr = append(arr, msg.Uname)
+				mq.MapShutUp[msg.Room] = arr
 			}
 		} else {
 			mq.MapShutUp[msg.Room] = []string{msg.Uname}
 		}
-		beego.Debug("Shut up", mq.MapShutUp)
 		// beego.Debug("info", msg)
 		// topic := msg.Room
 		// v, err := ToJSON(msg)
@@ -240,6 +242,7 @@ func parseShutUpMsg(msg string) bool {
 		// 更新user 字段
 		UpdateUserInfo(msg)
 	}
+	beego.Debug("Shut up Map List", mq.MapShutUp)
 	return true
 }
 
@@ -283,14 +286,12 @@ func parseUnShutUpMsg(msg string) bool {
 					arr = append(arr[:i], arr[index:]...) //删除
 					mq.MapShutUp[msg.Room] = arr
 					break
-				} else {
-					break
 				}
 			}
 		} else {
 			beego.Debug("UnShutUp no Find element")
 		}
-		beego.Debug("UnShut up", mq.MapShutUp)
+		beego.Debug("UnShut up Map List", mq.MapShutUp)
 		// beego.Debug("info", msg)
 		// topic := msg.Room
 		// v, err := ToJSON(msg)

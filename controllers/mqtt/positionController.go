@@ -304,6 +304,11 @@ func parsePositionMsg(msg string) bool {
 		mq.SendMessage(topic, v)
 	}
 
+	// if info.IsPush {
+	// 	sendmsg := info.Data
+	// 	SendWeChatStrategy(topic, sendmsg) // send to wechat
+	// }
+
 	// 消息入库
 	operatePositiondata(info)
 	return true
