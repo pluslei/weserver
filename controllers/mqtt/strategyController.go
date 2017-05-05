@@ -55,7 +55,7 @@ func (this *StrategyController) GetStrategyInfo() {
 	this.Ctx.WriteString("")
 }
 
-//发策略
+//编辑
 func (this *StrategyController) GetEditStrategyInfo() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
@@ -330,7 +330,6 @@ func parseStrategyMsg(msg string) bool {
 	info.OperType = OPERATE_ADD
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
-	sendmsg := info.Data
 
 	beego.Debug("info", info)
 
@@ -341,7 +340,14 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-	SendWeChatStrategy(topic, sendmsg) // send to wechat
+
+	info.IsPush = true
+
+	if info.IsPush {
+		sendmsg := info.Data
+		SendWeChatStrategy(topic, sendmsg) // send to wechat
+	}
+
 	// 消息入库
 	editStrageydata(info)
 	return true
@@ -381,7 +387,6 @@ func SendWeChatStrategy(room, msg string) {
 	if ok {
 		for _, v := range arr {
 			wechat.SendTxTMsg(v, msg)
-			beego.Debug("send wechat aaaaaaaaaaaaa")
 		}
 	}
 }
@@ -489,7 +494,7 @@ func OperateStrategyContent(info *StrategyOperate) {
 }
 
 func editStrategyContent(info *StrategyInfo) {
-	beego.Debug("edit StrategyInfo", info)
+	beego.Debug("Edit StrategyInfo", info)
 	OPERATETYPE := info.OperType
 	switch OPERATETYPE {
 	case OPERATE_ADD:
