@@ -20,12 +20,15 @@ type Wechat struct {
 	appSecret            string
 	accessTokenFetchUrl  string
 	customServicePostUrl string
-	AccessToken          string  `json:"access_token"`
-	ExpiresIn            float64 `json:"expires_in"`
-	Errcode              float64 `json:"errcode"`
-	Errmsg               string  `json:"errmsg"`
-	TextUrl              string
-	msgch                chan []byte
+	templatePostUrl      string
+
+	AccessToken string  `json:"access_token"`
+	ExpiresIn   float64 `json:"expires_in"`
+	Errcode     float64 `json:"errcode"`
+	Errmsg      string  `json:"errmsg"`
+	TextUrl     string  //post custom msg
+	TemplateUrl string  // post template msg
+	msgch       chan []byte
 }
 
 // text msg
@@ -45,6 +48,7 @@ func Start(p *Config) *Wechat {
 	w.appSecret = p.appSecret
 	w.accessTokenFetchUrl = p.accessTokenFetchUrl
 	w.customServicePostUrl = p.customServicePostUrl
+	w.templatePostUrl = p.templatePostUrl
 	w.msgch = make(chan []byte, 102400)
 	return &w
 }
@@ -71,29 +75,36 @@ func (w *Wechat) Running() {
 				if ok {
 					postReq, err := http.NewRequest("POST", w.TextUrl, bytes.NewReader(msg))
 					if err != nil {
-						beego.Debug("POST WeChatText fail", err)
+						beego.Debug("POST WeChatText Fail", err)
 						break
 					}
 					postReq.Header.Set("Content-Type", "application/json; encoding=utf-8")
 
 					client := &http.Client{}
 					resp, err := client.Do(postReq)
+					if resp.StatusCode != http.StatusOK || err != nil {
+						beego.Debug("resp.StatusCode error: ", resp.StatusCode, err.Error())
+						resp.Body.Close()
+						break
+					}
 					if resp != nil {
-						beego.Debug("client Rsp error: ", err)
+						buf, err := ioutil.ReadAll(resp.Body)
+						if err != nil {
+							beego.Debug("Read Body error", err)
+							resp.Body.Close()
+							break
+						}
+						err = json.Unmarshal(buf, w)
+						if err != nil {
+							if w.Errcode != 0 && w.Errmsg != "ok" {
+								beego.Debug("WeChat Error CodeInfo:", w.Errcode, w.Errmsg)
+							}
+							resp.Body.Close()
+							break
+						}
 						resp.Body.Close()
 						break
 					}
-					if err != nil {
-						beego.Debug("client.Do() WeChatText fail", err.Error())
-						resp.Body.Close()
-						break
-					}
-					if resp.StatusCode != http.StatusOK {
-						beego.Debug("resp.StatusCode error: ", resp.StatusCode)
-						resp.Body.Close()
-						break
-					}
-					beego.Debug("msg is ok")
 					resp.Body.Close()
 				} else {
 					beego.Error("Wechat Publish msg shutdown!!! ")
@@ -134,7 +145,6 @@ func (w *Wechat) getAccessToken() error {
 		return err
 	}
 	beego.Debug("AccessToken:", string(body))
-
 	if bytes.Contains(body, []byte("access_token")) {
 		beego.Debug("Request ok!!!!!!!")
 		err = json.Unmarshal(body, w)
@@ -142,6 +152,7 @@ func (w *Wechat) getAccessToken() error {
 			return err
 		}
 		w.TextUrl = fmt.Sprintf(w.customServicePostUrl, w.AccessToken)
+		w.TemplateUrl = fmt.Sprintf(w.templatePostUrl, w.AccessToken)
 	} else {
 		beego.Debug("Request error!!!!!!!")
 		err = json.Unmarshal(body, w)
@@ -154,11 +165,11 @@ func (w *Wechat) getAccessToken() error {
 }
 
 func (w *Wechat) sendCustomTxTMsg(openId, msg string) error {
-
+	sendMsg := fmt.Sprintf("今日策略：%s\r\nUrl: test.780.com.cn", msg)
 	TxtMsg := &CustomMsg{
 		ToUser:  openId,
 		MsgType: "text",
-		Text:    TextMsgContent{Content: msg},
+		Text:    TextMsgContent{Content: sendMsg},
 	}
 	body, err := json.MarshalIndent(TxtMsg, " ", "  ")
 	if err != nil {

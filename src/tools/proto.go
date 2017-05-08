@@ -353,7 +353,7 @@ const (
 type TeacherInfo struct {
 	Id       int64
 	Room     string //房间号 topic
-	Name     string
+	Name     string //teacher name
 	Icon     string //头像
 	Title    string
 	IsTop    bool   //是否置顶 置顶1 否 0
@@ -368,6 +368,10 @@ type TeacherInfo struct {
 type TeacherOperate struct {
 	Id       int64  //消息id 唯一
 	Room     string //房间号
+	Nickname string // op name
+	Username string
+	IsThumb  bool
+
 	OperType int64
 
 	MsgType int //消息类型

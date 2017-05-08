@@ -15,6 +15,7 @@ type Config struct {
 	appSecret            string
 	accessTokenFetchUrl  string
 	customServicePostUrl string
+	templatePostUrl      string
 }
 
 func getParam() *Config {
@@ -23,6 +24,7 @@ func getParam() *Config {
 	info.appSecret = beego.AppConfig.String("APPSECRET")
 	info.accessTokenFetchUrl = beego.AppConfig.String("TOKEN_URL")
 	info.customServicePostUrl = beego.AppConfig.String("CUSOMSER_POST_URL")
+	info.templatePostUrl = beego.AppConfig.String("TEMPLATE_URL")
 	return &info
 }
 
