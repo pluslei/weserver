@@ -331,6 +331,7 @@ func parseStrategyMsg(msg string) bool {
 	info.MsgType = MSG_TYPE_STRATEGY_ADD
 	topic := info.Room
 
+	serverId := info.FileName
 	if info.FileName != "" {
 		fileName := haoindex.GetWxServerImg(info.FileName)
 		info.FileName = fileName
@@ -346,8 +347,9 @@ func parseStrategyMsg(msg string) bool {
 
 	mq.SendMessage(topic, v)
 
-	info.IsPush = true
+	info.FileName = serverId
 
+	info.IsPush = false
 	if info.IsPush {
 		sendmsg := info.Data
 		SendWeChatStrategy(topic, sendmsg) // send to wechat
@@ -366,23 +368,30 @@ func parseEditStrategyMsg(msg string) bool {
 		return false
 	}
 	info.OperType = OPERATE_UPDATE
-	/*
-		info.MsgType = MSG_TYPE_STRATEGY_UPDATE
-		topic := info.Room
-		//sendmsg := info.Data
 
-		beego.Debug("info", info)
+	info.MsgType = MSG_TYPE_STRATEGY_UPDATE
+	topic := info.Room
 
-		v, err := ToJSON(info)
-		if err != nil {
-			beego.Error("json error", err)
-			return false
-		}
+	serverId := info.FileName
+	if info.FileName != "" {
+		fileName := haoindex.GetWxServerImg(info.FileName)
+		info.FileName = fileName
+	}
 
-		mq.SendMessage(topic, v)
-	*/
+	beego.Debug("info", info)
+
+	v, err := ToJSON(info)
+	if err != nil {
+		beego.Error("json error", err)
+		return false
+	}
+
+	mq.SendMessage(topic, v)
+
+	//sendmsg := info.Data
 	// SendWeChatStrategy(topic, sendmsg) // send to wechat
 	// 消息入库
+	info.FileName = serverId
 	editStrageydata(info)
 	return true
 }

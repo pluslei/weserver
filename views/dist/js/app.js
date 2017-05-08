@@ -6860,6 +6860,7 @@ var Strategy = function (_React$Component) {
       //   this.state.TopList = this.state.TopList.concat(this.state.UnTopList);
       //   this.state.strategylist = this.state.TopList;
       // }
+      console.log(data);
       this.state.strategylist.unshift(data);
       this.setState({
         strategylist: this.state.strategylist
@@ -8477,6 +8478,7 @@ var TradeDatail = function (_React$Component) {
     _this.listScroll = _this.listScroll.bind(_this);
     _this.operation = _this.operation.bind(_this);
     _this.success = _this.success.bind(_this);
+    _this.getStrategyList = _this.getStrategyList.bind(_this);
     return _this;
   }
 
@@ -8491,6 +8493,7 @@ var TradeDatail = function (_React$Component) {
       var _this2 = this;
 
       var roominfo = JSON.parse(sessionStorage.getItem('roomId'));
+      var sthis = this;
       this.serverRequest = _jquery2.default.ajax({
         url: route,
         type: 'post',
@@ -8532,6 +8535,11 @@ var TradeDatail = function (_React$Component) {
               listConetnt: _this2.state.listConetnt
             });
             _this2.props.TradeDatail.refs.Interact.setchatHeight();
+          }
+          if (sthis.state.listConetnt.length === 0) {
+            sthis.props.TradeDatail.setState({
+              isShowHistory: false
+            });
           }
         }
       });
