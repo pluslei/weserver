@@ -349,6 +349,7 @@ func (this *IndexController) GetMediaURL() {
 	srcfile := redirect_uri + "/static/images/nono.jpg"
 	if err == nil {
 		resp, err := http.Get(mediaURL)
+		beego.Debug("resp", resp)
 		if err != nil {
 			file, _ := os.Open(srcfile)
 			defer file.Close()
