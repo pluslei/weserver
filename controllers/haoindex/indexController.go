@@ -128,6 +128,7 @@ func (this *IndexController) Login() {
 }
 
 func (this *IndexController) LoginHandle() {
+	var userLoad = new(m.User)
 	openid := this.GetString("openid")
 	if len(openid) <= 0 {
 		this.AlertBack("请退出重新进入")
@@ -142,12 +143,9 @@ func (this *IndexController) LoginHandle() {
 	}
 
 	beego.Debug("openid", openid)
-	var u m.User
-	u.Account = username
-	user, err := m.ReadFieldUser(&u, "Account")
-	beego.Debug("ReadFieldUser", user, err)
+	user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
 	if user == nil || err != nil {
-		this.AlertBack("用户名和密码错误 401")
+		this.AlertBack("用户名异常 401")
 		return
 	}
 
@@ -157,14 +155,6 @@ func (this *IndexController) LoginHandle() {
 		return
 	}
 
-	// sessionUser, err := m.GetUserByUsername(openid)
-	// if err != nil {
-	// 	this.AlertBack("用户名和密码错误 405")
-	// 	beego.Debug("Get UseInfo Error", err)
-	// 	return
-	// }
-
-	beego.Debug("userinfo msg", user, user.Username, openid)
 	if len(user.Username) > 0 && user.Username != openid {
 		this.AlertBack("账户已被绑定")
 		return
@@ -177,6 +167,7 @@ func (this *IndexController) LoginHandle() {
 			beego.Debug("Bind User Account Error", err)
 			return
 		}
+
 		if user.Username == "" {
 			_, err := m.DelUserById(user.Id)
 			if err != nil {
@@ -185,28 +176,36 @@ func (this *IndexController) LoginHandle() {
 			}
 		}
 
-		_, err1 := m.UpdateRegistName(user.Id, user.Username, user.UserIcon)
+		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
+		if err != nil {
+			beego.Error("load user error", err)
+			return
+		}
+		_, err1 := m.UpdateRegistName(user.Id, userLoad.Id, userLoad.Username, user.UserIcon)
 		if err1 != nil {
 			this.AlertBack("用户名和密码错误 406")
 			beego.Debug("Update Regist UserName Error", err1)
 			return
 		}
+
 	}
-	this.SetSession("indexUserInfo", user)
+	this.SetSession("indexUserInfo", userLoad)
 	this.Redirect("/index", 302)
 }
 
 //从数据库获取信息
 func (this *IndexController) Index() {
-	Info := this.GetSession("indexUserInfo")
-	beego.Debug("info", Info)
-	if Info != nil {
-		// userInfo := new(m.User)
-		userInfo := Info.(*m.User)
+	indexUserInfo := this.GetSession("indexUserInfo")
+	if indexUserInfo != nil {
 		sysconfig, _ := m.GetAllSysConfig() //系统设置
-		userLoad, err := m.LoadRelatedUser(userInfo, "Username")
+
+		userInfo := new(m.User)
+		userInfo.Account = indexUserInfo.(*m.User).Account
+		userLoad, err := m.LoadRelatedUser(userInfo, "Account")
+		beego.Debug("userInfo and load", userInfo, userLoad)
 		if err != nil {
 			beego.Error("load retalteduser error", err)
+			return
 		}
 		user := new(Userinfor)
 		user.Uname = userInfo.Username
@@ -349,6 +348,7 @@ func (this *IndexController) GetMediaURL() {
 	srcfile := redirect_uri + "/static/images/nono.jpg"
 	if err == nil {
 		resp, err := http.Get(mediaURL)
+		beego.Debug("resp", resp)
 		if err != nil {
 			file, _ := os.Open(srcfile)
 			defer file.Close()
@@ -395,7 +395,6 @@ func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	u.Unionid = userInfo.Unionid
 	u.Lastlogintime = time.Now()
 	userid, err := m.AddUser(u)
-	beego.Debug("user", u)
 	if err == nil && userid > 0 {
 		return true
 	} else {

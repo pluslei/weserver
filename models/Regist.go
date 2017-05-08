@@ -179,11 +179,13 @@ func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, erro
 }
 
 // 更新指定账户的username
-func UpdateRegistName(userid int64, username, icon string) (int64, error) {
+func UpdateRegistName(userid, userloadid int64, username, icon string) (int64, error) {
+	beego.Debug("userid", userid, username, icon)
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("UserId", userid).Update(orm.Params{
 		"Username": username,
 		"UserIcon": icon,
+		"UserId":   userloadid,
 	})
 }
 
