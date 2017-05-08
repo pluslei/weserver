@@ -128,6 +128,7 @@ func (this *IndexController) Login() {
 }
 
 func (this *IndexController) LoginHandle() {
+	var userLoad = new(m.User)
 	openid := this.GetString("openid")
 	if len(openid) <= 0 {
 		this.AlertBack("请退出重新进入")
@@ -175,7 +176,7 @@ func (this *IndexController) LoginHandle() {
 			}
 		}
 
-		userLoad, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
+		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
 		if err != nil {
 			beego.Error("load user error", err)
 			return
@@ -188,18 +189,18 @@ func (this *IndexController) LoginHandle() {
 		}
 
 	}
-	this.SetSession("username", username)
+	this.SetSession("indexUserInfo", userLoad)
 	this.Redirect("/index", 302)
 }
 
 //从数据库获取信息
 func (this *IndexController) Index() {
-	userName := this.GetSession("username")
-	if userName != nil {
+	indexUserInfo := this.GetSession("indexUserInfo")
+	if indexUserInfo != nil {
 		sysconfig, _ := m.GetAllSysConfig() //系统设置
 
 		userInfo := new(m.User)
-		userInfo.Account = userName.(string)
+		userInfo.Account = indexUserInfo.(*m.User).Account
 		userLoad, err := m.LoadRelatedUser(userInfo, "Account")
 		beego.Debug("userInfo and load", userInfo, userLoad)
 		if err != nil {
