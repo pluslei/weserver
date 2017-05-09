@@ -136,10 +136,10 @@ func GetRoomName() (map[string]interface{}, int64, error) {
 }
 
 //获取聊天室信息
-func GetRoomInfo() ([]RoomInfo, int64, error) {
+func GetRoomInfo(id int64) ([]RoomInfo, int64, error) {
 	o := orm.NewOrm()
 	var info []RoomInfo
-	num, err := o.QueryTable("roominfo").OrderBy("Id").All(&info)
+	num, err := o.QueryTable("roominfo").Filter("CompanyId", id).OrderBy("Id").All(&info)
 	beego.Debug("num", num)
 	return info, num, err
 }
