@@ -29,8 +29,8 @@ func main() {
 	orm.RunSyncdb("default", false, true)
 
 	mqtt.Run()
+	// wechat.WechatRun()
 
-	//wechat.WechatRun()
 
 	// msg := "策略消息3"
 	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)

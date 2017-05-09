@@ -50,7 +50,7 @@
         </div>-->
         <div class="am-form-group">
           <label for="doc-select-1">公司名  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的所属公司', trigger: 'hover focus'}"></a></label>
-          <select id="doc-select-1" name="company" required data-validation-message="请选择公司名">
+          <select  onchange="choosecompany(this.selectedIndex)" id="doc-select-1" name="company" required data-validation-message="请选择公司名">
             <option value="">-=请选择所属公司=-</option>
             {{range .CompanyList}}
             <option value="{{.Id}}">{{.Company}}</option>
@@ -120,4 +120,13 @@ $(function() {
   });
 });
 
+function choosecompany(index){
+  $.ajax({
+      url: '/weserver/public/choosecompany',
+      type: 'POST',
+      data: index,
+      success: function(rsp){
+      }
+  })
+}
 </script>

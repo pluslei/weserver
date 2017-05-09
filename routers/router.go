@@ -51,7 +51,7 @@ func Router() {
 
 	beego.Router("/weserver/public/index", &haoadmin.MainController{}, "*:Index")
 	beego.Router("/weserver/public/changepwd", &haoadmin.MainController{}, "*:Changepwd")
-
+	// beego.Router("/weserver/public/choosecompany", &haoadmin.UserController{}, "*:ChooseCompany")
 	beego.Router("/weserver/user/adduser", &haoadmin.UserController{}, "*:AddUser")
 	beego.Router("/weserver/user/updateuser", &haoadmin.UserController{}, "*:UpdateUser")
 	beego.Router("/weserver/user/deluser", &haoadmin.UserController{}, "*:DelUser")

@@ -347,6 +347,7 @@ func parseStrategyMsg(msg string) bool {
 
 	mq.SendMessage(topic, v)
 
+
 	info.FileName = serverId
 
 	info.IsPush = false
@@ -528,7 +529,6 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.Name = info.Name
 		strategy.Titel = info.Titel
 		strategy.Data = info.Data
-
 		strategy.TxtColour = info.TxtColour
 		strategy.IsTop = info.IsTop
 		strategy.IsDelete = info.IsDelete
