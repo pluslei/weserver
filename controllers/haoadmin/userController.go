@@ -227,6 +227,11 @@ func (this *UserController) AddUser() {
 		// 	beego.Error(err)
 		// 	return
 		// }
+		companyId, err := this.GetInt64("company")
+		if err != nil {
+			beego.Error(err)
+			return
+		}
 		role, err := this.GetInt64("role")
 		if err != nil {
 			beego.Error(err)
@@ -249,6 +254,7 @@ func (this *UserController) AddUser() {
 		u.Status = status
 		u.Headimgurl = urlImage
 		u.RegStatus = 2
+		u.CompanyId = companyId
 		u.Role = &m.Role{Id: role}
 		u.Title = &m.Title{Id: title}
 		u.Lastlogintime = time.Now()
@@ -262,6 +268,7 @@ func (this *UserController) AddUser() {
 				reg.UserId = id
 				reg.Nickname = u.Nickname
 				reg.RegStatus = 2
+				u.CompanyId = companyId
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
@@ -279,6 +286,12 @@ func (this *UserController) AddUser() {
 		}
 	} else {
 		this.CommonMenu()
+		companyList, _, err := m.GetCompanyList()
+		if err != nil {
+			beego.Error("get the companyList error", err)
+			return
+		}
+		this.Data["CompanyList"] = companyList
 		roonInfo, _, err := m.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)

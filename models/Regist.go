@@ -12,6 +12,7 @@ import (
 //用户表
 type Regist struct {
 	Id            int64
+	CompanyId     int64
 	Room          string
 	Username      string    `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
 	UserId        int64     `orm:"index"`

@@ -10,7 +10,8 @@ import (
 *  	建仓操作
  */
 type OperPosition struct {
-	Id            int64  `orm:"pk;auto"`
+	Id            int64 `orm:"pk;auto"`
+	CompanyId     int64
 	RoomId        string //topic
 	RoomTeacher   string //老师
 	Timestr       string //时间字符

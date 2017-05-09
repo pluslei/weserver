@@ -10,14 +10,15 @@ import (
 * 公告信息表
  */
 type Notice struct {
-	Id       int64  `orm:"pk;auto"`
-	Room     string //房间号 topic
-	Uname    string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
-	Nickname string
-	Data     string    `orm:"type(text)"` //消息内容
-	FileName string    //图片
-	Time     string    //前端发送时间
-	Datatime time.Time `orm:"type(datetime)"` //服务器写入时间
+	Id        int64 `orm:"pk;auto"`
+	CompanyId int64
+	Room      string //房间号 topic
+	Uname     string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
+	Nickname  string
+	Data      string    `orm:"type(text)"` //消息内容
+	FileName  string    //图片
+	Time      string    //前端发送时间
+	Datatime  time.Time `orm:"type(datetime)"` //服务器写入时间
 }
 
 func init() {

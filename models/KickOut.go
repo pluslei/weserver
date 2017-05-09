@@ -9,14 +9,15 @@ import (
 
 // 踢人和禁言记录表
 type KickOut struct {
-	Id       int64
-	Coderoom string    //房间号
-	Operuid  string    //踢人uuid
-	Opername string    `orm:"size(128)" form:"OperName" valid:"Required"` //操作的用户名
-	Objuid   string    //被踢的uuid
-	Objname  string    `orm:"size(128)" form:"Objname"  valid:"Required"`  //被踢出的用户名
-	Status   int       `orm:"default(0)" form:"Status" valid:"Range(0,1)"` //状态 [0、踢人 1、禁言 2 取消禁言]
-	Opertime time.Time `orm:"type(datetime)"`                              //操作的时间
+	Id        int64
+	CompanyId int64
+	Coderoom  string    //房间号
+	Operuid   string    //踢人uuid
+	Opername  string    `orm:"size(128)" form:"OperName" valid:"Required"` //操作的用户名
+	Objuid    string    //被踢的uuid
+	Objname   string    `orm:"size(128)" form:"Objname"  valid:"Required"`  //被踢出的用户名
+	Status    int       `orm:"default(0)" form:"Status" valid:"Range(0,1)"` //状态 [0、踢人 1、禁言 2 取消禁言]
+	Opertime  time.Time `orm:"type(datetime)"`                              //操作的时间
 }
 
 func (r *KickOut) TableName() string {
