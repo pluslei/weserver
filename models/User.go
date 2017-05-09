@@ -14,6 +14,7 @@ import (
 //用户表
 type User struct {
 	Id            int64
+	CompanyId     int64
 	Username      string `orm:"size(32);index" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
 	Account       string `orm:"size(32);index"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`

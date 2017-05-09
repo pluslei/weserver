@@ -12,16 +12,17 @@ import (
 * 专家团队
  */
 type Teacher struct {
-	Id       int64  `orm:"pk;auto"`
-	Room     string //房间号 topic
-	Name     string
-	Icon     string //头像
-	Title    string
-	IsTop    bool      //是否置顶 置顶1 否 0
-	ThumbNum int64     //点赞次数
-	Data     string    `orm:"type(text)"` //专家介绍
-	Time     string    //前台给的时间
-	Datatime time.Time `orm:"type(datetime)"` //添加时间
+	Id        int64 `orm:"pk;auto"`
+	CompanyId int64
+	Room      string //房间号 topic
+	Name      string
+	Icon      string //头像
+	Title     string
+	IsTop     bool      //是否置顶 置顶1 否 0
+	ThumbNum  int64     //点赞次数
+	Data      string    `orm:"type(text)"` //专家介绍
+	Time      string    //前台给的时间
+	Datatime  time.Time `orm:"type(datetime)"` //添加时间
 
 	ThumbInfo []*ThumbInfo `orm:"reverse(many)"` //一对多
 }

@@ -10,7 +10,8 @@ import (
 *  	平仓操作
  */
 type ClosePosition struct {
-	Id          int64  `orm:"pk;auto"`
+	Id          int64 `orm:"pk;auto"`
+	CompanyId   int64
 	RoomId      string //topic
 	RoomTeacher string //老师
 	Time        time.Time

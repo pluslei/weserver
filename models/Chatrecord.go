@@ -11,7 +11,8 @@ import (
 *  消息记录表
  */
 type ChatRecord struct {
-	Id            int64     `orm:"pk;auto"`
+	Id            int64 `orm:"pk;auto"`
+	CompanyId     int64
 	Room          string    //房间号 topic
 	Uname         string    //用户名  openid
 	Nickname      string    //用户昵称

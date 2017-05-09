@@ -10,7 +10,8 @@ import (
 * 收藏和浏览表
  */
 type Collect struct {
-	Id          int64  `orm:"pk;auto"`
+	Id          int64 `orm:"pk;auto"`
+	CompanyId   int64
 	Uname       string //openid
 	Nickname    string
 	RoomIcon    string //房间图标

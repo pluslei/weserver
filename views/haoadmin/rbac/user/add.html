@@ -49,6 +49,16 @@
           </label>
         </div>-->
         <div class="am-form-group">
+          <label for="doc-select-1">公司名  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的所属公司', trigger: 'hover focus'}"></a></label>
+          <select id="doc-select-1" name="company" required data-validation-message="请选择公司名">
+            <option value="">-=请选择所属公司=-</option>
+            {{range .CompanyList}}
+            <option value="{{.Id}}">{{.Company}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <div class="am-form-group">
           <label for="doc-select-1">角色  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的初始角色', trigger: 'hover focus'}"></a></label>
           <select id="doc-select-1" name="role" required data-validation-message="请选择角色">
             <option value="">-=请选择角色=-</option>
@@ -59,7 +69,7 @@
           <span class="am-form-caret"></span>
         </div>
         <div class="am-form-group">
-          <label for="doc-select-1">头衔  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的初始角色', trigger: 'hover focus'}"></a></label>
+          <label for="doc-select-1">头衔  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的初始头衔', trigger: 'hover focus'}"></a></label>
           <select id="doc-select-1" name="title" required data-validation-message="请选择头衔">
             <option value="">-=请选择头衔=-</option>
             {{range .TitleList}}

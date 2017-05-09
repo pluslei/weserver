@@ -10,12 +10,13 @@ import (
 * 点赞
  */
 type ThumbInfo struct {
-	Id       int64  `orm:"pk;auto"`
-	Room     string //房间号 topic
-	Nickname string
-	Username string
-	Timestr  string
-	IsThumb  bool
+	Id        int64 `orm:"pk;auto"`
+	CompanyId int64
+	Room      string //房间号 topic
+	Nickname  string
+	Username  string
+	Timestr   string
+	IsThumb   bool
 
 	Teacher *Teacher `orm:"rel(fk)"`
 }

@@ -12,7 +12,8 @@ import (
 * 策略表
  */
 type Strategy struct {
-	Id            int64  `orm:"pk;auto"`
+	Id            int64 `orm:"pk;auto"`
+	CompanyId     int64
 	Room          string //房间号 topic
 	Icon          string //头像
 	Name          string `orm:"size(128)" form:"Uname" valid:"Required"` //操作者的用户名
