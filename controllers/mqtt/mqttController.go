@@ -45,7 +45,12 @@ func init() {
 // 获取聊天室信息
 func (this *MqttController) GetRoomInfo() {
 	if this.IsAjax() {
-		roomInfo, _, err := m.GetRoomInfo()
+		Id, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("Get CompanyId Fail", err)
+			return
+		}
+		roomInfo, _, err := m.GetRoomInfo(Id)
 		if err != nil {
 			beego.Debug("GetRoomInfo fail", err)
 			return
