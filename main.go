@@ -3,12 +3,10 @@ package main
 import (
 	"os"
 
+	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
 	"weserver/src/mqtt"
-	// "weserver/src/wechat"
-
-	"weserver/controllers/haoindex"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -32,6 +30,7 @@ func main() {
 
 	mqtt.Run()
 	// wechat.WechatRun()
+
 
 	// msg := "策略消息3"
 	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)

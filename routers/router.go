@@ -55,6 +55,7 @@ func Router() {
 	beego.Router("/weserver/user/adduser", &haoadmin.UserController{}, "*:AddUser")
 	beego.Router("/weserver/user/updateuser", &haoadmin.UserController{}, "*:UpdateUser")
 	beego.Router("/weserver/user/deluser", &haoadmin.UserController{}, "*:DelUser")
+	beego.Router("/weserver/user/delregisteruser", &haoadmin.UserController{}, "*:DelRegistUser")
 	beego.Router("/weserver/user/index", &haoadmin.UserController{}, "*:Index")
 	beego.Router("/weserver/user/usertorole", &haoadmin.UserController{}, "*:UserToRole")
 	beego.Router("/weserver/user/setusertitle", &haoadmin.UserController{}, "*:SetUserTitle")
@@ -63,6 +64,7 @@ func Router() {
 	beego.Router("/weserver/user/userstatus", &haoadmin.UserController{}, "*:UpdateStatus")
 	beego.Router("/weserver/user/kictuser", &haoadmin.UserController{}, "*:KictUser")
 	beego.Router("/weserver/user/preparedel", &haoadmin.UserController{}, "*:PrepareDelUser")
+	beego.Router("/weserver/user/preparedelregistuser", &haoadmin.UserController{}, "*:PrepareDelRegistUser")
 
 	beego.Router("/weserver/user/usersetlist", &haoadmin.UserController{}, "*:UserList")
 	beego.Router("/weserver/user/setusername", &haoadmin.UserController{}, "*:SetUsername")
