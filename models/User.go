@@ -259,17 +259,18 @@ func CheckAccountIsExist(account string) bool {
 func BindUserAccount(openid string, userInfo *User) (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable(new(User)).Filter("Openid", openid).Update(orm.Params{
-		"Account":  userInfo.Account,
-		"Password": userInfo.Password,
-		"Nickname": userInfo.Nickname,
-		// "UserIcon": userInfo.UserIcon,
-		"Email":  userInfo.Email,
-		"Phone":  userInfo.Phone,
-		"Qq":     userInfo.Qq,
-		"Remark": userInfo.Remark,
-		"Status": userInfo.Status,
-		"Role":   userInfo.Role.Id,
-		"Title":  userInfo.Title.Id,
+		"Account":   userInfo.Account,
+		"Password":  userInfo.Password,
+		"Nickname":  userInfo.Nickname,
+		"CompanyId": userInfo.CompanyId,
+		"UserIcon":  userInfo.UserIcon,
+		"Email":     userInfo.Email,
+		"Phone":     userInfo.Phone,
+		"Qq":        userInfo.Qq,
+		"Remark":    userInfo.Remark,
+		"Status":    userInfo.Status,
+		"Role":      userInfo.Role.Id,
+		"Title":     userInfo.Title.Id,
 	})
 
 }

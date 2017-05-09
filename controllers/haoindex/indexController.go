@@ -35,6 +35,7 @@ var (
 
 type Userinfor struct {
 	Uname         string //用户名
+	CompanyId     int64
 	Nickname      string //用户昵称
 	UserIcon      string //logo
 	RoleName      string //用户角色[vip,silver,gold,jewel]
@@ -211,6 +212,7 @@ func (this *IndexController) Index() {
 		user.Uname = userInfo.Username
 		user.UserIcon = userInfo.Headimgurl
 		user.RoleName = userLoad.Role.Name
+		user.CompanyId = userLoad.CompanyId
 
 		// 设置昵称使用设置的
 		if len(userInfo.Remark) <= 0 {

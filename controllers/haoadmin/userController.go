@@ -268,7 +268,7 @@ func (this *UserController) AddUser() {
 				reg.UserId = id
 				reg.Nickname = u.Nickname
 				reg.RegStatus = 2
-				u.CompanyId = companyId
+				reg.CompanyId = companyId
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
