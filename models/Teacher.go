@@ -22,6 +22,8 @@ type Teacher struct {
 	Data     string    `orm:"type(text)"` //专家介绍
 	Time     string    //前台给的时间
 	Datatime time.Time `orm:"type(datetime)"` //添加时间
+
+	ThumbInfo []*ThumbInfo `orm:"reverse(many)"` //一对多
 }
 
 func init() {
