@@ -25,7 +25,7 @@ func init() {
 }
 
 func (b *ThumbInfo) TableName() string {
-	return "ThumbInfo"
+	return "thumbinfo"
 }
 
 /*
@@ -47,20 +47,20 @@ func GetMoreThumbInfo(Room string, id int64) ([]*ThumbInfo, int64, error) {
 func GetThumbInfo(Uname, Room string, id int64) (ThumbInfo, error) {
 	o := orm.NewOrm()
 	var info ThumbInfo
-	err := o.QueryTable("ThumbInfo").Filter("Room", Room).Filter("Username", Uname).Filter("Teacher", id).One(&info)
+	err := o.QueryTable("thumbinfo").Filter("Room", Room).Filter("Username", Uname).Filter("Teacher", id).One(&info)
 	return info, err
 }
 
-func UpdateThumb(id int64, thumb bool) (int64, error) {
+func UpdateThumb(id int64) (int64, error) {
 	o := orm.NewOrm()
 	var info ThumbInfo
-	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsThumb": thumb})
+	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsThumb": true})
 	return id, err
 }
 
-func UpdateUnThumb(Uname, Room string, id int64, IsThumb bool) (int64, error) {
+func UpdateUnThumb(Uname, Room string, id int64) (int64, error) {
 	o := orm.NewOrm()
 	var info ThumbInfo
-	id, err := o.QueryTable(info).Filter("Room", Room).Filter("Username", Uname).Filter("Teacher", id).Update(orm.Params{"IsThumb": IsThumb})
+	id, err := o.QueryTable(info).Filter("Room", Room).Filter("Username", Uname).Filter("Teacher", id).Update(orm.Params{"IsThumb": false})
 	return id, err
 }

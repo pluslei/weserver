@@ -370,7 +370,6 @@ type TeacherOperate struct {
 	Room     string //房间号
 	Nickname string // op name
 	Username string
-	IsThumb  bool
 
 	OperType int64
 

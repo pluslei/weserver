@@ -129,6 +129,7 @@ func (this *TeacherController) GetTeacherList() {
 						var thumb m.ThumbInfo
 						thumb.Id = historyThumbInfo[i].Teacher.Id
 						thumb.Username = historyThumbInfo[i].Username
+						thumb.IsThumb = historyThumbInfo[i].IsThumb
 						Uname = append(Uname, thumb)
 					}
 					teacherinfo = append(teacherinfo, info)
@@ -155,6 +156,7 @@ func (this *TeacherController) GetTeacherList() {
 						var thumb m.ThumbInfo
 						thumb.Id = historyThumbInfo[i].Teacher.Id
 						thumb.Username = historyThumbInfo[i].Username
+						thumb.IsThumb = historyThumbInfo[i].IsThumb
 						Uname = append(Uname, thumb)
 					}
 					teacherinfo = append(teacherinfo, info)
@@ -204,6 +206,7 @@ func (this *TeacherController) GetTeacherList() {
 						var thumb m.ThumbInfo
 						thumb.Id = historyThumbInfo[i].Teacher.Id
 						thumb.Username = historyThumbInfo[i].Username
+						thumb.IsThumb = historyThumbInfo[i].IsThumb
 						Uname = append(Uname, thumb)
 					}
 					teacherinfo = append(teacherinfo, info)
@@ -230,6 +233,7 @@ func (this *TeacherController) GetTeacherList() {
 						var thumb m.ThumbInfo
 						thumb.Id = historyThumbInfo[i].Teacher.Id
 						thumb.Username = historyThumbInfo[i].Username
+						thumb.IsThumb = historyThumbInfo[i].IsThumb
 						Uname = append(Uname, thumb)
 					}
 					teacherinfo = append(teacherinfo, info)
@@ -370,6 +374,12 @@ func OperateTeacherContent(info *TeacherOperate) {
 		_, err := m.ThumbTeacherDel(teacher.Id)
 		if err != nil {
 			beego.Debug("Oper Teacher Thumb Fail", err)
+			return
+		}
+		err = UnThumbInfo(info, teacher.Id)
+		if err != nil {
+			beego.Debug("Oper UnThumbInfo Fail", err)
+			return
 		}
 		break
 	case OPERATE_TEACHER_DEL:
@@ -413,7 +423,7 @@ func addThumbInfo(info *TeacherOperate, Id int64) error {
 	var thumb m.ThumbInfo
 	data, err := m.GetThumbInfo(info.Username, info.Room, Id)
 	if data.Id != 0 && err == nil {
-		_, err := m.UpdateThumb(data.Id, info.IsThumb)
+		_, err := m.UpdateThumb(data.Id)
 		if err != nil {
 			beego.Debug("Update Thumb status Fail")
 			return nil
@@ -423,7 +433,7 @@ func addThumbInfo(info *TeacherOperate, Id int64) error {
 		thumb.Nickname = info.Nickname
 		thumb.Username = info.Username
 		thumb.Timestr = time.Now().Format("2006-01-02 15:04:05")
-		thumb.IsThumb = info.IsThumb
+		thumb.IsThumb = true
 		thumb.Teacher = &m.Teacher{Id: Id}
 		beego.Debug("Add ThumbInfo", thumb)
 		_, err = m.AddThumbInfo(&thumb)
@@ -437,7 +447,7 @@ func addThumbInfo(info *TeacherOperate, Id int64) error {
 
 func UnThumbInfo(info *TeacherOperate, Id int64) error {
 	beego.Debug("Update UnThumbInfo", info)
-	_, err := m.UpdateUnThumb(info.Username, info.Room, Id, info.IsThumb)
+	_, err := m.UpdateUnThumb(info.Username, info.Room, Id)
 	if err != nil {
 		beego.Debug("Update UnThumbInfo Fail:", err)
 		return err
