@@ -93,6 +93,7 @@ func parseMsg(msg string) int {
 	info.Datatime = time.Now()       //添加时间
 	info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
 	topic := info.Room
+	// CompanyId := info.CompanyId
 
 	beego.Debug("info", info)
 
@@ -496,7 +497,8 @@ func addData(info *MessageInfo) {
 	if info.IsLogin && info.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
-		chatrecord.Uuid = info.Uuid                 //uuid
+		chatrecord.Uuid = info.Uuid //uuid
+		chatrecord.CompanyId = info.CompanyId
 		chatrecord.Room = info.Room                 //房间号
 		chatrecord.Uname = info.Uname               //用户名
 		chatrecord.Nickname = info.Nickname         //用户昵称

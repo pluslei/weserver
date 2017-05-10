@@ -65,6 +65,7 @@ func (this *QsController) SendBroad() {
 		filename := this.GetString("FileNameFile")
 
 		broad := new(m.Notice)
+		broad.CompanyId = UserInfo.CompanyId
 		broad.Nickname = UserInfo.Nickname
 		broad.Room = room
 		broad.Uname = UserInfo.Username
@@ -78,21 +79,21 @@ func (this *QsController) SendBroad() {
 		if err != nil {
 			this.AlertBack("公告写入数据库失败")
 			return
-		} else {
-			msg := new(NoticeInfo)
-			msg.Uname = broad.Uname
-			msg.Nickname = broad.Nickname
-			msg.Content = broad.Data
-			msg.Time = broad.Time
-			msg.MsgType = MSG_TYPE_NOTICE_ADD
-
-			b := SendBrocast(room, msg)
-			if b {
-				this.Alert("公告发送成功", "/weserver/data/qs_broad")
-				return
-			}
-			this.AlertBack("公告添加失败")
 		}
+		msg := new(NoticeInfo)
+		msg.CompanyId = broad.CompanyId
+		msg.Uname = broad.Uname
+		msg.Nickname = broad.Nickname
+		msg.Content = broad.Data
+		msg.Time = broad.Time
+		msg.MsgType = MSG_TYPE_NOTICE_ADD
+
+		b := SendBrocast(room, msg)
+		if b {
+			this.Alert("公告发送成功", "/weserver/data/qs_broad")
+			return
+		}
+		this.AlertBack("公告添加失败")
 	} else {
 		this.CommonController.CommonMenu()
 

@@ -102,6 +102,7 @@ type OnLineInfo struct {
 //mqtt发送聊天信息
 type MessageInfo struct {
 	Id            int64     //数据库中id
+	CompanyId     int64     //公司id
 	Room          string    //房间号 topic
 	Uname         string    //用户名 openid
 	Nickname      string    //用户昵称
@@ -140,11 +141,12 @@ func (m *MessageInfo) ParseJSON(msg []byte) (s MessageInfo, err error) {
 
 // 公告消息
 type NoticeInfo struct {
-	Room     string //房间号
-	Uname    string //操作者的用户名
-	Nickname string
-	Content  string //广播内容
-	Time     string //发送公告时间
+	CompanyId int64
+	Room      string //房间号
+	Uname     string //操作者的用户名
+	Nickname  string
+	Content   string //广播内容
+	Time      string //发送公告时间
 
 	MsgType int //消息类型
 }
@@ -185,6 +187,7 @@ const (
 // 策略消息
 type StrategyInfo struct {
 	Id        int64
+	CompanyId int64
 	Room      string //房间号 topic
 	Icon      string //头像
 	Name      string //操作者的用户名
@@ -239,6 +242,7 @@ const (
 // 建仓信息
 type PositionInfo struct {
 	Id          int64
+	CompanyId   int64
 	RoomId      string //topic
 	RoomTeacher string //老师
 	Type        string //种类
@@ -351,16 +355,17 @@ const (
 
 // 老师信息
 type TeacherInfo struct {
-	Id       int64
-	Room     string //房间号 topic
-	Name     string //teacher name
-	Icon     string //头像
-	Title    string
-	IsTop    bool   //是否置顶 置顶1 否 0
-	ThumbNum int64  //点赞次数
-	Data     string //老师简介
-	Time     string
-	OperType int64
+	Id        int64
+	CompanyId int64
+	Room      string //房间号 topic
+	Name      string //teacher name
+	Icon      string //头像
+	Title     string
+	IsTop     bool   //是否置顶 置顶1 否 0
+	ThumbNum  int64  //点赞次数
+	Data      string //老师简介
+	Time      string
+	OperType  int64
 
 	MsgType int //消息类型
 }
@@ -396,11 +401,12 @@ func (t *TeacherOperate) ParseJSON(msg []byte) (s TeacherOperate, err error) {
 
 //踢人
 type KickOutInfo struct {
-	Room     string //房间号 topic
-	OperUid  string //踢人uuid
-	OperName string //踢人的用户名
-	ObjUid   string //被踢的uuid
-	ObjName  string //被踢的用户名
+	CompanyId int64
+	Room      string //房间号 topic
+	OperUid   string //踢人uuid
+	OperName  string //踢人的用户名
+	ObjUid    string //被踢的uuid
+	ObjName   string //被踢的用户名
 
 	MsgType int //消息类型
 }
@@ -417,9 +423,10 @@ func (k *KickOutInfo) ParseJSON(msg []byte) (s []KickOutInfo, err error) {
 
 //禁言
 type ShutUpInfo struct {
-	Room     string //房间号 topic
-	Uname    string
-	IsShutUp bool //是否禁言 1 否 0
+	CompanyId int64
+	Room      string //房间号 topic
+	Uname     string
+	IsShutUp  bool //是否禁言 1 否 0
 
 	MsgType int //消息类型
 }
