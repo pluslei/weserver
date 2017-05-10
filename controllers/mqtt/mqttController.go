@@ -63,7 +63,7 @@ func (this *MqttController) GetRoomInfo() {
 	this.Ctx.WriteString("")
 }
 
-// 获取聊天消息
+// 发送聊天消息
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {
 		chatmsg := this.GetString("str")
@@ -83,7 +83,6 @@ func (this *MqttController) GetMessageToSend() {
 	this.Ctx.WriteString("")
 }
 
-// 聊天消息
 func parseMsg(msg string) int {
 	msginfo := new(MessageInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
@@ -137,19 +136,24 @@ func (this *MqttController) GetClientip() string {
 //chat List
 func (this *MqttController) GetChatHistoryList() {
 	if this.IsAjax() {
+		id, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("Get CompanyId Error", err)
+			return
+		}
 		strId := this.GetString("Id")
 		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
-		beego.Debug("chat list ", nId, roomId)
+		beego.Debug("Get Chat List info CompanyId, RoomId, Id ", id, nId, roomId)
+
 		data := make(map[string]interface{})
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.HistoryCount
 		var infoChat []m.ChatRecord
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
-			historychat, totalCount, _ := m.GetAllChatMsgData(roomId, "chat_record")
-			beego.Debug("ssssssssssss")
+			historychat, totalCount, _ := m.GetAllChatMsgData(id, roomId, "chat_record")
 			if nId == 0 {
 				var i int64
 				if totalCount < sysCount {

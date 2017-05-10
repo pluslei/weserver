@@ -56,7 +56,7 @@ func (this *QsController) SendBroad() {
 	action := this.GetString("action")
 	if action == "add" {
 		UserInfo := this.GetSession("userinfo").(*m.User)
-		if Userinfo == nil {
+		if UserInfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
 			return
 		}
