@@ -132,6 +132,7 @@ func (this *PositionController) GetPositionList() {
 				for i = 0; i < totalCount; i++ {
 					var info m.OperPosition
 					info.Id = historyPosition[i].Id
+					info.CompanyId = historyPosition[i].CompanyId
 					info.RoomId = historyPosition[i].RoomId
 					info.RoomTeacher = historyPosition[i].RoomTeacher
 					info.Type = historyPosition[i].Type               //种类
@@ -162,6 +163,7 @@ func (this *PositionController) GetPositionList() {
 				for i = 0; i < sysCount; i++ {
 					var info m.OperPosition
 					info.Id = historyPosition[i].Id
+					info.CompanyId = historyPosition[i].CompanyId
 					info.RoomId = historyPosition[i].RoomId
 					info.RoomTeacher = historyPosition[i].RoomTeacher
 					info.Type = historyPosition[i].Type               //种类
@@ -214,6 +216,7 @@ func (this *PositionController) GetPositionList() {
 				for i := index; i < nCount; i++ {
 					var info m.OperPosition
 					info.Id = historyPosition[i].Id
+					info.CompanyId = historyPosition[i].CompanyId
 					info.RoomId = historyPosition[i].RoomId
 					info.RoomTeacher = historyPosition[i].RoomTeacher
 					info.Type = historyPosition[i].Type               //种类
@@ -245,6 +248,7 @@ func (this *PositionController) GetPositionList() {
 				for i := index; i < totalCount; i++ {
 					var info m.OperPosition
 					info.Id = historyPosition[i].Id
+					info.CompanyId = historyPosition[i].CompanyId
 					info.RoomId = historyPosition[i].RoomId
 					info.RoomTeacher = historyPosition[i].RoomTeacher
 					info.Type = historyPosition[i].Type               //种类
@@ -394,6 +398,7 @@ func operatePosData(info *PositionInfo) {
 func addPositionConten(info *PositionInfo) (int64, error) {
 	beego.Debug("Add PositionInfo", info)
 	var op m.OperPosition
+	op.CompanyId = info.CompanyId
 	op.RoomId = info.RoomId
 	op.RoomTeacher = info.RoomTeacher
 	op.Type = info.Type
@@ -420,6 +425,7 @@ func updatePositionConten(info *PositionInfo) error {
 	beego.Debug("Update Position Info", info)
 	var pos m.OperPosition
 	pos.Id = info.Id
+	pos.CompanyId = info.CompanyId
 	pos.RoomId = info.RoomId
 	pos.RoomTeacher = info.RoomTeacher
 	pos.Type = info.Type
@@ -445,6 +451,7 @@ func updatePositionConten(info *PositionInfo) error {
 func addClosePositionData(info *PositionInfo, Id int64) error {
 	beego.Debug("Add ClosePosition Info", info)
 	var pos m.ClosePosition
+	pos.CompanyId = info.CompanyId
 	pos.RoomId = info.RoomId
 	pos.RoomTeacher = info.RoomTeacher
 	pos.Type = info.Type
@@ -473,6 +480,7 @@ func updateClosePositionData(info *PositionInfo) error {
 		addClosePositionData(info, info.Id)
 	} else {
 		var pos m.ClosePosition
+		pos.CompanyId = info.CompanyId
 		pos.RoomId = info.RoomId
 		pos.RoomTeacher = info.RoomTeacher
 		pos.Type = info.Type

@@ -61,6 +61,18 @@ func (this *StrategyController) Add() {
 		}
 		strategy := new(models.Strategy)
 		strategy.Room = this.GetString("Room")
+		if userInfo.CompanyId == 0 {
+			id, err := models.GetRoomCompany(strategy.Room)
+			if err != nil {
+				beego.Debug("Get Room Company Error", err)
+				return
+			}
+			strategy.CompanyId = id
+		} else {
+			strategy.CompanyId = userInfo.CompanyId
+		}
+
+		strategy.Room = this.GetString("Room")
 		strategy.Icon = userInfo.Headimgurl
 		strategy.Name = userInfo.Nickname
 		userTitleInfo, err := models.ReadTitleById(userInfo.Title.Id)
@@ -98,6 +110,7 @@ func (this *StrategyController) Add() {
 
 func SendStrage(info *models.Strategy) {
 	msg := new(StrategyInfo)
+	msg.CompanyId = info.CompanyId
 	msg.Room = info.Room
 	msg.Icon = info.Icon
 	msg.Name = info.Name

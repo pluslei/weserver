@@ -114,10 +114,10 @@ func GetShutUpInfoToday() (users []Regist, err error) {
 }
 
 //获取user表中最近当天登录列表信息
-func GetLoginInfoToday(Id int64, roomId string) (users []Regist, err error) {
+func GetLoginInfoToday(roomId string) (users []Regist, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("regist").Exclude("Username", "admin").Filter("CompanyId", Id).Filter("Room", roomId).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
+	_, err = o.QueryTable("regist").Exclude("Username", "admin").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
 }
 

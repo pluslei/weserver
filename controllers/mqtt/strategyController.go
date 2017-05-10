@@ -216,80 +216,6 @@ func (this *StrategyController) GetStrategyList() {
 	this.Ctx.WriteString("")
 }
 
-/*
-func (this *StrategyController) GetStrategyList() {
-	if this.IsAjax() {
-		count := this.GetString("count")
-		nEnd, _ := strconv.ParseInt(count, 10, 64)
-		roomId := this.GetString("room")
-		data := make(map[string]interface{})
-		sysconfig, _ := m.GetAllSysConfig()
-		sysCount := sysconfig.StrategyCount
-		var Strinfo []m.Strategy
-		historyStrategy, nCount, _ := m.GetStrategyList(roomId)
-		if nCount < sysCount {
-			beego.Debug("nCount sysCont", nCount, sysCount)
-			var i int64
-			for i = 0; i < nCount; i++ {
-				var info m.Strategy
-				info.Id = historyStrategy[i].Id
-				info.Room = historyStrategy[i].Room
-				info.Icon = historyStrategy[i].Icon
-				info.Name = historyStrategy[i].Name
-				info.Titel = historyStrategy[i].Titel
-				info.Data = historyStrategy[i].Data
-				info.IsTop = historyStrategy[i].IsTop
-				info.IsDelete = historyStrategy[i].IsDelete
-				info.ThumbNum = historyStrategy[i].ThumbNum
-				info.Time = historyStrategy[i].Time
-				Strinfo = append(Strinfo, info)
-			}
-			data["historyStrategy"] = Strinfo
-			this.Data["json"] = &data
-			this.ServeJSON()
-			return
-		}
-		mod := (nEnd - nCount) % sysCount
-		beego.Debug("mod", mod)
-		if nEnd > nCount && mod == 0 {
-			beego.Debug("mod = 0")
-			data["historyStrategy"] = ""
-			this.Data["json"] = &data
-			this.ServeJSON()
-			return
-		}
-		var nstart int64
-		nstart = nEnd - sysCount
-		if nEnd > nCount {
-			nEnd = nCount
-			mod = nEnd % sysCount
-			nstart = nEnd - mod
-			beego.Debug("mod", mod)
-		}
-		for i := nstart; i < nEnd; i++ {
-			var info m.Strategy
-			info.Id = historyStrategy[i].Id
-			info.Room = historyStrategy[i].Room
-			info.Icon = historyStrategy[i].Icon
-			info.Name = historyStrategy[i].Name
-			info.Titel = historyStrategy[i].Titel
-			info.Data = historyStrategy[i].Data
-			info.IsTop = historyStrategy[i].IsTop
-			info.IsDelete = historyStrategy[i].IsDelete
-			info.ThumbNum = historyStrategy[i].ThumbNum
-			info.Time = historyStrategy[i].Time
-			Strinfo = append(Strinfo, info)
-		}
-		data["historyStrategy"] = Strinfo
-		this.Data["json"] = &data
-		this.ServeJSON()
-	} else {
-		this.Ctx.Redirect(302, "/")
-	}
-	this.Ctx.WriteString("")
-}
-*/
-
 func (this *StrategyController) Upload() {
 	uploadtype := this.GetString("uploadtype")
 
@@ -346,7 +272,6 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	mq.SendMessage(topic, v)
-
 
 	info.FileName = serverId
 
@@ -524,6 +449,7 @@ func editStrategyContent(info *StrategyInfo) {
 		} else {
 			strategy.FileName = info.FileName
 		}
+		strategy.CompanyId = info.CompanyId
 		strategy.Room = info.Room
 		strategy.Icon = info.Icon
 		strategy.Name = info.Name
