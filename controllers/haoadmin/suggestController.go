@@ -7,6 +7,7 @@ import (
 
 	"github.com/astaxie/beego"
 	// "github.com/denverdino/aliyungo/mq"
+
 	mq "weserver/src/mqtt"
 )
 
@@ -59,11 +60,13 @@ func (this *SuggestController) Add() {
 		userInfo := this.GetSession("userinfo")
 		if userInfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
 		}
 		beego.Debug("userInfo", userInfo.(*models.User).Title.Id)
 		titleInfo, err := models.ReadTitleById(userInfo.(*models.User).Title.Id)
 		if err != nil {
 			beego.Debug("title info error", err)
+			return
 		}
 		beego.Debug("titleInfo", titleInfo)
 
@@ -116,7 +119,7 @@ func (this *SuggestController) Add() {
 
 	} else {
 		this.CommonMenu()
-		roonInfo, _, err := models.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
@@ -157,8 +160,7 @@ func (this *SuggestController) Edit() {
 		this.Alert("修改成功", "suggest_index")
 	} else {
 		this.CommonMenu()
-
-		roonInfo, _, err := models.GetRoomInfo()
+		roomInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
@@ -171,11 +173,11 @@ func (this *SuggestController) Edit() {
 		roomteacher, err := models.GetTeacherListByRoom(operInfo.RoomId)
 		if err != nil {
 			beego.Error("error", err)
-			beego.Error("error", err)
+			return
 		}
 		this.Data["roomteacherInfo"] = roomteacher
 		this.Data["operInfo"] = operInfo
-		this.Data["roonInfo"] = roonInfo
+		this.Data["roonInfo"] = roomInfo
 		this.TplName = "haoadmin/data/suggest/edit.html"
 	}
 }
@@ -229,9 +231,9 @@ func (this *SuggestController) AddClose() {
 
 	} else {
 		this.CommonMenu()
-		roonInfo, _, err := models.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
-			beego.Error("get the roominfo error", err)
+			beego.Error("Get the Roominfo error", err)
 			return
 		}
 		this.Data["roonInfo"] = roonInfo

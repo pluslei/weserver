@@ -45,9 +45,9 @@ func (this *TeacherController) Index() {
 	} else {
 		this.CommonMenu()
 
-		roonInfo, _, err := models.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
-			beego.Error("get the roominfo error", err)
+			beego.Error("Get the Roominfo error", err)
 			return
 		}
 		this.Data["roonInfo"] = roonInfo
@@ -76,9 +76,9 @@ func (this *TeacherController) Add() {
 	} else {
 		this.CommonMenu()
 
-		roonInfo, _, err := models.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
-			beego.Error("get the roominfo error", err)
+			beego.Error("Get the Roominfo error", err)
 			return
 		}
 		beego.Debug("roonInfo", roonInfo)
@@ -109,9 +109,9 @@ func (this *TeacherController) Edit() {
 	} else {
 		this.CommonMenu()
 
-		roonInfo, _, err := models.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
-			beego.Error("get the roominfo error", err)
+			beego.Error("Get the Roominfo error", err)
 			return
 		}
 		teacher, err := models.GetTeacherInfoById(id)

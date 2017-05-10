@@ -55,7 +55,10 @@ func (this *StrategyController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
 		userInfo := this.GetSession("userinfo").(*models.User)
-
+		if userinfo == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		strategy := new(models.Strategy)
 		strategy.Room = this.GetString("Room")
 		strategy.Icon = userInfo.Headimgurl
@@ -83,7 +86,7 @@ func (this *StrategyController) Add() {
 		this.Alert("添加成功", "/weserver/data/strategy_index")
 	} else {
 		this.CommonMenu()
-		roonInfo, _, err := models.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
@@ -147,12 +150,13 @@ func (this *StrategyController) Edit() {
 		}
 		beego.Debug("info", info)
 		this.Data["Info"] = info
-		roonInfo, _, err := models.GetRoomInfo()
+
+		roomInfo, err := this.GetRoomInfo()
 		if err != nil {
-			beego.Error("get the roominfo error", err)
+			beego.Debug("Get RoomInfo error", err)
 			return
 		}
-		this.Data["roonInfo"] = roonInfo
+		this.Data["roonInfo"] = roomInfo
 		this.TplName = "haoadmin/data/strategy/edit.html"
 	}
 }

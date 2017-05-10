@@ -29,6 +29,7 @@ func (this *MainController) Index() {
 		userinfo := this.GetSession("userinfo")
 		if userinfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
 		}
 		this.CommonMenu()
 		beego.Debug("userinfo", userinfo)
@@ -134,6 +135,7 @@ func (this *MainController) UpdateAdminPwd() {
 	userInfo := this.GetSession("userinfo")
 	if userInfo == nil {
 		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
 	}
 	OldPwd := strings.Trim(this.GetString("oldpassword"), " ")
 	NewPwd := strings.Trim(this.GetString("newpassword"), " ")
@@ -178,6 +180,7 @@ func (this *MainController) Changepwd() {
 	userinfo := this.GetSession("userinfo")
 	if userinfo == nil {
 		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
 	}
 	oldpassword := this.GetString("oldpassword")
 	newpassword := this.GetString("newpassword")

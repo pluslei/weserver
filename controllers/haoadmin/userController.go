@@ -61,6 +61,10 @@ func (this *UserController) Index() {
 		this.ServeJSON()
 	} else {
 		user := this.GetSession("userinfo")
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		username := user.(*m.User).Username
 		this.Data["username"] = username
 		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
@@ -119,6 +123,10 @@ func (this *UserController) UserList() {
 		this.ServeJSON()
 	} else {
 		user := this.GetSession("userinfo")
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		username := user.(*m.User).Username
 		this.Data["username"] = username
 		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
@@ -292,9 +300,9 @@ func (this *UserController) AddUser() {
 			return
 		}
 		this.Data["CompanyList"] = companyList
-		roonInfo, _, err := m.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
-			beego.Error("get the roominfo error", err)
+			beego.Error("Get the Roominfo error", err)
 			return
 		}
 		this.Data["roonInfo"] = roonInfo

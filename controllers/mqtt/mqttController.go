@@ -540,7 +540,6 @@ func updateData(info *MessageInfo) {
 
 //rpc 推送 给管理页面
 func broadcastChat(chat m.ChatRecord) {
-	beego.Debug("ssssssssssss", chat)
 	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
 	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
 }
