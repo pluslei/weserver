@@ -144,6 +144,14 @@ func GetRoomInfo(id int64) ([]RoomInfo, int64, error) {
 	return info, num, err
 }
 
+func GetAllRoomInfo() ([]RoomInfo, int64, error) {
+	o := orm.NewOrm()
+	var info []RoomInfo
+	num, err := o.QueryTable("roominfo").OrderBy("Id").All(&info)
+	beego.Debug("num", num)
+	return info, num, err
+}
+
 // 获取房间信息
 func GetRoomInfoByRoomID(RoomId string) (info RoomInfo, err error) {
 	o := orm.NewOrm()

@@ -1,6 +1,8 @@
 package haoadmin
 
 import (
+	"errors"
+	"haolive/models"
 	"strings"
 
 	"weserver/controllers"
@@ -123,7 +125,6 @@ func (this *CommonController) GetGroupTree(gid int64) []Tree {
 	return tree
 }
 
-//
 func (this *CommonController) CommonMenu() {
 	userInfo := this.GetSession("userinfo")
 	if userInfo == nil {
@@ -138,4 +139,27 @@ func (this *CommonController) CommonMenu() {
 	}
 	this.Data["serverurl"] = beego.AppConfig.String("localServerAdress")
 	this.Layout = "haoadmin/layout/base.html"
+}
+
+func (this *CommonController) GetRoomInfo() ([]m.RoomInfo, error) {
+	var roomInfo []m.RoomInfo
+	userInfo := this.GetSession("userinfo").(*m.User)
+	if userInfo == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return nil, errors.New("userinfo is nil")
+	}
+	if userInfo.CompanyId == 0 {
+		roomInfo, _, err := m.GetAllRoomInfo()
+		if err != nil {
+			beego.Error("Admin Get AllRoom Info Error", err)
+			return nil, err
+		}
+	} else {
+		roomInfo, _, err := models.GetRoomInfo(userInfo.CompanyId)
+		if err != nil {
+			beego.Error("Get the roominfo error", err)
+			return nil, err
+		}
+	}
+	return roomInfo, nil
 }

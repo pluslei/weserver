@@ -56,6 +56,10 @@ func (this *QsController) SendBroad() {
 	action := this.GetString("action")
 	if action == "add" {
 		UserInfo := this.GetSession("userinfo").(*m.User)
+		if Userinfo == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		data := this.GetString("Content")
 		room := this.GetString("Room")
 		filename := this.GetString("FileNameFile")
@@ -92,7 +96,7 @@ func (this *QsController) SendBroad() {
 	} else {
 		this.CommonController.CommonMenu()
 
-		roonInfo, _, err := m.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
@@ -123,8 +127,7 @@ func (this *QsController) Edit() {
 		this.Alert("更新成功", "qs_broad")
 	} else {
 		this.CommonController.CommonMenu()
-
-		roonInfo, _, err := m.GetRoomInfo()
+		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
