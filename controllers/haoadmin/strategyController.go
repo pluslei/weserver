@@ -55,7 +55,7 @@ func (this *StrategyController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
 		userInfo := this.GetSession("userinfo").(*models.User)
-		if userinfo == nil {
+		if userInfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
 			return
 		}

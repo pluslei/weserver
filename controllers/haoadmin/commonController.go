@@ -2,7 +2,6 @@ package haoadmin
 
 import (
 	"errors"
-	"haolive/models"
 	"strings"
 
 	"weserver/controllers"
@@ -142,7 +141,6 @@ func (this *CommonController) CommonMenu() {
 }
 
 func (this *CommonController) GetRoomInfo() ([]m.RoomInfo, error) {
-	var roomInfo []m.RoomInfo
 	userInfo := this.GetSession("userinfo").(*m.User)
 	if userInfo == nil {
 		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
@@ -154,12 +152,14 @@ func (this *CommonController) GetRoomInfo() ([]m.RoomInfo, error) {
 			beego.Error("Admin Get AllRoom Info Error", err)
 			return nil, err
 		}
+		return roomInfo, nil
 	} else {
-		roomInfo, _, err := models.GetRoomInfo(userInfo.CompanyId)
+		roomInfo, _, err := m.GetRoomInfo(userInfo.CompanyId)
 		if err != nil {
 			beego.Error("Get the roominfo error", err)
 			return nil, err
 		}
+		return roomInfo, nil
 	}
-	return roomInfo, nil
+
 }
