@@ -74,6 +74,16 @@
         <legend></legend>
         <input type="hidden" value="add" name="action">
         <div class="am-form-group">
+          <label for="doc-select-1">请选择公司</label>
+          <select id="doc-select-2" name="Room"  required data-validation-message="请选择公司">
+            <option value="">-=请选择公司=-</option>
+            {{range $index,$ele := .roonInfo}}
+            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+        <div class="am-form-group">
           <label for="doc-select-1">请选择房间</label>
           <select id="doc-select-2" name="Room"  required data-validation-message="请选择房间">
             <option value="">-=请选择房间=-</option>

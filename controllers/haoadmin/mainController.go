@@ -114,6 +114,7 @@ func (this *MainController) Login() {
 		}
 
 	}
+	
 	this.TplName = "haoadmin/login.html"
 }
 
