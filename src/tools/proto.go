@@ -371,10 +371,11 @@ type TeacherInfo struct {
 }
 
 type TeacherOperate struct {
-	Id       int64  //消息id 唯一
-	Room     string //房间号
-	Nickname string // op name
-	Username string
+	Id        int64 //消息id 唯一
+	CompanyId int64
+	Room      string //房间号
+	Nickname  string // op name
+	Username  string
 
 	OperType int64
 

@@ -57,13 +57,13 @@ func (this *SuggestController) Index() {
 func (this *SuggestController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
-		userInfo := this.GetSession("userinfo")
+		userInfo := this.GetSession("userinfo").(*models.User)
 		if userInfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
 			return
 		}
-		beego.Debug("userInfo", userInfo.(*models.User).Title.Id)
-		titleInfo, err := models.ReadTitleById(userInfo.(*models.User).Title.Id)
+		beego.Debug("userInfo", userInfo.Title.Id)
+		titleInfo, err := models.ReadTitleById(userInfo.Title.Id)
 		if err != nil {
 			beego.Debug("title info error", err)
 			return
@@ -72,6 +72,17 @@ func (this *SuggestController) Add() {
 
 		oper := new(models.OperPosition)
 		oper.RoomId = this.GetString("RoomId")
+
+		if userInfo.CompanyId == 0 {
+			id, err := models.GetRoomCompany(oper.RoomId)
+			if err != nil {
+				beego.Debug("Get Room Company Error", err)
+				return
+			}
+			oper.CompanyId = id
+		} else {
+			oper.CompanyId = userInfo.CompanyId
+		}
 		oper.RoomTeacher = titleInfo.Name
 		oper.Time = time.Now()
 		oper.Type = this.GetString("Type")
@@ -93,6 +104,7 @@ func (this *SuggestController) Add() {
 			return
 		}
 		msg := new(PositionInfo)
+		msg.CompanyId = oper.CompanyId
 		msg.RoomId = oper.RoomId
 		msg.RoomTeacher = oper.RoomTeacher
 		msg.Type = oper.Type
@@ -203,8 +215,23 @@ func (this *SuggestController) AddClose() {
 		return
 	}
 	if action == "add" {
+		userInfo := this.GetSession("userinfo").(*models.User)
+		if userInfo == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		oper := new(models.ClosePosition)
 		oper.RoomId = this.GetString("RoomId")
+		if userInfo.CompanyId == 0 {
+			id, err := models.GetRoomCompany(oper.RoomId)
+			if err != nil {
+				beego.Debug("Get Room Company Error", err)
+				return
+			}
+			oper.CompanyId = id
+		} else {
+			oper.CompanyId = userInfo.CompanyId
+		}
 		oper.RoomTeacher = this.GetString("RoomTeacher")
 		oper.Time = time.Now()
 		oper.Type = this.GetString("Type")

@@ -137,16 +137,11 @@ func (this *MqttController) GetClientip() string {
 //chat List
 func (this *MqttController) GetChatHistoryList() {
 	if this.IsAjax() {
-		id, err := this.GetInt64("CompanyId")
-		if err != nil {
-			beego.Debug("Get CompanyId Error", err)
-			return
-		}
 		strId := this.GetString("Id")
 		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
-		beego.Debug("Get Chat List info CompanyId, RoomId, Id ", id, nId, roomId)
+		beego.Debug("Get Chat List info  RoomId, Id ", nId, roomId)
 
 		data := make(map[string]interface{})
 		sysconfig, _ := m.GetAllSysConfig()
@@ -154,7 +149,7 @@ func (this *MqttController) GetChatHistoryList() {
 		var infoChat []m.ChatRecord
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
-			historychat, totalCount, _ := m.GetAllChatMsgData(id, roomId, "chat_record")
+			historychat, totalCount, _ := m.GetAllChatMsgData(roomId, "chat_record")
 			if nId == 0 {
 				var i int64
 				if totalCount < sysCount {

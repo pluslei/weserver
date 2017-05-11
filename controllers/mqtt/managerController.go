@@ -34,13 +34,8 @@ func init() {
 // 当前在线
 func (this *ManagerController) GetUserOnline() {
 	if this.IsAjax() {
-		companyId, err := this.GetInt64("CompanyId")
-		if err != nil {
-			beego.Debug("Get CompanyId Error", err)
-			return
-		}
 		roomId := this.GetString("Room")
-		onlineuser, err := m.GetLoginInfoToday(companyId, roomId)
+		onlineuser, err := m.GetLoginInfoToday(roomId)
 		if err != nil {
 			beego.Error("get the user error", err)
 			return
@@ -77,6 +72,7 @@ func (this *ManagerController) GetUserLogin() {
 			_, err := m.UpdateLoginTime(roomId, Uname)
 			if err != nil {
 				beego.Debug("UpdateLogin time error", err)
+				return
 			}
 			var info m.Regist
 			info.Room = roomId
@@ -84,6 +80,7 @@ func (this *ManagerController) GetUserLogin() {
 			regist, err := m.LoadRegist(&info, "Room", "Username")
 			if err != nil {
 				beego.Error("load regist error", err)
+				return
 			}
 			role := new(RoleInfo)
 			role.RoleId = regist.Role.Id
@@ -120,16 +117,23 @@ func (this *ManagerController) GetUserLogin() {
 
 func (this *ManagerController) GetUserApply() {
 	if this.IsAjax() {
+		companyId, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("Get CompanyId Error", err)
+			return
+		}
 		roomId := this.GetString("Room")
 		Username := this.GetString("Username")
 		Icon := this.GetString("Icon")
 		Nickname := this.GetString("Nickname")
 
+		beego.Debug("User Apply RoomAccount")
 		config, _ := m.GetSysConfig()
 		configRole := config.Registerrole
 		configTitle := config.Registertitle
 		configVerify := config.Verify
 		u := new(m.Regist)
+		u.CompanyId = companyId
 		u.Room = roomId
 		u.Username = Username
 		if configVerify == 0 { //是否开启验证  0开启 1不开启

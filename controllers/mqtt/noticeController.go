@@ -70,7 +70,6 @@ func (this *NoticeController) DeleteNotice() {
 func (this *NoticeController) GetRoomNoticeList() {
 	if this.IsAjax() {
 		strId := this.GetString("Id")
-		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
 		beego.Debug("Notice list ", nId, roomId)
@@ -159,72 +158,6 @@ func (this *NoticeController) GetRoomNoticeList() {
 	this.Ctx.WriteString("")
 }
 
-/*
-func (this *NoticeController) GetRoomNoticeList() {
-	if this.IsAjax() {
-		count := this.GetString("count")
-		nEnd, _ := strconv.ParseInt(count, 10, 64)
-		beego.Debug("Requst Count", count)
-		roomId := this.GetString("room")
-		data := make(map[string]interface{})
-		sysconfig, _ := m.GetAllSysConfig()
-		sysCount := sysconfig.NoticeCount
-		var Notice []m.Notice
-		historyNotice, nCount, _ := m.GetNoticeList(roomId)
-		if nCount < sysCount {
-			beego.Debug("nCount sysCont", nCount, sysCount)
-			var i int64
-			for i = 0; i < nCount; i++ {
-				var info m.Notice
-				info.Id = historyNotice[i].Id
-				info.Room = historyNotice[i].Room
-				info.Uname = historyNotice[i].Uname
-				info.Nickname = historyNotice[i].Nickname
-				info.Data = historyNotice[i].Data
-				info.Time = historyNotice[i].Time
-				Notice = append(Notice, info)
-			}
-			data["historyNotice"] = Notice
-			this.Data["json"] = &data
-			this.ServeJSON()
-			return
-		}
-		mod := (nEnd - nCount) % sysCount
-		if nEnd > nCount && mod == 0 {
-			beego.Debug("mod = 0")
-			data["historyNotice"] = ""
-			this.Data["json"] = &data
-			this.ServeJSON()
-			return
-		}
-		var nstart int64
-		nstart = nEnd - sysCount
-		if nEnd > nCount {
-			nEnd = nCount
-			mod = nEnd % sysCount
-			nstart = nEnd - mod
-			beego.Debug("mod", mod)
-		}
-		for i := nstart; i < nEnd; i++ {
-			beego.Debug("loop", i)
-			var info m.Notice
-			info.Id = historyNotice[i].Id
-			info.Room = historyNotice[i].Room
-			info.Uname = historyNotice[i].Uname
-			info.Nickname = historyNotice[i].Nickname
-			info.Data = historyNotice[i].Data
-			info.Time = historyNotice[i].Time
-			Notice = append(Notice, info)
-		}
-		data["historyNotice"] = Notice
-		this.Data["json"] = &data
-		this.ServeJSON()
-	} else {
-		this.Ctx.Redirect(302, "/")
-	}
-	this.Ctx.WriteString("")
-}
-*/
 func parseNoticeMsg(msg string) bool {
 	msginfo := new(NoticeInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
@@ -325,6 +258,7 @@ func addContent(info *NoticeInfo) {
 	beego.Debug("NoticeInfo", info)
 	//写数据库
 	var notice m.Notice
+	notice.CompanyId = info.CompanyId
 	notice.Room = info.Room
 	notice.Uname = info.Uname
 	notice.Nickname = info.Nickname

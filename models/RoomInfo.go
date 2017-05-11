@@ -152,6 +152,14 @@ func GetAllRoomInfo() ([]RoomInfo, int64, error) {
 	return info, num, err
 }
 
+//获取聊天室个数和聊天室名
+func GetRoomCompany(room string) (int64, error) {
+	var info RoomInfo
+	o := orm.NewOrm()
+	err := o.QueryTable("roominfo").Filter("Room", room).Limit(1).One(&info)
+	return info.Id, err
+}
+
 // 获取房间信息
 func GetRoomInfoByRoomID(RoomId string) (info RoomInfo, err error) {
 	o := orm.NewOrm()

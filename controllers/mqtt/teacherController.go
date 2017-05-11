@@ -429,6 +429,7 @@ func addThumbInfo(info *TeacherOperate, Id int64) error {
 			return nil
 		}
 	} else {
+		thumb.CompanyId = info.CompanyId
 		thumb.Room = info.Room
 		thumb.Nickname = info.Nickname
 		thumb.Username = info.Username
