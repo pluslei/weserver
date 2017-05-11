@@ -16,6 +16,11 @@ type StrategyController struct {
 
 func (this *StrategyController) Index() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*models.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 
@@ -26,13 +31,19 @@ func (this *StrategyController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		stratelist, count := models.GetStrategyInfoList(iStart, iLength, "-Id")
+		stratelist, count := models.GetStrategyInfoList(iStart, iLength, "-Id", user.CompanyId)
 		for _, item := range stratelist {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {
 				item["Room"] = "未知房间"
 			} else {
 				item["Room"] = roomInfo.RoomTitle
+			}
+			Info, err := models.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = Info.Company
 			}
 			item["DatatimeStr"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 		}

@@ -105,9 +105,15 @@ func UpdatePositionInfo(t *OperPosition) (int64, error) {
 }
 
 // 分页
-func GetOperPositionList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
+func GetOperPositionList(page int64, page_size int64, sort string, companyId int64) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	poer := new(OperPosition)
+	if companyId != 0 {
+		query := o.QueryTable(poer)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
 	query := o.QueryTable(poer)
 	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()

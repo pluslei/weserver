@@ -151,9 +151,15 @@ func GetThumbNum(id int64) (int64, error) {
 }
 
 // 策略分页
-func GetStrategyInfoList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
+func GetStrategyInfoList(page int64, page_size int64, sort string, companyId int64) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	strategy := new(Strategy)
+	if companyId != 0 {
+		query := o.QueryTable(strategy)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
 	query := o.QueryTable(strategy)
 	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()

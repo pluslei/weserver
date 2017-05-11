@@ -107,9 +107,15 @@ func UpdateContent(id int64, strContent string) (int64, error) {
 }
 
 // 讲师分页
-func GetTeacherInfoList(page int64, page_size int64, sort string) (t []orm.Params, count int64) {
+func GetTeacherInfoList(page int64, page_size int64, sort string, companyId int64) (t []orm.Params, count int64) {
 	o := orm.NewOrm()
 	teacher := new(Teacher)
+	if companyId != 0 {
+		query := o.QueryTable(teacher)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&t)
+		count, _ = query.Count()
+		return t, count
+	}
 	query := o.QueryTable(teacher)
 	query.Limit(page_size, page).OrderBy(sort).Values(&t)
 	count, _ = query.Count()

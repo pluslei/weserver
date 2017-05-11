@@ -18,6 +18,11 @@ type RoomController struct {
 
 func (this *RoomController) Index() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*models.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 
@@ -28,8 +33,17 @@ func (this *RoomController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		roolist, count := models.GetRoomInfoList(iStart, iLength, "Id")
+		companyId := user.CompanyId
+		roolist, count := models.GetRoomInfoList(iStart, iLength, "Id", companyId)
 
+		for _, item := range roolist {
+			Info, err := models.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = Info.Company
+			}
+		}
 		// json
 		data := make(map[string]interface{})
 		data["aaData"] = roolist

@@ -39,6 +39,7 @@
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-teacher-list">
                 <thead>
                     <tr> 
+                        <th>公司名称</th>
                         <th>所属房间</th>
                         <th>讲师名称</th>
                         <th>时间</th>
@@ -113,6 +114,7 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
+                {"mDataProp": "CompanyName",},
                 {"mDataProp": "RoomId",},
                 {"mDataProp": "RoomTeacher",},
                 {"mDataProp": "Timestr",},

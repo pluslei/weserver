@@ -139,9 +139,15 @@ func UpdateChatStatus(id int64) (int64, error) {
 }
 
 // 获取消息列表
-func GetChatRecordList(page int64, page_size int64, sort string) (ms []orm.Params, count int64) {
+func GetChatRecordList(page int64, page_size int64, sort string, companyId int64) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	chatrecord := new(ChatRecord)
+	if companyId != 0 {
+		query := o.QueryTable(chatrecord)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
 	query := o.QueryTable(chatrecord)
 	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()

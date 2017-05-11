@@ -45,9 +45,15 @@ func GetNoticeList(room string) ([]Notice, int64, error) {
 }
 
 //获取所有的公告列表
-func GetAllNoticeList(page int64, page_size int64, sort string) (broad []orm.Params, count int64) {
+func GetAllNoticeList(page int64, page_size int64, sort string, companyId int64) (broad []orm.Params, count int64) {
 	o := orm.NewOrm()
 	obj := new(Notice)
+	if companyId != 0 {
+		qs := o.QueryTable(obj)
+		qs.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&broad)
+		count, _ = qs.Count()
+		return broad, count
+	}
 	qs := o.QueryTable(obj)
 	qs.Limit(page_size, page).OrderBy(sort).Values(&broad)
 	count, _ = qs.Count()

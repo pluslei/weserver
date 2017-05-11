@@ -18,6 +18,11 @@ type SuggestController struct {
 // 建仓列表
 func (this *SuggestController) Index() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*models.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 
@@ -28,13 +33,19 @@ func (this *SuggestController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		operposition, count := models.GetOperPositionList(iStart, iLength, "-Id")
+		operposition, count := models.GetOperPositionList(iStart, iLength, "-Id", user.CompanyId)
 		for _, item := range operposition {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["RoomId"].(string))
 			if err != nil {
 				item["RoomId"] = "未知房间"
 			} else {
 				item["RoomId"] = roomInfo.RoomTitle
+			}
+			Info, err := models.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = Info.Company
 			}
 			item["Timestr"] = item["Time"].(time.Time).Format("2006-01-02 15:04:05")
 		}

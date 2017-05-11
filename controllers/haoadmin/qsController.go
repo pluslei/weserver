@@ -18,6 +18,11 @@ type QsController struct {
 // 发送公告列表
 func (this *QsController) SendNoticeList() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*m.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 		if err != nil {
@@ -27,7 +32,9 @@ func (this *QsController) SendNoticeList() {
 		if err != nil {
 			beego.Error(err)
 		}
-		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "-Id")
+		companyId := user.CompanyId
+
+		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "-Id", companyId)
 		for _, item := range Noticelist {
 			item["Datatime"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 			roomInfo, err := m.GetRoomInfoByRoomID(item["Room"].(string))
@@ -35,6 +42,12 @@ func (this *QsController) SendNoticeList() {
 				item["Room"] = "未知房间"
 			} else {
 				item["Room"] = roomInfo.RoomTitle
+			}
+			Info, err := m.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = Info.Company
 			}
 		}
 		// json

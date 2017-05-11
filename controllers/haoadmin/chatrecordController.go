@@ -32,11 +32,28 @@ func init() {
 // 聊天记录
 func (this *ChatRecordController) ChatRecordList() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*m.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, _ := this.GetInt64("iDisplayStart")
 		iLength, _ := this.GetInt64("iDisplayLength")
-		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime")
+		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime", user.CompanyId)
 		for _, v := range chatrecord {
+			roomInfo, err := m.GetRoomInfoByRoomID(v["Room"].(string))
+			if err != nil {
+				v["Room"] = "未知房间"
+			} else {
+				v["Room"] = roomInfo.RoomTitle
+			}
+			Info, err := m.GetCompanyById(v["CompanyId"].(int64))
+			if err != nil {
+				v["CompanyName"] = "未知公司"
+			} else {
+				v["CompanyName"] = Info.Company
+			}
 			v["Datatime"] = v["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 		}
 		// json
