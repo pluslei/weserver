@@ -87,7 +87,7 @@
           </select>
           <span class="am-form-caret"></span>
         </div>
-        <div class="am-form-group">
+        <!--<div class="am-form-group">
           <label for="doc-select-1">请选择房间</label>
           <select id="doc-select-2" name="Room"  required data-validation-message="请选择房间">
             <option value="">-=请选择房间=-</option>
@@ -96,6 +96,14 @@
             {{end}}
           </select>
           <span class="am-form-caret"></span>
+        </div>-->
+        <label for="doc-vld-ta-2">请选择房间</label>
+        <div class="am-form-group">
+            {{range $index,$ele := .roonInfo}}
+              <label class="am-checkbox-inline">
+                <input type="checkbox" name="RoomId" value="{{$ele.RoomId}}"> {{$ele.RoomTitle}}
+              </label>
+            {{end}}
         </div>
         <div class="am-form-group">
           <label for="doc-ta-1">策略内容：</label>
