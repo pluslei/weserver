@@ -17,6 +17,11 @@ type UserController struct {
 // 用户管理
 func (this *UserController) Index() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*m.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 		if err != nil {
@@ -27,7 +32,9 @@ func (this *UserController) Index() {
 			beego.Error(err)
 		}
 		nickname := this.GetString("sSearch_0")
-		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname)
+
+		companyId := user.CompanyId
+		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname, companyId)
 		for _, item := range userlist {
 			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
 
@@ -48,7 +55,12 @@ func (this *UserController) Index() {
 			} else {
 				item["RoomName"] = roomInfo.RoomTitle
 			}
-
+			Info, err := m.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = Info.Company
+			}
 		}
 
 		// json
@@ -67,12 +79,9 @@ func (this *UserController) Index() {
 		}
 		username := user.(*m.User).Username
 		this.Data["username"] = username
-		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
-		codeid := tools.MainEncrypt(prevalue)
 		this.CommonController.CommonMenu()
 		roles, _ := m.GetAllUserRole()
 		this.Data["roles"] = roles
-		this.Data["codeid"] = codeid
 		this.TplName = "haoadmin/rbac/user/reglist.html"
 	}
 }
@@ -80,6 +89,11 @@ func (this *UserController) Index() {
 // 用户设置列表
 func (this *UserController) UserList() {
 	if this.IsAjax() {
+		user := this.GetSession("userinfo").(*m.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 		if err != nil {
@@ -90,7 +104,9 @@ func (this *UserController) UserList() {
 			beego.Error(err)
 		}
 		nickname := this.GetString("sSearch_0")
-		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname)
+
+		companyId := user.CompanyId
+		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname, companyId)
 		for _, item := range userlist {
 			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
 
@@ -111,8 +127,13 @@ func (this *UserController) UserList() {
 			} else {
 				item["Rolename"] = roleInfo.Title
 			}
+			Info, err := m.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = Info.Company
+			}
 		}
-
 		// json
 		data := make(map[string]interface{})
 		data["aaData"] = userlist
@@ -129,12 +150,9 @@ func (this *UserController) UserList() {
 		}
 		username := user.(*m.User).Username
 		this.Data["username"] = username
-		prevalue := beego.AppConfig.String("company") + "_" + beego.AppConfig.String("room")
-		codeid := tools.MainEncrypt(prevalue)
 		this.CommonController.CommonMenu()
 		roles, _ := m.GetAllUserRole()
 		this.Data["roles"] = roles
-		this.Data["codeid"] = codeid
 		this.TplName = "haoadmin/rbac/user/list.html"
 	}
 }
@@ -294,17 +312,26 @@ func (this *UserController) AddUser() {
 		}
 	} else {
 		this.CommonMenu()
-		companyList, _, err := m.GetCompanyList()
+		user := this.GetSession("userinfo").(*m.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
+		companyId := user.CompanyId
+
+		companyList, _, err := m.GetCompanyList(companyId)
 		if err != nil {
 			beego.Error("get the companyList error", err)
 			return
 		}
-		this.Data["CompanyList"] = companyList
+
 		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("Get the Roominfo error", err)
 			return
 		}
+
+		this.Data["CompanyList"] = companyList
 		this.Data["roonInfo"] = roonInfo
 		roles, _ := m.GetAllUserRole()
 		titles, _ := m.GetAllUserTitle()

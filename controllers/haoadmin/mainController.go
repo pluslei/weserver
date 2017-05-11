@@ -71,44 +71,43 @@ func (this *MainController) OnlineIndex() {
 func (this *MainController) Login() {
 	isajax := this.GetString("isajax")
 	if isajax == "1" {
-		var user m.User
-		var err error
+		var admin m.User
 		username := this.GetString("username")
 		password := this.GetString("password")
 		md5password := tools.EncodeUserPwd(username, password)
-
-		user, err = m.GetUserInfoByAccount(username, md5password)
+		admin, err := m.GetUserInfoByUsername(username, md5password)
 		if err != nil {
-			user, err = m.GetUserInfoByUsername(username, md5password)
+			admin, err = m.GetUserInfoByAccount(username, md5password)
+			if err != nil {
+				this.Rsp(false, "用户名或密码不正确", "")
+				return
+			}
 		}
-		adminUser := beego.AppConfig.String("rbac_admin_user")
-		beego.Debug("user", user, err)
+		beego.Debug("user", admin)
+
+		Superadmin := beego.AppConfig.String("rbac_admin_user")
+
 		sysconfig, _ := m.GetSysConfig()
 		loginsys := sysconfig.LoginSys
-		beego.Debug("user", loginsys, username, adminUser, user.Role.IsInsider)
+		beego.Debug("user", loginsys, username, Superadmin, admin.Role.IsInsider)
+
+		if admin.Role.Id != 1 || admin.Title.Id != 1 {
+			this.Rsp(true, "无登录权限", "/weserver/public/login")
+			return
+		}
 		if loginsys == 0 {
-			if err == nil {
-				this.SetSession("userinfo", &user)
-				accesslist, _ := m.GetAccessList(user.Id)
+			this.SetSession("userinfo", &admin)
+			accesslist, _ := m.GetAccessList(admin.Id)
+			this.SetSession("accesslist", accesslist)
+			this.Rsp(true, "登录成功", "/weserver/public/index")
+			return
+		} else {
+			if Superadmin == admin.Username && admin.Role.IsInsider == 1 {
+				this.SetSession("userinfo", &admin)
+				accesslist, _ := m.GetAccessList(admin.Id)
 				this.SetSession("accesslist", accesslist)
 				this.Rsp(true, "登录成功", "/weserver/public/index")
 				return
-			} else {
-				this.Rsp(false, err.Error(), "")
-				return
-			}
-		} else {
-			if username == adminUser || user.Role.IsInsider == 1 {
-				if err == nil {
-					this.SetSession("userinfo", &user)
-					accesslist, _ := m.GetAccessList(user.Id)
-					this.SetSession("accesslist", accesslist)
-					this.Rsp(true, "登录成功", "/weserver/public/index")
-					return
-				} else {
-					this.Rsp(false, err.Error(), "")
-					return
-				}
 			} else {
 				this.Ctx.Redirect(302, "/weserver/public/index")
 			}

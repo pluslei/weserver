@@ -23,6 +23,7 @@
                     <tr>
 
                         <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
+                        <th>公司名称</th>
                         <th>用户昵称</th>
                         <th>地址</th>
                         <th>头衔</th>
@@ -150,7 +151,6 @@
                 });
 
                 }
-                
             }
         });
 
@@ -179,6 +179,7 @@
                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+oData.Id+"' onchange='chkuser("+oData.Id+")'  ></input></div>");
                     }
                 },
+                {"mDataProp": "CompanyName",},
                 {"mDataProp": "Nickname",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         if (oData.Sex == 1) {
