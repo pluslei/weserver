@@ -97,19 +97,24 @@ func (this *UserController) UserList() {
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 		if err != nil {
-			beego.Error(err)
+			beego.Debug("userlist get", err)
+			return
 		}
 		iLength, err := this.GetInt64("iDisplayLength")
 		if err != nil {
-			beego.Error(err)
+			beego.Debug("userlist Error", err)
+			return
 		}
 		nickname := this.GetString("sSearch_0")
 
 		companyId := user.CompanyId
 		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname, companyId)
 		for _, item := range userlist {
-			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
-
+			if item["Lastlogintime"] == nil {
+				item["Lastlogintime"] = "未获取到时间"
+			} else {
+				item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
+			}
 			if item["Title"] == 0 {
 				item["Titlename"] = "未知头衔"
 			} else {
