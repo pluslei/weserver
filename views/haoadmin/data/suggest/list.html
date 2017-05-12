@@ -133,7 +133,7 @@
             console.log(data, 'data');
             var room = ["<option value=''>-=所属房间=-</option>"];
             for (var i = 0; i<data.roonInfo.length;i++){
-                room.push("<option value="+data.roonInfo[i].Id+">-="+data.roonInfo[i].Title+"=-</option>");
+                room.push("<option value="+data.roonInfo[i].RoomId+">-="+data.roonInfo[i].Title+"=-</option>");
             }
             $('#doc-select-room').html(room.join(''));
         }
