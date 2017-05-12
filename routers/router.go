@@ -116,6 +116,14 @@ func Router() {
 	beego.Router("/weserver/data/room_del", &haoadmin.RoomController{}, "*:Del")
 	beego.Router("/weserver/data/upload", &haoadmin.RoomController{}, "*:Upload")
 
+	//公司信息管理
+	beego.Router("/weserver/data/company", &haoadmin.CompanyController{}, "*:Index") //公司信息展示
+	beego.Router("/weserver/data/company_add", &haoadmin.CompanyController{}, "*:AddCompany") //添加公司
+	beego.Router("/weserver/data/company_del", &haoadmin.CompanyController{}, "*:DelCompany") //删除公司
+	beego.Router("/weserver/data/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
+	
+	
+
 	// 策略管理
 	beego.Router("/weserver/data/strategy_index", &haoadmin.StrategyController{}, "*:Index")
 	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")
