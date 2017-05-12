@@ -149,7 +149,7 @@ $(function() {
 function choosecompany() {
   var sel = document.getElementById('doc-select-2').value;
   $.ajax({
-      url: '/weserver/data/getRoomInfo',
+      url: '/weserver/common/getRoomInfo',
       type: 'POST',
       data: {
         CompanyId: parseInt(sel, 10),

@@ -53,7 +53,6 @@ func (this *RoomController) Index() {
 		this.Data["json"] = &data
 		this.ServeJSON()
 	} else {
-		beego.Debug("=")
 		this.CommonMenu()
 		this.TplName = "haoadmin/data/room/list.html"
 	}
@@ -61,6 +60,11 @@ func (this *RoomController) Index() {
 
 func (this *RoomController) Add() {
 	action := this.GetString("action")
+	UserInfo := this.GetSession("userinfo").(*models.User)
+	if UserInfo == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
+	}
 	if action == "add" {
 		roomInfo, err := models.GetRoomInfoOne()
 		if err != nil {
@@ -115,9 +119,17 @@ func (this *RoomController) Add() {
 			return
 		}
 		this.Alert("房间添加成功", "/weserver/data/room_index")
+	} else {
+		this.CommonController.CommonMenu()
+
+		companyInfo, _, err := models.GetCompanyList(UserInfo.CompanyId)
+		if err != nil {
+			beego.Debug("get companylist error", err)
+			return
+		}
+		this.Data["CompanyInfo"] = companyInfo
+		this.TplName = "haoadmin/data/room/add.html"
 	}
-	this.CommonMenu()
-	this.TplName = "haoadmin/data/room/add.html"
 }
 
 func (this *RoomController) Edit() {

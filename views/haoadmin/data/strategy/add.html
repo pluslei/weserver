@@ -80,7 +80,7 @@
         <div class="am-form-group">
           <label for="doc-select-1">请选择公司</label>
           <select id="doc-select-2" name="Room"  required data-validation-message="请选择公司" onchange="choosecompany()">
-            <option value="">-=请选择公司=-</option>
+            <option value="0">-=请选择公司=-</option>
             {{range $index,$ele := .roonInfo}}
             <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
             {{end}}
@@ -98,7 +98,7 @@
           <span class="am-form-caret"></span>
         </div>-->
         <label for="doc-vld-ta-2">请选择房间</label>
-        <div class="am-form-group" id="roonInfo">
+        <div class="am-form-group" id="roominfo">
             {{range $index,$ele := .roonInfo}}
               <label class="am-checkbox-inline">
                 <input type="checkbox" name="RoomId" value="{{$ele.RoomId}}"> {{$ele.RoomTitle}}
@@ -147,8 +147,9 @@ $(function() {
 });
 function choosecompany() {
   var sel = document.getElementById('doc-select-2').value;
+  console.log(sel);
   $.ajax({
-      url: '/weserver/data/getRoomInfo',
+      url: '/weserver/common/getRoomInfo',
       type: 'POST',
       data: {
         CompanyId: parseInt(sel, 10),
