@@ -8,9 +8,44 @@
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
         <div class="result-title">
-            <div class="result-list">
+            <div class="result-list am-fl">
                 <a href="strategy_add" class="am-btn am-btn-success">新增策略</a>
             </div>
+            <div class="am-fr am-margin-left">
+                <div class="result-list am-form-inline am-form">
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属公司=-</option>
+                            {{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属房间=-</option>
+                            {{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                    <div class="am-input-group">
+                        <a onclick="search()" class="am-btn am-btn-primary">搜索</a>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="am-fr am-margin-left">
+                <div class="result-list am-form-inline am-form">
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属房间=-</option>
+                            {{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                </div>
+            </div>-->
         </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-qs-list">

@@ -8,8 +8,23 @@
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
         <div class="result-title">
-            <div class="result-list">
+            <div class="result-list am-fl">
                 <a href="/weserver/data/room_add" class="am-btn am-btn-success">添加房间</a>
+            </div>
+             <div class="am-fr">
+                <div class="result-list am-form-inline am-form">
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属公司=-</option>
+                            {{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                    <div class="am-input-group">
+                        <a onclick="search()" class="am-btn am-btn-primary">搜索</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="result-content">

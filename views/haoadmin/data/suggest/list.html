@@ -18,9 +18,17 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="am-fr">
+                <div class="am-fr">
                     <div class="result-list am-form-inline am-form">
-                    <div class="am-form-group">
+                       <div class="am-form-group">
+                            <select id="doc-select-room">
+                                <option value="">-=所属公司=-</option>
+                                {{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}
+                            </select>
+                        </div>
+                         <div class="am-form-group">
                             <select id="doc-select-room">
                                 <option value="">-=所属房间=-</option>
                                 {{range $index ,$ele := .roonInfo}}
@@ -32,7 +40,7 @@
                             <a onclick="search()" class="am-btn am-btn-primary">搜索</a>
                         </div>
                      </div>
-                </div>-->
+                </div>
             </div>
         </div>
         <div class="result-content">

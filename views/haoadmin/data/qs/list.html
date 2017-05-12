@@ -31,7 +31,36 @@
 
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
-        <a type="button" class="am-btn am-btn-secondary" href="sendbroad"> 发送公告 </a>
+        <div class="result-title">
+            <div class="am-g">
+                <div class="am-fl">
+                    <a type="button" class="am-btn am-btn-secondary" href="sendbroad"> 发送公告 </a>
+                </div>
+                <div class="am-fr am-margin-left">
+                    <div class="result-list am-form-inline am-form">
+                        <div class="am-form-group">
+                            <select id="doc-select-room">
+                                <option value="">-=所属公司=-</option>
+                                {{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}
+                            </select>
+                        </div>
+                         <div class="am-form-group">
+                            <select id="doc-select-room">
+                                <option value="">-=所属公司=-</option>
+                                {{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}
+                            </select>
+                        </div>
+                        <div class="am-input-group">
+                            <a onclick="search()" class="am-btn am-btn-primary">搜索</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-broad-list">
                 <thead>
