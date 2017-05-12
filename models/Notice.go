@@ -1,8 +1,10 @@
 package models
 
 import (
+	"strconv"
 	"time"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -45,19 +47,40 @@ func GetNoticeList(room string) ([]Notice, int64, error) {
 }
 
 //获取所有的公告列表
-func GetAllNoticeList(page int64, page_size int64, sort string, companyId int64) (broad []orm.Params, count int64) {
+func GetAllNoticeList(page int64, page_size int64, sort string, companyId int64, SearchId, RoomId string) (broad []orm.Params, count int64) {
 	o := orm.NewOrm()
 	obj := new(Notice)
-	if companyId != 0 {
+	if RoomId == "" || SearchId == "" {
+		beego.Debug("ssss", SearchId, RoomId)
+		if companyId != 0 {
+			qs := o.QueryTable(obj)
+			qs.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&broad)
+			count, _ = qs.Count()
+			return broad, count
+		}
 		qs := o.QueryTable(obj)
-		qs.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&broad)
+		qs.Limit(page_size, page).OrderBy(sort).Values(&broad)
+		count, _ = qs.Count()
+		return broad, count
+
+	} else {
+		beego.Debug("aaaa", SearchId, RoomId)
+		sId, err := strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+		if companyId != 0 {
+			qs := o.QueryTable(obj)
+			qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy(sort).Values(&broad)
+			count, _ = qs.Count()
+			return broad, count
+		}
+		qs := o.QueryTable(obj)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("CompanyId", RoomId).OrderBy(sort).Values(&broad)
 		count, _ = qs.Count()
 		return broad, count
 	}
-	qs := o.QueryTable(obj)
-	qs.Limit(page_size, page).OrderBy(sort).Values(&broad)
-	count, _ = qs.Count()
-	return broad, count
 }
 
 /*

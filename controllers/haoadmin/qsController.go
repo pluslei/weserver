@@ -32,9 +32,11 @@ func (this *QsController) SendNoticeList() {
 		if err != nil {
 			beego.Error(err)
 		}
-		companyId := user.CompanyId
 
-		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "-Id", companyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+
+		Noticelist, count := m.GetAllNoticeList(iStart, iLength, "-Id", user.CompanyId, SearchId, RoomId)
 		for _, item := range Noticelist {
 			item["Datatime"] = item["Datatime"].(time.Time).Format("2006-01-02 15:04:05")
 			roomInfo, err := m.GetRoomInfoByRoomID(item["Room"].(string))
