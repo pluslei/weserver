@@ -42,8 +42,8 @@ func Rpc() {
 }
 
 func Router() {
-
 	//common
+	beego.Router("/weserver/common/getCompanyInfo", &haoadmin.CommonController{}, "*:GetCompanyInfo")
 	beego.Router("/weserver/common/getRoomInfo", &haoadmin.CommonController{}, "*:GetRoomInfoByCompanyId")
 
 	// public

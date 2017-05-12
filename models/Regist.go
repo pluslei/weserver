@@ -141,12 +141,12 @@ func GetWechatUserList(page int64, page_size int64, sort, nickname string, compa
 	o := orm.NewOrm()
 	user := new(Regist)
 	if companyId != 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId).Filter("RegStatus", 1)
+		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
 		qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
-	qs := o.QueryTable(user).Exclude("Username", "admin").Filter("RegStatus", 1)
+	qs := o.QueryTable(user).Exclude("Username", "admin")
 	qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 	count, _ = qs.Count()
 	return users, count

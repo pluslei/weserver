@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
 <style type="text/css">
     .am-alert{border-radius: 5px;padding:3px;}
+		  .result-list a{
+        margin-right: 0px;
+    }
 </style>
 <div class="crumb-wrap">
     <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/strategy_index">策略管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">策略列表</span></div>
@@ -8,9 +11,44 @@
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
         <div class="result-title">
-            <div class="result-list">
+            <div class="result-list am-fl">
                 <a href="strategy_add" class="am-btn am-btn-success">新增策略</a>
             </div>
+            <div class="am-fr am-margin-left">
+                <div class="result-list am-form-inline am-form">
+                    <div class="am-form-group">
+                        <select id="doc-select-company" onchange="getRoomInfo()">
+                            <option value="">-=所属公司=-</option>
+                            <!--{{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}-->
+                        </select>
+                    </div>
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属房间=-</option>
+                            <!--{{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}-->
+                        </select>
+                    </div>
+                    <div class="am-input-group">
+                        <a onclick="queryUser()" class="am-btn am-btn-primary">搜索</a>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="am-fr am-margin-left">
+                <div class="result-list am-form-inline am-form">
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属房间=-</option>
+                            {{range $index ,$ele := .roonInfo}}
+                            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                </div>
+            </div>-->
         </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-qs-list">
@@ -51,11 +89,51 @@
     var oTable;
     $(function() {
         oTable = initTable();
+        getCompanyInfo();
     });
+    function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            console.log(data, 'data');
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-company').html(company.join(''));
+        }
+      })
+    }
+    function getRoomInfo() {
+      var companyId = document.getElementById("doc-select-company").value;
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId: parseInt(companyId, 10),
+        },
+        success: function(data){
+            console.log(data, 'data');
+            var room = ["<option value=''>-=所属房间=-</option>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+                room.push("<option value="+data.roonInfo[i].RoomId+">-="+data.roonInfo[i].Title+"=-</option>");
+            }
+            $('#doc-select-room').html(room.join(''));
+        }
+      })
+    }
+		// 模糊查询
+    function queryUser() {
+        var companyId = document.getElementById("doc-select-company").value;
+        var roomId = document.getElementById("doc-select-room").value;
+        console.log(companyId, roomId);
+        $("#data-qs-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
+    };
     function initTable() {
         var actionUrl = '/weserver/data/strategy_index';
         var table = $('#data-qs-list').dataTable({
-            "bFilter": false,
+            "bFilter": true,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
             "bPaginate": true,
