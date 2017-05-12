@@ -156,8 +156,8 @@ func GetAllRoomInfo() ([]RoomInfo, int64, error) {
 func GetRoomCompany(room string) (int64, error) {
 	var info RoomInfo
 	o := orm.NewOrm()
-	err := o.QueryTable("roominfo").Filter("Room", room).Limit(1).One(&info)
-	return info.Id, err
+	err := o.QueryTable("roominfo").Filter("RoomId", room).Limit(1).One(&info)
+	return info.CompanyId, err
 }
 
 // 获取房间信息
