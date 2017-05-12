@@ -163,3 +163,32 @@ func (this *CommonController) GetRoomInfo() ([]m.RoomInfo, error) {
 	}
 
 }
+
+func (this *CommonController) GetRoomInfoByCompanyId() {
+	if this.IsAjax() {
+		companyid, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("get companyid error", err)
+			return
+		}
+		var info []m.RoomInfo
+		if companyid != 0 {
+			info, _, err = m.GetRoomInfo(companyid)
+			if err != nil {
+				beego.Debug("get RoomInfo by companyId error", err)
+				return
+			}
+		} else {
+			info, _, err = m.GetAllRoomInfo()
+			if err != nil {
+				beego.Debug("get RoomInfo by companyId error", err)
+				return
+			}
+		}
+		// json
+		data := make(map[string]interface{})
+		data["roonInfo"] = info
+		this.Data["json"] = &data
+		this.ServeJSON()
+	}
+}

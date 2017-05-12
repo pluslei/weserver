@@ -64,26 +64,6 @@ func (this *QsController) SendNoticeList() {
 	}
 }
 
-func (this *QsController) GetRoomInfoByCompanyId() {
-	if this.IsAjax() {
-		companyid, err := this.GetInt64("CompanyId")
-		if err != nil {
-			beego.Debug("get companyid error", err)
-			return
-		}
-		roomInfo, _, err := m.GetRoomInfo(companyid)
-		if err != nil {
-			beego.Debug("get RoomInfo by companyId error", err)
-			return
-		}
-		// json
-		data := make(map[string]interface{})
-		data["roonInfo"] = roomInfo
-		this.Data["json"] = &data
-		this.ServeJSON()
-	}
-}
-
 // 发送公告
 func (this *QsController) SendBroad() {
 	action := this.GetString("action")
@@ -96,9 +76,13 @@ func (this *QsController) SendBroad() {
 		data := this.GetString("Content")
 		room := this.GetString("Room")
 		filename := this.GetString("FileNameFile")
-
+		companyId, err := this.GetInt64("company")
+		if err != nil {
+			beego.Error(err)
+			return
+		}
 		broad := new(m.Notice)
-		broad.CompanyId = UserInfo.CompanyId
+		broad.CompanyId = companyId
 		broad.Nickname = UserInfo.Nickname
 		broad.Room = room
 		broad.Uname = UserInfo.Username
@@ -108,7 +92,7 @@ func (this *QsController) SendBroad() {
 		time := time.Now()
 		tm := time.Format("2006-01-02 15:04:05")
 		broad.Time = tm
-		_, err := m.AddNoticeMsg(broad)
+		_, err = m.AddNoticeMsg(broad)
 		if err != nil {
 			this.AlertBack("公告写入数据库失败")
 			return

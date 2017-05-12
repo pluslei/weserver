@@ -15,7 +15,7 @@ import (
 type User struct {
 	Id            int64
 	CompanyId     int64
-	Username      string `orm:"unique;index" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
+	Username      string `orm:"index" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
 	Account       string `orm:"unique"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
