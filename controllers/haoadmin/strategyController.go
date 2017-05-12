@@ -64,49 +64,50 @@ func (this *StrategyController) Index() {
 
 func (this *StrategyController) Add() {
 	action := this.GetString("action")
+	userInfo := this.GetSession("userinfo").(*models.User)
+	if userInfo == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
+	}
 	if action == "add" {
-		userInfo := this.GetSession("userinfo").(*models.User)
-		if userInfo == nil {
-			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
-			return
-		}
-		strategy := new(models.Strategy)
-		strategy.Room = this.GetString("Room")
-		if userInfo.CompanyId == 0 {
-			id, err := models.GetRoomCompany(strategy.Room)
+
+		roomId := this.GetStrings("RoomId")
+		for _, val := range roomId {
+
+			strategy := new(models.Strategy)
+			companyId, err := this.GetInt64("company")
 			if err != nil {
-				beego.Debug("Get Room Company Error", err)
+				beego.Error(err)
 				return
 			}
-			strategy.CompanyId = id
-		} else {
-			strategy.CompanyId = userInfo.CompanyId
+			strategy.CompanyId = companyId
+			strategy.Room = val
+			strategy.Icon = userInfo.Headimgurl
+			strategy.Name = userInfo.Nickname
+			userTitleInfo, err := models.ReadTitleById(userInfo.Title.Id)
+			if err != nil {
+				strategy.Titel = userInfo.Nickname
+			} else {
+				strategy.Titel = userTitleInfo.Name
+			}
+			strategy.Data = this.GetString("Data")
+			strategy.FileName = this.GetString("FileNameFile")
+			Top, _ := this.GetBool("Top")
+			strategy.IsTop = Top
+			ThumbNum, _ := this.GetInt64("ThumbNum")
+			strategy.ThumbNum = ThumbNum
+			strategy.Datatime = time.Now()
+			strategy.TxtColour = this.GetString("TxtColour")
+			strategy.Time = time.Now().Format("2006-01-02 15:04:05")
+			_, err = models.AddStrategy(strategy)
+			if err != nil {
+				this.AlertBack("添加失败")
+				continue
+			}
+			SendStrage(strategy)
+			// this.Alert("添加成功", "/weserver/data/strategy_index")
 		}
 
-		strategy.Room = this.GetString("Room")
-		strategy.Icon = userInfo.Headimgurl
-		strategy.Name = userInfo.Nickname
-		userTitleInfo, err := models.ReadTitleById(userInfo.Title.Id)
-		if err != nil {
-			strategy.Titel = userInfo.Nickname
-		} else {
-			strategy.Titel = userTitleInfo.Name
-		}
-		strategy.Data = this.GetString("Data")
-		strategy.FileName = this.GetString("FileNameFile")
-		Top, _ := this.GetBool("Top")
-		strategy.IsTop = Top
-		ThumbNum, _ := this.GetInt64("ThumbNum")
-		strategy.ThumbNum = ThumbNum
-		strategy.Datatime = time.Now()
-		strategy.TxtColour = this.GetString("TxtColour")
-		strategy.Time = time.Now().Format("2006-01-02 15:04:05")
-		_, err = models.AddStrategy(strategy)
-		if err != nil {
-			this.AlertBack("添加失败")
-		}
-		SendStrage(strategy)
-		this.Alert("添加成功", "/weserver/data/strategy_index")
 	} else {
 		this.CommonMenu()
 		roonInfo, err := this.GetRoomInfo()
@@ -114,6 +115,12 @@ func (this *StrategyController) Add() {
 			beego.Error("get the roominfo error", err)
 			return
 		}
+		companyList, _, err := models.GetCompanyList(userInfo.CompanyId)
+		if err != nil {
+			beego.Error("get the companyList error", err)
+			return
+		}
+		this.Data["CompanyInfo"] = companyList
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/strategy/add.html"
 	}

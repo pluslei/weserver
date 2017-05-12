@@ -67,86 +67,90 @@ func (this *SuggestController) Index() {
 // 添加建仓
 func (this *SuggestController) Add() {
 	action := this.GetString("action")
+	userInfo := this.GetSession("userinfo").(*models.User)
+	if userInfo == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
+	}
 	if action == "add" {
-		userInfo := this.GetSession("userinfo").(*models.User)
-		if userInfo == nil {
-			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
-			return
-		}
-		beego.Debug("userInfo", userInfo.Title.Id)
-		titleInfo, err := models.ReadTitleById(userInfo.Title.Id)
-		if err != nil {
-			beego.Debug("title info error", err)
-			return
-		}
-		beego.Debug("titleInfo", titleInfo)
-
-		oper := new(models.OperPosition)
-		oper.RoomId = this.GetString("RoomId")
-
-		if userInfo.CompanyId == 0 {
-			id, err := models.GetRoomCompany(oper.RoomId)
+		roomId := this.GetStrings("RoomId")
+		for _, val := range roomId {
+			companyId, err := this.GetInt64("company")
 			if err != nil {
-				beego.Debug("Get Room Company Error", err)
+				beego.Error(err)
 				return
 			}
-			oper.CompanyId = id
-		} else {
-			oper.CompanyId = userInfo.CompanyId
-		}
-		oper.RoomTeacher = titleInfo.Name
-		oper.Time = time.Now()
-		oper.Type = this.GetString("Type")
-		BuySell, _ := this.GetInt("BuySell")
-		oper.BuySell = BuySell
-		oper.Entrust = this.GetString("Entrust")
-		oper.Index = this.GetString("Index")
-		oper.Position = this.GetString("Position")
-		oper.ProfitPoint = this.GetString("ProfitPoint")
-		oper.LossPoint = this.GetString("LossPoint")
-		oper.Notes = this.GetString("Notes")
-		time := time.Now()
-		tm := time.Format("2006-01-02 15:04:05")
-		oper.Timestr = tm
+			beego.Debug("userInfo", userInfo.Title.Id)
+			titleInfo, err := models.ReadTitleById(userInfo.Title.Id)
+			if err != nil {
+				beego.Debug("title info error", err)
+				return
+			}
+			beego.Debug("titleInfo", titleInfo)
 
-		_, err = models.AddPosition(oper)
-		if err != nil {
-			this.AlertBack("添加失败")
-			return
-		}
-		msg := new(PositionInfo)
-		msg.CompanyId = oper.CompanyId
-		msg.RoomId = oper.RoomId
-		msg.RoomTeacher = oper.RoomTeacher
-		msg.Type = oper.Type
-		msg.BuySell = oper.BuySell
-		msg.Entrust = oper.Entrust
-		msg.Index = oper.Index
-		msg.Position = oper.Position
-		msg.ProfitPoint = oper.ProfitPoint
-		msg.LossPoint = oper.LossPoint
-		msg.Notes = oper.Notes
-		msg.Liquidation = 0
-		msg.MsgType = MSG_TYPE_POSITION_ADD
-		topic := msg.RoomId
+			oper := new(models.OperPosition)
+			oper.RoomId = val
+			oper.CompanyId = companyId
+			oper.RoomTeacher = titleInfo.Name
+			oper.Time = time.Now()
+			oper.Type = this.GetString("Type")
+			BuySell, _ := this.GetInt("BuySell")
+			oper.BuySell = BuySell
+			oper.Entrust = this.GetString("Entrust")
+			oper.Index = this.GetString("Index")
+			oper.Position = this.GetString("Position")
+			oper.ProfitPoint = this.GetString("ProfitPoint")
+			oper.LossPoint = this.GetString("LossPoint")
+			oper.Notes = this.GetString("Notes")
+			time := time.Now()
+			tm := time.Format("2006-01-02 15:04:05")
+			oper.Timestr = tm
 
-		beego.Debug("msginfo", msg)
+			_, err = models.AddPosition(oper)
+			if err != nil {
+				this.AlertBack("添加失败")
+				continue
+			}
+			msg := new(PositionInfo)
+			msg.CompanyId = oper.CompanyId
+			msg.RoomId = oper.RoomId
+			msg.RoomTeacher = oper.RoomTeacher
+			msg.Type = oper.Type
+			msg.BuySell = oper.BuySell
+			msg.Entrust = oper.Entrust
+			msg.Index = oper.Index
+			msg.Position = oper.Position
+			msg.ProfitPoint = oper.ProfitPoint
+			msg.LossPoint = oper.LossPoint
+			msg.Notes = oper.Notes
+			msg.Liquidation = 0
+			msg.MsgType = MSG_TYPE_POSITION_ADD
+			topic := msg.RoomId
 
-		v, err := ToJSON(msg)
-		if err != nil {
-			beego.Error(" Suggest add position json error", err)
-			return
+			beego.Debug("msginfo", msg)
+
+			v, err := ToJSON(msg)
+			if err != nil {
+				beego.Error(" Suggest add position json error", err)
+				continue
+			}
+			mq.SendMessage(topic, v)
+			// this.Alert("添加成功", "suggest_index")
 		}
-		mq.SendMessage(topic, v)
-		this.Alert("添加成功", "suggest_index")
 
 	} else {
 		this.CommonMenu()
+		companyList, _, err := models.GetCompanyList(userInfo.CompanyId)
+		if err != nil {
+			beego.Error("get the companyList error", err)
+			return
+		}
 		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
 		}
+		this.Data["CompanyInfo"] = companyList
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/suggest/add.html"
 	}

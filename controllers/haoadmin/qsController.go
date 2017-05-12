@@ -73,44 +73,48 @@ func (this *QsController) SendBroad() {
 		return
 	}
 	if action == "add" {
-		data := this.GetString("Content")
-		room := this.GetString("Room")
-		filename := this.GetString("FileNameFile")
-		companyId, err := this.GetInt64("company")
-		if err != nil {
-			beego.Error(err)
-			return
-		}
-		broad := new(m.Notice)
-		broad.CompanyId = companyId
-		broad.Nickname = UserInfo.Nickname
-		broad.Room = room
-		broad.Uname = UserInfo.Username
-		broad.Datatime = time.Now()
-		broad.Data = data
-		broad.FileName = filename
-		time := time.Now()
-		tm := time.Format("2006-01-02 15:04:05")
-		broad.Time = tm
-		_, err = m.AddNoticeMsg(broad)
-		if err != nil {
-			this.AlertBack("公告写入数据库失败")
-			return
-		}
-		msg := new(NoticeInfo)
-		msg.CompanyId = broad.CompanyId
-		msg.Uname = broad.Uname
-		msg.Nickname = broad.Nickname
-		msg.Content = broad.Data
-		msg.Time = broad.Time
-		msg.MsgType = MSG_TYPE_NOTICE_ADD
+		roomId := this.GetStrings("RoomId")
+		for _, val := range roomId {
+			data := this.GetString("Content")
+			filename := this.GetString("FileNameFile")
+			companyId, err := this.GetInt64("company")
+			if err != nil {
+				beego.Error(err)
+				return
+			}
+			broad := new(m.Notice)
+			broad.CompanyId = companyId
+			broad.Nickname = UserInfo.Nickname
+			broad.Room = val
+			broad.Uname = UserInfo.Username
+			broad.Datatime = time.Now()
+			broad.Data = data
+			broad.FileName = filename
+			time := time.Now()
+			tm := time.Format("2006-01-02 15:04:05")
+			broad.Time = tm
+			_, err = m.AddNoticeMsg(broad)
+			if err != nil {
+				this.AlertBack("公告写入数据库失败")
+				continue
+			}
+			msg := new(NoticeInfo)
+			msg.CompanyId = broad.CompanyId
+			msg.Uname = broad.Uname
+			msg.Nickname = broad.Nickname
+			msg.Content = broad.Data
+			msg.Time = broad.Time
+			msg.MsgType = MSG_TYPE_NOTICE_ADD
 
-		b := SendBrocast(room, msg)
-		if b {
-			this.Alert("公告发送成功", "/weserver/data/qs_broad")
-			return
+			SendBrocast(val, msg)
+			// if b {
+			// 	this.Alert("公告发送成功", "/weserver/data/qs_broad")
+			// 	return
+			// } else {
+			// 	this.AlertBack("公告添加失败")
+			// }
 		}
-		this.AlertBack("公告添加失败")
+
 	} else {
 		this.CommonController.CommonMenu()
 
