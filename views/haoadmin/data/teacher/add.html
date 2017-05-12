@@ -75,10 +75,17 @@
         <input type="hidden" value="add" name="action">
         <div class="am-form-group">
           <label for="doc-select-1">请选择公司</label>
+<<<<<<< HEAD
+          <select id="doc-select-2" name="Room"  required data-validation-message="请选择公司" onchange="choosecompany()">
+            <option value="">-=请选择公司=-</option>
+            {{range $index,$ele := .roonInfo}}
+            <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+=======
           <select id="doc-select-2" name="company"  required data-validation-message="请选择公司" onchange="choosecompany()">
             <option value="0">-=请选择公司=-</option>
             {{range $index,$ele := .CompanyInfo}}
             <option value="{{$ele.Id}}">{{$ele.Company}}</option>
+>>>>>>> f09b185300135646294de8c0e02ba418ce3c2e6e
             {{end}}
           </select>
           <span class="am-form-caret"></span>

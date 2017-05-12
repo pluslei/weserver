@@ -20,6 +20,9 @@
     .faceImg img { margin: 3px; }
     .face-content { border:1px solid #ccc; display: none;}
     .delete-box { width: 100%; height: 100px; box-shadow: 0 0 1px #000; margin-left: 0px;}
+      .result-list a{
+        margin-right: 0px;
+    }
 </style>
 <input type="hidden" name="webUsername" value={{.uname}}></input>
 <input type="hidden" name="webIp" value={{.ippro.Ip}}></input>
@@ -31,7 +34,36 @@
 
 <div class="result-wrap">
     <form name="myform" id="myform" method="post">
-        <a type="button" class="am-btn am-btn-secondary" href="sendbroad"> 发送公告 </a>
+        <div class="result-title">
+            <div class="am-g">
+                <div class="am-fl">
+                    <a type="button" class="am-btn am-btn-secondary" href="sendbroad"> 发送公告 </a>
+                </div>
+                <div class="am-fr am-margin-left">
+                    <div class="result-list am-form-inline am-form">
+                        <div class="am-form-group">
+                            <select id="doc-select-company" onchange="getRoomInfo()">
+                                <option value="">-=所属公司=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+                         <div class="am-form-group">
+                            <select id="doc-select-room">
+                                <option value="">-=所属房间=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+                        <div class="am-input-group">
+                            <a onclick="queryUser()" class="am-btn am-btn-primary">搜索</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-broad-list">
                 <thead>
@@ -72,17 +104,55 @@
 
 <!-- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script> -->
 <script type="text/javascript">
-
     var oTable;
     $(function() {
         oTable = initTable();
+        getCompanyInfo();
     });    
-
+    function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            console.log(data, 'data');
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-company').html(company.join(''));
+        }
+      })
+    }
+    function getRoomInfo() {
+      var companyId = document.getElementById("doc-select-company").value;
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId: parseInt(companyId, 10),
+        },
+        success: function(data){
+            console.log(data, 'data');
+            var room = ["<option value=''>-=所属房间=-</option>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+                room.push("<option value="+data.roonInfo[i].Id+">-="+data.roonInfo[i].Title+"=-</option>");
+            }
+            $('#doc-select-room').html(room.join(''));
+        }
+      })
+    }
+     // 模糊查询
+    function queryUser() {
+        var companyId = document.getElementById("doc-select-company").value;
+        var roomId = document.getElementById("doc-select-room").value;
+        console.log(companyId, roomId);
+        $("#rbac-broad-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
+    };
     function initTable() {
         var actionUrl = '/weserver/data/qs_broad';
         var table = $('#rbac-broad-list').dataTable({
             "bRetrieve": true,
-            "bFilter": false,
+            "bFilter": true,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
             "bPaginate": true,
