@@ -76,12 +76,18 @@ func (this *QsController) SendBroad() {
 	}
 	if action == "add" {
 		roomId := this.GetStrings("RoomId")
+		if len(roomId) == 0 {
+			this.Alert("请选择房间号", "/weserver/data/qs_broad")
+			return
+		}
 		for _, val := range roomId {
 			data := this.GetString("Content")
 			filename := this.GetString("FileNameFile")
 			companyId, err := this.GetInt64("company")
+			beego.Debug("companyId", companyId)
 			if err != nil {
 				beego.Error(err)
+				this.Alert("获取公司id出错", "/weserver/data/qs_broad")
 				return
 			}
 			broad := new(m.Notice)
@@ -108,13 +114,12 @@ func (this *QsController) SendBroad() {
 			msg.Time = broad.Time
 			msg.MsgType = MSG_TYPE_NOTICE_ADD
 
-			SendBrocast(val, msg)
-			// if b {
-			// 	this.Alert("公告发送成功", "/weserver/data/qs_broad")
-			// 	return
-			// } else {
-			// 	this.AlertBack("公告添加失败")
-			// }
+			b := SendBrocast(val, msg)
+			if b {
+				this.Alert("公告发送成功", "/weserver/data/qs_broad")
+			} else {
+				this.AlertBack("公告添加失败")
+			}
 		}
 
 	} else {

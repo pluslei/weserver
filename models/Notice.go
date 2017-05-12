@@ -64,20 +64,21 @@ func GetAllNoticeList(page int64, page_size int64, sort string, companyId int64,
 		return broad, count
 
 	} else {
-		beego.Debug("aaaa", SearchId, RoomId)
 		sId, err := strconv.ParseInt(SearchId, 10, 10)
 		if err != nil {
 			beego.Debug("get Search 0 Fail", err)
 			return
 		}
 		if companyId != 0 {
+			beego.Debug("aaaa", SearchId, RoomId)
 			qs := o.QueryTable(obj)
 			qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy(sort).Values(&broad)
 			count, _ = qs.Count()
 			return broad, count
 		}
+		beego.Debug("bbb", SearchId, RoomId)
 		qs := o.QueryTable(obj)
-		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("CompanyId", RoomId).OrderBy(sort).Values(&broad)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy(sort).Values(&broad)
 		count, _ = qs.Count()
 		return broad, count
 	}

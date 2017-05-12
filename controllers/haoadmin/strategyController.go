@@ -70,14 +70,15 @@ func (this *StrategyController) Add() {
 		return
 	}
 	if action == "add" {
-
 		roomId := this.GetStrings("RoomId")
 		for _, val := range roomId {
 
 			strategy := new(models.Strategy)
 			companyId, err := this.GetInt64("company")
+			beego.Debug("companyId", companyId)
 			if err != nil {
 				beego.Error(err)
+				this.Alert("获取公司id出错", "/weserver/data/qs_broad")
 				return
 			}
 			strategy.CompanyId = companyId
@@ -105,7 +106,7 @@ func (this *StrategyController) Add() {
 				continue
 			}
 			SendStrage(strategy)
-			// this.Alert("添加成功", "/weserver/data/strategy_index")
+			this.Alert("添加成功", "/weserver/data/strategy_index")
 		}
 
 	} else {
