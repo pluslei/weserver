@@ -192,3 +192,22 @@ func (this *CommonController) GetRoomInfoByCompanyId() {
 		this.ServeJSON()
 	}
 }
+
+func (this *CommonController) GetCompanyInfo() {
+	if this.IsAjax() {
+		userInfo := this.GetSession("userinfo").(*m.User)
+		if userInfo == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
+		info, _, err := m.GetCompanyList(userInfo.CompanyId)
+		if err != nil {
+			beego.Debug("get Company List error", err)
+			return
+		}
+		data := make(map[string]interface{})
+		data["CompanyList"] = info
+		this.Data["json"] = &data
+		this.ServeJSON()
+	}
+}

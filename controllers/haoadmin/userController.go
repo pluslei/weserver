@@ -242,6 +242,7 @@ func (this *UserController) AddUser() {
 		account := this.GetString("account")
 		if m.CheckAccountIsExist(account) {
 			this.AlertBack("用户名已存在")
+			return
 		}
 		email := this.GetString("email")
 		phone, _ := this.GetInt64("phone")
