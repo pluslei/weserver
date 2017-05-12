@@ -77,6 +77,12 @@ func (this *RoomController) Add() {
 		room.RoomTitle = this.GetString("RoomTitle")
 		room.RoomTeacher = this.GetString("RoomTeacher")
 		room.RoomNum = this.GetString("RoomNum")
+		companyId, err := this.GetInt64("company")
+		if err != nil {
+			beego.Error(err)
+			return
+		}
+		room.CompanyId = companyId
 		if this.GetString("GroupId") == "" {
 			room.GroupId = roomInfo.GroupId
 		} else {
