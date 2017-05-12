@@ -15,7 +15,7 @@ type QsController struct {
 	CommonController
 }
 
-// 发送公告列表
+// 获取公告列表
 func (this *QsController) SendNoticeList() {
 	if this.IsAjax() {
 		user := this.GetSession("userinfo").(*m.User)
@@ -67,12 +67,12 @@ func (this *QsController) SendNoticeList() {
 // 发送公告
 func (this *QsController) SendBroad() {
 	action := this.GetString("action")
+	UserInfo := this.GetSession("userinfo").(*m.User)
+	if UserInfo == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
+	}
 	if action == "add" {
-		UserInfo := this.GetSession("userinfo").(*m.User)
-		if UserInfo == nil {
-			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
-			return
-		}
 		data := this.GetString("Content")
 		room := this.GetString("Room")
 		filename := this.GetString("FileNameFile")
@@ -110,11 +110,18 @@ func (this *QsController) SendBroad() {
 	} else {
 		this.CommonController.CommonMenu()
 
+		companyInfo, _, err := m.GetCompanyList(UserInfo.CompanyId)
+		if err != nil {
+			beego.Debug("get companylist error", err)
+			return
+		}
+
 		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("get the roominfo error", err)
 			return
 		}
+		this.Data["CompanyInfo"] = companyInfo
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/qs/add.html"
 	}
