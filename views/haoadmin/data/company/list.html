@@ -1,0 +1,202 @@
+<link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
+<style type="text/css">
+    .am-alert{border-radius: 5px;padding:3px;}
+</style>
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/room_index">房间管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">房间列表</span></div>
+</div>
+<div class="result-wrap">
+    <form name="myform" id="myform" method="post">
+        <div class="result-title">
+            <div class="result-list">
+                <a href="/weserver/data/room_add" class="am-btn am-btn-success">添加房间</a>
+            </div>
+        </div>
+        <div class="result-content">
+            <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
+                <thead>
+                    <tr>
+                        <th>公司名称</th>
+                        <th>房间名</th>
+                        <th>房间讲师</th>
+                        <th>房间人数</th>
+                        <th>房间图标</th>
+                        <th>房间介绍</th>
+                        <th>标题</th>
+                        <th>房间Banner</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="data_body">
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="del-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">房间删除</div>
+    <div class="am-modal-bd">
+      你，确定要删除这条记录吗？
+    </div>
+    <div class="am-modal-footer">
+      <input value="" type="hidden" class="data-modal-del">
+      <span class="am-modal-btn data-am-modal-cancel">取消</span>
+      <span class="am-modal-btn data-am-modal-confirm" onclick="deleteModel()">确定</span>
+    </div>
+  </div>
+</div>
+<script src="/static/lib/layer/layer.min.js"></script>
+<script src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    var oTable;
+    $(function() {
+        oTable = initTable();
+    });
+    function initTable() {
+        var actionUrl = '/weserver/data/room_index';
+        var table = $('#rbac-user-list').dataTable({
+            "bFilter": false,
+            "bAutoWidth": false,
+            "sPaginationType": 'full_numbers',
+            "bPaginate": true,
+            "bDestroy": true,
+            "bProcessing": true,
+            "sAjaxSource": actionUrl,
+            "iDisplayLength": 10,
+            "aLengthMenu": [
+                [10, 15, 20, 50, -1],
+                [10, 15, 20, 50, "All"]
+            ],
+            "bServerSide": true,
+            "bSort": false,
+            "aoColumns": [
+                {"mDataProp": "CompanyName",},
+                {"mDataProp": "RoomTitle",},
+                {"mDataProp": "RoomTeacher",},
+                {"mDataProp": "RoomNum",},
+                {"mDataProp": "RoomIcon",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData.indexOf("upload") >= 0){
+                            $(nTd).html("<img  width='35px' height='35px'  src='"+sData+"'>");
+                        }else{
+                            $(nTd).html("<img  width='35px' height='35px'  src='../../"+sData+"'>");
+                        }
+                    }
+                },
+                {"mDataProp": "RoomIntro",},
+                {"mDataProp": "Title",},
+                {"mDataProp": "RoomBanner",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData.indexOf("upload") >= 0){
+                            $(nTd).html("<img  width='100px' height='35px'  src='"+sData+"'>");
+                        }else{
+                            $(nTd).html("<img  width='100px' height='35px'  src='../../"+sData+"'>");
+                        }
+                    }
+                },
+                {"mDataProp": "Id",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='房间编辑' href='/weserver/data/room_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                    }
+                }
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中...",
+                "sLengthMenu": "每页显示 _MENU_ 条记录，",
+                "sZeroRecords": "没有数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "_START_ - _END_ / 共 _TOTAL_ 条",
+                "sInfoEmpty": "0 - 0 / 共 0 条",
+                "sInfoFiltered": "",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            },
+            "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
+        });
+        return table;
+    }
+
+    /**
+    table刷新表格
+    */
+    $.fn.dataTableExt.oApi.fnReloadAjax = function(oSettings) {
+        this.fnClearTable(this);
+        this.oApi._fnProcessingDisplay(oSettings, true);
+        var that = this;
+
+        $.getJSON(oSettings.sAjaxSource, null, function(json) {
+            for (var i = 0; i < json.aaData.length; i++) {
+                that.oApi._fnAddData(oSettings, json.aaData[i]);
+            }
+            oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+            that.fnDraw(that);
+            that.oApi._fnProcessingDisplay(oSettings, false);
+        });
+    }
+
+    // 删除模态层
+    function deleteFun(delid){
+        $('#del-confirm').modal()
+        $(".data-modal-del").val(delid);
+    }
+
+    // 删除方法
+    function deleteModel(){
+        var Id = $(".data-modal-del").val();
+        $.ajax({
+            url: '/weserver/data/room_del',
+            type: 'POST',
+            data: {id: Id},
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        })
+    }
+
+    // 修改属性
+    function updateRoom(id){
+        layer.open({
+            type: 2,
+            title: '房间修改',
+            shadeClose: true,
+            shade: false,
+            area: ['600px', '400px'],
+            content: '/weserver/data/room_updateroom?Id='+id
+        });
+    }
+    // 刷新数据
+    function refreshData(){
+        $.ajax({
+            url: '/weserver/data/room_refresh',
+            type: 'POST',
+            success: function(rsp){
+                if (rsp.status){
+                    layer.msg(rsp.info);
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    layer.msg(rsp.info);
+                }
+            }
+        })
+    }
+    // 模态退出
+    $('#del-confirm').on('closed.modal.amui', function() {
+        $(this).removeData('amui.modal');
+        $(".data-modal-del").val("");
+    });
+
+    // 判断文件路径
+</script>
