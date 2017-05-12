@@ -69,30 +69,51 @@ func (this *TeacherController) Index() {
 func (this *TeacherController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
-		teacher := new(models.Teacher)
-		teacher.Room = this.GetString("Room")
-		teacher.Name = this.GetString("Name")
-		teacher.Icon = this.GetString("Icon")
-		teacher.Data = this.GetString("Data")
-		teacher.Datatime = time.Now()
-		time := time.Now()
-		tm := time.Format("2006-01-02 15:04:05")
-		teacher.Time = tm
-		_, err := models.AddTeacher(teacher)
-		if err != nil {
-			this.AlertBack("添加失败")
-			return
+		roomId := this.GetStrings("RoomId")
+		for _, val := range roomId {
+			teacher := new(models.Teacher)
+			companyId, err := this.GetInt64("company")
+			if err != nil {
+				beego.Error(err)
+				return
+			}
+			teacher.CompanyId = companyId
+
+			teacher.Room = val
+			teacher.Name = this.GetString("Name")
+			teacher.Icon = this.GetString("Icon")
+			teacher.Data = this.GetString("Data")
+			teacher.Datatime = time.Now()
+			time := time.Now()
+			tm := time.Format("2006-01-02 15:04:05")
+			teacher.Time = tm
+			_, err = models.AddTeacher(teacher)
+			if err != nil {
+				this.AlertBack("添加失败")
+				continue
+			}
+			// this.Alert("添加成功", "teacher_index")
 		}
-		this.Alert("添加成功", "teacher_index")
 	} else {
 		this.CommonMenu()
+		user := this.GetSession("userinfo").(*models.User)
+		if user == nil {
+			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+			return
+		}
+		companyList, _, err := models.GetCompanyList(user.CompanyId)
+		if err != nil {
+			beego.Error("get the companyList error", err)
+			return
+		}
 
 		roonInfo, err := this.GetRoomInfo()
 		if err != nil {
 			beego.Error("Get the Roominfo error", err)
 			return
 		}
-		beego.Debug("roonInfo", roonInfo)
+
+		this.Data["CompanyInfo"] = companyList
 		this.Data["roonInfo"] = roonInfo
 		this.TplName = "haoadmin/data/teacher/add.html"
 	}
