@@ -102,6 +102,7 @@ func Router() {
 	// 公告消息
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:SendNoticeList")
 	beego.Router("/weserver/data/sendbroad", &haoadmin.QsController{}, "*:SendBroad")
+	beego.Router("/weserver/data/getRoomInfo", &haoadmin.QsController{}, "*:GetRoomInfoByCompanyId")
 	beego.Router("/weserver/data/notice_edit", &haoadmin.QsController{}, "*:Edit")
 	beego.Router("/weserver/data/notice_del", &haoadmin.QsController{}, "*:Del")
 
