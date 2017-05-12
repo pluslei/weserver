@@ -463,7 +463,7 @@ func (this *UserController) PrepareDelUser() {
 
 		}
 	}
-	status, err := m.PrepareDelReisterUser(idarr)
+	status, err := m.PrepareDelUser(idarr)
 	if err == nil && status > 0 {
 		this.Rsp(true, "删除成功", "")
 		return
