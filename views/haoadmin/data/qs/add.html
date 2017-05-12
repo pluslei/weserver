@@ -78,8 +78,8 @@
             <input type="hidden" value="add" name="action">
             <div class="am-form-group">
               <label for="doc-select-1">请选择公司</label>
-              <select id="doc-select-2" name="company"  required data-validation-message="请选择公司">
-                <option value="">-=请选择公司=-</option>
+              <select id="doc-select-2" name="Company"  required data-validation-message="请选择公司" onchange="choosecompany()">
+                <option value="0">-=请选择公司=-</option>
                 {{range $index,$ele := .CompanyInfo}}
                 <option value="{{$ele.Id}}">{{$ele.Company}}</option>
                 {{end}}
@@ -97,7 +97,7 @@
               <span class="am-form-caret"></span>
             </div>-->
             <label for="doc-vld-ta-2">请选择房间</label>
-            <div class="am-form-group">
+            <div class="am-form-group" id="roominfo">
                 {{range $index,$ele := .roonInfo}}
                   <label class="am-checkbox-inline">
                     <input type="checkbox" name="RoomId" value="{{$ele.RoomId}}"> {{$ele.RoomTitle}}
@@ -146,4 +146,24 @@ $(function() {
     }
   });
 });
+function choosecompany() {
+  var sel = document.getElementById('doc-select-2').value;
+  $.ajax({
+      url: '/weserver/common/getRoomInfo',
+      type: 'POST',
+      data: {
+        CompanyId: parseInt(sel, 10),
+      },
+      success: function(data){
+        var dom = [];
+        if (data.roonInfo.length == 0){
+          dom.push("暂无房间");
+        }
+        for (var i =0; i<data.roonInfo.length;i++){
+          dom.push("<label class='am-checkbox-inline'><input type='checkbox' name='RoomId' value="+data.roonInfo[i].RoomId+"> "+data.roonInfo[i].RoomTitle+"</label>");
+        }
+        $('#roominfo').html(dom.join(''));
+      }
+  })
+}
 </script>
