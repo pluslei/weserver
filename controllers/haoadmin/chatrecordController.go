@@ -40,7 +40,10 @@ func (this *ChatRecordController) ChatRecordList() {
 		sEcho := this.GetString("sEcho")
 		iStart, _ := this.GetInt64("iDisplayStart")
 		iLength, _ := this.GetInt64("iDisplayLength")
-		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime", user.CompanyId)
+		nickname := this.GetString("sSearch_0")
+		beego.Debug("ssssss", nickname)
+
+		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime", nickname, user.CompanyId)
 		for _, v := range chatrecord {
 			roomInfo, err := m.GetRoomInfoByRoomID(v["Room"].(string))
 			if err != nil {
