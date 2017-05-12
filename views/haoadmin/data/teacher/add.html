@@ -76,7 +76,7 @@
         <div class="am-form-group">
           <label for="doc-select-1">请选择公司</label>
           <select id="doc-select-2" name="Room"  required data-validation-message="请选择公司" onchange="choosecompany()">
-            <option value="0">-=请选择公司=-</option>
+            <option value="">-=请选择公司=-</option>
             {{range $index,$ele := .roonInfo}}
             <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
             {{end}}

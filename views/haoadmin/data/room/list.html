@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
 <style type="text/css">
     .am-alert{border-radius: 5px;padding:3px;}
+    .result-list a{
+        margin-right: 0px;
+    }
 </style>
 <div class="crumb-wrap">
     <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/room_index">房间管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">房间列表</span></div>
@@ -14,15 +17,15 @@
              <div class="am-fr">
                 <div class="result-list am-form-inline am-form">
                     <div class="am-form-group">
-                        <select id="doc-select-room">
+                        <select id="doc-select-company">
                             <option value="">-=所属公司=-</option>
-                            {{range $index ,$ele := .roonInfo}}
+                            <!--{{range $index ,$ele := .roonInfo}}
                             <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
-                            {{end}}
+                            {{end}}-->
                         </select>
                     </div>
                     <div class="am-input-group">
-                        <a onclick="search()" class="am-btn am-btn-primary">搜索</a>
+                        <a onclick="queryUser()" class="am-btn am-btn-primary">搜索</a>
                     </div>
                 </div>
             </div>
@@ -69,11 +72,32 @@
     var oTable;
     $(function() {
         oTable = initTable();
+        getCompanyInfo();
     });
+    function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            console.log(data, 'data');
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-company').html(company.join(''));
+        }
+      })
+    }
+      // 模糊查询
+    function queryUser() {
+        var companyId = document.getElementById("doc-select-company").value;
+        console.log(companyId);
+        $("#rbac-user-list").DataTable().column(0).search(companyId).draw();
+    };
     function initTable() {
         var actionUrl = '/weserver/data/room_index';
         var table = $('#rbac-user-list').dataTable({
-            "bFilter": false,
+            "bFilter": true,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
             "bPaginate": true,
