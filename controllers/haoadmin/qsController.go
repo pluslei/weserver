@@ -64,6 +64,26 @@ func (this *QsController) SendNoticeList() {
 	}
 }
 
+func (this *QsController) GetRoomInfoByCompanyId() {
+	if this.IsAjax() {
+		companyid, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("get companyid error", err)
+			return
+		}
+		roomInfo, _, err := m.GetRoomInfo(companyid)
+		if err != nil {
+			beego.Debug("get RoomInfo by companyId error", err)
+			return
+		}
+		// json
+		data := make(map[string]interface{})
+		data["roonInfo"] = roomInfo
+		this.Data["json"] = &data
+		this.ServeJSON()
+	}
+}
+
 // 发送公告
 func (this *QsController) SendBroad() {
 	action := this.GetString("action")
