@@ -55,8 +55,14 @@ func (this *MqttController) GetRoomInfo() {
 			beego.Debug("GetRoomInfo fail", err)
 			return
 		}
+		companyInfo, err := m.GetCompanyById(Id)
+		if err != nil {
+			beego.Debug("Get CompanyInfo Error", err)
+			return
+		}
 		data := make(map[string]interface{})
 		data["roomInfo"] = roomInfo //聊天室信息
+		data["CompanyInfo"] = companyInfo
 		this.Data["json"] = &data
 		this.ServeJSON()
 	}

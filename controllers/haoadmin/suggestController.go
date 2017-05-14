@@ -33,7 +33,9 @@ func (this *SuggestController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		operposition, count := models.GetOperPositionList(iStart, iLength, "-Id", user.CompanyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+		operposition, count := models.GetOperPositionList(iStart, iLength, user.CompanyId, SearchId, RoomId)
 		for _, item := range operposition {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["RoomId"].(string))
 			if err != nil {

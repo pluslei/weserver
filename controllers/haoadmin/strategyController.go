@@ -31,7 +31,9 @@ func (this *StrategyController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		stratelist, count := models.GetStrategyInfoList(iStart, iLength, "-Id", user.CompanyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+		stratelist, count := models.GetStrategyInfoList(iStart, iLength, user.CompanyId, SearchId, RoomId)
 		for _, item := range stratelist {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {

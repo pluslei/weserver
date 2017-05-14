@@ -168,19 +168,18 @@ func (this *IndexController) LoginHandle() {
 			beego.Debug("Bind User Account Error", err)
 			return
 		}
-
+		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
+		if err != nil {
+			beego.Error("load user error", err)
+			return
+		}
 		if user.Username == "" {
+			beego.Debug("come in Delete")
 			_, err := m.DelUserById(user.Id)
 			if err != nil {
 				beego.Debug("DELETE User ID Error", err)
 				return
 			}
-		}
-
-		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
-		if err != nil {
-			beego.Error("load user error", err)
-			return
 		}
 		_, err1 := m.UpdateRegistName(user.Id, userLoad.Id, userLoad.Username, user.UserIcon)
 		if err1 != nil {

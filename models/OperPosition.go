@@ -1,8 +1,10 @@
 package models
 
 import (
+	"strconv"
 	"time"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -105,17 +107,40 @@ func UpdatePositionInfo(t *OperPosition) (int64, error) {
 }
 
 // 分页
-func GetOperPositionList(page int64, page_size int64, sort string, companyId int64) (ms []orm.Params, count int64) {
+func GetOperPositionList(page int64, page_size int64, companyId int64, SearchId, RoomId string) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	poer := new(OperPosition)
+
+	var sId int64
+	var err error
+	if SearchId != "" {
+		sId, err = strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+	}
+	if SearchId != "" && RoomId != "" {
+		query := o.QueryTable(poer)
+		query.Limit(page_size, page).Filter("CompanyId", sId).Filter("RoomId", RoomId).OrderBy("-Id").Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
+	if SearchId != "" && RoomId == "" {
+		query := o.QueryTable(poer)
+		query.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
+
 	if companyId != 0 {
 		query := o.QueryTable(poer)
-		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&ms)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Values(&ms)
 		count, _ = query.Count()
 		return ms, count
 	}
 	query := o.QueryTable(poer)
-	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	query.Limit(page_size, page).OrderBy("-Id").Values(&ms)
 	count, _ = query.Count()
 	return ms, count
 }

@@ -9,10 +9,10 @@ import (
 * Company table
  */
 type Company struct {
-	Id      int64 `orm:"pk;auto"`
-	Company string
-	CompanyIntro string
-	CompanyIcon string
+	Id            int64 `orm:"pk;auto"`
+	Company       string
+	CompanyIntro  string
+	CompanyIcon   string
 	CompanyBanner string
 }
 
@@ -56,9 +56,14 @@ func GetCompanyById(id int64) (Company, error) {
 }
 
 // 获取公司列表分页
-func GetCompanys(page int64, page_size int64) (ms []orm.Params, count int64) {
+func GetCompanys(page int64, page_size int64, companyId int64) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	query := o.QueryTable("company")
+	if companyId != 0 {
+		query.Limit(page_size, page).Filter("Id", companyId).Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
 	query.Limit(page_size, page).OrderBy("id").Values(&ms)
 	count, _ = query.Count()
 	return ms, count

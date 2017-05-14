@@ -29,7 +29,9 @@ func (this *TeacherController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		teacher, count := models.GetTeacherInfoList(iStart, iLength, "-Id", user.CompanyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+		teacher, count := models.GetTeacherInfoList(iStart, iLength, user.CompanyId, SearchId, RoomId)
 		for _, item := range teacher {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {

@@ -33,8 +33,10 @@ func (this *RoomController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
+		SearchId := this.GetString("sSearch_0")
+
 		companyId := user.CompanyId
-		roolist, count := models.GetRoomInfoList(iStart, iLength, "Id", companyId)
+		roolist, count := models.GetRoomInfoList(iStart, iLength, companyId, SearchId)
 
 		for _, item := range roolist {
 			Info, err := models.GetCompanyById(item["CompanyId"].(int64))
