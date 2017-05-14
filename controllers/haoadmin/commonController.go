@@ -210,6 +210,7 @@ func (this *CommonController) GetRoomInfoByCompanyId() {
 func (this *CommonController) GetCompanyInfo() {
 	if this.IsAjax() {
 		userInfo := this.GetSession("userinfo").(*m.User)
+		beego.Debug("sssss", userInfo)
 		if userInfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
 			return
