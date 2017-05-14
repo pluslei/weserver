@@ -58,7 +58,7 @@ func (this *SysConfigController) Index() {
 		} else {
 			sysid, _ := this.GetInt64("Id")
 			sys.Id = sysid
-			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "HistoryCount", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg", "VirtualUser", "NoticeCount", "StrategyCount", "TeacherCount", "PositionCount", "WelcomeMsg")
+			err := sys.UpdateSysConfig("Systemname", "ChatInterval", "Registerrole", "Registertitle", "HistoryMsg", "WelcomeMsg", "Verify", "LoginSys", "AuditMsg", "WelcomeMsg")
 			if err != nil {
 				beego.Error(err)
 				this.AlertBack("配置修改失败")

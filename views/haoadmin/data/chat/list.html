@@ -172,7 +172,7 @@
     function initTable() {
         var actionUrl = '/weserver/data/chatrecord';
         var table = $('#data-chat-list').dataTable({
-            "bFilter": false,
+            "bFilter": true,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
             "bPaginate": true,
@@ -262,7 +262,7 @@
     // 模糊查询
     function queryUser() {
         var searchusername = $("#searchusername").val();
-        $("#rbac-user-list").DataTable().column(0).search(searchusername).draw();
+        $("#data-chat-list").DataTable().column(0).search(searchusername).draw();
     };
     
     // 删除模态层

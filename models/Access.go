@@ -20,7 +20,7 @@ func AccessRegister() {
 		var accesslist map[string]bool
 		if user_auth_type > 0 {
 			pathUrl := strings.ToLower(ctx.Request.URL.Path)
-			beego.Debug("pathUrl", len(pathUrl))
+			beego.Debug("pathUrl", len(pathUrl), pathUrl)
 			if len(pathUrl) < 3 {
 				ctx.Redirect(302, rbac_auth_gateway)
 			}

@@ -168,11 +168,6 @@ func (this *IndexController) LoginHandle() {
 			beego.Debug("Bind User Account Error", err)
 			return
 		}
-		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
-		if err != nil {
-			beego.Error("load user error", err)
-			return
-		}
 		if user.Username == "" {
 			beego.Debug("come in Delete")
 			_, err := m.DelUserById(user.Id)
@@ -181,7 +176,19 @@ func (this *IndexController) LoginHandle() {
 				return
 			}
 		}
-		_, err1 := m.UpdateRegistName(user.Id, userLoad.Id, userLoad.Username, user.UserIcon)
+		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
+		if err != nil {
+			beego.Error("load user error", err)
+			return
+		}
+		var nickName string
+		if user.Nickname != "" {
+			nickName = user.Nickname
+		} else {
+			nickName = userLoad.Nickname
+		}
+		beego.Debug("aaaaaaaaa", userLoad.Username, userLoad.UserIcon, nickName)
+		_, err1 := m.UpdateRegistName(user.Id, userLoad.Id, userLoad.Username, userLoad.UserIcon, nickName)
 		if err1 != nil {
 			this.AlertBack("用户名和密码错误 406")
 			beego.Debug("Update Regist UserName Error", err1)
