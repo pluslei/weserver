@@ -187,7 +187,6 @@ func (this *IndexController) LoginHandle() {
 		} else {
 			nickName = userLoad.Nickname
 		}
-		beego.Debug("aaaaaaaaa", userLoad.Username, userLoad.UserIcon, nickName)
 		_, err1 := m.UpdateRegistName(user.Id, userLoad.Id, userLoad.Username, userLoad.UserIcon, nickName)
 		if err1 != nil {
 			this.AlertBack("用户名和密码错误 406")
