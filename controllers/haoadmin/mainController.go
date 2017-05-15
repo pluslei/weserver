@@ -91,7 +91,7 @@ func (this *MainController) Login() {
 		loginsys := sysconfig.LoginSys
 		beego.Debug("user", loginsys, username, Superadmin, admin.Role.IsInsider)
 
-		if admin.Role.Id != 1 || admin.Title.Id != 1 {
+		if admin.Role.Id != 1 {
 			this.Rsp(true, "无登录权限", "/weserver/public/login")
 			return
 		}
@@ -114,7 +114,7 @@ func (this *MainController) Login() {
 		}
 
 	}
-	
+
 	this.TplName = "haoadmin/login.html"
 }
 
