@@ -11,7 +11,6 @@ import (
 	rpc "weserver/src/rpcserver"
 
 	"github.com/astaxie/beego"
-	simplejson "github.com/bitly/go-simplejson"
 
 	"strconv"
 	"weserver/controllers"
@@ -42,17 +41,12 @@ func init() {
 	go userTotal()
 }
 
-// 获取聊天室信息
-func (this *MqttController) GetRoomInfo() {
+// get company info and room info
+func (this *MqttController) GetCompanyInfo() {
 	if this.IsAjax() {
 		Id, err := this.GetInt64("CompanyId")
 		if err != nil {
 			beego.Debug("Get CompanyId Fail", err)
-			return
-		}
-		roomInfo, _, err := m.GetRoomInfo(Id)
-		if err != nil {
-			beego.Debug("GetRoomInfo fail", err)
 			return
 		}
 		companyInfo, err := m.GetCompanyById(Id)
@@ -60,9 +54,36 @@ func (this *MqttController) GetRoomInfo() {
 			beego.Debug("Get CompanyInfo Error", err)
 			return
 		}
+		roomInfo, _, err := m.GetRoomInfo(Id)
+		if err != nil {
+			beego.Debug("GetRoomInfo fail", err)
+			return
+		}
 		data := make(map[string]interface{})
 		data["roomInfo"] = roomInfo //聊天室信息
 		data["CompanyInfo"] = companyInfo
+		this.Data["json"] = &data
+		this.ServeJSON()
+	}
+	this.Ctx.WriteString("")
+}
+
+// get online teacher list send private msg
+func (this *MqttController) GetOnlineTeacher() {
+	if this.IsAjax() {
+		Id, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("Get CompanyId Fail", err)
+			return
+		}
+		roomId := this.GetString("RoomId")
+		info, _, err := m.GetRegistInfoByRole(Id, int64(ROLE_TEACHER), roomId)
+		if err != nil {
+			beego.Debug("Get CompanyInfo Error", err)
+			return
+		}
+		data := make(map[string]interface{})
+		data["TeacherInfo"] = info
 		this.Data["json"] = &data
 		this.ServeJSON()
 	}
@@ -96,8 +117,13 @@ func parseMsg(msg string) int {
 		beego.Error("simplejson error", err)
 		return POST_STATUS_FALSE
 	}
-	info.Datatime = time.Now()       //添加时间
-	info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
+	if info.AccepterUname != "" {
+		info.MsgType = MSG_TYPE_CHAT_PRVIATE
+		beego.Debug("is a private msg")
+	} else {
+		info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
+	}
+
 	topic := info.Room
 	// CompanyId := info.CompanyId
 
@@ -277,151 +303,6 @@ func (this *MqttController) GetChatHistoryList() {
 	this.Ctx.WriteString("")
 }
 
-/*
-//chat List
-func (this *MqttController) GetChatHistoryList() {
-	if this.IsAjax() {
-		count := this.GetString("count")
-		nEnd, _ := strconv.ParseInt(count, 10, 64)
-		roomId := this.GetString("room")
-		beego.Debug("chat list ", count, roomId)
-		data := make(map[string]interface{})
-		sysconfig, _ := m.GetAllSysConfig()
-		sysCount := sysconfig.HistoryCount
-		var infoChat []m.ChatRecord
-		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
-		case 0:
-			historychat, nCount, _ := m.GetAllChatMsgData(roomId, "chat_record")
-			if nCount < sysCount {
-				beego.Debug("nCount sysCont", nCount, sysCount)
-				var i int64
-				for i = 0; i < nCount; i++ {
-					var info m.ChatRecord
-					info.Id = historychat[i].Id
-					info.Room = historychat[i].Room
-					info.Uname = historychat[i].Uname
-					info.Nickname = historychat[i].Nickname
-					info.UserIcon = historychat[i].UserIcon
-					info.RoleName = historychat[i].RoleName
-					info.RoleTitle = historychat[i].RoleTitle
-					info.Sendtype = historychat[i].Sendtype
-					info.RoleTitleCss = historychat[i].RoleTitleCss
-					info.RoleTitleBack = historychat[i].RoleTitleBack
-					info.Insider = historychat[i].Insider
-					info.IsLogin = historychat[i].IsLogin
-					info.Content = historychat[i].Content
-					info.Status = historychat[i].Status
-					info.Uuid = historychat[i].Uuid
-					infoChat = append(infoChat, info)
-				}
-				data["historyChat"] = infoChat
-				this.Data["json"] = &data
-				this.ServeJSON()
-				return
-			}
-			mod := (nEnd - nCount) % sysCount
-			beego.Debug("mod", mod)
-			if nEnd > nCount && mod == 0 {
-				beego.Debug("mod = 0")
-				data["historyChat"] = ""
-				this.Data["json"] = &data
-				this.ServeJSON()
-				return
-			}
-			var nstart int64
-			nstart = nEnd - sysCount
-			if nEnd > nCount {
-				nEnd = nCount
-				mod = nEnd % sysCount
-				nstart = nEnd - mod
-				beego.Debug("mod", mod)
-			}
-			for i := nstart; i < nEnd; i++ {
-				var info m.ChatRecord
-				info.Id = historychat[i].Id
-				info.Room = historychat[i].Room
-				info.Uname = historychat[i].Uname
-				info.Nickname = historychat[i].Nickname
-				info.UserIcon = historychat[i].UserIcon
-				info.RoleName = historychat[i].RoleName
-				info.RoleTitle = historychat[i].RoleTitle
-				info.Sendtype = historychat[i].Sendtype
-				info.RoleTitleCss = historychat[i].RoleTitleCss
-				info.RoleTitleBack = historychat[i].RoleTitleBack
-				info.Insider = historychat[i].Insider
-				info.IsLogin = historychat[i].IsLogin
-				info.Content = historychat[i].Content
-				info.Status = historychat[i].Status
-				info.Uuid = historychat[i].Uuid
-				infoChat = append(infoChat, info)
-			}
-			data["historyChat"] = infoChat
-			this.Data["json"] = &data
-			this.ServeJSON()
-		default:
-		}
-	} else {
-		this.Ctx.Redirect(302, "/")
-	}
-	this.Ctx.WriteString("")
-}
-*/
-
-//根据消息id 从数据库获取相应的消息
-func (this *MqttController) GetMsgInfoFromDatabase(id int64) MessageInfo {
-	var info MessageInfo
-	if id > 0 {
-		chat, _ := m.GetChatIdData(id)
-		if chat.Status == 1 {
-			return info
-		}
-		info.Uname = chat.Uname               //用户名
-		info.Nickname = chat.Nickname         //用户昵称
-		info.UserIcon = chat.UserIcon         //用户logo
-		info.RoleName = chat.RoleName         //用户角色[vip,silver,gold,jewel]
-		info.RoleTitle = chat.RoleTitle       //用户角色名[会员,白银会员,黄金会员,钻石会员]
-		info.Sendtype = chat.Sendtype         //用户发送消息类型('TXT','IMG','VOICE')
-		info.RoleTitleCss = chat.RoleTitleCss //头衔颜色
-		if chat.RoleTitleBack == 1 {
-			info.RoleTitleBack = true //角色聊天背景
-		} else {
-			info.RoleTitleBack = false //角色聊天背景
-		}
-		if chat.IsLogin == 1 {
-			info.IsLogin = true //状态 [1、登录 0、未登录]
-		} else {
-			info.IsLogin = false //状态 [1、登录 0、未登录]
-		}
-		info.Insider = chat.Insider //1内部人员或0外部人员
-		info.Content = chat.Content //消息内容
-		info.Uuid = chat.Uuid       //uuid
-		info.IsFilter = true        //消息是否过滤[true: 过滤, false: 不过滤]
-		info.Status = 1
-		info.Datatime = chat.Datatime //添加时间
-	}
-	return info
-}
-
-// 获取后台审核的消息id
-func (this *MqttController) GetPassId() {
-	if this.IsAjax() {
-		str := this.GetString("sendstr")
-		msg := DecodeB64(str)
-		key := []byte(msg)
-		js, err := simplejson.NewJson(key)
-		if err != nil {
-			beego.Error(err)
-		}
-		id := js.Get("id").MustInt64()
-		msgInfo := this.GetMsgInfoFromDatabase(id)
-		beego.Debug("ddddddddddddddd", msgInfo)
-		// 发消息
-		//	mq.SendMessage(msgInfo) //发消息
-		// topic := mq.Config.MqTopic // this.GetTopic()
-		// mq.SendMessage(topic, msgInfo) //发消息
-	}
-}
-
 //获取在线人数
 func (this *MqttController) GetOnlineUseCount() {
 	usercount := getToal()
@@ -498,6 +379,7 @@ func addData(info *MessageInfo) {
 	if info.IsLogin && info.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
+		chatrecord.AccepterUname = info.AccepterUname
 		chatrecord.Uuid = info.Uuid //uuid
 		chatrecord.CompanyId = info.CompanyId
 		chatrecord.Room = info.Room                 //房间号
@@ -513,10 +395,12 @@ func addData(info *MessageInfo) {
 		} else {
 			chatrecord.RoleTitleBack = 0 //角色聊天背景
 		}
-		chatrecord.Insider = info.Insider   //1内部人员或0外部人员
-		chatrecord.IsLogin = 1              //状态 [1、登录 0、未登录]
-		chatrecord.Content = info.Content   //消息内容
-		chatrecord.Datatime = info.Datatime //添加时间
+		chatrecord.Insider = info.Insider //1内部人员或0外部人员
+		chatrecord.IsLogin = 1            //状态 [1、登录 0、未登录]
+		chatrecord.Content = info.Content //消息内容
+		chatrecord.Datatime = time.Now()  //添加时间
+		chatrecord.AccepterUname = info.AccepterUname
+		chatrecord.AcceptUuid = info.AcceptUuid
 		if !info.IsFilter {
 			chatrecord.Status = 1 //审核状态(0：未审核，1：审核)
 		} else {

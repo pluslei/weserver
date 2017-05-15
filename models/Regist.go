@@ -97,6 +97,14 @@ func UpdateLoginTime(room, username string) (int64, error) {
 	return id, err
 }
 
+//根据角色信息获取
+func GetRegistInfoByRole(companyId, roleId int64, roomId string) ([]Regist, int64, error) {
+	o := orm.NewOrm()
+	var info []Regist
+	num, err := o.QueryTable("regist").Filter("CompanyId", companyId).Filter("Room", roomId).Filter("role_id", roleId).All(&info)
+	return info, num, err
+}
+
 //获取用户权限
 func GetRegistPermiss(room, username string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
