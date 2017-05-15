@@ -150,7 +150,7 @@ func Router() {
 	// beego.Router("/test/postapi", &haoadmin.TestController{}, "*:PostApi")
 
 	//*********************************************************************************************
-	// index
+	// 前端
 	beego.Router("/", &haoindex.IndexController{})
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
@@ -160,16 +160,13 @@ func Router() {
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
 
-	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetRoomInfo")
-
-	// 聊天
+	//聊天管理
+	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetCompanyInfo")
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
-	beego.Router("/chat/user/online/passid", &mqtt.MqttController{}, "*:GetPassId")
-	//获取在线人次信息
 	beego.Router("/chat/user/online/info", &mqtt.MqttController{}, "*:GetOnlineUseInfo")
-	// 获取在线人数
 	beego.Router("/chat/user/online/count", &mqtt.MqttController{}, "*:GetOnlineUseCount")
+	beego.Router("/chat/user/online/teacher", &mqtt.MqttController{}, "*:GetOnlineTeacher")
 
 	//公告
 	beego.Router("/chat/user/notice", &mqtt.NoticeController{}, "*:GetPublishNotice")
