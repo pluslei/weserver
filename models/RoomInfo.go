@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"strconv"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -29,6 +30,12 @@ type RoomInfo struct {
 	RoomBanner  string //图片
 	Title       string //标题
 	MidPage     int64  //0 不显示 1 显示
+
+	//公司信息
+	CompanyName   string `orm:"-"`
+	CompanyIntro  string `orm:"-"`
+	CompanyIcon   string `orm:"-"`
+	CompanyBanner string `orm:"-"`
 }
 
 func init() {
@@ -140,7 +147,6 @@ func GetRoomInfo(id int64) ([]RoomInfo, int64, error) {
 	o := orm.NewOrm()
 	var info []RoomInfo
 	num, err := o.QueryTable("roominfo").Filter("CompanyId", id).OrderBy("Id").All(&info)
-	beego.Debug("num", num)
 	return info, num, err
 }
 
@@ -156,8 +162,8 @@ func GetAllRoomInfo() ([]RoomInfo, int64, error) {
 func GetRoomCompany(room string) (int64, error) {
 	var info RoomInfo
 	o := orm.NewOrm()
-	err := o.QueryTable("roominfo").Filter("Room", room).Limit(1).One(&info)
-	return info.Id, err
+	err := o.QueryTable("roominfo").Filter("RoomId", room).Limit(1).One(&info)
+	return info.CompanyId, err
 }
 
 // 获取房间信息
@@ -181,17 +187,33 @@ func GetRoomInfoById(id int64) (info RoomInfo, err error) {
 }
 
 // 获取消息列表
-func GetRoomInfoList(page int64, page_size int64, sort string, companyId int64) (ms []orm.Params, count int64) {
+func GetRoomInfoList(page int64, page_size int64, companyId int64, SearchId string) (ms []orm.Params, count int64) {
+	var sId int64
+	var err error
+	if SearchId != "" {
+		sId, err = strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+	}
 	o := orm.NewOrm()
 	roominfo := new(RoomInfo)
+
+	if SearchId != "" {
+		query := o.QueryTable(roominfo)
+		query.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
 	if companyId != 0 {
 		query := o.QueryTable(roominfo)
-		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&ms)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Values(&ms)
 		count, _ = query.Count()
 		return ms, count
 	}
 	query := o.QueryTable(roominfo)
-	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	query.Limit(page_size, page).OrderBy("-Id").Values(&ms)
 	count, _ = query.Count()
 	return ms, count
 }

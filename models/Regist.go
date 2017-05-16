@@ -97,6 +97,14 @@ func UpdateLoginTime(room, username string) (int64, error) {
 	return id, err
 }
 
+//根据角色信息获取
+func GetRegistInfoByRole(companyId, roleId int64, roomId string) ([]Regist, int64, error) {
+	o := orm.NewOrm()
+	var info []Regist
+	num, err := o.QueryTable("regist").Filter("CompanyId", companyId).Filter("Room", roomId).Filter("role_id", roleId).All(&info)
+	return info, num, err
+}
+
 //获取用户权限
 func GetRegistPermiss(room, username string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
@@ -117,7 +125,7 @@ func GetShutUpInfoToday() (users []Regist, err error) {
 func GetLoginInfoToday(roomId string) (users []Regist, err error) {
 	o := orm.NewOrm()
 	nowtime := time.Now().Unix() - 24*60*60
-	_, err = o.QueryTable("regist").Exclude("Username", "admin").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
+	_, err = o.QueryTable("regist").Exclude("Username", "admin").Filter("Room", roomId).Exclude("title_id", 1).Exclude("role_id", 1).Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).All(&users)
 	return users, err
 }
 
@@ -186,13 +194,14 @@ func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, erro
 }
 
 // 更新指定账户的username
-func UpdateRegistName(userid, userloadid int64, username, icon string) (int64, error) {
+func UpdateRegistName(userid, userloadid int64, username, icon, nickname string) (int64, error) {
 	beego.Debug("userid", userid, username, icon)
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("UserId", userid).Update(orm.Params{
 		"Username": username,
 		"UserIcon": icon,
 		"UserId":   userloadid,
+		"Nickname": nickname,
 	})
 }
 

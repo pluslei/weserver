@@ -33,7 +33,9 @@ func (this *SuggestController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		operposition, count := models.GetOperPositionList(iStart, iLength, "-Id", user.CompanyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+		operposition, count := models.GetOperPositionList(iStart, iLength, user.CompanyId, SearchId, RoomId)
 		for _, item := range operposition {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["RoomId"].(string))
 			if err != nil {
@@ -74,10 +76,15 @@ func (this *SuggestController) Add() {
 	}
 	if action == "add" {
 		roomId := this.GetStrings("RoomId")
+		if len(roomId) == 0 {
+			this.Alert("请选择房间号", "suggest_index")
+			return
+		}
 		for _, val := range roomId {
 			companyId, err := this.GetInt64("company")
 			if err != nil {
 				beego.Error(err)
+				this.Alert("获取公司id出错", "suggest_index")
 				return
 			}
 			beego.Debug("userInfo", userInfo.Title.Id)
@@ -135,7 +142,7 @@ func (this *SuggestController) Add() {
 				continue
 			}
 			mq.SendMessage(topic, v)
-			// this.Alert("添加成功", "suggest_index")
+			this.Alert("添加成功", "suggest_index")
 		}
 
 	} else {

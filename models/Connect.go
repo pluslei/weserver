@@ -260,6 +260,7 @@ func insertNodes() {
 			{Id: 59, Title: "聊天记录", Name: "data/chatrecord", Level: 2, Pid: 30, Remark: "聊天记录", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/data/chatrecord", Hide: 1, Ico: ""},
 			{Id: 60, Title: "删除用户", Name: "user/delregisteruser", Level: 3, Pid: 3, Remark: "删除用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/delregisteruser", Hide: 1, Ico: ""},
 			{Id: 61, Title: "批量删除用户", Name: "user/preparedelregistuser", Level: 3, Pid: 3, Remark: "批量删除用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/preparedelregistuser", Hide: 1, Ico: ""},
+			{Id: 62, Title: "公司管理", Name: "data/company", Level: 2, Pid: 30, Remark: "公司管理", Status: 2, Url: "weserver/data/company", Hide: 1, Sort: 100, Group: &Group{Id: 1}},
 		}
 		for _, v := range nodes {
 			AddNode(&v)

@@ -2,6 +2,7 @@ package haoadmin
 
 import (
 	"weserver/models"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
@@ -28,7 +29,7 @@ func (this *CompanyController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		companys, count := models.GetCompanys(iStart, iLength)
+		companys, count := models.GetCompanys(iStart, iLength, user.CompanyId)
 		for _, item := range companys {
 			roleInfo, err := models.GetRoleInfoById(item["Registerrole"].(int64))
 			beego.Info("roleInfo:", roleInfo)
@@ -103,7 +104,7 @@ func (this *CompanyController) AddCompany() {
 		company.AppId = AppId
 		company.AppSecret = AppSecret
 		company.Url = Url
-		
+
 		_, err := models.AddCompany(company)
 		if err != nil {
 			this.AlertBack("添加失败")
@@ -122,7 +123,7 @@ func (this *CompanyController) AddCompany() {
 		this.Data["title"] = title
 		this.TplName = "haoadmin/data/company/add.html"
 	}
-	
+
 }
 
 //删除公司

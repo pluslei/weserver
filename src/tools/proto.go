@@ -3,7 +3,6 @@ package tools
 import (
 	"encoding/json"
 	"math/rand"
-	"time"
 
 	"github.com/astaxie/beego"
 )
@@ -15,10 +14,22 @@ const (
 	POST_STATUS_SHUTUP
 )
 
+// Role type match database table "Role"
+const (
+	ROLE_MANAGER int = 1
+	ROLE_CUSTOMER
+	ROLE_ASSISTANT
+	ROLE_TEACHER
+	ROLE_NORMAL
+	ROLE_TOURIST
+)
+
+// msg type
 const (
 	MSG_TYPE_CHAT_ADD int = iota //聊天消息
 	MSG_TYPE_CHAT_DEL
-	MSG_TYPE_NOTICE_ADD //公告消息
+	MSG_TYPE_CHAT_PRVIATE //私聊
+	MSG_TYPE_NOTICE_ADD   //公告消息
 	MSG_TYPE_NOTICE_DEL
 	MSG_TYPE_STRATEGY_ADD //策略消息
 	MSG_TYPE_STRATEGY_OPE
@@ -33,6 +44,7 @@ const (
 	MSG_TYPE_CLOSEPOSITION_DEL
 )
 
+// operate type
 const (
 	OPERATE_KICKOUT = iota
 	OPERATE_SHUTUP
@@ -101,24 +113,27 @@ type OnLineInfo struct {
 
 //mqtt发送聊天信息
 type MessageInfo struct {
-	Id            int64     //数据库中id
-	CompanyId     int64     //公司id
-	Room          string    //房间号 topic
-	Uname         string    //用户名 openid
-	Nickname      string    //用户昵称
-	UserIcon      string    //用户logo
-	RoleName      string    //用户角色[vip,silver,gold,jewel]
-	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
-	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
-	RoleTitleCss  string    //头衔颜色
-	RoleTitleBack bool      //角色聊天背景
-	Insider       int       //1内部人员或0外部人员
-	IsLogin       bool      //状态 [1、登录 0、未登录]
-	Content       string    //消息内容
-	IsFilter      bool      //消息是否过滤[true: 过滤, false: 不过滤]
-	Datatime      time.Time //添加时间
-	Status        int       //审核状态(0：未审核，1：审核)
-	Uuid          string    //uuid
+	Id            int64  //数据库中id
+	CompanyId     int64  //公司id
+	Room          string //房间号 topic
+	Uname         string //用户名 openid
+	Nickname      string //用户昵称
+	UserIcon      string //用户logo
+	RoleName      string //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	Sendtype      string //用户发送消息类型('TXT','IMG','VOICE')
+	RoleTitleCss  string //头衔颜色
+	RoleTitleBack bool   //角色聊天背景
+	Insider       int    //1内部人员或0外部人员
+	IsLogin       bool   //状态 [1、登录 0、未登录]
+	Content       string //消息内容
+	IsFilter      bool   //消息是否过滤[true: 过滤, false: 不过滤]
+	Status        int    //审核状态(0：未审核，1：审核)
+	Uuid          string //uuid
+
+	AcceptUuid    string
+	AcceptTitle   string
+	AcceptContent string
 
 	MsgType int //消息类型
 }

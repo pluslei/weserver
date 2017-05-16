@@ -16,7 +16,7 @@ type User struct {
 	Id            int64
 	CompanyId     int64
 	Username      string `orm:"index" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
-	Account       string `orm:"unique"`
+	Account       string `orm:"index"`
 	Password      string `orm:"size(32)" form:"Password" valid:"Required;MaxSize(32);MinSize(6)"`
 	Repassword    string `orm:"-" form:"Repassword" valid:"Required"`
 	Nickname      string `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
@@ -264,12 +264,25 @@ func CheckAccountIsExist(account string) bool {
 // 绑定用户
 func BindUserAccount(openid string, userInfo *User) (int64, error) {
 	o := orm.NewOrm()
+	if userInfo.Nickname != "" {
+		return o.QueryTable(new(User)).Filter("Openid", openid).Update(orm.Params{
+			"Account":   userInfo.Account,
+			"Password":  userInfo.Password,
+			"Nickname":  userInfo.Nickname,
+			"CompanyId": userInfo.CompanyId,
+			"Email":     userInfo.Email,
+			"Phone":     userInfo.Phone,
+			"Qq":        userInfo.Qq,
+			"Remark":    userInfo.Remark,
+			"Status":    userInfo.Status,
+			"Role":      userInfo.Role.Id,
+			"Title":     userInfo.Title.Id,
+		})
+	}
 	return o.QueryTable(new(User)).Filter("Openid", openid).Update(orm.Params{
 		"Account":   userInfo.Account,
 		"Password":  userInfo.Password,
-		"Nickname":  userInfo.Nickname,
 		"CompanyId": userInfo.CompanyId,
-		"UserIcon":  userInfo.UserIcon,
 		"Email":     userInfo.Email,
 		"Phone":     userInfo.Phone,
 		"Qq":        userInfo.Qq,

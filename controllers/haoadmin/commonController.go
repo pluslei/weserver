@@ -7,6 +7,8 @@ import (
 	"weserver/controllers"
 	m "weserver/models"
 
+	"strconv"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
@@ -166,7 +168,19 @@ func (this *CommonController) GetRoomInfo() ([]m.RoomInfo, error) {
 
 func (this *CommonController) GetRoomInfoByCompanyId() {
 	if this.IsAjax() {
-		companyid, err := this.GetInt64("CompanyId")
+		var companyid int64
+		var err error
+		str := this.GetString("CompanyId")
+		if str == "NaN" {
+			companyid = 0
+		} else {
+			companyid, err = strconv.ParseInt(str, 10, 10)
+			if err != nil {
+				beego.Debug("ParsInt error", err)
+				return
+			}
+		}
+		beego.Debug("companyId", companyid)
 		if err != nil {
 			beego.Debug("get companyid error", err)
 			return
@@ -196,6 +210,7 @@ func (this *CommonController) GetRoomInfoByCompanyId() {
 func (this *CommonController) GetCompanyInfo() {
 	if this.IsAjax() {
 		userInfo := this.GetSession("userinfo").(*m.User)
+		beego.Debug("sssss", userInfo)
 		if userInfo == nil {
 			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
 			return

@@ -2,6 +2,7 @@ package models
 
 import (
 	//"github.com/astaxie/beego"
+	"strconv"
 	"time"
 
 	"github.com/astaxie/beego"
@@ -151,17 +152,40 @@ func GetThumbNum(id int64) (int64, error) {
 }
 
 // 策略分页
-func GetStrategyInfoList(page int64, page_size int64, sort string, companyId int64) (ms []orm.Params, count int64) {
+func GetStrategyInfoList(page int64, page_size int64, companyId int64, SearchId, RoomId string) (ms []orm.Params, count int64) {
+	var sId int64
+	var err error
+	if SearchId != "" {
+		sId, err = strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+	}
 	o := orm.NewOrm()
 	strategy := new(Strategy)
+
+	if SearchId != "" && RoomId != "" {
+		query := o.QueryTable(strategy)
+		query.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy("-Id").Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
+	if SearchId != "" && RoomId == "" {
+		query := o.QueryTable(strategy)
+		query.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
+
 	if companyId != 0 {
 		query := o.QueryTable(strategy)
-		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&ms)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Values(&ms)
 		count, _ = query.Count()
 		return ms, count
 	}
 	query := o.QueryTable(strategy)
-	query.Limit(page_size, page).OrderBy(sort).Values(&ms)
+	query.Limit(page_size, page).OrderBy("-Id").Values(&ms)
 	count, _ = query.Count()
 	return ms, count
 }

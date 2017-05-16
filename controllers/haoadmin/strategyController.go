@@ -31,7 +31,9 @@ func (this *StrategyController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		stratelist, count := models.GetStrategyInfoList(iStart, iLength, "-Id", user.CompanyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+		stratelist, count := models.GetStrategyInfoList(iStart, iLength, user.CompanyId, SearchId, RoomId)
 		for _, item := range stratelist {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {
@@ -70,14 +72,19 @@ func (this *StrategyController) Add() {
 		return
 	}
 	if action == "add" {
-
 		roomId := this.GetStrings("RoomId")
+		if len(roomId) == 0 {
+			this.Alert("请选择房间号", "/weserver/data/strategy_index")
+			return
+		}
 		for _, val := range roomId {
 
 			strategy := new(models.Strategy)
 			companyId, err := this.GetInt64("company")
+			beego.Debug("companyId", companyId)
 			if err != nil {
 				beego.Error(err)
+				this.Alert("获取公司id出错", "/weserver/data/strategy_index")
 				return
 			}
 			strategy.CompanyId = companyId
@@ -105,7 +112,7 @@ func (this *StrategyController) Add() {
 				continue
 			}
 			SendStrage(strategy)
-			// this.Alert("添加成功", "/weserver/data/strategy_index")
+			this.Alert("添加成功", "/weserver/data/strategy_index")
 		}
 
 	} else {

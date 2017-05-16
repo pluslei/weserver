@@ -26,6 +26,7 @@ type Company struct {
 	Rolename      string `orm:"-"` //头衔名称
 } 
 
+
 func init() {
 	orm.RegisterModel(new(Company))
 }
@@ -66,9 +67,14 @@ func GetCompanyById(id int64) (Company, error) {
 }
 
 // 获取公司列表分页
-func GetCompanys(page int64, page_size int64) (ms []orm.Params, count int64) {
+func GetCompanys(page int64, page_size int64, companyId int64) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	query := o.QueryTable("company")
+	if companyId != 0 {
+		query.Limit(page_size, page).Filter("Id", companyId).Values(&ms)
+		count, _ = query.Count()
+		return ms, count
+	}
 	query.Limit(page_size, page).OrderBy("id").Values(&ms)
 	count, _ = query.Count()
 	return ms, count

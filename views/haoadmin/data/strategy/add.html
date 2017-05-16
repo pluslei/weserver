@@ -80,7 +80,7 @@
         <div class="am-form-group">
           <label for="doc-select-1">请选择公司</label>
           <select id="doc-select-2" name="company"  required data-validation-message="请选择公司" onchange="choosecompany()">
-            <option value="0">-=请选择公司=-</option>
+            <option value="">-=请选择公司=-</option>
             {{range $index,$ele := .CompanyInfo}}
             <option value="{{$ele.Id}}">{{$ele.Company}}</option>
             {{end}}
@@ -152,7 +152,7 @@ function choosecompany() {
       url: '/weserver/common/getRoomInfo',
       type: 'POST',
       data: {
-        CompanyId: parseInt(sel, 10),
+        CompanyId: sel,
       },
       success: function(data){
         var dom = [];

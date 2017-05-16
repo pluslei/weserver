@@ -2,6 +2,7 @@ package models
 
 import (
 	//"github.com/astaxie/beego"
+	"strconv"
 	"time"
 
 	"github.com/astaxie/beego"
@@ -107,17 +108,41 @@ func UpdateContent(id int64, strContent string) (int64, error) {
 }
 
 // 讲师分页
-func GetTeacherInfoList(page int64, page_size int64, sort string, companyId int64) (t []orm.Params, count int64) {
+func GetTeacherInfoList(page int64, page_size int64, companyId int64, SearchId, RoomId string) (t []orm.Params, count int64) {
 	o := orm.NewOrm()
 	teacher := new(Teacher)
+
+	var sId int64
+	var err error
+	if SearchId != "" {
+		sId, err = strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+	}
+
+	if SearchId != "" && RoomId != "" {
+		query := o.QueryTable(teacher)
+		query.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy("-Id").Values(&t)
+		count, _ = query.Count()
+		return t, count
+	}
+	if SearchId != "" && RoomId == "" {
+		query := o.QueryTable(teacher)
+		query.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&t)
+		count, _ = query.Count()
+		return t, count
+	}
+
 	if companyId != 0 {
 		query := o.QueryTable(teacher)
-		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy(sort).Values(&t)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Values(&t)
 		count, _ = query.Count()
 		return t, count
 	}
 	query := o.QueryTable(teacher)
-	query.Limit(page_size, page).OrderBy(sort).Values(&t)
+	query.Limit(page_size, page).OrderBy("-Id").Values(&t)
 	count, _ = query.Count()
 	return t, count
 }

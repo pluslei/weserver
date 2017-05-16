@@ -29,7 +29,9 @@ func (this *TeacherController) Index() {
 		if err != nil {
 			beego.Error(err)
 		}
-		teacher, count := models.GetTeacherInfoList(iStart, iLength, "-Id", user.CompanyId)
+		SearchId := this.GetString("sSearch_0")
+		RoomId := this.GetString("sSearch_1")
+		teacher, count := models.GetTeacherInfoList(iStart, iLength, user.CompanyId, SearchId, RoomId)
 		for _, item := range teacher {
 			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {
@@ -70,11 +72,16 @@ func (this *TeacherController) Add() {
 	action := this.GetString("action")
 	if action == "add" {
 		roomId := this.GetStrings("RoomId")
+		if len(roomId) == 0 {
+			this.Alert("请选择房间号", "teacher_index")
+			return
+		}
 		for _, val := range roomId {
 			teacher := new(models.Teacher)
 			companyId, err := this.GetInt64("company")
 			if err != nil {
 				beego.Error(err)
+				this.Alert("获取公司id出错", "teacher_index")
 				return
 			}
 			teacher.CompanyId = companyId
@@ -92,7 +99,7 @@ func (this *TeacherController) Add() {
 				this.AlertBack("添加失败")
 				continue
 			}
-			// this.Alert("添加成功", "teacher_index")
+			this.Alert("添加成功", "teacher_index")
 		}
 	} else {
 		this.CommonMenu()
