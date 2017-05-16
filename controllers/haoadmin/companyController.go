@@ -29,6 +29,15 @@ func (this *CompanyController) Index() {
 			beego.Error(err)
 		}
 		companys, count := models.GetCompanys(iStart, iLength)
+		for _, item := range companys {
+			roleInfo, err := models.GetRoleInfoById(item["Registerrole"].(int64))
+			beego.Info("roleInfo:", roleInfo)
+			if err != nil {
+				item["Rolename"] = "未知角色"
+			}else{
+				item["Rolename"] = roleInfo.Title
+			}
+		}
 		// json
 		data := make(map[string]interface{})
 		data["aaData"] = companys
@@ -36,7 +45,6 @@ func (this *CompanyController) Index() {
 		data["iTotalRecords"] = iLength
 		data["sEcho"] = sEcho
 		this.Data["json"] = &data
-		beego.Info("companys: ", companys[0])
 		this.ServeJSON()
 	} else {
 		this.CommonMenu()
@@ -52,6 +60,24 @@ func (this *CompanyController) AddCompany() {
 		companyIntro := this.GetString("companyIntro")
 		companyIcon := this.GetString("companyIconFile")
 		companyBanner := this.GetString("companyBannerFile")
+		Registerrole, _ := this.GetInt64("Registerrole")
+		WelcomeMsg := this.GetString("welcomemsg")
+		HistoryMsg, _ := this.GetInt64("historymsg")
+		AuditMsg, _ := this.GetInt64("auditmsg")
+		Verify, _ := this.GetInt64("verify")
+		AppId := this.GetString("AppId")
+		AppSecret := this.GetString("AppSecret")
+		Url := this.GetString("Url")
+		if len(AppId) <= 0 {
+			beego.Debug("AppId不能为空")
+		}
+		if len(AppSecret) <=0 {
+			beego.Debug("App密钥不能为空")
+		}
+		if len(Url) <= 0 {
+			beego.Debug("Url不能为空")
+		}
+
 		if len(companyName) <= 0 {
 			beego.Debug("companyName不能为空！")
 		}
@@ -69,6 +95,14 @@ func (this *CompanyController) AddCompany() {
 		company.CompanyBanner = companyBanner
 		company.CompanyIcon = companyIcon
 		company.CompanyIntro = companyIntro
+		company.Registerrole = Registerrole
+		company.WelcomeMsg = WelcomeMsg
+		company.HistoryMsg = HistoryMsg
+		company.AuditMsg = AuditMsg
+		company.Verify = Verify
+		company.AppId = AppId
+		company.AppSecret = AppSecret
+		company.Url = Url
 		
 		_, err := models.AddCompany(company)
 		if err != nil {
@@ -77,7 +111,15 @@ func (this *CompanyController) AddCompany() {
 		}
 		this.Alert("添加成功", "company")
 	} else {
+			//获取所有角色
+			role, err := models.GetAllUserRole()
+			if err != nil {
+			beego.Error(err)
+	}
+	title := models.TitleList()
 		this.CommonMenu()
+		this.Data["role"] = role
+		this.Data["title"] = title
 		this.TplName = "haoadmin/data/company/add.html"
 	}
 	
@@ -112,7 +154,14 @@ func (this *CompanyController) EditCompany() {
 		company["CompanyIntro"] = this.GetString("companyIntro")
 		company["CompanyIcon"] = this.GetString("CompanyIconFile")
 		company["CompanyBanner"] = this.GetString("CompanyBannerFile")
-
+		company["Registerrole"], _ = this.GetInt64("Registerrole")
+		company["WelcomeMsg"] = this.GetString("welcomemsg")
+		company["HistoryMsg"], _ = this.GetInt64("historymsg")
+		company["AuditMsg"], _ = this.GetInt64("auditmsg")
+		company["Verify"], _ = this.GetInt64("verify")
+		company["AppId"] = this.GetString("AppId")
+		company["AppSecret"] = this.GetString("AppSecret")
+		company["Url"] = this.GetString("Url")
 		_, err = models.UpdateCompanyInfo(id, company)
 		if err != nil {
 			beego.Error("inser faild", err)
@@ -123,7 +172,15 @@ func (this *CompanyController) EditCompany() {
 		}
 	}
 	companyInfo, _ := models.GetCompanyInfoById(id)
+	//获取所有角色
+	role, err := models.GetAllUserRole()
+	if err != nil {
+		beego.Error(err)
+	}
+	title := models.TitleList()
 	this.CommonMenu()
 	this.Data["companyInfo"] = companyInfo
+	this.Data["role"] = role
+	this.Data["title"] = title
 	this.TplName = "haoadmin/data/company/edit.html"
 }

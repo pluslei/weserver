@@ -75,9 +75,12 @@ func (this *MainController) Login() {
 		username := this.GetString("username")
 		password := this.GetString("password")
 		md5password := tools.EncodeUserPwd(username, password)
+		beego.Info("username:", username)
+		beego.Info("password:", md5password)
 		admin, err := m.GetUserInfoByUsername(username, md5password)
 		if err != nil {
 			admin, err = m.GetUserInfoByAccount(username, md5password)
+			beego.Info("err:", err)
 			if err != nil {
 				this.Rsp(false, "用户名或密码不正确", "")
 				return

@@ -10,11 +10,21 @@ import (
  */
 type Company struct {
 	Id      int64 `orm:"pk;auto"`
-	Company string
-	CompanyIntro string
-	CompanyIcon string
-	CompanyBanner string
-}
+	Company 	  string //公司名称
+	CompanyIntro  string //公司简介
+	CompanyIcon   string //公司icon图
+	CompanyBanner string //公司banner图
+	HistoryMsg    int64  //是否显示历史消息 0显示  1 不显示
+	Registerrole  int64  //默认注册用户角色
+	WelcomeMsg    string //欢迎语
+	AuditMsg      int64  //是否开启消息审核  0开启 1关闭
+	Verify        int64  //是否开启用户审核  0开启 1不开启
+	AppId 		  string //appid
+	AppSecret	  string //密钥
+	Url 		  string //跳转url
+
+	Rolename      string `orm:"-"` //头衔名称
+} 
 
 func init() {
 	orm.RegisterModel(new(Company))
