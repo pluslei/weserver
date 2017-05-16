@@ -13,12 +13,12 @@ type CompanyController struct {
 
 //公司列表
 func (this *CompanyController) Index() {
+	user := this.GetSession("userinfo").(*models.User)
+	if user == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
+	}
 	if this.IsAjax() {
-		user := this.GetSession("userinfo").(*models.User)
-		if user == nil {
-			this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
-			return
-		}
 		sEcho := this.GetString("sEcho")
 		iStart, err := this.GetInt64("iDisplayStart")
 
@@ -35,10 +35,11 @@ func (this *CompanyController) Index() {
 			beego.Info("roleInfo:", roleInfo)
 			if err != nil {
 				item["Rolename"] = "未知角色"
-			}else{
+			} else {
 				item["Rolename"] = roleInfo.Title
 			}
 		}
+
 		// json
 		data := make(map[string]interface{})
 		data["aaData"] = companys
@@ -49,6 +50,11 @@ func (this *CompanyController) Index() {
 		this.ServeJSON()
 	} else {
 		this.CommonMenu()
+		if user.CompanyId == 0 {
+			this.Data["show"] = true
+		} else {
+			this.Data["show"] = false
+		}
 		this.TplName = "haoadmin/data/company/index.html"
 	}
 }
@@ -72,7 +78,7 @@ func (this *CompanyController) AddCompany() {
 		if len(AppId) <= 0 {
 			beego.Debug("AppId不能为空")
 		}
-		if len(AppSecret) <=0 {
+		if len(AppSecret) <= 0 {
 			beego.Debug("App密钥不能为空")
 		}
 		if len(Url) <= 0 {
@@ -112,12 +118,12 @@ func (this *CompanyController) AddCompany() {
 		}
 		this.Alert("添加成功", "company")
 	} else {
-			//获取所有角色
-			role, err := models.GetAllUserRole()
-			if err != nil {
+		//获取所有角色
+		role, err := models.GetAllUserRole()
+		if err != nil {
 			beego.Error(err)
-	}
-	title := models.TitleList()
+		}
+		title := models.TitleList()
 		this.CommonMenu()
 		this.Data["role"] = role
 		this.Data["title"] = title
@@ -142,6 +148,11 @@ func (this *CompanyController) DelCompany() {
 }
 
 func (this *CompanyController) EditCompany() {
+	user := this.GetSession("userinfo").(*models.User)
+	if user == nil {
+		this.Ctx.Redirect(302, beego.AppConfig.String("rbac_auth_gateway"))
+		return
+	}
 	action := this.GetString("action")
 	id, err := this.GetInt64("id")
 	if err != nil {
@@ -180,6 +191,13 @@ func (this *CompanyController) EditCompany() {
 	}
 	title := models.TitleList()
 	this.CommonMenu()
+
+	if user.CompanyId == 0 {
+		this.Data["show"] = true
+	} else {
+		this.Data["show"] = false
+	}
+
 	this.Data["companyInfo"] = companyInfo
 	this.Data["role"] = role
 	this.Data["title"] = title

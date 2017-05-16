@@ -166,7 +166,11 @@ func Router() {
 	beego.Router("/chat/user/historylist", &mqtt.MqttController{}, "*:GetChatHistoryList")
 	beego.Router("/chat/user/online/info", &mqtt.MqttController{}, "*:GetOnlineUseInfo")
 	beego.Router("/chat/user/online/count", &mqtt.MqttController{}, "*:GetOnlineUseCount")
-	beego.Router("/chat/user/online/teacher", &mqtt.MqttController{}, "*:GetOnlineTeacher")
+
+	//question
+	beego.Router("/chat/user/question/teacher", &mqtt.QuestionController{}, "*:GetQuestionTeacher")
+	beego.Router("/chat/user/question/message", &mqtt.QuestionController{}, "*:GetQuestionToSend")
+	beego.Router("/chat/user/question/historylist", &mqtt.QuestionController{}, "*:GetQuestionHistoryList")
 
 	//公告
 	beego.Router("/chat/user/notice", &mqtt.NoticeController{}, "*:GetPublishNotice")
