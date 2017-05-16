@@ -131,8 +131,9 @@ type MessageInfo struct {
 	Status        int    //审核状态(0：未审核，1：审核)
 	Uuid          string //uuid
 
-	AccepterUname string
 	AcceptUuid    string
+	AcceptTitle   string
+	AcceptContent string
 
 	MsgType int //消息类型
 }

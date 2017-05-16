@@ -117,12 +117,8 @@ func parseMsg(msg string) int {
 		beego.Error("simplejson error", err)
 		return POST_STATUS_FALSE
 	}
-	if info.AccepterUname != "" {
-		info.MsgType = MSG_TYPE_CHAT_PRVIATE
-		beego.Debug("is a private msg")
-	} else {
-		info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
-	}
+
+	info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
 
 	topic := info.Room
 	// CompanyId := info.CompanyId
@@ -203,6 +199,9 @@ func (this *MqttController) GetChatHistoryList() {
 						info.Content = historychat[i].Content
 						info.Status = historychat[i].Status
 						info.Uuid = historychat[i].Uuid
+						info.AcceptUuid = historychat[i].AcceptUuid
+						info.AcceptTitle = historychat[i].AcceptTitle
+						info.AcceptContent = historychat[i].AcceptContent
 						infoChat = append(infoChat, info)
 					}
 					// data["historyChat"] = infoChat
@@ -226,6 +225,9 @@ func (this *MqttController) GetChatHistoryList() {
 						info.Content = historychat[i].Content
 						info.Status = historychat[i].Status
 						info.Uuid = historychat[i].Uuid
+						info.AcceptUuid = historychat[i].AcceptUuid
+						info.AcceptTitle = historychat[i].AcceptTitle
+						info.AcceptContent = historychat[i].AcceptContent
 						infoChat = append(infoChat, info)
 					}
 				}
@@ -268,6 +270,9 @@ func (this *MqttController) GetChatHistoryList() {
 						info.Content = historychat[i].Content
 						info.Status = historychat[i].Status
 						info.Uuid = historychat[i].Uuid
+						info.AcceptUuid = historychat[i].AcceptUuid
+						info.AcceptTitle = historychat[i].AcceptTitle
+						info.AcceptContent = historychat[i].AcceptContent
 						infoChat = append(infoChat, info)
 					}
 				} else {
@@ -288,6 +293,9 @@ func (this *MqttController) GetChatHistoryList() {
 						info.Content = historychat[i].Content
 						info.Status = historychat[i].Status
 						info.Uuid = historychat[i].Uuid
+						info.AcceptUuid = historychat[i].AcceptUuid
+						info.AcceptTitle = historychat[i].AcceptTitle
+						info.AcceptContent = historychat[i].AcceptContent
 						infoChat = append(infoChat, info)
 					}
 				}
@@ -379,7 +387,6 @@ func addData(info *MessageInfo) {
 	if info.IsLogin && info.Insider == 1 {
 		//写数据库
 		var chatrecord m.ChatRecord
-		chatrecord.AccepterUname = info.AccepterUname
 		chatrecord.Uuid = info.Uuid //uuid
 		chatrecord.CompanyId = info.CompanyId
 		chatrecord.Room = info.Room                 //房间号
@@ -399,8 +406,9 @@ func addData(info *MessageInfo) {
 		chatrecord.IsLogin = 1            //状态 [1、登录 0、未登录]
 		chatrecord.Content = info.Content //消息内容
 		chatrecord.Datatime = time.Now()  //添加时间
-		chatrecord.AccepterUname = info.AccepterUname
 		chatrecord.AcceptUuid = info.AcceptUuid
+		chatrecord.AcceptTitle = info.AcceptTitle
+		chatrecord.AcceptContent = info.AcceptContent
 		if !info.IsFilter {
 			chatrecord.Status = 1 //审核状态(0：未审核，1：审核)
 		} else {
