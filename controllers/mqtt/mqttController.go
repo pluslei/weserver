@@ -99,7 +99,6 @@ func parseMsg(msg string) int {
 	info.MsgType = MSG_TYPE_CHAT_ADD //消息类型
 
 	topic := info.Room
-	// CompanyId := info.CompanyId
 
 	beego.Debug("info", info)
 
@@ -108,12 +107,17 @@ func parseMsg(msg string) int {
 		beego.Error("json error", err)
 		return POST_STATUS_FALSE
 	}
-	arr, ok := mq.MapShutUp[topic]
+	inter, ok := mq.MapCache[topic]
 	if ok {
-		for _, v := range arr {
-			if v == info.Uname {
-				return POST_STATUS_SHUTUP
+		arr, ok := inter.([]string)
+		if ok {
+			for _, v := range arr {
+				if v == info.Uname {
+					return POST_STATUS_SHUTUP
+				}
 			}
+		} else {
+			beego.Debug("interface{} no define")
 		}
 	}
 	if info.IsFilter == false {

@@ -94,12 +94,17 @@ func parseQuestMsg(msg string) int {
 		beego.Error("json error", err)
 		return POST_STATUS_FALSE
 	}
-	arr, ok := mq.MapShutUp[topic]
+	inter, ok := mq.MapCache[topic]
 	if ok {
-		for _, v := range arr {
-			if v == info.Uname {
-				return POST_STATUS_SHUTUP
+		arr, ok := inter.([]string)
+		if ok {
+			for _, v := range arr {
+				if v == info.Uname {
+					return POST_STATUS_SHUTUP
+				}
 			}
+		} else {
+			beego.Debug("interface{} type is no define")
 		}
 	}
 

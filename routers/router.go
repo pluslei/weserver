@@ -151,11 +151,15 @@ func Router() {
 
 	//*********************************************************************************************
 	// 前端
-	beego.Router("/", &haoindex.IndexController{})
+	beego.Router("/", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
+	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")
+
 	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
-	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
-	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
+
+	// beego.Router("/login", &haoindex.IndexController{}, "*:Login")
+
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")

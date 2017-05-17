@@ -25,7 +25,7 @@ type Configer struct {
 
 var mq *MQ
 var Config *Configer
-var MapShutUp map[string][]string
+var MapCache map[string]interface{}
 
 //get pwd
 func getSecretKey(secretkey, groupId string) string {
@@ -77,28 +77,46 @@ func GetShutMapInfo() {
 	for _, info := range shutInfo {
 		Room := info.Room
 		Uname := info.Username
-		arr, ok := MapShutUp[Room]
+		inter, ok := MapCache[Room]
 		if !ok {
-			MapShutUp[Room] = []string{Uname}
+			MapCache[Room] = []string{Uname}
 		} else {
-			for _, v := range arr {
-				if v == Uname {
-					status = false
-					break
+			// arr, ok := inter.([]string)
+			// if ok {
+			// 	for _, v := range arr {
+			// 		if v == Uname {
+			// 			status = false
+			// 			break
+			// 		}
+			// 	}
+			// 	if status {
+			// 		arr = append(arr, Uname)
+			// 		MapCache[Room] = arr
+			// 	}
+			// }
+			switch t := inter.(type) {
+			case []string:
+				for _, v := range t {
+					if v == Uname {
+						status = false
+						break
+					}
 				}
-			}
-			if status {
-				arr = append(arr, Uname)
-				MapShutUp[Room] = arr
+				if status {
+					t = append(t, Uname)
+					MapCache[Room] = t
+				}
+			default:
+				beego.Debug("interface type is not found", t)
 			}
 		}
 	}
 }
 
 func Init() {
-	MapShutUp = make(map[string][]string)
+	MapCache = make(map[string]interface{})
 	GetShutMapInfo()
-	beego.Debug(MapShutUp)
+	beego.Debug(MapCache)
 }
 
 func Run() {

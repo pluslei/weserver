@@ -80,10 +80,36 @@ func GetCompanys(page int64, page_size int64, companyId int64) (ms []orm.Params,
 }
 
 // 更新公司信息
-func UpdateCompanyInfo(id int64, companyInfo orm.Params) (int64, error) {
+func UpdateCompanyInfo(id int64, companyInfo Company, companyId int64) (int64, error) {
 	beego.Debug("companyInfo", companyInfo, id)
 	o := orm.NewOrm()
-	return o.QueryTable("company").Filter("Id", id).Update(companyInfo)
+	if companyId != 0 {
+		return o.QueryTable("company").Filter("Id", id).Update(orm.Params{
+			"Company":       companyInfo.Company,
+			"CompanyIntro":  companyInfo.CompanyIntro,
+			"CompanyIcon":   companyInfo.CompanyIcon,
+			"CompanyBanner": companyInfo.CompanyBanner,
+			"HistoryMsg":    companyInfo.HistoryMsg,
+			"Registerrole":  companyInfo.Registerrole,
+			"WelcomeMsg":    companyInfo.WelcomeMsg,
+			"AuditMsg":      companyInfo.AuditMsg,
+			"Verify":        companyInfo.Verify,
+		})
+	}
+	return o.QueryTable("company").Filter("Id", id).Update(orm.Params{
+		"Company":       companyInfo.Company,
+		"CompanyIntro":  companyInfo.CompanyIntro,
+		"CompanyIcon":   companyInfo.CompanyIcon,
+		"CompanyBanner": companyInfo.CompanyBanner,
+		"HistoryMsg":    companyInfo.HistoryMsg,
+		"Registerrole":  companyInfo.Registerrole,
+		"WelcomeMsg":    companyInfo.WelcomeMsg,
+		"AuditMsg":      companyInfo.AuditMsg,
+		"Verify":        companyInfo.Verify,
+	    "AppId":         companyInfo.AppId,
+	    "AppSecret":     companyInfo.AppSecret,
+	    "Url":           companyInfo.Url,
+	})
 }
 
 // 获取公司信息

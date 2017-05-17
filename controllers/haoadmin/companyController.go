@@ -4,7 +4,6 @@ import (
 	"weserver/models"
 
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 )
 
 type CompanyController struct {
@@ -37,6 +36,11 @@ func (this *CompanyController) Index() {
 				item["Rolename"] = "未知角色"
 			} else {
 				item["Rolename"] = roleInfo.Title
+			}
+			if user.CompanyId != 0 {
+				item["AppId"] = ""
+				item["AppSecret"] = ""
+				item["Url"] = ""
 			}
 		}
 
@@ -161,20 +165,20 @@ func (this *CompanyController) EditCompany() {
 		return
 	}
 	if action == "edit" {
-		var company = make(orm.Params)
-		company["Company"] = this.GetString("companyName")
-		company["CompanyIntro"] = this.GetString("companyIntro")
-		company["CompanyIcon"] = this.GetString("CompanyIconFile")
-		company["CompanyBanner"] = this.GetString("CompanyBannerFile")
-		company["Registerrole"], _ = this.GetInt64("Registerrole")
-		company["WelcomeMsg"] = this.GetString("welcomemsg")
-		company["HistoryMsg"], _ = this.GetInt64("historymsg")
-		company["AuditMsg"], _ = this.GetInt64("auditmsg")
-		company["Verify"], _ = this.GetInt64("verify")
-		company["AppId"] = this.GetString("AppId")
-		company["AppSecret"] = this.GetString("AppSecret")
-		company["Url"] = this.GetString("Url")
-		_, err = models.UpdateCompanyInfo(id, company)
+		var company models.Company
+		company.Company = this.GetString("companyName")
+		company.CompanyIntro = this.GetString("companyIntro")
+		company.CompanyIcon = this.GetString("CompanyIconFile")
+		company.CompanyBanner = this.GetString("CompanyBannerFile")
+		company.Registerrole, _ = this.GetInt64("Registerrole")
+		company.WelcomeMsg = this.GetString("welcomemsg")
+		company.HistoryMsg, _ = this.GetInt64("historymsg")
+		company.AuditMsg, _ = this.GetInt64("auditmsg")
+		company.Verify, _ = this.GetInt64("verify")
+		company.AppId = this.GetString("AppId")
+		company.AppSecret = this.GetString("AppSecret")
+		company.Url = this.GetString("Url")
+		_, err = models.UpdateCompanyInfo(id, company, user.CompanyId)
 		if err != nil {
 			beego.Error("inser faild", err)
 			this.AlertBack("修改失败")
@@ -183,6 +187,7 @@ func (this *CompanyController) EditCompany() {
 			this.Alert("修改成功", "/weserver/data/company")
 		}
 	}
+	this.CommonMenu()
 	companyInfo, _ := models.GetCompanyInfoById(id)
 	//获取所有角色
 	role, err := models.GetAllUserRole()
@@ -190,14 +195,12 @@ func (this *CompanyController) EditCompany() {
 		beego.Error(err)
 	}
 	title := models.TitleList()
-	this.CommonMenu()
 
-	if user.CompanyId == 0 {
-		this.Data["show"] = true
-	} else {
-		this.Data["show"] = false
+	if user.CompanyId != 0 {
+		companyInfo.AppId = ""
+		companyInfo.AppSecret = ""
+		companyInfo.Url = ""
 	}
-
 	this.Data["companyInfo"] = companyInfo
 	this.Data["role"] = role
 	this.Data["title"] = title
