@@ -68,28 +68,6 @@ func (this *MqttController) GetCompanyInfo() {
 	this.Ctx.WriteString("")
 }
 
-// get online teacher list send private msg
-func (this *MqttController) GetOnlineTeacher() {
-	if this.IsAjax() {
-		Id, err := this.GetInt64("CompanyId")
-		if err != nil {
-			beego.Debug("Get CompanyId Fail", err)
-			return
-		}
-		roomId := this.GetString("RoomId")
-		info, _, err := m.GetRegistInfoByRole(Id, int64(ROLE_TEACHER), roomId)
-		if err != nil {
-			beego.Debug("Get CompanyInfo Error", err)
-			return
-		}
-		data := make(map[string]interface{})
-		data["TeacherInfo"] = info
-		this.Data["json"] = &data
-		this.ServeJSON()
-	}
-	this.Ctx.WriteString("")
-}
-
 // 发送聊天消息
 func (this *MqttController) GetMessageToSend() {
 	if this.IsAjax() {

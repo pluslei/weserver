@@ -9,8 +9,8 @@ import (
 * Company table
  */
 type Company struct {
-	Id      int64 `orm:"pk;auto"`
-	Company 	  string //公司名称
+	Id            int64  `orm:"pk;auto"`
+	Company       string //公司名称
 	CompanyIntro  string //公司简介
 	CompanyIcon   string //公司icon图
 	CompanyBanner string //公司banner图
@@ -19,13 +19,12 @@ type Company struct {
 	WelcomeMsg    string //欢迎语
 	AuditMsg      int64  //是否开启消息审核  0开启 1关闭
 	Verify        int64  //是否开启用户审核  0开启 1不开启
-	AppId 		  string //appid
-	AppSecret	  string //密钥
-	Url 		  string //跳转url
+	AppId         string //appid
+	AppSecret     string //密钥
+	Url           string //跳转url
 
-	Rolename      string `orm:"-"` //头衔名称
-} 
-
+	Rolename string `orm:"-"` //头衔名称
+}
 
 func init() {
 	orm.RegisterModel(new(Company))

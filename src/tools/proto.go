@@ -3,6 +3,7 @@ package tools
 import (
 	"encoding/json"
 	"math/rand"
+	"time"
 
 	"github.com/astaxie/beego"
 )
@@ -28,8 +29,9 @@ const (
 const (
 	MSG_TYPE_CHAT_ADD int = iota //聊天消息
 	MSG_TYPE_CHAT_DEL
-	MSG_TYPE_CHAT_PRVIATE //私聊
-	MSG_TYPE_NOTICE_ADD   //公告消息
+	MSG_TYPE_QUESTION_ADD
+	MSG_TYPE_QUESTION_DEL
+	MSG_TYPE_NOTICE_ADD //公告消息
 	MSG_TYPE_NOTICE_DEL
 	MSG_TYPE_STRATEGY_ADD //策略消息
 	MSG_TYPE_STRATEGY_OPE
@@ -153,8 +155,8 @@ func (m *MessageInfo) ParseJSON(msg []byte) (s MessageInfo, err error) {
 }
 
 //######################################################################################
+// notice msg
 
-// 公告消息
 type NoticeInfo struct {
 	CompanyId int64
 	Room      string //房间号
@@ -181,6 +183,47 @@ func (n *NoticeInfo) ParseJSON(msg []byte) (s NoticeInfo, err error) {
 
 func (n *NoticeDEL) ParseJSON(msg []byte) (s NoticeDEL, err error) {
 	var result NoticeDEL
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+//######################################################################################
+// ask question to teacher
+
+type QuestionInfo struct {
+	Id            int64 `orm:"pk;auto"`
+	CompanyId     int64
+	Room          string    //房间号 topic
+	Uname         string    //用户名  openid
+	Nickname      string    //用户昵称
+	UserIcon      string    //用户logo
+	RoleName      string    //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
+	RoleTitleCss  string    //头衔颜色
+	RoleTitleBack int       //角色聊天背景
+	Content       string    //消息内容
+	Datatime      time.Time //添加时间
+	Uuid          string    // uuid
+
+	AcceptUname   string
+	AcceptUuid    string
+	AcceptTitle   string
+	AcceptContent string
+
+	MsgType int //消息类型
+}
+
+type QuestionDEL struct {
+	Uuid    string //消息uuid
+	Room    string //房间号
+	MsgType int    //消息类型
+}
+
+func (m *QuestionInfo) ParseJSON(msg []byte) (s QuestionInfo, err error) {
+	var result QuestionInfo
 	if err := json.Unmarshal(msg, &result); err != nil {
 		return result, err
 	}
