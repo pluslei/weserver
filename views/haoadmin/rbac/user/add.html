@@ -1,5 +1,10 @@
 <style type="text/css">
   legend{border-bottom: 0px;}
+  .file-wrap {width: 165px;overflow: hidden;}
+  .file-imgWrap {margin-bottom: 10px;}
+  .file-imgWrap > img{width: 60px; height: 60px;margin: 10px 10px 5px 0;border: 3px solid #fff;box-shadow: 0 0 3px rgba(0,0,0,.35);cursor: pointer;transition: 0.3s ease;}
+  .file-imgWrap > img:hover{box-shadow: 0 0 3px 0px rgba(33, 118, 193,1);-webkit-transform:scale(1.05);-moz-transform:scale(1.05);transform:scale(1.05)}
+  .file-imgWrap > img.current {border-radius: 5px;box-shadow: 0 0 10px 1px rgba(33, 118, 193, 1);}
 </style>
 <script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
@@ -16,7 +21,7 @@
         'uploadLimit': 999999999,
         //'progressData': 'speed',
         'auto': true,
-        'multi': false, 
+        'multi': false,
         'buttonClass' : 'some-class',//自定义的样式类名
         //'queueID'  : 'some_file_queue',
         //'buttonCursor' : 'arrow',
@@ -64,9 +69,8 @@
         },
     });
 
-   
-  });
 
+  });
 </script>
 <div class="crumb-wrap">
     <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/user/index">用户管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">添加用户</span></div>
@@ -92,14 +96,52 @@
           <label for="doc-vld-url-2">昵称：</label>
           <input type="text" name="nickname" id="doc-vld-url-2" data-validation-message="输入昵称" placeholder="输入昵称"/>
         </div>
-       <div class="am-form-group">
-          <label for="doc-vld-Title-2">头像：(请上传jpg,png文件)</label>
-            <input type="file" name="userIcon" id="userIcon" multiple="true"/>
-            <input type="hidden" name="userIconFile" id="userIconFile" multiple="true"/> 
-        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-pick-2">头像选择(选择默认头像或者上传头像)：</label>
+          <a class="am-icon-question-circle " data-am-popover="{theme: 'sm',content: '你可以选择默认头像，也可以选择本地文件上传', trigger: 'hover focus'}"></a>
+          <h4>选择默认头像：</h4>
+          <div class="file-imgWrap">
+            <img class="current" src="/static/images/defaultPick/01.jpg" alt="">
+            <img src="/static/images/defaultPick/02.jpg" alt="">
+            <img src="/static/images/defaultPick/03.jpg" alt="">
+            <img src="/static/images/defaultPick/04.jpg" alt="">
+            <img src="/static/images/defaultPick/05.jpg" alt="">
+            <img src="/static/images/defaultPick/06.jpg" alt="">
+            <img src="/static/images/defaultPick/07.jpg" alt="">
+            <img src="/static/images/defaultPick/08.jpg" alt="">
+            <img src="/static/images/defaultPick/09.jpg" alt="">
+            <img src="/static/images/defaultPick/10.jpg" alt=""><br/>
+    
+            <img src="/static/images/defaultPick/11.jpg" alt="">
+            <img src="/static/images/defaultPick/12.jpg" alt="">
+            <img src="/static/images/defaultPick/13.jpg" alt="">
+            <img src="/static/images/defaultPick/14.jpg" alt="">
+            <img src="/static/images/defaultPick/15.jpg" alt="">
+            <img src="/static/images/defaultPick/16.jpg" alt="">
+            <img src="/static/images/defaultPick/17.jpg" alt="">
+            <img src="/static/images/defaultPick/18.jpg" alt="">
+            <img src="/static/images/defaultPick/19.jpg" alt="">
+            <img src="/static/images/defaultPick/20.jpg" alt=""><br/>
 
-             <div class="am-form-group" >
-            <img id="previewico" src="" style="width:128;height: 128px;border: 0px;soild:#FFFFFF; " />
+            <img src="/static/images/defaultPick/21.jpg" alt="">
+            <img src="/static/images/defaultPick/22.jpg" alt="">
+            <img src="/static/images/defaultPick/23.jpg" alt="">
+            <img src="/static/images/defaultPick/24.jpg" alt="">
+            <img src="/static/images/defaultPick/25.jpg" alt="">
+            <img src="/static/images/defaultPick/26.jpg" alt="">
+            <img src="/static/images/defaultPick/27.jpg" alt="">
+            <img src="/static/images/defaultPick/28.jpg" alt="">
+            <img src="/static/images/defaultPick/29.jpg" alt="">
+            <img src="/static/images/defaultPick/30.jpg" alt="">
+          </div>
+
+                  <div class="am-form-group">
+          <label for="doc-vld-Title-2">上传头像(请上传格式为jpg,png的文件)：</label>
+            <input type="file" name="userIcon" id="userIcon" multiple="true"/>
+            <input type="hidden" name="userIconFile" id="userIconFile" multiple="true" value="/static/images/defaultPick/01.jpg"/> 
+        </div>
+        <div class="am-form-group" >
+            <img id="previewico" src="/static/images/defaultPick/01.jpg" style="width:70px;height: 70px;border: 0px;soild:#FFFFFF; " />
         </div>
 
         <div class="am-form-group">
@@ -206,4 +248,23 @@ function choosecompany(index){
       }
   })
 }
+
+function onchangeFile(){
+  var fileValue = document.getElementById('doc-form-file').value;
+  var currentImg = document.getElementById('file-currentImg');
+  if (fileValue !== "") {
+    currentImg.setAttribute("src",fileValue);
+    currentImg.style.display = "block";
+  } else {
+    currentImg.style.display = "none";
+  }
+}
+
+$('.file-imgWrap > img').click(function() {
+  var currentImg = $(this).attr('src');
+  $('#previewico').attr('src', currentImg);
+   $('#userIconFile').val(currentImg)
+  $(this).addClass('current').siblings().removeClass('current');
+});
+
 </script>
