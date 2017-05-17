@@ -31,7 +31,6 @@ func (this *CompanyController) Index() {
 		companys, count := models.GetCompanys(iStart, iLength, user.CompanyId)
 		for _, item := range companys {
 			roleInfo, err := models.GetRoleInfoById(item["Registerrole"].(int64))
-			beego.Info("roleInfo:", roleInfo)
 			if err != nil {
 				item["Rolename"] = "未知角色"
 			} else {

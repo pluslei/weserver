@@ -19,7 +19,6 @@ type MainController struct {
 
 //首页
 func (this *MainController) Index() {
-	beego.Debug("===index")
 	if this.IsAjax() {
 		// json
 		data := make(map[string]interface{})
@@ -32,7 +31,6 @@ func (this *MainController) Index() {
 			return
 		}
 		this.CommonMenu()
-		beego.Debug("userinfo", userinfo)
 		// verifyuser, _ := m.GetRegStatusUser(1)
 		onlineuser, _ := m.GetUserByOnlineDesc()
 		//countonline := m.CountOnline()
@@ -75,25 +73,18 @@ func (this *MainController) Login() {
 		username := this.GetString("username")
 		password := this.GetString("password")
 		md5password := tools.EncodeUserPwd(username, password)
-		beego.Info("username:", username)
-		beego.Info("password:", md5password)
 		admin, err := m.GetUserInfoByUsername(username, md5password)
 		if err != nil {
 			admin, err = m.GetUserInfoByAccount(username, md5password)
-			beego.Info("err:", err)
 			if err != nil {
 				this.Rsp(false, "用户名或密码不正确", "")
 				return
 			}
 		}
-		beego.Debug("user", admin)
-
 		Superadmin := beego.AppConfig.String("rbac_admin_user")
-
 		sysconfig, _ := m.GetSysConfig()
 		loginsys := sysconfig.LoginSys
 		beego.Debug("user", loginsys, username, Superadmin, admin.Role.IsInsider)
-
 		if admin.Role.Id != 1 || admin.Title.Id != 1 {
 			this.Rsp(true, "无登录权限", "/weserver/public/login")
 			return
