@@ -55,7 +55,6 @@ func (this *QuestionController) GetQuestionTeacher() {
 	this.Ctx.WriteString("")
 }
 
-// 发送聊天消息
 func (this *QuestionController) GetQuestionToSend() {
 	if this.IsAjax() {
 		chatmsg := this.GetString("str")
@@ -122,7 +121,13 @@ func (this *QuestionController) GetQuestionHistoryList() {
 		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
-		beego.Debug("Get Question List info  RoomId, Id ", nId, roomId)
+		username := this.GetString("username")
+		RoleId, err := this.GetInt64("RoleId")
+		if err != nil {
+			beego.Debug("QuestionList get RoleId error", err)
+			return
+		}
+		beego.Debug("Get Question List info  RoomId, Id ", nId, roomId, username, RoleId)
 
 		data := make(map[string]interface{})
 		sysconfig, _ := m.GetAllSysConfig()
@@ -130,7 +135,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 		var infoMsg []m.Question
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
-			historyMsg, totalCount, _ := m.GetAllQuestionMsgData(roomId)
+			historyMsg, totalCount, _ := m.GetAllQuestionMsg(roomId, username, RoleId)
 			if nId == 0 {
 				var i int64
 				if totalCount < sysCount {

@@ -175,7 +175,7 @@ func (this *IndexController) GetWeChatInfo() {
 		// if len(info.Account) > 0 {
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
-		this.Redirect("/index", 302)
+		this.Redirect("/login/getinfo", 302)
 		// } else {
 		// 	this.Redirect("/login", 302)
 		// }
@@ -185,8 +185,7 @@ func (this *IndexController) GetWeChatInfo() {
 	this.Ctx.WriteString("")
 }
 
-//从数据库获取信息
-func (this *IndexController) Index() {
+func (this *IndexController) GetInfoFromDatabase() {
 	indexUserInfo := this.GetSession("indexUserInfo")
 	if indexUserInfo != nil {
 		sysconfig, _ := m.GetAllSysConfig() //系统设置
