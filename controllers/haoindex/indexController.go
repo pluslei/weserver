@@ -113,12 +113,13 @@ func (this *IndexController) LoginHandle() {
 	beego.Debug("appid appsecret redirect", APPID, AppSecret, redirect_uri)
 	Wx = WechatInit(APPID, AppSecret)
 	this.SetSession("LoginInfo", user)
-	this.Redirect("/wechat", 302)
+	this.Redirect("/index", 302)
 }
 
 // 获取userinfo
 func (this *IndexController) GetWeChatInfo() {
 	Id := this.GetString("state")
+	beego.Debug("state", Id)
 	nId, err := strconv.ParseInt(Id, 10, 64)
 	if err != nil {
 		beego.Debug("get company id error", err)
@@ -138,6 +139,7 @@ func (this *IndexController) GetWeChatInfo() {
 	beego.Debug("code", code)
 	if code == "" {
 		oauthAccess = Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
+		beego.Debug("ssss", redirect_uri)
 		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", Id)
 		if err != nil {
 			beego.Error("oauthAccess error", err)
@@ -248,6 +250,7 @@ func (this *IndexController) Index() {
 		this.Data["user"] = user
 
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
+		beego.Debug("url", url)
 		jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
