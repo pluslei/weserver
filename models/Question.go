@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"time"
+	"weserver/src/tools"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -106,11 +107,15 @@ func GetQuestionMsgData(count int64, roomId string) ([]Question, int64, error) {
 }
 
 //获取指定的聊天记录
-func GetAllQuestionMsgData(roomId string) ([]Question, int64, error) {
+func GetAllQuestionMsg(roomId, username string, RoleId int64) ([]Question, int64, error) {
 	o := orm.NewOrm()
 	var chat []Question
 	var table Question
-	num, err := o.QueryTable(table).Filter("Status", 1).Filter("Room", roomId).OrderBy("-Id").All(&chat)
+	if RoleId == tools.ROLE_MANAGER || RoleId == tools.ROLE_TEACHER || RoleId == tools.ROLE_ASSISTANT {
+		num, err := o.QueryTable(table).Filter("Room", roomId).OrderBy("-Id").All(&chat)
+		return chat, num, err
+	}
+	num, err := o.QueryTable(table).Filter("Room", roomId).Filter("Uname", username).OrderBy("-Id").All(&chat)
 	return chat, num, err
 }
 

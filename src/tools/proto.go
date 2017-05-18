@@ -17,7 +17,7 @@ const (
 
 // Role type match database table "Role"
 const (
-	ROLE_MANAGER int = 1
+	ROLE_MANAGER int64 = 1
 	ROLE_CUSTOMER
 	ROLE_ASSISTANT
 	ROLE_TEACHER
