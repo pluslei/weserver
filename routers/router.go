@@ -151,15 +151,13 @@ func Router() {
 
 	//*********************************************************************************************
 	// 前端
-	beego.Router("/", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/", &haoindex.IndexController{}, "*:Redirectr")
+	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
 	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")
 
-	beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
+	// beego.Router("/?:id([0-9]+)", &haoindex.IndexController{}, "*:Index")
 	beego.Router("/index", &haoindex.IndexController{}, "*:Index")
-
-	// beego.Router("/login", &haoindex.IndexController{}, "*:Login")
-
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
@@ -206,6 +204,10 @@ func Router() {
 	beego.Router("/chat/user/allList", &mqtt.TeacherController{}, "*:GetAllTeahcerList")
 	beego.Router("/chat/user/AddTeacher", &mqtt.TeacherController{}, "*:AddTeacher")
 	beego.Router("/chat/user/operateTeacher", &mqtt.TeacherController{}, "*:OperateTeacher")
+
+	//setting
+	beego.Router("/chat/user/set/icon", &mqtt.SetController{}, "*:SetIcon")
+	beego.Router("/chat/user/set/Nickname", &mqtt.SetController{}, "*:SetNickname")
 
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")

@@ -499,6 +499,33 @@ func (k *ShutUpInfo) ParseJSON(msg []byte) (s []ShutUpInfo, err error) {
 }
 
 //######################################################################################
+//person setting
+
+type SetInfo struct {
+	Uname     string
+	CompanyId int64
+	Icon      string
+	Nickname  string
+}
+
+//######################################################################################
+
+func ParseJSONArray(msg []byte) (s []interface{}, err error) {
+	var result []interface{}
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+func ParseJSON(msg []byte) (s interface{}, err error) {
+	var result interface{}
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
 func ToJSON(v interface{}) (string, error) {
 	value, err := json.Marshal(v)
 	if err != nil {
@@ -512,36 +539,6 @@ func ToJSON(v interface{}) (string, error) {
 type OnlineUserMsg struct {
 	Nickname string //用户昵称
 	UserIcon string //用户logo
-}
-
-var Resultuser []Usertitle  //模拟的用户数据
-var Copyresuser []Usertitle //拷贝数据
-
-func Jsontosocket(req string) (s []MessageInfo, err error) {
-	var result []MessageInfo
-	if err := json.Unmarshal([]byte(req), &result); err != nil {
-		result = make([]MessageInfo, 0)
-		return result, err
-	}
-	return result, nil
-}
-
-func Jsontoroommap(req string) (s map[string]Usertitle, err error) {
-	var result map[string]Usertitle
-	if err := json.Unmarshal([]byte(req), &result); err != nil {
-		result = make(map[string]Usertitle)
-		return result, err
-	}
-	return result, nil
-}
-
-func Jsontoroomcode(req string) (s map[string][]int, err error) {
-	var result map[string][]int
-	if err := json.Unmarshal([]byte(req), &result); err != nil {
-		result = make(map[string][]int)
-		return result, err
-	}
-	return result, nil
 }
 
 //生成一个新的验证码
