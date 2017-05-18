@@ -19,7 +19,6 @@ type MainController struct {
 
 //首页
 func (this *MainController) Index() {
-	beego.Debug("===index")
 	if this.IsAjax() {
 		// json
 		data := make(map[string]interface{})
@@ -32,7 +31,6 @@ func (this *MainController) Index() {
 			return
 		}
 		this.CommonMenu()
-		beego.Debug("userinfo", userinfo)
 		// verifyuser, _ := m.GetRegStatusUser(1)
 		onlineuser, _ := m.GetUserByOnlineDesc()
 		//countonline := m.CountOnline()
@@ -83,10 +81,7 @@ func (this *MainController) Login() {
 				return
 			}
 		}
-		beego.Debug("user", admin)
-
 		Superadmin := beego.AppConfig.String("rbac_admin_user")
-
 		sysconfig, _ := m.GetSysConfig()
 		loginsys := sysconfig.LoginSys
 		beego.Debug("user", loginsys, username, Superadmin, admin.Role.IsInsider)

@@ -167,10 +167,64 @@
             <img id="previewbanner" src="{{.companyInfo.CompanyBanner}}" style="width:375px;height:220px;border: 0px;soild:#FFFFFF; " />
         </div>
 
+          <div class="am-form-group">
+            <label for="doc-select-1">是否显示历史消息：</label>
+            <select id="doc-select-2" name="historymsg" required>
+              <option value="0" {{if eq .companyInfo.HistoryMsg 0}}selected{{end}}>显示</option>
+              <option value="1" {{if eq .companyInfo.HistoryMsg 1}}selected{{end}}>不显示</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
 
+          <div class="am-form-group">
+            <label for="doc-select-1">用户初始角色：</label>
+            <select id="doc-select-2" name="Registerrole" required>
+            {{range $index,$elem := .role}}
+              <option value="{{$elem.Id}}" id="role{{$elem.Id}}">{{$elem.Title}}</option>
+            {{end}}
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+
+           <div class="am-form-group">
+            <label for="doc-vld-name-2">聊天窗口欢迎语：</label>
+            <input type="text" name="welcomemsg" value="{{.companyInfo.WelcomeMsg}}" id="doc-vld-name-2" placeholder="聊天窗口欢迎语"  required/>
+          </div>
+
+                    <div class="am-form-group">
+            <label for="doc-select-1">是否消息审核：</label>
+            <select id="doc-select-21" name="auditmsg" required>
+              <option value="0" {{if eq .companyInfo.AuditMsg 0}}selected{{end}}>开启</option>
+              <option value="1" {{if eq .companyInfo.AuditMsg 1}}selected{{end}}>关闭</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
       
-        <div class="am-form-group"></div>
+                    <div class="am-form-group">
+            <label for="doc-select-1">是否开启注册验证：</label>
+            <select id="doc-select-20" name="verify" required>
+              <option value="0" {{if eq .companyInfo.Verify 0}}selected{{end}}>开启</option>
+              <option value="1" {{if eq .companyInfo.Verify 1}}selected{{end}}>关闭</option>
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+        
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">AppId：</label>
+          <input type="text" name="AppId" value="{{.companyInfo.AppId}}" id="doc-vld-Title-2" placeholder="AppId" data-validation-message="请输入AppId" />
+        </div>
 
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">App密钥：</label>
+          <input type="text" name="AppSecret" value="{{.companyInfo.AppSecret}}" id="doc-vld-Title-2" placeholder="App密钥" data-validation-message="请输入App密钥" />
+        </div>
+
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">url：</label>
+          <input type="text" name="Url" value="{{.companyInfo.Url}}" id="doc-vld-Title-2" placeholder="url" data-validation-message="请输入url" />
+        </div>
+
+        <div class="am-form-group"></div>
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
       </fieldset>
     </form>
@@ -179,6 +233,8 @@
 
 <script type="text/javascript">
 $(function() {
+  $("#role{{.companyInfo.Registerrole}}").attr('selected', true);
+
   var CompanyIcon = "{{.companyInfo.CompanyIcon}}";
   var CompanyBanner = "{{.companyInfo.CompanyBanner}}";
   if (CompanyIcon.indexOf("upload") < 0){

@@ -250,6 +250,7 @@ func (this *UserController) AddUser() {
 		password := this.GetString("password")
 		remark := this.GetString("remark")
 		status, err := this.GetInt("status")
+		userIcon := this.GetString("userIconFile")
 		if err != nil {
 			beego.Error(err)
 			return
@@ -275,7 +276,7 @@ func (this *UserController) AddUser() {
 			return
 		}
 
-		urlImage := beego.AppConfig.String("httplocalServerAdress") + "/static/img/defaultIco.png"
+		//urlImage := beego.AppConfig.String("httplocalServerAdress") + "/static/img/defaultIco.png"
 		u := new(m.User)
 		u.Account = account
 		u.Email = email
@@ -284,12 +285,14 @@ func (this *UserController) AddUser() {
 		u.Password = tools.EncodeUserPwd(account, password)
 		u.Remark = remark
 		u.Status = status
-		u.Headimgurl = urlImage
+		//u.Headimgurl = urlImage
+		u.Headimgurl = userIcon
 		u.RegStatus = 2
 		u.CompanyId = companyId
 		u.Role = &m.Role{Id: role}
 		u.Title = &m.Title{Id: title}
 		u.Lastlogintime = time.Now()
+		u.UserIcon = userIcon
 		id, err := m.AddUser(u)
 		if err == nil && id > 0 {
 			this.Alert("用户添加成功", "index")
@@ -304,7 +307,8 @@ func (this *UserController) AddUser() {
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
-				reg.UserIcon = urlImage
+				//reg.UserIcon = urlImage
+				reg.UserIcon = userIcon
 				_, err := m.AddRegist(reg)
 				if err != nil {
 					beego.Error("add regist error", err)
@@ -344,6 +348,7 @@ func (this *UserController) AddUser() {
 		this.Data["RoleList"] = roles
 		this.Data["TitleList"] = titles
 		this.TplName = "haoadmin/rbac/user/add.html"
+		//this.TplName = "haoadmin/rbac/user/add3.html"
 	}
 }
 

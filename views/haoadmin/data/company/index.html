@@ -20,6 +20,14 @@
                         <th>公司简介</th>
                         <th>公司图标</th>
                         <th>公司Banner</th>
+                        <th>历史消息显示</th>
+                        <th>用户初始角色</th>
+                        <th>欢迎语</th>
+                        <th>消息审核</th>
+                        <th>注册验证</th>
+                        <th>AppId</th>
+                        <th>App密钥</th>
+                        <th>Url</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -89,6 +97,38 @@
                         }
                     }
                 },
+                {"mDataProp": "HistoryMsg",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData == 0) {
+                            $(nTd).html("显示");
+                        } else {
+                            $(nTd).html("不显示");
+                        }
+                    }
+        },
+                {"mDataProp": "Rolename",},
+                {"mDataProp": "WelcomeMsg",},
+                {"mDataProp": "AuditMsg",
+                                "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData == 0) {
+                            $(nTd).html("开启");
+                        } else {
+                            $(nTd).html("关闭");
+                        }
+                    }
+                },
+                {"mDataProp": "Verify",
+                                         "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData == 0) {
+                            $(nTd).html("开启");
+                        } else {
+                            $(nTd).html("关闭");
+                        }
+                    }
+        },
+                {"mDataProp": "AppId",},
+                {"mDataProp": "AppSecret",},
+                {"mDataProp": "Url",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                          $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='公司编辑' href='/weserver/data/company_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
