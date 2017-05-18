@@ -117,6 +117,20 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 	return status, err
 }
 
+func UpdateUserNickname(username string, Nickname string) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Nickname": Nickname})
+	return id, err
+}
+
+func UpdateUserIcon(username string, Icon string) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"UserIcon": Icon})
+	return id, err
+}
+
 // 根据用户名查找
 func GetUserByUsername(username string) (user User, err error) {
 	user = User{Username: username}

@@ -88,6 +88,20 @@ func UpdateRegistIsShut(room, username string, b bool) (int64, error) {
 	return id, err
 }
 
+func UpdateRegistNickname(username string, companyId int64, Nickname string) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{"Nickname": Nickname})
+	return id, err
+}
+
+func UpdateRegistIcon(username string, companyId int64, Icon string) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{"UserIcon": Icon})
+	return id, err
+}
+
 //跟新登录时间
 func UpdateLoginTime(room, username string) (int64, error) {
 	o := orm.NewOrm()

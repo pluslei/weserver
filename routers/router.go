@@ -205,6 +205,10 @@ func Router() {
 	beego.Router("/chat/user/AddTeacher", &mqtt.TeacherController{}, "*:AddTeacher")
 	beego.Router("/chat/user/operateTeacher", &mqtt.TeacherController{}, "*:OperateTeacher")
 
+	//setting
+	beego.Router("/chat/user/set/icon", &mqtt.SetController{}, "*:SetIcon")
+	beego.Router("/chat/user/set/Nickname", &mqtt.SetController{}, "*:SetNickname")
+
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")
 	beego.Router("/chat/user/positionList", &mqtt.PositionController{}, "*:GetPositionList")
