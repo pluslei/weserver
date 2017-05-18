@@ -14,6 +14,8 @@ import (
 
 	m "weserver/models"
 
+	"strconv"
+
 	"github.com/astaxie/beego"
 	"github.com/silenceper/wechat"
 	"github.com/silenceper/wechat/cache"
@@ -66,7 +68,16 @@ func WechatInit(APPID, APPSECRET string) *wechat.Wechat {
 	return wechat.NewWechat(cfg)
 }
 
+func (this *IndexController) Redirectr() {
+	var user = new(m.User)
+	Id := this.GetString("id")
+	this.SetSession("LoginInfo", user)
+	this.Redirect("/wechat?state="+Id, 302)
+}
+
 func (this *IndexController) Login() {
+	companyId := this.GetString("id")
+	beego.Debug("url id", companyId)
 	this.TplName = "haoindex/login.html"
 }
 
@@ -107,21 +118,37 @@ func (this *IndexController) LoginHandle() {
 
 // 获取userinfo
 func (this *IndexController) GetWeChatInfo() {
+	Id := this.GetString("state")
+	nId, err := strconv.ParseInt(Id, 10, 64)
+	if err != nil {
+		beego.Debug("get company id error", err)
+		return
+	}
+	info, err := m.GetCompanyById(nId)
+	if err != nil {
+		beego.Debug("get login companyinfo error")
+		return
+	}
+	APPID = info.AppId
+	AppSecret = info.AppSecret
+	redirect_uri = info.Url
+	Wx = WechatInit(APPID, AppSecret)
+
 	code := this.GetString("code")
 	beego.Debug("code", code)
 	if code == "" {
 		oauthAccess = Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
-		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", "ihaoyue")
+		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", Id)
 		if err != nil {
 			beego.Error("oauthAccess error", err)
-			this.Redirect("/", 302)
+			this.Redirect("/login", 302)
 			return
 		}
 	} else {
 		resToken, err := oauthAccess.GetUserAccessToken(code)
 		if err != nil {
 			beego.Error("get the user token error", err)
-			this.Redirect("/", 302)
+			this.Redirect("/login", 302)
 			return
 		}
 
@@ -134,24 +161,26 @@ func (this *IndexController) GetWeChatInfo() {
 		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
 		if err != nil {
 			beego.Error("get the userinfo error", err)
-			this.Redirect("/", 302)
+			this.Redirect("/login", 302)
 			return
 		}
+
 		info, err := m.GetUserByUsername(userInfo.OpenID)
+
 		if err != nil || info.Id <= 0 {
 			this.saveUser(userInfo)
 		} else {
 			this.updateUser(info.Id, userInfo)
 		}
-		beego.Debug("userInfo", userInfo)
-
 		// if len(info.Account) > 0 {
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
 		this.Redirect("/index", 302)
 		// } else {
-		// 	this.Redirect("/login?openid="+userInfo.OpenID, 302)
+		// 	this.Redirect("/login", 302)
 		// }
+		beego.Debug("userInfo", userInfo)
+
 	}
 	this.Ctx.WriteString("")
 }
@@ -239,7 +268,7 @@ func (this *IndexController) Index() {
 		this.TplName = "dist/index.html"
 		// this.TplName = "index.html"
 	} else {
-		this.Redirect("/", 302)
+		this.Redirect("/login", 302)
 	}
 }
 
@@ -326,6 +355,10 @@ func (this *IndexController) GetMediaURL() {
 
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
 	info := this.GetSession("LoginInfo").(*m.User)
+	if info.Account == "" {
+		this.Redirect("/login", 302)
+	}
+
 	if len(info.Username) <= 0 {
 		_, err := m.BindWechatIcon(info.Id, &userInfo)
 		if err != nil {
