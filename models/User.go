@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
+	"github.com/silenceper/wechat/oauth"
 	//"weserver/src/tools"
 	"fmt"
 )
@@ -114,6 +115,20 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 		err = o.Commit()
 	}
 	return status, err
+}
+
+func UpdateUserNickname(username string, Nickname string) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Nickname": Nickname})
+	return id, err
+}
+
+func UpdateUserIcon(username string, Icon string) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"UserIcon": Icon})
+	return id, err
 }
 
 // 根据用户名查找
@@ -261,37 +276,37 @@ func CheckAccountIsExist(account string) bool {
 	return o.QueryTable(new(User)).Filter("Account", account).Exist()
 }
 
-// 绑定用户
-func BindUserAccount(openid string, userInfo *User) (int64, error) {
+func BindWechatIcon(Id int64, userInfo *oauth.UserInfo) (int64, error) {
 	o := orm.NewOrm()
-	if userInfo.Nickname != "" {
-		return o.QueryTable(new(User)).Filter("Openid", openid).Update(orm.Params{
-			"Account":   userInfo.Account,
-			"Password":  userInfo.Password,
-			"Nickname":  userInfo.Nickname,
-			"CompanyId": userInfo.CompanyId,
-			"Email":     userInfo.Email,
-			"Phone":     userInfo.Phone,
-			"Qq":        userInfo.Qq,
-			"Remark":    userInfo.Remark,
-			"Status":    userInfo.Status,
-			"Role":      userInfo.Role.Id,
-			"Title":     userInfo.Title.Id,
-		})
-	}
-	return o.QueryTable(new(User)).Filter("Openid", openid).Update(orm.Params{
-		"Account":   userInfo.Account,
-		"Password":  userInfo.Password,
-		"CompanyId": userInfo.CompanyId,
-		"Email":     userInfo.Email,
-		"Phone":     userInfo.Phone,
-		"Qq":        userInfo.Qq,
-		"Remark":    userInfo.Remark,
-		"Status":    userInfo.Status,
-		"Role":      userInfo.Role.Id,
-		"Title":     userInfo.Title.Id,
-	})
 
+	return o.QueryTable(new(User)).Filter("Id", Id).Update(orm.Params{
+		"Nickname":      userInfo.Nickname,
+		"UserIcon":      userInfo.HeadImgURL,
+		"Username":      userInfo.OpenID,
+		"Openid":        userInfo.OpenID,
+		"Sex":           userInfo.Sex,
+		"Province":      userInfo.Province,
+		"City":          userInfo.City,
+		"Country":       userInfo.Country,
+		"Unionid":       userInfo.Unionid,
+		"Headimgurl":    userInfo.HeadImgURL,
+		"Lastlogintime": time.Now(),
+	})
+}
+
+func BindWechat(Id int64, userInfo *oauth.UserInfo) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Id", Id).Update(orm.Params{
+		"Username":      userInfo.OpenID,
+		"Openid":        userInfo.OpenID,
+		"Sex":           userInfo.Sex,
+		"Province":      userInfo.Province,
+		"City":          userInfo.City,
+		"Country":       userInfo.Country,
+		"Unionid":       userInfo.Unionid,
+		"Headimgurl":    userInfo.HeadImgURL,
+		"Lastlogintime": time.Now(),
+	})
 }
 
 // 根据id查询

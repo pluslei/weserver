@@ -34,6 +34,7 @@ func init() {
 // 当前在线
 func (this *ManagerController) GetUserOnline() {
 	if this.IsAjax() {
+		beego.Debug("mq get shut map info0")
 		roomId := this.GetString("Room")
 		onlineuser, err := m.GetLoginInfoToday(roomId)
 		if err != nil {
@@ -52,6 +53,7 @@ func (this *ManagerController) GetUserOnline() {
 				userInfo = append(userInfo, info)
 			}
 		}
+		beego.Debug("mq get shut map info1")
 		mq.GetShutMapInfo()
 		data := make(map[string]interface{})
 		data["userlist"] = userInfo
@@ -212,7 +214,6 @@ func (this *ManagerController) GetShutUpInfo() {
 func parseShutUpMsg(msg string) bool {
 	var msginfo ShutUpInfo
 	var status bool = true
-	// msginfo := new(ShutUpInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("Shutup simplejson error", err)
@@ -225,20 +226,25 @@ func parseShutUpMsg(msg string) bool {
 		msg.IsShutUp = info[i].IsShutUp
 		msg.MsgType = MSG_TYPE_SHUTUP
 
-		arr, ok := mq.MapShutUp[msg.Room]
+		inter, ok := mq.MapCache[msg.Room]
 		if ok {
-			for _, v := range arr {
-				if v == msg.Uname {
-					status = false
-					break
+			arr, ok := inter.([]string)
+			if ok {
+				for _, v := range arr {
+					if v == msg.Uname {
+						status = false
+						break
+					}
 				}
-			}
-			if status {
-				arr = append(arr, msg.Uname)
-				mq.MapShutUp[msg.Room] = arr
+				if status {
+					arr = append(arr, msg.Uname)
+					mq.MapCache[msg.Room] = arr
+				}
+			} else {
+				beego.Debug("interface{} type is no define")
 			}
 		} else {
-			mq.MapShutUp[msg.Room] = []string{msg.Uname}
+			mq.MapCache[msg.Room] = []string{msg.Uname}
 		}
 		// beego.Debug("info", msg)
 		// topic := msg.Room
@@ -252,7 +258,7 @@ func parseShutUpMsg(msg string) bool {
 		// 更新user 字段
 		UpdateUserInfo(msg)
 	}
-	beego.Debug("Shut up Map List", mq.MapShutUp)
+	beego.Debug("Shut up Map List", mq.MapCache)
 	return true
 }
 
@@ -275,7 +281,6 @@ func (this *ManagerController) GetUnShutUpInfo() {
 //解除禁言
 func parseUnShutUpMsg(msg string) bool {
 	var msginfo ShutUpInfo
-	// msginfo := new(ShutUpInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("UnShutup simplejson error", err)
@@ -288,20 +293,25 @@ func parseUnShutUpMsg(msg string) bool {
 		msg.IsShutUp = info[i].IsShutUp
 		// msg.MsgType = MSG_TYPE_UNSHUTUP
 
-		arr, ok := mq.MapShutUp[msg.Room]
+		inter, ok := mq.MapCache[msg.Room]
 		if ok {
-			for i, v := range arr {
-				if v == msg.Uname {
-					index := i + 1
-					arr = append(arr[:i], arr[index:]...) //删除
-					mq.MapShutUp[msg.Room] = arr
-					break
+			arr, ok := inter.([]string)
+			if ok {
+				for i, v := range arr {
+					if v == msg.Uname {
+						index := i + 1
+						arr = append(arr[:i], arr[index:]...) //删除
+						mq.MapCache[msg.Room] = arr
+						break
+					}
 				}
+			} else {
+				beego.Debug("UnShutUp interface{} no define")
 			}
 		} else {
 			beego.Debug("UnShutUp no Find element")
 		}
-		beego.Debug("UnShut up Map List", mq.MapShutUp)
+		beego.Debug("UnShut up Map List", mq.MapCache)
 		// beego.Debug("info", msg)
 		// topic := msg.Room
 		// v, err := ToJSON(msg)

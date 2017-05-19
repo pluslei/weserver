@@ -14,6 +14,8 @@ import (
 
 	m "weserver/models"
 
+	"strconv"
+
 	"github.com/astaxie/beego"
 	"github.com/silenceper/wechat"
 	"github.com/silenceper/wechat/cache"
@@ -25,12 +27,11 @@ type IndexController struct {
 }
 
 var (
-	APPID     = beego.AppConfig.String("APPID")
-	APPSECRET = beego.AppConfig.String("APPSECRET")
-
-	redirect_uri = beego.AppConfig.String("httplocalServerAdress")
-	Wx           *wechat.Wechat
+	APPID        string
+	AppSecret    string
+	redirect_uri string
 	oauthAccess  *oauth.Oauth
+	Wx           *wechat.Wechat
 )
 
 type Userinfor struct {
@@ -55,7 +56,7 @@ type VoiceResponse struct {
 	Info    string
 }
 
-func init() {
+func WechatInit(APPID, APPSECRET string) *wechat.Wechat {
 	macache := cache.NewMemcache()
 	cfg := &wechat.Config{
 		AppID:          APPID,
@@ -64,86 +65,31 @@ func init() {
 		EncodingAESKey: "EncodingAESKey",
 		Cache:          macache,
 	}
-	Wx = wechat.NewWechat(cfg)
+	return wechat.NewWechat(cfg)
 }
 
-// 获取userinfo
-func (this *IndexController) Get() {
-	// if this.CheckUserIsAuth() {
-	// 	this.Redirect("/index", 302)
-	// }
-	code := this.GetString("code")
-	if code == "" {
-		oauthAccess = Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
-		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", "ihaoyue")
-		if err != nil {
-			beego.Error("oauthAccess error", err)
-			this.Redirect("/", 302)
-			return
-		}
-	} else {
-		resToken, err := oauthAccess.GetUserAccessToken(code)
-		if err != nil {
-			beego.Error("get the user token error", err)
-			this.Redirect("/", 302)
-			return
-		}
-
-		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, APPID)
-		if err != nil {
-			beego.Error("CheckAccessToken error", err)
-		}
-		beego.Debug("AccessToken", resToken.AccessToken)
-
-		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
-		if err != nil {
-			beego.Error("get the userinfo error", err)
-			this.Redirect("/", 302)
-			return
-		}
-		info, err := m.GetUserByUsername(userInfo.OpenID)
-		if err != nil || info.Id <= 0 {
-			this.saveUser(userInfo)
-		} else {
-			this.updateUser(info.Id, userInfo)
-		}
-		beego.Debug("userInfo", userInfo)
-
-		if len(info.Account) > 0 {
-			sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
-			this.SetSession("indexUserInfo", &sessionUser)
-			this.Redirect("/index", 302)
-		} else {
-			this.Redirect("/login?openid="+userInfo.OpenID, 302)
-		}
-	}
-	this.Ctx.WriteString("")
+func (this *IndexController) Redirectr() {
+	var user = new(m.User)
+	Id := this.GetString("id")
+	this.SetSession("LoginInfo", user)
+	this.Redirect("/wechat?state="+Id, 302)
 }
 
 func (this *IndexController) Login() {
-	openid := this.GetString("openid")
-
-	this.Data["openid"] = openid
+	companyId := this.GetString("id")
+	beego.Debug("url id", companyId)
 	this.TplName = "haoindex/login.html"
-	// this.Ctx.WriteString("")
 }
 
 func (this *IndexController) LoginHandle() {
-	var userLoad = new(m.User)
-	openid := this.GetString("openid")
-	if len(openid) <= 0 {
-		this.AlertBack("请退出重新进入")
-		return
-	}
+	var user = new(m.User)
 	username := this.GetString("username")
 	password := this.GetString("password")
-	beego.Debug("userinfo", username, password)
 	if len(username) <= 0 || len(password) <= 0 {
 		this.AlertBack("请填写账户信息")
 		return
 	}
 
-	beego.Debug("openid", openid)
 	user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
 	if user == nil || err != nil {
 		this.AlertBack("用户名异常 401")
@@ -156,50 +102,91 @@ func (this *IndexController) LoginHandle() {
 		return
 	}
 
-	if len(user.Username) > 0 && user.Username != openid {
-		this.AlertBack("账户已被绑定")
+	info, err := m.GetCompanyById(user.CompanyId)
+	if err != nil {
+		beego.Debug("get login company id error")
 		return
 	}
-
-	if len(user.Username) <= 0 {
-		_, err = m.BindUserAccount(openid, user)
-		if err != nil {
-			this.AlertBack("用户名和密码错误 404")
-			beego.Debug("Bind User Account Error", err)
-			return
-		}
-		if user.Username == "" {
-			beego.Debug("come in Delete")
-			_, err := m.DelUserById(user.Id)
-			if err != nil {
-				beego.Debug("DELETE User ID Error", err)
-				return
-			}
-		}
-		userLoad, err = m.ReadFieldUser(&m.User{Account: username}, "Account")
-		if err != nil {
-			beego.Error("load user error", err)
-			return
-		}
-		var nickName string
-		if user.Nickname != "" {
-			nickName = user.Nickname
-		} else {
-			nickName = userLoad.Nickname
-		}
-		_, err1 := m.UpdateRegistName(user.Id, userLoad.Id, userLoad.Username, userLoad.UserIcon, nickName)
-		if err1 != nil {
-			this.AlertBack("用户名和密码错误 406")
-			beego.Debug("Update Regist UserName Error", err1)
-			return
-		}
-
-	}
-	this.SetSession("indexUserInfo", userLoad)
-	this.Redirect("/index", 302)
+	Id := strconv.FormatInt(user.CompanyId, 10)
+	APPID = info.AppId
+	AppSecret = info.AppSecret
+	redirect_uri = info.Url
+	beego.Debug("appid appsecret redirect", APPID, AppSecret, redirect_uri)
+	Wx = WechatInit(APPID, AppSecret)
+	this.SetSession("LoginInfo", user)
+	this.Redirect("/wechat?state="+Id, 302)
 }
 
-//从数据库获取信息
+// 获取userinfo
+func (this *IndexController) GetWeChatInfo() {
+	Id := this.GetString("state")
+	beego.Debug("state", Id)
+	nId, err := strconv.ParseInt(Id, 10, 64)
+	if err != nil {
+		beego.Debug("get company id error", err)
+		return
+	}
+	info, err := m.GetCompanyById(nId)
+	if err != nil {
+		beego.Debug("get login companyinfo error")
+		return
+	}
+	APPID = info.AppId
+	AppSecret = info.AppSecret
+	redirect_uri = info.Url
+	Wx = WechatInit(APPID, AppSecret)
+
+	code := this.GetString("code")
+	beego.Debug("code", code)
+	if code == "" {
+		oauthAccess = Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
+		beego.Debug("ssss", redirect_uri)
+		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", Id)
+		if err != nil {
+			beego.Error("oauthAccess error", err)
+			this.Redirect("/login", 302)
+			return
+		}
+	} else {
+		resToken, err := oauthAccess.GetUserAccessToken(code)
+		if err != nil {
+			beego.Error("get the user token error", err)
+			this.Redirect("/login", 302)
+			return
+		}
+
+		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, APPID)
+		if err != nil {
+			beego.Error("CheckAccessToken error", err)
+		}
+		beego.Debug("AccessToken", resToken.AccessToken)
+
+		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
+		if err != nil {
+			beego.Error("get the userinfo error", err)
+			this.Redirect("/login", 302)
+			return
+		}
+
+		info, err := m.GetUserByUsername(userInfo.OpenID)
+
+		if err != nil || info.Id <= 0 {
+			this.saveUser(userInfo)
+		} else {
+			this.updateUser(info.Id, userInfo)
+		}
+		// if len(info.Account) > 0 {
+		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
+		this.SetSession("indexUserInfo", &sessionUser)
+		this.Redirect("/index", 302)
+		// } else {
+		// 	this.Redirect("/login", 302)
+		// }
+		beego.Debug("userInfo", userInfo)
+	}
+	this.Ctx.WriteString("")
+}
+
 func (this *IndexController) Index() {
 	indexUserInfo := this.GetSession("indexUserInfo")
 	if indexUserInfo != nil {
@@ -225,13 +212,6 @@ func (this *IndexController) Index() {
 		} else {
 			user.Nickname = userInfo.Remark
 		}
-
-		// 用户为禁用和未审核状态不准登录
-		// if userLoad.Status == 2 && userLoad.RegStatus == 2 {
-		// 	user.IsLogin = true
-		// } else {
-		// 	user.IsLogin = false
-		// }
 		user.IsLogin = true
 		if userLoad.Role.Id > 0 {
 			user.RoleId = userLoad.Role.Id
@@ -245,7 +225,6 @@ func (this *IndexController) Index() {
 
 		// 消息审核(0 开启 1 关闭(默认))
 		// 是否隶属公司内部角色[0、否 1、是]
-		beego.Debug("userload", userLoad.Role.IsInsider, sysconfig, sysconfig.AuditMsg)
 		if sysconfig.AuditMsg == 1 {
 			user.IsFilter = false
 		} else {
@@ -269,8 +248,9 @@ func (this *IndexController) Index() {
 		user.Insider = 1                          //1内部人员或0外部人员
 		this.Data["title"] = sysconfig.WelcomeMsg //公告
 		this.Data["user"] = user
-		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 
+		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
+		beego.Debug("url", url)
 		jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
@@ -290,7 +270,7 @@ func (this *IndexController) Index() {
 		this.TplName = "dist/index.html"
 		// this.TplName = "index.html"
 	} else {
-		this.Redirect("/", 302)
+		this.Redirect("/login", 302)
 	}
 }
 
@@ -375,40 +355,25 @@ func (this *IndexController) GetMediaURL() {
 	this.Ctx.WriteString("")
 }
 
-// 保存用户至数据库
 func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
-	config, _ := m.GetSysConfig()
-	configRole := config.Registerrole
-	configTitle := config.Registertitle
-	configVerify := config.Verify
-	u := new(m.User)
-	u.Username = userInfo.OpenID
-	if configVerify == 0 { //是否开启验证  0开启 1不开启
-		u.RegStatus = 1
-	} else {
-		u.RegStatus = 2
+	info := this.GetSession("LoginInfo").(*m.User)
+	if info.Account == "" {
+		this.Redirect("/login", 302)
 	}
-	u.UserIcon = userInfo.HeadImgURL
-	u.Role = &m.Role{Id: configRole}
-	u.Title = &m.Title{Id: configTitle}
-	u.Nickname = userInfo.Nickname
-	u.Openid = userInfo.OpenID
-	u.Sex = userInfo.Sex
-	u.Province = userInfo.Province
-	u.City = userInfo.City
-	u.Status = 2
-	u.Country = userInfo.Country
-	u.Headimgurl = userInfo.HeadImgURL
-	u.Unionid = userInfo.Unionid
-	u.Lastlogintime = time.Now()
-	userid, err := m.AddUser(u)
-	if err == nil && userid > 0 {
-		return true
-	} else {
-		beego.Error(err)
-		return false
+
+	if len(info.Username) <= 0 {
+		_, err := m.BindWechatIcon(info.Id, &userInfo)
+		if err != nil {
+			beego.Debug("Bind User Account Error", err)
+			return false
+		}
+		_, err1 := m.UpdateRegistName(info.Id, userInfo.OpenID, userInfo.Nickname, userInfo.HeadImgURL)
+		if err1 != nil {
+			beego.Debug("Update Regist UserName Error", err1)
+			return false
+		}
 	}
-	return false
+	return true
 }
 
 // 更新用户数据

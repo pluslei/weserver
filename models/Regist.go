@@ -88,6 +88,20 @@ func UpdateRegistIsShut(room, username string, b bool) (int64, error) {
 	return id, err
 }
 
+func UpdateRegistNickname(username string, companyId int64, Nickname string) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{"Nickname": Nickname})
+	return id, err
+}
+
+func UpdateRegistIcon(username string, companyId int64, Icon string) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{"UserIcon": Icon})
+	return id, err
+}
+
 //跟新登录时间
 func UpdateLoginTime(room, username string) (int64, error) {
 	o := orm.NewOrm()
@@ -194,14 +208,13 @@ func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, erro
 }
 
 // 更新指定账户的username
-func UpdateRegistName(userid, userloadid int64, username, icon, nickname string) (int64, error) {
+func UpdateRegistName(userid int64, username, nickname, icon string) (int64, error) {
 	beego.Debug("userid", userid, username, icon)
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("UserId", userid).Update(orm.Params{
 		"Username": username,
-		"UserIcon": icon,
-		"UserId":   userloadid,
 		"Nickname": nickname,
+		"UserIcon": icon,
 	})
 }
 
