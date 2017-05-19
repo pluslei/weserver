@@ -1,0 +1,58 @@
+<style type="text/css">
+  legend{border-bottom: 0px;}
+</style>
+
+<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
+<div class="crumb-wrap">
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6">
+   <form action="/weserver/data/question_reply" id="teachbannerform" class="am-form" method="post" enctype="multipart/form-data" data-am-validator>
+      <fieldset>
+        <legend></legend>
+        <input type="hidden" name="action" value="reply"/>
+        <input type="hidden" name="id" value="{{.questionInfo.Id}}" />
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">回复消息：  </label>
+            <textarea class="" name="AcceptContent" rows="8" cols="80" id="doc-ta-1">{{.questionInfo.AcceptContent}}</textarea>
+        </div>
+
+
+
+        <div class="am-form-group"></div>
+
+        <button class="am-btn am-btn-secondary" type="submit">回复</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+
+
+
+  $('#teachbannerform').validator({
+    onValid: function(validity) {
+      $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+    },
+
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.am-form-group');
+      var $alert = $group.find('.am-alert');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+      if (!$alert.length) {
+        $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+          appendTo($group);
+      }
+
+      $alert.html(msg).show();
+    }
+  });
+});
+</script>

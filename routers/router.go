@@ -56,11 +56,12 @@ func Router() {
 	beego.Router("/weserver/public/index", &haoadmin.MainController{}, "*:Index")
 	beego.Router("/weserver/public/changepwd", &haoadmin.MainController{}, "*:Changepwd")
 	// beego.Router("/weserver/public/choosecompany", &haoadmin.UserController{}, "*:ChooseCompany")
-	beego.Router("/weserver/user/adduser", &haoadmin.UserController{}, "*:AddUser")
+	beego.Router("/weserver/user/adduser", &haoadmin.UserController{}, "*:AddUser") 
 	beego.Router("/weserver/user/updateuser", &haoadmin.UserController{}, "*:UpdateUser")
 	beego.Router("/weserver/user/deluser", &haoadmin.UserController{}, "*:DelUser")
 	beego.Router("/weserver/user/delregisteruser", &haoadmin.UserController{}, "*:DelRegistUser")
-	beego.Router("/weserver/user/index", &haoadmin.UserController{}, "*:Index")
+	beego.Router("/weserver/user/index", &haoadmin.UserController{}, "*:Index") 
+	beego.Router("/weserver/user/", &haoadmin.UserController{}, "*:Index") 
 	beego.Router("/weserver/user/usertorole", &haoadmin.UserController{}, "*:UserToRole")
 	beego.Router("/weserver/user/setusertitle", &haoadmin.UserController{}, "*:SetUserTitle")
 	beego.Router("/weserver/user/usertotitle", &haoadmin.UserController{}, "*:UserToTitle")
@@ -122,6 +123,10 @@ func Router() {
 	beego.Router("/weserver/data/company_del", &haoadmin.CompanyController{}, "*:DelCompany")   //删除公司
 	beego.Router("/weserver/data/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
 
+	//纸条提问
+	beego.Router("weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList") //纸条提问列表
+	beego.Router("weserver/data/question_reply", &haoadmin.QuestionController{}, "*:QuestionReply") //回复纸条提问
+	beego.Router("weserver/data/question_del", &haoadmin.QuestionController{}, "*:QuestionDel") //删除纸条提问
 	// 策略管理
 	beego.Router("/weserver/data/strategy_index", &haoadmin.StrategyController{}, "*:Index")
 	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")
