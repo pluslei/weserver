@@ -135,6 +135,13 @@ func GetShutUpInfoToday() (users []Regist, err error) {
 	return users, err
 }
 
+//获取Regist表中当天所有禁言人数信息
+func GetAllShutUpInfo() (users []Regist, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("Username", "").Filter("IsShutUp", 1).All(&users)
+	return users, err
+}
+
 //获取user表中最近当天登录列表信息
 func GetLoginInfoToday(roomId string) (users []Regist, err error) {
 	o := orm.NewOrm()

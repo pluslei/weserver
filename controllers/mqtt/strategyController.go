@@ -259,7 +259,8 @@ func parseStrategyMsg(msg string) bool {
 
 	serverId := info.FileName
 	if info.FileName != "" {
-		fileName := haoindex.GetWxServerImg(info.FileName)
+		strId := strconv.FormatInt(info.CompanyId, 10)
+		fileName := haoindex.GetWxServerImg(info.FileName, strId)
 		info.FileName = fileName
 	}
 
@@ -300,7 +301,8 @@ func parseEditStrategyMsg(msg string) bool {
 
 	serverId := info.FileName
 	if info.FileName != "" {
-		fileName := haoindex.GetWxServerImg(info.FileName)
+		strId := strconv.FormatInt(info.CompanyId, 10)
+		fileName := haoindex.GetWxServerImg(info.FileName, strId)
 		info.FileName = fileName
 	}
 
@@ -444,7 +446,8 @@ func editStrategyContent(info *StrategyInfo) {
 	case OPERATE_ADD:
 		var strategy m.Strategy
 		if info.FileName != "" {
-			fileName := haoindex.GetWxServerImg(info.FileName)
+			strId := strconv.FormatInt(info.CompanyId, 10)
+			fileName := haoindex.GetWxServerImg(info.FileName, strId)
 			strategy.FileName = fileName
 		} else {
 			strategy.FileName = info.FileName
@@ -477,7 +480,8 @@ func editStrategyContent(info *StrategyInfo) {
 		strategy.Data = info.Data
 
 		if info.FileName != "" {
-			fileName := haoindex.GetWxServerImg(info.FileName)
+			strId := strconv.FormatInt(info.CompanyId, 10)
+			fileName := haoindex.GetWxServerImg(info.FileName, strId)
 			strategy.FileName = fileName
 		} else {
 			strategy.FileName = info.FileName

@@ -5,6 +5,7 @@ import (
 	"time"
 	"weserver/controllers"
 	m "weserver/models"
+	. "weserver/src/cache"
 	mq "weserver/src/mqtt"
 	. "weserver/src/tools"
 
@@ -34,7 +35,6 @@ func init() {
 // 当前在线
 func (this *ManagerController) GetUserOnline() {
 	if this.IsAjax() {
-		beego.Debug("mq get shut map info0")
 		roomId := this.GetString("Room")
 		onlineuser, err := m.GetLoginInfoToday(roomId)
 		if err != nil {
@@ -53,8 +53,6 @@ func (this *ManagerController) GetUserOnline() {
 				userInfo = append(userInfo, info)
 			}
 		}
-		beego.Debug("mq get shut map info1")
-		mq.GetShutMapInfo()
 		data := make(map[string]interface{})
 		data["userlist"] = userInfo
 		this.Data["json"] = &data
@@ -226,7 +224,7 @@ func parseShutUpMsg(msg string) bool {
 		msg.IsShutUp = info[i].IsShutUp
 		msg.MsgType = MSG_TYPE_SHUTUP
 
-		inter, ok := mq.MapCache[msg.Room]
+		inter, ok := MapCache[msg.Room]
 		if ok {
 			arr, ok := inter.([]string)
 			if ok {
@@ -238,13 +236,13 @@ func parseShutUpMsg(msg string) bool {
 				}
 				if status {
 					arr = append(arr, msg.Uname)
-					mq.MapCache[msg.Room] = arr
+					MapCache[msg.Room] = arr
 				}
 			} else {
 				beego.Debug("interface{} type is no define")
 			}
 		} else {
-			mq.MapCache[msg.Room] = []string{msg.Uname}
+			MapCache[msg.Room] = []string{msg.Uname}
 		}
 		// beego.Debug("info", msg)
 		// topic := msg.Room
@@ -258,7 +256,7 @@ func parseShutUpMsg(msg string) bool {
 		// 更新user 字段
 		UpdateUserInfo(msg)
 	}
-	beego.Debug("Shut up Map List", mq.MapCache)
+	beego.Debug("Shut up Map List", MapCache)
 	return true
 }
 
@@ -293,7 +291,7 @@ func parseUnShutUpMsg(msg string) bool {
 		msg.IsShutUp = info[i].IsShutUp
 		// msg.MsgType = MSG_TYPE_UNSHUTUP
 
-		inter, ok := mq.MapCache[msg.Room]
+		inter, ok := MapCache[msg.Room]
 		if ok {
 			arr, ok := inter.([]string)
 			if ok {
@@ -301,7 +299,7 @@ func parseUnShutUpMsg(msg string) bool {
 					if v == msg.Uname {
 						index := i + 1
 						arr = append(arr[:i], arr[index:]...) //删除
-						mq.MapCache[msg.Room] = arr
+						MapCache[msg.Room] = arr
 						break
 					}
 				}
@@ -311,7 +309,7 @@ func parseUnShutUpMsg(msg string) bool {
 		} else {
 			beego.Debug("UnShutUp no Find element")
 		}
-		beego.Debug("UnShut up Map List", mq.MapCache)
+		beego.Debug("UnShut up Map List", MapCache)
 		// beego.Debug("info", msg)
 		// topic := msg.Room
 		// v, err := ToJSON(msg)

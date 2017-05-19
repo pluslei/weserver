@@ -152,7 +152,8 @@ func Router() {
 	//*********************************************************************************************
 	// 前端
 	beego.Router("/", &haoindex.IndexController{}, "*:Redirectr")
-	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/login", &haoindex.IndexController{}, "*:WeChatLogin")
+	beego.Router("/pclogin", &haoindex.IndexController{}, "*:PCLogin")
 	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")
 
@@ -161,6 +162,7 @@ func Router() {
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
+	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
 
 	//聊天管理
 	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetCompanyInfo")
@@ -218,7 +220,6 @@ func Router() {
 
 	//平仓操作
 	beego.Router("/chat/user/operateclose", &mqtt.PositionController{}, "*:OperateClosePosition")
-	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
 
 	//收藏
 	beego.Router("/chat/user/Collect", &mqtt.CollectController{}, "*:GetCollectInfo")

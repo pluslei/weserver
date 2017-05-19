@@ -45,6 +45,13 @@ func GetCompanyList(id int64) ([]Company, int64, error) {
 	return info, num, err
 }
 
+func GetAllCompanyInfo() ([]Company, int64, error) {
+	o := orm.NewOrm()
+	var info []Company
+	num, err := o.QueryTable("company").OrderBy("Id").All(&info)
+	return info, num, err
+}
+
 func AddCompany(c *Company) (int64, error) {
 	omodel := orm.NewOrm()
 	id, err := omodel.Insert(c)
@@ -106,9 +113,9 @@ func UpdateCompanyInfo(id int64, companyInfo Company, companyId int64) (int64, e
 		"WelcomeMsg":    companyInfo.WelcomeMsg,
 		"AuditMsg":      companyInfo.AuditMsg,
 		"Verify":        companyInfo.Verify,
-	    "AppId":         companyInfo.AppId,
-	    "AppSecret":     companyInfo.AppSecret,
-	    "Url":           companyInfo.Url,
+		"AppId":         companyInfo.AppId,
+		"AppSecret":     companyInfo.AppSecret,
+		"Url":           companyInfo.Url,
 	})
 }
 

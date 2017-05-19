@@ -3,6 +3,7 @@ package mqtt
 import (
 	"time"
 	m "weserver/models"
+	. "weserver/src/cache"
 	mq "weserver/src/mqtt"
 	rpc "weserver/src/rpcserver"
 
@@ -93,7 +94,7 @@ func parseQuestMsg(msg string) int {
 		beego.Error("json error", err)
 		return POST_STATUS_FALSE
 	}
-	inter, ok := mq.MapCache[topic]
+	inter, ok := MapCache[topic]
 	if ok {
 		arr, ok := inter.([]string)
 		if ok {
