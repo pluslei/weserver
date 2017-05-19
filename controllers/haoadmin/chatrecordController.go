@@ -41,7 +41,6 @@ func (this *ChatRecordController) ChatRecordList() {
 		iStart, _ := this.GetInt64("iDisplayStart")
 		iLength, _ := this.GetInt64("iDisplayLength")
 		nickname := this.GetString("sSearch_0")
-		beego.Debug("ssssss", nickname)
 
 		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime", nickname, user.CompanyId)
 		for _, v := range chatrecord {

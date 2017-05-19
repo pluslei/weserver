@@ -9,7 +9,7 @@ import (
 
 var MapCache map[string]interface{}
 
-func GetShutMapInfo() {
+func GetShutMapCache() {
 	var status bool = true
 	shutInfo, err := m.GetAllShutUpInfo()
 	if err != nil {
@@ -54,7 +54,7 @@ func GetShutMapInfo() {
 	}
 }
 
-func GetCompanyInfo() {
+func GetCompanyCache() {
 	companyInfo, _, err := m.GetAllCompanyInfo()
 	if err != nil {
 		beego.Error("get the companyInfo error", err)
@@ -62,16 +62,25 @@ func GetCompanyInfo() {
 	for _, info := range companyInfo {
 		companyaId := info.Id
 		strId := strconv.FormatInt(companyaId, 10)
-		_, ok := MapCache[strId]
+		inter, ok := MapCache[strId]
 		if !ok {
 			MapCache[strId] = info
+		} else {
+			mapinfo, _ := inter.(m.Company)
+			mapinfo.HistoryMsg = info.HistoryMsg
+			mapinfo.AuditMsg = info.AuditMsg
+			mapinfo.Verify = info.Verify
+			mapinfo.AppId = info.AppId
+			mapinfo.AppSecret = info.AppSecret
+			mapinfo.Url = info.Url
+			MapCache[strId] = mapinfo
 		}
 	}
 }
 
 func InitCache() {
 	MapCache = make(map[string]interface{})
-	GetShutMapInfo()
-	GetCompanyInfo()
-	// beego.Debug(MapCache)
+	GetShutMapCache()
+	GetCompanyCache()
+	beego.Debug(MapCache)
 }

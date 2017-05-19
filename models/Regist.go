@@ -25,7 +25,8 @@ type Regist struct {
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 
-	RoomName string `orm:"-"` //房间名字
+	RoomName  string `orm:"-"` //房间名字
+	Titlename string `orm:"-"`
 }
 
 func init() {

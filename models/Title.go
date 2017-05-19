@@ -92,6 +92,13 @@ func GetRelationTitle(userid int64) (titles []Title, err error) {
 	return titles, err
 }
 
+func GetTitleName(id int64) (name string, err error) {
+	o := orm.NewOrm()
+	var info Title
+	err = o.QueryTable("title").Filter("Id", id).One(&info)
+	return info.Name, err
+}
+
 // 获取所有的角色
 func GetAllUserTitle() (titles []Title, err error) {
 	o := orm.NewOrm()

@@ -283,8 +283,11 @@ func (this *IndexController) Index() {
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
 
-		system, _ := m.GetSysConfig() //获取配置表数据
-		this.Data["system"] = system
+		info, err := m.GetCompanyById(userInfo.CompanyId)
+		if err != nil {
+			beego.Debug("get company msg error", err)
+		}
+		this.Data["system"] = info.WelcomeMsg
 		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo

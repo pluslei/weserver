@@ -48,6 +48,9 @@ func (this *QuestionController) GetQuestionTeacher() {
 			beego.Debug("Get CompanyInfo Error", err)
 			return
 		}
+		for _, v := range info {
+			v.Titlename, err = m.GetTitleName(v.Title.Id)
+		}
 		data := make(map[string]interface{})
 		data["TeacherInfo"] = info
 		this.Data["json"] = &data
