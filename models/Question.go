@@ -3,7 +3,7 @@ package models
 import (
 	"errors"
 	"time"
-
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -26,7 +26,7 @@ type Question struct {
 	Datatime      time.Time `orm:"type(datetime)"` //添加时间
 	Uuid          string    // uuid
 
-	AcceptUname   string
+	AcceptUname   string   //老师id
 	AcceptUuid    string
 	AcceptTitle   string
 	AcceptContent string
@@ -135,4 +135,26 @@ func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, c
 	query.Limit(page_size, page).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()
 	return ms, count
+}
+
+//回复消息
+func QuestionReply(id int64, replyMsg string) (int64, error){
+	beego.Info("replyMsgInfo", replyMsg, id)
+	o := orm.NewOrm()
+	res, err := o.Raw("UPDATE question SET accept_content = ? WHERE id = ?", replyMsg, id).Exec()
+	var resnum int64
+	if err != nil {
+		num, _ := res.RowsAffected() 
+		resnum = int64(num) 
+	}
+		return resnum, err
+}
+
+
+//删除数据库中表中ID对应的行信息
+func DeleteById(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var chat Question
+	status, err := o.QueryTable(chat).Filter("Id", id).Delete()
+	return status, err
 }
