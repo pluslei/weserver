@@ -131,7 +131,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 
 		data := make(map[string]interface{})
 		sysconfig, _ := m.GetAllSysConfig()
-		sysCount := sysconfig.HistoryCount
+		sysCount := sysconfig.QuestionCount
 		var infoMsg []m.Question
 		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:

@@ -107,13 +107,14 @@ func (this *IndexController) LoginHandle() {
 		beego.Debug("get login company id error")
 		return
 	}
+	Id := strconv.FormatInt(user.CompanyId, 10)
 	APPID = info.AppId
 	AppSecret = info.AppSecret
 	redirect_uri = info.Url
 	beego.Debug("appid appsecret redirect", APPID, AppSecret, redirect_uri)
 	Wx = WechatInit(APPID, AppSecret)
 	this.SetSession("LoginInfo", user)
-	this.Redirect("/index", 302)
+	this.Redirect("/wechat?state="+Id, 302)
 }
 
 // 获取userinfo
@@ -182,7 +183,6 @@ func (this *IndexController) GetWeChatInfo() {
 		// 	this.Redirect("/login", 302)
 		// }
 		beego.Debug("userInfo", userInfo)
-
 	}
 	this.Ctx.WriteString("")
 }
