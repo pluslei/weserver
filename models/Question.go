@@ -28,13 +28,17 @@ type Question struct {
 	RoleTitleBack int    `orm:"default(0)"` //角色聊天背景
 	Content       string `orm:"type(text)"` //消息内容
 	DatatimeStr   string //添加时间
-	IsIgnore      int64  //是否忽略 0 忽略 1 显示
+	IsIgnore      int64  //是否忽略 0 显示 1 忽略
 	Uuid          string // uuid
 	Time          time.Time
+	RspQuestion   []*RspQuestion `orm:"reverse(many)"` //一对多
 
-	RspQuestion []*RspQuestion `orm:"reverse(many)"` //一对多
-
-	MsgType int `orm:"-"`
+	//回复信息
+	RspNickname string `orm:"-"`
+	RspTitle    string `orm:"-"`
+	RspIcon     string `orm:"-"`
+	RspTimestr  string `orm:"-"`
+	RspContent  string `orm:"-"`
 }
 
 func init() {
@@ -162,4 +166,11 @@ func DeleteById(id int64) (int64, error) {
 	var chat Question
 	status, err := o.QueryTable(chat).Filter("Id", id).Delete()
 	return status, err
+}
+
+func OpeateIgnore(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var info Question
+	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsIgnore": 1})
+	return id, err
 }

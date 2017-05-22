@@ -50,6 +50,13 @@ func AddRspQuestion(c *RspQuestion) (int64, error) {
 	return id, err
 }
 
+func GetMoreRspQuestion(id int64) ([]*RspQuestion, int64, error) {
+	o := orm.NewOrm()
+	var rsp []*RspQuestion
+	num, err := o.QueryTable(new(RspQuestion)).Filter("question", id).RelatedSel().All(&rsp)
+	return rsp, num, err
+}
+
 //事务添加数据
 func AddRspQuestiondata(chat []RspQuestion, length int) error {
 	model := orm.NewOrm()
