@@ -3,6 +3,9 @@ package models
 import (
 	"errors"
 	"time"
+
+	"github.com/astaxie/beego"
+
 	"weserver/src/tools"
 
 	"github.com/astaxie/beego/orm"
@@ -14,26 +17,28 @@ import (
 type Question struct {
 	Id            int64 `orm:"pk;auto"`
 	CompanyId     int64
-	Room          string    //房间号 topic
-	Uname         string    //用户名  openid
-	Nickname      string    //用户昵称
-	UserIcon      string    //用户logo
-	RoleName      string    //用户角色[vip,silver,gold,jewel]
-	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
-	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
-	RoleTitleCss  string    //头衔颜色
-	RoleTitleBack int       `orm:"default(0)"`     //角色聊天背景
-	Content       string    `orm:"type(text)"`     //消息内容
-	Datatime      time.Time `orm:"type(datetime)"` //添加时间
-	Uuid          string    // uuid
+	Room          string //房间号 topic
+	Uname         string //用户名  openid
+	Nickname      string //用户昵称
+	UserIcon      string //用户logo
+	RoleName      string //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	Sendtype      string //用户发送消息类型('TXT','IMG','VOICE')
+	RoleTitleCss  string //头衔颜色
+	RoleTitleBack int    `orm:"default(0)"` //角色聊天背景
+	Content       string `orm:"type(text)"` //消息内容
+	DatatimeStr   string //添加时间
+	IsIgnore      int64  //是否忽略 0 显示 1 忽略
+	Uuid          string // uuid
+	Time          time.Time
+	RspQuestion   []*RspQuestion `orm:"reverse(many)"` //一对多
 
-	AcceptUname   string
-	AcceptUuid    string
-	AcceptTitle   string
-	AcceptContent string
-
-	DatatimeStr string `orm:"-"`
-	MsgType     int    `orm:"-"`
+	//回复信息
+	RspNickname string `orm:"-"`
+	RspTitle    string `orm:"-"`
+	RspIcon     string `orm:"-"`
+	RspTimestr  string `orm:"-"`
+	RspContent  string `orm:"-"`
 }
 
 func init() {
@@ -140,4 +145,32 @@ func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, c
 	query.Limit(page_size, page).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()
 	return ms, count
+}
+
+//回复消息
+func QuestionReply(id int64, replyMsg string) (int64, error) {
+	beego.Info("replyMsgInfo", replyMsg, id)
+	o := orm.NewOrm()
+	res, err := o.Raw("UPDATE question SET accept_content = ? WHERE id = ?", replyMsg, id).Exec()
+	var resnum int64
+	if err != nil {
+		num, _ := res.RowsAffected()
+		resnum = int64(num)
+	}
+	return resnum, err
+}
+
+//删除数据库中表中ID对应的行信息
+func DeleteById(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var chat Question
+	status, err := o.QueryTable(chat).Filter("Id", id).Delete()
+	return status, err
+}
+
+func OpeateIgnore(id int64) (int64, error) {
+	o := orm.NewOrm()
+	var info Question
+	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsIgnore": 1})
+	return id, err
 }

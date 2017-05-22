@@ -25,7 +25,8 @@ type Regist struct {
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 
-	RoomName string `orm:"-"` //房间名字
+	RoomName  string `orm:"-"` //房间名字
+	Titlename string `orm:"-"`
 }
 
 func init() {
@@ -135,6 +136,13 @@ func GetShutUpInfoToday() (users []Regist, err error) {
 	return users, err
 }
 
+//获取Regist表中当天所有禁言人数信息
+func GetAllShutUpInfo() (users []Regist, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("Username", "").Filter("IsShutUp", 1).All(&users)
+	return users, err
+}
+
 //获取user表中最近当天登录列表信息
 func GetLoginInfoToday(roomId string) (users []Regist, err error) {
 	o := orm.NewOrm()
@@ -208,7 +216,7 @@ func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, erro
 }
 
 // 更新指定账户的username
-func UpdateRegistName(userid int64, username, icon, nickname string) (int64, error) {
+func UpdateRegistName(userid int64, username, nickname, icon string) (int64, error) {
 	beego.Debug("userid", userid, username, icon)
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("UserId", userid).Update(orm.Params{

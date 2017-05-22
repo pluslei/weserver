@@ -120,8 +120,7 @@ func Init() {
 }
 
 func Run() {
-	// 获取配置
-	Init()
+	// Init()
 	Config = GetMqttConfig()
 	mq = NewMQ(Config)
 	mq.Runing()

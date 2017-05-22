@@ -6,6 +6,7 @@ import (
 	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
+	. "weserver/src/cache"
 	"weserver/src/mqtt"
 
 	"github.com/astaxie/beego"
@@ -31,7 +32,7 @@ func main() {
 	mqtt.Run()
 	// wechat.WechatRun()
 
-
+	InitCache()
 	// msg := "策略消息3"
 	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)
 

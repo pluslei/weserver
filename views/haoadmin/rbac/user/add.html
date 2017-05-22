@@ -6,7 +6,6 @@
   .file-imgWrap > img:hover{box-shadow: 0 0 3px 0px rgba(33, 118, 193,1);-webkit-transform:scale(1.05);-moz-transform:scale(1.05);transform:scale(1.05)}
   .file-imgWrap > img.current {border-radius: 5px;box-shadow: 0 0 10px 1px rgba(33, 118, 193, 1);}
 </style>
-<script type="text/javascript" src="/static/js/jquery.uploadify.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.uploadify.js"></script>
 <script type="text/javascript" src="/static/js/jquery.easyui.min.js"></script>
 <script type="text/javascript">
@@ -138,10 +137,10 @@
                   <div class="am-form-group">
           <label for="doc-vld-Title-2">上传头像(请上传格式为jpg,png的文件)：</label>
             <input type="file" name="userIcon" id="userIcon" multiple="true"/>
-            <input type="hidden" name="userIconFile" id="userIconFile" multiple="true" value="/static/images/defaultPick/01.jpg"/> 
+            <input type="hidden" name="userIconFile" id="userIconFile" multiple="true" /> 
         </div>
         <div class="am-form-group" >
-            <img id="previewico" src="/static/images/defaultPick/01.jpg" style="width:70px;height: 70px;border: 0px;soild:#FFFFFF; " />
+            <img id="previewico"  style="width:70px;height: 70px;border: 0px;soild:#FFFFFF; " />
         </div>
 
         <div class="am-form-group">
@@ -169,11 +168,13 @@
         </div>-->
         <div class="am-form-group">
           <label for="doc-select-1">公司名  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '赋予用户的所属公司', trigger: 'hover focus'}"></a></label>
-          <select  onchange="choosecompany(this.selectedIndex)" id="doc-select-1" name="company" required data-validation-message="请选择公司名">
+          <!--<select  onchange="choosecompany(this.selectedIndex)" id="doc-select-1" name="company" required data-validation-message="请选择公司名">-->
+            <select   id="doc-select-1" name="company"  required data-validation-message="请选择公司名" onchange="getRoomInfo()">
             <option value="">-=请选择所属公司=-</option>
-            {{range .CompanyList}}
+           <!-- {{range .CompanyList}}
             <option value="{{.Id}}">{{.Company}}</option>
-            {{end}}
+            {{end}} -->
+
           </select>
           <span class="am-form-caret"></span>
         </div>
@@ -202,12 +203,13 @@
           <textarea id="doc-vld-ta-2" name="remark"></textarea>
         </div>
         <label for="doc-vld-ta-2">允许进入直播室：</label>
-        <div class="am-form-group">
-            {{range $index,$ele := .roonInfo}}
+        <div class="am-form-group" id="doc-select-room">
+          
+          <!--webkit-transform  {{range $index,$ele := .roonInfo}}
               <label class="am-checkbox-inline">
                 <input type="checkbox" name="RoomId" value="{{$ele.RoomId}}"> {{$ele.RoomTitle}}
               </label>
-            {{end}}
+            {{end}} -->
         </div>
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
       </fieldset>
@@ -217,6 +219,7 @@
 
 <script type="text/javascript">
 $(function() {
+    getCompanyInfo();
   $('#userform').validator({
     onValid: function(validity) {
       $(validity.field).closest('.am-form-group').find('.am-alert').hide();
@@ -237,7 +240,19 @@ $(function() {
       $alert.html(msg).show();
     }
   });
-});
+       // max - 期望的最大值
+  // min - 期望的最小值
+  parseInt(Math.random()*(30-1+1)+1,10);
+  var iconNum =  Math.floor(Math.random()*(30-1+1)+1);
+  var currentImg = ""
+  if(iconNum < 10){
+   currentImg = "/static/images/defaultPick/0"+iconNum+".jpg"
+  }else{
+    currentImg = "/static/images/defaultPick/"+iconNum+".jpg"
+  }
+  $('#userIconFile').val(currentImg)
+  $('#previewico').attr('src', currentImg);
+ });
 
 function choosecompany(index){
   $.ajax({
@@ -266,5 +281,39 @@ $('.file-imgWrap > img').click(function() {
    $('#userIconFile').val(currentImg)
   $(this).addClass('current').siblings().removeClass('current');
 });
+
+     function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-1').html(company.join(''));
+        }
+      })
+    }
+
+    function getRoomInfo() {
+      var companyId = document.getElementById("doc-select-1").value;
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId: parseInt(companyId, 10),
+        },
+        success: function(data){
+            var room = ["<label class='am-checkbox-inline'></label>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+                //room.push("<option value="+data.roonInfo[i].RoomId+">-="+"=-</option>");
+             // var a =   '<input type="checkbox" name="RoomId" value="'+data.roonInfo[i].RoomId+'">+data.roonInfo[i].Title';
+              room.push("<input type='checkbox' name='RoomId' value='"+data.roonInfo[i].RoomId+"'>"+data.roonInfo[i].Title+"&nbsp;&nbsp;");
+            }
+            $('#doc-select-room').html(room.join(''));
+        }
+      })
+    }
 
 </script>

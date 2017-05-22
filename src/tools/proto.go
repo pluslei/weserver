@@ -189,29 +189,34 @@ func (n *NoticeDEL) ParseJSON(msg []byte) (s NoticeDEL, err error) {
 }
 
 //######################################################################################
-// ask question to teacher
+//question
+
+// Operate type
+const (
+	OPERATE_ASK_QUESTION = iota
+	OPERATE_RSP_QUESTION
+	OPERATE_IGN_QUESTION
+)
 
 type QuestionInfo struct {
-	Id            int64 `orm:"pk;auto"`
+	Id            int64
 	CompanyId     int64
-	Room          string    //房间号 topic
-	Uname         string    //用户名  openid
-	Nickname      string    //用户昵称
-	UserIcon      string    //用户logo
-	RoleName      string    //用户角色[vip,silver,gold,jewel]
-	RoleTitle     string    //用户角色名[会员,白银会员,黄金会员,钻石会员]
-	Sendtype      string    //用户发送消息类型('TXT','IMG','VOICE')
-	RoleTitleCss  string    //头衔颜色
-	RoleTitleBack int       //角色聊天背景
-	Content       string    //消息内容
-	Uuid          string    // uuid
+	Room          string //房间号 topic
+	Uname         string //用户名  openid
+	Nickname      string //用户昵称
+	UserIcon      string //用户logo
+	RoleName      string //用户角色[vip,silver,gold,jewel]
+	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
+	Sendtype      string //用户发送消息类型('TXT','IMG','VOICE')
+	RoleTitleCss  string //头衔颜色
+	RoleTitleBack int    //角色聊天背景
+	Content       string //消息内容
+	IsIgnore      int64  //是否忽略 0 显示 1 忽略
+	Uuid          string // uuid
 
-	AcceptUname   string
-	AcceptUuid    string
-	AcceptTitle   string
-	AcceptContent string
-
-	MsgType int //消息类型
+	AcceptUuid  string
+	OperateType int64
+	MsgType     int //消息类型
 }
 
 type QuestionDEL struct {

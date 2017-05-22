@@ -1,7 +1,9 @@
 package haoadmin
 
 import (
+	"strconv"
 	"weserver/models"
+	. "weserver/src/cache"
 
 	"github.com/astaxie/beego"
 )
@@ -119,6 +121,7 @@ func (this *CompanyController) AddCompany() {
 			this.AlertBack("添加失败")
 			return
 		}
+		GetCompanyCache()
 		this.Alert("添加成功", "company")
 	} else {
 		//获取所有角色
@@ -147,6 +150,12 @@ func (this *CompanyController) DelCompany() {
 	if err != nil {
 		this.Rsp(false, "删除失败", "")
 	}
+	strId := strconv.FormatInt(id, 10)
+	_, ok := MapCache[strId]
+	if ok {
+		delete(MapCache, strId)
+	}
+
 	this.Rsp(true, "删除成功", "")
 }
 
@@ -183,6 +192,7 @@ func (this *CompanyController) EditCompany() {
 			this.AlertBack("修改失败")
 			return
 		} else {
+			GetCompanyCache()
 			this.Alert("修改成功", "/weserver/data/company")
 		}
 	}

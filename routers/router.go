@@ -61,6 +61,7 @@ func Router() {
 	beego.Router("/weserver/user/deluser", &haoadmin.UserController{}, "*:DelUser")
 	beego.Router("/weserver/user/delregisteruser", &haoadmin.UserController{}, "*:DelRegistUser")
 	beego.Router("/weserver/user/index", &haoadmin.UserController{}, "*:Index")
+	beego.Router("/weserver/user/", &haoadmin.UserController{}, "*:Index")
 	beego.Router("/weserver/user/usertorole", &haoadmin.UserController{}, "*:UserToRole")
 	beego.Router("/weserver/user/setusertitle", &haoadmin.UserController{}, "*:SetUserTitle")
 	beego.Router("/weserver/user/usertotitle", &haoadmin.UserController{}, "*:UserToTitle")
@@ -122,6 +123,10 @@ func Router() {
 	beego.Router("/weserver/data/company_del", &haoadmin.CompanyController{}, "*:DelCompany")   //删除公司
 	beego.Router("/weserver/data/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
 
+	//纸条提问
+	beego.Router("weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList")        //纸条提问列表
+	beego.Router("weserver/data/question_reply", &haoadmin.QuestionController{}, "*:QuestionReply") //回复纸条提问
+	beego.Router("weserver/data/question_del", &haoadmin.QuestionController{}, "*:QuestionDel")     //删除纸条提问
 	// 策略管理
 	beego.Router("/weserver/data/strategy_index", &haoadmin.StrategyController{}, "*:Index")
 	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")
@@ -152,7 +157,8 @@ func Router() {
 	//*********************************************************************************************
 	// 前端
 	beego.Router("/", &haoindex.IndexController{}, "*:Redirectr")
-	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/login", &haoindex.IndexController{}, "*:WeChatLogin")
+	beego.Router("/pclogin", &haoindex.IndexController{}, "*:PCLogin")
 	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")
 
@@ -161,6 +167,7 @@ func Router() {
 	beego.Router("/voice", &haoindex.IndexController{}, "*:Voice")
 	beego.Router("/mediaurl", &haoindex.IndexController{}, "*:GetMediaURL")
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
+	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
 
 	//聊天管理
 	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetCompanyInfo")
@@ -171,7 +178,8 @@ func Router() {
 
 	//question
 	beego.Router("/chat/user/question/teacher", &mqtt.QuestionController{}, "*:GetQuestionTeacher")
-	beego.Router("/chat/user/question/message", &mqtt.QuestionController{}, "*:GetQuestionToSend")
+	beego.Router("/chat/user/question/askmessage", &mqtt.QuestionController{}, "*:GetQuestionToSend")
+	beego.Router("/chat/user/question/rspmsg", &mqtt.QuestionController{}, "*:GetQuestionTeacherRsp")
 	beego.Router("/chat/user/question/historylist", &mqtt.QuestionController{}, "*:GetQuestionHistoryList")
 
 	//公告
@@ -218,7 +226,6 @@ func Router() {
 
 	//平仓操作
 	beego.Router("/chat/user/operateclose", &mqtt.PositionController{}, "*:OperateClosePosition")
-	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
 
 	//收藏
 	beego.Router("/chat/user/Collect", &mqtt.CollectController{}, "*:GetCollectInfo")

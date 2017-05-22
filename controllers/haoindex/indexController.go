@@ -10,6 +10,7 @@ import (
 	"path"
 	"strings"
 	"time"
+	. "weserver/src/cache"
 	"weserver/src/tools"
 
 	m "weserver/models"
@@ -25,14 +26,6 @@ import (
 type IndexController struct {
 	CommonController
 }
-
-var (
-	APPID        string
-	AppSecret    string
-	redirect_uri string
-	oauthAccess  *oauth.Oauth
-	Wx           *wechat.Wechat
-)
 
 type Userinfor struct {
 	Uname         string //用户名
@@ -56,16 +49,30 @@ type VoiceResponse struct {
 	Info    string
 }
 
-func WechatInit(APPID, APPSECRET string) *wechat.Wechat {
+func GetWxObj(id int64) (*wechat.Wechat, string, string) {
+	var info m.Company
+	var err error
+	strId := strconv.FormatInt(id, 10)
+	inter, ok := MapCache[strId]
+	if !ok {
+		info, err = m.GetCompanyById(id)
+		if err != nil {
+			beego.Debug("get login companyinfo error")
+			return nil, "", ""
+		}
+	} else {
+		info, _ = inter.(m.Company)
+		beego.Debug("memcache find")
+	}
 	macache := cache.NewMemcache()
 	cfg := &wechat.Config{
-		AppID:          APPID,
-		AppSecret:      APPSECRET,
+		AppID:          info.AppId,
+		AppSecret:      info.AppSecret,
 		Token:          "Token",
 		EncodingAESKey: "EncodingAESKey",
 		Cache:          macache,
 	}
-	return wechat.NewWechat(cfg)
+	return wechat.NewWechat(cfg), info.AppId, info.Url
 }
 
 func (this *IndexController) Redirectr() {
@@ -75,7 +82,7 @@ func (this *IndexController) Redirectr() {
 	this.Redirect("/wechat?state="+Id, 302)
 }
 
-func (this *IndexController) Login() {
+func (this *IndexController) WeChatLogin() {
 	companyId := this.GetString("id")
 	beego.Debug("url id", companyId)
 	this.TplName = "haoindex/login.html"
@@ -102,18 +109,36 @@ func (this *IndexController) LoginHandle() {
 		return
 	}
 
-	info, err := m.GetCompanyById(user.CompanyId)
-	if err != nil {
-		beego.Debug("get login company id error")
-		return
-	}
-	APPID = info.AppId
-	AppSecret = info.AppSecret
-	redirect_uri = info.Url
-	beego.Debug("appid appsecret redirect", APPID, AppSecret, redirect_uri)
-	Wx = WechatInit(APPID, AppSecret)
+	Id := strconv.FormatInt(user.CompanyId, 10)
 	this.SetSession("LoginInfo", user)
-	this.Redirect("/wechat", 302)
+	this.Redirect("/wechat?state="+Id, 302)
+}
+
+func (this *IndexController) PCLogin() {
+	if this.IsAjax() {
+		var user = new(m.User)
+		username := this.GetString("username")
+		password := this.GetString("password")
+
+		user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
+		if user == nil || err != nil {
+			this.AlertBack("用户名异常 401")
+			return
+		}
+
+		if user.Password != tools.EncodeUserPwd(username, password) {
+			this.AlertBack("用户名和密码错误 402")
+			beego.Debug("PassWord Error")
+			return
+		}
+
+		info, err := m.GetCompanyById(user.CompanyId)
+		if err != nil {
+			beego.Debug("get login company id error")
+			return
+		}
+		beego.Debug("info", info)
+	}
 }
 
 // 获取userinfo
@@ -124,27 +149,25 @@ func (this *IndexController) GetWeChatInfo() {
 		beego.Debug("get company id error", err)
 		return
 	}
-	info, err := m.GetCompanyById(nId)
-	if err != nil {
-		beego.Debug("get login companyinfo error")
+
+	Wx, AppId, Url := GetWxObj(nId)
+	if Wx == nil {
+		beego.Debug("Get Wx Object Fail")
 		return
 	}
-	APPID = info.AppId
-	AppSecret = info.AppSecret
-	redirect_uri = info.Url
-	Wx = WechatInit(APPID, AppSecret)
 
 	code := this.GetString("code")
 	beego.Debug("code", code)
 	if code == "" {
-		oauthAccess = Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
-		err := oauthAccess.Redirect(redirect_uri, "snsapi_userinfo", Id)
+		oauthAccess := Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
+		err := oauthAccess.Redirect(Url, "snsapi_userinfo", Id)
 		if err != nil {
 			beego.Error("oauthAccess error", err)
 			this.Redirect("/login", 302)
 			return
 		}
 	} else {
+		oauthAccess := Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
 		resToken, err := oauthAccess.GetUserAccessToken(code)
 		if err != nil {
 			beego.Error("get the user token error", err)
@@ -152,11 +175,10 @@ func (this *IndexController) GetWeChatInfo() {
 			return
 		}
 
-		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, APPID)
+		_, err = oauthAccess.CheckAccessToken(resToken.AccessToken, AppId)
 		if err != nil {
 			beego.Error("CheckAccessToken error", err)
 		}
-		beego.Debug("AccessToken", resToken.AccessToken)
 
 		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
 		if err != nil {
@@ -180,7 +202,6 @@ func (this *IndexController) GetWeChatInfo() {
 		// 	this.Redirect("/login", 302)
 		// }
 		beego.Debug("userInfo", userInfo)
-
 	}
 	this.Ctx.WriteString("")
 }
@@ -247,19 +268,26 @@ func (this *IndexController) Index() {
 		this.Data["title"] = sysconfig.WelcomeMsg //公告
 		this.Data["user"] = user
 
+		Wx, AppId, _ := GetWxObj(userInfo.CompanyId)
+
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
+		beego.Debug("url", url)
+
 		jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
 			beego.Error("get the jsapi config error", err)
 		}
-		this.Data["appId"] = APPID
+		this.Data["appId"] = AppId
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
 
-		system, _ := m.GetSysConfig() //获取配置表数据
-		this.Data["system"] = system
+		info, err := m.GetCompanyById(userInfo.CompanyId)
+		if err != nil {
+			beego.Debug("get company msg error", err)
+		}
+		this.Data["system"] = info.WelcomeMsg
 		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
@@ -273,10 +301,19 @@ func (this *IndexController) Index() {
 
 // 后台获取声音文件流转换
 func (this *IndexController) Voice() {
+	Id := this.GetString("Id") //companyId
+	nId, err := strconv.ParseInt(Id, 64, 10)
+	if err != nil {
+		beego.Debug("GetMediaUrl CompanyId Error", err)
+		return
+	}
+	Wx, _, _ := GetWxObj(nId)
+	if Wx == nil {
+		beego.Debug("GetMediaUrl Wx object Error")
+		return
+	}
 	media := this.GetString("media")
-
 	var filename string
-
 	savepath := fmt.Sprintf("../upload/temp/%s/", time.Now().Format("2006-01-02"))
 	wavfilename := savepath + media + ".wav"
 
@@ -325,11 +362,22 @@ func (this *IndexController) Voice() {
 
 // 获取图片媒体的文档流
 func (this *IndexController) GetMediaURL() {
+	Id := this.GetString("Id") //companyId
+	nId, err := strconv.ParseInt(Id, 64, 10)
+	if err != nil {
+		beego.Debug("GetMediaUrl CompanyId Error", err)
+		return
+	}
+	Wx, _, Url := GetWxObj(nId)
+	if Wx == nil {
+		beego.Debug("GetMediaUrl Wx object Error")
+		return
+	}
 	media := this.GetString("media")
 	material := Wx.GetMaterial()
 	mediaURL, err := material.GetMediaURL(media)
 	beego.Info("mediaURL is", mediaURL)
-	srcfile := redirect_uri + "/static/images/nono.jpg"
+	srcfile := Url + "/static/images/nono.jpg"
 	if err == nil {
 		resp, err := http.Get(mediaURL)
 		beego.Debug("resp", resp)
@@ -439,13 +487,26 @@ func (this *IndexController) AmrToWav(filedir, filename string) (string, error) 
 }
 
 func (this *IndexController) WxServerImg() {
+	Id := this.GetString("Id") //companyId
 	media := this.GetString("img")
-	imgpath := GetWxServerImg(media)
+	imgpath := GetWxServerImg(media, Id)
 	beego.Debug("firlena", imgpath)
 }
 
 // 获取图片保存至本地
-func GetWxServerImg(media string) (imgpath string) {
+func GetWxServerImg(media, Id string) (imgpath string) {
+
+	nId, err := strconv.ParseInt(Id, 64, 10)
+	if err != nil {
+		beego.Debug("GetMediaUrl CompanyId Error", err)
+		return
+	}
+	Wx, _, _ := GetWxObj(nId)
+	if Wx == nil {
+		beego.Debug("GetMediaUrl Wx object Error")
+		return
+	}
+
 	material := Wx.GetMaterial()
 	mediaURL, err := material.GetMediaURL(media)
 	beego.Info("mediaURL is", mediaURL)

@@ -21,7 +21,8 @@ type SysConfig struct {
 	NoticeCount   int64  //公告消息条数
 	StrategyCount int64  //策略消息条数
 	TeacherCount  int64  //老师显示条数
-	PositionCount int64  //操作建议
+	PositionCount int64  //操作显示调试
+	QuestionCount int64  //操作显示调试
 	WelcomeMsg    string //欢迎语
 }
 
