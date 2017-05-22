@@ -3,7 +3,6 @@ package tools
 import (
 	"encoding/json"
 	"math/rand"
-	"time"
 
 	"github.com/astaxie/beego"
 )
@@ -205,7 +204,6 @@ type QuestionInfo struct {
 	RoleTitleCss  string    //头衔颜色
 	RoleTitleBack int       //角色聊天背景
 	Content       string    //消息内容
-	Datatime      time.Time //添加时间
 	Uuid          string    // uuid
 
 	AcceptUname   string
