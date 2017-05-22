@@ -211,7 +211,7 @@ type QuestionInfo struct {
 	RoleTitleCss  string //头衔颜色
 	RoleTitleBack int    //角色聊天背景
 	Content       string //消息内容
-	IsIgnore      int64  //是否忽略 0 忽略 1 显示
+	IsIgnore      int64  //是否忽略 0 显示 1 忽略
 	Uuid          string // uuid
 
 	AcceptUuid  string
