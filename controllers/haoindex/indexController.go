@@ -209,8 +209,6 @@ func (this *IndexController) GetWeChatInfo() {
 func (this *IndexController) Index() {
 	indexUserInfo := this.GetSession("indexUserInfo")
 	if indexUserInfo != nil {
-		sysconfig, _ := m.GetAllSysConfig() //系统设置
-
 		userInfo := new(m.User)
 		userInfo.Account = indexUserInfo.(*m.User).Account
 		userLoad, err := m.LoadRelatedUser(userInfo, "Account")
@@ -242,9 +240,21 @@ func (this *IndexController) Index() {
 		}
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
+		var info m.Company
+		strId := strconv.FormatInt(user.CompanyId, 10)
+		inter, ok := MapCache[strId]
+		if !ok {
+			info, err = m.GetCompanyById(user.CompanyId)
+			if err != nil {
+				beego.Debug("get login companyinfo error")
+			}
+		} else {
+			info, _ = inter.(m.Company)
+		}
+
 		// 消息审核(0 开启 1 关闭(默认))
 		// 是否隶属公司内部角色[0、否 1、是]
-		if sysconfig.AuditMsg == 1 {
+		if info.AuditMsg == 1 {
 			user.IsFilter = false
 		} else {
 			user.IsFilter = true
@@ -264,8 +274,8 @@ func (this *IndexController) Index() {
 			user.RoleTitleBack = false
 		}
 
-		user.Insider = 1                          //1内部人员或0外部人员
-		this.Data["title"] = sysconfig.WelcomeMsg //公告
+		user.Insider = 1                     //1内部人员或0外部人员
+		this.Data["title"] = info.WelcomeMsg //公告
 		this.Data["user"] = user
 
 		Wx, AppId, _ := GetWxObj(userInfo.CompanyId)
@@ -283,10 +293,6 @@ func (this *IndexController) Index() {
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
 		this.Data["signature"] = jsapi.Signature //jsapi.Signature
 
-		info, err := m.GetCompanyById(userInfo.CompanyId)
-		if err != nil {
-			beego.Debug("get company msg error", err)
-		}
 		this.Data["system"] = info.WelcomeMsg
 		this.Data["serverurl"] = beego.AppConfig.String("localServerAdress") //链接
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片

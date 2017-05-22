@@ -43,13 +43,14 @@ func (this *QuestionController) GetQuestionTeacher() {
 			return
 		}
 		roomId := this.GetString("RoomId")
-		var info m.Regist
+		var infoMsg []m.Regist
 		teacher, _, err := m.GetRegistInfoByRole(Id, int64(ROLE_TEACHER), roomId)
 		if err != nil {
 			beego.Debug("Get CompanyInfo Error", err)
 			return
 		}
 		for _, v := range teacher {
+			var info m.Regist
 			info.CompanyId = v.CompanyId
 			info.Room = v.Room
 			info.Username = v.Username
@@ -58,9 +59,10 @@ func (this *QuestionController) GetQuestionTeacher() {
 			info.UserIcon = v.UserIcon
 			v.Titlename, err = m.GetTitleName(v.Title.Id)
 			info.Titlename = v.Titlename
+			infoMsg = append(infoMsg, info)
 		}
 		data := make(map[string]interface{})
-		data["TeacherInfo"] = info
+		data["TeacherInfo"] = infoMsg
 		this.Data["json"] = &data
 		this.ServeJSON()
 	}

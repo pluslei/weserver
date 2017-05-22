@@ -121,7 +121,20 @@ func parseMsg(msg string) int {
 			beego.Debug("interface{} no define")
 		}
 	}
-	if info.IsFilter == false {
+
+	var company m.Company
+	strId := strconv.FormatInt(info.CompanyId, 10)
+	inter1, ok := MapCache[strId]
+	if !ok {
+		company, err = m.GetCompanyById(info.CompanyId)
+		if err != nil {
+			beego.Debug("get login companyinfo error")
+		}
+	} else {
+		company, _ = inter1.(m.Company)
+	}
+
+	if company.AuditMsg == 0 {
 		mq.SendMessage(topic, v) //发消息
 	}
 	beego.Debug("IsFilter", info.IsFilter)
