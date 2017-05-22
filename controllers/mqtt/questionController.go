@@ -1,7 +1,6 @@
 package mqtt
 
 import (
-	"time"
 	m "weserver/models"
 	. "weserver/src/cache"
 	mq "weserver/src/mqtt"
@@ -158,10 +157,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.RoleTitleBack = historyMsg[i].RoleTitleBack
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
-						info.AcceptUname = historyMsg[i].AcceptUname
-						info.AcceptUuid = historyMsg[i].AcceptUuid
-						info.AcceptTitle = historyMsg[i].AcceptTitle
-						info.AcceptContent = historyMsg[i].AcceptContent
+
 						infoMsg = append(infoMsg, info)
 					}
 				} else {
@@ -179,9 +175,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.RoleTitleBack = historyMsg[i].RoleTitleBack
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
-						info.AcceptUuid = historyMsg[i].AcceptUuid
-						info.AcceptTitle = historyMsg[i].AcceptTitle
-						info.AcceptContent = historyMsg[i].AcceptContent
+
 						infoMsg = append(infoMsg, info)
 					}
 				}
@@ -221,10 +215,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.RoleTitleBack = historyMsg[i].RoleTitleBack
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
-						info.AcceptUname = historyMsg[i].AcceptUname
-						info.AcceptUuid = historyMsg[i].AcceptUuid
-						info.AcceptTitle = historyMsg[i].AcceptTitle
-						info.AcceptContent = historyMsg[i].AcceptContent
+
 						infoMsg = append(infoMsg, info)
 					}
 				} else {
@@ -242,10 +233,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.RoleTitleBack = historyMsg[i].RoleTitleBack
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
-						info.AcceptUname = historyMsg[i].AcceptUname
-						info.AcceptUuid = historyMsg[i].AcceptUuid
-						info.AcceptTitle = historyMsg[i].AcceptTitle
-						info.AcceptContent = historyMsg[i].AcceptContent
+
 						infoMsg = append(infoMsg, info)
 					}
 				}
@@ -300,11 +288,7 @@ func addQuestionData(info *QuestionInfo) {
 	question.RoleTitleCss = info.RoleTitleCss //头衔颜色
 	question.RoleTitleBack = info.RoleTitleBack
 	question.Content = info.Content //消息内容
-	question.Datatime = time.Now()  //添加时间
-	question.AcceptUname = info.AcceptUname
-	question.AcceptUuid = info.AcceptUuid
-	question.AcceptTitle = info.AcceptTitle
-	question.AcceptContent = info.AcceptContent
+
 	_, err := m.AddQuestion(&question)
 	if err != nil {
 		beego.Debug(err)
@@ -316,6 +300,6 @@ func addQuestionData(info *QuestionInfo) {
 
 //rpc 推送 给管理页面
 func pushWebAdmin(chat m.Question) {
-	chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
+	// chat.DatatimeStr = chat.Datatime.Format("2006-01-02 15:04:05")
 	rpc.Broadcast("chat", chat, func(result []string) { beego.Debug("result", result) })
 }

@@ -12,15 +12,15 @@ import (
 )
 
 /*
-*  Question table
+*  RspQuestion table
  */
-type Question struct {
+type RspQuestion struct {
 	Id            int64 `orm:"pk;auto"`
 	CompanyId     int64
 	Room          string //房间号 topic
 	Uname         string //用户名  openid
 	Nickname      string //用户昵称
-	UserIcon      string //用户logo
+	UserIcon      string
 	RoleName      string //用户角色[vip,silver,gold,jewel]
 	RoleTitle     string //用户角色名[会员,白银会员,黄金会员,钻石会员]
 	Sendtype      string //用户发送消息类型('TXT','IMG','VOICE')
@@ -28,31 +28,30 @@ type Question struct {
 	RoleTitleBack int    `orm:"default(0)"` //角色聊天背景
 	Content       string `orm:"type(text)"` //消息内容
 	DatatimeStr   string //添加时间
-	IsIgnore      int64  //是否忽略 0 忽略 1 显示
-	Uuid          string // uuid
 	Time          time.Time
+	Uuid          string // uuid
 
-	RspQuestion []*RspQuestion `orm:"reverse(many)"` //一对多
+	Question *Question `orm:"rel(fk)"`
 
 	MsgType int `orm:"-"`
 }
 
 func init() {
-	orm.RegisterModel(new(Question))
+	orm.RegisterModel(new(RspQuestion))
 }
 
-func (c *Question) TableName() string {
-	return "question"
+func (c *RspQuestion) TableName() string {
+	return "rspquestion"
 }
 
-func AddQuestion(c *Question) (int64, error) {
+func AddRspQuestion(c *RspQuestion) (int64, error) {
 	omodel := orm.NewOrm()
 	id, err := omodel.Insert(c)
 	return id, err
 }
 
 //事务添加数据
-func AddQuestiondata(chat []Question, length int) error {
+func AddRspQuestiondata(chat []RspQuestion, length int) error {
 	model := orm.NewOrm()
 	err := model.Begin()
 	SuccessNum := 0
@@ -75,43 +74,48 @@ func AddQuestiondata(chat []Question, length int) error {
 }
 
 //删除数据库中表中ID对应的行信息
-func DelQuestionById(uuid string) (int64, error) {
+func DelRspQuestionByUUId(uuid string) (int64, error) {
 	o := orm.NewOrm()
-	var chat Question
+	var chat RspQuestion
 	status, err := o.QueryTable(chat).Filter("Uuid", uuid).Delete()
 	return status, err
 }
 
-//获取数据库表中的总条数
-func GetQuestionCount() (int64, error) {
+func DeleteRspQuestionById(id int64) (int64, error) {
 	o := orm.NewOrm()
-	var table Question
+	var chat RspQuestion
+	status, err := o.QueryTable(chat).Filter("Id", id).Delete()
+	return status, err
+}
+
+//获取数据库表中的总条数
+func GetRspQuestionCount() (int64, error) {
+	o := orm.NewOrm()
+	var table RspQuestion
 	count, err := o.QueryTable(table).Count()
 	return count, err
 }
 
-// 获取最后一个id
-func GetLastQuestionId(count int64) (chat []Question, countline int64) {
+func GetLastRspQuestionInfo(count int64) (chat []Question, countline int64) {
 	o := orm.NewOrm()
-	var table Question
+	var table RspQuestion
 	countline, _ = o.QueryTable(table).OrderBy("-Id").Limit(count).All(&chat)
 	return chat, countline
 }
 
 //根据表名和数量 获取信息
-func GetQuestionMsgData(count int64, roomId string) ([]Question, int64, error) {
+func GetRspQuestionInfo(count int64, roomId string) ([]RspQuestion, int64, error) {
 	o := orm.NewOrm()
-	var chat []Question
-	var table Question
-	num, err := o.QueryTable(table).Filter("Room", roomId).OrderBy("Id").Limit(count).All(&chat)
+	var chat []RspQuestion
+	num, err := o.QueryTable("rspquestion").Filter("Room", roomId).OrderBy("Id").Limit(count).All(&chat)
 	return chat, num, err
 }
 
 //获取指定的聊天记录
-func GetAllQuestionMsg(roomId, username string, RoleId int64) ([]Question, int64, error) {
+func GetAllRspQuestionMsg(roomId, username string, RoleId int64) ([]RspQuestion, int64, error) {
 	o := orm.NewOrm()
-	var chat []Question
-	var table Question
+	var chat []RspQuestion
+	var table RspQuestion
 	if RoleId == tools.ROLE_MANAGER || RoleId == tools.ROLE_TEACHER || RoleId == tools.ROLE_ASSISTANT {
 		num, err := o.QueryTable(table).Filter("Room", roomId).OrderBy("-Id").All(&chat)
 		return chat, num, err
@@ -121,17 +125,16 @@ func GetAllQuestionMsg(roomId, username string, RoleId int64) ([]Question, int64
 }
 
 // 根据id查询聊天内容
-func GetQuestionIdData(id int64) (Question, error) {
+func GetRspQuestionIdData(id int64) (chat RspQuestion, err error) {
 	o := orm.NewOrm()
-	var chat Question
-	err := o.QueryTable(chat).Filter("Id", id).One(&chat)
+	err = o.QueryTable("rspquestion").Filter("Id", id).One(&chat)
 	return chat, err
 }
 
 // 获取消息列表
-func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, companyId int64) (ms []orm.Params, count int64) {
+func GetRspQuestionRecordList(page int64, page_size int64, sort, Nickname string, companyId int64) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
-	chatrecord := new(Question)
+	chatrecord := new(RspQuestion)
 	query := o.QueryTable(chatrecord)
 	if companyId != 0 {
 		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
@@ -144,7 +147,7 @@ func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, c
 }
 
 //回复消息
-func QuestionReply(id int64, replyMsg string) (int64, error) {
+func ReplyQuestion(id int64, replyMsg string) (int64, error) {
 	beego.Info("replyMsgInfo", replyMsg, id)
 	o := orm.NewOrm()
 	res, err := o.Raw("UPDATE question SET accept_content = ? WHERE id = ?", replyMsg, id).Exec()
@@ -154,12 +157,4 @@ func QuestionReply(id int64, replyMsg string) (int64, error) {
 		resnum = int64(num)
 	}
 	return resnum, err
-}
-
-//删除数据库中表中ID对应的行信息
-func DeleteById(id int64) (int64, error) {
-	o := orm.NewOrm()
-	var chat Question
-	status, err := o.QueryTable(chat).Filter("Id", id).Delete()
-	return status, err
 }
