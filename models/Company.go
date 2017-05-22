@@ -22,6 +22,7 @@ type Company struct {
 	AppId         string //appid
 	AppSecret     string //密钥
 	Url           string //跳转url
+	Sign          string //短信签名
 
 	Rolename string `orm:"-"` //头衔名称
 }
