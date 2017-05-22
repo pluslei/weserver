@@ -2990,3 +2990,6 @@ a {
   overflow: hidden;
   padding: 10px 0px 0px 0px;
 }
+.replybtn .replybtn_c {
+  text-align: right;
+}
