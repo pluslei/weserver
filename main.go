@@ -6,7 +6,7 @@ import (
 	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
-	// . "weserver/src/cache"
+	. "weserver/src/cache"
 	"weserver/src/mqtt"
 
 	"weserver/src/msg"
@@ -37,12 +37,14 @@ func main() {
 	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)
 
 	msg.SMSRun()
-	phoneNum := "13071231375"
+
+	phoneNum := "13554460187"
+	// phoneNum := "13071231375"
 	sms := "hello bike"
 	sign := "ofo 小黄车"
 	msg.SendSMSMsg(phoneNum, sms, sign)
 
-	// InitCache()
+	InitCache()
 
 	beego.ErrorController(&haoindex.ErrorController{}) //注册错误处理的函数
 

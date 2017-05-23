@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -33,7 +34,6 @@ func (s *SMS) Running() {
 	go func() {
 		for {
 			url, ok := <-s.msgch
-			beego.Debug("url", url)
 			if ok {
 				postReq, err := http.NewRequest("POST", s.URL, strings.NewReader(url))
 				if err != nil {
@@ -50,21 +50,18 @@ func (s *SMS) Running() {
 					break
 				}
 				if resp != nil {
-					_, err := ioutil.ReadAll(resp.Body)
+					buf, err := ioutil.ReadAll(resp.Body)
 					if err != nil {
 						beego.Debug("Read Body error", err)
 						resp.Body.Close()
 						break
 					}
-					beego.Debug("resp code", resp)
-					// err = json.Unmarshal(buf, w)
-					// if err != nil {
-					// 	if w.Errcode != 0 && w.Errmsg != "ok" {
-					// 		beego.Debug("WeChat Error CodeInfo:", w.Errcode, w.Errmsg)
-					// 	}
-					// 	resp.Body.Close()
-					// 	break
-					// }
+					str := fmt.Sprintf("%s", buf)
+					code := strings.Split(str, ",")
+					nCode, _ := strconv.Atoi(code[0])
+					if nCode != 0 {
+						beego.Debug("SMS Send Fail, Error Code", nCode)
+					}
 					resp.Body.Close()
 					break
 				}
@@ -80,7 +77,7 @@ func (s *SMS) sendSMSmsg(phoneNum, msg, sign string) error {
 	body := fmt.Sprintf(s.USER_POST_Url, phoneNum, msg, sign)
 	s.USER_ACCOUNT_URL += body
 	select {
-	case s.msgch <- s.URL:
+	case s.msgch <- s.USER_ACCOUNT_URL:
 		return nil
 	default:
 		beego.Error("SMS message ch full")

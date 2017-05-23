@@ -102,11 +102,11 @@ func parseQuestMsg(msg string) int {
 
 	beego.Debug("info", info)
 
-	v, err := ToJSON(info)
-	if err != nil {
-		beego.Error("json error", err)
-		return POST_STATUS_FALSE
-	}
+	// v, err := ToJSON(info)
+	// if err != nil {
+	// 	beego.Error("json error", err)
+	// 	return POST_STATUS_FALSE
+	// }
 	inter, ok := MapCache[topic]
 	if ok {
 		arr, ok := inter.([]string)
@@ -121,7 +121,7 @@ func parseQuestMsg(msg string) int {
 		}
 	}
 
-	mq.SendMessage(topic, v) //发消息
+	// mq.SendMessage(topic, v) //发消息
 
 	// 消息入库
 	SaveQuestionMsgdata(info)
