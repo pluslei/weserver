@@ -16,7 +16,8 @@ const (
 
 // Role type match database table "Role"
 const (
-	ROLE_MANAGER int64 = 1
+	ROLE_RESERVE int = iota
+	ROLE_MANAGER
 	ROLE_CUSTOMER
 	ROLE_ASSISTANT
 	ROLE_TEACHER
@@ -211,12 +212,14 @@ type QuestionInfo struct {
 	RoleTitleCss  string //头衔颜色
 	RoleTitleBack int    //角色聊天背景
 	Content       string //消息内容
-	IsIgnore      int64  //是否忽略 0 忽略 1 显示
+	IsIgnore      int64  //是否忽略 0 显示 1 忽略
 	Uuid          string // uuid
 
-	AcceptUuid  string
-	OperateType int64
-	MsgType     int //消息类型
+	AcceptNickname string
+	AcceptTitle    string
+	AcceptUuid     string
+	OperateType    int64
+	MsgType        int //消息类型
 }
 
 type QuestionDEL struct {

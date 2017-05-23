@@ -43,16 +43,26 @@ func (this *QuestionController) GetQuestionTeacher() {
 			return
 		}
 		roomId := this.GetString("RoomId")
-		info, _, err := m.GetRegistInfoByRole(Id, int64(ROLE_TEACHER), roomId)
+		var infoMsg []m.Regist
+		teacher, _, err := m.GetRegistInfoByRole(Id, int64(ROLE_TEACHER), roomId)
 		if err != nil {
 			beego.Debug("Get CompanyInfo Error", err)
 			return
 		}
-		for _, v := range info {
+		for _, v := range teacher {
+			var info m.Regist
+			info.CompanyId = v.CompanyId
+			info.Room = v.Room
+			info.Username = v.Username
+			info.UserId = v.UserId
+			info.Nickname = v.Nickname
+			info.UserIcon = v.UserIcon
 			v.Titlename, err = m.GetTitleName(v.Title.Id)
+			info.Titlename = v.Titlename
+			infoMsg = append(infoMsg, info)
 		}
 		data := make(map[string]interface{})
-		data["TeacherInfo"] = info
+		data["TeacherInfo"] = infoMsg
 		this.Data["json"] = &data
 		this.ServeJSON()
 	}
@@ -92,11 +102,11 @@ func parseQuestMsg(msg string) int {
 
 	beego.Debug("info", info)
 
-	v, err := ToJSON(info)
-	if err != nil {
-		beego.Error("json error", err)
-		return POST_STATUS_FALSE
-	}
+	// v, err := ToJSON(info)
+	// if err != nil {
+	// 	beego.Error("json error", err)
+	// 	return POST_STATUS_FALSE
+	// }
 	inter, ok := MapCache[topic]
 	if ok {
 		arr, ok := inter.([]string)
@@ -111,7 +121,7 @@ func parseQuestMsg(msg string) int {
 		}
 	}
 
-	mq.SendMessage(topic, v) //发消息
+	// mq.SendMessage(topic, v) //发消息
 
 	// 消息入库
 	SaveQuestionMsgdata(info)
@@ -208,6 +218,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -238,6 +250,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -290,6 +304,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -320,6 +336,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -423,6 +441,8 @@ func addQuestionData(info *QuestionInfo) bool {
 	question.IsIgnore = 1           // 默认显示
 	question.Time = time.Now()
 	question.DatatimeStr = question.Time.Format("2006-01-02 15:04:05")
+	question.AcceptNickname = info.AcceptNickname
+	question.AcceptTitle = info.AcceptTitle
 	_, err := m.AddQuestion(&question)
 	if err != nil {
 		beego.Debug(err)
