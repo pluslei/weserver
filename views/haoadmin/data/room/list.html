@@ -91,7 +91,6 @@
       // 模糊查询
     function queryUser() {
         var companyId = document.getElementById("doc-select-company").value;
-        console.log(companyId);
         $("#rbac-user-list").DataTable().column(0).search(companyId).draw();
     };
     function initTable() {
@@ -138,7 +137,14 @@
                 },
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='房间编辑' href='/weserver/data/room_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                         var showed = "隐藏房间"
+                         var showTitle = "将房间标记为不可见"
+                         var showStatus =  oData.MidPage
+                         if(showStatus != 1){
+                             showed = "显示房间"
+                             showTitle = "将房间标记为可见"
+                         }
+                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='房间编辑' href='/weserver/data/room_edit?id="+sData+"'><span class='am-icon-pencil-square-o'></span> 编辑</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='"+showTitle+"' onclick='isShowRoom(" +  oData.Id + ","+showStatus+");'>"+showed+"</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
                     }
                 }
             ],
@@ -204,6 +210,28 @@
             }
         })
     }
+
+        // 隐藏/显示 房间
+    function isShowRoom(roomid, showed){
+        $.ajax({
+            url: '/weserver/data/room_show',
+            type: 'POST',
+            data: {id: roomid,
+                   midPage: showed,
+            },
+            success: function(rsp){
+                if (rsp.status){
+                    alert(rsp.info);
+                    oTable.fnReloadAjax(oTable.fnSettings());
+                }else{
+                    alert(rsp.info);
+                }
+            }
+        })
+    }
+
+    //显示/隐藏房间
+    
 
     // 修改属性
     function updateRoom(id){

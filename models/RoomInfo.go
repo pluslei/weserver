@@ -237,3 +237,15 @@ func GetRoomInfoCount() (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable(new(RoomInfo)).Count()
 }
+
+// 隐藏or显示房间
+func UpdateRoomShowed(id, newShowed int64) (int64, error) {
+	o := orm.NewOrm()
+	res, err := o.Raw("UPDATE roominfo SET `mid_page` = ? WHERE id = ?", newShowed, id).Exec()
+	var resnum int64
+	if err != nil {
+		num, _ := res.RowsAffected()
+		resnum = int64(num)
+	}
+	return resnum, err
+}

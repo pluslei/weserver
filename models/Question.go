@@ -4,8 +4,6 @@ import (
 	"errors"
 	"time"
 
-	"github.com/astaxie/beego"
-
 	"weserver/src/tools"
 
 	"github.com/astaxie/beego/orm"
@@ -138,18 +136,17 @@ func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, c
 	chatrecord := new(Question)
 	query := o.QueryTable(chatrecord)
 	if companyId != 0 {
-		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("nickname__contains", Nickname).RelatedSel().OrderBy(sort).Values(&ms)
 		count, _ = query.Count()
 		return ms, count
 	}
-	query.Limit(page_size, page).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
+	query.Limit(page_size, page).Filter("nickname__contains", Nickname).RelatedSel().OrderBy(sort).Values(&ms)
 	count, _ = query.Count()
 	return ms, count
 }
 
 //回复消息
 func QuestionReply(id int64, replyMsg string) (int64, error) {
-	beego.Info("replyMsgInfo", replyMsg, id)
 	o := orm.NewOrm()
 	res, err := o.Raw("UPDATE question SET accept_content = ? WHERE id = ?", replyMsg, id).Exec()
 	var resnum int64
@@ -161,7 +158,7 @@ func QuestionReply(id int64, replyMsg string) (int64, error) {
 }
 
 //删除数据库中表中ID对应的行信息
-func DeleteById(id int64) (int64, error) {
+func DeleteQueById(id int64) (int64, error) {
 	o := orm.NewOrm()
 	var chat Question
 	status, err := o.QueryTable(chat).Filter("Id", id).Delete()

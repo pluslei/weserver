@@ -4,8 +4,6 @@ import (
 	"errors"
 	"time"
 
-	"github.com/astaxie/beego"
-
 	"weserver/src/tools"
 
 	"github.com/astaxie/beego/orm"
@@ -155,13 +153,28 @@ func GetRspQuestionRecordList(page int64, page_size int64, sort, Nickname string
 
 //回复消息
 func ReplyQuestion(id int64, replyMsg string) (int64, error) {
-	beego.Info("replyMsgInfo", replyMsg, id)
 	o := orm.NewOrm()
-	res, err := o.Raw("UPDATE question SET accept_content = ? WHERE id = ?", replyMsg, id).Exec()
+	res, err := o.Raw("UPDATE rspquestion SET content = ? WHERE id = ?", replyMsg, id).Exec()
 	var resnum int64
 	if err != nil {
 		num, _ := res.RowsAffected()
 		resnum = int64(num)
 	}
 	return resnum, err
+}
+
+func GetRspByQuestionId(id int64) (RspQuestion, error) {
+	o := orm.NewOrm()
+	var chat RspQuestion
+	err := o.Raw("SELECT id,content FROM rspquestion WHERE question_id = ?", id).QueryRow(&chat)
+	return chat, err
+}
+
+
+// 根据id查询聊天内容
+func GetRspQuestionById(id int64) (RspQuestion, error) {
+	o := orm.NewOrm()
+	var chat RspQuestion
+	err := o.QueryTable(chat).Filter("Id", id).One(&chat)
+	return chat, err
 }
