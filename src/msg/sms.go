@@ -8,19 +8,26 @@ import (
 )
 
 type Config struct {
-	Url      string
-	USER_Url string
+	Url              string
+	USER_ACCOUNT_URL string
+	USER_POST_Url    string
 }
+
+// SMS_NAME = 13552389469
+// SMS_PWD = 25FE2D232B6A0ABA40508CFC1E0F
+// SMS_URL = "http://web.wasun.cn/asmx/smsservice.aspx?"
+// SMS_ACCOUNT = "name=%s&pwd=%s&"
+// SMS_USER_URL = "mobile=%s&content=%s&sign=%s&stime=&type=pt&extno="
 
 var msg *SMS
 
 func getParam() *Config {
 	var info Config
-	Account := beego.AppConfig.String("SMS_NAME")
+	info.Url = beego.AppConfig.String("SMS_URL")
+	Name := beego.AppConfig.String("SMS_NAME")
 	Pwd := beego.AppConfig.String("SMS_PWD")
-	Url := beego.AppConfig.String("SMS_URL")
-	info.USER_Url = beego.AppConfig.String("SMS_USER_URL")
-	info.Url = fmt.Sprintf(Url, Account, Pwd)
+	info.USER_ACCOUNT_URL = fmt.Sprintf(info.Url, Name, Pwd)
+	info.USER_POST_Url = beego.AppConfig.String("SMS_USER_URL")
 	return &info
 }
 

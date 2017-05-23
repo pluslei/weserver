@@ -14,15 +14,17 @@ import (
 var Lock sync.Mutex
 
 type SMS struct {
-	URL      string
-	USER_URL string
-	msgch    chan string
+	URL              string
+	USER_ACCOUNT_URL string
+	USER_POST_Url    string
+	msgch            chan string
 }
 
 func Start(p *Config) *SMS {
 	s := SMS{}
 	s.URL = p.Url
-	s.USER_URL = p.USER_Url
+	s.USER_ACCOUNT_URL = p.USER_ACCOUNT_URL
+	s.USER_POST_Url = p.USER_POST_Url
 	s.msgch = make(chan string, 10240)
 	return &s
 }
@@ -33,7 +35,7 @@ func (s *SMS) Running() {
 			url, ok := <-s.msgch
 			beego.Debug("url", url)
 			if ok {
-				postReq, err := http.NewRequest("POST", url, strings.NewReader("name=PostName"))
+				postReq, err := http.NewRequest("POST", s.URL, strings.NewReader(url))
 				if err != nil {
 					beego.Debug("POST WeChatText Fail", err)
 					break
@@ -75,8 +77,8 @@ func (s *SMS) Running() {
 }
 
 func (s *SMS) sendSMSmsg(phoneNum, msg, sign string) error {
-	body := fmt.Sprintf(s.USER_URL, phoneNum, msg, sign)
-	s.URL += body
+	body := fmt.Sprintf(s.USER_POST_Url, phoneNum, msg, sign)
+	s.USER_ACCOUNT_URL += body
 	select {
 	case s.msgch <- s.URL:
 		return nil
