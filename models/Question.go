@@ -118,7 +118,7 @@ func GetAllQuestionMsg(roomId, username string, RoleId int64) ([]Question, int64
 	o := orm.NewOrm()
 	var chat []Question
 	var table Question
-	if RoleId == tools.ROLE_MANAGER || RoleId == tools.ROLE_TEACHER || RoleId == tools.ROLE_ASSISTANT {
+	if RoleId == int64(tools.ROLE_MANAGER) || RoleId == int64(tools.ROLE_TEACHER) || RoleId == int64(tools.ROLE_ASSISTANT) {
 		num, err := o.QueryTable(table).Filter("Room", roomId).OrderBy("-Id").All(&chat)
 		return chat, num, err
 	}

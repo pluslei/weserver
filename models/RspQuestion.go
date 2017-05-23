@@ -123,7 +123,7 @@ func GetAllRspQuestionMsg(roomId, username string, RoleId int64) ([]RspQuestion,
 	o := orm.NewOrm()
 	var chat []RspQuestion
 	var table RspQuestion
-	if RoleId == tools.ROLE_MANAGER || RoleId == tools.ROLE_TEACHER || RoleId == tools.ROLE_ASSISTANT {
+	if RoleId == int64(tools.ROLE_MANAGER) || RoleId == int64(tools.ROLE_TEACHER) || RoleId == int64(tools.ROLE_ASSISTANT) {
 		num, err := o.QueryTable(table).Filter("Room", roomId).OrderBy("-Id").All(&chat)
 		return chat, num, err
 	}
