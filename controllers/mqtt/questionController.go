@@ -218,6 +218,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -248,6 +250,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -300,6 +304,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
@@ -330,6 +336,8 @@ func (this *QuestionController) GetQuestionHistoryList() {
 						info.Content = historyMsg[i].Content
 						info.Uuid = historyMsg[i].Uuid
 						info.DatatimeStr = historyMsg[i].DatatimeStr
+						info.AcceptNickname = historyMsg[i].AcceptNickname
+						info.AcceptTitle = historyMsg[i].AcceptTitle
 						historyquestion, count, err := m.GetMoreRspQuestion(info.Id)
 						if count != 0 {
 							info.RspNickname = historyquestion[0].Nickname
