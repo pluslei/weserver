@@ -433,6 +433,8 @@ func addQuestionData(info *QuestionInfo) bool {
 	question.IsIgnore = 1           // 默认显示
 	question.Time = time.Now()
 	question.DatatimeStr = question.Time.Format("2006-01-02 15:04:05")
+	question.AcceptNickname = info.AcceptNickname
+	question.AcceptTitle = info.AcceptTitle
 	_, err := m.AddQuestion(&question)
 	if err != nil {
 		beego.Debug(err)
