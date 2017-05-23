@@ -33,6 +33,8 @@ type Question struct {
 	Time          time.Time
 	RspQuestion   []*RspQuestion `orm:"reverse(many)"` //一对多
 
+	AcceptNickname string
+	AcceptTitle    string
 	//回复信息
 	RspNickname string `orm:"-"`
 	RspTitle    string `orm:"-"`

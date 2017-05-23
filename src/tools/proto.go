@@ -214,9 +214,11 @@ type QuestionInfo struct {
 	IsIgnore      int64  //是否忽略 0 显示 1 忽略
 	Uuid          string // uuid
 
-	AcceptUuid  string
-	OperateType int64
-	MsgType     int //消息类型
+	AcceptNickname string
+	AcceptTitle    string
+	AcceptUuid     string
+	OperateType    int64
+	MsgType        int //消息类型
 }
 
 type QuestionDEL struct {
