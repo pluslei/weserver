@@ -146,7 +146,7 @@ func GetRoomName() (map[string]interface{}, int64, error) {
 func GetRoomInfo(id int64) ([]RoomInfo, int64, error) {
 	o := orm.NewOrm()
 	var info []RoomInfo
-	num, err := o.QueryTable("roominfo").Filter("CompanyId", id).OrderBy("Id").All(&info)
+	num, err := o.QueryTable("roominfo").Filter("CompanyId", id).Filter("MidPage", 1).OrderBy("Id").All(&info)
 	return info, num, err
 }
 
