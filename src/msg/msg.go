@@ -1,11 +1,10 @@
 package msg
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"sync"
 
 	"github.com/astaxie/beego"
@@ -15,69 +14,74 @@ import (
 var Lock sync.Mutex
 
 type SMS struct {
-	URL   string
-	msgch chan []byte
+	URL      string
+	USER_URL string
+	msgch    chan string
 }
 
 func Start(p *Config) *SMS {
 	s := SMS{}
 	s.URL = p.Url
-	s.msgch = make(chan []byte, 10240)
+	s.USER_URL = p.USER_Url
+	s.msgch = make(chan string, 10240)
 	return &s
 }
 
 func (s *SMS) Running() {
 	go func() {
 		for {
-			msg, ok := <-w.msgch
+			url, ok := <-s.msgch
+			beego.Debug("url", url)
 			if ok {
-				postReq, err := http.NewRequest("POST", w.TextUrl, bytes.NewReader(msg))
+				postReq, err := http.NewRequest("POST", url, strings.NewReader("name=PostName"))
 				if err != nil {
 					beego.Debug("POST WeChatText Fail", err)
 					break
 				}
-				postReq.Header.Set("Content-Type", "application/json; encoding=utf-8")
+				postReq.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 				client := &http.Client{}
 				resp, err := client.Do(postReq)
 				if resp.StatusCode != http.StatusOK || err != nil {
-					beego.Debug("resp.StatusCode error: ", resp.StatusCode, err.Error())
+					beego.Debug("resp.Status error: ", resp.Status, err)
 					resp.Body.Close()
 					break
 				}
 				if resp != nil {
-					buf, err := ioutil.ReadAll(resp.Body)
+					_, err := ioutil.ReadAll(resp.Body)
 					if err != nil {
 						beego.Debug("Read Body error", err)
 						resp.Body.Close()
 						break
 					}
-					err = json.Unmarshal(buf, w)
-					if err != nil {
-						if w.Errcode != 0 && w.Errmsg != "ok" {
-							beego.Debug("WeChat Error CodeInfo:", w.Errcode, w.Errmsg)
-						}
-						resp.Body.Close()
-						break
-					}
+					beego.Debug("resp code", resp)
+					// err = json.Unmarshal(buf, w)
+					// if err != nil {
+					// 	if w.Errcode != 0 && w.Errmsg != "ok" {
+					// 		beego.Debug("WeChat Error CodeInfo:", w.Errcode, w.Errmsg)
+					// 	}
+					// 	resp.Body.Close()
+					// 	break
+					// }
 					resp.Body.Close()
 					break
 				}
 				resp.Body.Close()
 			} else {
-				beego.Error("Wechat Publish msg shutdown!!! ")
+				beego.Error("SMS Send msg shutdown!!! ")
 			}
 		}
 	}()
 }
 
 func (s *SMS) sendSMSmsg(phoneNum, msg, sign string) error {
-	body := fmt.Sprintf(s.URL, phoneNum, msg, sign)
+	body := fmt.Sprintf(s.USER_URL, phoneNum, msg, sign)
+	s.URL += body
 	select {
-	case s.msgch <- body:
+	case s.msgch <- s.URL:
 		return nil
 	default:
-		beego.Error("wechat message ch full")
-		return fmt.Errorf("wechat message ch full")
+		beego.Error("SMS message ch full")
+		return fmt.Errorf("SMS message ch full")
 	}
 }

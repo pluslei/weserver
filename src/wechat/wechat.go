@@ -83,7 +83,7 @@ func (w *Wechat) Running() {
 					client := &http.Client{}
 					resp, err := client.Do(postReq)
 					if resp.StatusCode != http.StatusOK || err != nil {
-						beego.Debug("resp.StatusCode error: ", resp.StatusCode, err.Error())
+						beego.Debug("resp.StatusCode error: ", resp.Status, err)
 						resp.Body.Close()
 						break
 					}
