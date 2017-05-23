@@ -2754,7 +2754,7 @@ a {
   position: absolute;
   left: 0px;
   bottom: 50px;
-  width: 200px;
+  width: 210px;
   border: 0px solid #b2b2b2;
   z-index: 10;
   border-radius: 3px;
@@ -2791,7 +2791,7 @@ a {
   width: 100%;
   height: 40px;
   line-height: 40px;
-  font-size: 16px;
+  font-size: 14px;
   padding: 0px 6px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2800,9 +2800,9 @@ a {
 .Qditer .Qditer-editeText .teacher .user img {
   width: 30px;
   height: 30px;
-  border-radius: 0px;
+  border-radius: 2px;
   float: left;
-  margin: 5px;
+  margin: 5px 10px 5px 5px;
 }
 .Qditer .Qditer-editeText .teacher .user:nth-of-type(1) {
   border-radius: 3px 3px 0px 0px;
@@ -2844,6 +2844,17 @@ a {
   -moz-appearance: none;
        appearance: none;
 }
+.Qditer .Qditer-editeText .Qditer-editeText-theInput .toobjtip {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  padding-left: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 .Qditer .Qditer-editeText .Qditer-editeText-smile {
   width: 40px;
   display: inline-block;
@@ -2874,7 +2885,7 @@ a {
   width: 42px;
   text-align: center;
   line-height: 31px;
-  background: #09bb07;
+  background: #BDBDBD;
   color: #fff;
   border-radius: 2px;
   font-size: 14px;
@@ -2962,6 +2973,7 @@ a {
   background: #fff;
   margin: 8px auto 0;
   padding: 8px;
+  border: 1px solid #fcfcfc;
 }
 .Qchat-allitems {
   padding: 0px 10px;
@@ -2992,4 +3004,24 @@ a {
 }
 .replybtn .replybtn_c {
   text-align: right;
+}
+.replybtn .replybtn_c span {
+  display: inline-block;
+  padding: 0px 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.replybtn .replybtn_c span img {
+  height: 20px;
+  float: left;
+  margin-top: 3px;
+  margin-right: 10px;
+}
+.replybtn .replybtn_c span:nth-of-type(1) {
+  color: #b2b2b2;
+}
+.replybtn .replybtn_c span:nth-of-type(2) {
+  color: #F96400;
 }
