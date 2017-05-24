@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>用户登录</title>
+	<link rel="stylesheet" href="./static/css/amazeui.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html, body { height: 100%; }
+    body {
+      background-color: #EBEBEB;
+      overflow: hidden;
+      font-family: "Microsoft Yahei";
+    }
+    .head {
+      width: 108px;
+      height: 108px;
+      margin: 16% auto 0;
+      display: block;
+      border-radius: 4px;
+    }
+    .head + p {
+      color: #383838;
+      text-align: center;
+    }
+    .choiceImg-wrap {
+      padding: 0 10px;
+      display: flex;
+    }
+    .choiceImg-wrap li {
+      float: left;
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      border: 1px solid #ccc;
+    }
+    .choiceImg-wrap li:not(:last-child) {
+      margin-right: 10px;
+    }
+    .choiceImg-wrap li > .defaultPick{
+      width: 100%;
+    }
+    .choiceImg-wrap li.active:after {
+      content: '';
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      width: 14px;
+      height: 14px;
+      background-image: url(./static/images/checked.png);
+      background-size: cover;
+    }
+    .choiceImg-wrap li.addPhoto {
+      position: relative;
+      background-image: url(./static/images/addPhoto.png);
+      background-size: 100% 100%;
+      border: none;
+    }
+    .choiceImg-wrap li.addPhoto [type="file"] {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+
+    .nickName-wrap {
+      margin-top: 20%;
+      text-align: center;
+    }
+    .nickName-wrap .ipt-nickname {
+      width: 83.3%;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      font-size: 14px;
+      color: #383838;     
+      border: 1px solid #ccc;
+      outline: none;
+      border-radius: 5px;
+      letter-spacing: 1.4px;
+    }
+    .nickName-wrap .pormpt-text {
+      font-size: 12px;
+      color: #ed1414;
+      margin-top: 5px;
+    }
+    .buttom-action {
+      position: fixed;
+			bottom: 2%;
+      width: 100%;
+      padding: 0 10px;
+      overflow: hidden;
+    }
+    .buttom-action > button {
+      width: 45%;
+      height: 44px;
+      font-size: 18px;
+      border-radius: 5px;
+      outline: none;
+    }
+    .buttom-action .b-back {
+      float: left;
+      color: #383838;
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+    .buttom-action .b-next {
+      float: right;
+      color: #fff;
+      border: none;
+      background: #fc7b02;
+      opacity: 0.7;
+    }
+    .buttom-action .b-next.on { opacity: 1 }
+	</style>
+  <script src="./static/js/jquery.min.js"></script>
+</head>
+<body>
+  <img class="head" src="./static/images/defaultPick/05.jpg" alt="头像" />
+	<p>请选择您的头像:</p>
+  <ul class="choiceImg-wrap">
+    <li><img class="defaultPick" src="./static/images/defaultPick/01.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/02.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/03.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/04.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/05.jpg" /></li>
+  </ul>
+  <ul class="choiceImg-wrap">
+    <li><img class="defaultPick" src="./static/images/defaultPick/06.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/07.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/08.jpg" /></li>
+    <li><img class="defaultPick" src="./static/images/defaultPick/09.jpg" /></li>
+    <li class="addPhoto">
+      <input type="file" />
+    </li>
+  </ul>
+  <div class="nickName-wrap">
+    <input type="text" placeholder="输入昵称" class="ipt-nickname" maxlength="5" oninput="handleOnchange(value)" />
+    <div class="pormpt-text">✲昵称不能超过5个中文字符</div>
+  </div>
+  
+  <div class="buttom-action">
+    <button class="b-back">返回</button>
+    <button class="b-next">下一步</button>
+  </div>
+
+	<script>
+
+    var defaultImg = document.getElementsByClassName("defaultPick");
+		window.onload = function() {
+      for(var i = 0; i <= defaultImg.length; i++) {
+        defaultImg[i].height = defaultImg[0].width;
+      } 
+    }
+
+    // 默认选择一张头像
+    var $head = $('.head');
+    var getDefaultImg = Math.floor((Math.random()*9));
+    $('body .defaultPick').eq(getDefaultImg).parent().addClass('active');
+
+    // 选择默认头像
+    var $head = $('.head');
+    $('.choiceImg-wrap .defaultPick').click(function() {
+      for(var i = 0; i <= defaultImg.length; i ++) {
+        $('.choiceImg-wrap li').removeClass('active');
+      }
+      $(this).parent().addClass('active');
+      $head.attr('src',  $(this).attr('src'));
+    });
+    
+    function handleOnchange(value) {
+      if (value !== "") {
+        $('.b-next').addClass('on');
+        // 执行下一步操作 进入聊天室
+      } else {
+        $('.b-next').removeClass('on');
+      }
+    }
+
+	</script>
+</body>
+</html>
