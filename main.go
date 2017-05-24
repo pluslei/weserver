@@ -37,10 +37,10 @@ func main() {
 	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)
 
 	msg.SMSRun()
-	phoneNum := "13071231375"
-	sms := "hello bike"
-	sign := "ofo 小黄车"
-	msg.SendSMSMsg(phoneNum, sms, sign)
+	// phoneNum := "13071231375"
+	// sms := "hello bike"
+	// sign := "ofo 小黄车"
+	// msg.SendSMSMsg(phoneNum, sms, sign)
 
 	// InitCache()
 
