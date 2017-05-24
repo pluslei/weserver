@@ -200,8 +200,8 @@ func insertNodes() {
 	} else {
 		nodes := [...]Node{
 			{Id: 1, Title: "用户管理", Name: "user", Level: 1, Pid: 0, Remark: "用户管理", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user", Hide: 1, Ico: "am-icon-user"},
-			{Id: 2, Title: "用户审核", Name: "user/index", Level: 2, Pid: 1, Remark: "用户管理/用户列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/index", Hide: 1, Ico: ""},
-			{Id: 3, Title: "用户列表", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
+			{Id: 2, Title: "房间用户列表", Name: "user/index", Level: 2, Pid: 1, Remark: "用户管理/用户列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/index", Hide: 1, Ico: ""},
+			{Id: 3, Title: "公司用户列表", Name: "user/usersetlist", Level: 2, Pid: 1, Remark: "用户管理/用户设置列表", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usersetlist", Hide: 1, Ico: ""},
 			{Id: 4, Title: "更新用户", Name: "user/update", Level: 3, Pid: 2, Remark: "用户管理/增加用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/updateuser", Hide: 1, Ico: ""},
 			{Id: 5, Title: "删除用户", Name: "user/deluser", Level: 3, Pid: 2, Remark: "用户管理/删除用户", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/deluser", Hide: 1, Ico: ""},
 			{Id: 6, Title: "用户赋予角色", Name: "user/usertorole", Level: 3, Pid: 2, Remark: "用户管理/用户赋予角色", Status: 2, Group: &Group{Id: 1}, Sort: 100, Url: "weserver/user/usertorole", Hide: 1, Ico: ""},
