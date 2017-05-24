@@ -111,6 +111,7 @@ func (this *IndexController) LoginHandle() {
 
 	Id := strconv.FormatInt(user.CompanyId, 10)
 	this.SetSession("LoginInfo", user)
+	this.Redirect("")
 	this.Redirect("/wechat?state="+Id, 302)
 }
 

@@ -36,11 +36,19 @@ func main() {
 
 	/*msg.SMSRun()
 
+
 	phoneNum := "13554460187"
 	// phoneNum := "13071231375"
 	sms := "hello bike"
 	sign := "ofo 小黄车"
 	msg.SendSMSMsg(phoneNum, sms, sign)*/
+
+	// phoneNum := "13554460187"
+	// var code int64 = 3456
+	// sms := "hello bike"
+	// sign := "ofo 小黄车"
+	//  msg.SendSMSMsg(phoneNum, sign, sms)
+	// msg.SendIdentifyCode(phoneNum, sign, code)
 
 	InitCache()
 

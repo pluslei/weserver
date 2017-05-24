@@ -58,10 +58,25 @@ func (this *SetController) SetNickname() {
 	this.Ctx.WriteString("")
 }
 
+func (this *SetController) SetPhoneNum() {
+	if this.IsAjax() {
+		msg := this.GetString("str")
+		b := parsePhoneNumMsg(msg)
+		if b {
+			this.Rsp(true, "修改手机号", "")
+			return
+		} else {
+			this.Rsp(false, "修改手机号发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
 func parseSetIcon(msg string) bool {
 	info, err := ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
-		beego.Error("Shutup simplejson error", err)
+		beego.Error("parseSetIcon simplejson error", err)
 		return false
 	}
 	info, ok := info.(SetInfo)
@@ -75,7 +90,21 @@ func parseSetIcon(msg string) bool {
 func parseSetNicknameMsg(msg string) bool {
 	info, err := ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
-		beego.Error("UnShutup simplejson error", err)
+		beego.Error("parseSetNickName simplejson error", err)
+		return false
+	}
+	info, ok := info.(SetInfo)
+	if ok {
+		update(info.(SetInfo))
+		return true
+	}
+	return false
+}
+
+func parsePhoneNumMsg(msg string) bool {
+	info, err := ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("parseSetNickName simplejson error", err)
 		return false
 	}
 	info, ok := info.(SetInfo)
@@ -109,7 +138,7 @@ func update(info SetInfo) {
 }
 
 func updateInfo(info *SetInfo) {
-	if info.Icon == "" {
+	if info.Nickname != "" && info.Icon == "" && info.Phonenum == 0 {
 		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname)
 		if err != nil {
 			beego.Debug("update Regist nickname error", err)
@@ -122,7 +151,7 @@ func updateInfo(info *SetInfo) {
 		}
 	}
 
-	if info.Nickname == "" {
+	if info.Icon != "" && info.Nickname == "" && info.Phonenum == 0 {
 		_, err := m.UpdateRegistIcon(info.Uname, info.CompanyId, info.Icon)
 		if err != nil {
 			beego.Debug("update Regist nickname error", err)
@@ -131,6 +160,14 @@ func updateInfo(info *SetInfo) {
 		_, err = m.UpdateUserIcon(info.Uname, info.Icon)
 		if err != nil {
 			beego.Debug("update user nickname error", err)
+			return
+		}
+	}
+
+	if info.Phonenum != 0 && info.Nickname == "" && info.Icon == "" {
+		_, err := m.UpdateUserPhoneNum(info.Uname, info.Phonenum)
+		if err != nil {
+			beego.Debug("update user Phonenum error", err)
 			return
 		}
 	}

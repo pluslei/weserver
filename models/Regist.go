@@ -22,6 +22,8 @@ type Regist struct {
 	Role          *Role     `orm:"rel(one)"`
 	Title         *Title    `orm:"rel(one)"`
 	IsShutup      bool      //是否禁言
+	PushWeChat    int64     //推送微信 0 不推送 1 推送
+	PushSMS       int64     //推送短信 0 不推送 1 推送
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 
