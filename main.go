@@ -8,6 +8,7 @@ import (
 	_ "weserver/routers"
 	. "weserver/src/cache"
 	"weserver/src/mqtt"
+	"weserver/src/msg"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -34,14 +35,7 @@ func main() {
 	// msg := "策略消息3"
 	// wechat.SendTxTMsg("oWrhuv7EjuWJs6d3K3xTJ1YOlkUc", msg)
 
-	/*msg.SMSRun()
-
-
-	phoneNum := "13554460187"
-	// phoneNum := "13071231375"
-	sms := "hello bike"
-	sign := "ofo 小黄车"
-	msg.SendSMSMsg(phoneNum, sms, sign)*/
+	msg.SMSRun()
 
 	// phoneNum := "13554460187"
 	// var code int64 = 3456
