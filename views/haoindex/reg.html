@@ -141,7 +141,7 @@
     </li>
   </ul>
   <div class="nickName-wrap">
-    <input type="text" placeholder="输入昵称" class="ipt-nickname" maxlength="5" id="nikename" oninput="handleOnchange(value)" />
+    <input type="text" placeholder="输入昵称" class="ipt-nickname" maxlength="6" id="nikename" oninput="handleOnchange(value)" />
     <div class="pormpt-text">✲昵称不能超过5个中文字符</div>
   </div>
   
@@ -154,7 +154,7 @@
 
     var defaultImg = document.getElementsByClassName("defaultPick");
 		window.onload = function() {
-      for(var i = 0; i <= defaultImg.length; i++) {
+      for(var i = 0; i < defaultImg.length; i++) {
         defaultImg[i].height = defaultImg[0].width;
       } 
     }
@@ -167,7 +167,7 @@
     // 选择默认头像
     var $head = $('.head');
     $('.choiceImg-wrap .defaultPick').click(function() {
-      for(var i = 0; i <= defaultImg.length; i ++) {
+      for(var i = 0; i < defaultImg.length; i ++) {
         $('.choiceImg-wrap li').removeClass('active');
       }
       $(this).parent().addClass('active');
@@ -185,7 +185,7 @@
     }
 
     function gonext(){
-      var headicon = $('#headicon').src;
+      var headicon = $('#headicon').attr('src');
       var nikename = $('#nikename').val();
       $.ajax({
         url: '/nomallogin',

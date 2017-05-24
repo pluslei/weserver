@@ -239,10 +239,18 @@ func UpdateRegistUserName(UserId int64, Username string) (int64, error) {
 	})
 }
 
-func UpdateRegistMode(UserId int64, Nickname, Icon string) (int64, error) {
+func UpdateRegistMode(UserId int64, UserName, Nickname, Icon string) (int64, error) {
 	o := orm.NewOrm()
-
+	if UserName != "" {
+		return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
+			"Nickname":      Nickname,
+			"UserIcon":      Icon,
+			"Lastlogintime": time.Now(),
+			"Loginmode":     0,
+		})
+	}
 	return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
+		"Username":      UserName,
 		"Nickname":      Nickname,
 		"UserIcon":      Icon,
 		"Lastlogintime": time.Now(),

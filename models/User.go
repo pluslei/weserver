@@ -330,10 +330,18 @@ func UpdateUserName(Account string, Username string) (int64, error) {
 	})
 }
 
-func UpdateUserMode(UserId int64, Nickname, Icon string) (int64, error) {
+func UpdateUserMode(UserId int64, UserName, Nickname, Icon string) (int64, error) {
 	o := orm.NewOrm()
-
+	if UserName != "" {
+		return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
+			"Nickname":      Nickname,
+			"UserIcon":      Icon,
+			"Lastlogintime": time.Now(),
+			"Loginmode":     0,
+		})
+	}
 	return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
+		"Username":      UserName,
 		"Nickname":      Nickname,
 		"UserIcon":      Icon,
 		"Lastlogintime": time.Now(),
