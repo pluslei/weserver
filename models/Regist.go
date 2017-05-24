@@ -22,8 +22,9 @@ type Regist struct {
 	Role          *Role     `orm:"rel(one)"`
 	Title         *Title    `orm:"rel(one)"`
 	IsShutup      bool      //是否禁言
-	PushWeChat    int64     //推送微信 0 不推送 1 推送
-	PushSMS       int64     //推送短信 0 不推送 1 推送
+	Pushwechat    int64     //推送微信 0 不推送 1 推送
+	Pushsms       int64     //推送短信 0 不推送 1 推送
+	Loginmode     int64     //0 普通登录 1 微信登录
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 
@@ -219,12 +220,33 @@ func UpdateWechatUserInfo(id, roleId, titleId int64, regstatus int) (int64, erro
 
 // 更新指定账户的username
 func UpdateRegistName(userid int64, username, nickname, icon string) (int64, error) {
-	beego.Debug("userid", userid, username, icon)
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("UserId", userid).Update(orm.Params{
-		"Username": username,
-		"Nickname": nickname,
-		"UserIcon": icon,
+		"Username":  username,
+		"Nickname":  nickname,
+		"UserIcon":  icon,
+		"Loginmode": 1,
+	})
+}
+
+func UpdateRegistUserName(UserId int64, Username string) (int64, error) {
+	o := orm.NewOrm()
+
+	return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
+		"Username":      Username,
+		"Lastlogintime": time.Now(),
+		"Loginmode":     0,
+	})
+}
+
+func UpdateRegistMode(UserId int64, Nickname, Icon string) (int64, error) {
+	o := orm.NewOrm()
+
+	return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
+		"Nickname":      Nickname,
+		"UserIcon":      Icon,
+		"Lastlogintime": time.Now(),
+		"Loginmode":     0,
 	})
 }
 
