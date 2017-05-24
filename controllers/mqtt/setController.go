@@ -165,7 +165,7 @@ func updateInfo(info *SetInfo) {
 	}
 
 	if info.Phonenum != 0 && info.Nickname == "" && info.Icon == "" {
-		_, err = m.UpdateUserPhoneNum(info.Uname, info.Phonenum)
+		_, err := m.UpdateUserPhoneNum(info.Uname, info.Phonenum)
 		if err != nil {
 			beego.Debug("update user Phonenum error", err)
 			return
