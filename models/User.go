@@ -132,6 +132,13 @@ func UpdateUserIcon(username string, Icon string) (int64, error) {
 	return id, err
 }
 
+func UpdateUserPhoneNum(username string, PhoneNum int64) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Phone": PhoneNum})
+	return id, err
+}
+
 // 根据用户名查找
 func GetUserByUsername(username string) (user User, err error) {
 	user = User{Username: username}

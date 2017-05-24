@@ -1,8 +1,9 @@
 package tools
 
 import (
+	"crypto/rand"
 	"encoding/json"
-	"math/rand"
+	"math/big"
 
 	"github.com/astaxie/beego"
 )
@@ -512,6 +513,7 @@ type SetInfo struct {
 	CompanyId int64
 	Icon      string
 	Nickname  string
+	Phonenum  int64
 }
 
 //######################################################################################
@@ -547,15 +549,35 @@ type OnlineUserMsg struct {
 	UserIcon string //用户logo
 }
 
-//生成一个新的验证码
-func NewRandName(randlen int, s rand.Source) string {
-	var strrandname string
-	Letternumber := []byte(`ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678`) // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
-	length := len(Letternumber)
-	r := rand.New(s)
-	for i := 0; i < randlen; i++ {
-		n := r.Intn(length)
-		strrandname += string(Letternumber[n])
+// //生成一个新的验证码
+// func NewRandName(randlen int, s rand.Source) string {
+// 	var strrandname string
+// 	Letternumber := []byte(`ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678`) // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+// 	length := len(Letternumber)
+// 	r := rand.New(s)
+// 	for i := 0; i < randlen; i++ {
+// 		n := r.Intn(length)
+// 		strrandname += string(Letternumber[n])
+// 	}
+// 	return strrandname
+// }
+
+func RandInt64(min, max int64) int64 {
+	maxBigInt := big.NewInt(max)
+	i, _ := rand.Int(rand.Reader, maxBigInt)
+	if i.Int64() < min {
+		RandInt64(min, max)
 	}
-	return strrandname
+	return i.Int64()
+}
+
+//随机数
+func RandomInt64(min, max int64) int64 {
+	maxBigInt := big.NewInt(max)
+	i, _ := rand.Int(rand.Reader, maxBigInt)
+	iInt64 := i.Int64()
+	if iInt64 < min {
+		iInt64 = RandInt64(min, max)
+	}
+	return iInt64
 }
