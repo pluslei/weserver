@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>用户登录</title>
+	<link rel="stylesheet" href="./static/css/amazeui.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html, body {
+			height: 100%;
+		}
+		.loginBody {
+			background: #efefef url(./static/img/login/login-bg.jpg) repeat;
+			background-size: cover;
+			text-align: center;
+			overflow: hidden;
+		}
+		.loginBody .title {
+			color: #fff;
+			font-size: 1.8rem;
+			margin-top: 35%;
+		}
+		.login-mode {
+			width: 88.88%;
+			height: 33.33%;
+    	margin: 40px auto 0;
+			position: relative;
+		}
+		.mode-content {
+			width: 50%;
+			height: 100%;
+			float: left;
+			background-color: rgba(255, 255, 255, 0.6);
+			text-align: center;
+		}
+		.mode-content .mode-icon {
+			width: 65px;
+			height: 65px;
+			border-radius: 50%;
+			margin: 35% auto 0;
+			background-image: url(./static/images/sprit-login.png);
+		}
+		.mode-content.mode-wx {
+			border-top-left-radius: 50px;
+    	border-bottom-left-radius: 50px;
+		}
+		.mode-content.mode-new {
+			border-top-right-radius: 50px;
+    	border-bottom-right-radius: 50px;
+		}
+		.mode-content.mode-wx .mode-icon{
+			background-position: -65px 0;
+		}
+		.mode-content.mode-new .mode-icon{
+			background-position: -65px 65px;
+		}
+		.mode-content p {
+			color: #000;
+			font-size: 14px;
+			margin-top: 1.2rem;
+		}
+		.mode-wx.current,
+		.mode-new.current {
+			background-color: #e6e6e6;
+		}
+		.mode-wx.current .mode-icon {
+			background-position: 0 0;
+		}
+		.mode-wx.current p {
+			color: #00BB00;
+		}
+		.mode-new.current .mode-icon {
+			background-position: 0px 65px;
+		}
+		.mode-new.current p {
+			color: #fc7b03;
+		}
+		.login-mode .or {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 24px;
+			height: 24px;
+			background: #fff;
+			color: #999;
+		}
+		.loginBody .select-next {
+			position: fixed;
+			bottom: 2%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 83.33%;
+			height: 44px;
+			line-height: 44px;
+			font-size: 18px;
+			border-radius: 5px;
+			color: #fff;
+			background: #FC7B03;
+		}
+	</style>
+	<script src="./static/js/jquery.min.js"></script>
+</head>
+<body class="loginBody">
+	<div class="title">选择头像及昵称</div>
+	<div class="login-mode">
+		<div class="mode-content mode-wx current">
+			<div class="mode-icon"></div>
+			<p>使用微信头像、昵称</p>
+		</div>
+		<div class="mode-content mode-new">
+			<div class="mode-icon"></div>
+			<p>创建新的头像、昵称</p>
+		</div>
+		<div class="or">Or</div>
+	</div>
+	<div class="select-next">下一步</div>
+
+	<script>
+		$('.mode-content').click(function(){
+			$(this).addClass('current').siblings().removeClass('current');
+		})
+		$('.select-next').click(function(){
+			if($('.mode-content').eq(0).hasClass('current')){
+				// 微信登录
+			} else {
+				// 跳转到用户设置页面 创建新的头像
+				window.location.href="./reg.html"
+			}
+		})
+	</script>
+</body>
+</html>
