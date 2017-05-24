@@ -41,6 +41,7 @@ type User struct {
 	Role          *Role     `orm:"null;rel(one)"`
 	Title         *Title    `orm:"null;rel(one)"`
 	Authcode      int64     // 手机号验证码
+	Loginmode     int64     // 0 普通账号 1 微信账号
 
 	LogintimeStr  string `orm:"-"` //登录时间
 	OnlinetimeStr string `orm:"-"` //在线时长
@@ -299,6 +300,7 @@ func BindWechatIcon(Id int64, userInfo *oauth.UserInfo) (int64, error) {
 		"Unionid":       userInfo.Unionid,
 		"Headimgurl":    userInfo.HeadImgURL,
 		"Lastlogintime": time.Now(),
+		"Loginmode":     1,
 	})
 }
 
@@ -314,6 +316,28 @@ func BindWechat(Id int64, userInfo *oauth.UserInfo) (int64, error) {
 		"Unionid":       userInfo.Unionid,
 		"Headimgurl":    userInfo.HeadImgURL,
 		"Lastlogintime": time.Now(),
+	})
+}
+
+func UpdateUserName(Account string, Username string) (int64, error) {
+	o := orm.NewOrm()
+
+	return o.QueryTable(new(User)).Filter("Account", Account).Update(orm.Params{
+		"Username":      Username,
+		"Lastlogintime": time.Now(),
+		"Openid":        Username,
+		"Loginmode":     0,
+	})
+}
+
+func UpdateUserMode(UserId int64, Nickname, Icon string) (int64, error) {
+	o := orm.NewOrm()
+
+	return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
+		"Nickname":      Nickname,
+		"UserIcon":      Icon,
+		"Lastlogintime": time.Now(),
+		"Loginmode":     0,
 	})
 }
 

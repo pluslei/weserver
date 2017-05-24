@@ -159,7 +159,12 @@ func Router() {
 	//*********************************************************************************************
 	// 前端
 	beego.Router("/", &haoindex.IndexController{}, "*:Redirectr")
-	beego.Router("/login", &haoindex.IndexController{}, "*:WeChatLogin")
+	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/chooseloginmode", &haoindex.IndexController{}, "*:GetLoginMode")
+	beego.Router("/wechatlogin", &haoindex.IndexController{}, "*:WeChatLogin")
+	beego.Router("/setlogin", &haoindex.IndexController{}, "*:SetLogin")
+
+	beego.Router("/nomallogin", &haoindex.IndexController{}, "*:NomalLogin")
 	beego.Router("/pclogin", &haoindex.IndexController{}, "*:PCLogin")
 	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")

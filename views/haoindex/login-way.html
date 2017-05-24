@@ -128,9 +128,10 @@
 		$('.select-next').click(function(){
 			if($('.mode-content').eq(0).hasClass('current')){
 				// 微信登录
+				window.location.href="/wechatlogin";
 			} else {
 				// 跳转到用户设置页面 创建新的头像
-				window.location.href="./reg.html"
+				window.location.href="/setlogin";
 			}
 		})
 	</script>
