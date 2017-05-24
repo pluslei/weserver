@@ -116,6 +116,7 @@ func Router() {
 	beego.Router("/weserver/data/room_edit", &haoadmin.RoomController{}, "*:Edit")
 	beego.Router("/weserver/data/room_del", &haoadmin.RoomController{}, "*:Del")
 	beego.Router("/weserver/data/upload", &haoadmin.RoomController{}, "*:Upload")
+	beego.Router("/weserver/data/room_show", &haoadmin.RoomController{}, "*:IsShow") //隐藏或显示房间
 
 	//公司信息管理
 	beego.Router("/weserver/data/company", &haoadmin.CompanyController{}, "*:Index")            //公司信息展示
@@ -216,6 +217,7 @@ func Router() {
 	//setting
 	beego.Router("/chat/user/set/icon", &mqtt.SetController{}, "*:SetIcon")
 	beego.Router("/chat/user/set/Nickname", &mqtt.SetController{}, "*:SetNickname")
+	beego.Router("/chat/user/set/phoneNum", &mqtt.SetController{}, "*:SetPhoneNum")
 
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")

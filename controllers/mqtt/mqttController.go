@@ -1,8 +1,6 @@
 package mqtt
 
 import (
-	"crypto/rand"
-	"math/big"
 	"strings"
 	"sync"
 	"time"
@@ -460,15 +458,4 @@ func getToal() int64 {
 	totalLock.Lock()
 	defer totalLock.Unlock()
 	return total
-}
-
-//随机数
-func RandomInt64(min, max int64) int64 {
-	maxBigInt := big.NewInt(max)
-	i, _ := rand.Int(rand.Reader, maxBigInt)
-	iInt64 := i.Int64()
-	if iInt64 < min {
-		iInt64 = RandomInt64(min, max)
-	}
-	return iInt64
 }

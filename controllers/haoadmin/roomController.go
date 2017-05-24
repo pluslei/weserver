@@ -243,3 +243,36 @@ func getRoomId() string {
 	}
 	return random
 }
+
+//隐藏/显示 房间
+func (this *RoomController) IsShow() {
+	id, err := this.GetInt64("id")
+	if err != nil {
+		beego.Debug("get id error", err)
+		this.AlertBack("获取房间信息失败")
+		return
+	}
+	if this.IsAjax() {
+		showed, _ := this.GetInt64("midPage")
+		var newShowed int64
+		var replyCount string
+		if showed == 0 {
+			newShowed = 1
+			replyCount = "显示房间"
+		} else {
+			newShowed = 0
+			replyCount = "隐藏房间"
+		}
+		beego.Info("id:", id, "showed:", showed, "newShowed", newShowed)
+		_, err = models.UpdateRoomShowed(id, newShowed)
+		if err != nil {
+			replyCount = replyCount + "失败"
+			beego.Error("inser faild", err)
+			this.Rsp(false, replyCount, "")
+		} else {
+			replyCount = replyCount + "成功"
+			this.Rsp(true, replyCount, "")
+		}
+		this.Rsp(false, replyCount, "")
+	}
+}

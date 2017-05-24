@@ -6,7 +6,7 @@ import (
 	"weserver/controllers/haoindex"
 	m "weserver/models"
 	_ "weserver/routers"
-	// . "weserver/src/cache"
+	. "weserver/src/cache"
 	"weserver/src/mqtt"
 
 	"weserver/src/msg"
@@ -42,7 +42,14 @@ func main() {
 	// sign := "ofo 小黄车"
 	// msg.SendSMSMsg(phoneNum, sms, sign)
 
-	// InitCache()
+	// phoneNum := "13554460187"
+	// var code int64 = 3456
+	// sms := "hello bike"
+	// sign := "ofo 小黄车"
+	//  msg.SendSMSMsg(phoneNum, sign, sms)
+	// msg.SendIdentifyCode(phoneNum, sign, code)
+
+	InitCache()
 
 	beego.ErrorController(&haoindex.ErrorController{}) //注册错误处理的函数
 

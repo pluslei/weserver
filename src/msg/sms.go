@@ -11,13 +11,8 @@ type Config struct {
 	Url              string
 	USER_ACCOUNT_URL string
 	USER_POST_Url    string
+	USER_IDENTI_Url  string
 }
-
-// SMS_NAME = 13552389469
-// SMS_PWD = 25FE2D232B6A0ABA40508CFC1E0F
-// SMS_URL = "http://web.wasun.cn/asmx/smsservice.aspx?"
-// SMS_ACCOUNT = "name=%s&pwd=%s&"
-// SMS_USER_URL = "mobile=%s&content=%s&sign=%s&stime=&type=pt&extno="
 
 var msg *SMS
 
@@ -26,20 +21,32 @@ func getParam() *Config {
 	info.Url = beego.AppConfig.String("SMS_URL")
 	Name := beego.AppConfig.String("SMS_NAME")
 	Pwd := beego.AppConfig.String("SMS_PWD")
-	info.USER_ACCOUNT_URL = fmt.Sprintf(info.Url, Name, Pwd)
+	ACCOUNT := beego.AppConfig.String("SMS_ACCOUNT")
+	info.USER_ACCOUNT_URL = fmt.Sprintf(ACCOUNT, Name, Pwd)
 	info.USER_POST_Url = beego.AppConfig.String("SMS_USER_URL")
+	info.USER_IDENTI_Url = beego.AppConfig.String("SMS_IDENTI_URL")
 	return &info
 }
 
 func SMSRun() {
 	info := getParam()
 	msg = Start(info)
-	msg.Running()
+	msg.RunSMSing()
+	msg.RunCodeing()
 	beego.Debug("SMS Init ok !")
 }
 
-func SendSMSMsg(phoneNum, sms, sign string) error {
-	err := msg.sendSMSmsg(phoneNum, sms, sign)
+func SendSMSMsg(phoneNum, sign, sms string) error {
+	err := msg.sendSMSmsg(phoneNum, sign, sms)
+	if err != nil {
+		beego.Debug("SendTxTMsg() error:", err)
+		return err
+	}
+	return nil
+}
+
+func SendIdentifyCode(phoneNum, sign string, code int64) error {
+	err := msg.sendSMSCode(phoneNum, sign, code)
 	if err != nil {
 		beego.Debug("SendTxTMsg() error:", err)
 		return err

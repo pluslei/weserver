@@ -13,8 +13,7 @@
                     <tr>
                         <th>用户昵称</th>
                         <th>发送时间</th>
-                        <th>老师名称</th>
-                        <th>消息内容</th>
+                        <th>提问内容</th>
                         <th>回复内容</th>
                         <th>操作</th>
                     </tr>
@@ -66,7 +65,7 @@
             "bSort": false,
             "aoColumns": [
                 {"mDataProp": "Nickname",},
-                 {"mDataProp": "Datatime",
+                 {"mDataProp": "Time",
                  "fnCreatedCell": function(nTd, sData, oData, iRow, iCol){
                     var data2 = new Date(sData);
                     console.info("data2", data2)
@@ -75,7 +74,6 @@
                  }
                  
                  },
-                {"mDataProp": "AcceptUname",},
                {"mDataProp": "Content",},
                {"mDataProp": "AcceptContent",},
                 {"mDataProp": "Id",
@@ -83,10 +81,10 @@
                         var  huifu = "回复";
                         if(oData.AcceptContent != null && oData.AcceptContent != ""){
                             huifu = "已回复";
-                    $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' href='/weserver/data/question_reply?id="+sData+"'>"+huifu+"</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                    $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' disabled='true'>"+huifu+"</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.rspId + ");'><span class='am-icon-trash-o'></span> 删除回复</a></div>");
                  
                         }else{
-                    $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' href='/weserver/data/question_reply?id="+sData+"'><span class='am-icon-pencil-square-o'></span> "+huifu+"</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.Id + ");'><span class='am-icon-trash-o'></span> 删除</a></div>");
+                    $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' href='/weserver/data/question_reply?questionId="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> "+huifu+"</a></div>");
                         }
                         
                     }
