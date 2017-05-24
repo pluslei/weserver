@@ -8,7 +8,6 @@ import (
 	_ "weserver/routers"
 	. "weserver/src/cache"
 	"weserver/src/mqtt"
-
 	"weserver/src/msg"
 
 	"github.com/astaxie/beego"
