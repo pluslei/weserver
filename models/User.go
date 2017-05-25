@@ -126,8 +126,9 @@ func UpdateUserNickname(username string, Nickname string, Icon string) (int64, e
 	var err error
 	if Nickname != "" && Icon != "" {
 		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
-			"Nickname": Nickname,
-			"UserIcon": Icon,
+			"Nickname":   Nickname,
+			"Headimgurl": Icon,
+			"UserIcon":   Icon,
 		})
 	}
 	if Nickname != "" && Icon == "" {
@@ -137,7 +138,8 @@ func UpdateUserNickname(username string, Nickname string, Icon string) (int64, e
 	}
 	if Nickname == "" && Icon != "" {
 		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
-			"UserIcon": Icon,
+			"Headimgurl": Icon,
+			"UserIcon":   Icon,
 		})
 	}
 	return id, err
