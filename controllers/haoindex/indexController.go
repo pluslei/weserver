@@ -300,6 +300,8 @@ func (this *IndexController) Index() {
 		} else {
 			user.RoleTitle = "游客" //用户类型
 		}
+		user.PhoneNum = userLoad.Phone
+
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
 		var info m.Company
