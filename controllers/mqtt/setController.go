@@ -73,7 +73,7 @@ func (this *SetController) VerifyCode() {
 		num, err := strconv.ParseInt(phoneNum, 10, 64)
 		authCode, err := strconv.ParseInt(code, 10, 64)
 		_, count, err := m.GetUserAuthCode(username, num, authCode)
-		if err != nil && count == 1 {
+		if err == nil && count == 1 {
 			this.Data["json"] = true
 			this.ServeJSON()
 			return
