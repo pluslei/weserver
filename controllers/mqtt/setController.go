@@ -28,10 +28,10 @@ func init() {
 	msg.runWriteDb()
 }
 
-func (this *SetController) SetIcon() {
+func (this *SetController) Setperson() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
-		b := parseSetIcon(msg)
+		b := parseSetperson(msg)
 		if b {
 			this.Rsp(true, "修改图标", "")
 			return
@@ -73,7 +73,7 @@ func (this *SetController) SetPhoneNum() {
 	this.Ctx.WriteString("")
 }
 
-func parseSetIcon(msg string) bool {
+func parseSetperson(msg string) bool {
 	info, err := ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("parseSetIcon simplejson error", err)
@@ -138,30 +138,16 @@ func update(info SetInfo) {
 }
 
 func updateInfo(info *SetInfo) {
-	if info.Nickname != "" && info.Icon == "" && info.Phonenum == 0 {
-		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname)
-		if err != nil {
-			beego.Debug("update Regist nickname error", err)
-			return
-		}
-		_, err = m.UpdateUserNickname(info.Uname, info.Nickname)
-		if err != nil {
-			beego.Debug("update user nickname error", err)
-			return
-		}
-	}
 
-	if info.Icon != "" && info.Nickname == "" && info.Phonenum == 0 {
-		_, err := m.UpdateRegistIcon(info.Uname, info.CompanyId, info.Icon)
-		if err != nil {
-			beego.Debug("update Regist nickname error", err)
-			return
-		}
-		_, err = m.UpdateUserIcon(info.Uname, info.Icon)
-		if err != nil {
-			beego.Debug("update user nickname error", err)
-			return
-		}
+	_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.Icon)
+	if err != nil {
+		beego.Debug("update Regist nickname error", err)
+		return
+	}
+	_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.Icon)
+	if err != nil {
+		beego.Debug("update user nickname error", err)
+		return
 	}
 
 	if info.Phonenum != 0 && info.Nickname == "" && info.Icon == "" {
