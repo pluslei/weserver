@@ -3310,7 +3310,7 @@ a {
   opacity: 0;
 }
 .PersonalEditer .nickName-wrap {
-  margin-top: 20%;
+  margin-top: 10%;
   text-align: center;
 }
 .PersonalEditer .nickName-wrap .ipt-nickname {
@@ -3363,6 +3363,7 @@ a {
 .PersonalEditer .choiceImg_wrap {
   padding: 0 10px;
   width: 100%;
+  overflow: hidden;
 }
 .PersonalEditer .choiceImg_wrap li {
   float: left;
