@@ -1,16 +1,13 @@
 package cache
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
 	"strconv"
 	m "weserver/models"
 
 	"github.com/astaxie/beego"
 )
+
+var Token_Url string
 
 var MapCache map[string]interface{}
 
@@ -83,43 +80,44 @@ func GetCompanyCache() {
 	}
 }
 
-func getAccessToken() error {
+// func getAccessToken(AppId, AppSecret string) error {
 
-	requestLine := fmt.Sprintf(w.accessTokenFetchUrl, w.appID, w.appSecret)
-	beego.Debug("GetTokenString", requestLine)
+// 	requestLine := fmt.Sprintf(Token_Url, AppId, AppSecret)
+// 	beego.Debug("GetTokenString", requestLine)
 
-	resp, err := http.Get(requestLine)
-	if err != nil || resp.StatusCode != http.StatusOK {
-		return err
-	}
-	defer resp.Body.Close()
+// 	resp, err := http.Get(requestLine)
+// 	if err != nil || resp.StatusCode != http.StatusOK {
+// 		return err
+// 	}
+// 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return err
-	}
-	beego.Debug("AccessToken:", string(body))
-	if bytes.Contains(body, []byte("access_token")) {
-		beego.Debug("Request ok!!!!!!!")
-		err = json.Unmarshal(body, w)
-		if err != nil {
-			return err
-		}
-		w.TextUrl = fmt.Sprintf(w.customServicePostUrl, w.AccessToken)
-		w.TemplateUrl = fmt.Sprintf(w.templatePostUrl, w.AccessToken)
-	} else {
-		beego.Debug("Request error!!!!!!!")
-		err = json.Unmarshal(body, w)
-		if err != nil {
-			return err
-		}
-	}
-	// beego.Debug(w.AccessToken, w.ExpiresIn, w.TextUrl)
-	return nil
-}
+// 	body, err := ioutil.ReadAll(resp.Body)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	beego.Debug("AccessToken:", string(body))
+// 	if bytes.Contains(body, []byte("access_token")) {
+// 		beego.Debug("Request ok!!!!!!!")
+// 		err = json.Unmarshal(body, w)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		w.TextUrl = fmt.Sprintf(w.customServicePostUrl, w.AccessToken)
+// 		w.TemplateUrl = fmt.Sprintf(w.templatePostUrl, w.AccessToken)
+// 	} else {
+// 		beego.Debug("Request error!!!!!!!")
+// 		err = json.Unmarshal(body, w)
+// 		if err != nil {
+// 			return err
+// 		}
+// 	}
+// 	// beego.Debug(w.AccessToken, w.ExpiresIn, w.TextUrl)
+// 	return nil
+// }
 
 func InitCache() {
 	MapCache = make(map[string]interface{})
+	// Token_Url := beego.AppConfig.String("TOKEN_URL")
 	GetShutMapCache()
 	GetCompanyCache()
 	beego.Debug(MapCache)
