@@ -341,7 +341,6 @@ func (this *IndexController) Index() {
 		this.Data["user"] = user
 
 		Wx, AppId, _ := GetWxObj(userLoad.CompanyId)
-		beego.Debug("aaaaaaa")
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 		beego.Debug("url", url)
 		beego.Debug("aaaaaaa1")
@@ -350,7 +349,6 @@ func (this *IndexController) Index() {
 		if err != nil {
 			beego.Error("get the jsapi config error", err)
 		}
-		beego.Debug("aaaaaaa2")
 		this.Data["appId"] = AppId
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
@@ -361,7 +359,6 @@ func (this *IndexController) Index() {
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
 		this.Data["servicephone"] = beego.AppConfig.String("servicephone")   //服务电话
-		beego.Debug("sssssss3")
 		this.TplName = "dist/index.html"
 	} else {
 		this.Redirect("/login", 302)

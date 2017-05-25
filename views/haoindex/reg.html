@@ -122,20 +122,20 @@
   <script src="./static/js/jquery.min.js"></script>
 </head>
 <body>
-  <img class="head" id="headicon" src="./static/images/defaultPick/05.jpg" alt="头像" />
+  <img class="head" id="headicon" src="/static/images/defaultPick/05.jpg" alt="头像" />
 	<p>请选择您的头像:</p>
   <ul class="choiceImg-wrap">
     <li><img class="defaultPick" src="/static/images/defaultPick/01.jpg" /></li>
     <li><img class="defaultPick" src="/static/images/defaultPick/02.jpg" /></li>
-    <li><img class="defaultPick" src="./static/images/defaultPick/03.jpg" /></li>
-    <li><img class="defaultPick" src="./static/images/defaultPick/04.jpg" /></li>
-    <li><img class="defaultPick" src="./static/images/defaultPick/05.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/03.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/04.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/05.jpg" /></li>
   </ul>
   <ul class="choiceImg-wrap">
-    <li><img class="defaultPick" src="./static/images/defaultPick/06.jpg" /></li>
-    <li><img class="defaultPick" src="./static/images/defaultPick/07.jpg" /></li>
-    <li><img class="defaultPick" src="./static/images/defaultPick/08.jpg" /></li>
-    <li><img class="defaultPick" src="./static/images/defaultPick/09.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/06.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/07.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/08.jpg" /></li>
+    <li><img class="defaultPick" src="/static/images/defaultPick/09.jpg" /></li>
     <li class="addPhoto">
       <input type="file" />
     </li>
@@ -195,7 +195,7 @@
           Icon : headicon,
         },
         success: function(data){
-
+            window.location.href="/index";
         }
       });
     }
