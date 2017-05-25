@@ -221,7 +221,7 @@ func Router() {
 	beego.Router("/chat/user/operateTeacher", &mqtt.TeacherController{}, "*:OperateTeacher")
 
 	//setting
-	beego.Router("/chat/user/set/icon", &mqtt.SetController{}, "*:SetIcon")
+	beego.Router("/chat/user/set/person", &mqtt.SetController{}, "*:Setperson")
 	beego.Router("/chat/user/set/Nickname", &mqtt.SetController{}, "*:SetNickname")
 	beego.Router("/chat/user/set/phoneNum", &mqtt.SetController{}, "*:SetPhoneNum")
 

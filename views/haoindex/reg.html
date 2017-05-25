@@ -122,7 +122,7 @@
   <script src="./static/js/jquery.min.js"></script>
 </head>
 <body>
-  <img class="head" src="./static/images/defaultPick/05.jpg" alt="头像" />
+  <img class="head" id="headicon" src="./static/images/defaultPick/05.jpg" alt="头像" />
 	<p>请选择您的头像:</p>
   <ul class="choiceImg-wrap">
     <li><img class="defaultPick" src="./static/images/defaultPick/01.jpg" /></li>
@@ -141,20 +141,20 @@
     </li>
   </ul>
   <div class="nickName-wrap">
-    <input type="text" placeholder="输入昵称" class="ipt-nickname" maxlength="5" oninput="handleOnchange(value)" />
+    <input type="text" placeholder="输入昵称" class="ipt-nickname" maxlength="6" id="nikename" oninput="handleOnchange(value)" />
     <div class="pormpt-text">✲昵称不能超过5个中文字符</div>
   </div>
   
   <div class="buttom-action">
     <button class="b-back">返回</button>
-    <button class="b-next">下一步</button>
+    <button class="b-next" onclick="gonext()">下一步</button>
   </div>
 
 	<script>
 
     var defaultImg = document.getElementsByClassName("defaultPick");
 		window.onload = function() {
-      for(var i = 0; i <= defaultImg.length; i++) {
+      for(var i = 0; i < defaultImg.length; i++) {
         defaultImg[i].height = defaultImg[0].width;
       } 
     }
@@ -167,7 +167,7 @@
     // 选择默认头像
     var $head = $('.head');
     $('.choiceImg-wrap .defaultPick').click(function() {
-      for(var i = 0; i <= defaultImg.length; i ++) {
+      for(var i = 0; i < defaultImg.length; i ++) {
         $('.choiceImg-wrap li').removeClass('active');
       }
       $(this).parent().addClass('active');
@@ -183,6 +183,23 @@
         $('.b-next').removeClass('on');
       }
     }
+
+    function gonext(){
+      var headicon = $('#headicon').attr('src');
+      var nikename = $('#nikename').val();
+      $.ajax({
+        url: '/nomallogin',
+        type: 'Post',
+        data:{
+          Nickname: nikename,
+          Icon : headicon,
+        },
+        success: function(data){
+
+        }
+      });
+    }
+
 
 	</script>
 </body>

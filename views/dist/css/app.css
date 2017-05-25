@@ -3124,8 +3124,8 @@ a {
 }
 .messageTip .messageTip-c img {
   float: right;
-  height: 22px;
-  margin-top: 9px;
+  height: 30px;
+  margin-top: 5px;
 }
 .messageTip .messageTip-tip {
   width: 100%;

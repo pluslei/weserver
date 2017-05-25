@@ -41,6 +41,9 @@ type Userinfor struct {
 	Insider       int64 //1内部人员或0外部人员
 	IsLogin       bool  //是否登入
 	IsFilter      bool  //是否检查
+	PushWechat    int64
+	PushSMS       int64
+	PhoneNum      int64
 }
 
 type VoiceResponse struct {
@@ -151,14 +154,20 @@ func (this *IndexController) NomalLogin() {
 		info := this.GetSession("LoginInfo")
 		Nickname := this.GetString("Nickname")
 		Icon := this.GetString("Icon")
-		beego.Debug("nickname, icon", Nickname, Icon)
 
-		_, err := m.UpdateUserMode(info.(*m.User).Id, Nickname, Icon)
+		username := tools.GetGuid()
+		var flag bool = false
+		if info.(*m.User).Username != "" {
+			flag = true
+		} else {
+			flag = false
+		}
+		_, err := m.UpdateUserMode(info.(*m.User).Id, flag, username, Nickname, Icon)
 		if err != nil {
 			beego.Debug("Update User table  Username Field Error", err)
 			this.Redirect("/login", 302)
 		}
-		_, err = m.UpdateRegistMode(info.(*m.User).Id, Nickname, Icon)
+		_, err = m.UpdateRegistMode(info.(*m.User).Id, flag, username, Nickname, Icon)
 		if err != nil {
 			beego.Debug("Update Regist table Username Field Error", err)
 			this.Redirect("/login", 302)
