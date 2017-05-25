@@ -131,6 +131,21 @@ func (this *SetController) SetPushWechat() {
 	this.Ctx.WriteString("")
 }
 
+func (this *SetController) SetPushSMS() {
+	if this.IsAjax() {
+		msg := this.GetString("str")
+		b := parsePushSMS(msg)
+		if b {
+			this.Rsp(true, "修改手机号", "")
+			return
+		} else {
+			this.Rsp(false, "修改手机号发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
 func parseSetperson(msg string) bool {
 	msginfo := new(SetInfo)
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
@@ -158,6 +173,17 @@ func parsePhoneNumMsg(msg string) bool {
 	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("parsePhoneNumMsg simplejson error", err)
+		return false
+	}
+	update(info)
+	return true
+}
+
+func parsePushSMS(msg string) bool {
+	msginfo := new(SetInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("parsePushSMS simplejson error", err)
 		return false
 	}
 	update(info)
@@ -199,15 +225,25 @@ func updateInfo(info *SetInfo) {
 		return
 	}
 
-	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 {
-		_, err := m.UpdateRegistPushWechat(info.RoomId, info.Uname, info.PushWechat)
+	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 && info.PushSMS == "" {
+		flag := strconv.ParseInt(info.PushWechat, 64, 10)
+		_, err := m.UpdateRegistPushWechat(info.RoomId, info.Uname, flag)
 		if err != nil {
-			beego.Debug("update user Phonenum error", err)
+			beego.Debug("update user PushWechat error", err)
 			return
 		}
 	}
 
-	if info.Phonenum != 0 && info.Nickname == "" && info.Icon == "" {
+	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 && info.PushWechat == "" {
+		flag := strconv.ParseInt(info.PushSMS, 64, 10)
+		_, err := m.UpdateRegistPushSMS(info.RoomId, info.Uname, flag)
+		if err != nil {
+			beego.Debug("update user PushSMS error", err)
+			return
+		}
+	}
+
+	if info.Phonenum != 0 && info.Nickname == "" && info.Icon == "" && info.PushSMS == "" && info.PushWechat == "" {
 		_, err := m.UpdateUserPhoneNum(info.Uname, info.Phonenum)
 		if err != nil {
 			beego.Debug("update user Phonenum error", err)

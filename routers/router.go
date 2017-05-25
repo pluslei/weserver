@@ -226,6 +226,7 @@ func Router() {
 	beego.Router("/chat/user/set/pushwechat", &mqtt.SetController{}, "*:SetPushWechat")
 	beego.Router("/chat/user/set/sendidentcode", &mqtt.SetController{}, "*:SetIdentiCode")
 	beego.Router("/chat/user/set/verifycode", &mqtt.SetController{}, "*:VerifyCode")
+	beego.Router("/chat/user/set/pushsms", &mqtt.SetController{}, "*:SetPushSMS")
 
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")

@@ -519,7 +519,8 @@ type SetInfo struct {
 	Icon       string
 	Nickname   string
 	Phonenum   int64
-	PushWechat int64
+	PushWechat string
+	PushSMS    string
 }
 
 func (t *SetInfo) ParseJSON(msg []byte) (s SetInfo, err error) {
