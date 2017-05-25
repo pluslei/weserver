@@ -281,15 +281,15 @@ func (this *IndexController) Index() {
 		}
 		user := new(Userinfor)
 		user.Uname = userLoad.Username
-		user.UserIcon = userInfo.Headimgurl
+		user.UserIcon = userLoad.Headimgurl
 		user.RoleName = userLoad.Role.Name
 		user.CompanyId = userLoad.CompanyId
 
 		// 设置昵称使用设置的
 		if len(userInfo.Remark) <= 0 {
-			user.Nickname = userInfo.Nickname
+			user.Nickname = userLoad.Nickname
 		} else {
-			user.Nickname = userInfo.Remark
+			user.Nickname = userLoad.Remark
 		}
 		user.IsLogin = true
 		if userLoad.Role.Id > 0 {
@@ -303,10 +303,10 @@ func (this *IndexController) Index() {
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
 		var info m.Company
-		strId := strconv.FormatInt(user.CompanyId, 10)
+		strId := strconv.FormatInt(userLoad.CompanyId, 10)
 		inter, ok := MapCache[strId]
 		if !ok {
-			info, err = m.GetCompanyById(user.CompanyId)
+			info, err = m.GetCompanyById(userLoad.CompanyId)
 			if err != nil {
 				beego.Debug("get login companyinfo error")
 			}
@@ -340,16 +340,17 @@ func (this *IndexController) Index() {
 		this.Data["title"] = info.WelcomeMsg //公告
 		this.Data["user"] = user
 
-		Wx, AppId, _ := GetWxObj(userInfo.CompanyId)
-
+		Wx, AppId, _ := GetWxObj(userLoad.CompanyId)
+		beego.Debug("aaaaaaa")
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 		beego.Debug("url", url)
-
+		beego.Debug("aaaaaaa1")
 		jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
 			beego.Error("get the jsapi config error", err)
 		}
+		beego.Debug("aaaaaaa2")
 		this.Data["appId"] = AppId
 		this.Data["timestamp"] = jsapi.TimeStamp //jsapi.Timestamp
 		this.Data["nonceStr"] = jsapi.NonceStr   //jsapi.NonceStr
@@ -360,6 +361,7 @@ func (this *IndexController) Index() {
 		this.Data["serviceimg"] = beego.AppConfig.String("serviceimg")       //客服图片
 		this.Data["loadingimg"] = beego.AppConfig.String("loadingimg")       //公司logo
 		this.Data["servicephone"] = beego.AppConfig.String("servicephone")   //服务电话
+		beego.Debug("sssssss3")
 		this.TplName = "dist/index.html"
 	} else {
 		this.Redirect("/login", 302)
