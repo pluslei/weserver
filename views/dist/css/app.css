@@ -3243,7 +3243,6 @@ a {
 }
 .PersonalEditer {
   background-color: #EBEBEB;
-  overflow: hidden;
   font-family: "Microsoft Yahei";
   height: 100%;
 }
@@ -3331,10 +3330,10 @@ a {
   margin-top: 5px;
 }
 .PersonalEditer .buttom-action {
-  position: fixed;
-  bottom: 2%;
+  position: absolute;
+  bottom: 0px;
   width: 100%;
-  padding: 0 10px;
+  padding: 10px 10px;
   overflow: hidden;
 }
 .PersonalEditer .buttom-action > button {
