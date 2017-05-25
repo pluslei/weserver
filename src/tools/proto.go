@@ -520,6 +520,15 @@ type SetInfo struct {
 	Phonenum  int64
 }
 
+func (t *SetInfo) ParseJSON(msg []byte) (s SetInfo, err error) {
+	var result SetInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
+}
+
+
 //######################################################################################
 
 func ParseJSONArray(msg []byte) (s []interface{}, err error) {

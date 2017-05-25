@@ -14,7 +14,7 @@
 			height: 100%;
 		}
 		.loginBody {
-			background: #efefef url(./static/img/login/login-bg.jpg) repeat;
+			background: #efefef url(/static/img/login/login-bg.jpg) repeat;
 			background-size: cover;
 			text-align: center;
 		}
@@ -89,7 +89,7 @@
 	</style>
 </head>
 <body class="loginBody">
-	<img src="./static/img/login/hm-logo.png" alt="" class="bgbg" />
+	<img src="/static/img/login/hm-logo.png" alt="" class="bgbg" />
 	<form action="/loginhandle" method="post" accept-charset="utf-8" id="loginform">
 		<div class="loginWrap">
 			<input type="hidden" class="ipt" name="openid" id="openid" name="openid" id="openid" value="{{.openid}}">

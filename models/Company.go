@@ -12,6 +12,8 @@ type Company struct {
 	Id            int64  `orm:"pk;auto"`
 	Company       string //公司名称
 	CompanyIntro  string //公司简介
+	LoginIcon     string //文字图标
+	LoginBackicon string //登录背景
 	CompanyIcon   string //公司icon图
 	CompanyBanner string //公司banner图
 	HistoryMsg    int64  //是否显示历史消息 0显示  1 不显示

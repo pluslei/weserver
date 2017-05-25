@@ -74,17 +74,15 @@ func (this *SetController) SetPhoneNum() {
 }
 
 func parseSetperson(msg string) bool {
-	info, err := ParseJSON(DecodeBase64Byte(msg))
+	msginfo := new(SetInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("parseSetIcon simplejson error", err)
 		return false
 	}
-	info, ok := info.(SetInfo)
-	if ok {
-		update(info.(SetInfo))
-		return true
-	}
-	return false
+
+	update(info)
+	return true
 }
 
 func parseSetNicknameMsg(msg string) bool {
