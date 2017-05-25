@@ -119,10 +119,27 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 	return status, err
 }
 
-func UpdateUserNickname(username string, Nickname string) (int64, error) {
+func UpdateUserNickname(username string, Nickname string, Icon string) (int64, error) {
 	o := orm.NewOrm()
 	var table User
-	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Nickname": Nickname})
+	var id int64
+	var err error
+	if Nickname != "" && Icon != "" {
+		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
+			"Nickname": Nickname,
+			"UserIcon": Icon,
+		})
+	}
+	if Nickname != "" && Icon == "" {
+		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
+			"Nickname": Nickname,
+		})
+	}
+	if Nickname == "" && Icon != "" {
+		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
+			"UserIcon": Icon,
+		})
+	}
 	return id, err
 }
 
@@ -330,9 +347,10 @@ func UpdateUserName(Account string, Username string) (int64, error) {
 	})
 }
 
-func UpdateUserMode(UserId int64, UserName, Nickname, Icon string) (int64, error) {
+func UpdateUserMode(UserId int64, flag bool, UserName, Nickname, Icon string) (int64, error) {
 	o := orm.NewOrm()
-	if UserName != "" {
+	if flag {
+		beego.Debug("ssss1", UserName)
 		return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
 			"Nickname":      Nickname,
 			"UserIcon":      Icon,
@@ -340,6 +358,7 @@ func UpdateUserMode(UserId int64, UserName, Nickname, Icon string) (int64, error
 			"Loginmode":     0,
 		})
 	}
+	beego.Debug("ssss2", UserName)
 	return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
 		"Username":      UserName,
 		"Nickname":      Nickname,

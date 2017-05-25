@@ -92,10 +92,29 @@ func UpdateRegistIsShut(room, username string, b bool) (int64, error) {
 	return id, err
 }
 
-func UpdateRegistNickname(username string, companyId int64, Nickname string) (int64, error) {
+func UpdateRegistNickname(username string, companyId int64, Nickname, icon string) (int64, error) {
 	o := orm.NewOrm()
 	var table Regist
-	id, err := o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{"Nickname": Nickname})
+	var id int64
+	var err error
+	if Nickname != "" && icon != "" {
+		id, err = o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{
+			"Nickname": Nickname,
+			"UserIcon": icon,
+		})
+		return id, err
+	}
+	if Nickname != "" && icon == "" {
+		id, err = o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{
+			"Nickname": Nickname,
+		})
+		return id, err
+	}
+	if Nickname == "" && icon != "" {
+		id, err = o.QueryTable(table).Filter("CompanyId", companyId).Filter("Username", username).Update(orm.Params{
+			"UserIcon": icon,
+		})
+	}
 	return id, err
 }
 
@@ -239,9 +258,10 @@ func UpdateRegistUserName(UserId int64, Username string) (int64, error) {
 	})
 }
 
-func UpdateRegistMode(UserId int64, UserName, Nickname, Icon string) (int64, error) {
+func UpdateRegistMode(UserId int64, flag bool, UserName, Nickname, Icon string) (int64, error) {
 	o := orm.NewOrm()
-	if UserName != "" {
+	if flag {
+		beego.Debug("ssssss3", UserName)
 		return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
 			"Nickname":      Nickname,
 			"UserIcon":      Icon,
@@ -249,6 +269,7 @@ func UpdateRegistMode(UserId int64, UserName, Nickname, Icon string) (int64, err
 			"Loginmode":     0,
 		})
 	}
+	beego.Debug("ssssss4", UserName)
 	return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
 		"Username":      UserName,
 		"Nickname":      Nickname,

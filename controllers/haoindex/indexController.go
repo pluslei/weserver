@@ -156,12 +156,18 @@ func (this *IndexController) NomalLogin() {
 		Icon := this.GetString("Icon")
 
 		username := tools.GetGuid()
-		_, err := m.UpdateUserMode(info.(*m.User).Id, username, Nickname, Icon)
+		var flag bool = false
+		if info.(*m.User).Username != "" {
+			flag = true
+		} else {
+			flag = false
+		}
+		_, err := m.UpdateUserMode(info.(*m.User).Id, flag, username, Nickname, Icon)
 		if err != nil {
 			beego.Debug("Update User table  Username Field Error", err)
 			this.Redirect("/login", 302)
 		}
-		_, err = m.UpdateRegistMode(info.(*m.User).Id, username, Nickname, Icon)
+		_, err = m.UpdateRegistMode(info.(*m.User).Id, flag, username, Nickname, Icon)
 		if err != nil {
 			beego.Debug("Update Regist table Username Field Error", err)
 			this.Redirect("/login", 302)
