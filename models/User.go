@@ -150,11 +150,21 @@ func UpdateUserIcon(username string, Icon string) (int64, error) {
 	return id, err
 }
 
-func UpdateUserPhoneNum(username string, PhoneNum int64) (int64, error) {
+func UpdateUserPhoneNum(username string, PhoneNum int64, code int64) (int64, error) {
 	o := orm.NewOrm()
 	var table User
-	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Phone": PhoneNum})
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{
+		"Phone":    PhoneNum,
+		"Authcode": code,
+	})
 	return id, err
+}
+
+func GetUserAuthCode(username string, PhoneNum, AuthCode int64) ([]User, int64, error) {
+	o := orm.NewOrm()
+	var info []User
+	num, err := o.QueryTable("user").Filter("Username", username).Filter("Phone", PhoneNum).Filter("Authcode", AuthCode).All(&info)
+	return info, num, err
 }
 
 // 根据用户名查找

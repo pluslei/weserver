@@ -1,8 +1,11 @@
 package mqtt
 
 import (
+	"strconv"
 	"weserver/controllers"
 	m "weserver/models"
+	. "weserver/src/cache"
+	. "weserver/src/msg"
 	. "weserver/src/tools"
 
 	"github.com/astaxie/beego"
@@ -26,6 +29,61 @@ func init() {
 		set: make(chan *SetInfo, 20480),
 	}
 	msg.runWriteDb()
+}
+
+func (this *SetController) SetIdentiCode() {
+	if this.IsAjax() {
+		Id, err := this.GetInt64("CompanyId")
+		if err != nil {
+			beego.Debug("get companyId error", err)
+			return
+		}
+		var info m.Company
+		strId := strconv.FormatInt(Id, 10)
+		inter, ok := MapCache[strId]
+		if !ok {
+			info, err = m.GetCompanyById(Id)
+			if err != nil {
+				beego.Debug("get login companyinfo error")
+				return
+			}
+		} else {
+			info, _ = inter.(m.Company)
+			beego.Debug("memcache find")
+		}
+		username := this.GetString("Username")
+		phoneNum := this.GetString("phoneNum")
+		num, err := strconv.ParseInt(phoneNum, 10, 64)
+		code := RandomInt64(1000, 9999)
+		_, err = m.UpdateUserPhoneNum(username, num, code)
+		if err != nil {
+			beego.Debug("update phoneNum code error", err)
+			return
+		}
+		SendIdentifyCode(phoneNum, info.Sign, code)
+	}
+	this.Ctx.WriteString("")
+}
+
+func (this *SetController) VerifyCode() {
+	if this.IsAjax() {
+		username := this.GetString("Username")
+		phoneNum := this.GetString("phoneNum")
+		code := this.GetString("AuthCode")
+		num, err := strconv.ParseInt(phoneNum, 10, 64)
+		authCode, err := strconv.ParseInt(code, 10, 64)
+		_, count, err := m.GetUserAuthCode(username, num, authCode)
+		if err != nil && count == 1 {
+			this.Data["json"] = true
+			this.ServeJSON()
+			return
+		} else {
+			this.Data["json"] = false
+			this.ServeJSON()
+			return
+		}
+	}
+	this.Ctx.WriteString("")
 }
 
 func (this *SetController) Setperson() {
