@@ -226,7 +226,7 @@ func updateInfo(info *SetInfo) {
 	}
 
 	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 && info.PushSMS == "" {
-		flag, err := strconv.ParseInt(info.PushWechat, 64, 10)
+		flag, err := strconv.ParseInt(info.PushWechat, 10, 64)
 		if err != nil {
 			beego.Debug("get flag error", err)
 			return
@@ -239,7 +239,7 @@ func updateInfo(info *SetInfo) {
 	}
 
 	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 && info.PushWechat == "" {
-		flag, err := strconv.ParseInt(info.PushSMS, 64, 10)
+		flag, err := strconv.ParseInt(info.PushSMS, 10, 64)
 		if err != nil {
 			beego.Debug("get flag error", err)
 			return
