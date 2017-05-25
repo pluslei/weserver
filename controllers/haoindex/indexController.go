@@ -218,9 +218,10 @@ func (this *IndexController) GetWeChatInfo() {
 		beego.Debug("Get Wx Object Fail")
 		return
 	}
-
+	beego.Debug("aaaaa")
 	code := this.GetString("code")
 	if code == "" {
+		beego.Debug("aaaaa", Id)
 		oauthAccess := Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
 		err := oauthAccess.Redirect(Url, "snsapi_userinfo", Id)
 		if err != nil {
@@ -229,6 +230,7 @@ func (this *IndexController) GetWeChatInfo() {
 			return
 		}
 	} else {
+		beego.Debug("aaaaa1", nId)
 		oauthAccess := Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
 		resToken, err := oauthAccess.GetUserAccessToken(code)
 		if err != nil {
