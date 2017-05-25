@@ -54,6 +54,7 @@ func Router() {
 	beego.Router("/public/updatepwd", &haoadmin.MainController{}, "*:UpdateAdminPwd")
 
 	beego.Router("/weserver/public/index", &haoadmin.MainController{}, "*:Index")
+	beego.Router("/public/index", &haoadmin.MainController{}, "*:Index")
 	beego.Router("/weserver/public/changepwd", &haoadmin.MainController{}, "*:Changepwd")
 	// beego.Router("/weserver/public/choosecompany", &haoadmin.UserController{}, "*:ChooseCompany")
 	beego.Router("/weserver/user/adduser", &haoadmin.UserController{}, "*:AddUser")
@@ -158,7 +159,12 @@ func Router() {
 	//*********************************************************************************************
 	// 前端
 	beego.Router("/", &haoindex.IndexController{}, "*:Redirectr")
-	beego.Router("/login", &haoindex.IndexController{}, "*:WeChatLogin")
+	beego.Router("/login", &haoindex.IndexController{}, "*:Login")
+	beego.Router("/chooseloginmode", &haoindex.IndexController{}, "*:GetLoginMode")
+	beego.Router("/wechatlogin", &haoindex.IndexController{}, "*:WeChatLogin")
+	beego.Router("/setlogin", &haoindex.IndexController{}, "*:SetLogin")
+
+	beego.Router("/nomallogin", &haoindex.IndexController{}, "*:NomalLogin")
 	beego.Router("/pclogin", &haoindex.IndexController{}, "*:PCLogin")
 	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")
