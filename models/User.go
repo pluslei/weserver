@@ -150,13 +150,20 @@ func UpdateUserIcon(username string, Icon string) (int64, error) {
 	return id, err
 }
 
-func UpdateUserPhoneNum(username string, PhoneNum int64, code int64) (int64, error) {
+func UpdateUserAuthCode(username string, PhoneNum int64, code int64) (int64, error) {
 	o := orm.NewOrm()
 	var table User
 	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{
 		"Phone":    PhoneNum,
 		"Authcode": code,
 	})
+	return id, err
+}
+
+func UpdateUserPhoneNum(username string, PhoneNum int64) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Phone": PhoneNum})
 	return id, err
 }
 

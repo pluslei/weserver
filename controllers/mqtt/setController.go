@@ -55,7 +55,7 @@ func (this *SetController) SetIdentiCode() {
 		phoneNum := this.GetString("phoneNum")
 		num, err := strconv.ParseInt(phoneNum, 10, 64)
 		code := RandomInt64(1000, 9999)
-		_, err = m.UpdateUserPhoneNum(username, num, code)
+		_, err = m.UpdateUserAuthCode(username, num, code)
 		if err != nil {
 			beego.Debug("update phoneNum code error", err)
 			return
