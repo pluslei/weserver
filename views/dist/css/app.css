@@ -2797,6 +2797,10 @@ a {
           box-sizing: border-box;
   border-top: 1px solid #F0EFF5;
 }
+.Qditer .Qditer-editeText .teacher .user .tw {
+  display: inline-block;
+  width: 150px;
+}
 .Qditer .Qditer-editeText .teacher .user img {
   width: 30px;
   height: 30px;
@@ -3013,9 +3017,391 @@ a {
   font-size: 15px;
   cursor: pointer;
 }
+.replybtn .replybtn_c span img {
+  height: 20px;
+  float: left;
+  margin-top: 3px;
+  margin-right: 10px;
+}
 .replybtn .replybtn_c span:nth-of-type(1) {
   color: #b2b2b2;
 }
 .replybtn .replybtn_c span:nth-of-type(2) {
   color: #F96400;
+}
+.personal {
+  width: 100%;
+  height: 100%;
+  background: #EFEFF4;
+}
+.persoalCenter {
+  width: 100%;
+  height: 100%;
+  background: #EFEFF4;
+}
+.persoalCenter .personal-banner {
+  width: 100%;
+  height: 250px;
+  background-image: url('/i/personal/banner.png');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  position: relative;
+  text-align: center;
+}
+.persoalCenter .personal-banner .personal-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: inline-block;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.persoalCenter .personal-banner .personal-icon img {
+  width: 90px;
+  height: 90px;
+}
+.persoalCenter .personal-banner .personal-text p {
+  color: #fff;
+  margin: 0;
+}
+.persoalCenter .personal-banner .personal-text .personal-name {
+  font-size: 20px;
+  line-height: 28px;
+}
+.persoalCenter .personal-banner .personal-text .personal-editer {
+  font-size: 16px;
+  width: 70px;
+  height: 30px;
+  border: 1px solid #fff;
+  margin: 15px auto;
+  border-radius: 4px;
+  white-space: nowrap;
+  padding: 0 8px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  line-height: 30px;
+}
+.persoalCenter .personal-c .personal-messageTip {
+  margin: 10px 0;
+  height: 40px;
+  padding: 0px 20px;
+  background: #fff;
+  color: #353535;
+  font-size: 16px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.persoalCenter .personal-c .personal-messageTip img {
+  height: 16px;
+  float: left;
+  margin-top: 12px;
+  margin-right: 8px;
+}
+.persoalCenter .personal-c .personal-messageTip i {
+  float: right;
+}
+.persoalCenter .personal-c .personal-messageTip i img {
+  height: 18px;
+}
+.messageTip {
+  padding: 10px 0px;
+}
+.messageTip .messageTip-c {
+  height: 40px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px 20px;
+  color: #353535;
+  font-size: 16px;
+  line-height: 40px;
+  background: #fff;
+  position: relative;
+  border-bottom: 1px solid #EFEFF4;
+}
+.messageTip .messageTip-c img {
+  float: right;
+  height: 30px;
+  margin-top: 5px;
+}
+.messageTip .messageTip-tip {
+  width: 100%;
+  background: #EFEFF4;
+  font-size: 14px;
+  color: #9c9c9c;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 15px 20px;
+}
+.messageTip .isphone {
+  height: 40px;
+  width: auto;
+  float: right;
+}
+.messageTip .isphone-text {
+  width: 120px;
+  position: absolute;
+  left: 50%;
+  margin-left: -60px;
+  text-align: center;
+  color: #9c9c9c;
+  font-size: 14px;
+}
+.messageTip .addphone {
+  float: right;
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  background: #f96400;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.verification {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 30px 20px 0px 20px;
+}
+.verification .sendVerification {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid #e5e5e5;
+  height: 40px;
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: Center;
+  -webkit-align-items: Center;
+      -ms-flex-align: Center;
+          align-items: Center;
+  margin-bottom: 15px;
+}
+.verification .sendVerification input {
+  border: none;
+  resize: none;
+  -webkit-appearance: none;
+  width: 56%;
+  height: 30px;
+  line-height: 40px;
+  color: #9c9c9c;
+  padding: 0 8px;
+  outline: none;
+}
+.verification .sendVerification i {
+  margin: 0 10px;
+  color: #9c9c9c;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  overflow: hidden;
+}
+.verification .sendVerification i img {
+  height: 25px;
+}
+.verification .sendVerification button.verificationBtn {
+  color: #9c9c9c;
+  font-size: 14px;
+  border: none;
+  -webkit-appearance: none;
+  background: #fff;
+  white-space: nowrap;
+}
+.verification .phoneVer input {
+  display: inline-block;
+  width: 45%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 0 8px;
+  outline: none;
+}
+.verification .phoneVer span {
+  display: inline-block;
+  width: 34%;
+  height: 40px;
+  border-radius: 4px;
+  resize: none;
+  -webkit-appearance: none;
+  float: right;
+  background: #ccc;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+.PersonalEditer {
+  background-color: #EBEBEB;
+  overflow: hidden;
+  font-family: "Microsoft Yahei";
+  height: 100%;
+}
+.PersonalEditer .head {
+  width: 108px;
+  height: 108px;
+  margin: 16% auto 0;
+  display: block;
+  border-radius: 4px;
+}
+.PersonalEditer .head + p {
+  color: #383838;
+  text-align: center;
+}
+.PersonalEditer .choiceImg-wrap {
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.PersonalEditer .choiceImg-wrap li {
+  float: left;
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+.PersonalEditer .choiceImg-wrap li img {
+  width: 100%;
+}
+.PersonalEditer .choiceImg-wrap li:not(:last-child) {
+  margin-right: 10px;
+}
+.PersonalEditer .choiceImg-wrap li > .defaultPick {
+  width: 100%;
+}
+.PersonalEditer .choiceImg-wrap li.pactive:after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../static/images/checked.png);
+  -webkit-background-size: cover;
+          background-size: cover;
+}
+.PersonalEditer .choiceImg-wrap li.addPhoto {
+  position: relative;
+  background-image: url(../static/images/addPhoto.png);
+  -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+  border: none;
+}
+.PersonalEditer .choiceImg-wrap li.addPhoto [type="file"] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.PersonalEditer .nickName-wrap {
+  margin-top: 20%;
+  text-align: center;
+}
+.PersonalEditer .nickName-wrap .ipt-nickname {
+  width: 83.3%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 14px;
+  color: #383838;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 5px;
+  letter-spacing: 1.4px;
+}
+.PersonalEditer .nickName-wrap .pormpt-text {
+  font-size: 12px;
+  color: #ed1414;
+  margin-top: 5px;
+}
+.PersonalEditer .buttom-action {
+  position: fixed;
+  bottom: 2%;
+  width: 100%;
+  padding: 0 10px;
+  overflow: hidden;
+}
+.PersonalEditer .buttom-action > button {
+  width: 45%;
+  height: 44px;
+  font-size: 18px;
+  border-radius: 5px;
+  outline: none;
+}
+.PersonalEditer .buttom-action .b-back {
+  float: left;
+  color: #383838;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.PersonalEditer .buttom-action .b-next {
+  float: right;
+  color: #fff;
+  border: none;
+  background: #fc7b02;
+  opacity: 0.7;
+}
+.PersonalEditer .buttom-action .b-next.on {
+  opacity: 1;
+}
+.PersonalEditer .choiceImg_wrap {
+  padding: 0 10px;
+  width: 100%;
+}
+.PersonalEditer .choiceImg_wrap li {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  list-style: none;
+  width: calc(((100% - 40px) / 5));
+}
+.PersonalEditer .choiceImg_wrap li img {
+  width: calc(100%);
+}
+.PersonalEditer .choiceImg_wrap li:nth-of-type(5n) {
+  margin-right: 0px;
+}
+.PersonalEditer .choiceImg_wrap li.addPhoto {
+  width: calc(((100% - 40px) / 5));
+  height: calc(((100% - 40px) / 5));
+  position: relative;
+  background-image: url(../static/images/addPhoto.png);
+  -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+  border: none;
+}
+.PersonalEditer .choiceImg_wrap li.addPhoto [type="file"] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.PersonalEditer .choiceImg_wrap li.pactive:after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../static/images/checked.png);
+  -webkit-background-size: cover;
+          background-size: cover;
 }

@@ -43,21 +43,6 @@ func (this *SetController) Setperson() {
 	this.Ctx.WriteString("")
 }
 
-func (this *SetController) SetNickname() {
-	if this.IsAjax() {
-		msg := this.GetString("str")
-		b := parseSetNicknameMsg(msg)
-		if b {
-			this.Rsp(true, "修改昵称", "")
-			return
-		} else {
-			this.Rsp(false, "修改昵称发送失败,请重新发送", "")
-			return
-		}
-	}
-	this.Ctx.WriteString("")
-}
-
 func (this *SetController) SetPhoneNum() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
@@ -89,59 +74,36 @@ func (this *SetController) SetPushWechat() {
 }
 
 func parseSetperson(msg string) bool {
-	info, err := ParseJSON(DecodeBase64Byte(msg))
+	msginfo := new(SetInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
-		beego.Error("parseSetIcon simplejson error", err)
+		beego.Error("parseSetperson simplejson error", err)
 		return false
 	}
-	info, ok := info.(SetInfo)
-	if ok {
-		update(info.(SetInfo))
-		return true
-	}
-	return false
-}
-
-func parseSetNicknameMsg(msg string) bool {
-	info, err := ParseJSON(DecodeBase64Byte(msg))
-	if err != nil {
-		beego.Error("parseSetNickName simplejson error", err)
-		return false
-	}
-	info, ok := info.(SetInfo)
-	if ok {
-		update(info.(SetInfo))
-		return true
-	}
-	return false
+	update(info)
+	return true
 }
 
 func parsePushWechatMsg(msg string) bool {
-	info, err := ParseJSON(DecodeBase64Byte(msg))
+	msginfo := new(SetInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("parsePushWechatMsg simplejson error", err)
 		return false
 	}
-	info, ok := info.(SetInfo)
-	if ok {
-		update(info.(SetInfo))
-		return true
-	}
-	return false
+	update(info)
+	return true
 }
 
 func parsePhoneNumMsg(msg string) bool {
-	info, err := ParseJSON(DecodeBase64Byte(msg))
+	msginfo := new(SetInfo)
+	info, err := msginfo.ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
-		beego.Error("parseSetNickName simplejson error", err)
+		beego.Error("parsePhoneNumMsg simplejson error", err)
 		return false
 	}
-	info, ok := info.(SetInfo)
-	if ok {
-		update(info.(SetInfo))
-		return true
-	}
-	return false
+	update(info)
+	return true
 }
 
 func (s *SetMessage) runWriteDb() {
@@ -177,6 +139,14 @@ func updateInfo(info *SetInfo) {
 	if err != nil {
 		beego.Debug("update user nickname error", err)
 		return
+	}
+
+	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 {
+		_, err := m.UpdateRegistPushWechat(info.RoomId, info.Uname, info.PushWechat)
+		if err != nil {
+			beego.Debug("update user Phonenum error", err)
+			return
+		}
 	}
 
 	if info.Phonenum != 0 && info.Nickname == "" && info.Icon == "" {
