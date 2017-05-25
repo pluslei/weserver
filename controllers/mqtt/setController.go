@@ -73,6 +73,21 @@ func (this *SetController) SetPhoneNum() {
 	this.Ctx.WriteString("")
 }
 
+func (this *SetController) SetPushWechat() {
+	if this.IsAjax() {
+		msg := this.GetString("str")
+		b := parsePushWechatMsg(msg)
+		if b {
+			this.Rsp(true, "修改手机号", "")
+			return
+		} else {
+			this.Rsp(false, "修改手机号发送失败,请重新发送", "")
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
 func parseSetperson(msg string) bool {
 	info, err := ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
@@ -91,6 +106,20 @@ func parseSetNicknameMsg(msg string) bool {
 	info, err := ParseJSON(DecodeBase64Byte(msg))
 	if err != nil {
 		beego.Error("parseSetNickName simplejson error", err)
+		return false
+	}
+	info, ok := info.(SetInfo)
+	if ok {
+		update(info.(SetInfo))
+		return true
+	}
+	return false
+}
+
+func parsePushWechatMsg(msg string) bool {
+	info, err := ParseJSON(DecodeBase64Byte(msg))
+	if err != nil {
+		beego.Error("parsePushWechatMsg simplejson error", err)
 		return false
 	}
 	info, ok := info.(SetInfo)

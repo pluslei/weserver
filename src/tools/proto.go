@@ -513,11 +513,12 @@ func (k *ShutUpInfo) ParseJSON(msg []byte) (s []ShutUpInfo, err error) {
 //person setting
 
 type SetInfo struct {
-	Uname     string
-	CompanyId int64
-	Icon      string
-	Nickname  string
-	Phonenum  int64
+	Uname      string
+	CompanyId  int64
+	Icon       string
+	Nickname   string
+	Phonenum   int64
+	PushWechat int64
 }
 
 //######################################################################################
