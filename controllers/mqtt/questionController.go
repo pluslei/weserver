@@ -394,6 +394,7 @@ func operateQuestionData(info *QuestionInfo) {
 	op.Id = info.Id
 	op.Room = info.Room
 	OPERTYPE := info.OperateType
+	beego.Debug("operate type", OPERTYPE)
 	switch OPERTYPE {
 	case OPERATE_ASK_QUESTION:
 		if op.Id == 0 {

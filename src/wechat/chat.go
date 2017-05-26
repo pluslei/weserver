@@ -56,14 +56,7 @@ func GetUnameMapInfo() {
 	}
 }
 
-func Init() {
-	MapUname = make(map[string][]string)
-	GetUnameMapInfo()
-	beego.Debug(MapUname)
-}
-
 func WechatRun() {
-	Init()
 	info := getParam()
 	chat = Start(info)
 	chat.Running()
@@ -77,5 +70,15 @@ func SendTxTMsg(openId, msg string) error {
 		return err
 	}
 	beego.Debug("SendTxTMsg() ok!!")
+	return nil
+}
+
+func SendTemplateMsg(openId, msg string) error {
+	err := chat.sendTemplateMsg(openId, msg)
+	if err != nil {
+		beego.Debug("sendTemplateMsg() error:", err)
+		return err
+	}
+	beego.Debug("sendTemplateMsg() ok!!")
 	return nil
 }

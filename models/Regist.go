@@ -125,6 +125,13 @@ func UpdateRegistIcon(username string, companyId int64, Icon string) (int64, err
 	return id, err
 }
 
+func UpdateRegistPushWechat(RoomId, username string, PushWechat int64) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("Room", RoomId).Filter("Username", username).Update(orm.Params{"Pushwechat": PushWechat})
+	return id, err
+}
+
 //跟新登录时间
 func UpdateLoginTime(room, username string) (int64, error) {
 	o := orm.NewOrm()
@@ -301,4 +308,12 @@ func PrepareDelReisterUser(IdArray []int64) (int64, error) {
 		err = o.Commit()
 	}
 	return status, err
+}
+
+//根据userId删除registUser
+func DelRegistUserByUserId(UserId int64) (int64, error) {
+	o := orm.NewOrm()
+	res, err := o.Raw("delete from regist where user_id = ?", UserId).Exec()
+	num, _ := res.RowsAffected()
+	return num, err
 }

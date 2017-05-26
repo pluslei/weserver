@@ -513,11 +513,21 @@ func (k *ShutUpInfo) ParseJSON(msg []byte) (s []ShutUpInfo, err error) {
 //person setting
 
 type SetInfo struct {
-	Uname     string
-	CompanyId int64
-	Icon      string
-	Nickname  string
-	Phonenum  int64
+	CompanyId  int64
+	Uname      string
+	RoomId     string
+	Icon       string
+	Nickname   string
+	Phonenum   int64
+	PushWechat int64
+}
+
+func (t *SetInfo) ParseJSON(msg []byte) (s SetInfo, err error) {
+	var result SetInfo
+	if err := json.Unmarshal(msg, &result); err != nil {
+		return result, err
+	}
+	return result, nil
 }
 
 //######################################################################################

@@ -72,6 +72,8 @@ func (this *CompanyController) AddCompany() {
 		companyIntro := this.GetString("companyIntro")
 		companyIcon := this.GetString("companyIconFile")
 		companyBanner := this.GetString("companyBannerFile")
+		companyLoginIcon := "./static/img/login/default-logo.png"
+		companyLoginBackicon := "./static/img/login/default-login-bg.png"
 		Registerrole, _ := this.GetInt64("Registerrole")
 		WelcomeMsg := this.GetString("welcomemsg")
 		HistoryMsg, _ := this.GetInt64("historymsg")
@@ -106,6 +108,8 @@ func (this *CompanyController) AddCompany() {
 		company.Company = companyName
 		company.CompanyBanner = companyBanner
 		company.CompanyIcon = companyIcon
+		company.LoginIcon = companyLoginIcon
+		company.LoginBackicon = companyLoginBackicon
 		company.CompanyIntro = companyIntro
 		company.Registerrole = Registerrole
 		company.WelcomeMsg = WelcomeMsg
@@ -178,6 +182,9 @@ func (this *CompanyController) EditCompany() {
 		company.CompanyIntro = this.GetString("companyIntro")
 		company.CompanyIcon = this.GetString("CompanyIconFile")
 		company.CompanyBanner = this.GetString("CompanyBannerFile")
+		company.LoginIcon = this.GetString("LoginIconFile")
+		company.LoginBackicon = this.GetString("LoginBackiconFile")
+		beego.Info("LoginIcon:", company.LoginIcon, "LoginBackicon:", company.LoginBackicon)
 		company.Registerrole, _ = this.GetInt64("Registerrole")
 		company.WelcomeMsg = this.GetString("welcomemsg")
 		company.HistoryMsg, _ = this.GetInt64("historymsg")

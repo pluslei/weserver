@@ -109,6 +109,11 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 	var status int64
 	for i := 0; i < len(IdArray); i++ {
 		status, err = o.Delete(&User{Id: IdArray[i]})
+		_, err2 := DelRegistUserByUserId(IdArray[i])
+		if err2 != nil {
+			err = o.Rollback()
+		}
+		beego.Info()
 	}
 	// 此过程中的所有使用 o Ormer 对象的查询都在事务处理范围内
 	if err != nil {

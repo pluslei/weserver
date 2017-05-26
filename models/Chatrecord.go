@@ -4,6 +4,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -156,4 +157,22 @@ func GetChatRecordList(page int64, page_size int64, sort, Nickname string, compa
 	query.Limit(page_size, page).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()
 	return ms, count
+}
+
+//批量删除聊天记录
+func PrepareDelChatrecords(IdArray []int64) (int64, error) {
+	o := orm.NewOrm()
+	err := o.Begin()
+	var status int64
+	for i := 0; i < len(IdArray); i++ {
+		status, err = o.Delete(&ChatRecord{Id: IdArray[i]})
+		beego.Info()
+	}
+	// 此过程中的所有使用 o Ormer 对象的查询都在事务处理范围内
+	if err != nil {
+		err = o.Rollback()
+	} else {
+		err = o.Commit()
+	}
+	return status, err
 }

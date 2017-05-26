@@ -42,6 +42,17 @@ type TextMsgContent struct {
 	Content string `json:"content"`
 }
 
+// Template msg
+type TemplateMsg struct {
+	ToUser     string             `json:"touser"`
+	TemplateId string             `json:"template_id"`
+	Text       TemplateMsgContent `json:"data"`
+}
+
+type TemplateMsgContent struct {
+	Content string `json:"content"`
+}
+
 func Start(p *Config) *Wechat {
 	w := Wechat{}
 	w.appID = p.appID
@@ -165,6 +176,27 @@ func (w *Wechat) getAccessToken() error {
 }
 
 func (w *Wechat) sendCustomTxTMsg(openId, msg string) error {
+	sendMsg := fmt.Sprintf("今日策略：%s\r\nUrl: test.780.com.cn", msg)
+	TxtMsg := &CustomMsg{
+		ToUser:  openId,
+		MsgType: "text",
+		Text:    TextMsgContent{Content: sendMsg},
+	}
+	body, err := json.MarshalIndent(TxtMsg, " ", "  ")
+	if err != nil {
+		beego.Debug("sendCustomTxTMsg() error:", err)
+		return err
+	}
+	select {
+	case w.msgch <- body:
+		return nil
+	default:
+		beego.Error("wechat message ch full")
+		return fmt.Errorf("wechat message ch full")
+	}
+}
+
+func (w *Wechat) sendTemplateMsg(openId, msg string) error {
 	sendMsg := fmt.Sprintf("今日策略：%s\r\nUrl: test.780.com.cn", msg)
 	TxtMsg := &CustomMsg{
 		ToUser:  openId,

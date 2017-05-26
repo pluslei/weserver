@@ -1,6 +1,8 @@
 package haoadmin
 
 import (
+	"strconv"
+	"strings"
 	"time"
 	m "weserver/models"
 	. "weserver/src/tools"
@@ -105,6 +107,30 @@ func DelMsg(topic, uuid string) bool {
 	mq.SendMessage(topic, string(v)) //发消息
 	deleteMsg(info)
 	return true
+}
+
+// 批量聊天记录
+func (this *ChatRecordController) Delchatrecords() {
+	IdArray := this.GetString("Id")
+	var idarr []int64
+	if len(IdArray) > 0 {
+		preValue := strings.Split(IdArray, ",")
+		for _, v := range preValue {
+			id, _ := strconv.ParseInt(v, 10, 64)
+			idarr = append(idarr, id)
+
+		}
+	}
+	beego.Info("idarr", idarr)
+	status, err := m.PrepareDelChatrecords(idarr)
+	if err == nil && status > 0 {
+		this.Rsp(true, "删除成功", "")
+		return
+	} else {
+		this.Rsp(false, err.Error(), "")
+		return
+	}
+	this.Ctx.WriteString("")
 }
 
 // 消息审核

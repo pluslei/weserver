@@ -3057,13 +3057,25 @@ a {
   display: inline-block;
   margin-top: 50px;
   margin-bottom: 10px;
+<<<<<<< HEAD
+=======
+  overflow: hidden;
+}
+.persoalCenter .personal-banner .personal-icon img {
+  width: 90px;
+  height: 90px;
+>>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
 }
 .persoalCenter .personal-banner .personal-text p {
   color: #fff;
   margin: 0;
 }
 .persoalCenter .personal-banner .personal-text .personal-name {
+<<<<<<< HEAD
   font-size: 28px;
+=======
+  font-size: 20px;
+>>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
   line-height: 28px;
 }
 .persoalCenter .personal-banner .personal-text .personal-editer {
@@ -3119,8 +3131,13 @@ a {
 }
 .messageTip .messageTip-c img {
   float: right;
+<<<<<<< HEAD
   height: 22px;
   margin-top: 9px;
+=======
+  height: 30px;
+  margin-top: 5px;
+>>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
 }
 .messageTip .messageTip-tip {
   width: 100%;
@@ -3236,3 +3253,170 @@ a {
   color: #fff;
   font-size: 16px;
 }
+<<<<<<< HEAD
+=======
+.PersonalEditer {
+  background-color: #EBEBEB;
+  overflow: hidden;
+  font-family: "Microsoft Yahei";
+  height: 100%;
+}
+.PersonalEditer .head {
+  width: 108px;
+  height: 108px;
+  margin: 16% auto 0;
+  display: block;
+  border-radius: 4px;
+}
+.PersonalEditer .head + p {
+  color: #383838;
+  text-align: center;
+}
+.PersonalEditer .choiceImg-wrap {
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.PersonalEditer .choiceImg-wrap li {
+  float: left;
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+.PersonalEditer .choiceImg-wrap li img {
+  width: 100%;
+}
+.PersonalEditer .choiceImg-wrap li:not(:last-child) {
+  margin-right: 10px;
+}
+.PersonalEditer .choiceImg-wrap li > .defaultPick {
+  width: 100%;
+}
+.PersonalEditer .choiceImg-wrap li.pactive:after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../static/images/checked.png);
+  -webkit-background-size: cover;
+          background-size: cover;
+}
+.PersonalEditer .choiceImg-wrap li.addPhoto {
+  position: relative;
+  background-image: url(../static/images/addPhoto.png);
+  -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+  border: none;
+}
+.PersonalEditer .choiceImg-wrap li.addPhoto [type="file"] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.PersonalEditer .nickName-wrap {
+  margin-top: 20%;
+  text-align: center;
+}
+.PersonalEditer .nickName-wrap .ipt-nickname {
+  width: 83.3%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 14px;
+  color: #383838;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 5px;
+  letter-spacing: 1.4px;
+}
+.PersonalEditer .nickName-wrap .pormpt-text {
+  font-size: 12px;
+  color: #ed1414;
+  margin-top: 5px;
+}
+.PersonalEditer .buttom-action {
+  position: fixed;
+  bottom: 2%;
+  width: 100%;
+  padding: 0 10px;
+  overflow: hidden;
+}
+.PersonalEditer .buttom-action > button {
+  width: 45%;
+  height: 44px;
+  font-size: 18px;
+  border-radius: 5px;
+  outline: none;
+}
+.PersonalEditer .buttom-action .b-back {
+  float: left;
+  color: #383838;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.PersonalEditer .buttom-action .b-next {
+  float: right;
+  color: #fff;
+  border: none;
+  background: #fc7b02;
+  opacity: 0.7;
+}
+.PersonalEditer .buttom-action .b-next.on {
+  opacity: 1;
+}
+.PersonalEditer .choiceImg_wrap {
+  padding: 0 10px;
+  width: 100%;
+}
+.PersonalEditer .choiceImg_wrap li {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  list-style: none;
+  width: calc(((100% - 40px) / 5));
+}
+.PersonalEditer .choiceImg_wrap li img {
+  width: calc(100%);
+}
+.PersonalEditer .choiceImg_wrap li:nth-of-type(5n) {
+  margin-right: 0px;
+}
+.PersonalEditer .choiceImg_wrap li.addPhoto {
+  width: calc(((100% - 40px) / 5));
+  height: calc(((100% - 40px) / 5));
+  position: relative;
+  background-image: url(../static/images/addPhoto.png);
+  -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+  border: none;
+}
+.PersonalEditer .choiceImg_wrap li.addPhoto [type="file"] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.PersonalEditer .choiceImg_wrap li.pactive:after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../static/images/checked.png);
+  -webkit-background-size: cover;
+          background-size: cover;
+}
+>>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
