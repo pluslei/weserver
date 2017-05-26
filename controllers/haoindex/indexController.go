@@ -52,21 +52,8 @@ type VoiceResponse struct {
 	Info    string
 }
 
-func GetWxObj(id int64) (*wechat.Wechat, string, string) {
-	var info m.Company
-	var err error
-	strId := strconv.FormatInt(id, 10)
-	inter, ok := MapCache[strId]
-	if !ok {
-		info, err = m.GetCompanyById(id)
-		if err != nil {
-			beego.Debug("get login companyinfo error")
-			return nil, "", ""
-		}
-	} else {
-		info, _ = inter.(m.Company)
-		beego.Debug("memcache find")
-	}
+func GetWxObj(id string) (*wechat.Wechat, string, string) {
+	info := GetCompanyInfo(id)
 	macache := cache.NewMemcache()
 	cfg := &wechat.Config{
 		AppID:          info.AppId,
@@ -87,7 +74,9 @@ func (this *IndexController) Redirectr() {
 
 func (this *IndexController) Login() {
 	companyId := this.GetString("id")
-	beego.Debug("url id", companyId)
+	info := GetCompanyInfo(companyId)
+	this.Data["Loginlog"] = info.LoginIcon
+	this.Data["LoginBackground"] = info.LoginBackicon
 	this.TplName = "haoindex/login.html"
 }
 
@@ -121,21 +110,22 @@ func (this *IndexController) GetLoginMode() {
 	if info.(*m.User).Nickname == "" {
 		this.TplName = "haoindex/login-way.html"
 	} else {
+		Id := strconv.FormatInt(info.(*m.User).CompanyId, 10)
 		if info.(*m.User).Username == "" {
 			username := tools.GetGuid()
 			_, err := m.UpdateUserName(info.(*m.User).Account, username)
 			if err != nil {
 				beego.Debug("Update User table  Username Field Error", err)
-				this.Redirect("/login", 302)
+				this.Redirect("/login?id="+Id, 302)
 			}
 			_, err = m.UpdateRegistUserName(info.(*m.User).Id, username)
 			if err != nil {
 				beego.Debug("Update Regist table Username Field Error", err)
-				this.Redirect("/login", 302)
+				this.Redirect("/login?id="+Id, 302)
 			}
 		}
 		this.SetSession("indexUserInfo", info)
-		this.Redirect("/index", 302)
+		this.Redirect("/index?id="+Id, 302)
 	}
 }
 
@@ -154,7 +144,7 @@ func (this *IndexController) NomalLogin() {
 		info := this.GetSession("LoginInfo")
 		Nickname := this.GetString("Nickname")
 		Icon := this.GetString("Icon")
-
+		Id := strconv.FormatInt(info.(*m.User).CompanyId, 10)
 		username := tools.GetGuid()
 		var flag bool = false
 		if info.(*m.User).Username != "" {
@@ -165,15 +155,15 @@ func (this *IndexController) NomalLogin() {
 		_, err := m.UpdateUserMode(info.(*m.User).Id, flag, username, Nickname, Icon)
 		if err != nil {
 			beego.Debug("Update User table  Username Field Error", err)
-			this.Redirect("/login", 302)
+			this.Redirect("/login?id="+Id, 302)
 		}
 		_, err = m.UpdateRegistMode(info.(*m.User).Id, flag, username, Nickname, Icon)
 		if err != nil {
 			beego.Debug("Update Regist table Username Field Error", err)
-			this.Redirect("/login", 302)
+			this.Redirect("/login?id="+Id, 302)
 		}
 		this.SetSession("indexUserInfo", info)
-		this.Redirect("/index", 302)
+		this.Redirect("/index?id="+Id, 302)
 	}
 }
 
@@ -207,25 +197,19 @@ func (this *IndexController) PCLogin() {
 // 获取userinfo
 func (this *IndexController) GetWeChatInfo() {
 	Id := this.GetString("state")
-	nId, err := strconv.ParseInt(Id, 10, 64)
-	if err != nil {
-		beego.Debug("get company id error", err)
-		return
-	}
-
-	Wx, AppId, Url := GetWxObj(nId)
+	Wx, AppId, Url := GetWxObj(Id)
 	if Wx == nil {
 		beego.Debug("Get Wx Object Fail")
 		return
 	}
-
+	beego.Debug("appid, url", AppId, Url)
 	code := this.GetString("code")
 	if code == "" {
 		oauthAccess := Wx.GetOauth(this.Ctx.Request, this.Ctx.ResponseWriter)
 		err := oauthAccess.Redirect(Url, "snsapi_userinfo", Id)
 		if err != nil {
 			beego.Error("oauthAccess error", err)
-			this.Redirect("/login", 302)
+			this.Redirect("/login?id="+Id, 302)
 			return
 		}
 	} else {
@@ -233,7 +217,7 @@ func (this *IndexController) GetWeChatInfo() {
 		resToken, err := oauthAccess.GetUserAccessToken(code)
 		if err != nil {
 			beego.Error("get the user token error", err)
-			this.Redirect("/login", 302)
+			this.Redirect("/login?id="+Id, 302)
 			return
 		}
 
@@ -245,21 +229,21 @@ func (this *IndexController) GetWeChatInfo() {
 		userInfo, err := oauthAccess.GetUserInfo(resToken.AccessToken, resToken.OpenID)
 		if err != nil {
 			beego.Error("get the userinfo error", err)
-			this.Redirect("/login", 302)
+			this.Redirect("/login?id="+Id, 302)
 			return
 		}
 
 		info, err := m.GetUserByUsername(userInfo.OpenID)
 
 		if err != nil || info.Id <= 0 {
-			this.saveUser(userInfo)
+			this.saveUser(Id, userInfo)
 		} else {
 			this.updateUser(info.Id, userInfo)
 		}
 		// if len(info.Account) > 0 {
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
-		this.Redirect("/index", 302)
+		this.Redirect("/index?id="+Id, 302)
 		// } else {
 		// 	this.Redirect("/login", 302)
 		// }
@@ -269,6 +253,8 @@ func (this *IndexController) GetWeChatInfo() {
 }
 
 func (this *IndexController) Index() {
+	Id := this.GetString("id")
+	beego.Debug("index", Id)
 	indexUserInfo := this.GetSession("indexUserInfo")
 	if indexUserInfo != nil {
 		userInfo := new(m.User)
@@ -304,17 +290,8 @@ func (this *IndexController) Index() {
 
 		user.RoleIcon = "/upload/usertitle/" + userLoad.Title.Css
 
-		var info m.Company
 		strId := strconv.FormatInt(userLoad.CompanyId, 10)
-		inter, ok := MapCache[strId]
-		if !ok {
-			info, err = m.GetCompanyById(userLoad.CompanyId)
-			if err != nil {
-				beego.Debug("get login companyinfo error")
-			}
-		} else {
-			info, _ = inter.(m.Company)
-		}
+		info := GetCompanyInfo(strId)
 
 		// 消息审核(0 开启 1 关闭(默认))
 		// 是否隶属公司内部角色[0、否 1、是]
@@ -342,10 +319,9 @@ func (this *IndexController) Index() {
 		this.Data["title"] = info.WelcomeMsg //公告
 		this.Data["user"] = user
 
-		Wx, AppId, _ := GetWxObj(userLoad.CompanyId)
+		Wx, AppId, _ := GetWxObj(strId)
 		url := "http://" + this.Ctx.Request.Host + this.Ctx.Input.URI()
 		beego.Debug("url", url)
-		beego.Debug("aaaaaaa1")
 		jssdk := Wx.GetJs(this.Ctx.Request, this.Ctx.ResponseWriter)
 		jsapi, err := jssdk.GetConfig(url)
 		if err != nil {
@@ -363,19 +339,14 @@ func (this *IndexController) Index() {
 		this.Data["servicephone"] = beego.AppConfig.String("servicephone")   //服务电话
 		this.TplName = "dist/index.html"
 	} else {
-		this.Redirect("/login", 302)
+		this.Redirect("/login?id="+Id, 302)
 	}
 }
 
 // 后台获取声音文件流转换
 func (this *IndexController) Voice() {
 	Id := this.GetString("Id") //companyId
-	nId, err := strconv.ParseInt(Id, 64, 10)
-	if err != nil {
-		beego.Debug("GetMediaUrl CompanyId Error", err)
-		return
-	}
-	Wx, _, _ := GetWxObj(nId)
+	Wx, _, _ := GetWxObj(Id)
 	if Wx == nil {
 		beego.Debug("GetMediaUrl Wx object Error")
 		return
@@ -431,12 +402,7 @@ func (this *IndexController) Voice() {
 // 获取图片媒体的文档流
 func (this *IndexController) GetMediaURL() {
 	Id := this.GetString("Id") //companyId
-	nId, err := strconv.ParseInt(Id, 64, 10)
-	if err != nil {
-		beego.Debug("GetMediaUrl CompanyId Error", err)
-		return
-	}
-	Wx, _, Url := GetWxObj(nId)
+	Wx, _, Url := GetWxObj(Id)
 	if Wx == nil {
 		beego.Debug("GetMediaUrl Wx object Error")
 		return
@@ -468,13 +434,12 @@ func (this *IndexController) GetMediaURL() {
 	this.Ctx.WriteString("")
 }
 
-func (this *IndexController) saveUser(userInfo oauth.UserInfo) bool {
+func (this *IndexController) saveUser(Id string, userInfo oauth.UserInfo) bool {
 	info := this.GetSession("LoginInfo").(*m.User)
 	if info.Account == "" {
-		this.Redirect("/login", 302)
+		this.Redirect("/login?id="+Id, 302)
 	}
 
-	beego.Debug("idssssssss", info)
 	if len(info.Username) <= 0 {
 		_, err := m.BindWechatIcon(info.Id, &userInfo)
 		if err != nil {
@@ -564,13 +529,7 @@ func (this *IndexController) WxServerImg() {
 
 // 获取图片保存至本地
 func GetWxServerImg(media, Id string) (imgpath string) {
-
-	nId, err := strconv.ParseInt(Id, 64, 10)
-	if err != nil {
-		beego.Debug("GetMediaUrl CompanyId Error", err)
-		return
-	}
-	Wx, _, _ := GetWxObj(nId)
+	Wx, _, _ := GetWxObj(Id)
 	if Wx == nil {
 		beego.Debug("GetMediaUrl Wx object Error")
 		return

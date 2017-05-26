@@ -122,7 +122,7 @@ func GetAllNode() (count int64, nodes []orm.Params) {
 func GetNodeByRoleId(Id int64) (nodes []orm.Params, count int64) {
 	o := orm.NewOrm()
 	node := new(Node)
-	count, err := o.QueryTable(node).Filter("group__id", "1").Filter("Role__Role__Id", Id).Filter("Hide", 1).Values(&nodes)
+	count, err := o.QueryTable(node).Filter("group__id", "1").Filter("Role__Role__Id", Id).Filter("Hide", 1).OrderBy("Sort").Values(&nodes)
 	if err != nil {
 		beego.Error(err)
 	}

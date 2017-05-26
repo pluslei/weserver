@@ -29,6 +29,8 @@ type RoomInfo struct {
 	RoomIntro   string `orm:"size(512)"` //简介
 	RoomBanner  string //图片
 	Title       string //标题
+	PcRoomText  string // 仅pc端使用 免责声明
+	PcRoomad    string // pc 端 广告
 	MidPage     int64  //0 不显示 1 显示
 
 	//公司信息

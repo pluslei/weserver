@@ -42,7 +42,7 @@ func (s *SMS) RunSMSing() {
 				postReq, err := http.NewRequest("POST", s.URL, strings.NewReader(url))
 				if err != nil {
 					beego.Debug("POST SMS MSG Fail", err)
-					break
+					continue
 				}
 				postReq.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
@@ -51,14 +51,14 @@ func (s *SMS) RunSMSing() {
 				if resp.StatusCode != http.StatusOK || err != nil {
 					beego.Debug("resp.Status error: ", resp.Status, err)
 					resp.Body.Close()
-					break
+					continue
 				}
 				if resp != nil {
 					buf, err := ioutil.ReadAll(resp.Body)
 					if err != nil {
 						beego.Debug("Read Body error", err)
 						resp.Body.Close()
-						break
+						continue
 					}
 					str := fmt.Sprintf("%s", buf)
 					code := strings.Split(str, ",")
@@ -67,7 +67,7 @@ func (s *SMS) RunSMSing() {
 						beego.Debug("SMS MSG Send Fail, Error Code", nCode)
 					}
 					resp.Body.Close()
-					break
+					continue
 				}
 				resp.Body.Close()
 			} else {
@@ -85,7 +85,7 @@ func (s *SMS) RunCodeing() {
 				postReq, err := http.NewRequest("POST", s.URL, strings.NewReader(url))
 				if err != nil {
 					beego.Debug("POST SMS IDENTIFY CODE Fail", err)
-					break
+					continue
 				}
 				postReq.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
@@ -94,14 +94,14 @@ func (s *SMS) RunCodeing() {
 				if resp.StatusCode != http.StatusOK || err != nil {
 					beego.Debug("resp.Status error: ", resp.Status, err)
 					resp.Body.Close()
-					break
+					continue
 				}
 				if resp != nil {
 					buf, err := ioutil.ReadAll(resp.Body)
 					if err != nil {
 						beego.Debug("Read Body error", err)
 						resp.Body.Close()
-						break
+						continue
 					}
 					str := fmt.Sprintf("%s", buf)
 					code := strings.Split(str, ",")
@@ -110,7 +110,7 @@ func (s *SMS) RunCodeing() {
 						beego.Debug("SMSCode Send Fail, Error Code", nCode)
 					}
 					resp.Body.Close()
-					break
+					continue
 				}
 				resp.Body.Close()
 			} else {
@@ -122,9 +122,9 @@ func (s *SMS) RunCodeing() {
 
 func (s *SMS) sendSMSmsg(phoneNum, sign, msg string) error {
 	body := fmt.Sprintf(s.USER_POST_Url, phoneNum, sign, msg)
-	s.USER_ACCOUNT_URL += body
+	Send_Url := s.USER_ACCOUNT_URL + body
 	select {
-	case s.msgch <- s.USER_ACCOUNT_URL:
+	case s.msgch <- Send_Url:
 		return nil
 	default:
 		beego.Error("SMS Msg message ch full")
@@ -134,10 +134,9 @@ func (s *SMS) sendSMSmsg(phoneNum, sign, msg string) error {
 
 func (s *SMS) sendSMSCode(phoneNum, sign string, code int64) error {
 	body := fmt.Sprintf(s.USER_CODE_Url, phoneNum, sign, code)
-	s.USER_ACCOUNT_URL += body
-	beego.Debug("%s", s.USER_ACCOUNT_URL)
+	Send_Url := s.USER_ACCOUNT_URL + body
 	select {
-	case s.Codech <- s.USER_ACCOUNT_URL:
+	case s.Codech <- Send_Url:
 		return nil
 	default:
 		beego.Error("SMS Code message ch full")

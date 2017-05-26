@@ -3317,7 +3317,13 @@ a {
 }
 .PersonalEditer .nickName-wrap {
   text-align: center;
+<<<<<<< HEAD
   position: relative;
+=======
+  position: fixed;
+  width: 100%;
+  display: block;
+>>>>>>> 41689930a6ba937fd686c0a5e506b680a27f64ea
 }
 .PersonalEditer .nickName-wrap .ipt-nickname {
   width: 83.3%;

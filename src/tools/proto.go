@@ -517,6 +517,7 @@ type SetInfo struct {
 	Uname      string
 	RoomId     string
 	Icon       string
+	FileName   string //自定义上传路径
 	Nickname   string
 	Phonenum   int64
 	PushWechat string

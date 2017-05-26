@@ -39,8 +39,8 @@
 <div class="result-wrap">
     <div class="result-title">
         <div class="result-list">
-           <!-- <a href="adduser"><i class="icon-font"></i>审核通过</a> 
-            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>批量审核通过</a>-->
+           <!-- <a href="adduser"><i class="icon-font"></i>审核通过</a> </a>-->
+            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除选中聊天记录&nbsp;&nbsp;&nbsp;
             <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
             <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
         </div>
@@ -50,7 +50,7 @@
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="data-chat-list">
                 <thead>
                     <tr>
-                   <!--     <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th> -->
+                       <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th> 
                         <th>公司名称</th>
                         <th>房间</th>
                         <th>用户</th>
@@ -168,6 +168,45 @@
             }
         })
 
+             $("select[name=rbac-user-list_length]").change(function(){
+            $("#delselecteduser").prop("checked",false);
+        });
+
+        $("#delmoreuser").click(function(){
+            var userdata = table.rows('.am-active').data();
+            var length = table.rows('.am-active').data().length;
+            var userId = new Array();
+            if(length < 1){
+                alert("未选择任何聊天记录！")
+                return ;
+            }else{
+                for(var i=0;i<length;i++){
+                    userId.push(userdata[i]["Id"]); 
+                }
+                alert(userId.toString());
+                if(confirm("确定要选中的聊天记录吗?")){
+                    $.ajax({
+                    url: '/weserver/data/delchatrecords',
+                    type: 'POST',
+                    data: {Id: userId.toString()},
+                    success: function(rsp){
+                        if (rsp.status){
+                            alert(rsp.info);
+                            window.location.href="/weserver/data/chatrecord"
+                        }else{
+                            alert(rsp.info);
+                            window.location.href="/weserver/data/chatrecord"
+                        }
+                    alert(rsp.info);
+                            window.location.href="/weserver/data/chatrecord"
+                     }
+                });
+
+                }
+                
+            }
+        });
+
     });
     function initTable() {
         var actionUrl = '/weserver/data/chatrecord';
@@ -189,7 +228,7 @@
             "aoColumns": [
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                       // $(nTd).html(checkbox(oData.Id));
+                        $(nTd).html(checkbox(oData.Id));
                     }
                 },
                 {"mDataProp": "CompanyName",},
@@ -406,9 +445,12 @@
                     layer.msg(data.info, {
                         icon: 2
                     });
+                    oTable.fnReloadAjax(oTable.fnSettings());
                 }
+                 oTable.fnReloadAjax(oTable.fnSettings());
             }
         })
+         oTable.fnReloadAjax(oTable.fnSettings());
     }
 
     // 显示图片

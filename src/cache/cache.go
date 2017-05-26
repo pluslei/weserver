@@ -69,55 +69,45 @@ func GetCompanyCache() {
 			MapCache[strId] = info
 		} else {
 			mapinfo, _ := inter.(m.Company)
+			mapinfo.Company = info.Company
+			mapinfo.CompanyBanner = info.CompanyBanner
+			mapinfo.CompanyIcon = info.CompanyIcon
+			mapinfo.CompanyBanner = info.CompanyBanner
 			mapinfo.HistoryMsg = info.HistoryMsg
 			mapinfo.AuditMsg = info.AuditMsg
 			mapinfo.Verify = info.Verify
 			mapinfo.AppId = info.AppId
 			mapinfo.AppSecret = info.AppSecret
 			mapinfo.Url = info.Url
+			mapinfo.Sign = info.Sign
+			mapinfo.LoginIcon = info.LoginIcon
+			mapinfo.LoginBackicon = info.LoginBackicon
 			MapCache[strId] = mapinfo
 		}
 	}
 }
 
-// func getAccessToken(AppId, AppSecret string) error {
-
-// 	requestLine := fmt.Sprintf(Token_Url, AppId, AppSecret)
-// 	beego.Debug("GetTokenString", requestLine)
-
-// 	resp, err := http.Get(requestLine)
-// 	if err != nil || resp.StatusCode != http.StatusOK {
-// 		return err
-// 	}
-// 	defer resp.Body.Close()
-
-// 	body, err := ioutil.ReadAll(resp.Body)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	beego.Debug("AccessToken:", string(body))
-// 	if bytes.Contains(body, []byte("access_token")) {
-// 		beego.Debug("Request ok!!!!!!!")
-// 		err = json.Unmarshal(body, w)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		w.TextUrl = fmt.Sprintf(w.customServicePostUrl, w.AccessToken)
-// 		w.TemplateUrl = fmt.Sprintf(w.templatePostUrl, w.AccessToken)
-// 	} else {
-// 		beego.Debug("Request error!!!!!!!")
-// 		err = json.Unmarshal(body, w)
-// 		if err != nil {
-// 			return err
-// 		}
-// 	}
-// 	// beego.Debug(w.AccessToken, w.ExpiresIn, w.TextUrl)
-// 	return nil
-// }
+func GetCompanyInfo(strId string) (info m.Company) {
+	id, err := strconv.ParseInt(strId, 10, 64)
+	if err != nil {
+		beego.Debug("ParseInt error", err)
+		return
+	}
+	inter, ok := MapCache[strId]
+	if !ok {
+		info, err = m.GetCompanyById(id)
+		if err != nil {
+			beego.Debug("get companyinfo error")
+			return
+		}
+	} else {
+		info, _ = inter.(m.Company)
+	}
+	return info
+}
 
 func InitCache() {
 	MapCache = make(map[string]interface{})
-	// Token_Url := beego.AppConfig.String("TOKEN_URL")
 	GetShutMapCache()
 	GetCompanyCache()
 	beego.Debug(MapCache)
