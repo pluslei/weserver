@@ -27,6 +27,7 @@ type Company struct {
 	Sign          string //短信签名
 
 	Rolename string `orm:"-"` //头衔名称
+	Token    string `orm:"-"` //微信token
 }
 
 func init() {

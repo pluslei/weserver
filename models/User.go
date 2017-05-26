@@ -131,8 +131,9 @@ func UpdateUserNickname(username string, Nickname string, Icon string) (int64, e
 	var err error
 	if Nickname != "" && Icon != "" {
 		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
-			"Nickname": Nickname,
-			"UserIcon": Icon,
+			"Nickname":   Nickname,
+			"Headimgurl": Icon,
+			"UserIcon":   Icon,
 		})
 	}
 	if Nickname != "" && Icon == "" {
@@ -142,7 +143,8 @@ func UpdateUserNickname(username string, Nickname string, Icon string) (int64, e
 	}
 	if Nickname == "" && Icon != "" {
 		id, err = o.QueryTable(table).Filter("Username", username).Update(orm.Params{
-			"UserIcon": Icon,
+			"Headimgurl": Icon,
+			"UserIcon":   Icon,
 		})
 	}
 	return id, err
@@ -155,11 +157,28 @@ func UpdateUserIcon(username string, Icon string) (int64, error) {
 	return id, err
 }
 
+func UpdateUserAuthCode(username string, PhoneNum int64, code int64) (int64, error) {
+	o := orm.NewOrm()
+	var table User
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{
+		"Phone":    PhoneNum,
+		"Authcode": code,
+	})
+	return id, err
+}
+
 func UpdateUserPhoneNum(username string, PhoneNum int64) (int64, error) {
 	o := orm.NewOrm()
 	var table User
 	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{"Phone": PhoneNum})
 	return id, err
+}
+
+func GetUserAuthCode(username string, PhoneNum, AuthCode int64) ([]User, int64, error) {
+	o := orm.NewOrm()
+	var info []User
+	num, err := o.QueryTable("user").Filter("Username", username).Filter("Phone", PhoneNum).Filter("Authcode", AuthCode).All(&info)
+	return info, num, err
 }
 
 // 根据用户名查找

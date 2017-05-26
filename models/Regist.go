@@ -132,6 +132,13 @@ func UpdateRegistPushWechat(RoomId, username string, PushWechat int64) (int64, e
 	return id, err
 }
 
+func UpdateRegistPushSMS(RoomId, username string, PushSMS int64) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("Room", RoomId).Filter("Username", username).Update(orm.Params{"Pushsms": PushSMS})
+	return id, err
+}
+
 //跟新登录时间
 func UpdateLoginTime(room, username string) (int64, error) {
 	o := orm.NewOrm()
