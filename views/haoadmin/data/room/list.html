@@ -39,9 +39,11 @@
                         <th>房间讲师</th>
                         <th>房间人数</th>
                         <th>房间图标</th>
-                        <th>房间介绍</th>
+                        <th width="18%">房间介绍</th>
                         <th>标题</th>
                         <th>房间Banner</th>
+                        <th>免责声明(仅pc端使用)</th>
+                        <th>广告图片(仅pc端使用)</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -127,6 +129,16 @@
                 {"mDataProp": "RoomIntro",},
                 {"mDataProp": "Title",},
                 {"mDataProp": "RoomBanner",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        if (sData.indexOf("upload") >= 0){
+                            $(nTd).html("<img  width='100px' height='35px'  src='"+sData+"'>");
+                        }else{
+                            $(nTd).html("<img  width='100px' height='35px'  src='../../"+sData+"'>");
+                        }
+                    }
+                },
+                 {"mDataProp": "PcRoomText",},
+                 {"mDataProp": "PcRoomad",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         if (sData.indexOf("upload") >= 0){
                             $(nTd).html("<img  width='100px' height='35px'  src='"+sData+"'>");

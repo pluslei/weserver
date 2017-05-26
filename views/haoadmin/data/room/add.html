@@ -122,11 +122,69 @@
           }
         },
     });
+        $('#PcRoomad').uploadify({
+        'swf'      : '/static/img/uploadify.swf',// uploadify.swf 文件的相对JS文件的路径
+        'uploader' : '/weserver/data/upload',//后台处理程序的相对路径
+        'floder': '/upload/teachbanner',          
+        'fileSizeLimit': '2MB',
+        'queueID': 'fileQueue',
+        'queueSizeLimit': 999999999,
+        'uploadLimit': 999999999,
+        //'progressData': 'speed',
+        'auto': true,
+        'multi': false,
+        'buttonClass' : 'some-class',//自定义的样式类名
+        //'queueID'  : 'some_file_queue',
+        //'buttonCursor' : 'arrow',
+        //'buttonText': '上传图片',
+        'buttonTitle': '提示文字',
+        'buttonImage':'/static/images/i/img/upload_file.png',
+        'requeueErrors' : true,
+        'debug': false,
+        'height'   : 28, // The height of the flash button
+        'width'    : 155, // The width of the flash button
+        'itemTemplate':false,
+        'successTimeout': 30,//设置文件上传后等待服务器响应的秒数，超出这个时间，将会被认为上传成功，默认为30秒
+        'fileTypeExts': '*.bmp;*.jpg;.jpeg;*.png;*.gif',//设置允许上传的文件扩展名（也就是文件类型）。但手动键入文件名可以绕过这种级别的安全检查，所以你应该始终在服务端中检查文件类型。输入多个扩展名时用分号隔开('*.*;*.jpg;*.png;*.gif')
+        'fileTypeDesc': '文件格式',//可选文件的描述。这个值出现在文件浏览窗口中的文件类型下拉选项中。（但我设置了好像没效果？原文：The description of the selectable files.  This string appears in the browse files dialog box in the file type drop down.）
+        'fileObjName':'Filedata', //设置后台的文件名
+        'method'   : 'post',
+        'formData': {"uploadtype":"PcRoomad"},
+        'onUploadSuccess': function(file,data,response){
+          if(data!=null){
+            data = jQuery.parseJSON(data);
+            if(data.status){
+              $("input[name=PcRoomadFile]").val(data.url);
+              $("#previewPcRoomad").attr("src",data.url);
+            }
+          }
+        },
+        'onSelectError':function(file,data,response){
+          if(data!=null){
+            data = jQuery.parseJSON(data);
+            if(data.status){
+              var str = data.url;
+              switch(errorCode) {
+                case -110:
+                    alert("文件 ["+str+"] 大小超出系统限制的" + jQuery('#Img').uploadify('settings', 'fileSizeLimit') + "大小！");
+                    break;
+                case -120:
+                    alert("文件 ["+str+"] 大小异常！");
+                    break;
+                case -130:
+                    alert("文件 ["+str+"] 类型不正确！");
+                    break;
+              }
+            }
+          }
+        },
+    });
+
   });
 </script>
 
 <div class="crumb-wrap">
-    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/home/room_index">房间管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">新增房间</span></div>
+    <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/room_index">房间管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">新增房间</span></div>
 </div>
 <div class="am-g">
   <div class="am-u-lg-6">
@@ -185,6 +243,20 @@
         <div class="am-form-group">
           <label for="doc-vld-Title-2">房间名称  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '点击进入房间后显示内容', trigger: 'hover focus'}"></a></label>
             <input type="text" name="Title"  multiple="true" placeholder="请输入房间名称" data-validation-message="请输入房间名称" /> 
+        </div>
+
+                  <div class="am-form-group">
+          <label for="doc-vld-Title-2">免责申明(仅PC端使用)：  <a class="am-icon-question-circle "data-am-popover="{theme: 'sm',content: '显示在PC端的免责声明', trigger: 'hover focus'}"></a></label>
+            <textarea class="" name="PcRoomText" rows="5" id="doc-ta-1">{{.roomInfo.PcRoomText}}</textarea>
+        </div>
+
+                <div class="am-form-group">
+          <label for="doc-vld-Title-2">广告图片(仅PC端使用,请上传750*440，文件为jpg,png文件)：</label>
+            <input type="file" name="PcRoomad" id="PcRoomad" multiple="true" />
+            <input type="hidden" name="PcRoomadFile" value="{{.roomInfo.PcRoomad}}" id="PcRoomadFile" multiple="true" /> 
+        </div>
+        <div class="am-form-group" >
+            <img id="previewPcRoomad" src="{{.roomInfo.PcRoomad}}" style="width:375px;height:220px;border: 0px;soild:#FFFFFF; " />
         </div>
 
         <span class="am-btn am-btn-primary" data-am-collapse="{target: '#collapse-nav'}">高级设置 <i class="am-icon-angle-double-down"></i></span>

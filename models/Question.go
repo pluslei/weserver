@@ -6,6 +6,7 @@ import (
 
 	"weserver/src/tools"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -172,4 +173,37 @@ func OpeateIgnore(id int64) (int64, error) {
 	var info Question
 	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsIgnore": 1})
 	return id, err
+}
+
+//批量纸条提问
+func PrepareDelQuestion(IdArray []int64) (int64, error) {
+	o := orm.NewOrm()
+	err := o.Begin()
+	var status int64
+	beego.Info("IdArrayBBBBB:", IdArray)
+	for i := 0; i < len(IdArray); i++ {
+		status, err = o.Delete(&Question{Id: IdArray[i]})
+		_, err2 := o.Raw("delete from rspquestion where question_id = ?", IdArray[i]).Exec()
+		if err2 != nil {
+			err = o.Rollback()
+			return status, err
+		}
+		beego.Info()
+	}
+	// 此过程中的所有使用 o Ormer 对象的查询都在事务处理范围内
+	if err != nil {
+		err = o.Rollback()
+	} else {
+		err = o.Commit()
+	}
+	return status, err
+}
+
+//根据questionId删除rspquestion
+func DelRspByQuestionId(QuestionId int64) (int64, error) {
+	beego.Info("QuestionId:", QuestionId)
+	o := orm.NewOrm()
+	res, err := o.Raw("delete from rspquestion where `question_id` = ?", QuestionId).Exec()
+	num, _ := res.RowsAffected()
+	return num, err
 }

@@ -147,7 +147,7 @@
                     bodyObj[bodyObj.length-1].remove();
                 }
 
-                newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status,result.uuid)+'</td></tr>'
+                newhtml = '<tr class="even"><td>'+checkbox(result.id)+'</td><td>'+username(result.userIcon,result.nickname)+'</td><td>'+result.roleTitle+'</td><td>'+result.sendtype+'</td><td>'+content(result.sendtype,result.content,result.companyId)+'</td><td>'+result.datatimeStr+'</td><td>'+status(result.status,result.id)+'</td><td>'+action(result.id,result.status,result.uuid)+'</td></tr>'
                 // oTable[0].children[1].children
                 $(oTable[0].children[1].children[0]).before(newhtml);
                 console.info(oTable[0].children[1].children[0]);
@@ -404,7 +404,7 @@
     }
 
     // (消息内容)
-    function content(sendtype,content) {
+    function content(sendtype,content,companyId) {
         var html = "";
         switch (sendtype){
             case "TXT":
@@ -414,7 +414,7 @@
                 html = "<img  src=/mediaurl?media="+content+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>";
             break;
             case "VOICE":
-                html = "<img src='/static/images/videoOther.png' onclick='playVoice(`"+content+"`)'>";
+                html = "<img src='/static/images/videoOther.png' onclick='playVoice(`"+content+","+companyId+"`)'>";
             break;
         }
         return html
@@ -437,9 +437,9 @@
     }
 
     // 播放语音
-    function playVoice(content) {
+    function playVoice(content,companyId) {
         $.ajax({
-            url: '/voice?media='+content,
+            url: '/voice?media='+content+'&Id='+companyId,
             type: 'GET',
             success: function(rsp){
                 if (rsp.Staus){

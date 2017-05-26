@@ -283,7 +283,7 @@ func (this *QuestionController) GetQuestionHistoryList() {
 				beego.Debug("mod", mod)
 				if nCount > totalCount && mod == 0 {
 					beego.Debug("mod = 0")
-					data["historyChat"] = ""
+					data["historyQuestion"] = ""
 					this.Data["json"] = &data
 					this.ServeJSON()
 					return
