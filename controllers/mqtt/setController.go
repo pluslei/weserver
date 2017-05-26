@@ -3,6 +3,7 @@ package mqtt
 import (
 	"strconv"
 	"weserver/controllers"
+	"weserver/controllers/haoindex"
 	m "weserver/models"
 	. "weserver/src/cache"
 	. "weserver/src/msg"
@@ -214,15 +215,34 @@ func update(info SetInfo) {
 
 func updateInfo(info *SetInfo) {
 
-	_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.Icon)
-	if err != nil {
-		beego.Debug("update Regist nickname error", err)
-		return
+	if info.Icon != "" && info.FileName == "" {
+		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.Icon)
+		if err != nil {
+			beego.Debug("update Regist nickname error", err)
+			return
+		}
+		_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.Icon)
+		if err != nil {
+			beego.Debug("update user nickname error", err)
+			return
+		}
 	}
-	_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.Icon)
-	if err != nil {
-		beego.Debug("update user nickname error", err)
-		return
+
+	if info.Icon == "" && info.FileName != "" {
+		beego.Debug("aaaaaaaa", info.FileName)
+		strId := strconv.FormatInt(info.CompanyId, 10)
+		fileName := haoindex.GetWxServerImg(info.FileName, strId)
+
+		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, fileName)
+		if err != nil {
+			beego.Debug("update Regist nickname error", err)
+			return
+		}
+		_, err = m.UpdateUserNickname(info.Uname, info.Nickname, fileName)
+		if err != nil {
+			beego.Debug("update user nickname error", err)
+			return
+		}
 	}
 
 	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 && info.PushSMS == "" {
