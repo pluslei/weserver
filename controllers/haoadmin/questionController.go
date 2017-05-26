@@ -41,9 +41,13 @@ func (this *QuestionController) QuestionList() {
 				rspContent := rspInfo.Content
 				rspId := rspInfo.Id
 				item["AcceptContent"] = rspContent //回复的内容
+				item["AcceptNickName"] = rspInfo.Nickname
+				item["AcceptUserIcon"] = rspInfo.UserIcon
 				item["rspId"] = rspId
 			} else {
 				item["AcceptContent"] = ""
+				item["AcceptNickName"] = ""
+				item["AcceptUserIcon"] = ""
 			}
 		}
 		// json

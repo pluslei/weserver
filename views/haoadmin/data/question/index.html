@@ -11,9 +11,10 @@
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
                 <thead>
                     <tr>
-                        <th>用户昵称</th>
+                        <th>提问用户</th>
                         <th>发送时间</th>
                         <th>提问内容</th>
+                        <th>回复者</th>
                         <th>回复内容</th>
                         <th>操作</th>
                     </tr>
@@ -64,17 +65,36 @@
             "bServerSide": true,
             "bSort": false,
             "aoColumns": [
-                {"mDataProp": "Nickname",},
+                {"mDataProp": "Nickname",
+                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        // 用户头像
+                        if (oData.UserIcon.length <= 0) {
+                            icoImg = "/static/images/icon-user.gif"
+                        }else{
+                            icoImg = oData.UserIcon
+                        }
+                        $(nTd).html("<img src="+icoImg+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData);
+                    }
+                },
                  {"mDataProp": "Time",
                  "fnCreatedCell": function(nTd, sData, oData, iRow, iCol){
                     var data2 = new Date(sData);
-                    console.info("data2", data2)
                     var localeString = data2.toLocaleDateString() + " " + data2.toLocaleTimeString();
                      $(nTd).html(localeString);
                  }
                  
                  },
                {"mDataProp": "Content",},
+                {"mDataProp": "AcceptNickName",               
+                 "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        // 回复者头像
+                        if (oData.AcceptUserIcon.length <= 0) {
+
+                        }else{
+                           icoImg = oData.AcceptUserIcon
+                            $(nTd).html("<img src="+icoImg+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData);   
+                        }
+                    }},
                {"mDataProp": "AcceptContent",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {

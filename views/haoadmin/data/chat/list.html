@@ -40,9 +40,29 @@
     <div class="result-title">
         <div class="result-list">
            <!-- <a href="adduser"><i class="icon-font"></i>审核通过</a> </a>-->
-            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除选中聊天记录&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除选中聊天记录&nbsp;&nbsp;&nbsp;</a>
+           
             <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
             <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
+            
+            <div class="am-fr am-margin-left">
+                <div class="result-list am-form-inline am-form">
+                    <div class="am-form-group">
+                        <select id="doc-select-company" onchange="getRoomInfo()">
+                            <option value="">-=所属公司=-</option>
+                        </select>
+                    </div>
+                    <div class="am-form-group">
+                        <select id="doc-select-room">
+                            <option value="">-=所属房间=-</option>
+                        </select>
+                    </div>
+                    <div class="am-input-group">
+                        <a onclick="querycompany()" class="am-btn am-btn-primary">搜索</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <form name="myform" id="myform" method="post">
@@ -101,6 +121,7 @@
     var lastruntime = 0;
     var betweentime = 500;
     $(function() {
+        getCompanyInfo();
         oTable = initTable();
         var table = $('#data-chat-list').DataTable();
         client.subscribe('chat', function(result){
@@ -183,10 +204,9 @@
                 for(var i=0;i<length;i++){
                     userId.push(userdata[i]["Id"]); 
                 }
-                alert(userId.toString());
                 if(confirm("确定要选中的聊天记录吗?")){
                     $.ajax({
-                    url: '/weserver/data/delchatrecords',
+                    url: '/weserver/data/chatrecord_dels',
                     type: 'POST',
                     data: {Id: userId.toString()},
                     success: function(rsp){
@@ -197,8 +217,6 @@
                             alert(rsp.info);
                             window.location.href="/weserver/data/chatrecord"
                         }
-                    alert(rsp.info);
-                            window.location.href="/weserver/data/chatrecord"
                      }
                 });
 
@@ -208,6 +226,47 @@
         });
 
     });
+         function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            console.log(data, 'data');
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-company').html(company.join(''));
+        }
+      })
+    }
+    function getRoomInfo() {
+      var companyId = document.getElementById("doc-select-company").value;
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId: parseInt(companyId, 10),
+        },
+        success: function(data){
+            console.log(data, 'data');
+            var room = ["<option value=''>-=所属房间=-</option>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+                room.push("<option value="+data.roonInfo[i].RoomId+">-="+data.roonInfo[i].Title+"=-</option>");
+            }
+            $('#doc-select-room').html(room.join(''));
+        }
+      })
+    }
+
+    //公司/房间筛选
+        function querycompany() {
+        var companyId = document.getElementById("doc-select-company").value;
+        var roomId = document.getElementById("doc-select-room").value;
+        $("#data-chat-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
+    }
+
+
     function initTable() {
         var actionUrl = '/weserver/data/chatrecord';
         var table = $('#data-chat-list').dataTable({

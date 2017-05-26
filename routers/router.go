@@ -104,6 +104,7 @@ func Router() {
 	beego.Router("/weserver/data/chatrecord", &haoadmin.ChatRecordController{}, "*:ChatRecordList")
 	beego.Router("/weserver/data/checkrecord", &haoadmin.ChatRecordController{}, "*:CheckRecord")
 	beego.Router("/weserver/data/delrecord", &haoadmin.ChatRecordController{}, "*:DelRecord")
+	beego.Router("/weserver/data/chatrecord_dels", &haoadmin.ChatRecordController{}, "*:Delchatrecords") //删除聊天记录
 
 	// 公告消息
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:SendNoticeList")
@@ -224,9 +225,6 @@ func Router() {
 	beego.Router("/chat/user/set/person", &mqtt.SetController{}, "*:Setperson")
 	beego.Router("/chat/user/set/phoneNum", &mqtt.SetController{}, "*:SetPhoneNum")
 	beego.Router("/chat/user/set/pushwechat", &mqtt.SetController{}, "*:SetPushWechat")
-	beego.Router("/chat/user/set/sendidentcode", &mqtt.SetController{}, "*:SetIdentiCode")
-	beego.Router("/chat/user/set/verifycode", &mqtt.SetController{}, "*:VerifyCode")
-	beego.Router("/chat/user/set/pushsms", &mqtt.SetController{}, "*:SetPushSMS")
 
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")
