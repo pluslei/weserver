@@ -229,6 +229,7 @@ func updateInfo(info *SetInfo) {
 	}
 
 	if info.Icon == "" && info.FileName != "" {
+		beego.Debug("aaaaaaaa", info.FileName)
 		strId := strconv.FormatInt(info.CompanyId, 10)
 		fileName := haoindex.GetWxServerImg(info.FileName, strId)
 
