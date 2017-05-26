@@ -3057,25 +3057,18 @@ a {
   display: inline-block;
   margin-top: 50px;
   margin-bottom: 10px;
-<<<<<<< HEAD
-=======
   overflow: hidden;
 }
 .persoalCenter .personal-banner .personal-icon img {
   width: 90px;
   height: 90px;
->>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
 }
 .persoalCenter .personal-banner .personal-text p {
   color: #fff;
   margin: 0;
 }
 .persoalCenter .personal-banner .personal-text .personal-name {
-<<<<<<< HEAD
-  font-size: 28px;
-=======
   font-size: 20px;
->>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
   line-height: 28px;
 }
 .persoalCenter .personal-banner .personal-text .personal-editer {
@@ -3131,13 +3124,8 @@ a {
 }
 .messageTip .messageTip-c img {
   float: right;
-<<<<<<< HEAD
-  height: 22px;
-  margin-top: 9px;
-=======
   height: 30px;
   margin-top: 5px;
->>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
 }
 .messageTip .messageTip-tip {
   width: 100%;
@@ -3253,12 +3241,13 @@ a {
   color: #fff;
   font-size: 16px;
 }
-<<<<<<< HEAD
-=======
 .PersonalEditer {
+  overflow-y: scroll;
   background-color: #EBEBEB;
   font-family: "Microsoft Yahei";
   height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .PersonalEditer .head {
   width: 108px;
@@ -3323,8 +3312,10 @@ a {
   opacity: 0;
 }
 .PersonalEditer .nickName-wrap {
-  margin-top: 10%;
   text-align: center;
+  position: fixed;
+  width: 100%;
+  display: block;
 }
 .PersonalEditer .nickName-wrap .ipt-nickname {
   width: 83.3%;
@@ -3344,11 +3335,13 @@ a {
   margin-top: 5px;
 }
 .PersonalEditer .buttom-action {
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
   width: 100%;
   padding: 10px 10px;
   overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  bottom: 10px;
 }
 .PersonalEditer .buttom-action > button {
   width: 45%;
@@ -3377,6 +3370,8 @@ a {
   padding: 0 10px;
   width: 100%;
   overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .PersonalEditer .choiceImg_wrap li {
   float: left;
@@ -3419,4 +3414,3 @@ a {
   -webkit-background-size: cover;
           background-size: cover;
 }
->>>>>>> be7a611a301cc3d26d344b132c47b0977972b994
