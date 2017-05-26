@@ -2826,6 +2826,7 @@ a {
           box-sizing: border-box;
 }
 .Qditer .Qditer-editeText .Qditer-editeText-theInput .Qditer-editeText-contentText {
+  background: #fff;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -3028,6 +3029,9 @@ a {
 }
 .replybtn .replybtn_c span:nth-of-type(2) {
   color: #F96400;
+}
+.chat-item-img img {
+  width: 22px;
 }
 .personal {
   width: 100%;
@@ -3242,9 +3246,12 @@ a {
   font-size: 16px;
 }
 .PersonalEditer {
+  overflow-y: scroll;
   background-color: #EBEBEB;
   font-family: "Microsoft Yahei";
   height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .PersonalEditer .head {
   width: 108px;
@@ -3309,8 +3316,8 @@ a {
   opacity: 0;
 }
 .PersonalEditer .nickName-wrap {
-  margin-top: 10%;
   text-align: center;
+  position: relative;
 }
 .PersonalEditer .nickName-wrap .ipt-nickname {
   width: 83.3%;
@@ -3330,11 +3337,13 @@ a {
   margin-top: 5px;
 }
 .PersonalEditer .buttom-action {
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
   width: 100%;
   padding: 10px 10px;
   overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  bottom: 10px;
 }
 .PersonalEditer .buttom-action > button {
   width: 45%;
@@ -3363,6 +3372,8 @@ a {
   padding: 0 10px;
   width: 100%;
   overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .PersonalEditer .choiceImg_wrap li {
   float: left;
