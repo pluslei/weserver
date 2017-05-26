@@ -127,9 +127,9 @@ func Router() {
 	beego.Router("/weserver/data/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
 
 	//纸条提问
-	beego.Router("weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList")        //纸条提问列表
-	beego.Router("weserver/data/question_reply", &haoadmin.QuestionController{}, "*:QuestionReply") //回复纸条提问
-	beego.Router("weserver/data/question_del", &haoadmin.QuestionController{}, "*:QuestionDel")     //删除纸条提问
+	beego.Router("/weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList")        //纸条提问列表
+	beego.Router("/weserver/data/question_reply", &haoadmin.QuestionController{}, "*:QuestionReply") //回复纸条提问
+	beego.Router("/weserver/data/question_del", &haoadmin.QuestionController{}, "*:QuestionDel")     //删除纸条提问
 	// 策略管理
 	beego.Router("/weserver/data/strategy_index", &haoadmin.StrategyController{}, "*:Index")
 	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")

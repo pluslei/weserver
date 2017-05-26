@@ -95,10 +95,11 @@ func (this *QuestionController) QuestionReply() {
 		rspQuestion.Nickname = user.Nickname
 		rspQuestion.UserIcon = user.UserIcon
 		rspQuestion.Room = question.Room
-		rspQuestion.RoleName = user.Rolename
-		rspQuestion.RoleTitle = user.Titlename
 		//获取title_css, title_background
+		roleInfo := user.Role
 		title := user.Title
+		rspQuestion.RoleTitle = title.Name
+		rspQuestion.RoleName = roleInfo.Name
 		rspQuestion.RoleTitleCss = title.Css
 		rspQuestion.RoleTitleBack = title.Background
 		rspQuestion.DatatimeStr = time.Unix(nowTime.Unix(), 0).Format("2006-01-02 15:04:05")
