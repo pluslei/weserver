@@ -84,6 +84,7 @@ func (this *IndexController) LoginHandle() {
 	var user = new(m.User)
 	username := this.GetString("username")
 	password := this.GetString("password")
+	beego.Debug("username password", username, password)
 	if len(username) <= 0 || len(password) <= 0 {
 		this.AlertBack("请填写账户信息")
 		return
@@ -102,7 +103,11 @@ func (this *IndexController) LoginHandle() {
 	}
 
 	this.SetSession("LoginInfo", user)
-	this.Redirect("/chooseloginmode", 302)
+
+	this.Data["json"] = ""
+	this.ServeJSON()
+
+	// this.Redirect("/chooseloginmode", 302)
 }
 
 func (this *IndexController) GetLoginMode() {

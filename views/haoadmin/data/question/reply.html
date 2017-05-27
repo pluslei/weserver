@@ -14,7 +14,17 @@
       <fieldset>
         <legend></legend>
         <input type="hidden" name="action" value="reply"/>
-           <input type="hidden" name="questionId" value="{{.qid}}"/>
+           <input type="hidden" name="questionId" value="{{.Question.Id}}"/>
+                   <div class="am-form-group">
+                     <label for="doc-vld-Title-2">提问用户：  </label><br>
+                    <img src="{{.Question.UserIcon}}" style='width:30px;height:30px;border:1px solid #ccc;padding:2px;'>&nbsp;{{.Question.Nickname}}
+        </div>
+        <div class="am-form-group">
+          <label for="doc-vld-Title-2">提问内容：  </label>
+            <textarea class="" name="QuestionContent"  disabled="disabled" rows="6" id="doc-ta-1">{{.Question.Content}}</textarea>
+        </div>
+
+
         <div class="am-form-group">
           <label for="doc-vld-Title-2">回复内容：  </label>
             <textarea class="" name="AcceptContent" rows="6" id="doc-ta-1"></textarea>

@@ -87,20 +87,20 @@
 	　　::-moz-placeholder { color:#efefef; }
 	　　:-ms-input-placeholder { color:#efefef; }
 	</style>
+	<script src="./static/js/jquery.min.js"></script>
 </head>
 <body class="loginBody">
 	<img src="{{.Loginlog}}" alt="" class="bgbg" />
-	<form action="/loginhandle" method="post" accept-charset="utf-8" id="loginform">
+	<form action="/loginhandle" method="post" accept-charset="utf-8" id="loginform" onsubmit="return false">
 		<div class="loginWrap">
 			<input type="hidden" class="ipt" name="openid" id="openid" name="openid" id="openid" value="{{.openid}}">
 			<input type="text" class="ipt ipt-user" name="username" id="username" placeholder="请输入您的帐号" oninput="checkState()">
 			<input type="password" class="ipt ipt-psd" name="password" id="password" placeholder="请输入您的密码" oninput="checkState()">
 			<!-- <div class="errorTip">错误提示</div> -->
-			<input type="submit" value="登 录" name="submit">
+			<input type="submit" value="登 录" name="submit" onclick="loginSub()">
 		</div>
 		<div class="p_footer">投资有风险 入市需谨慎</div>
 	</form>
-
 <script>
 	const _formId = document.getElementById("loginform");
 	const _username = _formId.elements["username"];
@@ -108,6 +108,23 @@
 	const _submit = _formId.elements["submit"];
 	function checkState() {
 		_submit.className = _username.value == "" && _password.value == "" ? '' : 'on';
+	}
+	function loginSub() {
+	  var username = document.getElementById('username').value;
+	  var password = document.getElementById('password').value;
+	  $.ajax({
+        url: '/loginhandle',
+        type: 'Post',
+        data:{
+          username: username,
+          password: password,
+        },
+        success: function(data){
+			document.cookie="haoname="+username;
+			document.cookie="haopass="+password;
+			window.location.href = '/chooseloginmode';
+        },
+      });
 	}
 </script>
 </body>
