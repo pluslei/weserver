@@ -135,6 +135,7 @@ func (this *TeacherController) Edit() {
 	}
 	if action == "edit" {
 		teacher := make(map[string]interface{})
+		teacher["CompanyId"] = this.GetString("Company")
 		teacher["Room"] = this.GetString("Room")
 		teacher["Name"] = this.GetString("Name")
 		teacher["Icon"] = this.GetString("Icon")
@@ -157,8 +158,15 @@ func (this *TeacherController) Edit() {
 		if err != nil {
 			this.AlertBack("数据错误")
 		}
+		//获取公司信息
+		companyInfo, _, err := models.GetCompanyList(0)
+		if err != nil {
+			beego.Debug("get Company List error", err)
+			return
+		}
 		this.Data["teacher"] = teacher
 		this.Data["roonInfo"] = roonInfo
+		this.Data["companyInfo"] = companyInfo
 		this.TplName = "haoadmin/data/teacher/edit.html"
 	}
 }

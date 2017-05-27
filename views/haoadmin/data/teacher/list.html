@@ -125,7 +125,7 @@
     function queryUser() {
         var companyId = document.getElementById("doc-select-company").value;
         var roomId = document.getElementById("doc-select-room").value;
-        console.log(companyId, roomId);
+        console.log("c:",companyId, "r:", roomId);
         $("#data-teacher-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
     };
     function initTable() {

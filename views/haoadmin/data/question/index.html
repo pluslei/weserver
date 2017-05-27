@@ -10,9 +10,32 @@
 
 <div class="result-wrap">
         <div class="result-title">
-            <div class="result-list">
+      
                 <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除纸条提问</a>
-            </div>
+        
+                 <div class="am-fr">
+                    <div class="result-list am-form-inline am-form">
+                        <div class="am-form-group">
+                            <select id="doc-select-company" onchange="getRoomInfo()">
+                                <option value="">-=所属公司=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+                        <div class="am-form-group">
+                            <select id="doc-select-room">
+                                <option value="">-=所属房间=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+                        <div class="am-input-group">
+                            <a onclick="queryUser()" class="am-btn am-btn-primary">搜索</a>
+                        </div>
+                     </div>
+                </div>
         </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
@@ -63,7 +86,7 @@
     var oTable;
     $(function() {
         oTable = initTable();
- 
+        getCompanyInfo();
         var table = $('#rbac-user-list').DataTable();
         $("#delselecteduser").change(function(){
            
@@ -182,7 +205,7 @@
                     $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' disabled='true'>"+huifu+"</a><a class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' title='删除' onclick='deleteFun(" + oData.rspId + ");'><span class='am-icon-trash-o'></span> 删除回复</a></div>");
                  
                         }else{
-                    $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' href='/weserver/data/question_reply?questionId="+oData.Id+"'><span class='am-icon-pencil-square-o'></span> "+huifu+"</a></div>");
+                    $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='纸条回复' href='/weserver/data/question_reply?questionId="+oData.Id+"&room="+oData.Room+"'><span class='am-icon-pencil-square-o'></span> "+huifu+"</a></div>");
                         }
                         
                     }
@@ -248,10 +271,51 @@
         this.oApi._fnProcessingDisplay( oSettings, onoff );
     };
 
+
     // 模糊查询
-    function queryUser() {
+    function queryUserOLD() {
         var searchusername = $("#searchusername").val();
         $("#rbac-user-list").DataTable().column(0).search(searchusername).draw();
+    };
+        function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            console.log(data, 'data');
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-company').html(company.join(''));
+        }
+      })
+    }
+		function getRoomInfo() {
+      var companyId = document.getElementById("doc-select-company").value;
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId: parseInt(companyId, 10),
+        },
+        success: function(data){
+            console.log(data, 'data');
+            var room = ["<option value=''>-=所属房间=-</option>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+                room.push("<option value="+data.roonInfo[i].RoomId+">-="+data.roonInfo[i].Title+"=-</option>");
+            }
+            $('#doc-select-room').html(room.join(''));
+        }
+      })
+    }
+
+// 模糊查询
+    function queryUser() {
+        var companyId = document.getElementById("doc-select-company").value;
+        var roomId = document.getElementById("doc-select-room").value;
+        console.log("c:",companyId, "r:", roomId);
+        $("#rbac-user-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
     };
 
     // 删除模态层

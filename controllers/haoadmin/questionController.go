@@ -119,8 +119,15 @@ func (this *QuestionController) QuestionReply() {
 
 		}
 	}
+	Question, err := models.GetQuestionIdData(qid)
+	if err != nil {
+		beego.Error("inser faild", err)
+		this.AlertBack("回复失败")
+		return
+	}
 	this.CommonMenu()
 	this.Data["qid"] = qid
+	this.Data["Question"] = Question
 	this.TplName = "haoadmin/data/question/reply.html"
 }
 
@@ -143,6 +150,7 @@ func (this *QuestionController) QuestionDel() {
 // 批量删除纸条提问
 func (this *QuestionController) QuestionDels() {
 	IdArray := this.GetString("Id")
+	beego.Info("IdArray:", IdArray)
 	var idarr []int64
 	if len(IdArray) > 0 {
 		preValue := strings.Split(IdArray, ",")
