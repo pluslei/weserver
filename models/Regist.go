@@ -3,6 +3,7 @@ package models
 import (
 	//"errors"
 	"time"
+	"weserver/src/tools"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -149,10 +150,10 @@ func UpdateLoginTime(room, username string) (int64, error) {
 }
 
 //根据角色信息获取
-func GetRegistInfoByRole(companyId, roleId int64, roomId string) ([]Regist, int64, error) {
+func GetRegistInfoByRole(companyId int64, roomId string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
 	var info []Regist
-	num, err := o.QueryTable("regist").Filter("CompanyId", companyId).Filter("Room", roomId).Filter("role_id", roleId).All(&info)
+	num, err := o.QueryTable("regist").Filter("CompanyId", companyId).Filter("Room", roomId).Exclude("role_id", int64(tools.ROLE_CUSTOMER)).Exclude("role_id", int64(tools.ROLE_NORMAL)).Exclude("role_id", int64(tools.ROLE_TOURIST)).All(&info)
 	return info, num, err
 }
 
@@ -275,7 +276,6 @@ func UpdateRegistUserName(UserId int64, Username string) (int64, error) {
 func UpdateRegistMode(UserId int64, flag bool, UserName, Nickname, Icon string) (int64, error) {
 	o := orm.NewOrm()
 	if flag {
-		beego.Debug("ssssss3", UserName)
 		return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
 			"Nickname":      Nickname,
 			"UserIcon":      Icon,
@@ -283,7 +283,6 @@ func UpdateRegistMode(UserId int64, flag bool, UserName, Nickname, Icon string) 
 			"Loginmode":     0,
 		})
 	}
-	beego.Debug("ssssss4", UserName)
 	return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
 		"Username":      UserName,
 		"Nickname":      Nickname,

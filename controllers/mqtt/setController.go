@@ -87,6 +87,25 @@ func (this *SetController) VerifyCode() {
 	this.Ctx.WriteString("")
 }
 
+func (this *SetController) GetIconUrl() {
+	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
+		serverId := this.GetString("ServerId")
+		beego.Debug("Wechat ServerId", serverId)
+		fileName := haoindex.GetWxServerImg(serverId, CompanyId)
+		if fileName != "" {
+			this.Data["json"] = fileName
+			this.ServeJSON()
+			return
+		} else {
+			this.Data["json"] = false
+			this.ServeJSON()
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
 func (this *SetController) Setperson() {
 	if this.IsAjax() {
 		msg := this.GetString("str")
@@ -229,16 +248,15 @@ func updateInfo(info *SetInfo) {
 	}
 
 	if info.Icon == "" && info.FileName != "" {
-		beego.Debug("aaaaaaaa", info.FileName)
-		strId := strconv.FormatInt(info.CompanyId, 10)
-		fileName := haoindex.GetWxServerImg(info.FileName, strId)
-
-		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, fileName)
+		// strId := strconv.FormatInt(info.CompanyId, 10)
+		// fileName := haoindex.GetWxServerImg(info.FileName, strId)
+		beego.Debug("Upload FileName Url", info.FileName)
+		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.FileName)
 		if err != nil {
 			beego.Debug("update Regist nickname error", err)
 			return
 		}
-		_, err = m.UpdateUserNickname(info.Uname, info.Nickname, fileName)
+		_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.FileName)
 		if err != nil {
 			beego.Debug("update user nickname error", err)
 			return

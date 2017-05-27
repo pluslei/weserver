@@ -91,7 +91,7 @@ func (this *IndexController) LoginHandle() {
 
 	user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
 	if user == nil || err != nil {
-		this.AlertBack("用户名异常 401")
+		this.AlertBack("账号不存在")
 		return
 	}
 
@@ -107,10 +107,12 @@ func (this *IndexController) LoginHandle() {
 
 func (this *IndexController) GetLoginMode() {
 	info := this.GetSession("LoginInfo")
+	Id := strconv.FormatInt(info.(*m.User).CompanyId, 10)
 	if info.(*m.User).Nickname == "" {
+		info := GetCompanyInfo(Id)
+		this.Data["ChooseBackIcon"] = info.LoginBackicon
 		this.TplName = "haoindex/login-way.html"
 	} else {
-		Id := strconv.FormatInt(info.(*m.User).CompanyId, 10)
 		if info.(*m.User).Username == "" {
 			username := tools.GetGuid()
 			_, err := m.UpdateUserName(info.(*m.User).Account, username)
@@ -575,7 +577,8 @@ func GetWxServerImg(media, Id string) (imgpath string) {
 			beego.Error("ioread error", err)
 			return notFile
 		}
-		return dirPath
+		filepath := path.Join("/upload", "room", FileName)
+		return filepath
 	}
 }
 

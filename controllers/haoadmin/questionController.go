@@ -125,8 +125,25 @@ func (this *QuestionController) QuestionReply() {
 		this.AlertBack("回复失败")
 		return
 	}
+	//获取选择回复的头衔
+	roomId := this.GetString("room")
+	var infoMsg []models.Regist
+	teacher, _, err := models.GetRegistInfoByRole(Question.CompanyId, roomId)
+	if err != nil {
+		beego.Debug("Get CompanyInfo Error", err)
+		return
+	}
+	for _, v := range teacher {
+		var info models.Regist
+		info.UserIcon = v.UserIcon
+		v.Titlename, err = models.GetTitleName(v.Title.Id)
+		info.Titlename = v.Titlename
+		infoMsg = append(infoMsg, info)
+	}
+	beego.Info("TeacherInfo:", infoMsg[0].UserIcon, infoMsg[0].Titlename)
 	this.CommonMenu()
 	this.Data["qid"] = qid
+	this.Data["TeacherInfo"] = infoMsg
 	this.Data["Question"] = Question
 	this.TplName = "haoadmin/data/question/reply.html"
 }
