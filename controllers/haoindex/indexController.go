@@ -91,7 +91,7 @@ func (this *IndexController) LoginHandle() {
 
 	user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
 	if user == nil || err != nil {
-		this.AlertBack("用户名异常 401")
+		this.AlertBack("账号不存在")
 		return
 	}
 
