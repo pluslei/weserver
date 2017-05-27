@@ -34,24 +34,22 @@ func init() {
 
 func (this *SetController) SetIdentiCode() {
 	if this.IsAjax() {
-		Id, err := this.GetInt64("CompanyId")
-		if err != nil {
-			beego.Debug("get companyId error", err)
-			return
-		}
-		var info m.Company
-		strId := strconv.FormatInt(Id, 10)
-		inter, ok := MapCache[strId]
-		if !ok {
-			info, err = m.GetCompanyById(Id)
-			if err != nil {
-				beego.Debug("get login companyinfo error")
-				return
-			}
-		} else {
-			info, _ = inter.(m.Company)
-			beego.Debug("memcache find")
-		}
+		Id := this.GetString("CompanyId")
+		beego.Debug("companyid", Id)
+		// var info m.Company
+		// strId := strconv.FormatInt(Id, 10)
+		// inter, ok := MapCache[strId]
+		// if !ok {
+		// 	info, err = m.GetCompanyById(Id)
+		// 	if err != nil {
+		// 		beego.Debug("get login companyinfo error")
+		// 		return
+		// 	}
+		// } else {
+		// 	info, _ = inter.(m.Company)
+		// 	beego.Debug("memcache find")
+		// }
+		info := GetCompanyInfo(Id)
 		username := this.GetString("Username")
 		phoneNum := this.GetString("phoneNum")
 		num, err := strconv.ParseInt(phoneNum, 10, 64)
@@ -293,6 +291,12 @@ func updateInfo(info *SetInfo) {
 		_, err := m.UpdateUserPhoneNum(info.Uname, info.Phonenum)
 		if err != nil {
 			beego.Debug("update user Phonenum error", err)
+			return
+		}
+		strPhone := strconv.FormatInt(info.Phonenum, 64)
+		_, err = m.UpdateRegistPhone(info.RoomId, info.Uname, strPhone)
+		if err != nil {
+			beego.Debug("update Register Phonenum error", err)
 			return
 		}
 	}

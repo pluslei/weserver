@@ -10,6 +10,7 @@ import (
 var Token_Url string
 
 var MapCache map[string]interface{}
+var MapPhone map[string][]string
 
 func GetShutMapCache() {
 	var status bool = true
@@ -106,9 +107,57 @@ func GetCompanyInfo(strId string) (info m.Company) {
 	return info
 }
 
+func GetPhoneNumInfo() {
+	var status bool = true
+	Info, err := m.GetAllPhoneNum()
+	if err != nil {
+		beego.Error("wechat:get all phoneNum error", err)
+		return
+	}
+	for _, info := range Info {
+		Room := info.Room
+		phoneNum := info.Phonenum
+		arr, ok := MapPhone[Room]
+		if !ok {
+			MapPhone[Room] = []string{phoneNum}
+		} else {
+			for _, v := range arr {
+				if phoneNum == v {
+					status = false
+					break
+				}
+			}
+			if status {
+				arr = append(arr, phoneNum)
+				MapPhone[Room] = arr
+			}
+		}
+	}
+}
+
+func GetRoomPhone(RoomId string) (info []string) {
+	info, ok := MapPhone[RoomId]
+	if !ok {
+		arr, err := m.GetRoomPhoneNum(RoomId)
+		if err != nil {
+			beego.Debug("get Room Phone num Error", err)
+			return nil
+		}
+		var arrNum []string
+		for _, v := range arr {
+			phoneNum := v.Phonenum
+			arrNum = append(arrNum, phoneNum)
+		}
+		MapPhone[RoomId] = arrNum
+		return arrNum
+	}
+	return info
+}
+
 func InitCache() {
 	MapCache = make(map[string]interface{})
 	GetShutMapCache()
 	GetCompanyCache()
+	GetPhoneNumInfo()
 	beego.Debug(MapCache)
 }
