@@ -3,6 +3,7 @@ package mqtt
 import (
 	"strconv"
 	"weserver/controllers"
+	"weserver/controllers/haoindex"
 	m "weserver/models"
 	. "weserver/src/cache"
 	. "weserver/src/msg"
@@ -75,6 +76,25 @@ func (this *SetController) VerifyCode() {
 		_, count, err := m.GetUserAuthCode(username, num, authCode)
 		if err == nil && count == 1 {
 			this.Data["json"] = true
+			this.ServeJSON()
+			return
+		} else {
+			this.Data["json"] = false
+			this.ServeJSON()
+			return
+		}
+	}
+	this.Ctx.WriteString("")
+}
+
+func (this *SetController) GetIconUrl() {
+	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
+		serverId := this.GetString("ServerId")
+		beego.Debug("Wechat ServerId", serverId)
+		fileName := haoindex.GetWxServerImg(serverId, CompanyId)
+		if fileName != "" {
+			this.Data["json"] = fileName
 			this.ServeJSON()
 			return
 		} else {
@@ -214,15 +234,33 @@ func update(info SetInfo) {
 
 func updateInfo(info *SetInfo) {
 
-	_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.Icon)
-	if err != nil {
-		beego.Debug("update Regist nickname error", err)
-		return
+	if info.Icon != "" && info.FileName == "" {
+		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.Icon)
+		if err != nil {
+			beego.Debug("update Regist nickname error", err)
+			return
+		}
+		_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.Icon)
+		if err != nil {
+			beego.Debug("update user nickname error", err)
+			return
+		}
 	}
-	_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.Icon)
-	if err != nil {
-		beego.Debug("update user nickname error", err)
-		return
+
+	if info.Icon == "" && info.FileName != "" {
+		// strId := strconv.FormatInt(info.CompanyId, 10)
+		// fileName := haoindex.GetWxServerImg(info.FileName, strId)
+		beego.Debug("Upload FileName Url", info.FileName)
+		_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.FileName)
+		if err != nil {
+			beego.Debug("update Regist nickname error", err)
+			return
+		}
+		_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.FileName)
+		if err != nil {
+			beego.Debug("update user nickname error", err)
+			return
+		}
 	}
 
 	if info.Nickname == "" && info.Icon == "" && info.Phonenum == 0 && info.PushSMS == "" {

@@ -107,10 +107,12 @@ func (this *IndexController) LoginHandle() {
 
 func (this *IndexController) GetLoginMode() {
 	info := this.GetSession("LoginInfo")
+	Id := strconv.FormatInt(info.(*m.User).CompanyId, 10)
 	if info.(*m.User).Nickname == "" {
+		info := GetCompanyInfo(Id)
+		this.Data["ChooseBackIcon"] = info.LoginBackicon
 		this.TplName = "haoindex/login-way.html"
 	} else {
-		Id := strconv.FormatInt(info.(*m.User).CompanyId, 10)
 		if info.(*m.User).Username == "" {
 			username := tools.GetGuid()
 			_, err := m.UpdateUserName(info.(*m.User).Account, username)

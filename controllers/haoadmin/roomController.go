@@ -120,6 +120,8 @@ func (this *RoomController) Add() {
 		room.RoomIcon = this.GetString("RoomIcoFile")
 		room.RoomIntro = this.GetString("RoomIntro")
 		room.RoomBanner = this.GetString("RoomBannerFile")
+		room.PcRoomText = this.GetString("PcRoomText")
+		room.PcRoomad = this.GetString("PcRoomadFile")
 		room.Title = this.GetString("Title")
 		_, err = models.AddRoom(room)
 		if err != nil {
@@ -176,6 +178,8 @@ func (this *RoomController) Edit() {
 		room["RoomIcon"] = this.GetString("RoomIcoFile")
 		room["RoomIntro"] = this.GetString("RoomIntro")
 		room["RoomBanner"] = this.GetString("RoomBannerFile")
+		room["PcRoomad"] = this.GetString("PcRoomadFile")
+		room["PcRoomText"] = this.GetString("PcRoomText")
 		room["Title"] = this.GetString("Title")
 		_, err = models.UpdateRoomInfo(id, room)
 		if err != nil {

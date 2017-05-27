@@ -44,7 +44,7 @@ func (this *QuestionController) GetQuestionTeacher() {
 		}
 		roomId := this.GetString("RoomId")
 		var infoMsg []m.Regist
-		teacher, _, err := m.GetRegistInfoByRole(Id, int64(ROLE_TEACHER), roomId)
+		teacher, _, err := m.GetRegistInfoByRole(Id, roomId)
 		if err != nil {
 			beego.Debug("Get CompanyInfo Error", err)
 			return
