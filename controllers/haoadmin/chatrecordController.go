@@ -130,7 +130,8 @@ func (this *ChatRecordController) Delchatrecords() {
 		this.Rsp(false, err.Error(), "")
 		return
 	}
-	this.Ctx.WriteString("")
+	this.Rsp(true, "删除成功", "")
+	return
 }
 
 // 消息审核

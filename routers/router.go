@@ -104,6 +104,7 @@ func Router() {
 	beego.Router("/weserver/data/chatrecord", &haoadmin.ChatRecordController{}, "*:ChatRecordList")
 	beego.Router("/weserver/data/checkrecord", &haoadmin.ChatRecordController{}, "*:CheckRecord")
 	beego.Router("/weserver/data/delrecord", &haoadmin.ChatRecordController{}, "*:DelRecord")
+	beego.Router("/weserver/data/chatrecord_dels", &haoadmin.ChatRecordController{}, "*:Delchatrecords") //删除聊天记录
 
 	// 公告消息
 	beego.Router("/weserver/data/qs_broad", &haoadmin.QsController{}, "*:SendNoticeList")
@@ -126,9 +127,11 @@ func Router() {
 	beego.Router("/weserver/data/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
 
 	//纸条提问
-	beego.Router("weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList")        //纸条提问列表
-	beego.Router("weserver/data/question_reply", &haoadmin.QuestionController{}, "*:QuestionReply") //回复纸条提问
-	beego.Router("weserver/data/question_del", &haoadmin.QuestionController{}, "*:QuestionDel")     //删除纸条提问
+	beego.Router("/weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList")        //纸条提问列表
+	beego.Router("/weserver/data/question_reply", &haoadmin.QuestionController{}, "*:QuestionReply") //回复纸条提问
+	beego.Router("/weserver/data/question_del", &haoadmin.QuestionController{}, "*:QuestionDel")     //删除纸条提问回复
+	beego.Router("/weserver/data/question_dels", &haoadmin.QuestionController{}, "*:QuestionDels")   //批量删除纸条提问
+
 	// 策略管理
 	beego.Router("/weserver/data/strategy_index", &haoadmin.StrategyController{}, "*:Index")
 	beego.Router("/weserver/data/strategy_edit", &haoadmin.StrategyController{}, "*:Edit")
@@ -224,9 +227,6 @@ func Router() {
 	beego.Router("/chat/user/set/person", &mqtt.SetController{}, "*:Setperson")
 	beego.Router("/chat/user/set/phoneNum", &mqtt.SetController{}, "*:SetPhoneNum")
 	beego.Router("/chat/user/set/pushwechat", &mqtt.SetController{}, "*:SetPushWechat")
-	beego.Router("/chat/user/set/sendidentcode", &mqtt.SetController{}, "*:SetIdentiCode")
-	beego.Router("/chat/user/set/verifycode", &mqtt.SetController{}, "*:VerifyCode")
-	beego.Router("/chat/user/set/pushsms", &mqtt.SetController{}, "*:SetPushSMS")
 
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")

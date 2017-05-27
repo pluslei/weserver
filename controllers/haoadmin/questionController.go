@@ -1,6 +1,8 @@
 package haoadmin
 
 import (
+	"strconv"
+	"strings"
 	"weserver/models"
 
 	"time"
@@ -41,9 +43,13 @@ func (this *QuestionController) QuestionList() {
 				rspContent := rspInfo.Content
 				rspId := rspInfo.Id
 				item["AcceptContent"] = rspContent //回复的内容
+				item["AcceptNickName"] = rspInfo.Nickname
+				item["AcceptUserIcon"] = rspInfo.UserIcon
 				item["rspId"] = rspId
 			} else {
 				item["AcceptContent"] = ""
+				item["AcceptNickName"] = ""
+				item["AcceptUserIcon"] = ""
 			}
 		}
 		// json
@@ -91,10 +97,11 @@ func (this *QuestionController) QuestionReply() {
 		rspQuestion.Nickname = user.Nickname
 		rspQuestion.UserIcon = user.UserIcon
 		rspQuestion.Room = question.Room
-		rspQuestion.RoleName = user.Rolename
-		rspQuestion.RoleTitle = user.Titlename
 		//获取title_css, title_background
+		roleInfo := user.Role
 		title := user.Title
+		rspQuestion.RoleTitle = title.Name
+		rspQuestion.RoleName = roleInfo.Name
 		rspQuestion.RoleTitleCss = title.Css
 		rspQuestion.RoleTitleBack = title.Background
 		rspQuestion.DatatimeStr = time.Unix(nowTime.Unix(), 0).Format("2006-01-02 15:04:05")
@@ -131,4 +138,26 @@ func (this *QuestionController) QuestionDel() {
 		this.Rsp(false, "删除失败", "")
 	}
 	this.Rsp(true, "删除成功", "")
+}
+
+// 批量删除纸条提问
+func (this *QuestionController) QuestionDels() {
+	IdArray := this.GetString("Id")
+	var idarr []int64
+	if len(IdArray) > 0 {
+		preValue := strings.Split(IdArray, ",")
+		for _, v := range preValue {
+			id, _ := strconv.ParseInt(v, 10, 64)
+			idarr = append(idarr, id)
+
+		}
+	}
+	status, err := models.PrepareDelQuestion(idarr)
+	if err == nil && status > 0 {
+		this.Rsp(true, "删除成功", "")
+		return
+	} else {
+		this.Rsp(false, err.Error(), "")
+		return
+	}
 }

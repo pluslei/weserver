@@ -1,24 +1,22 @@
 <link rel="stylesheet" href="/static/css/amazeui.datatables.css"/>
-<script type="text/javascript" src="/static/lib/layer/layer.min.js"></script>
 <style type="text/css">
     .am-alert{border-radius: 5px;padding:3px;}
-    .regstatus{cursor: pointer;}
 </style>
 <div class="crumb-wrap">
     <div class="crumb-list"><i class="icon-font"></i><a href="/public/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/weserver/data/question">纸条提问</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">纸条列表</span></div>
 </div>
-
 <div class="result-wrap">
-        <div class="result-title">
-            <div class="result-list">
-                <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除纸条提问</a>
-            </div>
+    <div class="result-title">
+        <div class="result-list">
+           <!-- <a href="adduser"><i class="icon-font"></i>审核通过</a> </a>-->
+            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除选中聊天记录&nbsp;&nbsp;&nbsp;</a>
         </div>
+    </div>
+    <form name="myform" id="myform" method="post">
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
                 <thead>
                     <tr>
-
                         <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
                         <th>提问用户</th>
                         <th>发送时间</th>
@@ -28,20 +26,19 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody id="data_body">
                     <tr>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </form>
 </div>
-
-<!-- 用户删除 -->
 <div class="am-modal am-modal-confirm" tabindex="-1" id="del-confirm">
   <div class="am-modal-dialog">
-    <div class="am-modal-hd">删除回复</div>
+    <div class="am-modal-hd">纸条提问删除</div>
     <div class="am-modal-bd">
-      你，确定要删除这条回复吗？
+      确定要删除这条纸条提问吗？
     </div>
     <div class="am-modal-footer">
       <input value="" type="hidden" class="data-modal-del">
@@ -50,21 +47,14 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"> -->
+<script src="/static/lib/layer/layer.min.js"></script>
 <script src="/static/js/jquery.dataTables.min.js"></script>
-<script src="/static/js/jquery.jeditable.js"></script>
-<!-- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script> -->
 <script type="text/javascript">
     var oTable;
     $(function() {
         oTable = initTable();
- 
-        var table = $('#rbac-user-list').DataTable();
+       
+               var table = $('#rbac-user-list').DataTable();
         $("#delselecteduser").change(function(){
            
             var length = table.rows().data().length;
@@ -85,45 +75,11 @@
             $("#delselecteduser").prop("checked",false);
         });
 
-        $("#delmoreuser").click(function(){
-            var userdata = table.rows('.am-active').data();
-            var length = table.rows('.am-active').data().length;
-            var userId = new Array();
-            if(length < 1){
-                alert("未选择任何数据！")
-                return ;
-            }else{
-                for(var i=0;i<length;i++){
-                    userId.push(userdata[i]["Id"]); 
-                }
-
-                if(confirm("确定要删除数据吗?")){
-                    $.ajax({
-                    url: '/weserver/data/question_dels',
-                    type: 'POST',
-                    data: {Id: userId.toString()},
-                    success: function(rsp){
-                        if (rsp.status){
-                            alert(rsp.info);
-                            window.location.href="/weserver/data/question"
-                        }else{
-                            alert(rsp.info);
-                            window.location.href="/weserver/data/question"
-                        }
-                   
-                     }
-                });
-
-                }
-            }
-        });
-
-    });     
+    });
     function initTable() {
         var actionUrl = '/weserver/data/question';
         var table = $('#rbac-user-list').dataTable({
-            "bRetrieve": true,
-            "bFilter": true,
+            "bFilter": false,
             "bAutoWidth": false,
             "sPaginationType": 'full_numbers',
             "bPaginate": true,
@@ -143,7 +99,7 @@
                         $(nTd).html("<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+oData.Id+"' onchange='chkuser("+oData.Id+")'  ></input></div>");
                     }
                 },
-                 {"mDataProp": "Nickname",
+                {"mDataProp": "Nickname",
                      "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         // 用户头像
                         if (oData.UserIcon.length <= 0) {
@@ -186,10 +142,10 @@
                         }
                         
                     }
-                },
+                }
             ],
             "oLanguage": {
-                "sProcessing": "正在加载中......",
+                "sProcessing": "正在加载中...",
                 "sLengthMenu": "每页显示 _MENU_ 条记录，",
                 "sZeroRecords": "没有数据！",
                 "sEmptyTable": "表中无数据存在！",
@@ -205,7 +161,7 @@
                 }
             },
             "dom": "<'row'<'col-sm-6'><'col-sm-6'>> <'row'<'col-sm-12'rt>> <'am-g'<'am-u-sm-6'li><'am-u-sm-6'p>>",
-            "fnDrawCallback": function (data, x) {
+                        "fnDrawCallback": function (data, x) {
                 $('#rbac-user-list tbody td.selectTd').editable('setusertitle',{
                         loadurl: '/weserver/title/getalltitle',
                         //data:{"10":"10","20":"20","30":"30"},
@@ -217,9 +173,6 @@
         });
         return table;
     }
-
-
-
 
     /**
     table刷新表格
@@ -238,21 +191,6 @@
             that.oApi._fnProcessingDisplay(oSettings, false);
         });
     }
-
-    jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function ( oSettings, onoff )
-    {
-        if( typeof(onoff) == 'undefined' )
-        {
-            onoff=true;
-        }
-        this.oApi._fnProcessingDisplay( oSettings, onoff );
-    };
-
-    // 模糊查询
-    function queryUser() {
-        var searchusername = $("#searchusername").val();
-        $("#rbac-user-list").DataTable().column(0).search(searchusername).draw();
-    };
 
     // 删除模态层
     function deleteFun(delid){
@@ -277,15 +215,7 @@
             }
         })
     }
-    // 模态退出
-    $('#del-confirm').on('closed.modal.amui', function() {
-        $(this).removeData('amui.modal');
-        $(".data-modal-del").val("");
-    });
-    
-
-
-    function chkuser(argument) {
+        function chkuser(argument) {
         var inputname="userchk"+argument;
         var index=$("input[name="+inputname+"]").index("#rbac-user-list tbody tr td input");
         if($("input[name="+inputname+"]").prop("checked")){
@@ -295,69 +225,20 @@
         }
     }
 
-    function changeRegStatu(id){
-        $.ajax({
-            url: '/weserver/user/regstatus',
-            type: 'POST',
-            data: {Id: id},
-            success:function(data){
-                alert(data.info);
-                if (data.status) {
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }
-            }
-        })
-    }
-
-    function chnageUserStatus(id,status){
-        $.ajax({
-            url: '/weserver/user/userstatus',
-            type: 'POST',
-            data: {id: id,status:status},
-            success:function(data){
-                alert(data.info);
-                if (data.status) {
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }
-            }
-        })
+      // (复选框)
+    function checkbox(Id){
+        return "<div class='am-btn-group am-btn-group-xs'><input type='checkbox' name='userchk"+Id+"' onchange='chkuser("+Id+")'  ></input></div>";
     }
 
 
-    // 踢出模态层
-    function kickOutFun(delid,objname){
-        $('#kick-confirm').modal()
-        $(".data-modal-kick").val(delid);
-        $(".data-modal-objuser").val(objname);
-    }
-
-    // 踢出方法
-    function kickOutModel(){
-        var id = $(".data-modal-kick").val();
-        var objname = $(".data-modal-objuser").val();
-        var sendmsg = {}; //发送的内容
-        sendmsg["Uname"] = "{{.username}}";
-        sendmsg["Objname"] = objname;
-        sendmsg["Codeid"] = "{{.codeid}}"; //公司房间标识符
-        var sendstr = base64encode(sendmsg);
-        socket.emit('all kickout', sendstr);
-        $.ajax({
-            url: '/weserver/user/kictuser',
-            type: 'POST',
-            data: {Id: id},
-            success:function(data){
-                if (data.status) {
-                    oTable.fnReloadAjax(oTable.fnSettings());
-                }
-            }
-        })
-    }
     // 模态退出
-    $('#kick-confirm').on('closed.modal.amui', function() {
+    $('#del-confirm').on('closed.modal.amui', function() {
         $(this).removeData('amui.modal');
-        $(".data-modal-kick").val("");
+        $(".data-modal-del").val("");
     });
-
-
+        var oTable;
+    $(function() {
+        oTable = initTable();
+    });
 
 </script>
