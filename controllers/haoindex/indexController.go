@@ -577,7 +577,8 @@ func GetWxServerImg(media, Id string) (imgpath string) {
 			beego.Error("ioread error", err)
 			return notFile
 		}
-		return dirPath
+		filepath := path.Join("/upload", "room", FileName)
+		return filepath
 	}
 }
 
