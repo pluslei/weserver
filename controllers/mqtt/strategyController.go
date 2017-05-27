@@ -6,15 +6,16 @@ import (
 	"path"
 	"strconv"
 	"time"
+	"weserver/controllers"
+	"weserver/controllers/haoindex"
 	m "weserver/models"
+	. "weserver/src/cache"
 	mq "weserver/src/mqtt"
+	. "weserver/src/msg"
+	. "weserver/src/tools"
 	"weserver/src/wechat"
 
 	"github.com/astaxie/beego"
-
-	"weserver/controllers"
-	"weserver/controllers/haoindex"
-	. "weserver/src/tools"
 	// for json get
 )
 
@@ -276,12 +277,20 @@ func parseStrategyMsg(msg string) bool {
 
 	info.FileName = serverId
 
-	info.IsPush = false
-	if info.IsPush {
+	info.IsPushWechat = false
+	if info.IsPushWechat {
 		sendmsg := info.Data
 		SendWeChatStrategy(topic, sendmsg) // send to wechat
 	}
 
+	// send to sms
+	str1 := strconv.FormatInt(info.CompanyId, 64)
+	companyInfo := GetCompanyInfo(str1)
+	arr := GetRoomPhone(info.Room)
+	for _, v := range arr {
+		sendmsg := info.Data
+		SendSMSMsg(v, companyInfo.Sign, sendmsg)
+	}
 	// 消息入库
 	editStrageydata(info)
 	return true

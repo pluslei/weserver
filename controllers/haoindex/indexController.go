@@ -101,9 +101,12 @@ func (this *IndexController) LoginHandle() {
 		beego.Debug("PassWord Error")
 		return
 	}
-	
 
 	this.SetSession("LoginInfo", user)
+
+	this.Data["json"] = ""
+	this.ServeJSON()
+
 	// this.Redirect("/chooseloginmode", 302)
 }
 

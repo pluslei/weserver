@@ -255,20 +255,21 @@ const (
 
 // 策略消息
 type StrategyInfo struct {
-	Id        int64
-	CompanyId int64
-	Room      string //房间号 topic
-	Icon      string //头像
-	Name      string //操作者的用户名
-	Titel     string
-	Data      string //策略内容
-	FileName  string //图片
-	TxtColour string //颜色字段
-	IsPush    bool   //微信推送
-	IsTop     bool   //是否置顶 置顶1 否 0
-	IsDelete  bool   //是否删除,删除 1 否 0
-	ThumbNum  int64  //点赞次数
-	Time      string
+	Id           int64
+	CompanyId    int64
+	Room         string //房间号 topic
+	Icon         string //头像
+	Name         string //操作者的用户名
+	Titel        string
+	Data         string //策略内容
+	FileName     string //图片
+	TxtColour    string //颜色字段
+	IsPushWechat bool   //微信推送
+	IsPushSMS    bool   //短信推送
+	IsTop        bool   //是否置顶 置顶1 否 0
+	IsDelete     bool   //是否删除,删除 1 否 0
+	ThumbNum     int64  //点赞次数
+	Time         string
 
 	OperType int64
 	MsgType  int //消息类型

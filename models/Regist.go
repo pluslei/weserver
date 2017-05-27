@@ -15,17 +15,18 @@ type Regist struct {
 	Id            int64
 	CompanyId     int64
 	Room          string
-	Username      string    `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
-	UserId        int64     `orm:"index"`
-	Nickname      string    `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
-	UserIcon      string    `orm:"null;size(255)" form:"UserIcon" valid:"MaxSize(255)"`
-	RegStatus     int       `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //用户注册状态 1为未审核 2为审核通过
-	Role          *Role     `orm:"rel(one)"`
-	Title         *Title    `orm:"rel(one)"`
-	IsShutup      bool      //是否禁言
-	Pushwechat    int64     //推送微信 0 不推送 1 推送
-	Pushsms       int64     //推送短信 0 不推送 1 推送
-	Loginmode     int64     //0 普通登录 1 微信登录
+	Username      string `orm:"size(32)" form:"Username"  valid:"Required;MaxSize(32);MinSize(6)"`
+	UserId        int64  `orm:"index"`
+	Nickname      string `orm:"size(255)" form:"Nickname" valid:"Required;MaxSize(255);MinSize(2)"`
+	UserIcon      string `orm:"null;size(255)" form:"UserIcon" valid:"MaxSize(255)"`
+	RegStatus     int    `orm:"default(1)" form:"Status" valid:"Range(1,2)"` //用户注册状态 1为未审核 2为审核通过
+	Role          *Role  `orm:"rel(one)"`
+	Title         *Title `orm:"rel(one)"`
+	IsShutup      bool   //是否禁言
+	Pushwechat    int64  //推送微信 0 不推送 1 推送
+	Pushsms       int64  //推送短信 0 不推送 1 推送
+	Loginmode     int64  //0 普通登录 1 微信登录
+	Phonenum      string
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 
@@ -140,6 +141,13 @@ func UpdateRegistPushSMS(RoomId, username string, PushSMS int64) (int64, error) 
 	return id, err
 }
 
+func UpdateRegistPhone(RoomId, username, PhoneNum string) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("Room", RoomId).Filter("Username", username).Update(orm.Params{"Phonenum": PhoneNum})
+	return id, err
+}
+
 //跟新登录时间
 func UpdateLoginTime(room, username string) (int64, error) {
 	o := orm.NewOrm()
@@ -177,6 +185,19 @@ func GetShutUpInfoToday() (users []Regist, err error) {
 func GetAllShutUpInfo() (users []Regist, err error) {
 	o := orm.NewOrm()
 	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("Username", "").Filter("IsShutUp", 1).All(&users)
+	return users, err
+}
+
+//获取Regist表所有推送phonenum
+func GetAllPhoneNum() (users []Regist, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable("regist").Exclude("Username", "admin").Exclude("Username", "").Filter("Pushsms", 1).All(&users)
+	return users, err
+}
+
+func GetRoomPhoneNum(Room string) (users []Regist, err error) {
+	o := orm.NewOrm()
+	_, err = o.QueryTable("regist").Filter("Room", Room).Exclude("Username", "admin").Exclude("Username", "").Filter("Pushsms", 1).All(&users)
 	return users, err
 }
 
