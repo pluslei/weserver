@@ -74,8 +74,20 @@
         <legend></legend>
         <input type="hidden" value="{{.teacher.Id}}" name="id">
         <input type="hidden" value="edit" name="action">
-        <div class="am-form-group">
-          <label for="doc-select-1">请选择房间</label>
+
+              <div class="am-form-group">
+          <label for="doc-select-1">请选择公司:</label>
+          <select id="doc-select-company" name="Company"  required data-validation-message="请选择房间" onchange="getRoomInfo()">
+            <option value="">-=请选择公司=-</option>
+            {{range $index,$ele := .companyInfo}}
+            <option value="{{$ele.Id}}">{{$ele.Company}}</option>
+            {{end}}
+          </select>
+          <span class="am-form-caret"></span>
+        </div>
+
+     <!--   <div class="am-form-group">
+          <label for="doc-select-1">请选择房间:</label>
           <select id="doc-select-room" name="Room"  required data-validation-message="请选择房间">
             <option value="">-=请选择房间=-</option>
             {{range $index,$ele := .roonInfo}}
@@ -83,7 +95,18 @@
             {{end}}
           </select>
           <span class="am-form-caret"></span>
-        </div>
+        </div> -->
+                             <div class="am-form-group">
+                              <label for="doc-select-1">请选择房间:</label> 
+                            <select id="doc-select-room" name="Room" required data-validation-message="请选择房间">
+                                <option value="">-=请选择房间=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+     
+
         <div class="am-form-group">
           <label for="doc-vld-Title-2">讲师名称：</label>
           <input type="text" name="Name" value="{{.teacher.Name}}" id="doc-vld-Title-2" placeholder="输入讲师名称" data-validation-message="请输入讲师名称" required/>
@@ -112,8 +135,45 @@
 
 <script type="text/javascript">
 $(function() {
-  $("#doc-select-room").find("option[value='{{.teacher.Room}}']").attr("selected",true);
+    
+  $("#doc-select-company").find("option[value='{{.teacher.CompanyId}}']").attr("selected",true);
+  getRoomInfo();
+ 
 });
+
+    function getCompanyInfo() {
+      $.ajax({
+        url: '/weserver/common/getCompanyInfo',
+        type: 'POST',
+        success: function(data){
+            console.log(data, 'data');
+            var company = ["<option value=''>-=所属公司=-</option>"];
+            for (var i = 0; i<data.CompanyList.length;i++){
+                company.push("<option value="+data.CompanyList[i].Id+">-="+data.CompanyList[i].Company+"=-</option>");
+            }
+            $('#doc-select-company').html(company.join(''));
+        }
+      })
+    }
+
+    	function getRoomInfo() {
+      var companyId = document.getElementById("doc-select-company").value;
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId: parseInt(companyId, 10),
+        },
+        success: function(data){
+            var room = ["<option value=''>-=所属房间=-</option>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+                room.push("<option value="+data.roonInfo[i].RoomId+">-="+data.roonInfo[i].Title+"=-</option>");
+            }
+            $('#doc-select-room').html(room.join(''));
+            $("#doc-select-room").find("option[value='{{.teacher.Room}}']").attr("selected",true);
+        }
+      })
+    }
 </script>
 
 

@@ -317,9 +317,9 @@ func PrepareDelReisterUser(IdArray []int64) (int64, error) {
 }
 
 //根据userId删除registUser
-func DelRegistUserByUserId(UserId int64) (int64, error) {
+func DelRegistUserByUserName(userName string) (int64, error) {
 	o := orm.NewOrm()
-	res, err := o.Raw("delete from regist where user_id = ?", UserId).Exec()
+	res, err := o.Raw("delete from regist where username = ?", userName).Exec()
 	num, _ := res.RowsAffected()
 	return num, err
 }

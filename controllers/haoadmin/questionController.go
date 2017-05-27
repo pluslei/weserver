@@ -119,8 +119,32 @@ func (this *QuestionController) QuestionReply() {
 
 		}
 	}
+	Question, err := models.GetQuestionIdData(qid)
+	if err != nil {
+		beego.Error("inser faild", err)
+		this.AlertBack("回复失败")
+		return
+	}
+	//获取选择回复的头衔
+	roomId := this.GetString("room")
+	var infoMsg []models.Regist
+	teacher, _, err := models.GetRegistInfoByRole(Question.CompanyId, roomId)
+	if err != nil {
+		beego.Debug("Get CompanyInfo Error", err)
+		return
+	}
+	for _, v := range teacher {
+		var info models.Regist
+		info.UserIcon = v.UserIcon
+		v.Titlename, err = models.GetTitleName(v.Title.Id)
+		info.Titlename = v.Titlename
+		infoMsg = append(infoMsg, info)
+	}
+	beego.Info("TeacherInfo:", infoMsg[0].UserIcon, infoMsg[0].Titlename)
 	this.CommonMenu()
 	this.Data["qid"] = qid
+	this.Data["TeacherInfo"] = infoMsg
+	this.Data["Question"] = Question
 	this.TplName = "haoadmin/data/question/reply.html"
 }
 
@@ -143,6 +167,7 @@ func (this *QuestionController) QuestionDel() {
 // 批量删除纸条提问
 func (this *QuestionController) QuestionDels() {
 	IdArray := this.GetString("Id")
+	beego.Info("IdArray:", IdArray)
 	var idarr []int64
 	if len(IdArray) > 0 {
 		preValue := strings.Split(IdArray, ",")

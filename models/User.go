@@ -109,7 +109,11 @@ func PrepareDelUser(IdArray []int64) (int64, error) {
 	var status int64
 	for i := 0; i < len(IdArray); i++ {
 		status, err = o.Delete(&User{Id: IdArray[i]})
-		_, err2 := DelRegistUserByUserId(IdArray[i])
+		user, err3 := GetUserInfoById(IdArray[i])
+		if err3 != nil {
+			err = o.Rollback()
+		}
+		_, err2 := DelRegistUserByUserName(user.Username)
 		if err2 != nil {
 			err = o.Rollback()
 		}

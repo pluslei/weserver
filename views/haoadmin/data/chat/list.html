@@ -45,23 +45,29 @@
             <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
             <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
             
-            <div class="am-fr am-margin-left">
-                <div class="result-list am-form-inline am-form">
-                    <div class="am-form-group">
-                        <select id="doc-select-company" onchange="getRoomInfo()">
-                            <option value="">-=所属公司=-</option>
-                        </select>
-                    </div>
-                    <div class="am-form-group">
-                        <select id="doc-select-room">
-                            <option value="">-=所属房间=-</option>
-                        </select>
-                    </div>
-                    <div class="am-input-group">
-                        <a onclick="querycompany()" class="am-btn am-btn-primary">搜索</a>
-                    </div>
+                     <div class="am-fr">
+                    <div class="result-list am-form-inline am-form">
+                        <div class="am-form-group">
+                            <select id="doc-select-company" onchange="getRoomInfo()">
+                                <option value="">-=所属公司=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+                        <div class="am-form-group">
+                            <select id="doc-select-room">
+                                <option value="">-=所属房间=-</option>
+                                <!--{{range $index ,$ele := .roonInfo}}
+                                <option value="{{$ele.RoomId}}">{{$ele.RoomTitle}}</option>
+                                {{end}}-->
+                            </select>
+                        </div>
+                        <div class="am-input-group">
+                            <a onclick="javascript:queryCompany()" class="am-btn am-btn-primary">搜索</a>
+                        </div>
+                     </div>
                 </div>
-            </div>
 
         </div>
     </div>
@@ -121,8 +127,8 @@
     var lastruntime = 0;
     var betweentime = 500;
     $(function() {
-        getCompanyInfo();
         oTable = initTable();
+        getCompanyInfo();
         var table = $('#data-chat-list').DataTable();
         client.subscribe('chat', function(result){
             // 扯淡计算
@@ -226,7 +232,8 @@
         });
 
     });
-         function getCompanyInfo() {
+
+     function getCompanyInfo() {
       $.ajax({
         url: '/weserver/common/getCompanyInfo',
         type: 'POST',
@@ -240,7 +247,7 @@
         }
       })
     }
-    function getRoomInfo() {
+		function getRoomInfo() {
       var companyId = document.getElementById("doc-select-company").value;
       $.ajax({
         url: '/weserver/common/getRoomInfo',
@@ -258,14 +265,14 @@
         }
       })
     }
-
-    //公司/房间筛选
-        function querycompany() {
+    		  // 模糊查询
+    function queryCompany() {
         var companyId = document.getElementById("doc-select-company").value;
         var roomId = document.getElementById("doc-select-room").value;
-        $("#data-chat-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
+        console.log("c:",companyId, "r:", roomId);
+        $("#data-chat-list").DataTable().column(0).search(companyId).draw();
+        $("#data-chat-list").DataTable().column(0).search(roomId).draw();
     }
-
 
     function initTable() {
         var actionUrl = '/weserver/data/chatrecord';
@@ -347,6 +354,7 @@
         this.fnClearTable(this);
         this.oApi._fnProcessingDisplay(oSettings, true);
         var that = this;
+
         $.getJSON(oSettings.sAjaxSource, null, function(json) {
             for (var i = 0; i < json.aaData.length; i++) {
                 that.oApi._fnAddData(oSettings, json.aaData[i]);
@@ -363,6 +371,13 @@
         $("#data-chat-list").DataTable().column(0).search(searchusername).draw();
     };
     
+      //公司/房间筛选
+        function querycompany() {
+         var Room = $("#doc-select-room").val();
+        $("#data-chat-list").DataTable().column(0).search(Room).draw();
+        console.info("r:", Room)
+         };
+
     // 删除模态层
     function deleteFun(delid,room){
         $('#del-confirm').modal()
