@@ -123,16 +123,17 @@
           password: password,
         },
         success: function(data){
-			document.cookie="name="+username+";expires="+dateTime.toGMTString();
-			document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
-			window.location.href = '/chooseloginmode';
+			if (data === 'success') {
+				document.cookie="name="+username+";expires="+dateTime.toGMTString();
+				document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
+				window.location.href = '/chooseloginmode';
+			}
         },
       });
 	}
 	var winHeight = 0;
 	$(document).ready(function(){
 		winHeight = $(window).height();
-		console.log(document.cookie);
 		if (document.cookie == '') return;
 		var username=document.cookie.split(";")[0].split("=")[1];
 		var password=document.cookie.split(";")[1].split("=")[1];
@@ -141,7 +142,6 @@
 			document.getElementById('password').value = password;
 			loginSub();
 		}
-		console.log(username, password);
 	})
 	$(window).resize(function(){
 	  var footer = document.querySelector('.p_footer');

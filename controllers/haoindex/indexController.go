@@ -104,7 +104,7 @@ func (this *IndexController) LoginHandle() {
 
 	this.SetSession("LoginInfo", user)
 
-	this.Data["json"] = ""
+	this.Data["json"] = "success"
 	this.ServeJSON()
 
 	// this.Redirect("/chooseloginmode", 302)
