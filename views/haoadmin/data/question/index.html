@@ -193,7 +193,8 @@
 
                         }else{
                            icoImg = oData.AcceptUserIcon
-                            $(nTd).html("<img src="+icoImg+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData);   
+                           titleName = oData.AcceptTitleName
+                            $(nTd).html("<img src="+icoImg+" style='width:25px;height:25px;border:1px solid #ccc;padding:2px;'>"+sData+"["+titleName+"]");   
                         }
                     }},
                {"mDataProp": "AcceptContent",},

@@ -134,12 +134,13 @@ func GetQuestionIdData(id int64) (Question, error) {
 }
 
 // 获取消息列表
-func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, companyId int64) (ms []orm.Params, count int64) {
+func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, companyId int64, Room string) (ms []orm.Params, count int64) {
 	o := orm.NewOrm()
 	chatrecord := new(Question)
 	query := o.QueryTable(chatrecord)
 	if companyId != 0 {
-		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("nickname__contains", Nickname).RelatedSel().OrderBy(sort).Values(&ms)
+		beego.Info("companyId", companyId, "room", Room)
+		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("Room", Room).Filter("nickname__contains", Nickname).RelatedSel().OrderBy(sort).Values(&ms)
 		count, _ = query.Count()
 		return ms, count
 	}
