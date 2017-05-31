@@ -56,16 +56,18 @@ func (this *QuestionController) QuestionList() {
 			//获取公司个房间信息
 			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {
-				item["Room"] = "未知房间"
+				item["RoomName"] = "未知房间"
 			} else {
-				item["Room"] = roomInfo.RoomTitle
+				item["RoomName"] = roomInfo.RoomTitle
 			}
+
 			companyInfo, err := models.GetCompanyById(item["CompanyId"].(int64))
 			if err != nil {
 				item["CompanyName"] = "未知公司"
 			} else {
 				item["CompanyName"] = companyInfo.Company
 			}
+			beego.Info("RoomName:", item["RoomName"])
 		}
 		// json
 		data := make(map[string]interface{})
@@ -136,6 +138,7 @@ func (this *QuestionController) QuestionReply() {
 		//获取title_css, title_background
 		roleInfo := user.Role
 		title := user.Title
+		rspQuestion.Sendtype = "TXT"
 		rspQuestion.RoleTitle = TitleName
 		rspQuestion.RoleName = roleInfo.Name
 		rspQuestion.RoleTitleCss = title.Css
