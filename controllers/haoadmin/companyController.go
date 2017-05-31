@@ -190,6 +190,7 @@ func (this *CompanyController) EditCompany() {
 		company.HistoryMsg, _ = this.GetInt64("historymsg")
 		company.AuditMsg, _ = this.GetInt64("auditmsg")
 		company.Verify, _ = this.GetInt64("verify")
+		company.Sign = this.GetString("Sign")
 		company.AppId = this.GetString("AppId")
 		company.AppSecret = this.GetString("AppSecret")
 		company.Url = this.GetString("Url")
@@ -200,7 +201,7 @@ func (this *CompanyController) EditCompany() {
 			return
 		} else {
 			GetCompanyCache()
-			this.Alert("修改成功", "/weserver/data/company")
+			this.Alert("修改成功", "/weserver/company/company")
 		}
 	}
 	this.CommonMenu()

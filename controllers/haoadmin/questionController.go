@@ -53,6 +53,19 @@ func (this *QuestionController) QuestionList() {
 				item["AcceptNickName"] = ""
 				item["AcceptUserIcon"] = ""
 			}
+			//获取公司个房间信息
+			roomInfo, err := models.GetRoomInfoByRoomID(item["Room"].(string))
+			if err != nil {
+				item["Room"] = "未知房间"
+			} else {
+				item["Room"] = roomInfo.RoomTitle
+			}
+			companyInfo, err := models.GetCompanyById(item["CompanyId"].(int64))
+			if err != nil {
+				item["CompanyName"] = "未知公司"
+			} else {
+				item["CompanyName"] = companyInfo.Company
+			}
 		}
 		// json
 		data := make(map[string]interface{})
