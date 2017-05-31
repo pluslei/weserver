@@ -82,6 +82,7 @@ func (s *SMS) RunCodeing() {
 		for {
 			url, ok := <-s.Codech
 			if ok {
+				beego.Debug("ssssss", url)
 				postReq, err := http.NewRequest("POST", s.URL, strings.NewReader(url))
 				if err != nil {
 					beego.Debug("POST SMS IDENTIFY CODE Fail", err)

@@ -415,6 +415,7 @@ func operateQuestionData(info *QuestionInfo) {
 		}
 		break
 	case OPERATE_IGN_QUESTION:
+		beego.Debug("ign question")
 		status := OpereateIgnQuestionData(info)
 		if !status {
 			beego.Debug("Upadate Ignore RspQuestion Fail")
