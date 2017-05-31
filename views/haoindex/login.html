@@ -112,6 +112,13 @@
 	function loginSub() {
 	  var username = document.getElementById('username').value;
 	  var password = document.getElementById('password').value;
+	  if (username == '') {
+		  alert('请填写账号');
+		  return;
+	  } else if (password == '') {
+		  alert('请填写密码');
+		  return;
+	  }
 	  var dateTime=new Date();
 	  var expiresDays=1; 
 	  dateTime.setTime(dateTime.getTime()+expiresDays*24*3600*1000); 
@@ -127,6 +134,12 @@
 				document.cookie="name="+username+";expires="+dateTime.toGMTString();
 				document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
 				window.location.href = '/chooseloginmode';
+			} else if (data === 'NOACCOUNT'){
+				alert('账号不存在');
+				return;
+			} else if (data ==='PWDERROR'){
+				alert('用户名或密码错误');
+				return;
 			}
         },
       });
