@@ -156,6 +156,7 @@ func GetRoomPhone(RoomId string) (info []string) {
 
 func InitCache() {
 	MapCache = make(map[string]interface{})
+	MapPhone = make(map[string][]string)
 	GetShutMapCache()
 	GetCompanyCache()
 	GetPhoneNumInfo()
