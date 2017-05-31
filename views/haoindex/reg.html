@@ -183,7 +183,19 @@
         $('.b-next').removeClass('on');
       }
     }
-
+    var winHeight = 0;
+    $(document).ready(function(){
+      winHeight = $(window).height();
+    })
+    $(window).resize(function(){
+      var footer = document.querySelector('.buttom-action');
+      var changeWinH = $(window).height();
+      if (changeWinH < winHeight) {
+        footer.style.position = 'static';
+      } else {
+        footer.style.position = 'fixed';
+      }
+    });
     function gonext(){
       var headicon = $('#headicon').attr('src');
       var nikename = $('#nikename').val();

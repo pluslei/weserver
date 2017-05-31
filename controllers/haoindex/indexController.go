@@ -86,25 +86,27 @@ func (this *IndexController) LoginHandle() {
 	password := this.GetString("password")
 	beego.Debug("username password", username, password)
 	if len(username) <= 0 || len(password) <= 0 {
-		this.AlertBack("请填写账户信息")
+		beego.Debug("未填写账号信息")
 		return
 	}
 
 	user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
 	if user == nil || err != nil {
-		this.AlertBack("账号不存在")
+		beego.Debug("Account Not Found")
+		this.Data["json"] = "NOACCOUNT"
+		this.ServeJSON()
 		return
 	}
 
 	if user.Password != tools.EncodeUserPwd(username, password) {
-		this.AlertBack("用户名和密码错误 402")
 		beego.Debug("PassWord Error")
+		this.Data["json"] = "PWDERROR"
+		this.ServeJSON()
 		return
 	}
 
 	this.SetSession("LoginInfo", user)
-
-	this.Data["json"] = ""
+	this.Data["json"] = "success"
 	this.ServeJSON()
 
 	// this.Redirect("/chooseloginmode", 302)

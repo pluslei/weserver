@@ -112,6 +112,13 @@
 	function loginSub() {
 	  var username = document.getElementById('username').value;
 	  var password = document.getElementById('password').value;
+	  if (username == '') {
+		  alert('请填写账号');
+		  return;
+	  } else if (password == '') {
+		  alert('请填写密码');
+		  return;
+	  }
 	  var dateTime=new Date();
 	  var expiresDays=1; 
 	  dateTime.setTime(dateTime.getTime()+expiresDays*24*3600*1000); 
@@ -123,16 +130,23 @@
           password: password,
         },
         success: function(data){
-			document.cookie="name="+username+";expires="+dateTime.toGMTString();
-			document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
-			window.location.href = '/chooseloginmode';
+			if (data === 'success') {
+				document.cookie="name="+username+";expires="+dateTime.toGMTString();
+				document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
+				window.location.href = '/chooseloginmode';
+			} else if (data === 'NOACCOUNT'){
+				alert('账号不存在');
+				return;
+			} else if (data ==='PWDERROR'){
+				alert('用户名或密码错误');
+				return;
+			}
         },
       });
 	}
 	var winHeight = 0;
 	$(document).ready(function(){
 		winHeight = $(window).height();
-		console.log(document.cookie);
 		if (document.cookie == '') return;
 		var username=document.cookie.split(";")[0].split("=")[1];
 		var password=document.cookie.split(";")[1].split("=")[1];
@@ -141,7 +155,6 @@
 			document.getElementById('password').value = password;
 			loginSub();
 		}
-		console.log(username, password);
 	})
 	$(window).resize(function(){
 	  var footer = document.querySelector('.p_footer');
