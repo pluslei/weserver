@@ -129,7 +129,9 @@
         },
       });
 	}
+	var winHeight = 0;
 	$(document).ready(function(){
+		winHeight = $(window).height();
 		console.log(document.cookie);
 		if (document.cookie == '') return;
 		var username=document.cookie.split(";")[0].split("=")[1];
@@ -141,6 +143,15 @@
 		}
 		console.log(username, password);
 	})
+	$(window).resize(function(){
+	  var footer = document.querySelector('.p_footer');
+	  var changeWinH = $(window).height();
+	  if (changeWinH < winHeight) {
+		footer.style.display = 'none';
+	  } else {
+		footer.style.display = 'block';
+	  }
+	});
 </script>
 </body>
 </html>
