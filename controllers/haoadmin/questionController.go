@@ -34,9 +34,10 @@ func (this *QuestionController) QuestionList() {
 			beego.Debug("userlist Error", err)
 			return
 		}
-		nickname := this.GetString("sSearch_0")
-		companyId := user.CompanyId
-		questionList, count := models.GetQuestionRecordList(iStart, iLength, "-Id", nickname, companyId)
+		nickname := this.GetString("sSearch_3")
+		companyId, _ := this.GetInt64("sSearch_0")
+		Room := this.GetString("sSearch_1")
+		questionList, count := models.GetQuestionRecordList(iStart, iLength, "-Id", nickname, companyId, Room)
 		for _, item := range questionList {
 			rspInfo, err := models.GetRspByQuestionId(item["Id"].(int64))
 			if err == nil {
@@ -45,6 +46,7 @@ func (this *QuestionController) QuestionList() {
 				item["AcceptContent"] = rspContent //回复的内容
 				item["AcceptNickName"] = rspInfo.Nickname
 				item["AcceptUserIcon"] = rspInfo.UserIcon
+				item["AcceptTitleName"] = rspInfo.RoleTitle
 				item["rspId"] = rspId
 			} else {
 				item["AcceptContent"] = ""
@@ -85,6 +87,27 @@ func (this *QuestionController) QuestionReply() {
 		if QuestionId <= 0 {
 			beego.Debug("QuestionId不能为空")
 		}
+		TeacherInfo := this.GetString("TeacherInfo")
+		var UserIcon string
+		var TitleName string
+		var NickName string
+		if len(TeacherInfo) <= 0 {
+			UserIcon = user.UserIcon
+			TitleName = user.Title.Name
+			NickName = user.Nickname
+		} else {
+			TeacherInfos := strings.Split(TeacherInfo, ",")
+			if len(TeacherInfos) >= 3 {
+				UserIcon = TeacherInfos[0]
+				TitleName = TeacherInfos[1]
+				NickName = TeacherInfos[2]
+			} else {
+				UserIcon = user.UserIcon
+				TitleName = user.Title.Name
+				NickName = user.Nickname
+			}
+		}
+
 		//获取回复者的信息
 		nowTime := time.Now()
 		question, _ := models.GetQuestionIdData(QuestionId)
@@ -94,13 +117,13 @@ func (this *QuestionController) QuestionReply() {
 		rspQuestion.Time = nowTime
 		rspQuestion.CompanyId = user.CompanyId
 		rspQuestion.Uname = user.Openid
-		rspQuestion.Nickname = user.Nickname
-		rspQuestion.UserIcon = user.UserIcon
+		rspQuestion.Nickname = NickName
+		rspQuestion.UserIcon = UserIcon
 		rspQuestion.Room = question.Room
 		//获取title_css, title_background
 		roleInfo := user.Role
 		title := user.Title
-		rspQuestion.RoleTitle = title.Name
+		rspQuestion.RoleTitle = TitleName
 		rspQuestion.RoleName = roleInfo.Name
 		rspQuestion.RoleTitleCss = title.Css
 		rspQuestion.RoleTitleBack = title.Background
@@ -138,9 +161,9 @@ func (this *QuestionController) QuestionReply() {
 		info.UserIcon = v.UserIcon
 		v.Titlename, err = models.GetTitleName(v.Title.Id)
 		info.Titlename = v.Titlename
+		info.Nickname = v.Nickname
 		infoMsg = append(infoMsg, info)
 	}
-	beego.Info("TeacherInfo:", infoMsg[0].UserIcon, infoMsg[0].Titlename)
 	this.CommonMenu()
 	this.Data["qid"] = qid
 	this.Data["TeacherInfo"] = infoMsg

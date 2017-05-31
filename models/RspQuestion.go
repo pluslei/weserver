@@ -166,7 +166,7 @@ func ReplyQuestion(id int64, replyMsg string) (int64, error) {
 func GetRspByQuestionId(id int64) (RspQuestion, error) {
 	o := orm.NewOrm()
 	var chat RspQuestion
-	err := o.Raw("SELECT id,content,nickname,user_icon FROM rspquestion WHERE question_id = ?", id).QueryRow(&chat)
+	err := o.Raw("SELECT id,content,nickname,user_icon,role_title FROM rspquestion WHERE question_id = ?", id).QueryRow(&chat)
 	return chat, err
 }
 
