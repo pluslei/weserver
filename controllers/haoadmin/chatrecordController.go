@@ -42,9 +42,14 @@ func (this *ChatRecordController) ChatRecordList() {
 		sEcho := this.GetString("sEcho")
 		iStart, _ := this.GetInt64("iDisplayStart")
 		iLength, _ := this.GetInt64("iDisplayLength")
-		nickname := this.GetString("sSearch_0")
+		nickname := this.GetString("sSearch_3")
+		CompanyId, _ := this.GetInt64("sSearch_0")
+		if CompanyId <= 0 {
+			CompanyId = user.CompanyId
+		}
+		RoomId := this.GetString("sSearch_1")
 
-		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime", nickname, user.CompanyId)
+		chatrecord, count := m.GetChatRecordList(iStart, iLength, "-datatime", nickname, CompanyId, RoomId)
 		for _, v := range chatrecord {
 			roomInfo, err := m.GetRoomInfoByRoomID(v["Room"].(string))
 			if err != nil {

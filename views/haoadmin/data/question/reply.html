@@ -24,6 +24,13 @@
             <textarea class="" name="QuestionContent"  disabled="disabled" rows="6" id="doc-ta-1">{{.Question.Content}}</textarea>
         </div>
 
+           <div class="am-form-group">
+                   <label for="doc-vld-Title-2">选择回复头衔：  </label> <br>
+                              {{range $index ,$ele := .TeacherInfo}}
+                              <input type="radio" value="{{$ele.UserIcon}},{{$ele.Titlename}},{{$ele.Nickname}}" name="TeacherInfo" > <img src="{{$ele.UserIcon}}" style='width:30px;height:30px;border:1px solid #ccc;padding:2px;'>{{$ele.Nickname}}[{{$ele.Titlename}}]
+                              {{end}}
+                          
+                        </div>
 
         <div class="am-form-group">
           <label for="doc-vld-Title-2">回复内容：  </label>

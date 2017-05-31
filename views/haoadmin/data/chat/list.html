@@ -270,8 +270,7 @@
         var companyId = document.getElementById("doc-select-company").value;
         var roomId = document.getElementById("doc-select-room").value;
         console.log("c:",companyId, "r:", roomId);
-        $("#data-chat-list").DataTable().column(0).search(companyId).draw();
-        $("#data-chat-list").DataTable().column(0).search(roomId).draw();
+        $("#data-chat-list").DataTable().column(0).search(companyId).column(1).search(roomId).draw();
     }
 
     function initTable() {
@@ -368,7 +367,7 @@
     // 模糊查询
     function queryUser() {
         var searchusername = $("#searchusername").val();
-        $("#data-chat-list").DataTable().column(0).search(searchusername).draw();
+        $("#data-chat-list").DataTable().column(3).search(searchusername).draw();
     };
     
       //公司/房间筛选
