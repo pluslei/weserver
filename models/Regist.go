@@ -148,6 +148,16 @@ func UpdateRegistPhone(RoomId, username, PhoneNum string) (int64, error) {
 	return id, err
 }
 
+func UpdateRegistPhonenum(RoomId, username, PhoneNum string) (int64, error) {
+	o := orm.NewOrm()
+	var table Regist
+	id, err := o.QueryTable(table).Filter("Room", RoomId).Filter("Username", username).Update(orm.Params{
+		"Phonenum": PhoneNum,
+		"Pushsms":  1,
+	})
+	return id, err
+}
+
 //跟新登录时间
 func UpdateLoginTime(room, username string) (int64, error) {
 	o := orm.NewOrm()

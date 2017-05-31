@@ -104,6 +104,7 @@ func (this *ManagerController) GetUserLogin() {
 				"RoleTitle":     role.RoleTitle,
 				"RoleTitleCss":  role.RoleTitleCss,
 				"RoleTitleBack": role.RoleTitleBack,
+				"Phonenum":      regist.Phonenum,
 				"Pushwechat":    regist.Pushwechat,
 				"Pushsms":       regist.Pushsms}
 			this.ServeJSON()
