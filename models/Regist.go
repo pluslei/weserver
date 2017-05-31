@@ -161,6 +161,7 @@ func UpdateLoginTime(room, username string) (int64, error) {
 func GetRegistInfoByRole(companyId int64, roomId string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
 	var info []Regist
+	beego.Info("companyId:", companyId, "roomId:", roomId)
 	num, err := o.QueryTable("regist").Filter("CompanyId", companyId).Filter("Room", roomId).Exclude("role_id", int64(tools.ROLE_CUSTOMER)).Exclude("role_id", int64(tools.ROLE_NORMAL)).Exclude("role_id", int64(tools.ROLE_TOURIST)).All(&info)
 	return info, num, err
 }

@@ -79,9 +79,13 @@ func (this *CompanyController) AddCompany() {
 		HistoryMsg, _ := this.GetInt64("historymsg")
 		AuditMsg, _ := this.GetInt64("auditmsg")
 		Verify, _ := this.GetInt64("verify")
+		Sign := this.GetString("Sign")
 		AppId := this.GetString("AppId")
 		AppSecret := this.GetString("AppSecret")
 		Url := this.GetString("Url")
+		if len(Sign) <= 0 {
+			beego.Debug("App签名不能为空")
+		}
 		if len(AppId) <= 0 {
 			beego.Debug("AppId不能为空")
 		}
@@ -116,6 +120,7 @@ func (this *CompanyController) AddCompany() {
 		company.HistoryMsg = HistoryMsg
 		company.AuditMsg = AuditMsg
 		company.Verify = Verify
+		company.Sign = Sign
 		company.AppId = AppId
 		company.AppSecret = AppSecret
 		company.Url = Url
@@ -190,6 +195,7 @@ func (this *CompanyController) EditCompany() {
 		company.HistoryMsg, _ = this.GetInt64("historymsg")
 		company.AuditMsg, _ = this.GetInt64("auditmsg")
 		company.Verify, _ = this.GetInt64("verify")
+		company.Sign = this.GetString("Sign")
 		company.AppId = this.GetString("AppId")
 		company.AppSecret = this.GetString("AppSecret")
 		company.Url = this.GetString("Url")
@@ -200,7 +206,7 @@ func (this *CompanyController) EditCompany() {
 			return
 		} else {
 			GetCompanyCache()
-			this.Alert("修改成功", "/weserver/data/company")
+			this.Alert("修改成功", "/weserver/company/company")
 		}
 	}
 	this.CommonMenu()

@@ -121,10 +121,10 @@ func Router() {
 	beego.Router("/weserver/data/room_show", &haoadmin.RoomController{}, "*:IsShow") //隐藏或显示房间
 
 	//公司信息管理
-	beego.Router("/weserver/data/company", &haoadmin.CompanyController{}, "*:Index")            //公司信息展示
-	beego.Router("/weserver/data/company_add", &haoadmin.CompanyController{}, "*:AddCompany")   //添加公司
-	beego.Router("/weserver/data/company_del", &haoadmin.CompanyController{}, "*:DelCompany")   //删除公司
-	beego.Router("/weserver/data/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
+	beego.Router("/weserver/company/company", &haoadmin.CompanyController{}, "*:Index")            //公司信息展示
+	beego.Router("/weserver/company/company_add", &haoadmin.CompanyController{}, "*:AddCompany")   //添加公司
+	beego.Router("/weserver/company/company_del", &haoadmin.CompanyController{}, "*:DelCompany")   //删除公司
+	beego.Router("/weserver/company/company_edit", &haoadmin.CompanyController{}, "*:EditCompany") //编辑公司
 
 	//纸条提问
 	beego.Router("/weserver/data/question", &haoadmin.QuestionController{}, "*:QuestionList")        //纸条提问列表
@@ -228,6 +228,8 @@ func Router() {
 	beego.Router("/chat/user/set/phoneNum", &mqtt.SetController{}, "*:SetPhoneNum")
 	beego.Router("/chat/user/set/pushwechat", &mqtt.SetController{}, "*:SetPushWechat")
 	beego.Router("/chat/user/set/iconurl", &mqtt.SetController{}, "*:GetIconUrl")
+	beego.Router("/chat/user/set/sendidentcode", &mqtt.SetController{}, "*:SetIdentiCode")
+	beego.Router("/chat/user/set/verifycode", &mqtt.SetController{}, "*:VerifyCode")
 
 	//仓位
 	beego.Router("/chat/user/positionInfo", &mqtt.PositionController{}, "*:OperatePosition")

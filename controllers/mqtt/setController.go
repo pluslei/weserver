@@ -245,6 +245,7 @@ func updateInfo(info *SetInfo) {
 		}
 	}
 
+	//自定义图片
 	if info.Icon == "" && info.FileName != "" {
 		// strId := strconv.FormatInt(info.CompanyId, 10)
 		// fileName := haoindex.GetWxServerImg(info.FileName, strId)
