@@ -198,6 +198,10 @@ func (this *IndexController) PCLogin() {
 			return
 		}
 		beego.Debug("info", info)
+		// data := make(map[string]interface{})
+		// data["user"] = user
+		this.Data["json"] = user
+		this.ServeJSON()
 	}
 }
 

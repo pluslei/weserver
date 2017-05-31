@@ -2860,6 +2860,10 @@ a {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
+  -webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+          user-select: auto;
 }
 .Qditer .Qditer-editeText .Qditer-editeText-theInput .toobjtip {
   position: absolute;
