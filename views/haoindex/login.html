@@ -112,25 +112,33 @@
 	function loginSub() {
 	  var username = document.getElementById('username').value;
 	  var password = document.getElementById('password').value;
-	  document.cookie="haoname="+username;
-	  document.cookie="haopass="+password;
-	//   $.ajax({
-    //     url: '/loginhandle',
-    //     type: 'Post',
-    //     data:{
-    //       username: username,
-    //       password: password,
-    //     },
-    //     success: function(data){
-	// 		document.cookie="haoname="+username;
-	// 		document.cookie="haopass="+password;
-	// 		window.location.href = '/chooseloginmode';
-    //     },
-    //   });
+	  var dateTime=new Date();
+	  var expiresDays=1; 
+	  dateTime.setTime(dateTime.getTime()+expiresDays*24*3600*1000); 
+	  $.ajax({
+        url: '/loginhandle',
+        type: 'Post',
+        data:{
+          username: username,
+          password: password,
+        },
+        success: function(data){
+			document.cookie="name="+username+";expires="+dateTime.toGMTString();
+			document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
+			window.location.href = '/chooseloginmode';
+        },
+      });
 	}
 	$(document).ready(function(){
+		console.log(document.cookie);
+		if (document.cookie == '') return;
 		var username=document.cookie.split(";")[0].split("=")[1];
 		var password=document.cookie.split(";")[1].split("=")[1];
+		if (username != '' && password != '') {
+			document.getElementById('username').value = username;
+			document.getElementById('password').value = password;
+			loginSub();
+		}
 		console.log(username, password);
 	})
 </script>
