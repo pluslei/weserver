@@ -27,7 +27,7 @@ type Question struct {
 	RoleTitleBack int    `orm:"default(0)"` //角色聊天背景
 	Content       string `orm:"type(text)"` //消息内容
 	DatatimeStr   string //添加时间
-	IsIgnore      int64  //是否忽略 0 显示 1 忽略
+	IsIgnore      int64  //是否忽略 0 忽略 1 显示
 	Uuid          string // uuid
 	Time          time.Time
 	RspQuestion   []*RspQuestion `orm:"reverse(many)"` //一对多
@@ -118,10 +118,10 @@ func GetAllQuestionMsg(roomId, username string, RoleId int64) ([]Question, int64
 	var chat []Question
 	var table Question
 	if RoleId == int64(tools.ROLE_MANAGER) || RoleId == int64(tools.ROLE_TEACHER) || RoleId == int64(tools.ROLE_ASSISTANT) {
-		num, err := o.QueryTable(table).Filter("Room", roomId).OrderBy("-Id").All(&chat)
+		num, err := o.QueryTable(table).Filter("Room", roomId).Filter("IsIgnore", 1).OrderBy("-Id").All(&chat)
 		return chat, num, err
 	}
-	num, err := o.QueryTable(table).Filter("Room", roomId).Filter("Uname", username).OrderBy("-Id").All(&chat)
+	num, err := o.QueryTable(table).Filter("Room", roomId).Filter("Uname", username).Filter("IsIgnore", 1).OrderBy("-Id").All(&chat)
 	return chat, num, err
 }
 
@@ -172,7 +172,7 @@ func DeleteQueById(id int64) (int64, error) {
 func OpeateIgnore(id int64) (int64, error) {
 	o := orm.NewOrm()
 	var info Question
-	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsIgnore": 1})
+	id, err := o.QueryTable(info).Filter("Id", id).Update(orm.Params{"IsIgnore": 0})
 	return id, err
 }
 

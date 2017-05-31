@@ -87,20 +87,20 @@
 	　　::-moz-placeholder { color:#efefef; }
 	　　:-ms-input-placeholder { color:#efefef; }
 	</style>
+	<script src="./static/js/jquery.min.js"></script>
 </head>
 <body class="loginBody">
 	<img src="{{.Loginlog}}" alt="" class="bgbg" />
-	<form action="/loginhandle" method="post" accept-charset="utf-8" id="loginform">
+	<form action="/loginhandle" method="post" accept-charset="utf-8" id="loginform" onsubmit="return false">
 		<div class="loginWrap">
 			<input type="hidden" class="ipt" name="openid" id="openid" name="openid" id="openid" value="{{.openid}}">
 			<input type="text" class="ipt ipt-user" name="username" id="username" placeholder="请输入您的帐号" oninput="checkState()">
 			<input type="password" class="ipt ipt-psd" name="password" id="password" placeholder="请输入您的密码" oninput="checkState()">
 			<!-- <div class="errorTip">错误提示</div> -->
-			<input type="submit" value="登 录" name="submit">
+			<input type="submit" value="登 录" name="submit" onclick="loginSub()">
 		</div>
 		<div class="p_footer">投资有风险 入市需谨慎</div>
 	</form>
-
 <script>
 	const _formId = document.getElementById("loginform");
 	const _username = _formId.elements["username"];
@@ -109,6 +109,38 @@
 	function checkState() {
 		_submit.className = _username.value == "" && _password.value == "" ? '' : 'on';
 	}
+	function loginSub() {
+	  var username = document.getElementById('username').value;
+	  var password = document.getElementById('password').value;
+	  var dateTime=new Date();
+	  var expiresDays=1; 
+	  dateTime.setTime(dateTime.getTime()+expiresDays*24*3600*1000); 
+	  $.ajax({
+        url: '/loginhandle',
+        type: 'Post',
+        data:{
+          username: username,
+          password: password,
+        },
+        success: function(data){
+			document.cookie="name="+username+";expires="+dateTime.toGMTString();
+			document.cookie="pass="+password+";expires="+dateTime.toGMTString();;
+			window.location.href = '/chooseloginmode';
+        },
+      });
+	}
+	$(document).ready(function(){
+		console.log(document.cookie);
+		if (document.cookie == '') return;
+		var username=document.cookie.split(";")[0].split("=")[1];
+		var password=document.cookie.split(";")[1].split("=")[1];
+		if (username != '' && password != '') {
+			document.getElementById('username').value = username;
+			document.getElementById('password').value = password;
+			loginSub();
+		}
+		console.log(username, password);
+	})
 </script>
 </body>
 </html>

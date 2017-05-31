@@ -198,9 +198,6 @@ func (this *MqttController) GetChatHistoryList() {
 						info.AcceptContent = historychat[i].AcceptContent
 						infoChat = append(infoChat, info)
 					}
-					// data["historyChat"] = infoChat
-					// this.Data["json"] = &data
-					// this.ServeJSON()
 				} else {
 					for i = 0; i < sysCount; i++ {
 						var info m.ChatRecord

@@ -2923,6 +2923,7 @@ a {
   padding-bottom: 6px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  z-index: 10;
 }
 .Qopen {
   -webkit-animation: Qopen 0.1s linear forwards;
@@ -3031,6 +3032,7 @@ a {
   margin-right: 10px;
   font-size: 15px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .replybtn .replybtn_c span img {
   height: 20px;
