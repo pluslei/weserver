@@ -66,7 +66,6 @@ func (this *SetController) SetIdentiCode() {
 
 func (this *SetController) VerifyCode() {
 	if this.IsAjax() {
-		RoomId := this.GetString("RoomId")
 		username := this.GetString("Username")
 		phoneNum := this.GetString("phoneNum")
 		code := this.GetString("AuthCode")
@@ -74,7 +73,7 @@ func (this *SetController) VerifyCode() {
 		authCode, err := strconv.ParseInt(code, 10, 64)
 		_, count, err := m.GetUserAuthCode(username, num, authCode)
 		if err == nil && count == 1 {
-			_, err := m.UpdateRegistPhonenum(RoomId, username, phoneNum)
+			_, err := m.UpdateRegistPhonenum(username, phoneNum)
 			if err != nil {
 				beego.Debug(" update Regist phoneNum Error", err)
 				this.Data["json"] = false

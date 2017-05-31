@@ -148,10 +148,10 @@ func UpdateRegistPhone(RoomId, username, PhoneNum string) (int64, error) {
 	return id, err
 }
 
-func UpdateRegistPhonenum(RoomId, username, PhoneNum string) (int64, error) {
+func UpdateRegistPhonenum(username, PhoneNum string) (int64, error) {
 	o := orm.NewOrm()
 	var table Regist
-	id, err := o.QueryTable(table).Filter("Room", RoomId).Filter("Username", username).Update(orm.Params{
+	id, err := o.QueryTable(table).Filter("Username", username).Update(orm.Params{
 		"Phonenum": PhoneNum,
 		"Pushsms":  1,
 	})

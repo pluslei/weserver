@@ -82,6 +82,7 @@ func (this *ManagerController) GetUserLogin() {
 				beego.Error("load regist error", err)
 				return
 			}
+			beego.Debug("dddddddd", regist.Phonenum, regist.Pushsms, regist.Pushwechat)
 			role := new(RoleInfo)
 			role.RoleId = regist.Role.Id
 			role.RoleName = regist.Role.Name
@@ -106,7 +107,9 @@ func (this *ManagerController) GetUserLogin() {
 				"RoleTitleBack": role.RoleTitleBack,
 				"Phonenum":      regist.Phonenum,
 				"Pushwechat":    regist.Pushwechat,
-				"Pushsms":       regist.Pushsms}
+				"Pushsms":       regist.Pushsms,
+				"Nickname":      regist.Nickname,
+				"UserIcon":      regist.UserIcon}
 			this.ServeJSON()
 			return
 		} else {
