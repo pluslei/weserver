@@ -513,6 +513,13 @@ func (k *ShutUpInfo) ParseJSON(msg []byte) (s []ShutUpInfo, err error) {
 //######################################################################################
 //person setting
 
+// Operate type
+const (
+	OPERATE_SET_PUSHWECHAT = iota
+	OPERATE_SET_PUSHSMS
+	OPERATE_SET_PERSON
+)
+
 type SetInfo struct {
 	CompanyId  int64
 	Uname      string
@@ -521,8 +528,9 @@ type SetInfo struct {
 	FileName   string //自定义上传路径
 	Nickname   string
 	Phonenum   int64
-	PushWechat string
-	PushSMS    string
+	PushWechat int64
+	PushSMS    int64
+	OperType   int64
 }
 
 func (t *SetInfo) ParseJSON(msg []byte) (s SetInfo, err error) {

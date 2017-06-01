@@ -378,19 +378,19 @@ func UpdateUserName(Account string, Username string) (int64, error) {
 func UpdateUserMode(UserId int64, flag bool, UserName, Nickname, Icon string) (int64, error) {
 	o := orm.NewOrm()
 	if flag {
-		beego.Debug("ssss1", UserName)
 		return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
 			"Nickname":      Nickname,
 			"UserIcon":      Icon,
+			"Headimgurl":    Icon,
 			"Lastlogintime": time.Now(),
 			"Loginmode":     0,
 		})
 	}
-	beego.Debug("ssss2", UserName)
 	return o.QueryTable(new(User)).Filter("Id", UserId).Update(orm.Params{
 		"Username":      UserName,
 		"Nickname":      Nickname,
 		"UserIcon":      Icon,
+		"Headimgurl":    Icon,
 		"Lastlogintime": time.Now(),
 		"Loginmode":     0,
 	})
