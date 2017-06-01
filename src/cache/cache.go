@@ -71,18 +71,21 @@ func GetCompanyCache() {
 		} else {
 			mapinfo, _ := inter.(m.Company)
 			mapinfo.Company = info.Company
-			mapinfo.CompanyBanner = info.CompanyBanner
+			mapinfo.CompanyIntro = info.CompanyIntro
+			mapinfo.LoginIcon = info.LoginIcon
+			mapinfo.LoginBackicon = info.LoginBackicon
 			mapinfo.CompanyIcon = info.CompanyIcon
 			mapinfo.CompanyBanner = info.CompanyBanner
 			mapinfo.HistoryMsg = info.HistoryMsg
+			mapinfo.Registerrole = info.Registerrole
+			mapinfo.Registertitle = info.Registertitle
+			mapinfo.WelcomeMsg = info.WelcomeMsg
 			mapinfo.AuditMsg = info.AuditMsg
 			mapinfo.Verify = info.Verify
 			mapinfo.AppId = info.AppId
 			mapinfo.AppSecret = info.AppSecret
 			mapinfo.Url = info.Url
 			mapinfo.Sign = info.Sign
-			mapinfo.LoginIcon = info.LoginIcon
-			mapinfo.LoginBackicon = info.LoginBackicon
 			MapCache[strId] = mapinfo
 		}
 	}
