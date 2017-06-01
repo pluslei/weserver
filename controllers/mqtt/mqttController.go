@@ -419,6 +419,7 @@ func addData(info *MessageInfo) {
 				return
 			}
 			chatrecord.RoomName = roomInfo.RoomTitle
+			beego.Debug("sssss", roomInfo.RoomTitle, info.Company)
 			broadcastChat(chatrecord)
 		}
 	}
