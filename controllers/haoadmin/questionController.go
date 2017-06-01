@@ -67,7 +67,6 @@ func (this *QuestionController) QuestionList() {
 			} else {
 				item["CompanyName"] = companyInfo.Company
 			}
-			beego.Info("RoomName:", item["RoomName"])
 		}
 		// json
 		data := make(map[string]interface{})
@@ -178,6 +177,7 @@ func (this *QuestionController) QuestionReply() {
 		v.Titlename, err = models.GetTitleName(v.Title.Id)
 		info.Titlename = v.Titlename
 		info.Nickname = v.Nickname
+		info.Username = v.Username
 		infoMsg = append(infoMsg, info)
 	}
 	this.CommonMenu()
