@@ -18,6 +18,7 @@ type Company struct {
 	CompanyBanner string //公司banner图
 	HistoryMsg    int64  //是否显示历史消息 0显示  1 不显示
 	Registerrole  int64  //默认注册用户角色
+	Registertitle int64  //默认注册头衔
 	WelcomeMsg    string //欢迎语
 	AuditMsg      int64  //是否开启消息审核  0开启 1关闭
 	Verify        int64  //是否开启用户审核  0开启 1不开启

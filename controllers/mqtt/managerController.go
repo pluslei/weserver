@@ -134,22 +134,26 @@ func (this *ManagerController) GetUserApply() {
 		Nickname := this.GetString("Nickname")
 
 		beego.Debug("User Apply RoomAccount")
-		config, _ := m.GetSysConfig()
-		configRole := config.Registerrole
-		configTitle := config.Registertitle
-		configVerify := config.Verify
+
+		strId := strconv.FormatInt(companyId, 10)
+		info := GetCompanyInfo(strId)
+
+		// config, _ := m.GetSysConfig()
+		// configRole := config.Registerrole
+		// configTitle := config.Registertitle
+		// configVerify := config.Verify
 		u := new(m.Regist)
 		u.CompanyId = companyId
 		u.Room = roomId
 		u.Username = Username
-		if configVerify == 0 { //是否开启验证  0开启 1不开启
+		if info.Verify == 0 { //是否开启验证  0开启 1不开启
 			u.RegStatus = 1
 		} else {
 			u.RegStatus = 2
 		}
 		u.UserIcon = Icon
-		u.Role = &m.Role{Id: configRole}
-		u.Title = &m.Title{Id: configTitle}
+		u.Role = &m.Role{Id: info.Registerrole}
+		u.Title = &m.Title{Id: info.Registertitle}
 		u.IsShutup = false //默认0
 		u.Nickname = Nickname
 		u.Lastlogintime = time.Now()

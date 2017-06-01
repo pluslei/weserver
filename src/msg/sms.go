@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/astaxie/beego"
-	// for json get
 )
 
 type Config struct {
@@ -39,7 +38,7 @@ func SMSRun() {
 func SendSMSMsg(phoneNum, sign, sms string) error {
 	err := msg.sendSMSmsg(phoneNum, sign, sms)
 	if err != nil {
-		beego.Debug("SendTxTMsg() error:", err)
+		beego.Debug("SendSMSMsg() error:", err)
 		return err
 	}
 	return nil
@@ -48,7 +47,7 @@ func SendSMSMsg(phoneNum, sign, sms string) error {
 func SendIdentifyCode(phoneNum, sign string, code int64) error {
 	err := msg.sendSMSCode(phoneNum, sign, code)
 	if err != nil {
-		beego.Debug("SendTxTMsg() error:", err)
+		beego.Debug("SendIdentifyCodeMsg() error:", err)
 		return err
 	}
 	return nil

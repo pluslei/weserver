@@ -141,7 +141,6 @@ func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, c
 	if SearchId != "" {
 		sId, err = strconv.ParseInt(SearchId, 10, 10)
 		if err != nil {
-			beego.Info("000000")
 			beego.Debug("get Search 0 Fail", err)
 			return
 		}
@@ -207,7 +206,6 @@ func PrepareDelQuestion(IdArray []int64) (int64, error) {
 	o := orm.NewOrm()
 	err := o.Begin()
 	var status int64
-	beego.Info("IdArrayBBBBB:", IdArray)
 	for i := 0; i < len(IdArray); i++ {
 		status, err = o.Delete(&Question{Id: IdArray[i]})
 		_, err2 := o.Raw("delete from rspquestion where question_id = ?", IdArray[i]).Exec()

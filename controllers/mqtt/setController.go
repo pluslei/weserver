@@ -80,6 +80,7 @@ func (this *SetController) VerifyCode() {
 				this.ServeJSON()
 				return
 			}
+			GetPhoneNumInfo()
 			this.Data["json"] = true
 			this.ServeJSON()
 			return
@@ -237,7 +238,7 @@ func update(info SetInfo) {
 	}
 }
 
-func updateInfo(info *SetInfo) {
+func updateInfo(info *SetInfo) bool {
 	OPERATE_TYPE := info.OperType
 	switch OPERATE_TYPE {
 	case OPERATE_SET_PERSON:
@@ -245,12 +246,12 @@ func updateInfo(info *SetInfo) {
 			_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.Icon)
 			if err != nil {
 				beego.Debug("update Regist nickname error", err)
-				return
+				return false
 			}
 			_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.Icon)
 			if err != nil {
 				beego.Debug("update user nickname error", err)
-				return
+				return false
 			}
 		}
 
@@ -262,12 +263,12 @@ func updateInfo(info *SetInfo) {
 			_, err := m.UpdateRegistNickname(info.Uname, info.CompanyId, info.Nickname, info.FileName)
 			if err != nil {
 				beego.Debug("update Regist nickname error", err)
-				return
+				return false
 			}
 			_, err = m.UpdateUserNickname(info.Uname, info.Nickname, info.FileName)
 			if err != nil {
 				beego.Debug("update user nickname error", err)
-				return
+				return false
 			}
 		}
 		break
@@ -275,18 +276,19 @@ func updateInfo(info *SetInfo) {
 		_, err := m.UpdateRegistPushSMS(info.RoomId, info.Uname, info.PushSMS)
 		if err != nil {
 			beego.Debug("update user PushSMS error", err)
-			return
+			return false
 		}
 		break
 	case OPERATE_SET_PUSHWECHAT:
 		_, err := m.UpdateRegistPushWechat(info.RoomId, info.Uname, info.PushWechat)
 		if err != nil {
 			beego.Debug("update Register Phonenum error", err)
-			return
+			return false
 		}
 		break
 	default:
 		beego.Debug(" set info no define operate type")
-		return
+		return false
 	}
+	return true
 }
