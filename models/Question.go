@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"strconv"
 	"time"
 
 	"weserver/src/tools"
@@ -134,15 +135,40 @@ func GetQuestionIdData(id int64) (Question, error) {
 }
 
 // 获取消息列表
-func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, companyId int64, Room string) (ms []orm.Params, count int64) {
+func GetQuestionRecordList(page int64, page_size int64, sort, Nickname string, companyId int64, SearchId, RoomId string) (ms []orm.Params, count int64) {
+	var sId int64
+	var err error
+	if SearchId != "" {
+		sId, err = strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Info("000000")
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+	}
+
 	o := orm.NewOrm()
-	chatrecord := new(Question)
-	query := o.QueryTable(chatrecord)
-	if companyId != 0 {
-		beego.Info("companyId", companyId, "room", Room)
-		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("Room", Room).Filter("nickname__contains", Nickname).RelatedSel().OrderBy(sort).Values(&ms)
-		count, _ = query.Count()
+	obj := new(Question)
+	query := o.QueryTable(obj)
+	if SearchId != "" && RoomId != "" {
+		qs := o.QueryTable(obj)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy("-Id").Values(&ms)
+		count, _ = qs.Count()
 		return ms, count
+	}
+	if SearchId != "" && RoomId == "" {
+		qs := o.QueryTable(obj)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&ms)
+		count, _ = qs.Count()
+		return ms, count
+	}
+	if companyId != 0 {
+		if SearchId == "" && RoomId == "" {
+			qs := o.QueryTable(obj)
+			qs.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Filter("nickname__contains", Nickname).Values(&ms)
+			count, _ = qs.Count()
+			return ms, count
+		}
 	}
 	query.Limit(page_size, page).Filter("nickname__contains", Nickname).RelatedSel().OrderBy(sort).Values(&ms)
 	count, _ = query.Count()

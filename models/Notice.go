@@ -51,6 +51,7 @@ func GetAllNoticeList(page int64, page_size int64, companyId int64, SearchId, Ro
 	var sId int64
 	var err error
 	if SearchId != "" {
+		beego.Info("000000")
 		sId, err = strconv.ParseInt(SearchId, 10, 10)
 		if err != nil {
 			beego.Debug("get Search 0 Fail", err)
@@ -61,12 +62,14 @@ func GetAllNoticeList(page int64, page_size int64, companyId int64, SearchId, Ro
 	o := orm.NewOrm()
 	obj := new(Notice)
 	if SearchId != "" && RoomId != "" {
+		beego.Info("111111", sId, RoomId)
 		qs := o.QueryTable(obj)
 		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy("-Id").Values(&broad)
 		count, _ = qs.Count()
 		return broad, count
 	}
 	if SearchId != "" && RoomId == "" {
+		beego.Info("222222", sId)
 		qs := o.QueryTable(obj)
 		qs.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&broad)
 		count, _ = qs.Count()
@@ -74,6 +77,7 @@ func GetAllNoticeList(page int64, page_size int64, companyId int64, SearchId, Ro
 	}
 	if companyId != 0 {
 		if SearchId == "" && RoomId == "" {
+			beego.Info("333333", companyId)
 			qs := o.QueryTable(obj)
 			qs.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Values(&broad)
 			count, _ = qs.Count()

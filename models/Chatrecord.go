@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"strconv"
 	"time"
 
 	"github.com/astaxie/beego"
@@ -144,16 +145,39 @@ func UpdateChatStatus(id int64) (int64, error) {
 }
 
 // 获取消息列表
-func GetChatRecordList(page int64, page_size int64, sort, Nickname string, companyId int64, room string) (ms []orm.Params, count int64) {
+func GetChatRecordList(page int64, page_size int64, sort, Nickname string, companyId int64, SearchId, RoomId string) (ms []orm.Params, count int64) {
+	var sId int64
+	var err error
+	if SearchId != "" {
+		sId, err = strconv.ParseInt(SearchId, 10, 10)
+		if err != nil {
+			beego.Debug("get Search 0 Fail", err)
+			return
+		}
+	}
 	o := orm.NewOrm()
-	chatrecord := new(ChatRecord)
-	if companyId != 0 {
-		query := o.QueryTable(chatrecord)
-		query.Limit(page_size, page).Filter("CompanyId", companyId).Filter("Room", room).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
-		count, _ = query.Count()
+	obj := new(ChatRecord)
+	if SearchId != "" && RoomId != "" {
+		qs := o.QueryTable(obj)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy("-Id").Values(&ms)
+		count, _ = qs.Count()
 		return ms, count
 	}
-	query := o.QueryTable(chatrecord)
+	if SearchId != "" && RoomId == "" {
+		qs := o.QueryTable(obj)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&ms)
+		count, _ = qs.Count()
+		return ms, count
+	}
+	if companyId != 0 {
+		if SearchId == "" && RoomId == "" {
+			qs := o.QueryTable(obj)
+			qs.Limit(page_size, page).Filter("CompanyId", companyId).OrderBy("-Id").Filter("nickname__contains", Nickname).Values(&ms)
+			count, _ = qs.Count()
+			return ms, count
+		}
+	}
+	query := o.QueryTable(obj)
 	query.Limit(page_size, page).Filter("nickname__contains", Nickname).OrderBy(sort).Values(&ms)
 	count, _ = query.Count()
 	return ms, count
