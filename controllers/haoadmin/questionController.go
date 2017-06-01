@@ -131,7 +131,7 @@ func (this *QuestionController) QuestionReply() {
 		rspQuestion.Uuid = question.Uuid
 		rspQuestion.Time = nowTime
 		rspQuestion.CompanyId = user.CompanyId
-		rspQuestion.Uname = user.Openid
+		rspQuestion.Uname = user.Username
 		rspQuestion.Nickname = NickName
 		rspQuestion.UserIcon = UserIcon
 		rspQuestion.Room = question.Room
