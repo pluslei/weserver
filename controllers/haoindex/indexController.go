@@ -452,7 +452,10 @@ func (this *IndexController) saveUser(Id string, userInfo oauth.UserInfo) bool {
 	if info.Account == "" {
 		this.Redirect("/login?id="+Id, 302)
 	}
-
+	bl := m.CheckIdIsExist(info.Id)
+	if !bl {
+		this.Redirect("/login?id="+Id, 302)
+	}
 	if len(info.Username) <= 0 {
 		_, err := m.BindWechatIcon(info.Id, &userInfo)
 		if err != nil {

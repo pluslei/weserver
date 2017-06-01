@@ -402,3 +402,8 @@ func GetUserInfoById(id int64) (u User, err error) {
 	err = o.QueryTable(new(User)).Filter("Id", id).One(&u)
 	return u, err
 }
+
+func CheckIdIsExist(id int64) bool {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Id", id).Exist()
+}

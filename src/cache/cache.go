@@ -160,5 +160,5 @@ func InitCache() {
 	GetShutMapCache()
 	GetCompanyCache()
 	GetPhoneNumInfo()
-	beego.Debug(MapCache)
+	beego.Debug(MapCache, MapPhone)
 }
