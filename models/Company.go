@@ -27,8 +27,9 @@ type Company struct {
 	Url           string //跳转url
 	Sign          string //短信签名
 
-	Rolename string `orm:"-"` //头衔名称
-	Token    string `orm:"-"` //微信token
+	Rolename  string `orm:"-"` //角色名称
+	Titlename string `orm:"-"` //头衔名称
+	Token     string `orm:"-"` //微信token
 }
 
 func init() {
@@ -105,6 +106,7 @@ func UpdateCompanyInfo(id int64, companyInfo Company, companyId int64) (int64, e
 			"LoginBackicon": companyInfo.LoginBackicon,
 			"HistoryMsg":    companyInfo.HistoryMsg,
 			"Registerrole":  companyInfo.Registerrole,
+			"Registertitle": companyInfo.Registertitle,
 			"WelcomeMsg":    companyInfo.WelcomeMsg,
 			"AuditMsg":      companyInfo.AuditMsg,
 			"Verify":        companyInfo.Verify,
@@ -119,6 +121,7 @@ func UpdateCompanyInfo(id int64, companyInfo Company, companyId int64) (int64, e
 		"LoginBackicon": companyInfo.LoginBackicon,
 		"HistoryMsg":    companyInfo.HistoryMsg,
 		"Registerrole":  companyInfo.Registerrole,
+		"Registertitle": companyInfo.Registertitle,
 		"WelcomeMsg":    companyInfo.WelcomeMsg,
 		"AuditMsg":      companyInfo.AuditMsg,
 		"Verify":        companyInfo.Verify,

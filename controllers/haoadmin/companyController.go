@@ -43,6 +43,13 @@ func (this *CompanyController) Index() {
 				item["AppSecret"] = ""
 				item["Url"] = ""
 			}
+			titleName, err := models.GetTitleName(item["Registertitle"].(int64))
+			if err != nil {
+				item["TitleName"] = "未知头衔"
+			} else {
+				item["TitleName"] = titleName
+			}
+
 		}
 
 		// json
@@ -83,6 +90,7 @@ func (this *CompanyController) AddCompany() {
 		AppId := this.GetString("AppId")
 		AppSecret := this.GetString("AppSecret")
 		Url := this.GetString("Url")
+		Registertitle, _ := this.GetInt64("Registertitle")
 		if len(Sign) <= 0 {
 			beego.Debug("App签名不能为空")
 		}
@@ -95,7 +103,6 @@ func (this *CompanyController) AddCompany() {
 		if len(Url) <= 0 {
 			beego.Debug("Url不能为空")
 		}
-
 		if len(companyName) <= 0 {
 			beego.Debug("companyName不能为空！")
 		}
@@ -116,6 +123,7 @@ func (this *CompanyController) AddCompany() {
 		company.LoginBackicon = companyLoginBackicon
 		company.CompanyIntro = companyIntro
 		company.Registerrole = Registerrole
+		company.Registertitle = Registertitle
 		company.WelcomeMsg = WelcomeMsg
 		company.HistoryMsg = HistoryMsg
 		company.AuditMsg = AuditMsg
@@ -189,8 +197,8 @@ func (this *CompanyController) EditCompany() {
 		company.CompanyBanner = this.GetString("CompanyBannerFile")
 		company.LoginIcon = this.GetString("LoginIconFile")
 		company.LoginBackicon = this.GetString("LoginBackiconFile")
-		beego.Info("LoginIcon:", company.LoginIcon, "LoginBackicon:", company.LoginBackicon)
 		company.Registerrole, _ = this.GetInt64("Registerrole")
+		company.Registertitle, _ = this.GetInt64("Registertitle")
 		company.WelcomeMsg = this.GetString("welcomemsg")
 		company.HistoryMsg, _ = this.GetInt64("historymsg")
 		company.AuditMsg, _ = this.GetInt64("auditmsg")

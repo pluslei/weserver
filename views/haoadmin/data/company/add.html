@@ -183,6 +183,16 @@
             <span class="am-form-caret"></span>
           </div>
 
+                    <div class="am-form-group">
+            <label for="doc-select-1">用户初始头衔：</label>
+            <select id="doc-select-2" name="registertitle" required>
+              {{range $index,$elem := .title}}
+              <option value="{{$elem.Id}}" id="title{{$elem.Id}}">{{$elem.Name}}</option>
+              {{end}}
+            </select>
+            <span class="am-form-caret"></span>
+          </div>
+
           <div class="am-form-group">
             <label for="doc-vld-name-2">聊天窗口欢迎语：</label>
             <input type="text" name="welcomemsg"  id="doc-vld-name-2" placeholder="聊天窗口欢迎语"  required/>
