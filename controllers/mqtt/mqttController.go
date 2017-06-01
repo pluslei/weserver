@@ -407,6 +407,18 @@ func addData(info *MessageInfo) {
 			beego.Debug(err)
 		} else {
 			// 推送管理页面
+			info, err := m.GetCompanyById(chatrecord.CompanyId)
+			if err != nil {
+				beego.Debug("get companyId error")
+				return
+			}
+			chatrecord.CompanyName = info.Company
+			roomInfo, err := m.GetRoomInfoByRoomID(chatrecord.Room)
+			if err != nil {
+				beego.Debug("get roomInfo error")
+				return
+			}
+			chatrecord.RoomName = roomInfo.RoomTitle
 			broadcastChat(chatrecord)
 		}
 	}

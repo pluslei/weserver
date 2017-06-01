@@ -35,6 +35,8 @@ type ChatRecord struct {
 	AcceptTitle   string
 	AcceptContent string
 
+	CompanyName string `orm:"-"`
+	RoomName    string `orm:"-"`
 	DatatimeStr string `orm:"-"`
 	MsgType     int    `orm:"-"`
 }
