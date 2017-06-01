@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 	m "weserver/models"
+	. "weserver/src/cache"
 	mq "weserver/src/mqtt"
 
 	"github.com/astaxie/beego"
@@ -69,88 +70,94 @@ func (this *NoticeController) DeleteNotice() {
 //HistoryNotice List
 func (this *NoticeController) GetRoomNoticeList() {
 	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
 		strId := this.GetString("Id")
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
 		beego.Debug("Notice list ", nId, roomId)
 		data := make(map[string]interface{})
+		companyinfo := GetCompanyInfo(CompanyId)
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.NoticeCount
 		var Notice []m.Notice
-		historyNotice, totalCount, _ := m.GetNoticeList(roomId)
-		if nId == 0 {
-			var i int64
-			if totalCount < sysCount {
-				beego.Debug("nCount sysCont", totalCount, sysCount)
-				for i = 0; i < totalCount; i++ {
-					var info m.Notice
-					info.Id = historyNotice[i].Id
-					info.Room = historyNotice[i].Room
-					info.Uname = historyNotice[i].Uname
-					info.Nickname = historyNotice[i].Nickname
-					info.Data = historyNotice[i].Data
-					info.Time = historyNotice[i].Time
-					Notice = append(Notice, info)
+		switch companyinfo.HistoryMsg { //是否显示历史消息 0显示  1 不显示
+		case 0:
+			historyNotice, totalCount, _ := m.GetNoticeList(roomId)
+			if nId == 0 {
+				var i int64
+				if totalCount < sysCount {
+					beego.Debug("nCount sysCont", totalCount, sysCount)
+					for i = 0; i < totalCount; i++ {
+						var info m.Notice
+						info.Id = historyNotice[i].Id
+						info.Room = historyNotice[i].Room
+						info.Uname = historyNotice[i].Uname
+						info.Nickname = historyNotice[i].Nickname
+						info.Data = historyNotice[i].Data
+						info.Time = historyNotice[i].Time
+						Notice = append(Notice, info)
+					}
+				} else {
+					for i = 0; i < sysCount; i++ {
+						var info m.Notice
+						info.Id = historyNotice[i].Id
+						info.Room = historyNotice[i].Room
+						info.Uname = historyNotice[i].Uname
+						info.Nickname = historyNotice[i].Nickname
+						info.Data = historyNotice[i].Data
+						info.Time = historyNotice[i].Time
+						Notice = append(Notice, info)
+					}
 				}
-			} else {
-				for i = 0; i < sysCount; i++ {
-					var info m.Notice
-					info.Id = historyNotice[i].Id
-					info.Room = historyNotice[i].Room
-					info.Uname = historyNotice[i].Uname
-					info.Nickname = historyNotice[i].Nickname
-					info.Data = historyNotice[i].Data
-					info.Time = historyNotice[i].Time
-					Notice = append(Notice, info)
-				}
-			}
-			data["historyNotice"] = Notice
-			this.Data["json"] = &data
-			this.ServeJSON()
-		} else {
-			var index int64
-			for nindex, value := range historyNotice {
-				if value.Id == nId {
-					index = int64(nindex) + 1
-				}
-			}
-			beego.Debug("index", index)
-			nCount := index + sysCount
-			mod := (totalCount - nCount) % sysCount
-			beego.Debug("mod", mod)
-			if nCount > totalCount && mod == 0 {
-				beego.Debug("mod = 0")
-				data["historyNotice"] = ""
+				data["historyNotice"] = Notice
 				this.Data["json"] = &data
 				this.ServeJSON()
-				return
-			}
-			if nCount < totalCount {
-				for i := index; i < nCount; i++ {
-					var info m.Notice
-					info.Id = historyNotice[i].Id
-					info.Room = historyNotice[i].Room
-					info.Uname = historyNotice[i].Uname
-					info.Nickname = historyNotice[i].Nickname
-					info.Data = historyNotice[i].Data
-					info.Time = historyNotice[i].Time
-					Notice = append(Notice, info)
-				}
 			} else {
-				for i := index; i < totalCount; i++ {
-					var info m.Notice
-					info.Id = historyNotice[i].Id
-					info.Room = historyNotice[i].Room
-					info.Uname = historyNotice[i].Uname
-					info.Nickname = historyNotice[i].Nickname
-					info.Data = historyNotice[i].Data
-					info.Time = historyNotice[i].Time
-					Notice = append(Notice, info)
+				var index int64
+				for nindex, value := range historyNotice {
+					if value.Id == nId {
+						index = int64(nindex) + 1
+					}
 				}
+				beego.Debug("index", index)
+				nCount := index + sysCount
+				mod := (totalCount - nCount) % sysCount
+				beego.Debug("mod", mod)
+				if nCount > totalCount && mod == 0 {
+					beego.Debug("mod = 0")
+					data["historyNotice"] = ""
+					this.Data["json"] = &data
+					this.ServeJSON()
+					return
+				}
+				if nCount < totalCount {
+					for i := index; i < nCount; i++ {
+						var info m.Notice
+						info.Id = historyNotice[i].Id
+						info.Room = historyNotice[i].Room
+						info.Uname = historyNotice[i].Uname
+						info.Nickname = historyNotice[i].Nickname
+						info.Data = historyNotice[i].Data
+						info.Time = historyNotice[i].Time
+						Notice = append(Notice, info)
+					}
+				} else {
+					for i := index; i < totalCount; i++ {
+						var info m.Notice
+						info.Id = historyNotice[i].Id
+						info.Room = historyNotice[i].Room
+						info.Uname = historyNotice[i].Uname
+						info.Nickname = historyNotice[i].Nickname
+						info.Data = historyNotice[i].Data
+						info.Time = historyNotice[i].Time
+						Notice = append(Notice, info)
+					}
+				}
+				data["historyNotice"] = Notice
+				this.Data["json"] = &data
+				this.ServeJSON()
 			}
-			data["historyNotice"] = Notice
-			this.Data["json"] = &data
-			this.ServeJSON()
+		default:
 		}
 	} else {
 		this.Ctx.Redirect(302, "/")

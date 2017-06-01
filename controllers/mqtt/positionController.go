@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 	m "weserver/models"
+	. "weserver/src/cache"
 	mq "weserver/src/mqtt"
 
 	"github.com/astaxie/beego"
@@ -110,176 +111,182 @@ func (this *PositionController) GetClosePositionRecord() {
 //Position List
 func (this *PositionController) GetPositionList() {
 	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
 		strId := this.GetString("Id")
 		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
 		beego.Debug("Position list ", nId, roomId)
 		data := make(map[string]interface{})
+		companyinfo := GetCompanyInfo(CompanyId)
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.PositionCount
 		var positionInfo []m.OperPosition
-		historyPosition, totalCount, err := m.GetAllPositionList(roomId)
-		if err != nil {
-			beego.Debug("Get Position List error:", err)
-			this.Rsp(false, "Get Position List error", "")
-			return
-		}
-		if nId == 0 {
-			var i int64
-			if totalCount < sysCount {
-				beego.Debug("nCount sysCont", totalCount, sysCount)
-				for i = 0; i < totalCount; i++ {
-					var info m.OperPosition
-					info.Id = historyPosition[i].Id
-					info.CompanyId = historyPosition[i].CompanyId
-					info.RoomId = historyPosition[i].RoomId
-					info.RoomTeacher = historyPosition[i].RoomTeacher
-					info.Type = historyPosition[i].Type               //种类
-					info.BuySell = historyPosition[i].BuySell         //买卖 0 1
-					info.Entrust = historyPosition[i].Entrust         //委托类型
-					info.Index = historyPosition[i].Index             //点位
-					info.Position = historyPosition[i].Position       //仓位
-					info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
-					info.LossPoint = historyPosition[i].LossPoint     //止损点
-					info.Notes = historyPosition[i].Notes             // 备注
-					info.Timestr = historyPosition[i].Timestr
-					info.Icon = historyPosition[i].Icon
-					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(info.Id)
-						if err != nil {
-							beego.Debug("Get historyClosePosition info error", err)
-							return
-						}
-						info.CloseType = historyClose[0].Type    //平仓种类
-						info.CloseIndex = historyClose[0].Index  //平仓点位
-						info.CloseNotes = historyClose[0].Notes  //平仓备注
-						info.CloseTime = historyClose[0].Timestr //平仓时间
-					}
-					positionInfo = append(positionInfo, info)
-				}
-			} else {
-				for i = 0; i < sysCount; i++ {
-					var info m.OperPosition
-					info.Id = historyPosition[i].Id
-					info.CompanyId = historyPosition[i].CompanyId
-					info.RoomId = historyPosition[i].RoomId
-					info.RoomTeacher = historyPosition[i].RoomTeacher
-					info.Type = historyPosition[i].Type               //种类
-					info.BuySell = historyPosition[i].BuySell         //买卖 0 1
-					info.Entrust = historyPosition[i].Entrust         //委托类型
-					info.Index = historyPosition[i].Index             //点位
-					info.Position = historyPosition[i].Position       //仓位
-					info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
-					info.LossPoint = historyPosition[i].LossPoint     //止损点
-					info.Notes = historyPosition[i].Notes             // 备注
-					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Timestr = historyPosition[i].Timestr
-					info.Icon = historyPosition[i].Icon
-					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(info.Id)
-						if err != nil {
-							beego.Debug("Get historyClosePosition info error", err)
-							return
-						}
-						info.CloseType = historyClose[0].Type    //平仓种类
-						info.CloseIndex = historyClose[0].Index  //平仓点位
-						info.CloseNotes = historyClose[0].Notes  //平仓备注
-						info.CloseTime = historyClose[0].Timestr //平仓时间
-					}
-					positionInfo = append(positionInfo, info)
-				}
-			}
-			data["historyPosition"] = positionInfo
-			this.Data["json"] = &data
-			this.ServeJSON()
-		} else {
-			var index int64
-			for nindex, value := range historyPosition {
-				if value.Id == nId {
-					index = int64(nindex) + 1
-				}
-			}
-			beego.Debug("index", index)
-			nCount := index + sysCount
-			mod := (totalCount - nCount) % sysCount
-			beego.Debug("mod", mod)
-			if nCount > totalCount && mod == 0 {
-				beego.Debug("mod = 0")
-				data["historyPosition"] = ""
-				this.Data["json"] = &data
-				this.ServeJSON()
+		switch companyinfo.HistoryMsg { //是否显示历史消息 0显示  1 不显示
+		case 0:
+			historyPosition, totalCount, err := m.GetAllPositionList(roomId)
+			if err != nil {
+				beego.Debug("Get Position List error:", err)
+				this.Rsp(false, "Get Position List error", "")
 				return
 			}
-			if nCount < totalCount {
-				for i := index; i < nCount; i++ {
-					var info m.OperPosition
-					info.Id = historyPosition[i].Id
-					info.CompanyId = historyPosition[i].CompanyId
-					info.RoomId = historyPosition[i].RoomId
-					info.RoomTeacher = historyPosition[i].RoomTeacher
-					info.Type = historyPosition[i].Type               //种类
-					info.BuySell = historyPosition[i].BuySell         //买卖 0 1
-					info.Entrust = historyPosition[i].Entrust         //委托类型
-					info.Index = historyPosition[i].Index             //点位
-					info.Position = historyPosition[i].Position       //仓位
-					info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
-					info.LossPoint = historyPosition[i].LossPoint     //止损点
-					info.Notes = historyPosition[i].Notes             // 备注
-					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Timestr = historyPosition[i].Timestr
-					info.Icon = historyPosition[i].Icon
-					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(info.Id)
-						if err != nil {
-							beego.Debug("Get historyClosePosition info error", err)
-							return
+			if nId == 0 {
+				var i int64
+				if totalCount < sysCount {
+					beego.Debug("nCount sysCont", totalCount, sysCount)
+					for i = 0; i < totalCount; i++ {
+						var info m.OperPosition
+						info.Id = historyPosition[i].Id
+						info.CompanyId = historyPosition[i].CompanyId
+						info.RoomId = historyPosition[i].RoomId
+						info.RoomTeacher = historyPosition[i].RoomTeacher
+						info.Type = historyPosition[i].Type               //种类
+						info.BuySell = historyPosition[i].BuySell         //买卖 0 1
+						info.Entrust = historyPosition[i].Entrust         //委托类型
+						info.Index = historyPosition[i].Index             //点位
+						info.Position = historyPosition[i].Position       //仓位
+						info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
+						info.LossPoint = historyPosition[i].LossPoint     //止损点
+						info.Notes = historyPosition[i].Notes             // 备注
+						info.Timestr = historyPosition[i].Timestr
+						info.Icon = historyPosition[i].Icon
+						info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
+						if info.Liquidation == 1 {
+							historyClose, _, err := m.GetMoreClosePosition(info.Id)
+							if err != nil {
+								beego.Debug("Get historyClosePosition info error", err)
+								return
+							}
+							info.CloseType = historyClose[0].Type    //平仓种类
+							info.CloseIndex = historyClose[0].Index  //平仓点位
+							info.CloseNotes = historyClose[0].Notes  //平仓备注
+							info.CloseTime = historyClose[0].Timestr //平仓时间
 						}
-						info.CloseType = historyClose[0].Type    //平仓种类
-						info.CloseIndex = historyClose[0].Index  //平仓点位
-						info.CloseNotes = historyClose[0].Notes  //平仓备注
-						info.CloseTime = historyClose[0].Timestr //平仓时间
+						positionInfo = append(positionInfo, info)
 					}
-
-					positionInfo = append(positionInfo, info)
+				} else {
+					for i = 0; i < sysCount; i++ {
+						var info m.OperPosition
+						info.Id = historyPosition[i].Id
+						info.CompanyId = historyPosition[i].CompanyId
+						info.RoomId = historyPosition[i].RoomId
+						info.RoomTeacher = historyPosition[i].RoomTeacher
+						info.Type = historyPosition[i].Type               //种类
+						info.BuySell = historyPosition[i].BuySell         //买卖 0 1
+						info.Entrust = historyPosition[i].Entrust         //委托类型
+						info.Index = historyPosition[i].Index             //点位
+						info.Position = historyPosition[i].Position       //仓位
+						info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
+						info.LossPoint = historyPosition[i].LossPoint     //止损点
+						info.Notes = historyPosition[i].Notes             // 备注
+						info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
+						info.Timestr = historyPosition[i].Timestr
+						info.Icon = historyPosition[i].Icon
+						if info.Liquidation == 1 {
+							historyClose, _, err := m.GetMoreClosePosition(info.Id)
+							if err != nil {
+								beego.Debug("Get historyClosePosition info error", err)
+								return
+							}
+							info.CloseType = historyClose[0].Type    //平仓种类
+							info.CloseIndex = historyClose[0].Index  //平仓点位
+							info.CloseNotes = historyClose[0].Notes  //平仓备注
+							info.CloseTime = historyClose[0].Timestr //平仓时间
+						}
+						positionInfo = append(positionInfo, info)
+					}
 				}
+				data["historyPosition"] = positionInfo
+				this.Data["json"] = &data
+				this.ServeJSON()
 			} else {
-				for i := index; i < totalCount; i++ {
-					var info m.OperPosition
-					info.Id = historyPosition[i].Id
-					info.CompanyId = historyPosition[i].CompanyId
-					info.RoomId = historyPosition[i].RoomId
-					info.RoomTeacher = historyPosition[i].RoomTeacher
-					info.Type = historyPosition[i].Type               //种类
-					info.BuySell = historyPosition[i].BuySell         //买卖 0 1
-					info.Entrust = historyPosition[i].Entrust         //委托类型
-					info.Index = historyPosition[i].Index             //点位
-					info.Position = historyPosition[i].Position       //仓位
-					info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
-					info.LossPoint = historyPosition[i].LossPoint     //止损点
-					info.Notes = historyPosition[i].Notes             // 备注
-					info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
-					info.Timestr = historyPosition[i].Timestr
-					info.Icon = historyPosition[i].Icon
-					if info.Liquidation == 1 {
-						historyClose, _, err := m.GetMoreClosePosition(info.Id)
-						if err != nil {
-							beego.Debug("Get historyClosePosition info error", err)
-							return
-						}
-						info.CloseType = historyClose[0].Type    //平仓种类
-						info.CloseIndex = historyClose[0].Index  //平仓点位
-						info.CloseNotes = historyClose[0].Notes  //平仓备注
-						info.CloseTime = historyClose[0].Timestr //平仓时间
+				var index int64
+				for nindex, value := range historyPosition {
+					if value.Id == nId {
+						index = int64(nindex) + 1
 					}
-
-					positionInfo = append(positionInfo, info)
 				}
+				beego.Debug("index", index)
+				nCount := index + sysCount
+				mod := (totalCount - nCount) % sysCount
+				beego.Debug("mod", mod)
+				if nCount > totalCount && mod == 0 {
+					beego.Debug("mod = 0")
+					data["historyPosition"] = ""
+					this.Data["json"] = &data
+					this.ServeJSON()
+					return
+				}
+				if nCount < totalCount {
+					for i := index; i < nCount; i++ {
+						var info m.OperPosition
+						info.Id = historyPosition[i].Id
+						info.CompanyId = historyPosition[i].CompanyId
+						info.RoomId = historyPosition[i].RoomId
+						info.RoomTeacher = historyPosition[i].RoomTeacher
+						info.Type = historyPosition[i].Type               //种类
+						info.BuySell = historyPosition[i].BuySell         //买卖 0 1
+						info.Entrust = historyPosition[i].Entrust         //委托类型
+						info.Index = historyPosition[i].Index             //点位
+						info.Position = historyPosition[i].Position       //仓位
+						info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
+						info.LossPoint = historyPosition[i].LossPoint     //止损点
+						info.Notes = historyPosition[i].Notes             // 备注
+						info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
+						info.Timestr = historyPosition[i].Timestr
+						info.Icon = historyPosition[i].Icon
+						if info.Liquidation == 1 {
+							historyClose, _, err := m.GetMoreClosePosition(info.Id)
+							if err != nil {
+								beego.Debug("Get historyClosePosition info error", err)
+								return
+							}
+							info.CloseType = historyClose[0].Type    //平仓种类
+							info.CloseIndex = historyClose[0].Index  //平仓点位
+							info.CloseNotes = historyClose[0].Notes  //平仓备注
+							info.CloseTime = historyClose[0].Timestr //平仓时间
+						}
+
+						positionInfo = append(positionInfo, info)
+					}
+				} else {
+					for i := index; i < totalCount; i++ {
+						var info m.OperPosition
+						info.Id = historyPosition[i].Id
+						info.CompanyId = historyPosition[i].CompanyId
+						info.RoomId = historyPosition[i].RoomId
+						info.RoomTeacher = historyPosition[i].RoomTeacher
+						info.Type = historyPosition[i].Type               //种类
+						info.BuySell = historyPosition[i].BuySell         //买卖 0 1
+						info.Entrust = historyPosition[i].Entrust         //委托类型
+						info.Index = historyPosition[i].Index             //点位
+						info.Position = historyPosition[i].Position       //仓位
+						info.ProfitPoint = historyPosition[i].ProfitPoint //止盈点
+						info.LossPoint = historyPosition[i].LossPoint     //止损点
+						info.Notes = historyPosition[i].Notes             // 备注
+						info.Liquidation = historyPosition[i].Liquidation //平仓详情 (0:未平仓 1:平仓)
+						info.Timestr = historyPosition[i].Timestr
+						info.Icon = historyPosition[i].Icon
+						if info.Liquidation == 1 {
+							historyClose, _, err := m.GetMoreClosePosition(info.Id)
+							if err != nil {
+								beego.Debug("Get historyClosePosition info error", err)
+								return
+							}
+							info.CloseType = historyClose[0].Type    //平仓种类
+							info.CloseIndex = historyClose[0].Index  //平仓点位
+							info.CloseNotes = historyClose[0].Notes  //平仓备注
+							info.CloseTime = historyClose[0].Timestr //平仓时间
+						}
+
+						positionInfo = append(positionInfo, info)
+					}
+				}
+				data["historyPosition"] = positionInfo
+				this.Data["json"] = &data
+				this.ServeJSON()
 			}
-			data["historyPosition"] = positionInfo
-			this.Data["json"] = &data
-			this.ServeJSON()
+		default:
 		}
 	} else {
 		this.Ctx.Redirect(302, "/")

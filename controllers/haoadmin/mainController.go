@@ -107,7 +107,6 @@ func (this *MainController) Login() {
 				this.Ctx.Redirect(302, "/weserver/public/index")
 			}
 		}
-
 	}
 
 	this.TplName = "haoadmin/login.html"

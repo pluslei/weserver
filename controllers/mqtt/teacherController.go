@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 	m "weserver/models"
+	. "weserver/src/cache"
 
 	"github.com/astaxie/beego"
 
@@ -88,161 +89,167 @@ func (this *TeacherController) GetAllTeahcerList() {
 //Teacher List
 func (this *TeacherController) GetTeacherList() {
 	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
 		strId := this.GetString("Id")
 		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
 		beego.Debug("teacher list ", nId, roomId)
 		data := make(map[string]interface{})
+		companyinfo := GetCompanyInfo(CompanyId)
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.TeacherCount
 		var teacherinfo []m.Teacher
 		var Uname []m.ThumbInfo
-		historyTeacher, totalCount, err := m.GetTeacherList(roomId)
-		if err != nil {
-			beego.Debug("Get TeacherList error:", err)
-			this.Rsp(false, "Get TeacherList error", "")
-			return
-		}
-		if nId == 0 {
-			var i int64
-			if totalCount < sysCount {
-				beego.Debug("nCount sysCont", totalCount, sysCount)
-				for i = 0; i < totalCount; i++ {
-					var info m.Teacher
-					info.Id = historyTeacher[i].Id
-					info.Room = historyTeacher[i].Room
-					info.Icon = historyTeacher[i].Icon
-					info.Name = historyTeacher[i].Name
-					info.Title = historyTeacher[i].Title
-					info.IsTop = historyTeacher[i].IsTop
-					info.ThumbNum = historyTeacher[i].ThumbNum
-					info.Data = historyTeacher[i].Data
-					info.Time = historyTeacher[i].Time
-
-					historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
-					if err != nil {
-						beego.Debug("GetMoreThumbInfo() Fail")
-						return
-					}
-					for i := 0; i < len(historyThumbInfo); i++ {
-						var thumb m.ThumbInfo
-						thumb.Id = historyThumbInfo[i].Teacher.Id
-						thumb.Username = historyThumbInfo[i].Username
-						thumb.IsThumb = historyThumbInfo[i].IsThumb
-						Uname = append(Uname, thumb)
-					}
-					teacherinfo = append(teacherinfo, info)
-				}
-			} else {
-				for i = 0; i < sysCount; i++ {
-					var info m.Teacher
-					info.Id = historyTeacher[i].Id
-					info.Room = historyTeacher[i].Room
-					info.Icon = historyTeacher[i].Icon
-					info.Name = historyTeacher[i].Name
-					info.Title = historyTeacher[i].Title
-					info.IsTop = historyTeacher[i].IsTop
-					info.ThumbNum = historyTeacher[i].ThumbNum
-					info.Data = historyTeacher[i].Data
-					info.Time = historyTeacher[i].Time
-
-					historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
-					if err != nil {
-						beego.Debug("GetMoreThumbInfo() Fail")
-						return
-					}
-					for i := 0; i < len(historyThumbInfo); i++ {
-						var thumb m.ThumbInfo
-						thumb.Id = historyThumbInfo[i].Teacher.Id
-						thumb.Username = historyThumbInfo[i].Username
-						thumb.IsThumb = historyThumbInfo[i].IsThumb
-						Uname = append(Uname, thumb)
-					}
-					teacherinfo = append(teacherinfo, info)
-				}
-			}
-			data["historyTeacher"] = teacherinfo
-			data["Uname"] = Uname
-			this.Data["json"] = &data
-			this.ServeJSON()
-		} else {
-			var index int64
-			for nindex, value := range historyTeacher {
-				if value.Id == nId {
-					index = int64(nindex) + 1
-				}
-			}
-			beego.Debug("index", index)
-			nCount := index + sysCount
-			mod := (totalCount - nCount) % sysCount
-			beego.Debug("mod", mod)
-			if nCount > totalCount && mod == 0 {
-				beego.Debug("mod = 0")
-				data["historyTeacher"] = ""
-				this.Data["json"] = &data
-				this.ServeJSON()
+		switch companyinfo.HistoryMsg { //是否显示历史消息 0显示  1 不显示
+		case 0:
+			historyTeacher, totalCount, err := m.GetTeacherList(roomId)
+			if err != nil {
+				beego.Debug("Get TeacherList error:", err)
+				this.Rsp(false, "Get TeacherList error", "")
 				return
 			}
-			if nCount < totalCount {
-				for i := index; i < nCount; i++ {
-					var info m.Teacher
-					info.Id = historyTeacher[i].Id
-					info.Room = historyTeacher[i].Room
-					info.Icon = historyTeacher[i].Icon
-					info.Name = historyTeacher[i].Name
-					info.Title = historyTeacher[i].Title
-					info.IsTop = historyTeacher[i].IsTop
-					info.ThumbNum = historyTeacher[i].ThumbNum
-					info.Data = historyTeacher[i].Data
-					info.Time = historyTeacher[i].Time
+			if nId == 0 {
+				var i int64
+				if totalCount < sysCount {
+					beego.Debug("nCount sysCont", totalCount, sysCount)
+					for i = 0; i < totalCount; i++ {
+						var info m.Teacher
+						info.Id = historyTeacher[i].Id
+						info.Room = historyTeacher[i].Room
+						info.Icon = historyTeacher[i].Icon
+						info.Name = historyTeacher[i].Name
+						info.Title = historyTeacher[i].Title
+						info.IsTop = historyTeacher[i].IsTop
+						info.ThumbNum = historyTeacher[i].ThumbNum
+						info.Data = historyTeacher[i].Data
+						info.Time = historyTeacher[i].Time
 
-					historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
-					if err != nil {
-						beego.Debug("GetMoreThumbInfo() Fail")
-						return
+						historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
+						if err != nil {
+							beego.Debug("GetMoreThumbInfo() Fail")
+							return
+						}
+						for i := 0; i < len(historyThumbInfo); i++ {
+							var thumb m.ThumbInfo
+							thumb.Id = historyThumbInfo[i].Teacher.Id
+							thumb.Username = historyThumbInfo[i].Username
+							thumb.IsThumb = historyThumbInfo[i].IsThumb
+							Uname = append(Uname, thumb)
+						}
+						teacherinfo = append(teacherinfo, info)
 					}
-					for i := 0; i < len(historyThumbInfo); i++ {
-						var thumb m.ThumbInfo
-						thumb.Id = historyThumbInfo[i].Teacher.Id
-						thumb.Username = historyThumbInfo[i].Username
-						thumb.IsThumb = historyThumbInfo[i].IsThumb
-						Uname = append(Uname, thumb)
+				} else {
+					for i = 0; i < sysCount; i++ {
+						var info m.Teacher
+						info.Id = historyTeacher[i].Id
+						info.Room = historyTeacher[i].Room
+						info.Icon = historyTeacher[i].Icon
+						info.Name = historyTeacher[i].Name
+						info.Title = historyTeacher[i].Title
+						info.IsTop = historyTeacher[i].IsTop
+						info.ThumbNum = historyTeacher[i].ThumbNum
+						info.Data = historyTeacher[i].Data
+						info.Time = historyTeacher[i].Time
+
+						historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
+						if err != nil {
+							beego.Debug("GetMoreThumbInfo() Fail")
+							return
+						}
+						for i := 0; i < len(historyThumbInfo); i++ {
+							var thumb m.ThumbInfo
+							thumb.Id = historyThumbInfo[i].Teacher.Id
+							thumb.Username = historyThumbInfo[i].Username
+							thumb.IsThumb = historyThumbInfo[i].IsThumb
+							Uname = append(Uname, thumb)
+						}
+						teacherinfo = append(teacherinfo, info)
 					}
-					teacherinfo = append(teacherinfo, info)
 				}
+				data["historyTeacher"] = teacherinfo
+				data["Uname"] = Uname
+				this.Data["json"] = &data
+				this.ServeJSON()
 			} else {
-				for i := index; i < totalCount; i++ {
-					var info m.Teacher
-					info.Id = historyTeacher[i].Id
-					info.Room = historyTeacher[i].Room
-					info.Icon = historyTeacher[i].Icon
-					info.Name = historyTeacher[i].Name
-					info.Title = historyTeacher[i].Title
-					info.IsTop = historyTeacher[i].IsTop
-					info.ThumbNum = historyTeacher[i].ThumbNum
-					info.Data = historyTeacher[i].Data
-					info.Time = historyTeacher[i].Time
-
-					historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
-					if err != nil {
-						beego.Debug("GetMoreThumbInfo() Fail")
-						return
+				var index int64
+				for nindex, value := range historyTeacher {
+					if value.Id == nId {
+						index = int64(nindex) + 1
 					}
-					for i := 0; i < len(historyThumbInfo); i++ {
-						var thumb m.ThumbInfo
-						thumb.Id = historyThumbInfo[i].Teacher.Id
-						thumb.Username = historyThumbInfo[i].Username
-						thumb.IsThumb = historyThumbInfo[i].IsThumb
-						Uname = append(Uname, thumb)
-					}
-					teacherinfo = append(teacherinfo, info)
 				}
+				beego.Debug("index", index)
+				nCount := index + sysCount
+				mod := (totalCount - nCount) % sysCount
+				beego.Debug("mod", mod)
+				if nCount > totalCount && mod == 0 {
+					beego.Debug("mod = 0")
+					data["historyTeacher"] = ""
+					this.Data["json"] = &data
+					this.ServeJSON()
+					return
+				}
+				if nCount < totalCount {
+					for i := index; i < nCount; i++ {
+						var info m.Teacher
+						info.Id = historyTeacher[i].Id
+						info.Room = historyTeacher[i].Room
+						info.Icon = historyTeacher[i].Icon
+						info.Name = historyTeacher[i].Name
+						info.Title = historyTeacher[i].Title
+						info.IsTop = historyTeacher[i].IsTop
+						info.ThumbNum = historyTeacher[i].ThumbNum
+						info.Data = historyTeacher[i].Data
+						info.Time = historyTeacher[i].Time
+
+						historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
+						if err != nil {
+							beego.Debug("GetMoreThumbInfo() Fail")
+							return
+						}
+						for i := 0; i < len(historyThumbInfo); i++ {
+							var thumb m.ThumbInfo
+							thumb.Id = historyThumbInfo[i].Teacher.Id
+							thumb.Username = historyThumbInfo[i].Username
+							thumb.IsThumb = historyThumbInfo[i].IsThumb
+							Uname = append(Uname, thumb)
+						}
+						teacherinfo = append(teacherinfo, info)
+					}
+				} else {
+					for i := index; i < totalCount; i++ {
+						var info m.Teacher
+						info.Id = historyTeacher[i].Id
+						info.Room = historyTeacher[i].Room
+						info.Icon = historyTeacher[i].Icon
+						info.Name = historyTeacher[i].Name
+						info.Title = historyTeacher[i].Title
+						info.IsTop = historyTeacher[i].IsTop
+						info.ThumbNum = historyTeacher[i].ThumbNum
+						info.Data = historyTeacher[i].Data
+						info.Time = historyTeacher[i].Time
+
+						historyThumbInfo, _, err := m.GetMoreThumbInfo(info.Room, info.Id)
+						if err != nil {
+							beego.Debug("GetMoreThumbInfo() Fail")
+							return
+						}
+						for i := 0; i < len(historyThumbInfo); i++ {
+							var thumb m.ThumbInfo
+							thumb.Id = historyThumbInfo[i].Teacher.Id
+							thumb.Username = historyThumbInfo[i].Username
+							thumb.IsThumb = historyThumbInfo[i].IsThumb
+							Uname = append(Uname, thumb)
+						}
+						teacherinfo = append(teacherinfo, info)
+					}
+				}
+				data["historyTeacher"] = teacherinfo
+				data["Uname"] = Uname
+				this.Data["json"] = &data
+				this.ServeJSON()
 			}
-			data["historyTeacher"] = teacherinfo
-			data["Uname"] = Uname
-			this.Data["json"] = &data
-			this.ServeJSON()
+		default:
 		}
 	} else {
 		this.Ctx.Redirect(302, "/")

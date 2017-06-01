@@ -179,6 +179,7 @@ func parseRspMsg(msg string) int {
 //question List
 func (this *QuestionController) GetQuestionHistoryList() {
 	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
 		strId := this.GetString("Id")
 		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
@@ -192,10 +193,11 @@ func (this *QuestionController) GetQuestionHistoryList() {
 		beego.Debug("Get Question List info  RoomId, Id ", nId, roomId, username, RoleId)
 
 		data := make(map[string]interface{})
+		companyinfo := GetCompanyInfo(CompanyId)
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.QuestionCount
 		var infoMsg []m.Question
-		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
+		switch companyinfo.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
 			historyMsg, totalCount, _ := m.GetAllQuestionMsg(roomId, username, RoleId)
 			if nId == 0 {

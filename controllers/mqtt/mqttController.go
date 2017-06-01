@@ -120,20 +120,15 @@ func parseMsg(msg string) int {
 		}
 	}
 
-	var company m.Company
 	strId := strconv.FormatInt(info.CompanyId, 10)
-	inter1, ok := MapCache[strId]
-	if !ok {
-		company, err = m.GetCompanyById(info.CompanyId)
-		if err != nil {
-			beego.Debug("get login companyinfo error")
-		}
-	} else {
-		company, _ = inter1.(m.Company)
-	}
+	Companyinfo := GetCompanyInfo(strId)
 
-	if company.AuditMsg == 0 {
+	//消息不审核
+	if Companyinfo.AuditMsg == 1 {
 		mq.SendMessage(topic, v) //发消息
+		info.IsFilter = false
+	} else {
+		info.IsFilter = true
 	}
 	beego.Debug("IsFilter", info.IsFilter)
 	// 消息入库
@@ -159,17 +154,18 @@ func (this *MqttController) GetClientip() string {
 //chat List
 func (this *MqttController) GetChatHistoryList() {
 	if this.IsAjax() {
+		CompanyId := this.GetString("CompanyId")
 		strId := this.GetString("Id")
-		beego.Debug("id", strId)
 		nId, _ := strconv.ParseInt(strId, 10, 64)
 		roomId := this.GetString("room")
 		beego.Debug("Get Chat List info  RoomId, Id ", nId, roomId)
 
 		data := make(map[string]interface{})
+		companyinfo := GetCompanyInfo(CompanyId)
 		sysconfig, _ := m.GetAllSysConfig()
 		sysCount := sysconfig.HistoryCount
 		var infoChat []m.ChatRecord
-		switch sysconfig.HistoryMsg { //是否显示历史消息 0显示  1 不显示
+		switch companyinfo.HistoryMsg { //是否显示历史消息 0显示  1 不显示
 		case 0:
 			historychat, totalCount, _ := m.GetAllChatMsgData(roomId, "chat_record")
 			if nId == 0 {
@@ -403,7 +399,7 @@ func addData(info *MessageInfo) {
 		if !info.IsFilter {
 			chatrecord.Status = 1 //审核状态(0：未审核，1：审核)
 		} else {
-			chatrecord.Status = info.Status //审核状态(0：未审核，1：审核)
+			chatrecord.Status = 0 //审核状态(0：未审核，1：审核)
 		}
 
 		_, err := m.AddChat(&chatrecord)
