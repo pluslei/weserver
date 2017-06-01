@@ -17,7 +17,8 @@
            <input type="hidden" name="questionId" value="{{.Question.Id}}"/>
                    <div class="am-form-group">
                      <label for="doc-vld-Title-2">提问用户：  </label><br>
-                    <img src="{{.Question.UserIcon}}" style='width:30px;height:30px;border:1px solid #ccc;padding:2px;'>&nbsp;{{.Question.Nickname}}
+                    <img src="{{.Question.UserIcon}}" style='width:30px;height:30px;border:1px solid #ccc;padding:2px;'>&nbsp;{{.Question.Nickname}}&nbsp;向&nbsp;<font color="red">{{.Question.AcceptNickname}}[{{.Question.AcceptTitle}}]&nbsp;提问</font>
+                    <!--  -->
         </div>
         <div class="am-form-group">
           <label for="doc-vld-Title-2">提问内容：  </label>
@@ -27,7 +28,7 @@
            <div class="am-form-group">
                    <label for="doc-vld-Title-2">选择回复头衔：  </label> <br>
                               {{range $index ,$ele := .TeacherInfo}}
-                              <input type="radio" value="{{$ele.UserIcon}},{{$ele.Titlename}},{{$ele.Nickname}}" name="TeacherInfo" > <img src="{{$ele.UserIcon}}" style='width:30px;height:30px;border:1px solid #ccc;padding:2px;'>{{$ele.Nickname}}[{{$ele.Titlename}}]
+                              <input type="radio" value="{{$ele.UserIcon}},{{$ele.Titlename}},{{$ele.Nickname}},{{$ele.Username}}" name="TeacherInfo" > <img src="{{$ele.UserIcon}}" style='width:30px;height:30px;border:1px solid #ccc;padding:2px;'>{{$ele.Nickname}}[{{$ele.Titlename}}]
                               {{end}}
                           
                         </div>

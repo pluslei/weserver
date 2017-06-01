@@ -105,20 +105,24 @@ func (this *QuestionController) QuestionReply() {
 		var UserIcon string
 		var TitleName string
 		var NickName string
+		var Uname string
 		if len(TeacherInfo) <= 0 {
 			UserIcon = user.UserIcon
 			TitleName = user.Title.Name
 			NickName = user.Nickname
+			Uname = user.Username
 		} else {
 			TeacherInfos := strings.Split(TeacherInfo, ",")
-			if len(TeacherInfos) >= 3 {
+			if len(TeacherInfos) >= 4 {
 				UserIcon = TeacherInfos[0]
 				TitleName = TeacherInfos[1]
 				NickName = TeacherInfos[2]
+				Uname = TeacherInfos[3]
 			} else {
 				UserIcon = user.UserIcon
 				TitleName = user.Title.Name
 				NickName = user.Nickname
+				Uname = user.Username
 			}
 		}
 
@@ -130,7 +134,7 @@ func (this *QuestionController) QuestionReply() {
 		rspQuestion.Uuid = question.Uuid
 		rspQuestion.Time = nowTime
 		rspQuestion.CompanyId = user.CompanyId
-		rspQuestion.Uname = user.Username
+		rspQuestion.Uname = Uname
 		rspQuestion.Nickname = NickName
 		rspQuestion.UserIcon = UserIcon
 		rspQuestion.Room = question.Room
@@ -154,7 +158,6 @@ func (this *QuestionController) QuestionReply() {
 			questionInfo, _ := models.GetQuestionIdData(QuestionId)  //获取纸条提问信息
 			repquestionInfo, _ := models.GetRspQuestionIdData(rspId) //获回复信息
 			beego.Info(questionInfo, repquestionInfo)
-
 		}
 	}
 	Question, err := models.GetQuestionIdData(qid)
@@ -206,7 +209,6 @@ func (this *QuestionController) QuestionDel() {
 // 批量删除纸条提问
 func (this *QuestionController) QuestionDels() {
 	IdArray := this.GetString("Id")
-	beego.Info("IdArray:", IdArray)
 	var idarr []int64
 	if len(IdArray) > 0 {
 		preValue := strings.Split(IdArray, ",")
