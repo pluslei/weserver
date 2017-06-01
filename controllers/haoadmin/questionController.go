@@ -35,9 +35,9 @@ func (this *QuestionController) QuestionList() {
 			return
 		}
 		nickname := this.GetString("sSearch_3")
-		companyId, _ := this.GetInt64("sSearch_0")
+		SearchId := this.GetString("sSearch_0")
 		Room := this.GetString("sSearch_1")
-		questionList, count := models.GetQuestionRecordList(iStart, iLength, "-Id", nickname, companyId, Room)
+		questionList, count := models.GetQuestionRecordList(iStart, iLength, "-Id", nickname, user.CompanyId, SearchId, Room)
 		for _, item := range questionList {
 			rspInfo, err := models.GetRspByQuestionId(item["Id"].(int64))
 			if err == nil {
