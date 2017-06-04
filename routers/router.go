@@ -179,6 +179,18 @@ func Router() {
 	beego.Router("/setnickname", &haoindex.IndexController{}, "*:SetNickname")
 	beego.Router("/wx", &haoindex.IndexController{}, "*:WxServerImg")
 
+	//登录
+	beego.Router("/chat/user/login", &mqtt.ManagerController{}, "*:GetUserLogin")
+	//申请审核
+	beego.Router("/chat/user/apply", &mqtt.ManagerController{}, "*:GetUserApply")
+	// 当前在线人信息
+	beego.Router("/chat/user/online", &mqtt.ManagerController{}, "*:GetUserOnline")
+	//踢人
+	beego.Router("/chat/user/KickOut", &mqtt.ManagerController{}, "*:GetKickOutInfo")
+	//禁言
+	beego.Router("/chat/user/ShutUp", &mqtt.ManagerController{}, "*:GetShutUpInfo")
+	beego.Router("/chat/user/UnShutUp", &mqtt.ManagerController{}, "*:GetUnShutUpInfo")
+
 	//聊天管理
 	beego.Router("/chat/user/roominfo", &mqtt.MqttController{}, "*:GetCompanyInfo")
 	beego.Router("/chat/user/message", &mqtt.MqttController{}, "*:GetMessageToSend")
@@ -204,18 +216,6 @@ func Router() {
 	beego.Router("/chat/user/strategyList", &mqtt.StrategyController{}, "*:GetStrategyList")
 	beego.Router("/chat/user/strategyMap", &mqtt.StrategyController{}, "*:GetUnameMapInfo")
 	beego.Router("/chat/user/upload", &mqtt.StrategyController{}, "*:Upload")
-
-	//登录
-	beego.Router("/chat/user/login", &mqtt.ManagerController{}, "*:GetUserLogin")
-	//申请审核
-	beego.Router("/chat/user/apply", &mqtt.ManagerController{}, "*:GetUserApply")
-	// 当前在线人信息
-	beego.Router("/chat/user/online", &mqtt.ManagerController{}, "*:GetUserOnline")
-	//踢人
-	beego.Router("/chat/user/KickOut", &mqtt.ManagerController{}, "*:GetKickOutInfo")
-	//禁言
-	beego.Router("/chat/user/ShutUp", &mqtt.ManagerController{}, "*:GetShutUpInfo")
-	beego.Router("/chat/user/UnShutUp", &mqtt.ManagerController{}, "*:GetUnShutUpInfo")
 
 	//专家团队
 	beego.Router("/chat/user/teacherList", &mqtt.TeacherController{}, "*:GetTeacherList")

@@ -81,35 +81,36 @@ func (this *IndexController) Login() {
 }
 
 func (this *IndexController) LoginHandle() {
-	var user = new(m.User)
-	username := this.GetString("username")
-	password := this.GetString("password")
-	beego.Debug("username password", username, password)
-	if len(username) <= 0 || len(password) <= 0 {
-		beego.Debug("未填写账号信息")
-		return
-	}
+	if this.IsAjax() {
+		var user = new(m.User)
+		username := this.GetString("username")
+		password := this.GetString("password")
+		beego.Debug("username password", username, password)
+		if len(username) <= 0 || len(password) <= 0 {
+			beego.Debug("未填写账号信息")
+			return
+		}
 
-	user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
-	if user == nil || err != nil {
-		beego.Debug("Account Not Found")
-		this.Data["json"] = "NOACCOUNT"
+		user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
+		if user == nil || err != nil {
+			beego.Debug("Account Not Found")
+			this.Data["json"] = "NOACCOUNT"
+			this.ServeJSON()
+			return
+		}
+
+		if user.Password != tools.EncodeUserPwd(username, password) {
+			beego.Debug("PassWord Error")
+			this.Data["json"] = "PWDERROR"
+			this.ServeJSON()
+			return
+		}
+
+		this.SetSession("LoginInfo", user)
+		this.Data["json"] = "success"
 		this.ServeJSON()
-		return
+		// this.Redirect("/chooseloginmode", 302)
 	}
-
-	if user.Password != tools.EncodeUserPwd(username, password) {
-		beego.Debug("PassWord Error")
-		this.Data["json"] = "PWDERROR"
-		this.ServeJSON()
-		return
-	}
-
-	this.SetSession("LoginInfo", user)
-	this.Data["json"] = "success"
-	this.ServeJSON()
-
-	// this.Redirect("/chooseloginmode", 302)
 }
 
 func (this *IndexController) GetLoginMode() {
@@ -138,14 +139,14 @@ func (this *IndexController) GetLoginMode() {
 	}
 }
 
+func (this *IndexController) SetLogin() {
+	this.TplName = "haoindex/reg.html"
+}
+
 func (this *IndexController) WeChatLogin() {
 	info := this.GetSession("LoginInfo").(*m.User)
 	Id := strconv.FormatInt(info.CompanyId, 10)
 	this.Redirect("/wechat?state="+Id, 302)
-}
-
-func (this *IndexController) SetLogin() {
-	this.TplName = "haoindex/reg.html"
 }
 
 func (this *IndexController) NomalLogin() {
@@ -246,21 +247,22 @@ func (this *IndexController) GetWeChatInfo() {
 			return
 		}
 
-		info, err := m.GetUserByUsername(userInfo.OpenID)
-
-		if err != nil || info.Id <= 0 {
+		isExit := m.CheckIsExistByUserName(userInfo.OpenID)
+		if !isExit {
 			this.saveUser(Id, userInfo)
 		} else {
+			info, err := m.GetUserByUsername(userInfo.OpenID)
+			if err != nil {
+				beego.Debug("GetUserByUsername() error ", err)
+				this.Redirect("/index?id="+Id, 302)
+				return
+			}
 			this.updateUser(info.Id, userInfo)
 		}
-		// if len(info.Account) > 0 {
 		sessionUser, _ := m.GetUserByUsername(userInfo.OpenID)
 		this.SetSession("indexUserInfo", &sessionUser)
 		this.Redirect("/index?id="+Id, 302)
-		// } else {
-		// 	this.Redirect("/login", 302)
-		// }
-		beego.Debug("userInfo", userInfo)
+		beego.Debug("Wechat Info", userInfo)
 	}
 	this.Ctx.WriteString("")
 }
@@ -451,10 +453,12 @@ func (this *IndexController) saveUser(Id string, userInfo oauth.UserInfo) bool {
 	info := this.GetSession("LoginInfo").(*m.User)
 	if info.Account == "" {
 		this.Redirect("/login?id="+Id, 302)
+		return false
 	}
 	bl := m.CheckIdIsExist(info.Id)
 	if !bl {
 		this.Redirect("/login?id="+Id, 302)
+		return false
 	}
 	if len(info.Username) <= 0 {
 		_, err := m.BindWechatIcon(info.Id, &userInfo)

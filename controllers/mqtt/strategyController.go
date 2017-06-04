@@ -74,8 +74,9 @@ func (this *StrategyController) GetEditStrategyInfo() {
 
 func (this *StrategyController) GetUnameMapInfo() {
 	if this.IsAjax() {
-		wechat.GetUnameMapInfo()
-		beego.Debug("Uname Map", wechat.MapUname)
+		// wechat.GetUnameMapInfo()
+		// beego.Debug("Uname Map", wechat.MapUname)
+		beego.Debug("Uname Map", "not use this function Push Wechat msg")
 	}
 	this.Ctx.WriteString("")
 }
@@ -290,9 +291,10 @@ func parseStrategyMsg(msg string) bool {
 	}
 
 	// send to sms
-	str1 := strconv.FormatInt(info.CompanyId, 64)
+	str1 := strconv.FormatInt(info.CompanyId, 10)
 	companyInfo := GetCompanyInfo(str1)
 	arr := GetRoomPhone(info.Room)
+	beego.Debug("phone array", arr)
 	for _, v := range arr {
 		sendmsg := info.Data
 		SendSMSMsg(v, companyInfo.Sign, sendmsg)

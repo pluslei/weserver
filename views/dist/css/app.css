@@ -2809,6 +2809,9 @@ a {
           box-sizing: border-box;
   border-top: 1px solid #F0EFF5;
 }
+.Qditer .Qditer-editeText .teacher .user:active {
+  background: #f5f5f5;
+}
 .Qditer .Qditer-editeText .teacher .user .tw {
   display: inline-block;
   width: 150px;

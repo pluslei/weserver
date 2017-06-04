@@ -82,7 +82,6 @@ func (this *ManagerController) GetUserLogin() {
 				beego.Error("load regist error", err)
 				return
 			}
-			beego.Debug("dddddddd", regist.Phonenum, regist.Pushsms, regist.Pushwechat)
 			role := new(RoleInfo)
 			role.RoleId = regist.Role.Id
 			role.RoleName = regist.Role.Name
@@ -113,7 +112,13 @@ func (this *ManagerController) GetUserLogin() {
 			this.ServeJSON()
 			return
 		} else {
-			this.Data["json"] = nil
+			bl := m.CheckRegistApply(roomId, Uname)
+			if !bl {
+				this.Data["json"] = "NOAPPLY"
+				this.ServeJSON()
+				return
+			}
+			this.Data["json"] = "APPLY"
 			this.ServeJSON()
 			return
 		}
@@ -132,7 +137,6 @@ func (this *ManagerController) GetUserApply() {
 		Username := this.GetString("Username")
 		Icon := this.GetString("Icon")
 		Nickname := this.GetString("Nickname")
-
 		beego.Debug("User Apply RoomAccount")
 
 		strId := strconv.FormatInt(companyId, 10)

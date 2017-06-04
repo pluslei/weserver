@@ -333,23 +333,16 @@ var Index = function (_React$Component) {
           Username: window.userinfo.Uname
         },
         success: function success(data) {
-          if (data !== null) {
-            sessionStorage.setItem('userinfo', JSON.stringify(data));
-            window.location.href = '/index.html#/ChatRoom';
-          } else {
+          if (data === 'NOAPPLY' || data === 'APPLY') {
             _this3.setState({
               onloadpage: 0
             });
+          } else {
+            sessionStorage.setItem('userinfo', JSON.stringify(data));
+            window.location.href = '/index.html#/ChatRoom';
           }
         }
       });
-      // this.setState({
-      //   onloadpage: 0,
-      // });
-      // window.current = null;
-      // window.current = item;
-      // MqttConn.roomId = item;
-      // this.state.current.splice(1, 1, item);
     }
   }, {
     key: 'handleSelect',
@@ -4490,7 +4483,16 @@ var CertifiedTip = function (_React$Component) {
     value: function goApply() {
       var roomId = JSON.parse(sessionStorage.getItem('roomId'));
       var userinfo = JSON.parse(sessionStorage.getItem('userinfo'));
-      console.log('ssss', userinfo);
+      var icon = null;
+      var nickname = null;
+      if (userinfo === null) {
+        icon = window.userinfo.UserIcon;
+        nickname = window.userinfo.Nickname;
+      } else {
+        icon = userinfo.UserIcon;
+        nickname = userinfo.Nickname;
+      }
+      console.log('userinfo', userinfo);
       // post 发送给后台
       this.serverRequest = _jquery2.default.ajax({
         url: '/chat/user/apply',
@@ -4500,8 +4502,8 @@ var CertifiedTip = function (_React$Component) {
           CompanyId: window.userinfo.CompanyId,
           Room: roomId.RoomId,
           Username: window.userinfo.Uname,
-          Icon: userinfo.UserIcon,
-          Nickname: userinfo.Nickname
+          Icon: icon,
+          Nickname: nickname
         },
         success: function success(data) {
           console.log(data);
@@ -5287,15 +5289,13 @@ var ChatRoomInfo = function (_React$Component) {
           Username: window.userinfo.Uname
         },
         success: function success(data) {
-          if (data !== null) {
+          if (data === 'APPLY') {
+            _this2.state.Certified.process = 'ing';
+          } else if (data === 'NOAPPLY') {
+            _this2.state.Certified.process = 'no';
+          } else {
             _this2.state.Certified.process = 'success';
             sessionStorage.setItem('userinfo', JSON.stringify(data));
-          } else {
-            if (_this2.state.Certified.process === 'ing') {
-              _this2.state.Certified.process = 'ing';
-            } else {
-              _this2.state.Certified.process = 'no';
-            }
           }
           _this2.intoRoom();
         }
@@ -9196,6 +9196,7 @@ var Qediter = function (_React$Component) {
     value: function sendsta(RoleId) {
       var msgquestion = document.getElementById('msgquestion').innerText;
       switch (RoleId) {
+        case 1:
         case 3:
         case 4:
           {

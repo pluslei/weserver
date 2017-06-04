@@ -407,3 +407,8 @@ func CheckIdIsExist(id int64) bool {
 	o := orm.NewOrm()
 	return o.QueryTable(new(User)).Filter("Id", id).Exist()
 }
+
+func CheckIsExistByUserName(openid string) bool {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Username", openid).Exist()
+}
