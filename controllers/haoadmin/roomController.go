@@ -267,7 +267,6 @@ func (this *RoomController) IsShow() {
 			newShowed = 0
 			replyCount = "隐藏房间"
 		}
-		beego.Info("id:", id, "showed:", showed, "newShowed", newShowed)
 		_, err = models.UpdateRoomShowed(id, newShowed)
 		if err != nil {
 			replyCount = replyCount + "失败"

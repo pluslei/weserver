@@ -15,14 +15,16 @@
         <hr>
 
         <div class="am-form-group">
-          <label for="doc-vld-url-2">*昵称：</label>
-          <input type="text" name="nickname" id="doc-vld-url-2" disabled="disabled" value="{{.userList.Nickname}}"  data-validation-message="输入昵称" placeholder="输入昵称" required/>
+          <label for="doc-vld-email-2">*帐号：</label>
+          <input type="text" name="Username" id="doc-vld-email-2" disabled="disabled" {{if gt (.userList.Account|len) 0}}readonly="readonly"{{end}} value="{{.userList.Account}}" data-validation-message="请输入登录用户" placeholder="请输入登录用户" required/>
         </div>
 
         <div class="am-form-group">
-          <label for="doc-vld-email-2">*初始化用户名：</label>
-          <input type="text" name="Username" id="doc-vld-email-2" {{if gt (.userList.Account|len) 0}}readonly="readonly"{{end}} value="{{.userList.Account}}" data-validation-message="请输入登录用户" placeholder="请输入登录用户" required/>
+          <label for="doc-vld-url-2">*昵称：</label>
+          <input type="text" name="nickname" id="doc-vld-url-2"  value="{{.userList.Nickname}}"  data-validation-message="输入昵称" placeholder="输入昵称" required/>
         </div>
+
+        
 
         <div class="am-form-group">
           <label for="doc-vld-email-2">*初始化密码：</label>
@@ -50,6 +52,13 @@
           </select>
           <span class="am-form-caret"></span>
         </div>
+         <label for="doc-vld-ta-2">允许进入直播室：</label>
+        <div class="am-form-group" id="doc-select-room">
+          
+        </div>
+        <div class="am-form-group" id="doc-select-comp">
+          
+        </div>
 
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
       </fieldset>
@@ -60,6 +69,7 @@
   $(function(){
     $("#role{{.userList.Role.Id}}").attr('selected', true);
     $("#title{{.userList.Title.Id}}").attr('selected', true);
+     getRoomInfo();
     $('#userform').validator({
     onValid: function(validity) {
       $(validity.field).closest('.am-form-group').find('.am-alert').hide();
@@ -80,6 +90,45 @@
       $alert.html(msg).show();
     }
   });
-  })
+  });
+  function UrlSearch() {
+   var name,value; 
+   var str=location.href; //取得整个地址栏
+   var num=str.indexOf("?") 
+   str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
+
+   var arr=str.split("&"); //各个参数放到数组里
+   for(var i=0;i < arr.length;i++){ 
+    num=arr[i].indexOf("="); 
+    if(num>0){ 
+     name=arr[i].substring(0,num);
+     value=arr[i].substr(num+1);
+     this[name]=value;
+     } 
+    } 
+} 
+
+
+     function getRoomInfo() {
+       var Request=new UrlSearch(); //实例化
+      var companyId = Request.companyId
+      $.ajax({
+        url: '/weserver/common/getRoomInfo',
+        type: 'POST',
+        data: {
+          CompanyId:companyId
+        },
+        success: function(data){
+            var room = ["<label class='am-checkbox-inline'></label>"];
+            for (var i = 0; i<data.roonInfo.length;i++){
+              room.push("<input type='checkbox' name='RoomId' value='"+data.roonInfo[i].RoomId+"'>"+data.roonInfo[i].Title+"&nbsp;&nbsp;");
+            }
+            $('#doc-select-room').html(room.join(''));
+            var company = ["<input type='hidden' name='CompanyId' value='"+companyId+"'>"]
+             $('#doc-select-comp').html(company.join(''));
+        }
+      })
+    }
+
 </script>
 

@@ -161,13 +161,13 @@ func GetChatRecordList(page int64, page_size int64, sort, Nickname string, compa
 	obj := new(ChatRecord)
 	if SearchId != "" && RoomId != "" {
 		qs := o.QueryTable(obj)
-		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).OrderBy("-Id").Values(&ms)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).Filter("Room", RoomId).Filter("nickname__contains", Nickname).OrderBy("-Id").Values(&ms)
 		count, _ = qs.Count()
 		return ms, count
 	}
 	if SearchId != "" && RoomId == "" {
 		qs := o.QueryTable(obj)
-		qs.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Values(&ms)
+		qs.Limit(page_size, page).Filter("CompanyId", sId).OrderBy("-Id").Filter("nickname__contains", Nickname).Values(&ms)
 		count, _ = qs.Count()
 		return ms, count
 	}

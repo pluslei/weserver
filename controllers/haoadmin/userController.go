@@ -32,9 +32,18 @@ func (this *UserController) Index() {
 			beego.Error(err)
 		}
 		nickname := this.GetString("sSearch_0")
-
+		roleIdStr := this.GetString("sSearch_5")
+		titleIdStr := this.GetString("sSearch_6")
+		var roleId int64 = -1
+		var titleId int64 = -1
+		if len(roleIdStr) > 0 {
+			roleId, _ = strconv.ParseInt(roleIdStr, 10, 64)
+		}
+		if len(titleIdStr) > 0 {
+			titleId, _ = strconv.ParseInt(titleIdStr, 10, 64)
+		}
 		companyId := user.CompanyId
-		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname, companyId)
+		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname, companyId, roleId, titleId)
 		for _, item := range userlist {
 			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
 
@@ -49,6 +58,12 @@ func (this *UserController) Index() {
 					item["Titlename"] = titleinfo.Name
 				}
 			}
+			roleInfo, err := m.GetRoleInfoById(item["Role"].(int64))
+			if err != nil {
+				item["RoleName"] = "未知角色"
+			} else {
+				item["RoleName"] = roleInfo.Title
+			}
 			roomInfo, err := m.GetRoomInfoByRoomID(item["Room"].(string))
 			if err != nil {
 				item["RoomName"] = "未知房间"
@@ -61,6 +76,24 @@ func (this *UserController) Index() {
 			} else {
 				item["CompanyName"] = Info.Company
 			}
+			itemUserName := item["Username"].(string)
+			if len(itemUserName) <= 0 {
+				item["UserAccount"] = ""
+			} else {
+				theUserInfo, err := m.GetUserByUsername(itemUserName)
+				if err != nil {
+					item["UserAccount"] = ""
+					beego.Info("err:", err)
+				} else {
+					if len(theUserInfo.Account) <= 0 {
+						item["UserAccount"] = ""
+					} else {
+						item["UserAccount"] = theUserInfo.Account
+					}
+				}
+
+			}
+
 		}
 
 		// json
@@ -82,6 +115,8 @@ func (this *UserController) Index() {
 		this.CommonController.CommonMenu()
 		roles, _ := m.GetAllUserRole()
 		this.Data["roles"] = roles
+		titles, _ := m.GetAllUserTitle()
+		this.Data["titles"] = titles
 		this.TplName = "haoadmin/rbac/user/reglist.html"
 	}
 }
@@ -182,10 +217,11 @@ func (this *UserController) SetUsername() {
 		Password := this.GetString("Password")
 		role, _ := this.GetInt64("role")
 		title, _ := this.GetInt64("title")
+		Nickname := this.GetString("nickname")
 
 		if len(userLoad.Account) <= 0 {
 			md5password := tools.EncodeUserPwd(Username, Password)
-			_, err = m.InitUserPassword(id, Username, md5password, role, title)
+			_, err = m.InitUserPassword(id, Username, md5password, Nickname, role, title)
 			if err != nil {
 				beego.Error("init user error", err)
 				this.AlertBack("修改失败")
@@ -196,12 +232,13 @@ func (this *UserController) SetUsername() {
 			u.Id = id
 			u.Role = &m.Role{Id: role}
 			u.Title = &m.Title{Id: title}
+			u.Nickname = Nickname
 			if len(Password) > 0 {
 				beego.Debug("user===", Username, Password)
 				u.Password = tools.EncodeUserPwd(Username, Password)
-				err = u.UpdateUserFields("Role", "Title", "Password")
+				err = u.UpdateUserFields("Role", "Title", "Password", "Nickname")
 			}
-			err = u.UpdateUserFields("Role", "Title")
+			err = u.UpdateUserFields("Role", "Title", "Nickname")
 
 			if err != nil {
 				beego.Error(err)
@@ -210,8 +247,41 @@ func (this *UserController) SetUsername() {
 				return
 			}
 		}
-
 		this.Alert("用户修改成功", "usersetlist")
+		roomId := this.GetStrings("RoomId") //添加进入房间权限
+		companyId, _ := this.GetInt64("CompanyId")
+		theUser, _ := m.GetUserInfoById(id)
+		for _, val := range roomId {
+			//判断用户是否申请房间
+			regU, _ := m.GetUserInfoByRoom(id, val)
+			regUId := regU.Id
+			beego.Info("regUId:", regUId)
+			if regUId == 0 {
+				reg := new(m.Regist)
+				reg.Room = val
+				reg.UserId = id
+				reg.Nickname = theUser.Nickname
+				reg.RegStatus = 2
+				reg.CompanyId = companyId
+				reg.Role = &m.Role{Id: role}
+				reg.Title = &m.Title{Id: title}
+				reg.Lastlogintime = time.Now()
+				//reg.UserIcon = urlImage
+				reg.UserIcon = theUser.UserIcon
+				_, err := m.AddRegist(reg)
+				if err != nil {
+					beego.Error("add regist error", err)
+				}
+			} else {
+				_, err := m.UpdateWechtUserStatus(id, 2)
+				if err != nil {
+					beego.Debug("udpate status error", err, "id=", regUId, "status=", 2)
+
+				}
+			}
+
+		}
+		return
 	} else {
 		userInfo := new(m.User)
 		userInfo.Id = id
