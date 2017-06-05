@@ -278,6 +278,13 @@ func GetWechatUserList(page int64, page_size int64, sort, nickname string, compa
 }
 
 // 更新用户进入房间状态
+func UpdateRegistStatus(Room, username string, status int) (int64, error) {
+	o := orm.NewOrm()
+	return o.QueryTable("regist").Filter("Room", Room).Filter("Username", username).Update(orm.Params{
+		"RegStatus": status,
+	})
+}
+
 func UpdateWechtUserStatus(id int64, status int) (int64, error) {
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("Id", id).Update(orm.Params{
@@ -381,12 +388,6 @@ func DelRegistUserByUserName(userName string) (int64, error) {
 	return num, err
 }
 
-// 获取用户信息
-func GetUserInfoByRoom(userId int64, room string) (user Regist, err error) {
-	o := orm.NewOrm()
-	err = o.QueryTable("regist").Filter("user_id", userId).Filter("Room", room).One(&user)
-	return user, err
-}
 func CheckRegistApply(Room, username string) bool {
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("Room", Room).Filter("Username", username).Exist()

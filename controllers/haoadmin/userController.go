@@ -213,70 +213,60 @@ func (this *UserController) SetUsername() {
 			beego.Error("load retalteduser error", err)
 		}
 
-		Username := this.GetString("Username")
 		Password := this.GetString("Password")
 		role, _ := this.GetInt64("role")
 		title, _ := this.GetInt64("title")
 		Nickname := this.GetString("nickname")
 
-		if len(userLoad.Account) <= 0 {
-			md5password := tools.EncodeUserPwd(Username, Password)
-			_, err = m.InitUserPassword(id, Username, md5password, Nickname, role, title)
-			if err != nil {
-				beego.Error("init user error", err)
-				this.AlertBack("修改失败")
-				return
-			}
-		} else {
-			u := new(m.User)
-			u.Id = id
-			u.Role = &m.Role{Id: role}
-			u.Title = &m.Title{Id: title}
-			u.Nickname = Nickname
-			if len(Password) > 0 {
-				beego.Debug("user===", Username, Password)
-				u.Password = tools.EncodeUserPwd(Username, Password)
-				err = u.UpdateUserFields("Role", "Title", "Password", "Nickname")
-			}
-			err = u.UpdateUserFields("Role", "Title", "Nickname")
-
-			if err != nil {
-				beego.Error(err)
-				this.AlertBack("密码修改失败")
-				this.Rsp(false, "修改失败", "")
-				return
-			}
+		u := new(m.User)
+		u.Id = id
+		u.Role = &m.Role{Id: role}
+		u.Title = &m.Title{Id: title}
+		u.Nickname = Nickname
+		if len(Password) > 0 {
+			beego.Debug("user===", userLoad.Username, Password)
+			u.Password = tools.EncodeUserPwd(userLoad.Username, Password)
+			err = u.UpdateUserFields("Role", "Title", "Password", "Nickname")
+		}
+		err = u.UpdateUserFields("Role", "Title", "Nickname")
+		if err != nil {
+			beego.Error(err)
+			this.AlertBack("密码修改失败")
+			this.Rsp(false, "修改失败", "")
+			return
 		}
 		this.Alert("用户修改成功", "usersetlist")
+
 		roomId := this.GetStrings("RoomId") //添加进入房间权限
-		companyId, _ := this.GetInt64("CompanyId")
-		theUser, _ := m.GetUserInfoById(id)
 		for _, val := range roomId {
 			//判断用户是否申请房间
-			regU, _ := m.GetUserInfoByRoom(id, val)
-			regUId := regU.Id
-			if regUId == 0 {
+			bl := m.CheckRegistApply(val, userLoad.Username)
+			if !bl {
 				reg := new(m.Regist)
 				reg.Room = val
 				reg.UserId = id
-				reg.Nickname = theUser.Nickname
+				reg.Nickname = userLoad.Nickname
 				reg.RegStatus = 2
-				reg.CompanyId = companyId
-				reg.Username = theUser.Username
+				reg.CompanyId = userLoad.CompanyId
+				reg.Username = userLoad.Username
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
-				//reg.UserIcon = urlImage
-				reg.UserIcon = theUser.UserIcon
+				reg.UserIcon = userLoad.UserIcon
 				_, err := m.AddRegist(reg)
 				if err != nil {
 					beego.Error("add regist error", err)
+					this.AlertBack("授权进入房间失败")
+					this.Rsp(false, "授权进入房间失败", "")
+					return
 				}
 			} else {
-				_, err := m.UpdateWechtUserStatus(id, 2)
+				_, err := m.UpdateRegistStatus(val, userLoad.Username, 2)
 				if err != nil {
-					beego.Debug("udpate status error", err, "id=", regUId, "status=", 2)
-
+					beego.Debug("udpate regist status error")
+					this.AlertBack("更新房间状态失败")
+					this.Rsp(false, "更新房间状态失败", "")
+					return
 				}
 			}
 
