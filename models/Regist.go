@@ -248,26 +248,26 @@ func GetWechatUserList(page int64, page_size int64, sort, nickname string, compa
 	o := orm.NewOrm()
 	user := new(Regist)
 	if roleId > 0 && titleId > 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
 		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", roleId).Filter("title_id", titleId).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
 	if roleId > 0 && titleId <= 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
 		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", roleId).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
 	if roleId <= 0 && titleId > 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
 		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("title_id", titleId).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
 	if companyId != 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin")
-		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", 1).OrderBy(sort).RelatedSel().Values(&users)
+		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
+		qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
