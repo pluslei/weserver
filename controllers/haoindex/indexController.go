@@ -221,6 +221,7 @@ func (this *IndexController) PCLogin() {
 		userinfo.RoleName = user.Role.Name
 		userinfo.RoleTitle = user.Role.Title
 		userinfo.RoleId = user.Role.Id
+		userinfo.IsLogin = true
 		if len(user.Title.Css) <= 0 {
 			userinfo.RoleTitleCss = "#000000"
 		} else {
