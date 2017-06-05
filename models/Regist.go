@@ -177,6 +177,13 @@ func GetRegistInfoByRole(companyId int64, roomId string) ([]Regist, int64, error
 	return info, num, err
 }
 
+func GetRegistInfoByUsername(Room, username string) (Regist, error) {
+	o := orm.NewOrm()
+	var info Regist
+	err := o.QueryTable("regist").Filter("Room", Room).Filter("Username", username).One(&info)
+	return info, err
+}
+
 //获取用户权限
 func GetRegistPermiss(room, username string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
@@ -316,7 +323,6 @@ func UpdateRegistName(userid int64, username, nickname, icon string) (int64, err
 
 func UpdateRegistUserName(UserId int64, Username string) (int64, error) {
 	o := orm.NewOrm()
-
 	return o.QueryTable("regist").Filter("UserId", UserId).Update(orm.Params{
 		"Username":      Username,
 		"Lastlogintime": time.Now(),
@@ -380,4 +386,8 @@ func GetUserInfoByRoom(userId int64, room string) (user Regist, err error) {
 	o := orm.NewOrm()
 	err = o.QueryTable("regist").Filter("user_id", userId).Filter("Room", room).One(&user)
 	return user, err
+}
+func CheckRegistApply(Room, username string) bool {
+	o := orm.NewOrm()
+	return o.QueryTable("regist").Filter("Room", Room).Filter("Username", username).Exist()
 }

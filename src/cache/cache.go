@@ -136,6 +136,7 @@ func GetPhoneNumInfo() {
 			}
 		}
 	}
+	beego.Debug("phone num", MapPhone)
 }
 
 func GetRoomPhone(RoomId string) (info []string) {
@@ -155,6 +156,44 @@ func GetRoomPhone(RoomId string) (info []string) {
 		return arrNum
 	}
 	return info
+}
+
+func UpdateNewPhoneNum(oldPhoneNum, newPhoneNum string) {
+	if oldPhoneNum == newPhoneNum {
+		return
+	}
+	roomInfo, _, err := m.GetAllRoomInfo()
+	if err != nil {
+		beego.Debug("Get All RoomInfo error", err)
+		return
+	}
+	for _, v := range roomInfo {
+		RoomId := v.RoomId
+		info, ok := MapPhone[RoomId]
+		if !ok {
+			arr, err := m.GetRoomPhoneNum(RoomId)
+			if err != nil {
+				beego.Debug("get Room Phone num Error", err)
+				return
+			}
+			var arrNum []string
+			for _, v := range arr {
+				phoneNum := v.Phonenum
+				arrNum = append(arrNum, phoneNum)
+			}
+			MapPhone[RoomId] = arrNum
+		}
+		for i, v := range info {
+			if v == oldPhoneNum {
+				index := i + 1
+				info = append(info[:i], info[index:]...)
+				info = append(info, newPhoneNum)
+				MapPhone[RoomId] = info
+				break
+			}
+		}
+	}
+	beego.Debug("Update MapPhone", MapPhone)
 }
 
 func InitCache() {
