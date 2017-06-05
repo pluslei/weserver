@@ -28,8 +28,8 @@ type IndexController struct {
 }
 
 type Userinfor struct {
-	Uname         string //用户名
 	CompanyId     int64
+	Uname         string //用户名
 	Nickname      string //用户昵称
 	UserIcon      string //logo
 	RoleName      string //用户角色[vip,silver,gold,jewel]
@@ -44,6 +44,10 @@ type Userinfor struct {
 	PushWechat    int64
 	PushSMS       int64
 	PhoneNum      int64
+
+	//only pc user
+	CompanyIcon string
+	Room        []string
 }
 
 type VoiceResponse struct {
@@ -96,7 +100,6 @@ func (this *IndexController) LoginHandle() {
 			beego.Debug("未填写账号信息")
 			return
 		}
-
 		user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
 		if user == nil || err != nil {
 			beego.Debug("Account Not Found")
@@ -104,18 +107,15 @@ func (this *IndexController) LoginHandle() {
 			this.ServeJSON()
 			return
 		}
-
 		if user.Password != tools.EncodeUserPwd(username, password) {
 			beego.Debug("PassWord Error")
 			this.Data["json"] = "PWDERROR"
 			this.ServeJSON()
 			return
 		}
-
 		this.SetSession("LoginInfo", user)
 		this.Data["json"] = "success"
 		this.ServeJSON()
-		// this.Redirect("/chooseloginmode", 302)
 	}
 }
 
@@ -185,19 +185,20 @@ func (this *IndexController) NomalLogin() {
 
 func (this *IndexController) PCLogin() {
 	if this.IsAjax() {
-		var user = new(m.User)
+
 		username := this.GetString("username")
 		password := this.GetString("password")
 
-		user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
+		user, err := m.LoadRelatedUser(&m.User{Account: username}, "Account")
 		if user == nil || err != nil {
-			this.AlertBack("用户名异常 401")
+			this.Data["json"] = "NOACCOUNT"
+			this.ServeJSON()
 			return
 		}
 
 		if user.Password != tools.EncodeUserPwd(username, password) {
-			this.AlertBack("用户名和密码错误 402")
-			beego.Debug("PassWord Error")
+			this.Data["json"] = "PWDERROR"
+			this.ServeJSON()
 			return
 		}
 
@@ -206,10 +207,41 @@ func (this *IndexController) PCLogin() {
 			beego.Debug("get login company id error")
 			return
 		}
-		beego.Debug("info", info)
-		// data := make(map[string]interface{})
-		// data["user"] = user
-		this.Data["json"] = user
+
+		roomInfo, _, err := m.GetPermissRoom(user.Username)
+		if err != nil {
+			beego.Debug("get the roominfo error")
+		}
+
+		userinfo := new(Userinfor)
+		userinfo.CompanyId = user.CompanyId
+		userinfo.Nickname = user.Nickname
+		userinfo.Uname = user.Username
+		userinfo.UserIcon = user.UserIcon
+		userinfo.RoleName = user.Role.Name
+		userinfo.RoleTitle = user.Role.Title
+		userinfo.RoleId = user.Role.Id
+		userinfo.Insider = 1
+		userinfo.IsLogin = true
+		if len(user.Title.Css) <= 0 {
+			userinfo.RoleTitleCss = "#000000"
+		} else {
+			userinfo.RoleTitleCss = user.Title.Css
+		}
+
+		if user.Title.Background == 1 {
+			userinfo.RoleTitleBack = true
+		} else {
+			userinfo.RoleTitleBack = false
+		}
+		userinfo.PhoneNum = user.Phone
+		userinfo.CompanyIcon = info.CompanyIcon
+
+		for _, v := range roomInfo {
+			userinfo.Room = append(userinfo.Room, v.Room)
+		}
+
+		this.Data["json"] = userinfo
 		this.ServeJSON()
 	}
 }

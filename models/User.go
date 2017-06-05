@@ -414,3 +414,15 @@ func CheckIsExistByUserName(openid string) bool {
 	o := orm.NewOrm()
 	return o.QueryTable(new(User)).Filter("Username", openid).Exist()
 }
+
+func CheckIsExistByAccount(openid string) bool {
+	o := orm.NewOrm()
+	return o.QueryTable(new(User)).Filter("Username", openid).Exist()
+}
+
+func GetLoginPermiss(account, pwd string) ([]User, int64, error) {
+	o := orm.NewOrm()
+	var info []User
+	num, err := o.QueryTable("user").Filter("Account", account).Filter("Password", pwd).All(&info)
+	return info, num, err
+}

@@ -156,6 +156,7 @@ header .user-nav .exit:hover {
   outline: none;
   background: none;
   vertical-align: text-bottom;
+  width: 200px;
 }
 .guide .content-wrap .login-wrap .common-width .login-ipt > span:last-child.show {
   color: #5490EB;
@@ -1278,6 +1279,102 @@ header .user-nav .exit:hover {
   height: 100%;
   overflow-y: auto;
 }
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item {
+  width: calc(100% - 35px);
+  overflow: hidden;
+  margin: 10px 20px 20px 15px;
+  border: 1px solid #F1F1F1;
+  background: #FCFCFC;
+  border-radius: 4px;
+  padding: 10px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .reContent {
+  display: none;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .question-item-group {
+  background: #FCFCFC;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item img.user-icon {
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .question-item-r {
+  height: 40px;
+  float: right;
+  width: calc(100% - 50px);
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .question-item-r .question-item-r-head {
+  height: 40px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .question-item-r .question-item-r-head p {
+  margin: 0px;
+  height: 20px;
+  font-size: 14px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .question-item-r .question-item-r-head p span {
+  color: #FE0002;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .question-item-content {
+  margin-left: 50px;
+  width: calc(100% - 50px);
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .replybtn .am-divider {
+  height: 0;
+  margin: 1rem auto;
+  overflow: hidden;
+  clear: both;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .replybtn .replybtn_c {
+  text-align: right;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .replybtn .replybtn_c span {
+  display: inline-block;
+  padding: 0px 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .replybtn .replybtn_c span img {
+  height: 20px;
+  float: left;
+  margin-top: 3px;
+  margin-right: 10px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .replybtn .replybtn_c span:nth-of-type(1) {
+  color: #b2b2b2;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-item .replybtn .replybtn_c span:nth-of-type(2) {
+  color: #F96400;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt {
+  background: #2A81C4;
+  padding: 5px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt .question-item-group {
+  background: #fff;
+  padding: 10px;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt .reContent {
+  display: block;
+  padding: 10px;
+  color: #fff;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt .reContent div,
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt .reContent p {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt .reContent .question-item-r {
+  height: auto;
+}
+.chatContent-wrap .chat-question-wrap .chat-question-list .question-alt .reContent .question-item-r .question-item-r-head {
+  height: auto;
+}
 .chatContent-wrap .chat-question-wrap .tc-list {
   width: 50px;
   position: absolute;
@@ -1385,8 +1482,59 @@ header .user-nav .exit:hover {
   border-radius: 5px;
   border-color: #000;
   font-size: 14px;
-  margin: -2px 0 0 5px;
+  margin: 0px 0 0 5px;
   outline: none;
+  display: inline-block;
+  border: 1px solid #000;
+  height: 26px;
+  line-height: 26px;
+  width: 190px;
+  position: relative;
+  padding: 0px 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .triangle {
+  border-top: 8px solid #000;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  position: absolute;
+  top: 9px;
+  right: 6px;
+}
+.chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .select-content {
+  position: absolute;
+  left: 0px;
+  bottom: 28px;
+  border: 1px solid #7F7F7F;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-height: 104px;
+  overflow-y: scroll;
+}
+.chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .select-content .active {
+  background: #abcdef;
+  color: #fff;
+}
+.chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .select-content li {
+  list-style: none;
+  text-align: left !important;
+  margin: 0px;
+  width: 100%;
+  padding: 0px 6px;
+  line-height: 26px;
+}
+.chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .select-content li img {
+  width: 22px;
+  height: 22px;
+  float: left;
+  margin-top: 2px;
+  margin-right: 6px;
+}
+.chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .select-content li:hover {
+  background: #abcdef;
+  color: #fff;
 }
 .chatContent-wrap .sendMessage .sendMessage-box .sendMessage-text {
   width: auto;
