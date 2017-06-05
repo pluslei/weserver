@@ -24,6 +24,11 @@ func init() {
 	beego.SetStaticPath("/js", "./views/dist/js")
 	beego.SetStaticPath("/fonts", "./views/dist/fonts")
 
+	beego.SetStaticPath("pc/css", "./views/pc/dist/css")
+	beego.SetStaticPath("pc/i", "./views/pc/dist/i")
+	beego.SetStaticPath("pc/js", "./views/pc/dist/js")
+	beego.SetStaticPath("pc/fonts", "./views/pc/dist/fonts")
+
 	// beego.SetViewsPath("../weclient/dist")
 	// beego.SetStaticPath("/css", "../weclient/dist/css")
 	// beego.SetStaticPath("/i", "../weclient/dist/i")
@@ -166,8 +171,8 @@ func Router() {
 	beego.Router("/chooseloginmode", &haoindex.IndexController{}, "*:GetLoginMode")
 	beego.Router("/wechatlogin", &haoindex.IndexController{}, "*:WeChatLogin")
 	beego.Router("/setlogin", &haoindex.IndexController{}, "*:SetLogin")
-
 	beego.Router("/nomallogin", &haoindex.IndexController{}, "*:NomalLogin")
+
 	beego.Router("/pclogin", &haoindex.IndexController{}, "*:PCLogin")
 	beego.Router("/loginhandle", &haoindex.IndexController{}, "*:LoginHandle")
 	beego.Router("/wechat", &haoindex.IndexController{}, "*:GetWeChatInfo")

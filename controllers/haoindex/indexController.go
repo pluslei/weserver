@@ -66,10 +66,16 @@ func GetWxObj(id string) (*wechat.Wechat, string, string) {
 }
 
 func (this *IndexController) Redirectr() {
-	var user = new(m.User)
-	Id := this.GetString("id")
-	this.SetSession("LoginInfo", user)
-	this.Redirect("/wechat?state="+Id, 302)
+	if strings.Contains(strings.ToLower(this.Ctx.Request.UserAgent()), strings.ToLower("MicroMessenger")) {
+		var user = new(m.User)
+		Id := this.GetString("id")
+		this.SetSession("LoginInfo", user)
+		this.Redirect("/wechat?state="+Id, 302)
+		return
+	} else {
+		this.TplName = "pc/dist/index.html"
+		return
+	}
 }
 
 func (this *IndexController) Login() {
