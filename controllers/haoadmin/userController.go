@@ -255,7 +255,6 @@ func (this *UserController) SetUsername() {
 			//判断用户是否申请房间
 			regU, _ := m.GetUserInfoByRoom(id, val)
 			regUId := regU.Id
-			beego.Info("regUId:", regUId)
 			if regUId == 0 {
 				reg := new(m.Regist)
 				reg.Room = val
@@ -263,6 +262,7 @@ func (this *UserController) SetUsername() {
 				reg.Nickname = theUser.Nickname
 				reg.RegStatus = 2
 				reg.CompanyId = companyId
+				reg.Username = theUser.Username
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
