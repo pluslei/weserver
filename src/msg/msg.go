@@ -39,7 +39,7 @@ func (s *SMS) RunSMSing() {
 		for {
 			url, ok := <-s.msgch
 			if ok {
-				beego.Debug("Send Url", url)
+				// beego.Debug("Send Url", url)
 				postReq, err := http.NewRequest("POST", s.URL, strings.NewReader(url))
 				if err != nil {
 					beego.Debug("POST SMS MSG Fail", err)

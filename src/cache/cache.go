@@ -136,7 +136,7 @@ func GetPhoneNumInfo() {
 			}
 		}
 	}
-	beego.Debug("phone num", MapPhone)
+	// beego.Debug("phone num", MapPhone)
 }
 
 func GetRoomPhone(RoomId string) (info []string) {
@@ -193,7 +193,7 @@ func UpdateNewPhoneNum(oldPhoneNum, newPhoneNum string) {
 			}
 		}
 	}
-	beego.Debug("Update MapPhone", MapPhone)
+	// beego.Debug("Update MapPhone", MapPhone)
 }
 
 func InitCache() {
