@@ -366,3 +366,10 @@ func CheckRegistApply(Room, username string) bool {
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("Room", Room).Filter("Username", username).Exist()
 }
+
+func GetPermissRoom(username string) ([]Regist, int64, error) {
+	o := orm.NewOrm()
+	var info []Regist
+	num, err := o.QueryTable("regist").Filter("Username", username).Filter("RegStatus", 2).All(&info)
+	return info, num, err
+}
