@@ -107,6 +107,7 @@ func (this *IndexController) LoginHandle() {
 			this.ServeJSON()
 			return
 		}
+		beego.Debug("pwd", tools.EncodeUserPwd(username, password))
 		if user.Password != tools.EncodeUserPwd(username, password) {
 			beego.Debug("PassWord Error")
 			this.Data["json"] = "PWDERROR"
