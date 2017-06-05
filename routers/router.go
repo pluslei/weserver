@@ -126,6 +126,7 @@ func Router() {
 	beego.Router("/weserver/data/room_show", &haoadmin.RoomController{}, "*:IsShow") //隐藏或显示房间
 
 	//公司信息管理
+	beego.Router("/weserver/company", &haoadmin.CompanyController{}, "*:Index")                    //公司信息展示
 	beego.Router("/weserver/company/company", &haoadmin.CompanyController{}, "*:Index")            //公司信息展示
 	beego.Router("/weserver/company/company_add", &haoadmin.CompanyController{}, "*:AddCompany")   //添加公司
 	beego.Router("/weserver/company/company_del", &haoadmin.CompanyController{}, "*:DelCompany")   //删除公司

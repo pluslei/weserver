@@ -40,10 +40,10 @@
     <div class="result-title">
         <div class="result-list">
            <!-- <a href="adduser"><i class="icon-font"></i>审核通过</a> </a>-->
-            <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除选中聊天记录&nbsp;&nbsp;&nbsp;</a>
+            <a href="javascript:void(0)" id="delmoreuser"><font color="red"><i class="am-icon-minus"></i>删除选中聊天记录&nbsp;&nbsp;&nbsp;</font></a>
            
             <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
-            <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
+            <input class="am-alert am-alert-success regstatus" onclick="javascript:queryCompany();" value=" 提交 " type="submit" />
             
                      <div class="am-fr">
                     <div class="result-list am-form-inline am-form">
@@ -79,6 +79,7 @@
                        <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th> 
                         <th>公司名称</th>
                         <th>房间</th>
+                 <!--       <th>帐号</th> -->
                         <th>用户</th>
                         <th>角色</th>
                         <th>消息类型</th>
@@ -302,6 +303,7 @@
                         $(nTd).html(sData);
                     }
                 },
+             //   {"mDataProp": "Account",},
                 {"mDataProp": "Nickname",
                     "fnCreatedCell":function(nTd,sData,oData,iRow,iCol){
                         $(nTd).html(username(oData.UserIcon,sData));
@@ -365,10 +367,18 @@
     }
 
     // 模糊查询
-    function queryUser() {
-        var searchusername = $("#searchusername").val();
+    function queryxxxx() {
+      
         $("#data-chat-list").DataTable().column(3).search(searchusername).draw();
     };
+        		  // 模糊查询
+    function queryCompany() {
+         var searchusername = $("#searchusername").val();
+        var companyId = document.getElementById("doc-select-company").value;
+        var roomId = document.getElementById("doc-select-room").value;
+        console.log("c:",companyId, "r:", roomId);
+        $("#data-chat-list").DataTable().column(0).search(companyId).column(1).search(roomId).column(3).search(searchusername).draw();
+    }
     
       //公司/房间筛选
         function querycompany() {

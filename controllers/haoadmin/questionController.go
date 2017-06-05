@@ -170,6 +170,8 @@ func (this *QuestionController) QuestionReply() {
 	roomId := this.GetString("room")
 	var infoMsg []models.Regist
 	teacher, _, err := models.GetRegistInfoByRole(Question.CompanyId, roomId)
+	beego.Info("teacher:", teacher)
+	beego.Info("CompanyId:", Question.CompanyId, "roomId;", roomId)
 	if err != nil {
 		beego.Debug("Get CompanyInfo Error", err)
 		return

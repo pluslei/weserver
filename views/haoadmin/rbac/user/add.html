@@ -81,7 +81,7 @@
         <legend></legend>
         <div class="am-form-group">
           <label for="doc-vld-name-2">用户名：</label>
-          <input type="text" name="account" id="doc-vld-name-2" minlength="2" data-validation-message="输入用户名"  placeholder="输入用户名（至少 2 个汉子字符）" required/>
+          <input type="text" name="account" id="doc-vld-name-2" minlength="4" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"  data-validation-message="输入用户名(最少4位英文或数字)"  placeholder="输入用户名(请输入英文或数字)" required/>
         </div>
         <div class="am-form-group">
           <label for="doc-vld-email-2">邮箱：</label>

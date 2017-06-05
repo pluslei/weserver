@@ -300,11 +300,13 @@ func GetAllUserCount(nDay int64) (count int64, err error) {
 }
 
 // 初始化用户名和密码
-func InitUserPassword(id int64, username, password string, role, title int64) (int64, error) {
+func InitUserPassword(id int64, username, password string, nickname string, role, title int64) (int64, error) {
 	o := orm.NewOrm()
+	beego.Info("nickname1", nickname)
 	return o.QueryTable(new(User)).Filter("Id", id).Update(orm.Params{
 		"Account":  username,
 		"Password": password,
+		"Nickname": nickname,
 		"Role":     role,
 		"Title":    title,
 	})

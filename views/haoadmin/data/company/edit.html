@@ -317,7 +317,7 @@
             <label for="doc-select-1">用户初始角色：</label>
             <select id="doc-select-2" name="Registerrole" required>
             {{range $index,$elem := .role}}
-              <option value="{{$elem.Id}}" id="role{{$elem.Id}}">{{$elem.Title}}</option>
+           <option value="{{$elem.Id}}" id="role{{$elem.Id}}">{{$elem.Title}} </option>
             {{end}}
             </select>
             <span class="am-form-caret"></span>

@@ -30,8 +30,10 @@ type Regist struct {
 	Lastlogintime time.Time `orm:"null;type(datetime)" form:"-"`
 	Createtime    time.Time `orm:"type(datetime);auto_now_add" `
 
-	RoomName  string `orm:"-"` //房间名字
-	Titlename string `orm:"-"`
+	RoomName    string `orm:"-"` //房间名字
+	Titlename   string `orm:"-"`
+	RoleName    string `orm:"-"`
+	UserAccount string `orm:"-"`
 }
 
 func init() {
@@ -171,7 +173,6 @@ func UpdateLoginTime(room, username string) (int64, error) {
 func GetRegistInfoByRole(companyId int64, roomId string) ([]Regist, int64, error) {
 	o := orm.NewOrm()
 	var info []Regist
-	beego.Info("companyId:", companyId, "roomId:", roomId)
 	num, err := o.QueryTable("regist").Filter("CompanyId", companyId).Filter("Room", roomId).Exclude("role_id", int64(tools.ROLE_CUSTOMER)).Exclude("role_id", int64(tools.ROLE_NORMAL)).Exclude("role_id", int64(tools.ROLE_TOURIST)).All(&info)
 	return info, num, err
 }
@@ -241,14 +242,32 @@ func GetWechatUser(nDay int64) (users []Regist, err error) {
 // 	_, err = o.QueryTable("regist").Exclude("Username", "admin").Filter("Lastlogintime__gte", time.Unix(nowtime, 0).Format("2006-01-02 15:04:05")).Limit(-1).All(&users)
 // 	return users, err
 // }
-
+//.Filter("Role", &Role{Id: roleId}).Filter("Title", &Title{Id: titleId})
 //get user list
-func GetWechatUserList(page int64, page_size int64, sort, nickname string, companyId int64) (users []orm.Params, count int64) {
+func GetWechatUserList(page int64, page_size int64, sort, nickname string, companyId, roleId, titleId int64) (users []orm.Params, count int64) {
 	o := orm.NewOrm()
 	user := new(Regist)
+	if roleId > 0 && titleId > 0 {
+		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", roleId).Filter("title_id", titleId).OrderBy(sort).RelatedSel().Values(&users)
+		count, _ = qs.Count()
+		return users, count
+	}
+	if roleId > 0 && titleId <= 0 {
+		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", roleId).OrderBy(sort).RelatedSel().Values(&users)
+		count, _ = qs.Count()
+		return users, count
+	}
+	if roleId <= 0 && titleId > 0 {
+		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("title_id", titleId).OrderBy(sort).RelatedSel().Values(&users)
+		count, _ = qs.Count()
+		return users, count
+	}
 	if companyId != 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
-		qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
+		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", 1).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
@@ -362,6 +381,12 @@ func DelRegistUserByUserName(userName string) (int64, error) {
 	return num, err
 }
 
+// 获取用户信息
+func GetUserInfoByRoom(userId int64, room string) (user Regist, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable("regist").Filter("user_id", userId).Filter("Room", room).One(&user)
+	return user, err
+}
 func CheckRegistApply(Room, username string) bool {
 	o := orm.NewOrm()
 	return o.QueryTable("regist").Filter("Room", Room).Filter("Username", username).Exist()

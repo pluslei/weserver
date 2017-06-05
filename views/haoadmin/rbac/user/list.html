@@ -11,8 +11,7 @@
 <div class="result-wrap">
         <div class="result-title">
             <div class="result-list">
-                <a href="adduser"><i class="icon-font"></i>新增用户</a> 
-                <a href="javascript:void(0)" id="delmoreuser"><i class="icon-font"></i>删除选中用户</a>
+                <a href="javascript:void(0)" id="delmoreuser"><font color="red"><i class="am-icon-minus"></i>删除选中用户</font></a>
                 <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
                 <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
             </div>
@@ -24,6 +23,7 @@
 
                         <th style="width:100px;">全选 <input type="checkbox" style="vertical-align:text-bottom; margin-bottom:1px; margin-bottom:-2px\9;"  id="delselecteduser"></input></th>
                         <th>公司名称</th>
+                        <th>帐号</th>
                         <th>用户昵称</th>
                         <th>地址</th>
                         <th>头衔</th>
@@ -180,6 +180,7 @@
                     }
                 },
                 {"mDataProp": "CompanyName",},
+                {"mDataProp": "Account",},
                 {"mDataProp": "Nickname",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         if (oData.Sex == 1) {
@@ -225,7 +226,7 @@
                 {"mDataProp": "Lastlogintime",},
                 {"mDataProp": "Id",
                     "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='初始化' href='setusername?Id="+sData+"'><span class='am-icon-cog'></span> 设置</a></div>");
+                        $(nTd).html("<div class='am-btn-group am-btn-group-xs'><a class='am-btn am-btn-default am-btn-xs am-hide-sm-only' title='用户授权头衔' href='usertotitle?Id="+sData+"'><span class='am-icon-group'></span> 授权头衔</a><a class='am-btn am-btn-default am-btn-xs am-text-secondary' title='初始化' href='setusername?Id="+sData+"&companyId="+oData.CompanyId+"'><span class='am-icon-cog'></span> 设置</a></div>");
                     }
                 },
             ],
