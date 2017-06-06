@@ -12,7 +12,7 @@
         <div class="result-title">
             <div class="result-list">
                 <a href="javascript:void(0)" id="delmoreuser"><font color="red"><i class="am-icon-minus"></i>删除选中用户</font></a>
-              <input type="text" name="account" id="account" minlength="2"  placeholder="请输入查找的帐号" required/>
+              <input type="text" name="account" id="account" minlength="2"  placeholder="请输入查找的完整帐号" required/>
                 <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUserByAccount();" value=" 提交 " type="submit" /> 
                     <div class="am-fr am-margin-left">
                     <div class="result-list am-form-inline am-form"> 
@@ -385,8 +385,6 @@
         var roleId = document.getElementById("doc-select-role").value;
         var titleId = document.getElementById("doc-select-title").value;
         var searchusername = $("#searchusername").val();
-         $("#rbac-user-list").DataTable().column(5).search(roleId).column(6).search(titleId).column(0).search(searchusername).draw();
+         $("#rbac-user-list").DataTable().column(8).search("").column(5).search(roleId).column(6).search(titleId).column(0).search(searchusername).draw();
     }
-
-
 </script>
