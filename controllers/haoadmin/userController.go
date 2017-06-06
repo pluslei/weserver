@@ -523,14 +523,32 @@ func (this *UserController) PrepareDelUser() {
 
 		}
 	}
-	status, err := m.PrepareDelUser(idarr)
-	if err == nil && status > 0 {
+	status := PrepareDelUser(idarr)
+	if status {
 		this.Rsp(true, "删除成功", "")
 		return
 	} else {
-		this.Rsp(false, err.Error(), "")
+		this.Rsp(false, "删除失败", "")
 		return
 	}
+}
+
+func PrepareDelUser(IdArray []int64) bool {
+	for i := 0; i < len(IdArray); i++ {
+		user, err := m.GetUserInfoById(IdArray[i])
+		if err != nil {
+			continue
+		}
+		_, err = m.DelUserById(IdArray[i])
+		if err != nil {
+			continue
+		}
+		_, err = m.DelRegistUserByUserName(user.Username)
+		if err != nil {
+			continue
+		}
+	}
+	return true
 }
 
 // 用户赋予角色
