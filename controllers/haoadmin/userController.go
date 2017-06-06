@@ -224,8 +224,8 @@ func (this *UserController) SetUsername() {
 		u.Title = &m.Title{Id: title}
 		u.Nickname = Nickname
 		if len(Password) > 0 {
-			beego.Debug("user===", userLoad.Username, Password)
-			u.Password = tools.EncodeUserPwd(userLoad.Username, Password)
+			beego.Debug("user===", userLoad.Account, Password)
+			u.Password = tools.EncodeUserPwd(userLoad.Account, Password)
 			err = u.UpdateUserFields("Role", "Title", "Password", "Nickname")
 		}
 		err = u.UpdateUserFields("Role", "Title", "Nickname")
@@ -245,7 +245,7 @@ func (this *UserController) SetUsername() {
 				reg := new(m.Regist)
 				reg.Room = val
 				reg.UserId = id
-				reg.Nickname = userLoad.Nickname
+				reg.Nickname = Nickname
 				reg.RegStatus = 2
 				reg.CompanyId = userLoad.CompanyId
 				reg.Username = userLoad.Username
@@ -315,11 +315,6 @@ func (this *UserController) AddUser() {
 			beego.Error(err)
 			return
 		}
-		// regstatus, err := this.GetInt("regstatus")
-		// if err != nil {
-		// 	beego.Error(err)
-		// 	return
-		// }
 		companyId, err := this.GetInt64("company")
 		if err != nil {
 			beego.Error(err)
@@ -337,15 +332,16 @@ func (this *UserController) AddUser() {
 		}
 
 		//urlImage := beego.AppConfig.String("httplocalServerAdress") + "/static/img/defaultIco.png"
+		uuid := tools.GetGuid()
 		u := new(m.User)
 		u.Account = account
+		u.Username = uuid
 		u.Email = email
 		u.Phone = phone
 		u.Nickname = nickname
 		u.Password = tools.EncodeUserPwd(account, password)
 		u.Remark = remark
 		u.Status = status
-		//u.Headimgurl = urlImage
 		u.Headimgurl = userIcon
 		u.RegStatus = 2
 		u.CompanyId = companyId
@@ -361,13 +357,13 @@ func (this *UserController) AddUser() {
 				reg := new(m.Regist)
 				reg.Room = val
 				reg.UserId = id
+				reg.Username = uuid
 				reg.Nickname = u.Nickname
 				reg.RegStatus = 2
 				reg.CompanyId = companyId
 				reg.Role = &m.Role{Id: role}
 				reg.Title = &m.Title{Id: title}
 				reg.Lastlogintime = time.Now()
-				//reg.UserIcon = urlImage
 				reg.UserIcon = userIcon
 				_, err := m.AddRegist(reg)
 				if err != nil {
@@ -408,7 +404,6 @@ func (this *UserController) AddUser() {
 		this.Data["RoleList"] = roles
 		this.Data["TitleList"] = titles
 		this.TplName = "haoadmin/rbac/user/add.html"
-		//this.TplName = "haoadmin/rbac/user/add3.html"
 	}
 }
 

@@ -93,22 +93,22 @@ func (this *IndexController) Login() {
 func (this *IndexController) LoginHandle() {
 	if this.IsAjax() {
 		var user = new(m.User)
-		username := this.GetString("username")
+		account := this.GetString("username")
 		password := this.GetString("password")
-		beego.Debug("username password", username, password)
-		if len(username) <= 0 || len(password) <= 0 {
+		beego.Debug("username password", account, password)
+		if len(account) <= 0 || len(password) <= 0 {
 			beego.Debug("未填写账号信息")
 			return
 		}
-		user, err := m.ReadFieldUser(&m.User{Account: username}, "Account")
+		user, err := m.ReadFieldUser(&m.User{Account: account}, "Account")
 		if user == nil || err != nil {
 			beego.Debug("Account Not Found")
 			this.Data["json"] = "NOACCOUNT"
 			this.ServeJSON()
 			return
 		}
-		beego.Debug("pwd", tools.EncodeUserPwd(username, password))
-		if user.Password != tools.EncodeUserPwd(username, password) {
+		beego.Debug("pwd", tools.EncodeUserPwd(account, password))
+		if user.Password != tools.EncodeUserPwd(account, password) {
 			beego.Debug("PassWord Error")
 			this.Data["json"] = "PWDERROR"
 			this.ServeJSON()
@@ -187,17 +187,17 @@ func (this *IndexController) NomalLogin() {
 func (this *IndexController) PCLogin() {
 	if this.IsAjax() {
 
-		username := this.GetString("username")
+		account := this.GetString("username")
 		password := this.GetString("password")
 
-		user, err := m.LoadRelatedUser(&m.User{Account: username}, "Account")
+		user, err := m.LoadRelatedUser(&m.User{Account: account}, "Account")
 		if user == nil || err != nil {
 			this.Data["json"] = "NOACCOUNT"
 			this.ServeJSON()
 			return
 		}
 
-		if user.Password != tools.EncodeUserPwd(username, password) {
+		if user.Password != tools.EncodeUserPwd(account, password) {
 			this.Data["json"] = "PWDERROR"
 			this.ServeJSON()
 			return
@@ -499,18 +499,18 @@ func (this *IndexController) saveUser(Id string, userInfo oauth.UserInfo) bool {
 		this.Redirect("/login?id="+Id, 302)
 		return false
 	}
-	if len(info.Username) <= 0 {
-		_, err := m.BindWechatIcon(info.Id, &userInfo)
-		if err != nil {
-			beego.Debug("Bind User Account Error", err)
-			return false
-		}
-		_, err1 := m.UpdateRegistName(info.Id, userInfo.OpenID, userInfo.Nickname, userInfo.HeadImgURL)
-		if err1 != nil {
-			beego.Debug("Update Regist UserName Error", err1)
-			return false
-		}
+	// if len(info.Username) <= 0 {
+	_, err := m.BindWechatIcon(info.Id, &userInfo)
+	if err != nil {
+		beego.Debug("Bind User Account Error", err)
+		return false
 	}
+	_, err1 := m.UpdateRegistName(info.Id, userInfo.OpenID, userInfo.Nickname, userInfo.HeadImgURL)
+	if err1 != nil {
+		beego.Debug("Update Regist UserName Error", err1)
+		return false
+	}
+	// }
 	return true
 }
 
