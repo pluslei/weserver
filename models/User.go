@@ -114,32 +114,6 @@ func DelUserById(Id int64) (int64, error) {
 	return status, err
 }
 
-//批量删除用户
-func PrepareDelUser(IdArray []int64) (int64, error) {
-	o := orm.NewOrm()
-	err := o.Begin()
-	var status int64
-	for i := 0; i < len(IdArray); i++ {
-		status, err = o.Delete(&User{Id: IdArray[i]})
-		user, err3 := GetUserInfoById(IdArray[i])
-		if err3 != nil {
-			err = o.Rollback()
-		}
-		_, err2 := DelRegistUserByUserName(user.Username)
-		if err2 != nil {
-			err = o.Rollback()
-		}
-		beego.Info()
-	}
-	// 此过程中的所有使用 o Ormer 对象的查询都在事务处理范围内
-	if err != nil {
-		err = o.Rollback()
-	} else {
-		err = o.Commit()
-	}
-	return status, err
-}
-
 func UpdateUserNickname(username string, Nickname string, Icon string) (int64, error) {
 	o := orm.NewOrm()
 	var table User

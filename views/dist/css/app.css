@@ -2809,6 +2809,9 @@ a {
           box-sizing: border-box;
   border-top: 1px solid #F0EFF5;
 }
+.Qditer .Qditer-editeText .teacher .user:active {
+  background: #f5f5f5;
+}
 .Qditer .Qditer-editeText .teacher .user .tw {
   display: inline-block;
   width: 150px;
@@ -2860,6 +2863,10 @@ a {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
+  -webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+          user-select: auto;
 }
 .Qditer .Qditer-editeText .Qditer-editeText-theInput .toobjtip {
   position: absolute;
@@ -2923,6 +2930,7 @@ a {
   padding-bottom: 6px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  z-index: 10;
 }
 .Qopen {
   -webkit-animation: Qopen 0.1s linear forwards;
@@ -3031,6 +3039,7 @@ a {
   margin-right: 10px;
   font-size: 15px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .replybtn .replybtn_c span img {
   height: 20px;
