@@ -244,24 +244,50 @@ func GetWechatUser(nDay int64) (users []Regist, err error) {
 // }
 //.Filter("Role", &Role{Id: roleId}).Filter("Title", &Title{Id: titleId})
 //get user list
-func GetWechatUserList(page int64, page_size int64, sort, nickname string, companyId, roleId, titleId int64) (users []orm.Params, count int64) {
+func GetWechatUserList(page int64, page_size int64, sort, nickname, username string, companyId, roleId, titleId int64) (users []orm.Params, count int64) {
 	o := orm.NewOrm()
 	user := new(Regist)
+	if len(username) > 0 && username != "nullUsername" {
+		var qs orm.QuerySeter
+		if companyId > 0 {
+			qs = o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
+		} else {
+			qs = o.QueryTable(user).Exclude("Username", "admin")
+		}
+		qs.Limit(page_size, page).Filter("Username", username).OrderBy(sort).RelatedSel().Values(&users)
+		count, _ = qs.Count()
+		return users, count
+	}
 	if roleId > 0 && titleId > 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
-		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", roleId).Filter("title_id", titleId).OrderBy(sort).RelatedSel().Values(&users)
+		var qs orm.QuerySeter
+		if companyId > 0 {
+			qs = o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
+		} else {
+			qs = o.QueryTable(user).Exclude("Username", "admin")
+		}
+		qs.Limit(page_size, page).Filter("role_id", roleId).Filter("title_id", titleId).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
 	if roleId > 0 && titleId <= 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
-		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("role_id", roleId).OrderBy(sort).RelatedSel().Values(&users)
+		var qs orm.QuerySeter
+		if companyId > 0 {
+			qs = o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
+		} else {
+			qs = o.QueryTable(user).Exclude("Username", "admin")
+		}
+		qs.Limit(page_size, page).Filter("role_id", roleId).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
 	if roleId <= 0 && titleId > 0 {
-		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
-		qs.Limit(page_size, page).Filter("nickname__contains", nickname).Filter("title_id", titleId).OrderBy(sort).RelatedSel().Values(&users)
+		var qs orm.QuerySeter
+		if companyId > 0 {
+			qs = o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
+		} else {
+			qs = o.QueryTable(user).Exclude("Username", "admin")
+		}
+		qs.Limit(page_size, page).Filter("title_id", titleId).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}

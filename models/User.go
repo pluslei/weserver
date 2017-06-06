@@ -65,17 +65,29 @@ func (u *User) Valid(v *validation.Validation) {
 }
 
 //get user list
-func Getuserlist(page int64, page_size int64, sort, nickname string, companyId int64) (users []orm.Params, count int64) {
+func Getuserlist(page int64, page_size int64, sort, account string, companyId int64) (users []orm.Params, count int64) {
 	o := orm.NewOrm()
 	user := new(User)
+	if len(account) > 0 && companyId != 0 {
+		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
+		qs.Limit(page_size, page).Filter("account__contains", account).OrderBy(sort).RelatedSel().Values(&users)
+		count, _ = qs.Count()
+		return users, count
+	}
+	if len(account) > 0 && companyId == 0 {
+		qs := o.QueryTable(user).Exclude("Username", "admin")
+		qs.Limit(page_size, page).Filter("account__contains", account).OrderBy(sort).RelatedSel().Values(&users)
+		count, _ = qs.Count()
+		return users, count
+	}
 	if companyId != 0 {
 		qs := o.QueryTable(user).Exclude("Username", "admin").Filter("CompanyId", companyId)
-		qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
+		qs.Limit(page_size, page).Filter("account__contains", account).OrderBy(sort).RelatedSel().Values(&users)
 		count, _ = qs.Count()
 		return users, count
 	}
 	qs := o.QueryTable(user).Exclude("Username", "admin")
-	qs.Limit(page_size, page).Filter("nickname__contains", nickname).OrderBy(sort).RelatedSel().Values(&users)
+	qs.Limit(page_size, page).Filter("account__contains", account).OrderBy(sort).RelatedSel().Values(&users)
 	count, _ = qs.Count()
 	return users, count
 }
@@ -316,6 +328,13 @@ func InitUserPassword(id int64, username, password string, nickname string, role
 func GetUserInfoByAccount(account, password string) (user User, err error) {
 	o := orm.NewOrm()
 	err = o.QueryTable(new(User)).Filter("Account", account).Filter("Password", password).RelatedSel().Limit(1).One(&user)
+	return user, err
+}
+
+// 根据登录名查找
+func GetUserByAccount(account string) (user User, err error) {
+	o := orm.NewOrm()
+	err = o.QueryTable(new(User)).Filter("Account", account).Limit(1).One(&user)
 	return user, err
 }
 

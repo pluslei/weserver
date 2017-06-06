@@ -12,10 +12,13 @@
         <div class="result-title">
             <div class="result-list">
                 <a href="javascript:void(0)" id="delmoreuser"><font color="red"><i class="am-icon-minus"></i>删除选中用户</font></a>
-                <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
-                <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser2();" value=" 提交 " type="submit" />
+              <input type="text" name="account" id="account" minlength="2"  placeholder="请输入查找的帐号" required/>
+                <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUserByAccount();" value=" 提交 " type="submit" /> 
                     <div class="am-fr am-margin-left">
-                    <div class="result-list am-form-inline am-form">
+                    <div class="result-list am-form-inline am-form"> 
+                        <div class="am-form-group">  
+                         <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>    
+                         </div>
                         <div class="am-form-group">
                             <select id="doc-select-role">
                                 <option value="">-=用户角色=-</option>
@@ -48,10 +51,9 @@
                         <th>公司名称</th>
                         <th>申请房间</th>
                         <th>帐号</th>
-                        <th>用户</th>
+                        <th>昵称</th>
                         <th>审核状态</th>
-                        <th>角色</th>
-                        
+                        <th>角色</th>                        
                         <th>头衔</th>
                         <th>登录时间</th>
                         <th style="width:100px;">操作</th>
@@ -374,9 +376,9 @@
         $(".data-modal-kick").val("");
     });
         // 模糊查询
-    function queryUser22222() {
-        var searchusername = $("#searchusername").val();
-        $("#rbac-user-list").DataTable().column(0).search(searchusername).draw();
+    function queryUserByAccount() {
+        var account = $("#account").val();
+        $("#rbac-user-list").DataTable().column(8).search(account).draw();
     };
     //筛选用户
         function queryUser2() {

@@ -10,11 +10,11 @@
 
 <div class="result-wrap">
         <div class="result-title">
-            <div class="result-list">
+            <div class="result-list"  style="float:left;">
                 <a href="javascript:void(0)" id="delmoreuser"><font color="red"><i class="am-icon-minus"></i>删除选中用户</font></a>
-                <input type="text" name="searchusername" id="searchusername" minlength="2"  placeholder="请输入查找的用户昵称" required/>
-                <input class="am-alert am-alert-success regstatus" onclick="javascript:queryUser();" value=" 提交 " type="submit" />
-            </div>
+                <input type="text" name="account" id="account" minlength="2"  placeholder="请输入查找的帐号" />
+            <input class="am-alert am-alert-success regstatus" onclick="javascript:getUserByAccount();" value=" 帐号搜索 " type="button" />                   
+                </div>
         </div>
         <div class="result-content">
             <table class="am-table am-table-bordered am-table-radius am-table-striped" width="100%" id="rbac-user-list">
@@ -99,7 +99,7 @@
     var oTable;
     $(function() {
         oTable = initTable();
- 
+        
         var table = $('#rbac-user-list').DataTable();
         $("#delselecteduser").change(function(){
            
@@ -289,10 +289,11 @@
         this.oApi._fnProcessingDisplay( oSettings, onoff );
     };
 
-    // 模糊查询
-    function queryUser() {
-        var searchusername = $("#searchusername").val();
-        $("#rbac-user-list").DataTable().column(0).search(searchusername).draw();
+        // 帐号查询
+    function getUserByAccount() {
+        var userinfo = $("#account").val();
+        $("#rbac-user-list").DataTable().column(1).search(userinfo).draw();
+          userinfo = "";
     };
 
     // 删除模态层

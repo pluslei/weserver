@@ -34,6 +34,26 @@ func (this *UserController) Index() {
 		nickname := this.GetString("sSearch_0")
 		roleIdStr := this.GetString("sSearch_5")
 		titleIdStr := this.GetString("sSearch_6")
+		account := this.GetString("sSearch_8")
+		//通过account来获取username
+		var userName = "nullUsername"
+		var theUser m.User
+		if len(account) > 0 {
+			theUser, _ = m.GetUserByAccount(account)
+			if len(theUser.Username) > 0 {
+				userName = theUser.Username
+			} else {
+				// json
+				data := make(map[string]interface{})
+				data["aaData"] = ""
+				data["iTotalDisplayRecords"] = 0
+				data["iTotalRecords"] = 0
+				data["sEcho"] = sEcho
+				this.Data["json"] = &data
+				this.ServeJSON()
+			}
+		}
+		beego.Info("account:", account, "userName:", userName)
 		var roleId int64 = -1
 		var titleId int64 = -1
 		if len(roleIdStr) > 0 {
@@ -43,7 +63,7 @@ func (this *UserController) Index() {
 			titleId, _ = strconv.ParseInt(titleIdStr, 10, 64)
 		}
 		companyId := user.CompanyId
-		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname, companyId, roleId, titleId)
+		userlist, count := m.GetWechatUserList(iStart, iLength, "-Id", nickname, userName, companyId, roleId, titleId)
 		for _, item := range userlist {
 			item["Lastlogintime"] = item["Lastlogintime"].(time.Time).Format("2006-01-02 15:04:05")
 
@@ -140,10 +160,9 @@ func (this *UserController) UserList() {
 			beego.Debug("userlist Error", err)
 			return
 		}
-		nickname := this.GetString("sSearch_0")
-
+		account := this.GetString("sSearch_1")
 		companyId := user.CompanyId
-		userlist, count := m.Getuserlist(iStart, iLength, "-Id", nickname, companyId)
+		userlist, count := m.Getuserlist(iStart, iLength, "-Id", account, companyId)
 		for _, item := range userlist {
 			if item["Lastlogintime"] == nil {
 				item["Lastlogintime"] = "未获取到时间"
