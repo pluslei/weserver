@@ -156,7 +156,7 @@ header .user-nav .exit:hover {
   outline: none;
   background: none;
   vertical-align: text-bottom;
-  width: 200px;
+  width: 176px;
 }
 .guide .content-wrap .login-wrap .common-width .login-ipt > span:last-child.show {
   color: #5490EB;
@@ -393,8 +393,18 @@ header .user-nav .exit:hover {
 .leftSideBar .strategy .suggest-list .item .item-wrap .item-content {
   margin-right: 10px;
 }
+.leftSideBar .strategy .suggest-list .item .item-wrap .editBox {
+  width: 260px;
+  border-radius: 2px;
+  background: none;
+  resize: none;
+  margin: 0;
+}
 .leftSideBar .strategy .suggest-list .item .item-wrap .strategyImg {
   max-width: 216px;
+  margin-top: 10px;
+}
+.leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy {
   margin-top: 10px;
 }
 .leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy .strategy-img-wrap {
@@ -457,7 +467,7 @@ header .user-nav .exit:hover {
   text-align: right;
   padding-right: 20px;
 }
-.leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy .confim-button > button {
+.leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy .confim-button > * {
   outline: none;
   width: 100px;
   height: 27px;
@@ -470,7 +480,7 @@ header .user-nav .exit:hover {
 .leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy .confim-button > button:first-child {
   background: #999;
 }
-.leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy .confim-button > button:last-child {
+.leftSideBar .strategy .suggest-list .item .item-wrap .edit-strategy .confim-button > input {
   background: #F96400;
 }
 .leftSideBar .strategy .suggest-list .item .line {
@@ -581,7 +591,7 @@ header .user-nav .exit:hover {
   text-align: right;
   padding-right: 14px;
 }
-.popup-Strategy .popup-Strategy-content .confim-button > button {
+.popup-Strategy .popup-Strategy-content .confim-button > * {
   outline: none;
   width: 100px;
   height: 27px;
@@ -594,7 +604,7 @@ header .user-nav .exit:hover {
 .popup-Strategy .popup-Strategy-content .confim-button > button:first-child {
   background: #999;
 }
-.popup-Strategy .popup-Strategy-content .confim-button > button:last-child {
+.popup-Strategy .popup-Strategy-content .confim-button > input {
   background: #F96400;
 }
 .personal-center {
@@ -1098,55 +1108,11 @@ header .user-nav .exit:hover {
 .chatContent-wrap {
   height: calc(100% - 114px);
 }
-.chatContent-wrap .nav-chatRoom {
-  height: 40px;
-  line-height: 40px;
-  background-color: #FCFCFC;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid #eee;
-}
-.chatContent-wrap .nav-chatRoom .nav-item {
-  width: 25%;
-  float: left;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-}
-.chatContent-wrap .nav-chatRoom .nav-item.current > span {
-  background-color: #F96400;
-  color: #fff;
-}
-.chatContent-wrap .nav-chatRoom .nav-item.current:hover span {
-  color: #fff;
-}
-.chatContent-wrap .nav-chatRoom .nav-item:hover > span {
-  color: #F96400;
-}
-.chatContent-wrap .nav-chatRoom .nav-item:not(:last-child):after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  margin-top: -10px;
-  border-right: 1px solid #eee;
-  display: inline-block;
-  width: 1px;
-  height: 20px;
-}
-.chatContent-wrap .nav-chatRoom .nav-item > span {
-  display: inline-block;
-  height: 25px;
-  line-height: 26px;
-  font-size: 14px;
-  border-radius: 5px;
-  padding: 0px 25px;
-}
 .chatContent-wrap .chatContent-list {
   overflow-y: auto;
   height: 100%;
   height: calc(100% - 156px);
+  position: relative;
 }
 .chatContent-wrap .chatContent-list .chatContent-item {
   overflow: hidden;
@@ -1179,6 +1145,12 @@ header .user-nav .exit:hover {
   padding: 5px 8px;
   position: relative;
   float: left;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.chatContent-wrap .chatContent-list .chatContent-item .chat-box .chat-message p {
+  margin: 0;
+  padding: 6px 0px;
   word-break: break-all;
   word-wrap: break-word;
 }
@@ -1512,6 +1484,7 @@ header .user-nav .exit:hover {
   width: 100%;
   max-height: 104px;
   overflow-y: scroll;
+  background: #fff;
 }
 .chatContent-wrap .sendMessage .sendMessage-box .sendMessage-tool .reply-questions .select-wrap .select-content .active {
   background: #abcdef;
@@ -1550,6 +1523,7 @@ header .user-nav .exit:hover {
   top: 0px;
   font-size: 14px;
   padding: 2px;
+  padding-right: 4px;
   display: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1590,6 +1564,12 @@ header .user-nav .exit:hover {
 }
 .chatContent-wrap .sendMessage .sendMessage-btn.active {
   color: #fff;
+}
+.msgLoading {
+  display: block;
+  width: 100px;
+  margin: 10px auto;
+  display: none;
 }
 .title-name {
   height: 50px;
@@ -1744,6 +1724,70 @@ header .user-nav .exit:hover {
   background: #fff;
   border-bottom: 10px solid #eee;
 }
+.popup-usermanager .popup-usermanager-content .list_rom {
+  width: 100%;
+  margin: 0px 0;
+  padding: 0px 10px;
+  background: #fff;
+  font-size: 14px;
+  border-bottom: 1px solid #F0EFF4;
+}
+.popup-usermanager .popup-usermanager-content .list_rom li {
+  border-bottom: 1px solid #f5f5f5;
+  list-style: none;
+}
+.popup-usermanager .popup-usermanager-content .list_rom li:nth-last-of-type(1) {
+  border-bottom: 0px solid #f5f5f5;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .listcheck {
+  height: 40px;
+  line-height: 40px;
+  color: #000;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .uName {
+  height: 40px;
+  line-height: 40px;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .uName span {
+  display: inline-block;
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .uName span img {
+  float: left;
+  width: 100%;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .uName .list_icon {
+  margin-top: 7px;
+  margin-right: 20px;
+  width: 26px;
+  height: 26px;
+  border-radius: 0;
+  overflow: hidden;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .uName .list_icon img {
+  width: 100%;
+  height: 100%;
+}
+.popup-usermanager .popup-usermanager-content .list_rom .uName .jyTip {
+  color: #fff;
+  font-size: 12px;
+  line-height: 28px;
+  background: #09bb07;
+  display: block;
+  height: 28px;
+  width: 60px;
+  text-align: center;
+  margin-top: 6px;
+  float: right;
+  white-space: nowrap;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .popup-usermanager .popup-usermanager-footer {
   height: 40px;
   padding: 0 14px;
@@ -1759,4 +1803,49 @@ header .user-nav .exit:hover {
   margin-top: 6px;
   color: #fff;
   vertical-align: baseline;
+}
+.nav-chatRoom {
+  height: 40px;
+  line-height: 40px;
+  background-color: #FCFCFC;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+.nav-chatRoom .nav-item {
+  width: 25%;
+  float: left;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+.nav-chatRoom .nav-item.current > span {
+  background-color: #F96400;
+  color: #fff;
+}
+.nav-chatRoom .nav-item.current:hover span {
+  color: #fff;
+}
+.nav-chatRoom .nav-item:hover > span {
+  color: #F96400;
+}
+.nav-chatRoom .nav-item:not(:last-child):after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  border-right: 1px solid #eee;
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+}
+.nav-chatRoom .nav-item > span {
+  display: inline-block;
+  height: 25px;
+  line-height: 26px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 0px 25px;
 }

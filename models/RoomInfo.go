@@ -27,7 +27,8 @@ type RoomInfo struct {
 	SecretKey   string
 	RoomIcon    string //房间图标
 	RoomIntro   string `orm:"size(512)"` //简介
-	RoomBanner  string //图片
+	RoomBanner  string //移动端使用
+	PcBanner    string
 	Title       string //标题
 	PcRoomText  string // 仅pc端使用 免责声明
 	PcRoomad    string // pc 端 广告
