@@ -125,6 +125,7 @@ func UpdateCompanyInfo(id int64, companyInfo Company, companyId int64) (int64, e
 		"WelcomeMsg":    companyInfo.WelcomeMsg,
 		"AuditMsg":      companyInfo.AuditMsg,
 		"Verify":        companyInfo.Verify,
+		"Sign":          companyInfo.Sign,
 		"AppId":         companyInfo.AppId,
 		"AppSecret":     companyInfo.AppSecret,
 		"Url":           companyInfo.Url,

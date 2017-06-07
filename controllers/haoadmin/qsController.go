@@ -184,6 +184,7 @@ func (this *QsController) Del() {
 	id, err := this.GetInt64("id")
 	if err != nil {
 		this.Rsp(false, "删除失败", "")
+		return
 	} else {
 		_, err := m.DelNoticeById(id)
 		if err != nil {

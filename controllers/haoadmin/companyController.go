@@ -39,6 +39,7 @@ func (this *CompanyController) Index() {
 				item["Rolename"] = roleInfo.Title
 			}
 			if user.CompanyId != 0 {
+				item["Sign"] = ""
 				item["AppId"] = ""
 				item["AppSecret"] = ""
 				item["Url"] = ""
@@ -227,6 +228,7 @@ func (this *CompanyController) EditCompany() {
 	title := models.TitleList()
 
 	if user.CompanyId != 0 {
+		companyInfo.Sign = ""
 		companyInfo.AppId = ""
 		companyInfo.AppSecret = ""
 		companyInfo.Url = ""
