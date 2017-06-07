@@ -802,9 +802,14 @@ header .user-nav .exit:hover {
   line-height: 20px;
   font-size: 14px;
   border-radius: 5px;
-  background-color: #FF0000;
   color: #fff;
   padding: 0px 8px;
+}
+.suggest-wrap .suggest-content .suggest-content-top > div:nth-child(2) .suggest-btn.bgRed {
+  background-color: #f00;
+}
+.suggest-wrap .suggest-content .suggest-content-top > div:nth-child(2) .suggest-btn.bgBlue {
+  background-color: #090;
 }
 .suggest-wrap .suggest-content .suggest-content-top > div:nth-child(3) {
   width: 213px;
@@ -1106,7 +1111,7 @@ header .user-nav .exit:hover {
   background: #F96400;
 }
 .chatContent-wrap {
-  height: calc(100% - 114px);
+  height: calc(100% - 154px);
 }
 .chatContent-wrap .chatContent-list {
   overflow-y: auto;
@@ -1803,6 +1808,12 @@ header .user-nav .exit:hover {
   margin-top: 6px;
   color: #fff;
   vertical-align: baseline;
+}
+.popup-usermanager .checked button:nth-of-type(1) {
+  background: #D21C1B;
+}
+.popup-usermanager .checked button:nth-of-type(2) {
+  background: #2A81C4;
 }
 .nav-chatRoom {
   height: 40px;
