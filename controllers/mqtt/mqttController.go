@@ -1,6 +1,9 @@
 package mqtt
 
 import (
+	"fmt"
+	"os"
+	"path"
 	"strings"
 	"sync"
 	"time"
@@ -303,6 +306,36 @@ func (this *MqttController) GetOnlineUseCount() {
 	usercount := getToal()
 	this.Data["json"] = &map[string]interface{}{"status": true, "count": usercount}
 	this.ServeJSON()
+}
+
+func (this *MqttController) GetPCIconUpload() {
+	uploadtype := this.GetString("uploadtype")
+
+	_, h, err := this.GetFile("file")
+	if err != nil {
+		beego.Error("getfile error", err)
+		this.Rsp(false, uploadtype, "")
+	}
+
+	dir := path.Join("..", "upload", "room")
+	err = os.MkdirAll(dir, 0755)
+	if err != nil {
+		beego.Error(err)
+		this.Rsp(false, uploadtype, "")
+	}
+	// 设置保存文件名
+
+	nowtime := time.Now().Unix()
+	FileName := fmt.Sprintf("%d%s", nowtime, h.Filename)
+	dirPath := path.Join("..", "upload", "room", FileName)
+	// 将文件保存到服务器中
+	err = this.SaveToFile("file", dirPath)
+	if err != nil {
+		beego.Error(err)
+		this.Rsp(false, uploadtype, "")
+	}
+	filepath := path.Join("/upload", "room", FileName)
+	this.Rsp(true, uploadtype, filepath)
 }
 
 // 获取在线用户信息列表
